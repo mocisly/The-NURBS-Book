@@ -1,0 +1,1941 @@
+\documentclass[main.tex]{subfiles}                                              
+\begin{document}
+
+\section{引言}
+
+圆锥曲线和圆在 CADCAM 应用中发挥着基础性作用。NURBS 的一个最大优势无疑是它们能够精确表示圆锥曲线和圆，以及自由形状的曲线和曲面。我们假设读者具备圆锥曲线和圆的知识；本章的目的是在 NURBS 曲线的表示框架内研究它们。在第 7.2 节中，我们回顾了后续章节所需的圆锥曲线的各种形式和性质。第 7.3 节涵盖了圆锥和圆弧的二次有理贝塞尔表示；第 7.4 节介绍了无限控制点。在第 7.5 和 7.6 节中，我们分别提出了构建任意圆和圆锥的 NURBS 表示的算法，包括完整的圆和椭圆。第 7.7 节涵盖了各种表示形式之间的转换，第 7.8 节给出了高阶圆表示的示例。
+
+
+
+\section{表示圆锥曲线的各种形式}
+
+有许多方法可以定义和表示圆锥曲线。我们首先给出一个几何定义，然后利用它推导出 \({xy}\) 平面中圆锥曲线的一般隐式(代数)方程(见 [Lawr72])。圆锥曲线是一个点的轨迹，该点移动的方式使得它与固定点(焦点)的距离与它到固定直线(准线)的距离成比例，即(见图 7.1)
+
+\[
+\text{ Conic } = \left\{  {\mathbf{P}\left| {\;\frac{\mathbf{{PF}}}{\mathbf{{PD}}} = e}\right. }\right\}
+\]
+
+其中 \(e\) 是一个称为离心率的比例常数。离心率
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_290_215_275_1077_716_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.1. 通过焦点和准线定义圆锥曲线。
+
+决定了圆锥曲线的类型，即
+
+\[
+e = \left\{  \begin{array}{ll}  = 1 & \text{ parabola } \\   < 1 & \text{ ellipse } \\   > 1 & \text{ hyperbola } \end{array}\right.
+\]
+
+如果选择准线为直线 \(x = 0\) ，焦点为 \(\mathbf{F} = \left( {k,0}\right)\) ，那么
+
+\[
+e = \frac{\sqrt{{\left( x - k\right) }^{2} + {y}^{2}}}{\left| x\right| } \tag{7.1}
+\]
+
+其中 \(\left| x\right|  = \mathbf{{PD}}\) 和 \(\mathbf{D} = \left( {0,y}\right)\) 。对方程 (7.1) 进行平方和重新排列得到
+
+\[
+\left( {1 - {e}^{2}}\right) {x}^{2} - {2kx} + {y}^{2} + {k}^{2} = 0 \tag{7.2}
+\]
+
+即，位于 \({xy}\) 平面的圆锥曲线由一个二次代数方程表示。反之，可以证明任何二次代数方程表示一个圆锥曲线。设这个方程写为
+
+\[
+a{x}^{2} + b{y}^{2} + {2hxy} + {2fx} + {2gy} + c = 0 \tag{7.3}
+\]
+
+设 \(\alpha  = {ab} - {h}^{2}\) ，并且设
+
+\[
+D = \left| \begin{array}{lll} a & h & f \\  h & b & g \\  f & g & c \end{array}\right|
+\]
+
+为由方程 (7.3) 的系数形成的 \(3 \times  3\) 矩阵的行列式。使用 \(\alpha\) 和 \(D\) ，可以对圆锥曲线进行完整分类
+
+\[
+\alpha  = 0\;D \neq  0
+\]
+
+抛物线
+
+\(D = 0\;b \neq  0\;{g}^{2} - {bc} > 0\;\) 2 条平行的实线
+
+\({g}^{2} - {bc} = 0\;2\) 平行重合线
+
+\({g}^{2} - {bc} < 0\;2\) 平行虚线
+
+\[
+b = h = 0\;{f}^{2} - {ac} > 0\;2\text{ parallel real lines }
+\]
+
+\({f}^{2} - {ac} = 0\;2\) 平行重合线
+
+\({f}^{2} - {ac} < 0\;2\) 平行虚线
+
+\[
+\alpha  > 0\;D = 0
+\]
+
+点椭圆
+
+\[
+D \neq  0
+\]
+
+\(- {bD} > 0\;\) 实椭圆
+
+\(- {bD} < 0\;\) 虚椭圆
+
+\(\alpha  < 0\;D \neq  0\) 双曲线
+
+\[
+D = 0
+\]
+
+2 条相交线
+
+通过简单的变换，方程 (7.2) 可以重新表述为标准形式之一。对于 \(e \neq  1\) 我们使用变换
+
+\[
+{x}^{\prime } = x - \frac{k}{1 - {e}^{2}}\;{y}^{\prime } = y
+\]
+
+代入方程 (7.2) 并去掉撇号得到
+
+\[
+\frac{{x}^{2}}{{a}^{2}} + \frac{{y}^{2}}{{b}^{2}} = 1 \tag{7.4}
+\]
+
+在这里
+
+\[
+a = \frac{ke}{1 - {e}^{2}}\;{b}^{2} = {a}^{2}\left( {1 - {e}^{2}}\right)
+\]
+
+有两种情况:
+
+\begin{itemize}
+\item 椭圆(见图 7.2): \(e < 1\) 意味着 \(a,b > 0\) ，并且方程 (7.4) 变为
+\end{itemize}
+
+\[
+\frac{{x}^{2}}{{a}^{2}} + \frac{{y}^{2}}{{b}^{2}} = 1\;a > b > 0 \tag{7.5}
+\]
+
+在这个位置，原点是椭圆的中心。 \(x\) 轴是 \({ma}\) 主轴，而 \(y\) 轴是次轴。点 \(\left( {-a,0}\right) ,\left( {a,0}\right) ,\left( {0, - b}\right)\) 和 (0, b) 是顶点。距离 \(a\) 和 \(b\) 分别是主半径和次半径。如果 \(a = b\) 方程 (7.5) 表示一个圆(这是极限情况)， \(e \rightarrow  0,k \rightarrow  \infty )\) 。
+
+\begin{itemize}
+\item 双曲线(图 7.3): \(e > 1\) 意味着 \(a < 0\) 和 \({b}^{2} < 0\) ( \(b\) 是虚数)。设定 \(b =  \mid  b \mid\) ，方程 (7.4) 得到
+\end{itemize}
+
+\[
+\frac{{x}^{2}}{{a}^{2}} - \frac{{y}^{2}}{{b}^{2}} = 1\;a,b > 0 \tag{7.6}
+\]
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_292_313_257_993_766_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.2. 由不同参数定义的椭圆 \(\left( {a = 5/2,b = \left\{  {5/2,2,3/2,4/5}\right\}  }\right)\) 。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_292_315_1299_991_762_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.3. 由不同参数定义的双曲线 \(\left( {a = 1,b = \{ 5,2,1,1/2\} }\right)\) 。
+
+在这个位置，原点是双曲线的中心。 \(x\) 轴是横轴，而 \(y\) 轴称为半共轭轴或虚轴。点 (-a,0) 和 (a,0) 是顶点。距离 \(a\) 和 \(b\) 分别称为主半径和次(或虚)半径。请注意，双曲线有两个分支，由虚轴分开。
+
+类似地， \(e = 1\) 和变换
+
+\[
+{x}^{\prime } = x - \frac{1}{2}k\;{y}^{\prime } = y
+\]
+
+得到抛物线
+
+\[
+{y}^{2} = {4ax}\;a = \frac{1}{2}k > 0 \tag{7.7}
+\]
+
+焦点为 \(\mathbf{F} = \left( {a,0}\right)\) ，准线为 \(x + a = 0\) (见图 7.4)。抛物线没有中心。在标准位置下，其轴是 \(x\) 轴，原点是其顶点，而 \(a\) 是其焦距。
+
+两种圆锥曲线的参数化表示在 CADCAM 应用中非常重要:有理形式和最大内接面积形式。我们首先讨论有理形式。方程
+
+\[
+x\left( u\right)  = a\frac{1 - {u}^{2}}{1 + {u}^{2}}
+\]
+
+\[
+y\left( u\right)  = b\frac{2u}{1 + {u}^{2}}\; - \infty  < u < \infty  \tag{7.8}
+\]
+
+表示标准位置下的椭圆(图 7.5 显示了线段上的点 \(0 \leq  u \leq  1\) )。通过将方程 (7.8) 代入方程 (7.5)，可以看出这一点。
+
+\[
+\frac{{a}^{2}{\left( \frac{1 - {u}^{2}}{1 + {u}^{2}}\right) }^{2}}{{a}^{2}} + \frac{{b}^{2}{\left( \frac{2u}{1 + {u}^{2}}\right) }^{2}}{{b}^{2}} = \frac{1 - 2{u}^{2} + {u}^{4} + 4{u}^{2}}{1 + 2{u}^{2} + {u}^{4}} = 1
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_293_340_1310_868_754_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.4. 由不同参数定义的抛物线 \(\left( {a = \left\{  {5,3/2,7/{10},3/{10}}\right\}  }\right)\) 。
+
+注意 \(\left( {x\left( 0\right) ,y\left( 0\right) }\right)  = \left( {a,0}\right) ,\left( {x\left( 1\right) ,y\left( 1\right) }\right)  = \left( {0,b}\right)\) ，并且顶点 (-a,0) 在极限情况下接近 \(u \rightarrow   - \infty\) 或 \(u \rightarrow  \infty\) 。这些方程
+
+\[
+x\left( u\right)  = a\frac{1 + {u}^{2}}{1 - {u}^{2}}
+\]
+
+\[
+y\left( u\right)  = b\frac{2u}{1 - {u}^{2}}\; - \infty  < u < \infty  \tag{7.9}
+\]
+
+表示标准位置下的双曲线(图 7.6)。区间 \(u \in  \left( {-1,1}\right)\) 对应于右支；左支由 \(u \in  \left( {-\infty , - 1}\right)\) 和 \(u \in  \left( {1,\infty }\right) .\mathbf{C}\left( {-1}\right)\) 描述，而 \(\mathbf{C}\left( 1\right)\) 表示无穷远点。最后
+
+\[
+x\left( u\right)  = a{u}^{2}
+\]
+
+\[
+y\left( u\right)  = {2au}\; - \infty  < u < \infty  \tag{7.10}
+\]
+
+参数化标准位置下的抛物线(见图 7.7)。设 \(\mathbf{C}\left( u\right)  =\)  \(\left( {x\left( u\right) ,y\left( u\right) ,0}\right)\) 为嵌入在三维欧几里得空间中的标准位置下的圆锥曲线。通过应用任意的 \(3 \times  3\) 旋转矩阵和任意的
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_294_341_1429_861_653_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.5. 椭圆弧的有理参数化(方程 [7.8])。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_295_329_252_866_649_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.6. 双曲弧的有理参数化 (方程 [7.9])。
+
+变换向量，很容易看出三维空间中的一般圆锥曲线
+
+具有以下形式
+
+\[
+x\left( u\right)  = \frac{{a}_{0} + {a}_{1}u + {a}_{2}{u}^{2}}{{w}_{0} + {w}_{1}u + {w}_{2}{u}^{2}} = \frac{\mathop{\sum }\limits_{{i = 0}}^{2}{a}_{i}{u}^{i}}{\mathop{\sum }\limits_{{i = 0}}^{2}{w}_{i}{u}^{i}}
+\]
+
+288 圆锥曲线与圆
+
+\[
+y\left( u\right)  = \frac{{b}_{0} + {b}_{1}u + {b}_{2}{u}^{2}}{{w}_{0} + {w}_{1}u + {w}_{2}{u}^{2}} = \frac{\mathop{\sum }\limits_{{i = 0}}^{2}{b}_{i}{u}^{i}}{\mathop{\sum }\limits_{{i = 0}}^{2}{w}_{i}{u}^{i}}
+\]
+
+\[
+z\left( u\right)  = \frac{{c}_{0} + {c}_{1}u + {c}_{2}{u}^{2}}{{w}_{0} + {w}_{1}u + {w}_{2}{u}^{2}} = \frac{\mathop{\sum }\limits_{{i = 0}}^{2}{c}_{i}{u}^{i}}{\mathop{\sum }\limits_{{i = 0}}^{2}{w}_{i}{u}^{i}}\; - \infty  < u < \infty  \tag{7.11}
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_295_333_1434_869_645_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.7. 抛物线弧的参数化 (方程 [7.10])。
+
+设置
+
+\[
+{x}_{i} = \frac{{a}_{i}}{{w}_{i}}
+\]
+
+\[
+{y}_{i} = \frac{{b}_{i}}{{w}_{i}}
+\]
+
+\[
+{z}_{i} = \frac{{c}_{i}}{{w}_{i}}
+\]
+
+和
+
+\[
+{\mathbf{a}}_{i} = \left( {{x}_{i},{y}_{i},{z}_{i}}\right)
+\]
+
+我们得到
+
+\[
+\mathbf{C}\left( u\right)  = \frac{{w}_{0}{\mathbf{a}}_{0} + {w}_{1}{\mathbf{a}}_{1}u + {w}_{2}{\mathbf{a}}_{2}{u}^{2}}{{w}_{0} + {w}_{1}u + {w}_{2}{u}^{2}} = \frac{\mathop{\sum }\limits_{{i = 0}}^{2}{w}_{i}{\mathbf{a}}_{i}{u}^{i}}{\mathop{\sum }\limits_{{i = 0}}^{2}{w}_{i}{u}^{i}} \tag{7.12}
+\]
+
+圆锥的有理幂基形式。设置
+
+\[
+{\mathbf{a}}_{i}^{w} = \left( {{w}_{i}{x}_{i},{w}_{i}{y}_{i},{w}_{i}{z}_{i},{w}_{i}}\right)  \tag{7.13}
+\]
+
+产生
+
+\[
+{\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{2}{\mathbf{a}}_{i}^{w}{u}^{i} \tag{7.14}
+\]
+
+有理幂基圆锥的齐次形式。此外，任何形式为方程 (7.11) 的方程都是一个圆锥。这一事实将从第 7.3 节和第 7.7 节得出。
+
+有理形式可能表示圆锥的较差参数化，因为均匀间隔的参数值可以映射到曲线上的非常不均匀间隔的点。图 7.5 到 7.7 显示了由方程 (7.8)-(7.10) 给出的圆锥的部分上的点。这些点是均匀间隔的 \(u\) 值的图像。从第 6 章我们知道，有理曲线的参数化可以通过线性有理函数的重新参数化进行更改(并可能得到改善)。
+
+现在假设 \(\mathbf{C}\left( u\right)  = \left( {x\left( u\right) ,y\left( u\right) }\right)\) 是标准位置下圆锥的参数表示。对于每种类型的圆锥，我们现在给出函数 \(x\left( u\right) ,y\left( u\right)\) ，它们在以下意义上提供了良好的参数化:如果对于任意整数 \(n\) 和参数范围 \(a\) 和 \(b\) ，我们计算 \(n\) 个均匀间隔的参数值
+
+\[
+a = {u}_{1},\ldots ,{u}_{n} = b\;{u}_{i + 1} - {u}_{i} = \text{ constant, }i = 1,\ldots ,n - 1
+\]
+
+那么点序列 \(\mathbf{C}\left( {u}_{1}\right) ,\ldots ,\mathbf{C}\left( {u}_{n}\right)\) 形成在 \(\mathbf{C}\left( u\right)\) 上的 (n - 1) 边形，其闭合具有最大内切面积。椭圆由
+
+\[
+x\left( u\right)  = a\cos u
+\]
+
+\[
+y\left( u\right)  = b\sin u\;0 \leq  u \leq  {2\pi } \tag{7.15}
+\]
+
+(见图 7.8)。如果 \(a = b\) 方程 (7.15) 表示一个圆，并且参数化是均匀的。双曲线使用双曲函数
+
+\[
+\sinh u = \frac{{e}^{u} - {e}^{-u}}{2}
+\]
+
+\[
+\cosh u = \frac{{e}^{u} + {e}^{-u}}{2}
+\]
+
+其方程为(图 7.9)
+
+\[
+x\left( u\right)  = a\cosh u
+\]
+
+\[
+y\left( u\right)  = b\sinh u\; - \infty  < u < \infty  \tag{7.16}
+\]
+
+方程(7.16)描绘了右支；左支由以下方程描绘
+
+\[
+x\left( u\right)  =  - a\cosh u
+\]
+
+\[
+y\left( u\right)  =  - b\sinh u\; - \infty  < u < \infty
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_297_334_1416_860_644_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.8. 椭圆的最大面积参数化(方程 [7.15])。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_298_329_267_866_646_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.9. 双曲线的最大面积参数化(方程 [7.16])。
+
+参数化抛物线由方程给出(图 7.7)
+
+\[
+x\left( u\right)  = a{u}^{2}
+\]
+
+\[
+y\left( u\right)  = {2au}\; - \infty  < u < \infty  \tag{7.17}
+\]
+
+这与方程(7.10)相同。
+
+方程(7.15)-(7.17)可以扩展以表示三维空间中的圆锥曲线。设 \(\{ \mathbf{O},\mathbf{X},\mathbf{Y}\}\) 为三维空间中圆锥曲线的局部坐标系( \(\mathbf{O}\) 是一个点， \(\mathbf{X}\) 和 \(\mathbf{Y}\) 是正交单位长度向量)。圆锥曲线定义为(图 7.10)
+
+\begin{itemize}
+\item 椭圆:以 \(\mathbf{O}\) 为中心， \(\mathbf{X}\) 为长轴， \(\mathbf{Y}\) 为短轴，椭圆的方程为
+\end{itemize}
+
+\[
+\mathbf{C}\left( u\right)  = \mathbf{O} + a\cos u\mathbf{X} + b\sin u\mathbf{Y} \tag{7.18}
+\]
+
+\begin{itemize}
+\item 双曲线:以 \(\mathbf{O}\) 为中心， \(\mathbf{X}\) 为横轴， \(\mathbf{Y}\) 为虚轴，双曲线的方程为
+\end{itemize}
+
+\[
+\mathbf{C}\left( u\right)  = \mathbf{O} + a\cosh u\mathbf{X} + b\sinh u\mathbf{Y} \tag{7.19}
+\]
+
+\begin{itemize}
+\item 抛物线:以 \(\mathbf{O}\) 为顶点， \(\mathbf{X}\) 为轴， \(\mathbf{Y}\) 给出了抛物线在其顶点的切线方向。抛物线的方程为
+\end{itemize}
+
+\[
+\mathbf{C}\left( u\right)  = \mathbf{O} + a{u}^{2}\mathbf{X} + {2au}\mathbf{Y} \tag{7.20}
+\]
+
+方程(7.18)-(7.20)是新标准《产品模型数据交换标准》(STEP)[STEP94] 中规定的圆锥曲线形式。
+
+\begin{center}
+\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_299_388_258_752_790_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.10. 三维空间中的椭圆、抛物线和双曲线。
+
+几乎所有关于解析几何的书籍都详细介绍了圆锥曲线的隐式方程形式，包括圆锥类型的分类、退化情况以及标准位置的变换(方程 [7.5]-[7.7])，例如参见 [Salm79; Coxe80; Ilyi84]。一些现代 CADCAM 几何书籍对圆锥曲线进行了详细讨论，特别是有理和最大内接面积的参数形式，例如参见 Rogers [Roge90] 和 Beach [Beac91]。方程 (7.15)-(7.17) 的最大内接面积性质最早由 [Smit71] 提出。Liming 的两本书 ([Limi44, 79]) 包含了关于圆锥构造和圆锥在工程设计中应用的大量信息。
+
+
+\section{二次有理贝塞尔弧}
+
+二次有理贝塞尔弧的形式为
+
+\[
+\mathbf{C}\left( u\right)  = \frac{{\left( 1 - u\right) }^{2}{w}_{0}{\mathbf{P}}_{0} + {2u}\left( {1 - u}\right) {w}_{1}{\mathbf{P}}_{1} + {u}^{2}{w}_{2}{\mathbf{P}}_{2}}{{\left( 1 - u\right) }^{2}{w}_{0} + {2u}\left( {1 - u}\right) {w}_{1} + {u}^{2}{w}_{2}}
+\]
+
+\[
+= {R}_{0,2}\left( u\right) {\mathbf{P}}_{0} + {R}_{1,2}\left( u\right) {\mathbf{P}}_{1} + {R}_{2,2}\left( u\right) {\mathbf{P}}_{2} \tag{7.21}
+\]
+
+其中
+
+\[
+{R}_{i,2}\left( u\right)  = \frac{{B}_{i,2}\left( u\right) {w}_{i}}{\mathop{\sum }\limits_{{j = 0}}^{2}{B}_{j,2}\left( u\right) {w}_{j}}\;u \in  \left\lbrack  {0,1}\right\rbrack
+\]
+
+为了证明方程 (7.21) 是一个圆锥曲线，引入一个局部的斜坐标系
+
+\[
+\left\{  {{\mathbf{P}}_{1},\mathbf{S},\mathbf{T}}\right\}   \tag{7.22}
+\]
+
+其中
+
+\[
+\mathbf{S} = {\mathbf{P}}_{0} - {\mathbf{P}}_{1}\;\mathbf{T} = {\mathbf{P}}_{2} - {\mathbf{P}}_{1}
+\]
+
+(见图 7.11)。对于任意的 \(u \in  \left\lbrack  {0,1}\right\rbrack\) ，点 \(\mathbf{C}\left( u\right)\) 位于三角形 \({\mathbf{P}}_{0}{\mathbf{P}}_{1}{\mathbf{P}}_{2}\) 内，因此可以写为
+
+\[
+\mathbf{C}\left( u\right)  = {\mathbf{P}}_{1} + \alpha \left( u\right) \mathbf{S} + \beta \left( u\right) \mathbf{T} = \alpha \left( u\right) {\mathbf{P}}_{0} + \left( {1 - \alpha \left( u\right)  - \beta \left( u\right) }\right) {\mathbf{P}}_{1} + \beta \left( u\right) {\mathbf{P}}_{2} \tag{7.23}
+\]
+
+将此与方程 (7.21) 进行比较，我们发现
+
+\[
+\alpha \left( u\right)  = {R}_{0,2}\left( u\right) \;\beta \left( u\right)  = {R}_{2,2}\left( u\right)  \tag{7.24}
+\]
+
+使用恒等式
+
+\[
+{B}_{0,2}\left( u\right) {B}_{2,2}\left( u\right)  = {\left( \frac{{B}_{1,2}\left( u\right) }{2}\right) }^{2}
+\]
+
+和方程 (7.23)，并将方程 (7.21) 中的分母函数记为 \(w\left( u\right)\) ，我们得到
+
+\[
+\alpha \left( u\right) \beta \left( u\right)  = {R}_{0,2}\left( u\right) {R}_{2,2}\left( u\right)  = \frac{{w}_{0}{w}_{2}{B}_{0,2}\left( u\right) {B}_{2,2}\left( u\right) }{{\left( w\left( u\right) \right) }^{2}}
+\]
+
+\[
+= {w}_{0}{w}_{2}\frac{{\left( {B}_{1,2}\left( u\right) \right) }^{2}}{4{\left( w\left( u\right) \right) }^{2}} = \frac{{w}_{0}{w}_{2}}{{w}_{1}^{2}}\frac{{\left( {w}_{1}{B}_{1,2}\left( u\right) \right) }^{2}}{4{\left( w\left( u\right) \right) }^{2}}
+\]
+
+\[
+= \frac{{w}_{0}{w}_{2}}{{w}_{1}^{2}}\frac{1}{4}{\left( {R}_{1,2}\left( u\right) \right) }^{2}
+\]
+
+设置
+
+\[
+k = \frac{{w}_{0}{w}_{2}}{{w}_{1}^{2}} \tag{7.25}
+\]
+
+并使用公式 (7.23) 产生
+
+\[
+\alpha \left( u\right) \beta \left( u\right)  = \frac{1}{4}k{\left( 1 - \alpha \left( u\right)  - \beta \left( u\right) \right) }^{2} \tag{7.26}
+\]
+
+方程 (7.26) 是斜坐标系中的隐式(二次)方程 \(\left\{  {{\mathbf{P}}_{1},\mathbf{S},\mathbf{T}}\right\}\) 。注意，公式 (7.25) 中的常数 \(k\) 是第六章中给出的圆锥形状因子，公式 (6.59)。方程 (7.26) 表示 \(k\) 决定了圆锥；如果三个权重以某种方式改变，使得 \(k\) 不变，则只有参数化发生变化，而曲线不变。
+
+圆锥的类型可以通过查看公式 (7.21) 的分母 \(w\left( u\right)\) 来确定，该分母可以写为
+
+\[
+w\left( u\right)  = {\left( 1 - u\right) }^{2}{w}_{0} + {2u}\left( {1 - u}\right) {w}_{1} + {u}^{2}{w}_{2}
+\]
+
+\[
+= \left( {{w}_{0} - 2{w}_{1} + {w}_{2}}\right) {u}^{2} + 2\left( {{w}_{1} - {w}_{0}}\right) u + {w}_{0} \tag{7.27}
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_301_344_258_841_592_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.11. 有理二次贝塞尔曲线的局部坐标系。
+
+方程 (7.27) 的根为
+
+\[
+{u}_{1,2} = \frac{{w}_{0} - {w}_{1} \pm  {w}_{1}\sqrt{1 - k}}{{w}_{0} - 2{w}_{1} + {w}_{2}} \tag{7.28}
+\]
+
+其中 \(k\) 是圆锥形状因子。方程 (7.25) 表示可以任意选择任意两个权重；然后圆锥由第三个权重决定。通常选择 \({w}_{0} = {w}_{2} = 1\) ；这称为标准参数化。然后如果 \({w}_{1} = 1\) ，则公式 (7.21) 是抛物线。假设 \({w}_{1} \neq  1\) ，则公式 (7.28) 意味着
+
+\begin{itemize}
+\item 如果 \(k > 1\) ，则方程 (7.27) 没有实数解；曲线上没有无穷远点，因此它是一个椭圆；
+\end{itemize}
+
+\begin{itemize}
+\item 如果 \(k = 1\) ，方程 (7.27) 有一个实数解；曲线上有一个无穷远点，曲线是一个抛物线；
+\end{itemize}
+
+\begin{itemize}
+\item 如果 \(k < 1\) ，方程 (7.27) 有两个根；曲线上有两个无穷远点，它是一个双曲线。
+\end{itemize}
+
+将这些条件用 \({w}_{1}\) 表达，我们得到:
+
+\begin{itemize}
+\item \({w}_{1}{}^{2} < 1\left( {-1 < {w}_{1} < 1}\right)  \Rightarrow\) 椭圆;
+\end{itemize}
+
+\begin{itemize}
+\item \({w}_{1}{}^{2} = 1\left( {{w}_{1} = 1\text{ or } - 1}\right)  \Rightarrow\) 抛物线;
+\end{itemize}
+
+\begin{itemize}
+\item \({w}_{1}{}^{2} > 1\left( {{w}_{1} > 1}\right.\) 或 \(\left. {{w}_{1} <  - 1}\right)  \Rightarrow\) 双曲线。
+\end{itemize}
+
+(见图 7.12)。
+
+注意到 \({w}_{1}\) 可以为零或负值。 \({w}_{1} = 0\) 从 \({\mathbf{P}}_{0}\) 到 \({\mathbf{P}}_{2}\) 产生一条直线段，而 \({w}_{1} < 0\) 产生互补弧，按相反顺序遍历(见 [Lee87] 的简单证明)。还要注意，如果 \({w}_{1} < 0\) ，则凸包性质不成立。
+
+改变 \({w}_{1}\) 会产生一系列的圆锥弧，其端点为 \({\mathbf{P}}_{0}\) 和 \({\mathbf{P}}_{2}\) ，并且端切线与 \({\mathbf{P}}_{0}{\mathbf{P}}_{1}\) 和 \({\mathbf{P}}_{1}{\mathbf{P}}_{2}\) 平行。然而，指定权重并不是一个方便的设计工具。从这个系列中选择一个圆锥的更方便的方法是指定圆锥上的第三个点，该点在某个参数值下获得，设为 \(u = 1/2\) 。这个点称为圆锥的肩点， \(\mathbf{S} = \mathbf{C}\left( {1/2}\right)\) (见图 7.12)。将 \(u = 1/2\) 代入方程 (7.21) 得到
+
+\[
+\mathbf{S} = \frac{1}{1 + {w}_{1}}\mathbf{M} + \frac{{w}_{1}}{1 + {w}_{1}}{\mathbf{P}}_{1} \tag{7.29}
+\]
+
+其中 \(\mathbf{M}\) 是弦 \({\mathbf{P}}_{0}{\mathbf{P}}_{2}\) 的中点。由于我们选择了 \({w}_{0} = {w}_{2} = 1\) ，因此可以得出在 \(\mathbf{S}\) 处圆锥的切线与 \({\mathbf{P}}_{0}{\mathbf{P}}_{2}\) 平行，即圆锥在 \(\mathbf{S} = \mathbf{C}\left( {1/2}\right)\) 处达到与 \({\mathbf{P}}_{0}{\mathbf{P}}_{2}\) 的最大距离。设 \(s\) 为一个新参数，它在 \(\mathbf{M}\) 和 \({\mathbf{P}}_{1}\) 之间进行线性插值。那么对于某个 \(s\) 的值，我们有
+
+\[
+\mathbf{S} = \left( {1 - s}\right) \mathbf{M} + s{\mathbf{P}}_{1} \tag{7.30}
+\]
+
+从方程 (7.29) 和 (7.30) 可以得出
+
+\[
+s = \frac{{w}_{1}}{1 + {w}_{1}}\;{w}_{1} = \frac{s}{1 - s} \tag{7.31}
+\]
+
+参数 \(s\) 是一个良好的形状设计工具。设计师可以将他的肩点(决定曲线的丰满度)从 \(\mathbf{M}\) 线性移动到 \({\mathbf{P}}_{1}.s = 0\) ，产生一条线段， \(0 < s < 1/2\) 产生一个椭圆， \(s = 1/2\) 产生一个抛物线，而 \(1/2 < s < 1\) 产生一个双曲线。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_302_375_1336_781_732_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.12. 由 \({w}_{1} = \left\{  {3,1,3/{10},0, - 3/{10}}\right\}\) 定义的各种圆锥弧。
+
+扫掠角小于 \({180}^{ \circ  }\) 的圆弧也由公式 (7.21) 表示。为了对称， \({\mathbf{P}}_{0}{\mathbf{P}}_{1}{\mathbf{P}}_{2}\) 必须是一个等腰三角形，具有 \({\mathbf{P}}_{0}{\mathbf{P}}_{1} = {\mathbf{P}}_{1}{\mathbf{P}}_{2}\) 。因为圆是椭圆的特例，我们期望 \(0 < {w}_{1} < 1\) 。考虑图 7.13。从公式 (7.31) 可以得出
+
+\[
+{w}_{1} = \frac{s}{1 - s} = \frac{\mathbf{{MS}}}{{\mathbf{{SP}}}_{1}} \tag{7.32}
+\]
+
+设 \(\theta  = \angle {\mathbf{P}}_{1}{\mathbf{P}}_{2}\mathbf{M}\) 。由于对称，弧 \({\mathbf{P}}_{2}\mathbf{S}\) 与 \({\mathbf{{SP}}}_{0}\) 相同，因此角 \(\angle {\mathbf{{SP}}}_{2}\mathbf{M}\) 平分 \(\theta\) 。根据平分线的性质可以得出
+
+\[
+{w}_{1} = \frac{\mathbf{{MS}}}{{\mathbf{{SP}}}_{1}} = \frac{{\mathbf{{MP}}}_{2}}{{\mathbf{P}}_{1}{\mathbf{P}}_{2}} = \frac{e}{f} = \cos \theta  \tag{7.33}
+\]
+
+本节中的许多材料可以追溯到 Coons 和 Forrest 的工作 [Coon67; Ahuj68; Forr68]。它也可以在 [Lee87; Pieg87a] 中找到。
+
+
+\section{无限控制点}
+在本节中，我们引入无限控制点，这是一个用于构造扫掠 \({180}^{ \circ  }\) 的圆形和椭圆弧的概念。Versprille [Vers75] 简要提到无限控制点，而 Piegl 则使用它们构造了许多不同的曲线和曲面 [Pieg87c, 88a, 88b]。
+
+在射影几何中，无穷远点的概念是常见的 [Ahuj68; Coxe74; Ries81]。在四维空间中，点 \({\mathbf{P}}^{w} = \left( {x,y,z,0}\right)\) (并且 \(z\) 不是全零)被称为无穷远点。它在三维空间中通过从原点到三维点 (x, y, z) 的方向向量来表示。因此， \(\mathbf{P} = H\left\{  {\mathbf{P}}^{w}\right\}\) 是一个方向向量(见公式 [1.16])。为了强调这一点，我们使用符号 \(\overrightarrow{\mathbf{P}}\) 。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_303_329_1381_879_670_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.13。小于 \({180}^{ \circ  }\) 的圆弧的二次有理贝塞尔表示。
+
+假设 \({\mathbf{P}}_{j}^{w} = \left( {{x}_{j},{y}_{j},{z}_{j},0}\right)\) 是曲线 \(\mathbf{C}\left( u\right)\) 的一个无穷控制点。那么
+
+\[
+{\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w}
+\]
+
+可以写成
+
+\[
+\mathbf{C}\left( u\right)  = \frac{\left( {\mathop{\sum }\limits_{{j \neq  i = 0}}^{n}{N}_{i,p}\left( u\right) {w}_{i}{\mathbf{P}}_{i}}\right)  + {N}_{j,p}\left( u\right) {\overrightarrow{\mathbf{P}}}_{j}}{\mathop{\sum }\limits_{{j \neq  i = 0}}^{n}{N}_{i,p}\left( u\right) {w}_{i}}
+\]
+
+\[
+= \frac{\mathop{\sum }\limits_{{j \neq  i}}{N}_{i,p}\left( u\right) {w}_{i}{\mathbf{P}}_{i}}{w\left( u\right) } + \frac{{N}_{j,p}\left( u\right) {\overrightarrow{\mathbf{P}}}_{j}}{w\left( u\right) }
+\]
+
+\[
+= \overline{\mathbf{C}}\left( u\right)  + f\left( u\right) {\overrightarrow{\mathbf{P}}}_{j} \tag{7.34}
+\]
+
+因此，对于固定的 \({u}_{0},\mathbf{C}\left( {u}_{0}\right)\) ，是 \(\overline{\mathbf{C}}\left( {u}_{0}\right)\) ，它位于控制点 \({\mathbf{P}}_{0},\ldots ,{\mathbf{P}}_{j - 1},{\mathbf{P}}_{j + 1},\ldots ,{\mathbf{P}}_{n}\) 的凸包内，加上向量 \({\overrightarrow{\mathbf{P}}}_{j}\) 的非负缩放因子(见图 7.14)。增加 \({\overrightarrow{\mathbf{P}}}_{j}\) 的大小会将曲线拉向其方向。注意在图 7.14 中，曲线 \(\overline{\mathbf{C}}\left( u\right)\) 在段 \({\mathbf{P}}_{1}{\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{3}{\mathbf{P}}_{4}.\mathbf{C}\left( u\right)\) 上接触控制多边形，并且是具有两个不同内部结点(重数为 1)的三次曲线。曲线 \(\overline{\mathbf{C}}\left( u\right)\) 接触控制多边形的点对应于在这些内部结点值下评估的 \(\overline{\mathbf{C}}\left( u\right)\) 。
+
+我们在此警告读者，从射影几何的角度来看，我们在声明 \({\mathbf{P}}^{w} = \left( {x,y,z,0}\right)\) 是一个无穷远点时并不严格正确。在射影几何术语中，点 (x, y, z, w) 和 \(\left( {{\alpha x},{\alpha y},{\alpha z},{\alpha w}}\right)\) 、 \(\alpha  \neq  0\) 是相同的，也就是说，射影空间中的一个点是数学家所称的等价类。这意味着 \({\overrightarrow{\mathbf{P}}}_{j} = \left( {{x}_{j},{y}_{j},{z}_{j},0}\right)\) 和 \({\overrightarrow{\mathbf{P}}}_{j}^{ * } =\)  \(\left( {\alpha {x}_{j},\alpha {y}_{j},\alpha {z}_{j},0}\right)\) 是射影空间中同一点的两种表示。然而，将 \({\overrightarrow{\mathbf{P}}}_{j}\) 和 \({\overrightarrow{\mathbf{P}}}_{j}^{ * }\) 代入方程 (7.34) 显然会导致两条不同的曲线。在本书中，我们不深入探讨射影几何，因此我们选择牺牲数学的严谨性以求清晰。严格来说，我们的无穷控制点只是一个射影点的代表，其最后一个坐标恰好为零。
+
+\section*{示例}
+
+Ex7.1 我们用一个无穷控制点表示以原点为中心、半径为 \(r\) 的半圆(见图 7.15)。设 \({\mathbf{P}}_{0}^{w} = \left( {r,0,1}\right) ,{\mathbf{P}}_{1}^{w} =\) (0, r,0)，和 \({\mathbf{P}}_{2}^{w} = \left( {-r,0,1}\right)\) 。那么
+
+\[
+\mathbf{C}\left( u\right)  = \frac{{\left( 1 - u\right) }^{2}{w}_{0}{\mathbf{P}}_{0} + {u}^{2}{w}_{2}{\mathbf{P}}_{2}}{{\left( 1 - u\right) }^{2}{w}_{0} + {u}^{2}{w}_{2}} + \frac{{2u}\left( {1 - u}\right) }{{\left( 1 - u\right) }^{2}{w}_{0} + {u}^{2}{w}_{2}}{\overrightarrow{\mathbf{P}}}_{1}
+\]
+
+\[
+= \frac{{\left( 1 - u\right) }^{2}{\mathbf{P}}_{0} + {u}^{2}{\mathbf{P}}_{2}}{1 - {2u} + 2{u}^{2}} + \frac{{2u}\left( {1 - u}\right) }{1 - {2u} + 2{u}^{2}}{\overrightarrow{\mathbf{P}}}_{1}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_305_336_257_872_639_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.14. 带有无穷控制点 \({\overrightarrow{P}}_{2}\) 的 NURBS 曲线；注意更强的凸包性质。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_305_267_1437_1005_628_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.15. 通过使用无穷控制点定义的半圆。
+
+因此
+
+\[
+x\left( u\right)  = \frac{r\left( {1 - {2u}}\right) }{1 - {2u} + 2{u}^{2}}\;y\left( u\right)  = \frac{{2ru}\left( {1 - u}\right) }{1 - {2u} + 2{u}^{2}}
+\]
+
+读者可以验证对于所有 \(u\) ， \({\left( x\left( u\right) \right) }^{2} + {\left( y\left( u\right) \right) }^{2} = {r}^{2}\) 是正确的。注意到
+
+\[
+\mathbf{C}\left( \frac{1}{2}\right)  = \left( {0,r}\right)
+\]
+
+是弧上距离弦 \({\mathbf{P}}_{0}{\mathbf{P}}_{2}\) 最远的点，而此点的导数 \({\mathbf{C}}^{\prime }\left( {1/2}\right)\) 与 \({\mathbf{P}}_{0}{\mathbf{P}}_{2}\) 平行，即第 7.3 节的肩点概念在 \({\mathbf{P}}_{1}^{w}\) 是无穷控制点时也成立。
+
+请注意，无限控制点和零权重之间是有区别的。图 7.12 显示 \({w}_{1} = 0\) 从 \({\mathbf{P}}_{0}\) 到 \({\mathbf{P}}_{2}\) 产生一条直线。将 \({w}_{1} = 0\) 代入方程 (7.21) 并假设正常参数化得到
+
+\[
+\mathbf{C}\left( u\right)  = {R}_{0,2}\left( u\right) {\mathbf{P}}_{0} + {R}_{2,2}\left( u\right) {\mathbf{P}}_{2} = \frac{{\left( 1 - u\right) }^{2}{\mathbf{P}}_{0} + {u}^{2}{\mathbf{P}}_{2}}{{\left( 1 - u\right) }^{2} + {u}^{2}}
+\]
+
+即 \({R}_{1,2}\left( u\right)  \equiv  0\) ，并且 \(\mathbf{C}\left( u\right)\) 是从 \({\mathbf{P}}_{0}\) 到 \({\mathbf{P}}_{2}\) 的一条直线；另见图 4.2、4.3c、4.4、4.5d 和 4.6。如果我们将 NURBS 曲线视为齐次控制点
+
+\[
+{\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w} \tag{7.35}
+\]
+
+那么我们用 \({\mathbf{P}}_{j}^{w} = \left( {{x}_{j},{y}_{j},{z}_{j},0}\right)\) 表示一个无限控制点，并通过设置 \({\mathbf{P}}_{j}^{w} = \left( {0,0,0,0}\right)\) 将 \({w}_{j}\) 设置为零。尽管在处理这些点时必须小心，但它们通常不会在从方程 (7.35) 推导出的 B 样条算法中造成问题。例如，前几章的点评估和节点插入算法(算法 A4.1 和 A5.1)在处理零权重或无限控制点时没有问题(当然，假设并非所有权重都是零)。
+
+
+
+\section{圆的构造}
+
+在这一部分，我们开发了构造任意扫掠角的圆弧的算法，包括完整的圆。构造一般的 NURBS 圆弧比最初预期的要复杂，并且有许多方法可以实现。此部分的大部分材料取自 [Pieg89b]，这是对 NURBS 圆的详细研究。
+
+本节仅讨论二次表示。当需要的弧大于或等于 \({180}^{ \circ  }\) 时，高阶表示是有用的，且不需要内部节点，也不使用负权重或无限控制点。这种表示可以通过提高阶数获得(见第 7.8 节)。
+
+从第 7.3 节我们知道如何构造小于 \({180}^{ \circ  }\) 的弧，显然我们可以通过简单地使用多个节点拼接较小的弧来构造任意扫掠角的弧。在决定如何做到这一点时，有四个权衡需要考虑:连续性、参数化、凸包和所需控制点的数量。最后三个是相关的，因为通过增加控制点的数量可以改善参数化和凸包的特性。我们通过一些例子来阐明这些权衡。为简便起见，所有示例均位于 \({xy}\) 平面，中心在原点，半径为 1。
+
+\section*{示例}
+
+Ex7.2 使用九点方形控制多边形绘制完整圆:示例 Ex6.7 和图 6.12(以及第 7.3 节)显示第一象限的 \({90}^{ \circ  }\) 弧是通过使用 \(\;\{ {\mathbf{P}}_{i}\} \; = \;\{ \left( {1,0}\right) ,\left( {1,1}\right) ,\left( {0,1}\right) \} \;\) 和 \(\;\{ {w}_{i}\} \; = \;\{ 1,\sqrt{2}{/}_{2},1\} .\) 获得的。通过使用双节点将这四个弧拼接在一起，我们得到了图 7.16a 和 7.16b 中的完整圆。节点、权重和控制
+
+点是
+
+\[
+U = \left\{  {0,0,0,\frac{1}{4},\frac{1}{4},\frac{1}{2},\frac{1}{2},\frac{3}{4},\frac{3}{4},1,1,1}\right\}
+\]
+
+\[
+\left\{  {w}_{i}\right\}   = \left\{  {1,\frac{\sqrt{2}}{2},1,\frac{\sqrt{2}}{2},1,\frac{\sqrt{2}}{2},1,\frac{\sqrt{2}}{2},1}\right\}
+\]
+
+\[
+\left\{  {\mathbf{P}}_{i}\right\}   =
+\]
+
+\[
+\{ \left( {1,0}\right) ,\left( {1,1}\right) ,\left( {0,1}\right) ,\left( {-1,1}\right) ,\left( {-1,0}\right) ,\left( {-1, - 1}\right) ,\left( {0, - 1}\right) ,\left( {1, - 1}\right) ,\left( {1,0}\right) \}
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_307_368_1229_796_826_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.16. 基于九点方形的 NURBS 圆。(a) 控制多边形和参数化；(b) 有理基函数。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_308_263_269_996_550_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.16.(续。)
+
+为了指示参数化，圆上的点被标记；它们是在均匀间隔的参数值下计算得出的。外接正方形形成了相当紧凑的凸包。现在考虑在 \(u = 1/4\left( {u = 1/2}\right.\) 和 \(u = 3/4\) 处的连续性是类似的。我们可以写出任一
+
+\[
+{\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,2}\left( u\right) {\mathbf{P}}_{i}^{w}\;\text{ or }\;\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{R}_{i,2}\left( u\right) {\mathbf{P}}_{i}
+\]
+
+显然，基函数 \({N}_{2,2}\left( u\right)\) 和 \({R}_{2,2}\left( u\right)\) 仅在 \(u = 1/4\) 处是 \({C}^{0}\) 连续的(见图 7.16b)。 \({\mathbf{C}}^{w}\left( u\right)\) 也仅是 \({C}^{0}\) 连续的，即四个抛物弧在齐次空间中围绕圆锥连接在一起，每对相遇的地方都有一个尖点。从分析上看，可以通过从左侧和右侧计算 \({\mathbf{C}}^{w}\left( u\right)\) 在 \(u = 1/4\) 处的第一导数来观察这一点。将方程 (3.7) 应用到仅 \(w\) 坐标上得到
+
+\[
+{w}^{\prime }{\left( \frac{1}{4}\right) }_{\text{ left }} = \frac{2}{\frac{1}{4} - 0}\left( {{w}_{2} - {w}_{1}}\right)  = 8\left( {1 - \frac{\sqrt{2}}{2}}\right)
+\]
+
+和
+
+\[
+{w}^{\prime }{\left( \frac{1}{4}\right) }_{\text{ right }} = \frac{2}{\frac{1}{2} - \frac{1}{4}}\left( {{w}_{3} - {w}_{2}}\right)  = 8\left( {\frac{\sqrt{2}}{2} - 1}\right)
+\]
+
+显然，这两个导数不相等。令人惊讶的是， \(\mathbf{C}\left( u\right)\) 是 \({C}^{1}\) 连续的。使用方程 (4.9) 和 (4.10) 我们得到
+
+\[
+{\mathbf{C}}^{\prime }{\left( \frac{1}{4}\right) }_{\text{ left }} = \frac{2}{\frac{1}{4} - 0}\frac{\sqrt{2}/2}{1}\left( {{\mathbf{P}}_{2} - {\mathbf{P}}_{1}}\right)  = \left( {-4\sqrt{2},0}\right)
+\]
+
+\[
+{\mathbf{C}}^{\prime }{\left( \frac{1}{4}\right) }_{\text{ right }} = \frac{2}{\frac{1}{2} - \frac{1}{4}}\frac{\sqrt{2}/2}{1}\left( {{\mathbf{P}}_{3} - {\mathbf{P}}_{2}}\right)  = \left( {-4\sqrt{2},0}\right)
+\]
+
+关于前三个标准，这对完整的圆的表示相当不错。
+
+Ex7.3 使用七点三角控制多边形的完整圆:从基础几何可以很容易看出，一个 \({120}^{ \circ  }\) 的弧需要一个控制三角形，其底角 \(\angle {\mathbf{P}}_{1}{\mathbf{P}}_{0}{\mathbf{P}}_{2}\) 等于 \({60}^{ \circ  }\) 。根据方程 (7.33)， \({w}_{1} = \cos {60}^{ \circ  } = 1/2\) 。通过拼接三个这样的弧，我们得到图 \({7.17}\mathrm{a}\) 和 \({7.17}\mathrm{\;b}\) 的完整圆，其中
+
+\[
+U = \left\{  {0,0,0,\frac{1}{3},\frac{1}{3},\frac{2}{3},\frac{2}{3},1,1,1}\right\}
+\]
+
+\[
+\left\{  {w}_{i}\right\}   = \left\{  {1,\frac{1}{2},1,\frac{1}{2},1,\frac{1}{2},1}\right\}
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_309_355_1199_832_852_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.17. 基于七点三角形的 NURBS 圆。(a) 控制多边形和参数化；(b) 有理基函数。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_310_266_251_1000_531_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.17.(续)
+
+\(\left\{  {\mathbf{P}}_{i}\right\}   =\)
+
+\[
+\left\{  {\left( {a,\frac{1}{2}}\right) ,\left( {0,2}\right) ,\left( { - a,\frac{1}{2}}\right) ,\left( { - {2a}, - 1}\right) ,\left( {0, - 1}\right) ,\left( {{2a}, - 1}\right) ,\left( {a,\frac{1}{2}}\right) }\right\}
+\]
+
+在 \(a = \cos {30}^{ \circ  }\) 处。圆上的点被标记以显示参数化，这并不如图 7.16a 中的效果好。凸包也更松散。读者可以验证 \(\mathbf{C}\left( u\right)\) 在 \({C}^{1}\) 和 \(u = 1/3\) 处是 \(u = 2/3\) 连续的，尽管基函数在那里是 \({C}^{0}\) 连续的(见图 7.17b)。
+
+Ex7.4 一个 \({240}^{ \circ  }\) 的弧:设置 \({w}_{1}\) 为负值会产生互补弧。因此，我们使用 \({240}^{ \circ  }\mathrm{{arc}}\) 得到图 \({7.18}\mathrm{a}\) 和 \({7.18}\mathrm{\;b}\) 。
+
+\[
+U = \{ 0,0,0,1,1,1\}
+\]
+
+\[
+\left\{  {w}_{i}\right\}   = \left\{  {1, - \frac{1}{2},1}\right\}
+\]
+
+\[
+\left\{  {\mathbf{P}}_{i}\right\}   = \left\{  {\left( {a,\frac{1}{2}}\right) ,\left( {0,2}\right) ,\left( {-a,\frac{1}{2}}\right) }\right\}
+\]
+
+负权重通常是不受欢迎的，因为我们失去了凸包属性，并且在计算曲线上的点时可能会出现除以零的情况。然而，重要的是要注意，对于圆和椭圆， \(w\left( u\right)  > 0\) 对所有 \(u \in  \left\lbrack  {0,1}\right\rbrack\) 都成立。这是由于 \({w}_{0} = {w}_{2} = 1\) 、 \(\left| {w}_{1}\right|  < 1\) 和 \(w\left( u\right)  = {\left( 1 - u\right) }^{2} + {2u}\left( {1 - u}\right) {w}_{1} + {u}^{2}\) (从几何上看，抛物线弧 \({\mathbf{C}}^{w}\left( u\right)\) 位于 \(W = 0\) 平面上的锥体之上)。因此，在使用算法 A4.1 评估该弧上的点时不会出现问题。让我们在 \(u = 1/2\) 处插入一个节点。使用公式 (5.11)
+
+\[
+{\alpha }_{1} = \frac{\frac{1}{2} - 0}{1 - 0} = \frac{1}{2}\;{\alpha }_{2} = \frac{\frac{1}{2} - 0}{1 - 0} = \frac{1}{2}
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_311_358_267_830_866_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.18。使用负权重的 \({240}^{ \circ  }\) 的弧。(a) 控制多边形和参数化；(b) 有理基函数。
+
+新的控制点 \({\mathbf{Q}}_{i}^{w}\) 是
+
+\[
+{\mathbf{Q}}_{0}^{w} = {\mathbf{P}}_{0}^{w}\;{\mathbf{Q}}_{3}^{w} = {\mathbf{P}}_{2}^{w}
+\]
+
+\[
+{\mathbf{Q}}_{1}^{w} = \frac{1}{2}{\mathbf{P}}_{1}^{w} + \frac{1}{2}{\mathbf{P}}_{0}^{w} = \left( {\frac{a}{2}, - \frac{1}{4},\frac{1}{4}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{2}^{w} = \frac{1}{2}{\mathbf{P}}_{2}^{w} + \frac{1}{2}{\mathbf{P}}_{1}^{w} = \left( {-\frac{a}{2}, - \frac{1}{4},\frac{1}{4}}\right)
+\]
+
+因此(见图 7.19a 和 7.19b)
+
+\[
+U = \left\{  {0,0,0,\frac{1}{2},1,1,1}\right\}
+\]
+
+\[
+\left\{  {w}_{i}\right\}   = \left\{  {1,\frac{1}{4},\frac{1}{4},1}\right\}
+\]
+
+\[
+\left\{  {\mathbf{Q}}_{i}\right\}   = \left\{  {\left( {a,\frac{1}{2}}\right) ,\left( {{2a}, - 1}\right) ,\left( {-{2a}, - 1}\right) ,\left( {-a,\frac{1}{2}}\right) }\right\}
+\]
+
+是没有负权重的 \({240}^{ \circ  }\mathrm{{arc}}\) 的表示。参数化效果并不是特别好。 \({\mathbf{C}}^{w}\left( u\right)\) 和 \(\mathbf{C}\left( u\right)\) 在 \({C}^{2}\) 上是 \(u \in  \left\lbrack  {0,1}\right\rbrack\) 连续的；插入节点并没有改变这一点。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_312_325_258_883_714_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.18。(续)
+
+Ex7.5 使用四个控制点的半圆:考虑示例 Ex7.1 和图 7.15 中的半圆，具有 \(r = 1\) 。插入节点 \(u = 1/2\) 一次，我们得到(如示例 Ex7.4 所示)
+
+\[
+{\alpha }_{1} = {\alpha }_{2} = \frac{1}{2}
+\]
+
+\[
+{\mathbf{Q}}_{0}^{w} = {\mathbf{P}}_{0}^{w}\;{\mathbf{Q}}_{3}^{w} = {\mathbf{P}}_{2}^{w}
+\]
+
+\[
+{\mathbf{Q}}_{1}^{w} = \frac{1}{2}{\mathbf{P}}_{1}^{w} + \frac{1}{2}{\mathbf{P}}_{0}^{w} = \left( {-\frac{1}{2},\frac{1}{2},\frac{1}{2}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{2}^{w} = \frac{1}{2}{\mathbf{P}}_{2}^{w} + \frac{1}{2}{\mathbf{P}}_{1}^{w} = \left( {\frac{1}{2},\frac{1}{2},\frac{1}{2}}\right)
+\]
+
+因此(见图 7.20a 和 7.20b)
+
+\[
+U = \left\{  {0,0,0,\frac{1}{2},1,1,1}\right\}
+\]
+
+\[
+\left\{  {w}_{i}\right\}   = \left\{  {1,\frac{1}{2},\frac{1}{2},1}\right\}
+\]
+
+\[
+\left\{  {\mathbf{Q}}_{i}\right\}   = \{ \left( {1,0}\right) ,\left( {1,1}\right) ,\left( {-1,1}\right) ,\left( {-1,0}\right) \}
+\]
+
+Ex7.6 使用七点方形控制多边形的完整圆:两个半圆，如示例 Ex7.5 中所示，可以拼接在一起形成一个七点方形圆(见图 7.21a 和 7.21b)
+
+\[
+U = \left\{  {0,0,0,\frac{1}{4},\frac{1}{2},\frac{1}{2},\frac{3}{4},1,1,1}\right\}
+\]
+
+\[
+\left\{  {w}_{i}\right\}   = \left\{  {1,\frac{1}{2},\frac{1}{2},1,\frac{1}{2},\frac{1}{2},1}\right\}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_313_299_249_942_1386_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.19. 在插入 \(u = 1/2\) 一次后的图 7.18 的弧线。(a)控制多边形和参数化；(b)有理基函数。
+
+\(\mathbf{C}\left( u\right)\) 在 \(u = 1/2\) 处是 \({C}^{1}\) 连续的，并且在其他地方是 \({C}^{2}\) 连续的。该参数化不如示例 Ex7.2 和图 7.16a 的效果好。
+
+算法 A7.1 在三维空间中构建任意扫掠角 \(\theta \left( {{0}^{ \circ  } < \theta  \leq  {360}^{ \circ  }}\right)\) 的 NURBS 圆弧。它拼接了扫掠角 \({d\theta },\min \left( {\theta ,{45}^{ \circ  }}\right)  < {d\theta } \leq  {90}^{ \circ  }\) 的等弧，使用双节点，并通过方程 (7.33) 计算权重。得到的角度 \(\theta\) 的弧是 \({C}^{1}\) 连续的，具有紧凑的凸包，并且具有良好的参数化。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_314_306_250_916_1243_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.20. 在插入 \(u = 1/2\) 一次后的图 7.15 的半圆。(a)控制多边形和参数化；(b)有理基函数。
+
+设计师可以使用许多不同的接口来指定圆弧，但无论接口是什么，以下数据都可以轻松生成:
+
+\(\mathbf{O}\) : 圆心(局部坐标系的原点)；
+
+\(\mathbf{X}\) : 位于圆的定义平面上的单位长度向量；
+
+\(\mathbf{Y}\) : 单位长度向量，在圆的定义平面内，并且与 \(\mathbf{X}\) 正交；
+
+\(r\) : 半径。
+
+\({\theta }_{s},{\theta }_{e} :\) 起始和结束角度，相对于 \(\mathbf{X}\) 测量。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_315_253_255_1013_1407_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.21. 一个七点方形基础的 NURBS 圆。 (a) 控制多边形和参数化；(b) 有理基函数。
+
+弧线表示为
+
+\[
+\mathbf{C}\left( u\right)  = \mathbf{O} + r\cos u\mathbf{X} + r\sin u\mathbf{Y}\;{\theta }_{s} \leq  u \leq  {\theta }_{e} \tag{7.36}
+\]
+
+结果弧线在由 \(\mathbf{O},\mathbf{X}\) 和 \(\mathbf{Y}\) 定义的局部坐标系中逆时针定向。我们假设一个实用程序 Intersect3DLines \((\mathrm{P}0,\mathrm{T}0\) , \(\mathrm{P}2,\mathrm{T}2\) , alf0, alf \(2,\mathrm{P}1\) ，它计算由点/切线对 \(\left\lbrack  {{\mathbf{P}}_{0},{\mathbf{T}}_{0}}\right\rbrack\) 和 \(\left\lbrack  {{\mathbf{P}}_{2},{\mathbf{T}}_{2}}\right\rbrack\) 给出的三维空间中两条线的交点 \(\left( {\mathbf{P}}_{1}\right)\) 。如果两条线平行，则返回整数值 1，否则返回 0。 \({\alpha }_{0}\) 和 \({\alpha }_{2}\) 分别是 \({\mathbf{P}}_{1}\) 在 \(\left\lbrack  {{\mathbf{P}}_{0},{\mathbf{T}}_{0}}\right\rbrack\) 和 \(\left\lbrack  {{\mathbf{P}}_{2},{\mathbf{T}}_{2}}\right\rbrack\) 上的参数位置。 \({\alpha }_{0},{\alpha }_{2}\) 和整数返回值在算法 A7.1 中未使用，但在第 7.6 节中使用。Pw=w*P 表示一个欧几里得点与权重 \(\left( {\mathrm{{Pw}} = \mathrm{P}\text{ if }w = 1}\right)\) 的乘法。该算法计算 NURBS 圆弧的节点和加权控制点。
+
+\HRule
+
+ALGORITHM A7.1
+
+\hspace*{2em} MakeNurbsCircle(0, X, Y, r, ths, the, n, U, Pw)
+
+\hspace*{4em} \{ /* Create arbitrary NURBS circular arc */
+
+\hspace*{7em} /* Input: 0, X, Y, r, ths, the */
+
+\hspace*{6em} /* Output: n, U, Pw */
+
+\hspace*{4em} if (the < ths) the = 360.0 + the;
+
+\hspace*{4em} theta = the-ths;
+
+\hspace*{4em} if (theta \(<  = {90.0}\) ) narcs \(= 1;\;/ *\) get number of arcs \(*\) /
+
+\hspace*{6em} else
+
+\hspace*{8em} if (theta <= 180.0) narcs = 2 ;
+
+\hspace*{9em} else
+
+\hspace*{11em} if (theta <= 270.0) narcs = 3 ;
+
+\hspace*{13em} else
+
+\hspace*{15em} narcs = 4 ;
+
+\hspace*{4em} dtheta = theta/narcs;
+
+\hspace*{4em} \(\mathrm{n} = 2 *\) narcs; \(\;/ * \mathrm{n} + 1\) control points \(*\) /
+
+\hspace*{4em} w1 = cos(dtheta/2.0); /* dtheta/2 is base angle */
+
+\hspace*{4em} \(\mathrm{{PO}} = 0 + \mathrm{r} * \cos \left( \mathrm{{ths}}\right)  * \mathrm{X} + \mathrm{r} * \sin \left( \mathrm{{ths}}\right)  * \mathrm{Y};\)
+
+\hspace*{4em} TO = -sin(ths)*X + cos(ths)*Y; /* Initialize start values */
+
+\hspace*{4em} \(\operatorname{Pw}\left\lbrack  0\right\rbrack   = \mathrm{P}0;\)
+
+\hspace*{4em} index = 0; angle = ths;
+
+\hspace*{4em} for (i=1; i<=narcs; i++) /* create narcs segments */
+
+\hspace*{6em} \{
+
+\hspace*{6em} angle = angle + dtheta;
+
+\hspace*{6em} P2 = 0 + r*cos(angle)*X + r*sin(angle)*Y;
+
+\hspace*{6em} Pw[index+2] = P2;
+
+\hspace*{6em} T2 = -sin(angle)*X + cos(angle)*Y;
+
+\hspace*{6em} Intersect3DLines(P0, T0, P2, T2, dummy, dummy, P1);
+
+\hspace*{6em} Pw[index+1] = w1*P1;
+
+\hspace*{6em} index = index + 2 ;
+
+\hspace*{6em} if (i < narcs) \{ P0 = P2 ; T0 = T2 ; \}
+
+\hspace*{5em} \}
+
+\hspace*{4em} \(j = 2 *\) narcs \(+ 1;\;/ *\) load the knot vector \(*\) /
+
+\hspace*{4em} for (i=0; i<3; i++)
+
+\hspace*{6em} \{ U[i] = 0.0; U[i+j] = 1.0; \}
+
+\hspace*{4em} switch (narcs)
+
+\hspace*{6em} \{
+
+\hspace*{6em} case 1: break;
+
+\hspace*{6em} case 2: \(\mathrm{U}\left\lbrack  3\right\rbrack   = \mathrm{U}\left\lbrack  4\right\rbrack   = {0.5}\) ;
+
+\hspace*{14em} break;
+
+\hspace*{1em} case 3: \(\mathrm{U}\left\lbrack  3\right\rbrack   = \mathrm{U}\left\lbrack  4\right\rbrack   = {1.0}/{3.0}\) ;
+
+\hspace*{6em} U[5] = U[6] = 2.0/3.0;
+
+\hspace*{6em} break;
+
+\hspace*{1em} case 4: \(\mathrm{U}\left\lbrack  3\right\rbrack   = \mathrm{U}\left\lbrack  4\right\rbrack   = {0.25}\) ;
+
+\hspace*{6em} U[5] = U[6] = 0.5 ;
+
+\hspace*{6em} U[7] = U[8] = 0.75 ;
+
+\hspace*{6em} break;
+
+\hspace*{1em} \}
+
+\}
+
+\HRule
+
+图 \({7.22}\mathrm{a} - {7.22}\mathrm{\;d}\) 显示了使用一个、两个、三个和四个段的圆弧表示。
+
+我们以一些关于 NURBS 圆的杂项备注结束这一部分。Piegl 和 Tiller [Pieg89b] 提出了另一种算法，用于构造任意扫掠角的圆弧。该算法基于使用无限控制点和负权重，然后通过节点插入来去除它们(如示例 Ex7.4-Ex7.6 所示)。与算法 A7.1 相比，得到的圆弧可能需要更少的控制点和双重节点，但参数化通常不如前者好。还证明了，使用正权重的二次 NURBS 无法在没有双重内部节点的情况下表示完整的圆 [Pieg89b]。
+
+\begin{center}
+\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_317_398_1214_745_854_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.22. 不同扫掠角的圆弧。 (a) \({\theta }_{s} = {10}^{ \circ  },{\theta }_{e} = {100}^{ \circ  }\) ; (b) \({\theta }_{s} = {30}^{ \circ  },{\theta }_{e} = {170}^{ \circ  };\) (c) \({\theta }_{s} = {20}^{ \circ  },{\theta }_{e} = {250}^{ \circ  };\) (d) \({\theta }_{s} = {40}^{ \circ  },{\theta }_{e} = {330}^{ \circ  }\) .
+
+\begin{center}
+\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_318_392_255_752_822_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.22. (续。)
+
+
+\section{圆锥曲线的构造}
+在这一部分中，我们开发了构造圆锥曲线的算法，仅讨论二次表示。抛物线和双曲线弧总是可以用一条有理 Bézier 曲线(无内部节点)和正权重来表示。与圆的情况一样，我们可能需要用内部节点将多个段拼接在一起，以仅使用正权重获得任意椭圆弧。在此过程中，问题再次涉及连续性、参数化、凸包和控制点的数量。
+
+我们首先考虑三维空间中的任意开放圆锥弧。有许多方法可以指定圆锥弧。在 CADCAM 应用中，最常见的两种方法是:
+
+\begin{itemize}
+\item 定义几何参数，如半径、轴、焦距等，以及起点和终点的指定；这有效地导致通过方程 (7.15)-(7.17) 的表示；
+\end{itemize}
+
+\begin{itemize}
+\item 起始点和终止点的规格， \({\mathbf{P}}_{0}\) 和 \({\mathbf{P}}_{2}\) ，以及这两个点的切线方向， \({\mathbf{T}}_{0}\) 和 \({\mathbf{T}}_{2}\) ，加上弧上的一个额外点 \(\mathbf{P}\) (见图 7.23)。
+\end{itemize}
+
+如果数据以项目 1 中给出的形式可用，那么推导 \({\mathbf{P}}_{0},{\mathbf{T}}_{0}\) 、 \({\mathbf{P}}_{2},{\mathbf{T}}_{2}\) 和 \(\mathbf{P}\) 是很容易的；因此我们在本节中假设数据是按照项目 2 中指定的形式给出的。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_319_367_176_800_1884_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.22.(续。)
+
+\({\mathbf{P}}_{1}\) (图 7.23)可以通过交叉线 \(\left\lbrack  {{\mathbf{P}}_{0},{\mathbf{T}}_{0}}\right\rbrack\) 和 \(\left\lbrack  {{\mathbf{P}}_{2},{\mathbf{T}}_{2}}\right\rbrack\) 容易获得。设置 \({w}_{0} = {w}_{2} = 1\) ，唯一缺失的项是 \({w}_{1}\) 。允许 \({w}_{1}\) 为负，或 \({\mathbf{P}}_{1}\) 为无穷大(暂时)，我们可以用一个有理 Bézier 曲线获得任何圆锥弧。如果需要，我们可以在合适的位置将这个 Bézier 弧拆分，以获得正权重和多个具有良好参数化和凸包特性的段。
+
+附加点 \(\mathbf{P}\) 确定了圆锥曲线，因此 \({w}_{1}\) 。将 \(\mathbf{P} = \mathbf{C}\left( u\right)\) 代入方程 (7.21) 的左侧会产生两个未知数 \(u\) 和 \({w}_{1}\) 的三个方程(可以求解)。但是，几何论证提供了一种更高效的算法(见 Piegl [Pieg87b])。首先假设 \({\mathbf{P}}_{1}\) 是有限的。我们所寻求的圆锥曲线可以视为由 \({\mathbf{P}}_{0},{\mathbf{P}}_{1}\) 和 \({\mathbf{P}}_{2}\) 确定的抛物线的透视图，其中 \({\mathbf{P}}_{1}\) 是透视的中心。位于该三角形内的任何一对圆锥段都可以相互映射，包括线 \(\left\lbrack  {{\mathbf{P}}_{0},{\mathbf{P}}_{2}}\right\rbrack\) (退化圆锥曲线)映射到我们所寻求的圆锥曲线。因此， \(\mathbf{P}\) 和 \(\mathbf{Q}\) (图 7.23)在此变换下是对应点。现在，通过设定 \({w}_{1} = 0\) (不使用无限控制点)来获得线 \(\mathbf{L}\left( u\right)  = \left\lbrack  {{\mathbf{P}}_{0},{\mathbf{P}}_{2}}\right\rbrack\) ，得出
+
+\[
+\mathbf{L}\left( u\right)  = \frac{{\left( 1 - u\right) }^{2}{\mathbf{P}}_{0} + {u}^{2}{\mathbf{P}}_{2}}{{\left( 1 - u\right) }^{2} + {u}^{2}} \tag{7.37}
+\]
+
+\(\mathbf{L}\left( u\right)\) 是 \({\mathbf{P}}_{0}\) 和 \({\mathbf{P}}_{2}\) 的凸组合，因此距离 \(\left| {{\mathbf{P}}_{0}\mathbf{Q}}\right|\) 到 \(\left| {\mathbf{{QP}}}_{2}\right|\) 的比率为 \({u}^{2} : {\left( 1 - u\right) }^{2}\) ，由此可得
+
+\[
+u = \frac{a}{1 + a}\;a = \sqrt{\frac{\left| {\mathbf{P}}_{0}\mathbf{Q}\right| }{\left| \mathbf{Q}{\mathbf{P}}_{2}\right| }} \tag{7.38}
+\]
+
+(将图 7.23 和此论证与图 4.6 及方程 [4.4] 进行比较)。将 \(u\) 和 \(\mathbf{P}\) 代入方程 (7.21)，我们可以轻松得到 \({w}_{1}\) ，即
+
+\[
+{w}_{1} = \frac{{\left( 1 - u\right) }^{2}\left( {\mathbf{P} - {\mathbf{P}}_{0}}\right)  \cdot  \left( {{\mathbf{P}}_{1} - \mathbf{P}}\right)  + {u}^{2}\left( {\mathbf{P} - {\mathbf{P}}_{2}}\right)  \cdot  \left( {{\mathbf{P}}_{1} - \mathbf{P}}\right) }{{2u}\left( {1 - u}\right) {\left| {\mathbf{P}}_{1} - \mathbf{P}\right| }^{2}} \tag{7.39}
+\]
+
+Piegl [Pieg87b] 使用射影几何的技术推导出 \({w}_{1}\) 。
+
+现在假设 \({\mathbf{P}}_{1}\left( {\overrightarrow{\mathbf{P}}}_{1}\right)\) 是无限的( \({\mathbf{T}}_{0}\) 和 \({\mathbf{T}}_{2}\) 是平行的)。在这种情况下， \({w}_{1} = 0\) 和 \({\overrightarrow{\mathbf{P}}}_{1}\) 与 \({\mathbf{T}}_{0}\) 是平行的。只有 \({\overrightarrow{\mathbf{P}}}_{1}\) 的大小是未知的。考虑图 7.24。透视中心现在在无穷远处，且 \(u\) 的获得方式与之前完全相同: \(\left\lbrack  {\mathbf{P},{\mathbf{T}}_{0}}\right\rbrack\) (即 \(\left\lbrack  {\mathbf{P},{\overrightarrow{\mathbf{P}}}_{1}}\right\rbrack\) )与 \(\left\lbrack  {{\mathbf{P}}_{0},{\mathbf{P}}_{2}}\right\rbrack\) 相交，得到 \(\mathbf{Q}\) ，然后从方程 (7.38) 计算 \(u\) 。对于具有 \({w}_{0} = {w}_{2} = 1\) 的有理二次 Bézier 曲线，方程 (7.34) 简化为
+
+\[
+\mathbf{C}\left( u\right)  = \frac{{\left( 1 - u\right) }^{2}{\mathbf{P}}_{0} + {u}^{2}{\mathbf{P}}_{2}}{{\left( 1 - u\right) }^{2} + {u}^{2}} + \frac{{2u}\left( {1 - u}\right) }{{\left( 1 - u\right) }^{2} + {u}^{2}}{\overrightarrow{\mathbf{P}}}_{1} = \overline{\mathbf{C}}\left( u\right)  + f\left( u\right) {\overrightarrow{\mathbf{P}}}_{1} \tag{7.40}
+\]
+
+令 \({u}_{0}\) 为参数，得到 \(\mathbf{Q}\) 。然后
+
+\[
+\mathbf{P} = \mathbf{Q} + f\left( {u}_{0}\right) {\overrightarrow{\mathbf{P}}}_{1}
+\]
+
+和
+
+\[
+{\overrightarrow{\mathbf{P}}}_{1} = \frac{1}{f\left( {u}_{0}\right) }\left( {\mathbf{P} - \mathbf{Q}}\right) \;f\left( {u}_{0}\right)  = \frac{2{u}_{0}\left( {1 - {u}_{0}}\right) }{{\left( 1 - {u}_{0}\right) }^{2} + {u}_{0}^{2}} \tag{7.41}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_321_312_266_905_678_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.23。由端点、端切线和一个额外点定义的一般圆锥段，该点位于曲线上。
+
+基于方程 (7.38)、(7.39) 和 (7.41)，我们现在给出构造一个有理 Bézier 圆锥弧的算法。由于 \({w}_{1}\) 可以是负值或 \({\mathbf{P}}_{1}\) 无穷大，因此该算法处理任何圆锥弧，除了完整的椭圆。我们利用
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_321_378_1386_778_655_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.24。由端点、端切线和一个额外点定义的 \({180}^{ \circ  }\) 椭圆弧。
+
+在 Intersect3DLines 中计算的 \({\alpha }_{0},{\alpha }_{2}\) 值。我们进一步假设一个函数 Dot (V1, V2)，它返回向量 \({\mathbf{V}}_{1}\) 和 \({\mathbf{V}}_{2}\) 的点积。
+
+\HRule
+
+ALGORITHM A7.2
+
+\hspace*{2em} MakeOneArc(PO, TO, P2, T2, P, P1, w1)
+
+\hspace*{4em} \{ /* Create one Bézier conic arc */
+
+\hspace*{8em} /* Input: P0, T0, P2, T2, P */
+
+\hspace*{8em} /* Output: P1, w1 */
+
+\hspace*{4em} V02 = P2-P0;
+
+\hspace*{4em} i = Intersect3DLines(P0, T0, P2, T2, dummy, dummy, P1);
+
+\hspace*{4em} if (i == 0)
+
+\hspace*{7em} \{ /* finite control point */
+
+\hspace*{7em} V1P = P-P1;
+
+\hspace*{7em} Intersect3DLines(P1, V1P, P0, V02, alf0, alf2, dummy);
+
+\hspace*{6em} a = sqrt(alf2/(1.0-alf2));
+
+\hspace*{6em} u = a/(1.0+a);
+
+\hspace*{6em} num = (1.0-u)*(1.0-u)*Dot(P-P0, P1-P) + u*u*Dot(P-P2, P1-P);
+
+\hspace*{6em} den \(= {2.0} * u * \left( {{1.0} - u}\right)  * \operatorname{Dot}\left( {{P1} - P,{P1} - P}\right)\) ;
+
+\hspace*{6em} w1 = num/den;
+
+\hspace*{6em} return;
+
+\hspace*{6em} \}
+
+\hspace*{7em} else
+
+\hspace*{6em} \{ /* infinite control point, 180 degree arc */
+
+\hspace*{6em} w1 = 0.0 ;
+
+\hspace*{6em} Intersect3DLines(P, TO, PO, VO2, alf0, alf2, dummy);
+
+\hspace*{6em} a = sqrt(alf2/(1.0-alf2));
+
+\hspace*{6em} u = a/(1.0+a);
+
+\hspace*{6em} b = 2.0*u*(1.0-u);
+
+\hspace*{6em} b = -alf0*(1.0-b)/b;
+
+\hspace*{6em} \(\mathrm{P}1 = \mathrm{b} * \mathrm{T}0\) ;
+
+\hspace*{6em} return;
+
+\hspace*{6em} \}
+
+\hspace*{4em} \}
+
+\HRule
+
+算法 A7.2 适用于抛物线和双曲线弧，以及椭圆弧，其中 \({w}_{1} > 0\) 且其扫掠角度不太大。将椭圆分割成段并不像圆的情况那样简单。我们不知道长轴和短轴及其半径，并且没有可用的形式为 Eq. (7.36) 的方程。一个方便的分割点是肩点 \(\mathbf{S}\) 。为了分割弧 \({\mathbf{P}}_{0}{\mathbf{P}}_{1}{\mathbf{P}}_{2}\) ，我们使用有理 de-Casteljau 算法，Eq. (1.19)。分割椭圆有两个步骤(见图 7.25a-7.25c):
+
+1. 在 \(u = 1/2\) 处分割。使用 deCasteljau 算法获得
+
+\[
+{\mathbf{Q}}_{1}^{w} = \frac{1}{2}{\mathbf{P}}_{0}^{w} + \frac{1}{2}{\mathbf{P}}_{1}^{w}\;{\mathbf{R}}_{1}^{w} = \frac{1}{2}{\mathbf{P}}_{1}^{w} + \frac{1}{2}{\mathbf{P}}_{2}^{w}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_323_315_249_907_1488_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.25. 分割锥曲线。 (a) 扫掠小于 \({180}^{ \circ  }\) 的弧；(b) 扫掠大于 \({180}^{ \circ  }\) 的弧；(c) 扫掠 \({180}^{ \circ  }\) 的弧。
+
+并且回忆起 \({w}_{0} = {w}_{2} = 1\) ，因此得出
+
+\[
+{\mathbf{Q}}_{1} = \frac{{\mathbf{P}}_{0} + {w}_{1}{\mathbf{P}}_{1}}{1 + {w}_{1}}\;{\mathbf{R}}_{1} = \frac{{w}_{1}{\mathbf{P}}_{1} + {\mathbf{P}}_{2}}{1 + {w}_{1}} \tag{7.42}
+\]
+
+和
+
+\[
+{w}_{q} = {w}_{r} = \frac{1}{2}\left( {1 + {w}_{1}}\right)  \tag{7.43}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_324_299_253_920_593_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.25. (续)。
+
+其中 \({w}_{q}\) 和 \({w}_{r}\) 分别是在 \({\mathbf{Q}}_{1}\) 和 \({\mathbf{R}}_{1}\) 的权重。第二次应用 deCasteljau 算法得到
+
+\[
+{\mathbf{R}}_{0} = {\mathbf{Q}}_{2} = \mathbf{S} = \frac{1}{2}\left( {{\mathbf{Q}}_{1} + {\mathbf{R}}_{1}}\right)  \tag{7.44}
+\]
+
+和
+
+\[
+{w}_{s} = \frac{1}{2}\left( {1 + {w}_{1}}\right)  \tag{7.45}
+\]
+
+2. 重新参数化，使得两个新段的末端权重均为 1。分割后，第一个段的权重为
+
+\[
+{w}_{0} = 1\;{w}_{q} = \frac{1}{2}\left( {1 + {w}_{1}}\right) \;{w}_{s} = \frac{1}{2}\left( {1 + {w}_{1}}\right)
+\]
+
+我们希望权重为
+
+\[
+{w}_{0} = 1\;{w}_{{q}_{1}}\;{w}_{{q}_{2}} = 1
+\]
+
+其中 \({w}_{{q}_{1}}\) 需要确定。使用锥形形状因子(Eq. [6.59])
+
+\[
+\frac{{w}_{0}{w}_{s}}{{w}_{q}^{2}} = \frac{{w}_{0}{w}_{{q}_{2}}}{{w}_{{q}_{1}}^{2}}
+\]
+
+这意味着
+
+\[
+{w}_{{q}_{1}} = \sqrt{\frac{1 + {w}_{1}}{2}} \tag{7.46}
+\]
+
+由于对称性，我们也有
+
+\[
+{w}_{{r}_{1}} = \sqrt{\frac{1 + {w}_{1}}{2}} \tag{7.47}
+\]
+
+图 \({7.25}\mathrm{a}\) 和 \({7.25}\mathrm{\;b}\) 说明了带有正负权重的椭圆分裂。前述过程同样适用于无限控制点(见图 \({7.25}\mathrm{c}\) )；然而，得到的公式
+
+\[
+{\mathbf{Q}}_{1} = {\mathbf{P}}_{0} + {\overrightarrow{\mathbf{P}}}_{1}\;{\mathbf{R}}_{1} = {\mathbf{P}}_{2} + {\overrightarrow{\mathbf{P}}}_{1} \tag{7.48}
+\]
+
+\[
+{\mathbf{R}}_{0} = {\mathbf{Q}}_{2} = \mathbf{S} = \frac{1}{2}\left( {{\mathbf{Q}}_{1} + {\mathbf{R}}_{1}}\right)  \tag{7.49}
+\]
+
+\[
+{w}_{{q}_{1}} = {w}_{{r}_{1}} = \frac{\sqrt{2}}{2} \tag{7.50}
+\]
+
+更加简单。方程 (7.50) 不应令人惊讶，因为图 7.25c 的半椭圆是通过对半圆应用仿射变换(具体来说，是非均匀缩放)获得的。这种变换不会改变权重。我们留给读者一个练习，编写一个例程 SplitArc(P0, P1, w1, P2, Q1, S, R1, wqr)，该例程实现方程 (7.42)-(7.50)。
+
+利用算法 A7.2 和 SplitArc(   )，我们现在提出一个算法，该算法在三维空间中构造任意开放的圆锥弧。生成的 NURBS 曲线由一个、两个或四个段组成，这些段以 \({C}^{1}\) 连续性连接。输出为节点 (U)、控制点数减去 1 (n) 和以齐次形式表示的控制点 (Pw)。我们假设有一个工具函数 Angle(P, Q, R)，它返回角度 \(\angle {PQR}\) 。
+
+算法 A7.3
+
+\HRule
+
+MakeOpenConic(PO, TO, P2, T2, P, n, U, Pw)
+
+\hspace*{3em} \{ /* Construct open conic arc in 3D */
+
+\hspace*{6em} /* Input: P0, T0, P2, T2, P */
+
+\hspace*{6em} /* Output: n, U, Pw */
+
+\hspace*{2em} MakeOneArc(PO, TO, P2, T2, P, P1, w1);
+
+\hspace*{2em} if \(\left( {{w1} <  =  - {1.0}}\right) \;/ *\) parabola or hyperbola \(*\) /
+
+\hspace*{5em} return(error); /* outside convex hull */
+
+\hspace*{2em} if \(\left( {{w1} >  = {1.0}}\right) \;/ *\) classify type \&number of segments \(*\) /
+
+\hspace*{5em} nsegs = 1; /* hyperbola or parabola, one segment */
+
+\hspace*{5em} else
+
+\hspace*{5em} \{ /* ellipse, determine number of segments */
+
+\hspace*{5em} if \(\left( {{w1} > {0.0}\& \& \operatorname{Angle}\left( {\mathrm{P}0,\mathrm{P}1,\mathrm{P}2}\right)  > {60.0}}\right) \;\) nsegs \(= 1\) ;
+
+\hspace*{5em} else
+
+\hspace*{5em} if \(\left( {{w1} < {0.0}\& \& \text{ angle }\left( {\mathrm{P}0,\mathrm{P}1,\mathrm{P}2}\right)  > {90.0}}\right)\) nsegs \(= 4\) ;
+
+\hspace*{7em} else nsegs = 2 ;
+
+\hspace*{4em} \}
+
+\hspace*{2em} n = 2*nsegs;
+
+\hspace*{2em} j = 2*nsegs+1;
+
+\hspace*{2em} for (i=0; i<3; i++) /* load end knots */
+
+\hspace*{5em} \(\{ \;\texttt{U[i]} = {0.0};\;\texttt{U[i+j]} = {1.0};\;\}\)
+
+\hspace*{2em} Pw[0] = P0; Pw[n] = P2; /* load end ctrl pts */
+
+\hspace*{2em} if (nsegs == 1)
+
+\hspace*{1em} \{
+
+\hspace*{1em} \(\operatorname{Pw}\left\lbrack  1\right\rbrack   =\) w1*P1 ;
+
+\hspace*{1em} return;
+
+\hspace*{1em} \}
+
+SplitArc(PO, P1, w1, P2, Q1, S, R1, wqr);
+
+if (nsegs == 2)
+
+\hspace*{1em} \{
+
+\hspace*{1em} \(\operatorname{Pw}\left\lbrack  2\right\rbrack   = \mathrm{S}\) ;
+
+\hspace*{1em} Pw[1] = wqr*Q1; Pw[3] = wqr*R1;
+
+\hspace*{1em} U[3] = U[4] = 0.5 ;
+
+\hspace*{1em} return;
+
+\hspace*{1em} \}
+
+\hspace*{1em} /* nsegs == 4 */
+
+\(\operatorname{Pw}\left\lbrack  4\right\rbrack   = \mathrm{S}\) ;
+
+w1 = wqr;
+
+SplitArc(PO, Q1, w1, S, HQ1, HS, HR1, wqr);
+
+\(\mathrm{{Pw}}\left\lbrack  2\right\rbrack   = \mathrm{{HS}}\) ;
+
+Pw[1] = wqr*HQ1; Pw[3] = wqr*HR1;
+
+SplitArc(S, R1, w1, P2, HQ1, HS, HR1, wqr);
+
+Pw[6] = HS;
+
+Pw[5] = wqr*HQ1; Pw[7] = wqr*HR1;
+
+for \(\left( {i = 0;i < 2;i +  + }\right) \;/ *\) load the remaining knots \(*\) /
+
+\hspace*{1em} \{
+
+\hspace*{1em} \(\mathrm{U}\left\lbrack  {\mathrm{i} + 3}\right\rbrack   = {0.25};\;\mathrm{U}\left\lbrack  {\mathrm{i} + 5}\right\rbrack   = {0.5};\;\mathrm{U}\left\lbrack  {\mathrm{i} + 7}\right\rbrack   = {0.75}\) ;
+
+\hspace*{1em} \}
+
+return;
+
+\}
+
+\HRule
+
+图 7.26a 和 7.26b 分别展示了使用两个和四个段的示例。
+
+算法 A7.3 生成具有良好参数化的椭圆。对于参数化不被认为重要的应用，可以使用一个更简单的算法，该算法生成 \({C}^{2}\) 连续曲线，并具有同样良好的凸包(见 [Pieg90]):
+
+1. 调用 MakeOneArc(算法 A7.2)；
+
+2. 在适当的位置插入节点，以切割角落并消除负权重或无限控制点(例如，在 \(u = 1/2\) 、 \(u = 1/3\) 和 \(u = 2/3)\) 处)。
+
+为了进行比较，图 7.26c 显示了一个椭圆弧，该弧是使用
+
+\begin{itemize}
+\item 算法 A7.3(由 \(\square\) 标记的点)；
+\end{itemize}
+
+\begin{itemize}
+\item MakeOneArc，随后插入 \(u = 1/2\) 一次(由 + 标记的点)。
+\end{itemize}
+
+仍然存在完整椭圆的问题。如果已知长轴和短轴及其半径，则适合使用矩形控制多边形。权重和
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_327_271_239_976_1456_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.26. NURBS 表示的锥形段。(a)弧的扫掠小于 \({180}^{ \circ  }\) ；(b)弧的扫掠大于 \({180}^{ \circ  }\) ；(c)通过曲线分割 \(\left( \square \right)\) 和节点插入 \(\left( +\right)\) 获得的表示之间的比较。
+
+节点与示例 Ex7.2(图 7.16a)中的圆的节点相同，或者可以使用与示例 Ex7.6(图 7.21a)类似的配置。
+
+如果输入数据为 \({\mathbf{P}}_{0},{\mathbf{T}}_{0},{\mathbf{P}}_{2},{\mathbf{T}}_{2},\mathbf{P}\) ，并且知道锥形是完整的椭圆(起始和结束于 \({\mathbf{P}}_{0}\) )，那么适当的构造为:
+
+1. 调用 MakeOneArc 获取椭圆一个段的有理 Bézier 表示(权重为正的 \({w}_{1}\) )；
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_328_221_254_1087_637_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.26.(续)
+
+2. 计算椭圆的中心 \(\mathbf{C}\) ；
+
+3. 计算长轴和短轴，(单位)向量 (U, V)，以及长半径和短半径 \(\left( {{r}_{1},{r}_{2}}\right)\) ；
+
+4. 计算控制点
+
+\[
+{\mathbf{Q}}_{0} = \mathbf{C} + {r}_{1}\mathbf{U}\;\left( { = {\mathbf{Q}}_{8}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{1} = {\mathbf{Q}}_{0} + {r}_{2}\mathbf{V}
+\]
+
+\[
+{\mathbf{Q}}_{2} = \mathbf{C} + {r}_{2}\mathbf{V}
+\]
+
+\[
+{\mathbf{Q}}_{3} = {\mathbf{Q}}_{2} - {r}_{1}\mathbf{U}
+\]
+
+\[
+{\mathbf{Q}}_{4} = \mathbf{C} - {r}_{1}\mathbf{U}
+\]
+
+\[
+{\mathbf{Q}}_{5} = {\mathbf{Q}}_{4} - {r}_{2}\mathbf{V}
+\]
+
+\[
+{\mathbf{Q}}_{6} = \mathbf{C} - {r}_{2}\mathbf{V}
+\]
+
+\[
+{\mathbf{Q}}_{7} = {\mathbf{Q}}_{6} + {r}_{1}\mathbf{U}
+\]
+
+步骤 2 和 3 的详细信息在下一节中给出，结果在图 7.28 中进行了说明。
+
+
+
+\section{锥形分类与形式转换}
+
+在前面的章节中，我们介绍了五种表示锥曲线的形式:
+
+\begin{itemize}
+\item 隐式方程 (方程 [7.3] 和 [7.5]-[7.7])；
+\end{itemize}
+
+\begin{itemize}
+\item 最大内切面积形式 (方程 [7.15]-[7.17])；
+\end{itemize}
+
+\begin{itemize}
+\item 二次有理幂基 (方程 [7.8]-[7.14])；
+\end{itemize}
+
+\begin{itemize}
+\item 二次有理贝塞尔 (方程 [7.21])；
+\end{itemize}
+
+\begin{itemize}
+\item 二次 NURBS 形式。
+\end{itemize}
+
+在本节中，我们讨论锥曲线类型分类与形式转换，即给定一种形式的曲线，确定它是什么类型的锥曲线——椭圆、抛物线或双曲线——并将其转换为另一种形式。当我们提到隐式形式时，我们假设锥曲线位于 \({xy}\) 平面；否则，锥曲线可以位于三维空间中。
+
+考虑前两种形式。如果锥曲线处于标准位置，并且可以用方程 (7.5)-(7.7) 之一来描述，则其类型显而易见。如果它不在标准位置 (方程 [7.3])，则其类型由 \(\alpha\) 和 \(D\) 的值(行列式)决定，如第 7.2 节所述，并且可以很容易地转换为标准位置。对于最大内切面积形式，锥曲线类型在定义中是固有的。请注意，最大面积形式与标准位置隐式形式非常相似，因为它们的定义方程是通过锥曲线的所谓几何特征(即轴、顶点、中心、半径等)给出的。因此，这两种形式之间的转换是微不足道的。
+
+二次有理幂基(公式 [7.14])与贝塞尔形式之间的转换由第六章的方法给出，特别是公式 (6.89) 和 (6.93)。它们的有理对应物是
+
+\[
+\left\lbrack  {\mathbf{a}}_{i}^{w}\right\rbrack   = {R}_{2}{M}_{2}\left\lbrack  {\mathbf{P}}_{i}^{w}\right\rbrack   \tag{7.51}
+\]
+
+和
+
+\[
+\left\lbrack  {\mathbf{P}}_{i}^{w}\right\rbrack   = {M}_{2}^{-1}{R}_{2}^{-1}\left\lbrack  {\mathbf{a}}_{i}^{w}\right\rbrack   \tag{7.52}
+\]
+
+其中 \({M}_{2}\) 和 \({R}_{2}\) 分别是二次 \(\left( {3 \times  3}\right)\) 贝塞尔和重新参数化矩阵。贝塞尔圆锥的类型可以从圆锥形状因子中轻松获得，见公式 (7.25)。幂基圆锥的类型由公式 (7.52) 和 (7.25) 计算。为简单起见，假设我们的幂基段定义在 \(0 \leq  u \leq  1\) 上，且 \({R}_{2}\) 为单位矩阵。用 \({w}_{i}^{a}\) 表示幂基权重(公式 [7.14])，用 \({w}_{i}^{P}\) 表示贝塞尔权重。然后从公式 (6.94) 和 (7.52) 中我们发现
+
+\[
+\left\lbrack  {w}_{i}^{P}\right\rbrack   = {M}_{2}^{-1}\left\lbrack  {w}_{i}^{a}\right\rbrack   = \left\lbrack  \begin{array}{lll} 1 & 0 & 0 \\  1 & \frac{1}{2} & 0 \\  1 & 1 & 1 \end{array}\right\rbrack  \left\lbrack  {w}_{i}^{a}\right\rbrack
+\]
+
+从中可以得出
+
+\[
+{w}_{0}^{P} = {w}_{0}^{a}
+\]
+
+\[
+{w}_{1}^{P} = {w}_{0}^{a} + \frac{1}{2}{w}_{1}^{a}
+\]
+
+\[
+{w}_{2}^{P} = {w}_{0}^{a} + {w}_{1}^{a} + {w}_{2}^{a} \tag{7.53}
+\]
+
+当代入公式 (7.25) 时，这些 \({w}_{i}^{P}\) 产生了圆锥类型。
+
+带有内部节点的二次 NURBS 曲线可能表示一个唯一的圆锥(它在每个跨度上是一个圆锥、直线或点)。二次 NURBS 曲线的分类是一个三步过程:
+
+1. 使用公式 (6.62)，计算每个非退化段的圆锥形状因子；
+
+2. 如果所有形状因子指示一个共同类型(所有 \({c}_{i} < 1, = 1\) 或 \(> 1\) )，则将曲线分解为贝塞尔段；
+
+3. 计算每个段的几何特征并进行比较。
+
+注意，所有形状因子可以指示一种共同类型，实际上它们甚至可能相等，但曲线仍然可能不是唯一的圆锥曲线。例如，回想一下，圆弧的权重仅依赖于扫角(方程 [7.33])；因此，可以拼接不同半径的圆弧，但它们具有相等的扫角和形状因子。
+
+基于上述讨论，出于分类和转换的目的，这五种形式可以分为两组:
+
+1. 隐式和最大内接面积形式；
+
+2. 二次有理幂基、贝塞尔和 NURBS 形式。
+
+如果有某些数据，圆锥表示在一个组内是容易获得的，即
+
+\begin{itemize}
+\item 几何特征(组 1)；
+\end{itemize}
+
+\begin{itemize}
+\item 起始点和结束点，以及它们的切线方向和一个附加点 \({\mathbf{P}}_{0},{\mathbf{T}}_{0},{\mathbf{P}}_{2},{\mathbf{T}}_{2},\mathbf{P}\) (组 2)。
+\end{itemize}
+
+使用算法 A7.1-A7.3，从组 1 的形式转换到组 2 的形式是简单的，因为它仅涉及从方程 (7.3) 和 (7.5)-(7.7) 或 (7.15)-(7.17) 中计算点和切线。从组 2 转换到组 1 则需要更多的工作。Beach [Beac91] 推导了从有理幂基转换到隐式形式的公式(方程 [7.3])。我们在这里展示如何从有理贝塞尔形式转换到方程 (7.3)，以及如何从其有理贝塞尔形式计算圆锥的几何特征。
+
+设 \(\mathbf{C}\left( u\right)\) 为由方程 (7.21) 给出的有理贝塞尔圆锥。回顾方程 (7.22) 到 (7.26) 和图 7.11
+
+\[
+\alpha \left( u\right) \beta \left( u\right)  = \frac{1}{4}k{\left( 1 - \alpha \left( u\right)  - \beta \left( u\right) \right) }^{2} \tag{7.54}
+\]
+
+是由 \(\left\{  {{\mathbf{P}}_{1},\mathbf{S},\mathbf{T}}\right\}\) 给出的斜坐标系中圆锥的隐式方程，其中
+
+\[
+k = \frac{{w}_{0}{w}_{2}}{{w}_{1}{}^{2}}\;\alpha \left( u\right)  = {R}_{0,2}\left( u\right) \;\beta \left( u\right)  = {R}_{2,2}\left( u\right)
+\]
+
+为了从方程 (7.54) 得到方程 (7.3)，我们需要将 \(\alpha\) 和 \(\beta\) 表示为笛卡尔坐标 \(x\) 和 \(y\) 的函数。方程 (7.20) 表示 \(\alpha \left( u\right)\) 和 \(\beta \left( u\right)\) 是三角形 \(\beta\) 中点 \(\alpha\) 的重心坐标。
+
+固定一个任意的 \({u}_{0}\) ，设 \(\alpha  = \alpha \left( {u}_{0}\right) ,\beta  = \beta \left( {u}_{0}\right)\) 和 \(\mathbf{P} = \mathbf{C}\left( {u}_{0}\right)  = \left( {x,y}\right)\) 。然后
+
+\[
+\alpha  = \frac{\operatorname{area}\left( {\mathbf{P},{\mathbf{P}}_{1},{\mathbf{P}}_{2}}\right) }{\operatorname{area}\left( {{\mathbf{P}}_{0},{\mathbf{P}}_{1},{\mathbf{P}}_{2}}\right) }\;\beta  = \frac{\operatorname{area}\left( {\mathbf{P},{\mathbf{P}}_{0},{\mathbf{P}}_{1}}\right) }{\operatorname{area}\left( {{\mathbf{P}}_{0},{\mathbf{P}}_{1},{\mathbf{P}}_{2}}\right) }
+\]
+
+从中可以得出
+
+\[
+\alpha  = \frac{\left( {y - {y}_{1}}\right) \left( {{x}_{2} - {x}_{1}}\right)  - \left( {x - {x}_{1}}\right) \left( {{y}_{2} - {y}_{1}}\right) }{\left( {{y}_{0} - {y}_{1}}\right) \left( {{x}_{2} - {x}_{1}}\right)  - \left( {{x}_{0} - {x}_{1}}\right) \left( {{y}_{2} - {y}_{1}}\right) }
+\]
+
+\[
+\beta  = \frac{\left( {y - {y}_{1}}\right) \left( {{x}_{0} - {x}_{1}}\right)  - \left( {x - {x}_{1}}\right) \left( {{y}_{0} - {y}_{1}}\right) }{\left( {{y}_{2} - {y}_{1}}\right) \left( {{x}_{0} - {x}_{1}}\right)  - \left( {{x}_{2} - {x}_{1}}\right) \left( {{y}_{0} - {y}_{1}}\right) } \tag{7.55}
+\]
+
+现在设
+
+\[
+{h}_{0} = {x}_{0} - {x}_{1}\;{h}_{1} = {x}_{2} - {x}_{1}
+\]
+
+\[
+{h}_{2} = {y}_{0} - {y}_{1}\;{h}_{3} = {y}_{2} - {y}_{1}
+\]
+
+和
+
+\[
+{g}_{1} = {h}_{2}{h}_{1} - {h}_{0}{h}_{3}
+\]
+
+\[
+\text{ Then }\alpha  = \frac{{h}_{1}\left( {y - {y}_{1}}\right)  - {h}_{3}\left( {x - {x}_{1}}\right) }{{g}_{1}}\;\beta  = \frac{{h}_{0}\left( {y - {y}_{1}}\right)  - {h}_{2}\left( {x - {x}_{1}}\right) }{-{g}_{1}} \tag{7.56}
+\]
+
+最后，设定 \({s}_{1} = {h}_{0} - {h}_{1}\) 和 \({s}_{2} = {h}_{3} - {h}_{2}\) ，并将方程 (7.56) 代入方程 (7.54)，得到方程 (7.3) 的六个系数，即。
+
+\[
+a = {s}_{2}^{2} + \frac{4}{k}{h}_{2}{h}_{3}
+\]
+
+\[
+b = {s}_{1}^{2} + \frac{4}{k}{h}_{0}{h}_{1}
+\]
+
+\[
+h = {s}_{1}{s}_{2} - \frac{2}{k}\left( {{h}_{0}{h}_{3} + {h}_{1}{h}_{2}}\right)
+\]
+
+\[
+f =  - h{y}_{1} - a{x}_{1} + {g}_{1}{s}_{2}
+\]
+
+\[
+g =  - h{x}_{1} - b{y}_{1} + {g}_{1}{s}_{1}
+\]
+
+\[
+c = b{y}_{1}^{2} + {2h}{x}_{1}{y}_{1} + a{x}_{1}^{2} - 2{g}_{1}\left( {{y}_{1}{s}_{1} + {x}_{1}{s}_{2}}\right)  + {g}_{1}^{2} \tag{7.57}
+\]
+
+现在我们转向从有理贝塞尔形式计算几何特征。我们在此提供公式而不作证明:虽然不难，但推导过程较为复杂。有关证明，我们建议读者参考 Lee 的优雅文章 [Lee87]，该文是本材料的来源。
+
+我们给定一个由方程 (7.21) 定义的二次有理贝塞尔圆锥，且所有 \({w}_{i} > 0\) 。我们假设该圆锥不是退化的。我们定义符号
+
+\[
+\mathbf{S} = {\mathbf{P}}_{0} - {\mathbf{P}}_{1}\;\mathbf{T} = {\mathbf{P}}_{2} - {\mathbf{P}}_{1}
+\]
+
+\[
+k = \frac{{w}_{0}{w}_{2}}{{w}_{1}^{2}}\;\epsilon  = \frac{k}{2\left( {k - 1}\right) }
+\]
+
+324 圆锥与圆
+
+\[
+\alpha  = {\left| \mathbf{S}\right| }^{2}\;\beta  = \mathbf{S} \cdot  \mathbf{T}\;\gamma  = {\left| \mathbf{T}\right| }^{2}
+\]
+
+\[
+\delta  = {\alpha \gamma } - {\beta }^{2} = {\left| \mathbf{S} \times  \mathbf{T}\right| }^{2}
+\]
+
+\[
+\zeta  = \alpha  + \gamma  + {2\beta } = {\left| \mathbf{S} + \mathbf{T}\right| }^{2}
+\]
+
+\[
+\eta  = \alpha  + \gamma  - {2\beta } = {\left| \mathbf{S} - \mathbf{T}\right| }^{2}
+\]
+
+对于抛物线，我们有以下公式
+
+\[
+\text{ Axis : }\frac{1}{\sqrt{\zeta }}\left( {\mathbf{S} + \mathbf{T}}\right)  \tag{7.58}
+\]
+
+\[
+\text{ Focus : }{\mathbf{P}}_{1} + \frac{\gamma \mathbf{S} + \alpha \mathbf{T}}{\zeta } \tag{7.59}
+\]
+
+\[
+\text{ Vertex } : {\mathbf{P}}_{1} + {\left( \frac{\gamma  + \beta }{\zeta }\right) }^{2}\mathbf{S} + {\left( \frac{\alpha  + \beta }{\zeta }\right) }^{2}\mathbf{T} \tag{7.60}
+\]
+
+椭圆或双曲线的中心由以下公式给出
+
+\[
+\text{ Center : }{\mathbf{P}}_{1} + \epsilon \left( {\mathbf{S} + \mathbf{T}}\right)  \tag{7.61}
+\]
+
+设 \({\lambda }_{1} \leq  {\lambda }_{2}\) 为二次方程的解
+
+\[
+{2\delta }{\lambda }^{2} - \left( {{k\eta } + {4\beta }}\right) \lambda  + 2\left( {k - 1}\right)  = 0
+\]
+
+该方程的根是实数。对于椭圆， \({\lambda }_{2} \geq  {\lambda }_{1} > 0\) 和 \(\epsilon  > 0\) 。对于双曲线， \({\lambda }_{1} < 0 < {\lambda }_{2}\) 和 \(\epsilon  < 0\) 。长半轴和短半轴为
+
+\[
+\text{ Ellipse } : {r}_{1} = \sqrt{\frac{\epsilon }{{\lambda }_{1}}}\;{r}_{2} = \sqrt{\frac{\epsilon }{{\lambda }_{2}}} \tag{7.62}
+\]
+
+\[
+\text{ Hyperbola : }{r}_{1} = \sqrt{\frac{\epsilon }{{\lambda }_{1}}}\;{r}_{2} = \sqrt{\frac{-\epsilon }{{\lambda }_{2}}} \tag{7.63}
+\]
+
+定义如下
+
+\[
+\text{ if }\left| {\frac{k}{2} - \gamma {\lambda }_{1}}\right|  > \left| {\frac{k}{2} - \alpha {\lambda }_{1}}\right|
+\]
+
+\[
+\bar{x} = \frac{k}{2} - \gamma {\lambda }_{1}\;\bar{y} = \beta {\lambda }_{1} - \frac{k}{2} + 1
+\]
+
+\[
+\text{ else }\;\bar{x} = \beta {\lambda }_{1} - \frac{k}{2} + 1\;\bar{y} = \frac{k}{2} - \alpha {\lambda }_{1}
+\]
+
+和
+
+\[
+\rho  = \alpha {\bar{x}}^{2} + {2\beta }\bar{x}\bar{y} + \gamma {\bar{y}}^{2}
+\]
+
+\[
+{x}_{0} = \frac{\bar{x}}{\rho }\;{y}_{0} = \frac{\bar{y}}{\rho }
+\]
+
+那么点 \({\mathbf{Q}}_{1}\) 和 \({\mathbf{Q}}_{2}\)
+
+\[
+{\mathbf{Q}}_{1} = {\mathbf{P}}_{1} + \left( {\epsilon  + {r}_{1}{x}_{0}}\right) \mathbf{S} + \left( {\epsilon  + {r}_{1}{y}_{0}}\right) \mathbf{T}
+\]
+
+\[
+{\mathbf{Q}}_{2} = {\mathbf{P}}_{1} + \left( {\epsilon  - {r}_{1}{x}_{0}}\right) \mathbf{S} + \left( {\epsilon  - {r}_{1}{y}_{0}}\right) \mathbf{T} \tag{7.64}
+\]
+
+位于椭圆的长轴上或双曲线的横轴上。另一个正交轴可以很容易地获得，椭圆或双曲线的顶点是根据中心、半径和轴的方向计算得出的。
+
+注意，对于圆，它是椭圆的特例，方程 (7.62) 产生 \({r}_{1} = {r}_{2}\) 。算法应检查此情况，因为将方程 (7.64) 应用于圆是没有意义的。
+
+图 \({7.27}\mathrm{a} - {7.27}\mathrm{c}\) 说明了这些公式。图 \({7.27}\mathrm{a}\) 显示了一个抛物线弧及其顶点 (V)、焦点 (F) 和轴向量 (A)。在图 \({7.27}\mathrm{\;b}\) 中描绘了一个椭圆弧，包含中心 (C)、负长轴 (-U) 和短轴 (V)。图 \({7.27}\mathrm{c}\) 显示了双曲线的情况。同样，中心 (C)、长轴 (U) 和短轴 (V) 被计算出来。该图还展示了如何计算弧的渐近线 \({\mathcal{A}}_{1}\) 和 \({\mathcal{A}}_{2}\) ，即在无穷远处与曲线相切的两条线。
+
+最后，图 7.28 显示了如何计算给定 Bézier 形式弧的完整椭圆的 NURBS 表示(参见上一节末尾给出的四个步骤)。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_333_353_1286_824_687_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.27. 从贝塞尔表示法计算的几何数据。(a) 一个顶点(V)、焦点(F)和轴(A)的抛物线；(b) 一个中心(C)、负主轴(-U)和副轴(V)的椭圆；(c) 一个中心(C)、主轴(U)、副轴(V)和两个渐近线 \(\left( {\mathcal{A}}_{1}\right.\) 和 \(\left. {\mathcal{A}}_{2}\right)\) 的双曲线。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_334_288_249_962_1452_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.27.(续)
+
+
+\section{高阶圆}
+在某些应用中，使用一个有理贝塞尔段(没有内部节点)、没有无限控制点和没有负权重来表示完整的圆或扫角大于 \({180}^{ \circ  }\) 的圆弧是有用的。在前面的部分中，我们通过使用节点插入消除了无限控制点和负权重。度提升也能达到这个目的。以下是几个例子:
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_335_280_244_972_680_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.28. 以贝塞尔形式给出的完整椭圆的NURBS表示(虚线)。
+
+\section*{示例}
+
+示例 Ex7.7 示例 Ex7.1 的半圆可以进行度提升以得到
+
+\[
+{\mathbf{Q}}_{0}^{w} = {\mathbf{P}}_{0}^{w}\;{\mathbf{Q}}_{3}^{w} = {\mathbf{P}}_{2}^{w}
+\]
+
+\[
+{\mathbf{Q}}_{1}^{w} = \frac{1}{3}{\mathbf{P}}_{0}^{w} + \frac{2}{3}{\mathbf{P}}_{1}^{w} = \left( {\frac{1}{3},\frac{2}{3},\frac{1}{3}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{2}^{w} = \frac{2}{3}{\mathbf{P}}_{1}^{w} + \frac{1}{3}{\mathbf{P}}_{2}^{w} = \left( {-\frac{1}{3},\frac{2}{3},\frac{1}{3}}\right)
+\]
+
+因此(见图 7.29)
+
+\[
+U = \{ 0,0,0,0,1,1,1,1\}
+\]
+
+\[
+\left\{  {w}_{i}\right\}   = \left\{  {1,\frac{1}{3},\frac{1}{3},1}\right\}
+\]
+
+\[
+\left\{  {\mathbf{Q}}_{i}\right\}   = \{ \left( {1,0}\right) ,\left( {1,2}\right) ,\left( {-1,2}\right) ,\left( {-1,0}\right) \}
+\]
+
+示例 Ex7.8 示例 Ex7.4 中给出的弧 \({240}^{ \circ  }\) 经过度提升以得到(见图 7.30):
+
+\[
+U = \{ 0,0,0,0,1,1,1,1\}
+\]
+
+\[
+\left\{  {w}_{i}\right\}   = \left\{  {1,\frac{1}{6},\frac{1}{6},1}\right\}
+\]
+
+\[
+\left\{  {\mathbf{Q}}_{i}\right\}   = \left\{  {\left( {a,\frac{1}{2}}\right) ,\left( {{2a}, - 3}\right) ,\left( {-{2a}, - 3}\right) ,\left( {-a,\frac{1}{2}}\right) }\right\}
+\]
+
+与 \(a = \sqrt{3}/2\) . 328 圆锥曲线和圆
+
+以下的四阶和五阶完整圆构造源于 Chou [Chou95] 和 Strotman [Stro91]。
+
+Ex7.9 我们在复平面上写出半圆(半径为1)为
+
+\[
+z = {e}^{i\pi u} = f\left( u\right)  = g\left( u\right)  + h\left( u\right) i\;0 \leq  u \leq  1 \tag{7.65}
+\]
+
+对方程 (7.65) 进行平方，我们得到完整的圆
+
+\[
+{e}^{i2\pi u} = \left( {{g}^{2} - {h}^{2}}\right)  + \left( {2gh}\right) i\;0 \leq  u \leq  1 \tag{7.66}
+\]
+
+从例子 Ex7.1 我们知道
+
+\[
+g\left( u\right)  = \frac{1 - {2u}}{1 - {2u} + 2{u}^{2}}\;h\left( u\right)  = \frac{{2u}\left( {1 - u}\right) }{1 - {2u} + 2{u}^{2}} \tag{7.67}
+\]
+
+将方程 (7.67) 代入方程 (7.66) 并返回到实 \({xy}\) 平面，我们得到
+
+\[
+x\left( u\right)  = \frac{1 - {4u} + 8{u}^{3} - 4{u}^{4}}{1 - {4u} + 8{u}^{2} - 8{u}^{3} + 4{u}^{4}}
+\]
+
+\[
+y\left( u\right)  = \frac{{4u}\left( {1 - {3u} + 2{u}^{2}}\right) }{1 - {4u} + 8{u}^{2} - 8{u}^{3} + 4{u}^{4}} \tag{7.68}
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_336_367_1355_804_698_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.29. 半圆的有理三次贝塞尔表示。
+
+\begin{center}
+\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_337_421_257_686_749_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.30. 扫描弧 \({240}^{ \circ  }\) 的有理三次贝塞尔表示。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_337_361_1231_819_773_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.31. 使用两个无限控制点的完整圆的有理四次表示。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_338_299_248_937_670_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 7.32. 仅使用有限控制点的完整圆的有理五次表示。
+
+转换为贝塞尔形式得到
+
+\[
+\left\{  {\mathbf{Q}}_{i}^{w}\right\}   = \{ \left( {3,0,3}\right) ,\left( {0,3,0}\right) ,\left( {-3,0,1}\right) ,\left( {0, - 3,0}\right) ,\left( {3,0,3}\right) \}
+\]
+
+这是一个具有两个无限控制点的四次完整圆(见图 7.31)。
+
+Ex7.10 例子 Ex7.9 的四次圆的简单度提升得到
+
+\[
+{\mathbf{R}}_{0}^{w} = \left( {0, - 5,5}\right) \;{\mathbf{R}}_{1}^{w} = \left( {4, - 1,1}\right) \;{\mathbf{R}}_{2}^{w} = \left( {2,3,1}\right)
+\]
+
+\[
+{\mathbf{R}}_{3}^{w} = \left( {-2,3,1}\right) \;{\mathbf{R}}_{4}^{w} = \left( {-4, - 1,1}\right) \;{\mathbf{R}}_{5}^{w} = \left( {0, - 5,5}\right)
+\]
+
+这是一个使用有限控制点和正权重的五次贝塞尔全圆(见图7.32)。
+
+Chou [Chou95] 证明了仅使用正权重和有限控制点无法获得四次贝塞尔全圆。
+
+最后，我们提醒读者，圆只是位于直圆锥上的曲线的透视投影。因此，任何这样的曲线，包括非平面曲线，都是可以的。可能性是无穷无尽的。
+
+\section*{习题}
+
+7.1. 证明第7.3节中所做的陈述:“由于我们选择了 \({w}_{0} = {w}_{2} = 1\) ，因此在 \(\mathbf{S} = \mathbf{C}\left( {1/2}\right)\) 处的圆锥的切线与 \({\mathbf{P}}_{0}{\mathbf{P}}_{2}\) 平行。”提示:使用方程(7.25)和(7.26)以及相似三角形的性质。
+
+7.2. 考虑图7.13和方程(7.33)。它们暗示 \({w}_{1}\) 仅依赖于扫掠角(而不是半径)。考虑在两种极限情况下 \({w}_{1}\) 会发生什么:
+
+\begin{itemize}
+\item 固定 \({\mathbf{P}}_{0}\) 和 \({\mathbf{P}}_{2}\) ，让 \({\mathbf{P}}_{1}\) 趋向于无穷大；
+\end{itemize}
+
+\begin{itemize}
+\item 固定一个圆，让 \({\mathbf{P}}_{0}\) 和 \({\mathbf{P}}_{2}\) 结合在一起。
+\end{itemize}
+
+7.3. “将权重设为零”和“无限系数”这两个概念在有理幂基表示中也存在。这两个概念中是否有一个被用来获得方程(7.8)和(7.9)？如果是，哪一个？
+
+7.4. 通过使用九点方形控制多边形和示例 Ex7.2 的节点，但权重为 \(\left\{  {w}_{i}\right\}   = \{ 1,1,2,1,1,1\) , \(2,1,1\}\) ，可以获得完整圆的另一种表示。研究在 \(u = 1/2\) 处的连续性。使用第 5 章中的公式尽可能多次去除节点 \(u = 1/2\) 。将此与示例 Ex7.2 进行比较并解释结果。可视化两个位于同质空间锥体上的圆。
+
+7.5. 使用方程 (7.53) 和 (7.25) 验证方程 (7.8) 和 (7.9) 分别表示椭圆和双曲线。
+
+7.6. NURBS 曲线定义为
+
+\[
+U = \left\{  {0,0,0,\frac{1}{2},1,1,1}\right\}
+\]
+
+\[
+{\mathbf{P}}_{i} = \{ \left( {1,0}\right) ,\left( {1,1}\right) ,\left( {-2,1}\right) ,\left( {-2, - 1}\right) \}
+\]
+
+\[
+{w}_{i} = \left\{  {1,\frac{1}{2},\frac{1}{2},1}\right\}
+\]
+
+这条曲线是唯一的圆锥曲线吗？
+
+
+
+\clearpage
+
+\end{document}
+
+

@@ -1,0 +1,207 @@
+% !TeX program = xelatex
+\documentclass[zihao=false,linespread=1.5,heading=true,a4paper,oneside,fontset=windows]{ctexbook}
+\usepackage[fontsize=11pt]{fontsize}
+\usepackage[utf8]{inputenc}
+\pagestyle{plain}
+% packages for page layout
+\usepackage{geometry}
+\geometry{
+    paperwidth=40cm,     % 加宽横向空间，适配错行布局
+    paperheight=80cm,    % 加高纵向空间
+    left=0.5cm,
+    right=0.5cm,
+    top=0.5cm,
+    bottom=0.5cm,
+    marginparwidth=0cm,
+    headfoot=0cm
+}
+
+\usepackage{tocbibind} 
+\usepackage{afterpage}
+% package for colors
+\usepackage{xcolor}
+\usepackage{color}
+\definecolor{chatgpt-bg}{HTML}{181818}      % 主背景
+\definecolor{chatgpt-text}{HTML}{E0E0E0}    % 主文本
+\definecolor{chatgpt-green}{HTML}{10A37F}   % 依赖线/强调色
+\definecolor{table-row}{HTML}{282828}       % 表格行背景
+\definecolor{node-fill}{HTML}{282828}       % 节点背景
+\definecolor{node-border}{HTML}{CCCCCC}     % 节点边框
+\definecolor{coverbackground}{HTML}{808080} %灰色
+
+\pagecolor{chatgpt-bg}
+\color{chatgpt-text}
+% packages for fonts
+\usepackage{amsmath}
+
+\usepackage{fontspec}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\DeclareFontFamily{U}{rsfs}{\skewchar\font127}
+\DeclareFontShape{U}{rsfs}{m}{n}{%
+   <-6> rsfs5
+   <6-8> rsfs7
+   <8-> rsfs10
+}{}   
+
+% package for tikz
+\usepackage{tcolorbox}
+\usepackage{setspace}
+\tcbuselibrary{skins, breakable, theorems}
+\tcbuselibrary{most}
+\usepackage{framed}
+\usepackage{indentfirst}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{fpu}
+\usetikzlibrary{math}
+\usetikzlibrary{cd}
+
+% packages for graphics
+\usepackage{zhlipsum}
+\usepackage{graphicx}
+
+\graphicspath{ {./images/}{./images/} }
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{capt-of}
+\usepackage{cutwin}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\leftmark}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+
+% package for quotes
+\usepackage{csquotes}
+
+% redefine itemize
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
+
+% pacakage of contents
+\usepackage{lipsum}
+\usepackage{titletoc}
+
+% packages for footnotes
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{perpage}
+\MakePerPage{footnote} 
+
+% package for svg
+\usepackage{svg} % 需使用包
+
+% packages for definitions, theorems, proofs.
+\usepackage{amsthm}
+\newtheorem{definition}{定义}
+\newtheorem*{definition*}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem*{theorem*}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}[theorem]
+\newtheorem{example}{例}
+\newtheorem{remark}{注记}
+
+\newtheorem*{practice}{\indent 练习}
+\newtheorem*{annotation}{\indent 注记}
+\newtheorem{prop}{命题}
+\newtheorem*{sikao}{\indent思考题}
+\newtheorem*{da}{\indent答}
+\newtheorem*{exam}{例子}
+\newtheorem*{exer}{\indent 练习}
+\newtheorem*{defn}{定义}
+\newtheorem{lem}{引理}
+\newtheorem{them}{定理}
+\newtheorem{rem}{注记}
+\newtheorem{coro}{\indent 推论}
+
+%\oiint problem
+\usepackage{esint}
+% counter controlling
+\usepackage{chngcntr}
+
+\usepackage{datetime2}
+% package for hyperlinks
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\hypersetup{citecolor=magenta,linkcolor=black,urlcolor=blue,hidelinks} % 设置引用链接颜色
+
+%定制章节编号格式和计数器
+\renewcommand\thesection{\arabic{section}}
+
+% package for subfiles
+\usepackage{subfiles}
+%=====================================================================================================================
+\begin{document}
+
+\thispagestyle{empty}%目录页不显示页码
+\subfile{cover/cover.tex}
+
+\setcounter{page}{1}%从下面开始编页码
+\subfile{preface/preface.tex}
+\newpage
+
+\subfile{introduction/introduction.tex}
+\newpage
+
+\tableofcontents
+\newpage
+
+
+
+\chapter{曲线和曲面基础}\label{sec:1}
+\subfile{chapter/1.tex}
+
+\chapter{B样条基函数距离空间}\label{sec:2}
+\subfile{chapter/2.tex}
+
+\chapter{B样条曲线和曲面}\label{sec:3}
+\subfile{chapter/3.tex}
+
+\chapter{有理B样条曲线与曲面}\label{sec:4}
+\subfile{chapter/4.tex}
+
+\chapter{基本几何算法}\label{sec:5}
+\subfile{chapter/5.tex}
+
+\chapter{高级几何算法}\label{sec:6}
+\subfile{chapter/6.tex}
+
+\chapter{圆锥曲线和圆}\label{sec:7}
+\subfile{chapter/7.tex}
+
+\chapter{常见曲面的构造}\label{sec:8}
+\subfile{chapter/8.tex}
+
+\chapter{曲线和曲面拟合}\label{sec:9}
+\subfile{chapter/9.tex}
+
+\chapter{高级表面构造技术}\label{sec:10}
+\subfile{chapter/10.tex}
+
+\chapter{形状修改工具}\label{sec:11}
+\subfile{chapter/11.tex}
+
+\chapter{标准与数据交换}\label{sec:12}
+\subfile{chapter/12.tex}
+
+\chapter{B-样条编程概念}\label{sec:13}
+\subfile{chapter/13.tex}
+
+\chapter{参考文献}\label{sec:14}
+\subfile{chapter/14.tex}
+
+\chapter{索引}\label{sec:15}
+\subfile{chapter/15.tex}
+
+\newpage
+\thispagestyle{empty}%尾页不显示页码
+\subfile{colophon/colophon.tex}
+\newpage
+
+\end{document}

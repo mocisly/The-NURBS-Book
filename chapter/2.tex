@@ -1,0 +1,1662 @@
+\documentclass[main.tex]{subfiles}                                              
+\begin{document}
+
+\section{引言}
+仅由一个多项式或有理段组成的曲线通常是不够的。它们的缺点是:
+
+\begin{itemize}
+\item 为了满足大量约束，需要高阶；例如，(n - 1) 阶需要通过 \(\dot{n}\) 数据点的多项式贝塞尔曲线。然而，高阶曲线处理效率低且数值不稳定；
+\end{itemize}
+
+\begin{itemize}
+\item 为了准确拟合一些复杂形状，需要高阶；
+\end{itemize}
+
+\begin{itemize}
+\item 单段曲线(曲面)不适合交互式形状设计；尽管贝塞尔曲线可以通过其控制点(和权重)进行塑形，但控制并不够局部。
+\end{itemize}
+
+解决方案是使用分段多项式或分段有理曲线(曲面)。图 2.1 显示了一条曲线 \(\mathbf{C}\left( u\right)\) ，由 \(m\left( { = 3}\right) n\) 次多项式段组成。 \(\mathbf{C}\left( u\right)\) 定义在 \(u \in  \left\lbrack  {0,1}\right\rbrack\) 上。参数值 \({u}_{0} = 0 < {u}_{1} < {u}_{2} < {u}_{3} = 1\) 被称为断点。它们映射到三个多项式段的端点。我们用 \({\mathbf{C}}_{i}\left( u\right) ,1 \leq  i \leq  m\) 表示这些段。段的构造方式使得它们在某种程度上具有连续性(不一定在每个断点处相同)。设 \({\mathbf{C}}_{i}^{\left( j\right) }\) 表示 \(j\) 次导数，如果对于所有 \(0 \leq  j \leq  k\) ，在断点 \({u}_{i}\) 处是 \({C}^{k}\) 连续的。
+
+任何标准多项式形式都可以用来表示 \({\mathbf{C}}_{i}\left( u\right)\) 。图 2.2 显示了图 2.1 的曲线，其中三个段以三次贝塞尔形式表示。 \({\mathbf{P}}_{i}^{j}\) 表示 \(j\) 段的 \(i\) 次控制点。
+
+如果度数等于三且断点 \(U = \left\{  {{u}_{0},{u}_{1},{u}_{2},{u}_{3}}\right\}\) 保持固定，并且如果我们允许十二个控制点 \({\mathbf{P}}_{i}^{j}\) 任意变化，我们得到的向量空间 \(\mathcal{V}\) 由所有在 \(U.\mathcal{V}\) 上的分段三次多项式曲线组成，其维度为十二，并且 \(\mathcal{V}\) 中的曲线可能在 \({u}_{1}\) 或 \({u}_{2}\) 处不连续。现在假设我们指定(如图 2.2 所示) \({\mathbf{P}}_{3}^{1} = {\mathbf{P}}_{0}^{2}\) 和 \({\mathbf{P}}_{3}^{2} = {\mathbf{P}}_{0}^{3}\) 。这导致了 \({\mathcal{V}}^{0}\) ，即所有在 \(U\) 上至少在 \({C}^{0}\) 处处连续的分段三次多项式曲线的向量空间。 \({\mathcal{V}}^{0}\) 的维度为十，并且 \({\mathcal{V}}^{0} \subset  \mathcal{V}\) 。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_59_273_251_979_526_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.1. 一条具有三个段的分段三次多项式曲线。
+
+强加 \({C}^{1}\) 连续性稍微复杂一些。让我们考虑 \(u = {u}_{1}\) 。假设 \({\mathbf{P}}_{3}^{1} = {\mathbf{P}}_{0}^{2}\) 。设
+
+\[
+v = \frac{u - {u}_{0}}{{u}_{1} - {u}_{0}}\text{ and }w = \frac{u - {u}_{1}}{{u}_{2} - {u}_{1}}
+\]
+
+为区间 \(\left\lbrack  {{u}_{0},{u}_{1}}\right\rbrack\) 和 \(\left\lbrack  {{u}_{1},{u}_{2}}\right\rbrack\) 上的局部参数。然后 \(0 \leq  v,w \leq  1.{C}^{1}\) 在 \({u}_{1}\) 处的连续性意味着
+
+\[
+\frac{1}{{u}_{1} - {u}_{0}}{\mathbf{C}}_{1}^{\left( 1\right) }\left( {v = 1}\right)  = {\mathbf{C}}_{1}^{\left( 1\right) }\left( {u}_{1}\right)  = {\mathbf{C}}_{2}^{\left( 1\right) }\left( {u}_{1}\right)  = \frac{1}{{u}_{2} - {u}_{1}}{\mathbf{C}}_{2}^{\left( 1\right) }\left( {w = 0}\right)
+\]
+
+从方程 (1.10) 可以得出
+
+\[
+\frac{3}{{u}_{1} - {u}_{0}}\left( {{\mathbf{P}}_{3}^{1} - {\mathbf{P}}_{2}^{1}}\right)  = \frac{3}{{u}_{2} - {u}_{1}}\left( {{\mathbf{P}}_{1}^{2} - {\mathbf{P}}_{0}^{2}}\right)
+\]
+
+因此
+
+\[
+{\mathbf{P}}_{3}^{1} = \frac{\left( {{u}_{2} - {u}_{1}}\right) {\mathbf{P}}_{2}^{1} + \left( {{u}_{1} - {u}_{0}}\right) {\mathbf{P}}_{1}^{2}}{{u}_{2} - {u}_{0}} \tag{2.1}
+\]
+
+方程 (2.1) 表示 \({\mathbf{P}}_{3}^{1}\) 和 \({\mathbf{P}}_{3}^{2}\) 可以分别用 \({\mathbf{P}}_{2}^{1},{\mathbf{P}}_{1}^{2}\) 和 \({\mathbf{P}}_{2}^{2},{\mathbf{P}}_{1}^{3}\) 来表示。因此， \({\mathcal{V}}^{1}\) ，即所有 \({C}^{1}\) 连续的分段三次多项式曲线在 \(U\) 上的向量空间，维度为八，并且 \({\mathcal{V}}^{1} \subset  {\mathcal{V}}^{0} \subset  \mathcal{V}\) 。
+
+这清楚地表明，存储和操作分段多项式曲线的各个多项式段并不是处理此类曲线的理想方法。首先，必须存储冗余数据:十二个系数，而对于 \({C}^{1}\) 连续立方曲线，仅需要八个系数，对于 \({C}^{2}\) 连续立方曲线，仅需要六个系数。其次，对于贝塞尔形式，连续性 \(\mathbf{C}\left( u\right)\) 取决于控制点的位置，因此在保持连续性的同时，控制点的定位灵活性较小。如果设计师希望获得 \({C}^{1}\) 连续性，并对段落 \({\mathbf{C}}_{1}\left( u\right)\) 和 \({\mathbf{C}}_{3}\left( u\right)\) 感到满意，但希望修改 \({\mathbf{C}}_{2}\left( u\right)\) 的形状，他就没有运气了: \({\mathbf{C}}_{2}\left( u\right)\) 的控制点无法修改。第三，确定曲线的连续性需要计算(例如公式 [2.1])。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_60_253_258_1018_542_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.2. 图 2.1 中的曲线，其多项式段以贝塞尔形式表示。
+
+我们希望曲线的表示形式为
+
+\[
+\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{f}_{i}\left( u\right) {\mathbf{P}}_{i} \tag{2.2}
+\]
+
+在这里， \({\mathbf{P}}_{i}\) 是控制点，而 \(\left\{  {{f}_{i}\left( u\right) ,i = 0,\ldots ,n}\right\}\) 是分段多项式函数，构成所需度数和连续性(对于固定的断点序列)的所有分段多项式函数的向量空间的基。注意，连续性由基函数决定，因此控制点可以在不改变曲线连续性的情况下进行修改。此外， \(\left\{  {f}_{i}\right\}\) 应具有“通常”的良好解析性质，例如在第 1.3 节中列出的那些。这确保了由方程 (2.2) 定义的曲线具有类似于 Bézier 曲线的良好几何性质，例如，凸包、变差减小、变换不变性。我们在基函数中寻求的另一个重要性质是局部支持；这意味着每个 \({f}_{i}\left( u\right)\) 仅在有限数量的子区间上非零，而不是整个域。 \(\left\lbrack  {{u}_{0},{u}_{m}}\right\rbrack\) 。由于 \({\mathbf{P}}_{i}\) 乘以 \({f}_{i}\left( u\right)\) ，移动 \({\mathbf{P}}_{i}\) 仅在 \({f}_{i}\left( u\right)\) 非零的子区间内影响曲线形状。
+
+最后，给定适当的分段多项式基函数，我们可以构造分段有理曲线。
+
+\[
+{\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{f}_{i}\left( u\right) {\mathbf{P}}_{i}^{w} \tag{2.3}
+\]
+
+以及非有理和有理的张量积曲面。
+
+\[
+\mathbf{S}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{f}_{i}\left( u\right) {g}_{j}\left( v\right) {\mathbf{P}}_{i,j}
+\]
+
+\[
+{\mathbf{S}}^{w}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{f}_{i}\left( u\right) {g}_{j}\left( v\right) {\mathbf{P}}_{i,j}^{w} \tag{2.4}
+\]
+
+在本章的其余部分，我们研究所谓的 B-spline 基函数。在第 3 章和第 4 章中，我们将这些函数与三维和四维控制点结合，以分别获得非有理和有理曲线和曲面。
+
+
+\section{B样条基函数的定义和性质}
+
+有多种方法可以定义 B-spline 基函数并证明其重要性质，例如，通过截断幂函数的差商 [Curr47; Scho46]、通过开花法 [Rams87]，以及通过 deBoor、Cox 和 Mansfield 提出的递归公式 [Cox72; DeBo72, 78]。我们使用递归公式，因为它对于计算机实现最为有用。
+
+设 \(U = \left\{  {{u}_{0},\ldots ,{u}_{m}}\right\}\) 为一个非递减的实数序列，即 \({u}_{i} \leq\)  \({u}_{i + 1},i = 0,\ldots ,m - 1\) 。 \({u}_{i}\) 被称为节点， \(U\) 是节点向量。第 \(i\) 个 B-spline 基函数，具有 \(p\) 度(阶数 \(p + 1\) )，记作 \({N}_{i,p}\left( u\right)\) ，定义为
+
+\[
+{N}_{i,0}\left( u\right)  = \left\{  \begin{array}{ll} 1 & \text{ if }{u}_{i} \leq  u < {u}_{i + 1} \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{i,p}\left( u\right)  = \frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1}\left( u\right)  + \frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}\left( u\right)  \tag{2.5}
+\]
+
+\section*{注意}
+
+\begin{itemize}
+\item \({N}_{i.0}\left( u\right)\) 是一个阶跃函数，除了在半开区间 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) 上为零外，处处为零；
+\end{itemize}
+
+\begin{itemize}
+\item 对于 \(p > 0,{N}_{i,p}\left( u\right)\) 是两个 (p - 1) 度基函数的线性组合(图 2.3)；
+\end{itemize}
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_62_318_258_887_450_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.3. B-spline 基函数的递归定义。
+
+\begin{itemize}
+\item 计算一组基函数需要指定一个节点向量 \(U\) 和度 \(p\) ；
+\end{itemize}
+
+\begin{itemize}
+\item 方程 (2.5) 可以产生商 \(0/0\) (见后面的例子)；我们定义这个商为零；
+\end{itemize}
+
+\begin{itemize}
+\item \({N}_{i,p}\left( u\right)\) 是分段多项式，定义在整个实数线上；通常只有区间 \(\left\lbrack  {{u}_{0},{u}_{m}}\right\rbrack\) 是感兴趣的；
+\end{itemize}
+
+\begin{itemize}
+\item 半开区间 \(\left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) 被称为第 i 个节点跨度；它可以具有零长度，因为节点不必是不同的；
+\end{itemize}
+
+\begin{itemize}
+\item 计算 \(p\) 度的函数会生成一个截断的三角形表
+\end{itemize}
+
+\[
+{N}_{0,0}
+\]
+
+\[
+{N}_{0,1}
+\]
+
+\[
+{N}_{1,0}\;{N}_{0,2}
+\]
+
+\[
+{N}_{1,1}\;{N}_{0,3}
+\]
+
+\[
+{N}_{2,0}\;{N}_{1,2}
+\]
+
+\[
+{N}_{2,1}\;{N}_{1,3}
+\]
+
+\[
+{N}_{3,0}\;{N}_{2,2}
+\]
+
+\[
+{N}_{3,1}
+\]
+
+\[
+{N}_{4,0}\;\text{ : }
+\]
+
+\(\vdots\)
+
+为了简洁，我们通常写 \({N}_{i,p}\) 而不是 \({N}_{i,p}\left( u\right)\) 。
+
+关于术语的一点说明。在第 2.1 节中，我们使用了术语断点，并要求 \({u}_{i} < {u}_{i + 1}\) 对所有 \(i\) 成立。在本书的其余部分，我们使用术语结点，并假设 \({u}_{i} \leq  {u}_{i + 1}\) 。断点对应于一组不同的结点值，而非零长度的结点跨度定义了各个多项式段。因此，我们使用“结点”一词有两种不同的含义:一是在集合 \(U\) 中的一个不同值(断点)，二是集合 \(U\) 的一个元素(在 \(U\) 中可以存在具有相同值的额外结点)。从上下文中应该可以清楚地看出所指的含义。
+
+\section*{示例}
+
+Ex2.1 设 \(U = \left\{  {{u}_{0} = 0,{u}_{1} = 0,{u}_{2} = 0,{u}_{3} = 1,{u}_{4} = 1,{u}_{5} = 1}\right\}\) 和 \(p = 2\) 。我们现在计算 0、1 和 2 阶的 B 样条基函数。
+
+\[
+{N}_{0,0} = {N}_{1,0} = 0\; - \infty  < u < \infty
+\]
+
+\[
+{N}_{2,0} = \left\{  \begin{array}{ll} 1 & 0 \leq  u < 1 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{3,0} = {N}_{4,0} = 0\; - \infty  < u < \infty
+\]
+
+\[
+{N}_{0,1} = \frac{u - 0}{0 - 0}{N}_{0,0} + \frac{0 - u}{0 - 0}{N}_{1,0} = 0\; - \infty  < u < \infty
+\]
+
+\[
+{N}_{1,1} = \frac{u - 0}{0 - 0}{N}_{1,0} + \frac{1 - u}{1 - 0}{N}_{2,0} = \left\{  \begin{matrix} 1 - u \\  0 \end{matrix}\right.
+\]
+
+\[
+{N}_{2,1} = \frac{u - 0}{1 - 0}{N}_{2,0} + \frac{1 - u}{1 - 1}{N}_{3,0} = \left\{  \begin{array}{ll} u & 0 \leq  u < 1 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{3,1} = \frac{u - 1}{1 - 1}{N}_{3,0} + \frac{1 - u}{1 - 1}{N}_{4,0} = 0\; - \infty  < u < \infty
+\]
+
+\[
+{N}_{0,2} = \frac{u - 0}{0 - 0}{N}_{0,1} + \frac{1 - u}{1 - 0}{N}_{1,1} = \left\{  \begin{matrix} {\left( 1 - u\right) }^{2} & 0 \leq  u < 1 \\  0 & \text{ otherwise } \end{matrix}\right.
+\]
+
+\[
+{N}_{1,2} = \frac{u - 0}{1 - 0}{N}_{1,1} + \frac{1 - u}{1 - 0}{N}_{2,1} = \left\{  \begin{matrix} {2u}\left( {1 - u}\right) & 0 \leq  u < 1 \\  0 & \text{ otherwise } \end{matrix}\right.
+\]
+
+\[
+{N}_{2,2} = \frac{u - 0}{1 - 0}{N}_{2,1} + \frac{1 - u}{1 - 1}{N}_{3,1} = \left\{  \begin{matrix} {u}^{2} & \;0 \leq  u < 1 \\  0 & \;\text{ otherwise } \end{matrix}\right.
+\]
+
+注意，限制在区间 \(u \in  \left\lbrack  {0,1}\right\rbrack\) 上的 \({N}_{i,2}\) 是二次 Bernstein 多项式(第 1.3 节和图 1.13b)。因此，具有以下形式的结点向量的 B 样条表示是 Bézier 表示的推广。
+
+\[
+U = \{ \underset{p + 1}{\underbrace{0,\ldots ,0}},\underset{p + 1}{\underbrace{1,\ldots ,1}}\}
+\]
+
+是 Bézier 表示的推广。
+
+Ex2.2 设 \(U = \left\{  {{u}_{0} = 0,{u}_{1} = 0,{u}_{2} = 0,{u}_{3} = 1,{u}_{4} = 2,{u}_{5} = 3,{u}_{6} = 4,{u}_{7} = }\right.\)  \(\left. {4,{u}_{8} = 5,{u}_{9} = 5,{u}_{10} = 5}\right\}\) 和 \(p = 2\) 。这里计算了零阶、第一阶和第二阶基函数。那些不恒为零的
+
+分别显示在图 2.4、2.5 和 2.6 中。
+
+\[
+{N}_{0,0} = {N}_{1,0} = 0\;\text{ for } - \infty  < u < \infty
+\]
+
+\[
+{N}_{2,0} = \left\{  \begin{array}{ll} 1 & 0 \leq  u < 1 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{3,0} = \left\{  \begin{array}{ll} 1 & 1 \leq  u < 2 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{4,0} = \left\{  \begin{array}{ll} 1 & 2 \leq  u < 3 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{5,0} = \left\{  \begin{array}{ll} 1 & 3 \leq  u < 4 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{6,0} = 0\text{ for } - \infty  < u < \infty
+\]
+
+\[
+{N}_{7,0} = \left\{  \begin{array}{ll} 1 & 4 \leq  u < 5 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{8,0} = {N}_{9,0} = 0\;\text{ for } - \infty  < u < \infty
+\]
+
+\[
+{N}_{0,1} = \frac{u - 0}{0 - 0}{N}_{0,0} + \frac{0 - u}{0 - 0}{N}_{1,0} = 0\; - \infty  < u < \infty
+\]
+
+\[
+{N}_{1,1} = \frac{u - 0}{0 - 0}{N}_{1,0} + \frac{1 - u}{1 - 0}{N}_{2,0} = \left\{  \begin{array}{ll} 1 - u & 0 \leq  u < 1 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{2,1} = \frac{u - 0}{1 - 0}{N}_{2,0} + \frac{2 - u}{2 - 1}{N}_{3,0} = \left\{  \begin{array}{ll} u & 0 \leq  u < 1 \\  2 - u & 1 \leq  u < 2 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{3,1} = \frac{u - 1}{2 - 1}{N}_{3,0} + \frac{3 - u}{3 - 2}{N}_{4,0} = \left\{  \begin{array}{ll} u - 1 & 1 \leq  u < 2 \\  3 - u & 2 \leq  u < 3 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{4,1} = \frac{u - 2}{3 - 2}{N}_{4,0} + \frac{4 - u}{4 - 3}{N}_{5,0} = \left\{  \begin{array}{ll} u - 2 & 2 \leq  u < 3 \\  4 - u & 3 \leq  u < 4 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{5,1} = \frac{u - 3}{4 - 3}{N}_{5,0} + \frac{4 - u}{4 - 4}{N}_{6,0} = \left\{  \begin{array}{ll} u - 3 & 3 \leq  u < 4 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{6,1} = \frac{u - 4}{4 - 4}{N}_{6,0} + \frac{5 - u}{5 - 4}{N}_{7,0} = \left\{  \begin{array}{ll} 5 - u & 4 \leq  u < 5 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{7,1} = \frac{u - 4}{5 - 4}{N}_{7,0} + \frac{5 - u}{5 - 5}{N}_{8,0} = \left\{  \begin{array}{ll} u - 4 & 4 \leq  u < 5 \\  0 & \text{ otherwise } \end{array}\right.
+\]
+
+\[
+{N}_{8,1} = \frac{u - 5}{5 - 5}{N}_{8,0} + \frac{5 - u}{5 - 5}{N}_{9,0} = 0\; - \infty  < u < \infty
+\]
+
+54 B 样条基函数
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_65_242_268_1037_736_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.4。非零的零阶基函数， \(U = \{ 0,0,0,1,2,3,4,4,5,5,5\}\) 。
+
+以下所有 \({N}_{i,2}\) 在指定区间以外处处为零，即
+
+\[
+{N}_{0,2} = \frac{u - 0}{0 - 0}{N}_{0,1} + \frac{1 - u}{1 - 0}{N}_{1,1} = {\left( 1 - u\right) }^{2}\;0 \leq  u < 1
+\]
+
+\[
+{N}_{1,2} = \frac{u - 0}{1 - 0}{N}_{1,1} + \frac{2 - u}{2 - 0}{N}_{2,1} = \left\{  \begin{array}{ll} {2u} - 3/2{u}^{2} & 0 \leq  u < 1 \\  1/2{\left( 2 - u\right) }^{2} & 1 \leq  u < 2 \end{array}\right.
+\]
+
+\[
+{N}_{2,2} = \frac{u - 0}{2 - 0}{N}_{2,1} + \frac{3 - u}{3 - 1}{N}_{3,1} = \left\{  \begin{matrix} 1/2{u}^{2} & 0 \leq  u < 1 \\   - 3/2 + {3u} - {u}^{2} & 1 \leq  u < 2 \\  1/2{\left( 3 - u\right) }^{2} & 2 \leq  u < 3 \end{matrix}\right.
+\]
+
+\[
+{N}_{3,2} = \frac{u - 1}{3 - 1}{N}_{3,1} + \frac{4 - u}{4 - 2}{N}_{4,1} = \left\{  \begin{matrix} 1/2{\left( u - 1\right) }^{2} & 1 \leq  u < 2 \\   - {11}/2 + {5u} - {u}^{2} & 2 \leq  u < 3 \\  1/2{\left( 4 - u\right) }^{2} & 3 \leq  u < 4 \end{matrix}\right.
+\]
+
+\[
+{N}_{4,2} = \frac{u - 2}{4 - 2}{N}_{4,1} + \frac{4 - u}{4 - 3}{N}_{5,1} = \left\{  \begin{matrix} 1/2{\left( u - 2\right) }^{2} & 2 \leq  u < 3 \\   - {16} + {10u} - 3/2{u}^{2} & 3 \leq  u < 4 \end{matrix}\right.
+\]
+
+\[
+{N}_{5,2} = \frac{u - 3}{4 - 3}{N}_{5,1} + \frac{5 - u}{5 - 4}{N}_{6,1} = \left\{  \begin{array}{ll} {\left( u - 3\right) }^{2} & 3 \leq  u < 4 \\  {\left( 5 - u\right) }^{2} & 4 \leq  u < 5 \end{array}\right.
+\]
+
+\[
+{N}_{6,2} = \frac{u - 4}{5 - 4}{N}_{6,1} + \frac{5 - u}{5 - 4}{N}_{7,1} = 2\left( {u - 4}\right) \left( {5 - u}\right) \;4 \leq  u < 5
+\]
+
+\[
+{N}_{7,2} = \frac{u - 4}{5 - 4}{N}_{7,1} + \frac{5 - u}{5 - 5}{N}_{8,1} = {\left( u - 4\right) }^{2}
+\]
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_65_267_1583_997_460_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.5. 非零的一阶基函数， \(U = \{ 0,0,0,1,2,3,4,4,5,5,5\}\) 。
+
+现在我们列出 B-spline 基函数的一些重要属性。正如我们在下一章中看到的，这些属性决定了 B-spline 曲线和曲面的许多理想几何特性。假设度数为 \(p\) ，并且有一个节点向量 \(U = \left\{  {{u}_{0},\ldots ,{u}_{m}}\right\}\) 。
+
+P2. \(1\;{N}_{i,p}\left( u\right)  = 0\) 如果 \(u\) 在区间 \(\left\lbrack  {{u}_{i},{u}_{i + p + 1}}\right)\) 之外(局部支持属性)。这由这里所示的三角形方案说明。请注意
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_66_270_1601_995_463_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.6. 非零的二阶基函数， \(U = \{ 0,0,0,1,2,3,4,4,5,5,5\}\) 。
+
+\({N}_{1,3}\) 是 \({N}_{1,0},{N}_{2,0},{N}_{3,0}\) 和 \({N}_{4,0}\) 的组合。因此， \({N}_{1,3}\) 仅在 \(u \in  \left\lbrack  {{u}_{1},{u}_{5}}\right)\) 时非零。
+
+\begin{center}
+\includegraphics[max width=0.3\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_67_553_375_418_692_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+P2.2 在任何给定的节点跨度 \(\left\lbrack  {{u}_{j},{u}_{j + 1}}\right)\) 中，至多有 \(p + 1\) 个 \({N}_{i,p}\) 是非零的，即函数 \({N}_{j - p,p},\ldots ,{N}_{j,p}\) 。在 \(\left\lbrack  {{u}_{3},{u}_{4}}\right)\) 上，唯一的非零零阶函数是 \({N}_{3,0}\) 。因此，在 \(\left\lbrack  {{u}_{3},{u}_{4}}\right)\) 上唯一不为零的三次函数是 \({N}_{0,3},\ldots ,{N}_{3,3}\) 。这个属性在这里得到了说明。
+
+\begin{center}
+\includegraphics[max width=0.3\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_67_549_1325_417_693_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+P2.3 对于所有 \(i,p\) 和 \(u\) (非负性)。这通过对 \(p\) 的归纳证明。对于 \(p = 0\) 显然是正确的；假设它对 \(p - 1,p \geq  0\) 成立，且 \(i\) 和 \(u\) 是任意的。根据定义
+
+\[
+{N}_{i,p}\left( u\right)  = \frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1}\left( u\right)  + \frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}\left( u\right)  \tag{2.6}
+\]
+
+根据 P2.1， \({N}_{i,p - 1}\left( u\right)  = 0\) 如果 \(u \notin  \left\lbrack  {{u}_{i},{u}_{i + p}}\right)\) 。但 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + p}}\right)\) 意味着
+
+\[
+\frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}}
+\]
+
+是非负的。根据假设， \({N}_{i,p - 1}\left( u\right)\) 是非负的，因此方程 (2.6) 的第一项是非负的。第二项也是如此，因此 \({N}_{i,p}\left( u\right)\) 是非负的；
+
+P2.4 对于任意的结跨度， \(\left\lbrack  {{u}_{i},{u}_{i + 1}}\right) ,\mathop{\sum }\limits_{{j = i - p}}^{i}{N}_{j,p}\left( u\right)  = 1\) 对于所有 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) (统一划分)。为了证明这一点，考虑
+
+\[
+\mathop{\sum }\limits_{{j = i - p}}^{i}{N}_{j,p}\left( u\right)  = \mathop{\sum }\limits_{{j = i - p}}^{i}\frac{u - {u}_{j}}{{u}_{j + p} - {u}_{j}}{N}_{j,p - 1}\left( u\right)
+\]
+
+\[
++ \mathop{\sum }\limits_{{j = i - p}}^{i}\frac{{u}_{j + p + 1} - u}{{u}_{j + p + 1} - {u}_{j + 1}}{N}_{j + 1,p - 1}\left( u\right)
+\]
+
+将第二个求和中的变量从 \(i - p\) 改为 \(i - p + 1\) ，并考虑 \({N}_{i - p,p - 1}\left( u\right)  = {N}_{i + 1,p - 1}\left( u\right)  = 0\) ，我们得到
+
+\[
+\mathop{\sum }\limits_{{j = i - p}}^{i}{N}_{j,p}\left( u\right)  = \mathop{\sum }\limits_{{j = i - p + 1}}^{i}\left\lbrack  {\frac{u - {u}_{j}}{{u}_{j + p} - {u}_{j}} + \frac{{u}_{j + p} - u}{{u}_{j + p} - {u}_{j}}}\right\rbrack  {N}_{j,p - 1}\left( u\right)
+\]
+
+\[
+= \mathop{\sum }\limits_{{j = i - p + 1}}^{i}{N}_{j,p - 1}\left( u\right)
+\]
+
+递归应用相同的概念得到
+
+\[
+\mathop{\sum }\limits_{{j = i - p}}^{i}{N}_{j,p}\left( u\right)  = \mathop{\sum }\limits_{{j = i - p + 1}}^{i}{N}_{j,p - 1}\left( u\right)  = \mathop{\sum }\limits_{{j = i - p + 2}}^{i}{N}_{j,p - 2}\left( u\right)
+\]
+
+\[
+= \cdots  = \mathop{\sum }\limits_{{j = i}}^{i}{N}_{j,0}\left( u\right)  = 1
+\]
+
+P2.5 所有 \({N}_{i,p}\left( u\right)\) 的导数在结跨度的内部存在(在此处它是一个多项式，见图 2.7)。在一个结 \({N}_{i,p}\left( u\right)\) 是 \(p - k\) 次连续可微的，其中 \(k\) 是结的重数。因此，增加次数会增加连续性，而增加结的重数会降低连续性；
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_69_268_273_993_551_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.7. \({N}_{3,2}\) 被分解为其多项式片段(抛物线)。
+
+\section*{P2.6 除非 \(p = 0,{N}_{i,p}\left( u\right)\) 恰好达到一个最大值的情况。}
+
+理解多个结的影响是重要的。考虑图 2.6 中的函数 \({N}_{0,2},{N}_{1,2},{N}_{2,2},{N}_{5,2}\) 和 \({N}_{6,2}\) 。回忆 \(U =\)  \(\{ 0,0,0,1,2,3,4,4,5,5,5\}\) ，根据方程 (2.5) 和 P2.1，我们看到这些函数在以下结跨度上计算，并且在这些跨度之外为零。
+
+\[
+{N}_{0,2} : \{ 0,0,0,1\}
+\]
+
+\[
+{N}_{1,2} : \{ 0,0,1,2\}
+\]
+
+\[
+{N}_{2,2} : \{ 0,1,2,3\}
+\]
+
+\[
+{N}_{5,2} : \{ 3,4,4,5\}
+\]
+
+\[
+{N}_{6,2} : \{ 4,4,5,5\}
+\]
+
+现在“重数”这个词有两种不同的理解:
+
+\begin{itemize}
+\item 结在结向量中的重数；
+\end{itemize}
+
+\begin{itemize}
+\item 相对于特定基函数的结的重数。
+\end{itemize}
+
+例如， \(u = 0\) 在之前的节点向量 \(U\) 中具有三重性。但就函数 \({N}_{0,2},{N}_{1,2},{N}_{2,2}\) 和 \({N}_{5,2},u = 0\) 而言，分别是三重、二重、一重和零重的节点。从 P2.5 开始，这些函数在 \(u = 0\) 的连续性是 \({N}_{0,2}\) 不连续的； \({N}_{1,2}{C}^{0}\) 连续的； \({N}_{2,2}{C}^{1}\) 连续的；以及 \({N}_{5,2}\) 完全不受影响( \({N}_{5,2}\) 及其所有导数在 \(u = 0\) 处从两侧均为零)。 \({N}_{1,2}\) 将 \(u = 0\) 视为双重节点，因此它是 \({C}^{0}\) 连续的。 \({N}_{2,2}\) 将其所有节点视为一重，因此它在任何地方都是 \({C}^{1}\) 连续的。显然，多重节点的另一个效果(如函数所见)是减少函数非零的“明显”区间的数量；例如， \({N}_{6,2}\) 仅在 \(u \in  \lbrack 4,5)\) 上非零，并且它仅在 \(u = 4\) 和 \(u = 5\) 处是 \({C}^{0}\) 连续的。
+
+
+\section{B样条基函数的导数}
+
+基函数的导数由以下公式给出
+
+\[
+{N}_{i,p}^{\prime } = \frac{p}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1}\left( u\right)  - \frac{p}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}\left( u\right)  \tag{2.7}
+\]
+
+(见图 2.8 以获取图形说明。)我们通过对 \(p\) 的归纳法证明这一点。对于 \(p = 1,{N}_{i,p - 1}\) 和 \({N}_{i + 1,p - 1}\) 来说，它们要么是 0，要么是 1，因此 \({N}_{i,p}^{\prime }\) 要么是
+
+\[
+\frac{1}{{u}_{i + 1} - {u}_{i}}\text{ or } - \frac{1}{{u}_{i + 2} - {u}_{i + 1}}
+\]
+
+(见图 2.5)。现在假设方程 (2.7) 对 \(p - 1,p > 1\) 成立。使用乘积法则， \({\left( fg\right) }^{\prime } = {f}^{\prime }g + f{g}^{\prime }\) 来对基函数进行求导
+
+\[
+{N}_{i,p}\left( u\right)  = \frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1}\left( u\right)  + \frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}\left( u\right)
+\]
+
+得到 \(\;{N}_{i,p}^{\prime } = \frac{1}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1} + \frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1}^{\prime }\)(2.8)
+
+\[
+- \frac{1}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1} + \frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}^{\prime }
+\]
+
+60 B样条基函数
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_70_264_1374_1001_698_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.8. B样条导数的递归定义。
+
+将方程 (2.7) 代入方程 (2.8) 得到 \({N}_{i,p - 1}^{\prime }\) 和 \({N}_{i + 1,p - 1}^{\prime }\) 的结果
+
+\[
+{N}_{i,p}^{\prime } = \frac{1}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1} - \frac{1}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}
+\]
+
+\[
++ \frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}}\left( {\frac{p - 1}{{u}_{i + p - 1} - {u}_{i}}{N}_{i,p - 2} - \frac{p - 1}{{u}_{i + p} - {u}_{i + 1}}{N}_{i + 1,p - 2}}\right)
+\]
+
+\[
++ \frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 1}}\left( {\frac{p - 1}{{u}_{i + p} - {u}_{i + 1}}{N}_{i + 1,p - 2} - \frac{p - 1}{{u}_{i + p + 1} - {u}_{i + 2}}{N}_{i + 2,p - 2}}\right)
+\]
+
+\[
+= \frac{1}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1} - \frac{1}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}
+\]
+
+\[
++ \frac{p - 1}{{u}_{i + p} - {u}_{i}}\frac{u - {u}_{i}}{{u}_{i + p - 1} - {u}_{i}}{N}_{i,p - 2}
+\]
+
+\[
++ \frac{p - 1}{{u}_{i + p} - {u}_{i + 1}}\left( {\frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 1}} - \frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}}}\right) {N}_{i + 1,p - 2}
+\]
+
+\[
+- \frac{p - 1}{{u}_{i + p + 1} - {u}_{i + 1}}\frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 2}}{N}_{i + 2,p - 2}
+\]
+
+注意到
+
+\[
+\frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 1}} - \frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}} =  - 1 + \frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 1}} + 1 - \frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}}
+\]
+
+\[
+=  - \frac{{u}_{i + p + 1} - {u}_{i + 1}}{{u}_{i + p + 1} - {u}_{i + 1}} + \frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 1}}
+\]
+
+\[
++ \frac{{u}_{i + p} - {u}_{i}}{{u}_{i + p} - {u}_{i}} - \frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}}
+\]
+
+\[
+= \frac{{u}_{i + p} - u}{{u}_{i + p} - {u}_{i}} - \frac{u - {u}_{i + 1}}{{u}_{i + p + 1} - {u}_{i + 1}}
+\]
+
+我们得到
+
+\[
+{N}_{i,p}^{\prime } = \frac{1}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1} - \frac{1}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}
+\]
+
+\[
++ \frac{p - 1}{{u}_{i + p} - {u}_{i}}\left( {\frac{u - {u}_{i}}{{u}_{i + p - 1} - {u}_{i}}{N}_{i,p - 2} + \frac{{u}_{i + p} - u}{{u}_{i + p} - {u}_{i + 1}}{N}_{i + 1,p - 2}}\right)
+\]
+
+\[
+- \frac{p - 1}{{u}_{i + p + 1} - {u}_{i + 1}}\left( {\frac{u - {u}_{i + 1}}{{u}_{i + p} - {u}_{i + 1}}{N}_{i + 1,p - 2} + \frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 2}}{N}_{i + 2,p - 2}}\right)
+\]
+
+根据 Cox-deBoor 公式 (方程 [2.5])，括号中的表达式可以分别用 \({N}_{i,p - 1}\) 和 \({N}_{i + 1,p - 1}\) 替换。因此
+
+\[
+{N}_{i,p}^{\prime } = \frac{1}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1} - \frac{1}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}
+\]
+
+\[
++ \frac{p - 1}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1} - \frac{p - 1}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}
+\]
+
+\[
+= \frac{p}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1} - \frac{p}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}
+\]
+
+这完成了证明。
+
+现在让 \({N}_{i,p}^{\left( k\right) }\) 表示 \(k\) 阶导数 \({N}_{i,p}\left( u\right)\) 。对方程 (2.7) 进行重复求导得到一般公式
+
+\[
+{N}_{i,p}^{\left( k\right) }\left( u\right)  = p\left( {\frac{{N}_{i,p - 1}^{\left( k - 1\right) }}{{u}_{i + p} - {u}_{i}} - \frac{{N}_{i + 1,p - 1}^{\left( k - 1\right) }}{{u}_{i + p + 1} - {u}_{i + 1}}}\right)  \tag{2.9}
+\]
+
+方程 (2.10) 是方程 (2.7) 的另一个推广。它以函数 \({N}_{i,p - k},\ldots ,{N}_{i + k,p - k}\) 的形式计算 \({N}_{i,p}\left( u\right)\) 的 \(k\) 阶导数
+
+\[
+{N}_{i,p}^{\left( k\right) } = \frac{p!}{\left( {p - k}\right) !}\mathop{\sum }\limits_{{j = 0}}^{k}{a}_{k,j}{N}_{i + j,p - k} \tag{2.10}
+\]
+
+其中
+
+\[
+{a}_{0,0} = 1
+\]
+
+\[
+{a}_{k,0} = \frac{{a}_{k - 1,0}}{{u}_{i + p - k + 1} - {u}_{i}}
+\]
+
+\[
+{a}_{k,j} = \frac{{a}_{k - 1,j} - {a}_{k - 1,j - 1}}{{u}_{i + p + j - k + 1} - {u}_{i + j}}\;j = 1,\ldots ,k - 1
+\]
+
+\[
+{a}_{k,k} = \frac{-{a}_{k - 1,k - 1}}{{u}_{i + p + 1} - {u}_{i + k}}
+\]
+
+关于方程 (2.10) 的备注:
+
+\begin{itemize}
+\item \(k\) 不应超过 \(p\) (所有更高阶导数为零)；
+\end{itemize}
+
+\begin{itemize}
+\item 涉及节点差异的分母可能会变为零；在这种情况下，商被定义为零(见下一节的示例和算法)。
+\end{itemize}
+
+我们省略了公式 (2.10) 的证明，但验证它在 \(k = 1,2\) 下成立。根据定义
+
+\[
+{a}_{1,0} = \frac{1}{{u}_{i + p} - {u}_{i}}\;{a}_{1,1} =  - \frac{1}{{u}_{i + p + 1} - {u}_{i + 1}}
+\]
+
+和
+
+\[
+{N}_{i,p}^{\left( 1\right) } = 2\left( {{a}_{1,0}{N}_{i,p - 1} + {a}_{1,1}{N}_{i + 1,p - 1}}\right)
+\]
+
+将此与公式 (2.7) 进行比较证明了 \(k = 1\) 的情况；现在设 \(k = 2\) 。对公式 (2.7) 进行微分得到
+
+\[
+{N}_{i,p}^{\left( 2\right) } = \frac{p}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1}^{\left( 1\right) } - \frac{p}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}^{\left( 1\right) }
+\]
+
+\[
+= \frac{p}{{u}_{i + p} - {u}_{i}}\left( {\frac{p - 1}{{u}_{i + p - 1} - {u}_{i}}{N}_{i,p - 2} - \frac{p - 1}{{u}_{i + p} - {u}_{i + 1}}{N}_{i + 1,p - 2}}\right)
+\]
+
+\[
+- \frac{p}{{u}_{i + p + 1} - {u}_{i + 1}}\left( {\frac{p - 1}{{u}_{i + p} - {u}_{i + 1}}{N}_{i + 1,p - 2} - \frac{p - 1}{{u}_{i + p + 1} - {u}_{i + 2}}{N}_{i + 2,p - 2}}\right)
+\]
+
+\[
+= p\left( {p - 1}\right) \left\lbrack  {\frac{{a}_{1,0}}{{u}_{i + p - 1} - {u}_{i}}{N}_{i,p - 2}}\right.
+\]
+
+\[
+- \frac{1}{{u}_{i + p} - {u}_{i + 1}}\left( {\frac{1}{{u}_{i + p} - {u}_{i}} + \frac{1}{{u}_{i + p + 1} - {u}_{i + 1}}}\right) {N}_{i + 1,p - 2}
+\]
+
+\[
+\left. {+\frac{{a}_{1,1}}{{u}_{i + p + 1} - {u}_{i + 2}}{N}_{i + 2,p - 2}}\right\rbrack
+\]
+
+\[
+= p\left( {p - 1}\right) \left( {{a}_{2,0}{N}_{i,p - 2} + \frac{{a}_{1,1} - {a}_{1,0}}{{u}_{i + p} - {u}_{i + 1}}{N}_{i + 1,p - 2} + {a}_{2,2}{N}_{i + 2,p - 2}}\right)
+\]
+
+注意到 \(k = 2\) 和
+
+\[
+{a}_{2,1} = \frac{{a}_{1,1} - {a}_{1,0}}{{u}_{i + p} - {u}_{i + 1}}
+\]
+
+由此可得
+
+\[
+{N}_{i,p}^{\left( 2\right) }\left( u\right)  = 2\mathop{\sum }\limits_{{j = 0}}^{2}{a}_{2,j}{N}_{i + j,p - 2}\left( u\right)
+\]
+
+为了完整性，我们给出一个额外的公式来计算 B 样条基函数的导数(见 [Butt76])
+
+\[
+{N}_{i,p}^{\left( k\right) } = \frac{p}{p - k}\left( {\frac{u - {u}_{i}}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1}^{\left( k\right) } + \frac{{u}_{i + p + 1} - u}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}^{\left( k\right) }}\right)
+\]
+
+\[
+k = 0,\ldots ,p - 1 \tag{2.11}
+\]
+
+公式 (2.11) 给出了 \({N}_{i,p}\left( u\right)\) 的 \(k\) 阶导数，以 \({N}_{i,p - 1}\) 的 \(k\) 阶导数和 \({N}_{i + 1,p - 1}\) 表示。
+
+图 2.9b 和 2.10b 显示了与图 2.9a 和 2.10a 中的基函数对应的导数。图 2.11 显示了 \({N}_{i,3}\) 的所有非零导数。注意图 2.10b 中多个节点的影响； \({N}_{6,3}^{\prime }\) 在三重节点处有一个跳跃。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_74_260_246_984_1278_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.9. (a) 三次基函数；(b) 与图 2.9a 中的基函数对应的导数。
+
+
+
+\section{基函数的进一步性质}
+
+设 \(\left\{  {u}_{j}\right\}  ,0 \leq  j \leq  k\) 为一个严格递增的断点集合。在 \(\left\{  {u}_{j}\right\}\) 上，所有在 \(u = {u}_{j}\) 处 \({C}^{{r}_{j}}\) 连续的 \(p\) 次分段多项式函数的集合形成一个向量空间 \(\mathcal{V}\left( {-1 \leq  {r}_{j} \leq  p}\right)\) 。如果对所有 \(\left. j\right)\) 不施加连续性约束 \(\left( {{r}_{j} =  - 1}\right.\) ，则 \(\mathcal{V}\left( \right.\) 的维度 \(\dim \left( \mathcal{V}\right) )\) 等于 \(k\left( {p + 1}\right)\) 。每个连续性约束使维度减少一个，因此
+
+\[
+\dim \left( \mathcal{V}\right)  = k\left( {p + 1}\right)  - \mathop{\sum }\limits_{{j = 0}}^{k}\left( {{r}_{j} + 1}\right)  \tag{2.12}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_75_287_255_974_1296_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.10. (a) 立方基函数显示单个、双重和三重节点；(b) 图 2.10a 中函数的导数。
+
+根据性质 P2.5，我们通过设置适当的节点重数 \({s}_{j}\) 来获得具有 \(\left\{  {u}_{j}\right\}\) 处节点的 \(p\) 次 B-spline 基函数，并具有所需的连续性 \({s}_{j} = p - {r}_{j}\) 。因此，我们使用形式为
+
+\[
+U = \{ \underset{{s}_{0}}{\underbrace{{u}_{0},\ldots ,{u}_{0}}},\underset{{s}_{1}}{\underbrace{{u}_{1},\ldots ,{u}_{1}}},\ldots ,\underset{{s}_{k}}{\underbrace{{u}_{k},\ldots ,{u}_{k}}}\}
+\]
+
+现在设置
+
+\[
+m = \left( {\mathop{\sum }\limits_{{j = 0}}^{k}{s}_{j}}\right)  - 1
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_76_285_283_959_618_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.11. \({N}_{i,3}\) 及其所有非零导数。
+
+因此，显然有 \(m\) 个零次函数， \({N}_{i,0},m - 1\) 个一次函数， \({N}_{i,1}\) ，以及一般的 \(m - {pp}\) 次函数 \({N}_{i,p}\) ，它们具有所需的连续性 \({r}_{j} = p - {s}_{j}\) 。因此， \({N}_{i,p}\) 包含在 \(\mathcal{V}\) 中。将 \({s}_{j} = p - {r}_{j}\) 代入方程 (2.12) 得到
+
+\[
+\dim \left( \mathcal{V}\right)  = k\left( {p + 1}\right)  - \mathop{\sum }\limits_{{j = 0}}^{k}\left( {p - {s}_{j} + 1}\right)
+\]
+
+\[
+= k\left( {p + 1}\right)  - \left( {k + 1}\right) p + \mathop{\sum }\limits_{{j = 0}}^{k}{s}_{j} - \left( {k + 1}\right)
+\]
+
+\[
+=  - p - 1 + \mathop{\sum }\limits_{{j = 0}}^{k}{s}_{j}
+\]
+
+\[
+= m - p
+\]
+
+因此，在 \(U\) 上的 \(p\) 次 B-spline 基函数的数量等于 \(\dim \left( \mathcal{V}\right)\) 。我们现在通过证明 \({N}_{i,p}\) 是线性无关的来证明“基”函数的术语，即它们构成向量空间 \(\mathcal{V}\) 的基。证明是通过对 \(p\) 的归纳。显然，零次函数是线性无关的。假设 (p - 1) 次函数在 \(p > 0\) 上是线性无关的。设 \(n = m - p - 1\) ，并假设
+
+\[
+\mathop{\sum }\limits_{{i = 0}}^{n}{\alpha }_{i}{N}_{i,p}\left( u\right)  = 0\;\text{ for all }u
+\]
+
+使用方程 (2.7) 我们得到
+
+\[
+0 = {\left( \mathop{\sum }\limits_{{i = 0}}^{n}{\alpha }_{i}{N}_{i,p}^{\prime }\right) }^{\prime } = \mathop{\sum }\limits_{{i = 0}}^{n}{\alpha }_{i}{N}_{i,p}^{\prime }
+\]
+
+\[
+= p\mathop{\sum }\limits_{{i = 0}}^{n}{\alpha }_{i}\left( {\frac{{N}_{i,p - 1}}{{u}_{i + p} - {u}_{i}} - \frac{{N}_{i + 1,p - 1}}{{u}_{i + p + 1} - {u}_{i + 1}}}\right)
+\]
+
+这意味着
+
+\[
+0 = \mathop{\sum }\limits_{{i = 0}}^{n}{\alpha }_{i}\frac{{N}_{i,p - 1}}{{u}_{i + p} - {u}_{i}} - \mathop{\sum }\limits_{{i = 0}}^{n}{\alpha }_{i}\frac{{N}_{i + 1,p - 1}}{{u}_{i + p + 1} - {u}_{i + 1}}
+\]
+
+现在注意到 \({N}_{0,p - 1} = {N}_{n + 1,p - 1} = 0\) ，并在第二项中更改求和变量，我们有
+
+\[
+0 = \mathop{\sum }\limits_{{i = 1}}^{n}\frac{{\alpha }_{i} - {\alpha }_{i - 1}}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1}
+\]
+
+这意味着对于所有 \(i\) (根据假设) \({\alpha }_{i} - {\alpha }_{i - 1} = 0\) ，这反过来意味着对于所有 \(i\)  \({\alpha }_{i} = 0\) 。这完成了证明。
+
+现在我们将注意力转向节点向量。显然，一旦度数固定，节点向量就完全决定了函数 \({N}_{i,p}\left( u\right)\) 。节点向量有几种类型，不幸的是，文献中的术语有所不同。在本书中，我们仅考虑非周期性(或夹紧或开放)节点向量，其形式为
+
+\[
+U = \{ \underset{p + 1}{\underbrace{a,\ldots ,a}},{u}_{p + 1},\ldots ,{u}_{m - p - 1},\underset{p + 1}{\underbrace{b,\ldots ,b}}\}  \tag{2.13}
+\]
+
+即，第一个和最后一个节点的重数为 \(p + 1\) 。对于非周期性节点向量，我们有两个额外的基函数性质:
+
+P2.7 形式的节点向量
+
+\[
+U = \{ \underset{p + 1}{\underbrace{0,\ldots ,0}},\underset{p + 1}{\underbrace{1,\ldots ,1}}\}
+\]
+
+产生度数为 \(p\) 的伯恩斯坦多项式(见第2.2节的示例Ex2.1)；
+
+P2.8 设 \(m + 1\) 为节点的数量。则有 \(n + 1\) 个基函数，其中 \(n = m - p - 1;{N}_{0,p}\left( a\right)  = 1\) 和 \({N}_{n,p}\left( b\right)  = 1\) 。例如， \({N}_{0,p}\left( a\right)  = 1\) 由 \({N}_{0,0},\ldots ,{N}_{p - 1,0} = 0\) 的事实得出，因为这意味着 \({N}_{0,p}\left( a\right)  = {N}_{p,0}\left( a\right)  = 1\) 。从P2.4可以得出，对于 \(i \neq  0\) ， \({N}_{i,p}\left( a\right)  =\) 为0，对于 \(i \neq  n\) ， \({N}_{i,p}\left( b\right)  = 0\) 为。
+
+在本书的其余部分，所有节点向量都被理解为非周期性。我们定义一个节点向量 \(U = \left\{  {{u}_{0},\ldots ,{u}_{m}}\right\}\) 为均匀的，如果所有内部节点均匀分布，即，如果存在一个实数 \(d\) ，使得对于所有 \(p \leq  i \leq  m - p - 1\) ，都有 \(d = {u}_{i + 1} - {u}_{i}\) ；否则它是非均匀的。示例的节点向量
+
+Ex2.2，第2.2节是非均匀的，因为在 \(u = 4\) 处有双重节点。图2.9a显示了一组均匀的三次基函数，图2.10a和2.12显示了非均匀的三次基函数。
+
+\section{计算算法}
+
+在本节中，我们开发算法来计算基函数及其导数的值。设 \(U = \left\{  {{u}_{0},\ldots ,{u}_{m}}\right\}\) 为形式如公式 (2.13) 的节点向量，并假设我们对度数为 \(p\) 的基函数感兴趣。此外，假设 \(u\) 是固定的，并且 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) 。我们开发了五个算法来计算:
+
+\begin{itemize}
+\item 节点跨度索引 \(i\) ；
+\end{itemize}
+
+\begin{itemize}
+\item \({N}_{i - p,p}\left( u\right) ,\ldots ,{N}_{i,p}\left( u\right)\) (基于公式 [2.5])；
+\end{itemize}
+
+\begin{itemize}
+\item \({N}_{i - p,p}^{\left( k\right) }\left( u\right) ,\ldots ,{N}_{i,p}^{\left( k\right) }\left( u\right)\) 对于 \(k = 0,\ldots ,p\) ；对于 \(k > p\) ，导数为零(该算法基于公式 [2.10])；
+\end{itemize}
+
+\begin{itemize}
+\item 单个基函数 \({N}_{j,p}\left( u\right)\) ，其中 \(0 \leq  j \leq  m - p - 1\) ；
+\end{itemize}
+
+\begin{itemize}
+\item 单个基函数 \({N}_{j,p}^{\left( k\right) }\left( u\right)\) 的导数，其中 \(0 \leq  j \leq  m - p - 1\) 和 \(k = 0,\ldots ,p\) (基于公式 [2.9])。
+\end{itemize}
+
+我们首先介绍计算 \(p + 1\) 函数的两个算法，然后是仅计算一个的两个算法，因为它们是最重要的，并且实际上相对简单。
+
+从 P2.2 和假设 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) 可得，我们可以将注意力集中在函数 \({N}_{i - p,p},\ldots ,{N}_{i,p}\) 及其导数上；所有其他函数均为零，实际计算它们是浪费。因此，评估的第一步是确定 \(u\) 所在的节点跨度。可以使用线性或二分搜索节点向量；我们在此介绍二分搜索。由于我们使用的区间形式为 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) ，在基函数评估中存在一个微妙的问题，即特殊情况 \(u = {u}_{m}\) 。最好在最低级别处理此问题，将跨度索引设置为 \(n\left( { = m - p - 1}\right)\) 。因此，在这种情况下 \(u \in  \left( {{u}_{m - p - 1},{u}_{m - p}}\right\rbrack\) 。FindSpan 是一个整数函数，返回跨度索引。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_78_265_1606_980_459_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 2.12. 定义在 \(U = \{ 0,0,0,0,1,5,6,8,8,8,8\}\) 上的非均匀立方基函数。
+
+\HRule
+
+ALGORITHM A2.1
+
+\hspace*{1em} int FindSpan(n, p, u, U)
+
+\hspace*{3em} \{ /* Determine the knot span index */
+
+\hspace*{4em} /* Input: n, p, u, U */
+
+\hspace*{4em} /* Return: the knot span index */
+
+\hspace*{3em} if \(\left( {u =  = U\left\lbrack  {n + 1}\right\rbrack  }\right)\) return(n); /* Special case */
+
+\hspace*{2em} low \(= p;\;\) high \(= n + 1;\;\) /* Do binary search */
+
+\hspace*{2em} mid = (low+high) / 2 ;
+
+\hspace*{2em} while (u < U[mid] || u >= U[mid+1])
+
+\hspace*{4em} \{
+
+\hspace*{4em} if (u < U[mid]) high = mid;
+
+\hspace*{5em} else low = mid;
+
+\hspace*{4em} mid = (low+high)/2;
+
+\hspace*{4em} \{
+
+\hspace*{2em} return(mid);
+
+\hspace*{2em} \}
+
+\HRule
+
+现在我们来解决第二个算法。假设 \(u\) 在 \(i\) 的跨度中，非零函数的计算结果是一个反三角形方案。
+
+\[
+{N}_{i - p,p}
+\]
+
+\[
+{N}_{i - 1,1}
+\]
+
+\[
+{N}_{i,0}\;\cdots \;\vdots
+\]
+
+\[
+{N}_{i,1}
+\]
+
+\[
+{N}_{i,p}
+\]
+
+\section*{示例}
+
+Ex2.3 设 \(p = 2,U = \{ 0,0,0,1,2,3,4,4,5,5,5\}\) 和 \(u = 5/2\) (见图 2.6)。那么 \(i = 4\) ，因为 \(u \in  \left\lbrack  {{u}_{4},{u}_{5}}\right)\) 。因此，我们计算
+
+\begin{center}
+\includegraphics[max width=0.4\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_79_616_1919_439_225_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+将 \(u = 5/2\) 代入方程 (2.5)(读者应自行完成此操作)得到
+
+\[
+{N}_{4,0}\left( \frac{5}{2}\right)  = 1
+\]
+
+\[
+{N}_{3,1}\left( \frac{5}{2}\right)  = \frac{1}{2}\;{N}_{4,1}\left( \frac{5}{2}\right)  = \frac{1}{2}
+\]
+
+\[
+{N}_{2,2}\left( \frac{5}{2}\right)  = \frac{1}{8}\;{N}_{3,2}\left( \frac{5}{2}\right)  = \frac{6}{8}\;{N}_{4,2}\left( \frac{5}{2}\right)  = \frac{1}{8}
+\]
+
+注意，对于固定的度数，函数的和为 1(P2.4)。
+
+对于在本例中进行替换的读者来说，很明显方程 (2.5) 中存在大量冗余计算。例如，写出一般形式的二次函数，我们有
+
+\[
+{N}_{i - 2,2}\left( u\right)  = \frac{u - {u}_{i - 2}}{{u}_{i} - {u}_{i - 2}}{N}_{i - 2,1}\left( u\right)  + \frac{{u}_{i + 1} - u}{{u}_{i + 1} - {u}_{i - 1}}{N}_{i - 1,1}\left( u\right)  \tag{2.14}
+\]
+
+\[
+{N}_{i - 1,2}\left( u\right)  = \frac{u - {u}_{i - 1}}{{u}_{i + 1} - {u}_{i - 1}}{N}_{i - 1,1}\left( u\right)  + \frac{{u}_{i + 2} - u}{{u}_{i + 2} - {u}_{i}}{N}_{i,1}\left( u\right)  \tag{2.15}
+\]
+
+\[
+{N}_{i,2}\left( u\right)  = \frac{u - {u}_{i}}{{u}_{i + 2} - {u}_{i}}{N}_{i,1}\left( u\right)  + \frac{{u}_{i + 3} - u}{{u}_{i + 3} - {u}_{i + 1}}{N}_{i + 1,1}\left( u\right)  \tag{2.16}
+\]
+
+注意
+
+\begin{itemize}
+\item 方程 (2.14) 的第一项和方程 (2.16) 的最后一项未被计算，因为 \({N}_{i - 2,1}\left( u\right)  = {N}_{i + 1,1}\left( u\right)  = 0\) ；
+\end{itemize}
+
+\begin{itemize}
+\item 表达式
+\end{itemize}
+
+\[
+\frac{{N}_{i - 1,1}\left( u\right) }{{u}_{i + 1} - {u}_{i - 1}}
+\]
+
+出现在方程 (2.14) 的第二项中的表达式出现在方程 (2.15) 的第一项中；方程 (2.15) 的第二项和方程 (2.16) 的第一项也有类似的情况。
+
+我们引入符号
+
+\[
+\text{ left }\left\lbrack  j\right\rbrack   = u - {u}_{i + 1 - j}\;\text{ right }\left\lbrack  j\right\rbrack   = {u}_{i + j} - u
+\]
+
+方程 (2.14)-(2.16) 然后是
+
+\[
+{N}_{i - 2,2}\left( u\right)  = \frac{\text{ left }\left\lbrack  3\right\rbrack  }{\text{ right }\left\lbrack  0\right\rbrack   + \text{ left }\left\lbrack  3\right\rbrack  }{N}_{i - 2,1}\left( u\right)  + \frac{\text{ right }\left\lbrack  1\right\rbrack  }{\text{ right }\left\lbrack  1\right\rbrack   + \text{ left }\left\lbrack  2\right\rbrack  }{N}_{i - 1,1}\left( u\right)
+\]
+
+\[
+{N}_{i - 1,2}\left( u\right)  = \frac{\text{ left }\left\lbrack  2\right\rbrack  }{\text{ right }\left\lbrack  1\right\rbrack   + \text{ left }\left\lbrack  2\right\rbrack  }{N}_{i - 1,1}\left( u\right)  + \frac{\text{ right }\left\lbrack  2\right\rbrack  }{\text{ right }\left\lbrack  2\right\rbrack   + \text{ left }\left\lbrack  1\right\rbrack  }{N}_{i,1}\left( u\right)
+\]
+
+\[
+{N}_{i,2}\left( u\right)  = \frac{\text{ left }\left\lbrack  1\right\rbrack  }{\text{ right }\left\lbrack  2\right\rbrack   + \text{ left }\left\lbrack  1\right\rbrack  }{N}_{i,1}\left( u\right)  + \frac{\text{ right }\left\lbrack  3\right\rbrack  }{\text{ right }\left\lbrack  3\right\rbrack   + \text{ left }\left\lbrack  0\right\rbrack  }{N}_{i + 1,1}\left( u\right)
+\]
+
+基于这些观察，算法 A2.2 计算所有非消失基函数并将其存储在数组 \(\mathrm{N}\left\lbrack  0\right\rbrack  ,\ldots ,\mathrm{N}\left\lbrack  \mathrm{p}\right\rbrack\) 中。
+
+\HRule
+
+ALGORITHM A2.2
+
+\hspace*{1em} BasisFuns(i, u, p, U, N)
+
+\hspace*{3em} \{ /* Compute the nonvanishing basis functions */
+
+\hspace*{4em} /* Input: i, u, p, U */
+
+\hspace*{4em} /* Output: N */
+
+\hspace*{2em} \(\mathrm{N}\left\lbrack  0\right\rbrack   = {1.0}\) ;
+
+\hspace*{2em} for (j=1; j<=p; j++)
+
+\hspace*{4em} \{
+
+\hspace*{4em} left[j] = u-U[i+1-j];
+
+\hspace*{4em} right[j] = U[i+j]-u;
+
+\hspace*{4em} saved \(= {0.0}\) ;
+
+\hspace*{4em} for (r=0; r<j; r++)
+
+\hspace*{5em} \{
+
+\hspace*{5em} temp \(= N\left\lbrack  r\right\rbrack  /\left( {\operatorname{right}\left\lbrack  {r + 1}\right\rbrack   + \operatorname{left}\left\lbrack  {j - r}\right\rbrack  }\right)\) ;
+
+\hspace*{5em} \(\texttt{N[r]} =\) saved+right[r+1]*temp;
+
+\hspace*{5em} saved = left[j-r]*temp;
+
+\hspace*{5em} \}
+
+\hspace*{4em} \(\mathrm{N}\left\lbrack  j\right\rbrack   =\) saved;
+
+\hspace*{4em} \}
+
+\hspace*{2em} \}
+
+\HRule
+
+我们指出，算法 A2.2 不仅高效，而且还保证不会出现除以零的情况，这在直接应用方程 (2.5) 时可能发生。
+
+现在谈到第三个算法；特别是，我们想要计算所有 \({N}_{r,p}^{\left( k\right) }\left( u\right)\) ，对于 \(i - p \leq  r \leq  i\) 和 \(0 \leq  k \leq  n\) ，其中 \(n \leq  p\) 。检查方程 (2.10) 显示基本成分为:
+
+\begin{itemize}
+\item 在算法 A2.2 中计算的非零基函数的倒三角形；
+\end{itemize}
+
+\begin{itemize}
+\item 节点的差异(和:右 \(\left\lbrack  {r + 1}\right\rbrack   +\) 左 \(\left\lbrack  {j - r}\right\rbrack\) )，同样在算法 A2.2 中计算；
+\end{itemize}
+
+\begin{itemize}
+\item \({a}_{k,j}\) 的差异；注意 \({a}_{k,j}\) 依赖于 \({a}_{k - 1,j}\) 但不依赖于 \({a}_{s,j}\) ，对于 \(s < k - 1\) 。
+\end{itemize}
+
+视为维度为 \(\left( {p + 1}\right)  \times  \left( {p + 1}\right)\) 的二维数组，基函数适合于上三角形(包括对角线)，而节点差异适合于下三角形，即
+
+\begin{center}
+\adjustbox{max width=\textwidth}{
+\begin{tabular}{|c|c|c|}
+\hline
+\({N}_{i,0}\left( u\right)\) & \({N}_{i - 1,1}\left( u\right)\) & \({N}_{i - 2,2}\left( u\right)\) \\
+\cline{1-3}
+\({u}_{i + 1} - {u}_{i}\) & \({N}_{i,1}\left( u\right)\) & \({N}_{i - 1,2}\left( u\right)\) \\
+\cline{1-3}
+\({u}_{i + 1} - {u}_{i - 1}\) & \({u}_{i + 2} - {u}_{i}\) & \({N}_{i,2}\left( u\right)\) \\
+\cline{1-3}
+\hline
+\end{tabular}
+}
+\end{center}
+
+\section*{示例}
+
+Ex2.4 设 \(p = 2,U = \{ 0,0,0,1,2,3,4,4,5,5,5\}\) ，和 \(u = 5/2\) 。则 \(u \in\)  \(\left\lbrack  {{u}_{4},{u}_{5}}\right)\) ，数组变为
+
+\begin{center}
+\adjustbox{max width=\textwidth}{
+\begin{tabular}{|c|c|c|}
+\hline
+\({N}_{4,0}\left( \frac{5}{2}\right)  = 1\) & \({N}_{3,1}\left( \frac{5}{2}\right)  = \frac{1}{2}\) & \({N}_{2,2}\left( \frac{5}{2}\right)  = \frac{1}{8}\) \\
+\cline{1-3}
+\({u}_{5} - {u}_{4} = 1\) & \({N}_{4,1}\left( \frac{5}{2}\right)  = \frac{1}{2}\) & \({N}_{3,2}\left( \frac{5}{2}\right)  = \frac{6}{8}\) \\
+\cline{1-3}
+\({u}_{5} - {u}_{3} = 2\) & \({u}_{6} - {u}_{4} = 2\) & \({N}_{4,2}\left( \frac{5}{2}\right)  = \frac{1}{8}\) \\
+\cline{1-3}
+\hline
+\end{tabular}
+}
+\end{center}
+
+现在计算 \({N}_{4,2}^{\left( 1\right) }\left( {5/2}\right)\) 和 \({N}_{4,2}^{\left( 2\right) }\left( {5/2}\right)\) ; 结合方程 (2.10) 中的 \(i = 4\) ，我们得到
+
+\[
+{a}_{1,0} = \frac{1}{{u}_{6} - {u}_{4}} = \frac{1}{2}
+\]
+
+\[
+{a}_{1,1} =  - \frac{1}{{u}_{7} - {u}_{5}} =  - 1
+\]
+
+\[
+{a}_{2,0} = \frac{{a}_{1,0}}{{u}_{5} - {u}_{4}} = \frac{1}{2}
+\]
+
+\[
+{a}_{2,1} = \frac{{a}_{1,1} - {a}_{1,0}}{{u}_{6} - {u}_{5}} = \frac{-1 - \frac{1}{2}}{4 - 3} =  - \frac{3}{2}
+\]
+
+\[
+{a}_{2,2} =  - \frac{{a}_{1,1}}{{u}_{7} - {u}_{6}} = \frac{1}{4 - 4} = \frac{1}{0}
+\]
+
+和
+
+\[
+{N}_{4,2}^{\left( 1\right) } = 2\left\lbrack  {{a}_{1,0}{N}_{4,1}\left( \frac{5}{2}\right)  + {a}_{1,1}{N}_{5,1}\left( \frac{5}{2}\right) }\right\rbrack
+\]
+
+\[
+{N}_{4,2}^{\left( 2\right) } = 2\left\lbrack  {{a}_{2,0}{N}_{4,0}\left( \frac{5}{2}\right)  + {a}_{2,1}{N}_{5,0}\left( \frac{5}{2}\right)  + {a}_{2,2}{N}_{6,0}\left( \frac{5}{2}\right) }\right\rbrack
+\]
+
+现在 \({a}_{1,1},{a}_{2,1}\) 和 \({a}_{2,2}\) 都使用不在数组中的节点差异，但它们分别乘以 \({N}_{5,1}\left( {5/2}\right) ,{N}_{5,0}\left( {5/2}\right)\) ，并且
+
+\({N}_{6,0}\left( {5/2}\right)\) ，同样不在数组中。这些项被定义为零，剩下的就是
+
+\[
+{N}_{4,2}^{\left( 1\right) } = 2{a}_{1,0}{N}_{4,1}\left( \frac{5}{2}\right)  = \frac{1}{2}
+\]
+
+\[
+{N}_{4,2}^{\left( 2\right) } = 2{a}_{2,0}{N}_{4,0}\left( \frac{5}{2}\right)  = 1
+\]
+
+为了检查这些值，请回忆第 2.2 节中的 \({N}_{4,2}\left( u\right)  = 1/2{\left( u - 2\right) }^{2}\) 在 \(u \in  \lbrack 2,3)\) 上。计算 \({N}_{3,2}^{\left( 1\right) }\left( {5/2}\right) ,{N}_{3,2}^{\left( 2\right) }\left( {5/2}\right) ,{N}_{2,2}^{\left( 1\right) }\left( {5/2}\right)\) 和 \({N}_{2,2}^{\left( 2\right) }\left( {5/2}\right)\) 是类似的。
+
+基于这些观察(以及 Ex2.4)，开发算法 A2.3 并不困难，该算法计算非零基函数及其导数，直到并包括 \(n\) 阶导数 \(\left( {n \leq  p}\right)\) 。输出在二维数组 ders 中。ders \(\left\lbrack  \mathrm{k}\right\rbrack  \left\lbrack  \mathrm{j}\right\rbrack\) 是函数 \({N}_{i - p + j,p}\) 的 \(k\) 阶导数，其中 \(0 \leq  k \leq  n\) 和 \(0 \leq  j \leq  p\) 。使用了两个局部数组:
+
+\begin{itemize}
+\item ndu \(\left\lbrack  {p + 1}\right\rbrack  \left\lbrack  {p + 1}\right\rbrack\) ，用于存储基函数和节点差异；
+\end{itemize}
+
+\begin{itemize}
+\item a [2] [p+1]，以交替方式存储最近计算的两行 \({a}_{k,j}\) 和 \({a}_{k - 1,j}\) 。
+\end{itemize}
+
+该算法避免了除以零和/或使用不在数组 ndu[] [] 中的项。
+
+\HRule
+
+ALGORITHM A2.3
+
+\hspace*{2em} DersBasisFuns(i, u, p, n, U, ders)
+
+\hspace*{4em} \{ /* Compute nonzero basis functions and their */
+
+\hspace*{5em} /* derivatives. First section is A2.2 modified */
+
+\hspace*{6em} /* to store functions and knot differences. */
+
+\hspace*{6em} /* Input: i, u, p, n, U */
+
+\hspace*{6em} /* Output: ders */
+
+\hspace*{4em} ndu[0][0]=1.0;
+
+\hspace*{4em} for (j=1; j<=p; j++)
+
+\hspace*{6em} \{
+
+\hspace*{6em} left[j] = u-U[i+1-j];
+
+\hspace*{6em} right[j] = U[i+j]-u;
+
+\hspace*{6em} saved \(= {0.0}\) ;
+
+\hspace*{6em} for (r=0; r<j; r++)
+
+\hspace*{8em} \{ /* Lower triangle */
+
+\hspace*{8em} ndu[j][r] = right[r+1]+left[j-r];
+
+\hspace*{8em} temp = ndu[r][j-1]/ndu[j][r];
+
+\hspace*{41em} /* Upper triangle */
+
+\hspace*{8em} ndu[r][j] = saved+right[r+1]*temp;
+
+\hspace*{8em} saved = left[j-r]*temp;
+
+\hspace*{7em} \}
+
+\hspace*{6em} ndu[j][j] = saved;
+
+\hspace*{1em} \}
+
+for \(\left( {j = 0;j <  = p;j +  + }\right) \;/ *\) Load the basis functions \(*\) /
+
+\hspace*{2em} ders[0][j] = ndu[j][p];
+
+/* This section computes the derivatives (Eq. [2.9]) */
+
+for \(\left( {r = 0;r <  = p;r +  + }\right) \;/ *\) Loop over function index \(*\) /
+
+\hspace*{2em} \{
+
+\hspace*{2em} s1=0; s2=1; /* Alternate rows in array a */
+
+\hspace*{2em} \(a\left\lbrack  0\right\rbrack  \left\lbrack  0\right\rbrack   = {1.0};\)
+
+\hspace*{2em} /* Loop to compute kth derivative */
+
+\hspace*{2em} for (k=1; k<=n; k++)
+
+\hspace*{3em} \{
+
+\hspace*{3em} d = 0.0 ;
+
+\hspace*{3em} \({rk} = r - k;\;{pk} = p - k;\)
+
+\hspace*{3em} if (r >= k)
+
+\hspace*{4em} \{
+
+\hspace*{5em} a[s2][0] = a[s1][0]/ndu[pk+1][rk];
+
+\hspace*{4em} d = a[s2][0]*ndu[rk][pk];
+
+\hspace*{4em} \}
+
+\hspace*{3em} if \(\left( {{rk} >  =  - 1}\right) \;{j1} = 1\) ;
+
+\hspace*{4em} else j1 = -rk;
+
+\hspace*{3em} if \(\left( {r - 1 <  = {pk}}\right) \;{j2} = k - 1\) ;
+
+\hspace*{4em} else j2 = p-r;
+
+\hspace*{3em} for (j=j1; j<=j2; j++)
+
+\hspace*{4em} \{
+
+\hspace*{4em} a[s2][j] = (a[s1][j]-a[s1][j-1])/ndu[pk+1][rk+j];
+
+\hspace*{4em} d += a[s2][j]*ndu[rk+j][pk];
+
+\hspace*{4em} \}
+
+\hspace*{3em} if (r <= pk)
+
+\hspace*{4em} \{
+
+\hspace*{5em} \(a\left\lbrack  {s2}\right\rbrack  \left\lbrack  k\right\rbrack   =  - a\left\lbrack  {s1}\right\rbrack  \left\lbrack  {k - 1}\right\rbrack  /{ndu}\left\lbrack  {{pk} + 1}\right\rbrack  \left\lbrack  r\right\rbrack  ;\)
+
+\hspace*{4em} d += a[s2][k]*ndu[r][pk];
+
+\hspace*{4em} \}
+
+\hspace*{3em} ders \(\left\lbrack  k\right\rbrack  \left\lbrack  r\right\rbrack   = d\) ;
+
+\hspace*{3em} j=s1; s1=s2; s2=j; /* Switch rows */
+
+\hspace*{3em} \}
+
+\hspace*{1em} \}
+
+/* Multiply through by the correct factors */
+
+/* (Eq. [2.9]) */
+
+r = p;
+
+for (k=1; k<=n; k++)
+
+\hspace*{2em} \{
+
+\hspace*{2em} for (j=0; j<=p; j++) ders[k][j] *= r;
+
+\hspace*{2em} r *= (p-k);
+
+\hspace*{2em} \}
+
+\}
+
+\HRule
+
+现在我们将注意力转向最后两个算法，即计算单个基函数 \({N}_{i,p}\left( u\right)\) 或单个基函数的导数 \({N}_{i,p}^{\left( k\right) }\left( u\right)\) 。这些问题的解决方案产生了如下形式的三角表:
+
+\begin{center}
+\includegraphics[max width=0.5\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_85_463_418_572_381_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+\section*{示例}
+
+Ex2.5 设 \(p = 2,U = \{ 0,0,0,1,2,3,4,4,5,5,5\}\) ，并且 \(u = 5/2\) 。计算 \({N}_{3,2}\left( {5/2}\right)\) 得到
+
+\[
+{N}_{3,0}\left( {5/2}\right)  = 0
+\]
+
+\[
+{N}_{3,1}\left( {5/2}\right)  = \frac{1}{2}
+\]
+
+\[
+{N}_{4,1}\left( {5/2}\right)  = \frac{1}{2}
+\]
+
+\[
+{N}_{5,0}\left( {5/2}\right)  = 0
+\]
+
+\({N}_{4,2}\left( {5/2}\right)\) 是从中获得的
+
+\[
+{N}_{4,0}\left( {5/2}\right)  = 1
+\]
+
+\[
+{N}_{4,1}\left( {5/2}\right)  = \frac{1}{2}
+\]
+
+\[
+{N}_{5,0}\left( {5/2}\right)  = 0\;{N}_{4,2}\left( {5/2}\right)  = \frac{1}{8}
+\]
+
+\[
+{N}_{5,1}\left( {5/2}\right)  = 0
+\]
+
+\[
+{N}_{6,0}\left( {5/2}\right)  = 0
+\]
+
+请注意，表中非零条目的位置和相对数量依赖于 \(p\) 以及第一列中 1 的位置。算法 A2.4 仅计算非零条目。值 \({N}_{i,p}\left( u\right)\) 在 Nip 中返回； \(\mathrm{m}\) 是 U \(\left( {m + 1\text{ knots }}\right)\) 的高索引。该算法在使用变量 temp 和 saved 时与算法 A2.2 类似。
+
+\HRule
+
+ALGORITHM A2.4
+
+\hspace*{1em} \(\mathtt{{OneBasisFun}\left( {p,m,U,i,u,{Nip}}\right) }\)
+
+\hspace*{3em} \{ /* Compute the basis function Nip */
+
+\hspace*{4em} /* Input: p, m, U, i, u */
+
+\hspace*{4em} /* Output: Nip */
+
+\hspace*{4em} if \(\left( {\left( {i =  = 0\& u =  = U\left\lbrack  0\right\rbrack  }\right)  \mid   \mid  \;/ * \text{ Special */ }}\right)\)
+
+\hspace*{7em} (i == m-p-1 \&\& u == U[m])) /* cases */
+
+\hspace*{5em} \{
+
+\hspace*{5em} Nip = 1.0; return;
+
+\hspace*{5em} \}
+
+\hspace*{4em} if \(\left( {u < U\left\lbrack  i\right\rbrack  \left| \right| u >  = U\left\lbrack  {i + p + 1}\right\rbrack  }\right) \;/ *\) Local property \(*\) /
+
+\hspace*{6em} \{
+
+\hspace*{5em} Nip = 0.0; return;
+
+\hspace*{5em} \}
+
+\hspace*{4em} for \(\left( {j = 0;j <  = p;j +  + }\right) / *\) Initialize zeroth-degree functs \(*\) /
+
+\hspace*{6em} if \(\left( {u >  = U\left\lbrack  {i + j}\right\rbrack  \& \& u < U\left\lbrack  {i + j + 1}\right\rbrack  }\right) N\left\lbrack  j\right\rbrack   = {1.0}\) ;
+
+\hspace*{7em} else N[j] = 0.0 ;
+
+\hspace*{4em} for \(\left( {k = 1;k <  = p;k +  + }\right) / *\) Compute triangular table \(* /\)
+
+\hspace*{6em} \{
+
+\hspace*{6em} if \(\left( {\mathrm{N}\left\lbrack  0\right\rbrack   =  = {0.0}}\right)\) saved \(= {0.0}\) ;
+
+\hspace*{7em} else saved \(= \left( {\left( {u - U\left\lbrack  i\right\rbrack  }\right)  * N\left\lbrack  0\right\rbrack  }\right) /\left( {U\left\lbrack  {i + k}\right\rbrack   - U\left\lbrack  i\right\rbrack  }\right)\) ;
+
+\hspace*{6em} for \(\left( {j = 0;j < p - k + 1;j +  + }\right)\)
+
+\hspace*{7em} \{
+
+\hspace*{7em} Uleft = U[i+j+1];
+
+\hspace*{7em} Uright = U[i+j+k+1];
+
+\hspace*{7em} if \(\left( {N\left\lbrack  {j + 1}\right\rbrack   =  = {0.0}}\right)\)
+
+\hspace*{8em} \{
+
+\hspace*{8em} \(\mathrm{N}\left\lbrack  \mathrm{j}\right\rbrack   =\) saved; saved \(= {0.0}\) ;
+
+\hspace*{8em} \}
+
+\hspace*{8em} else
+
+\hspace*{8em} \{
+
+\hspace*{8em} temp \(= N\left\lbrack  {j + 1}\right\rbrack  /\left( \text{ Uright-Uleft }\right)\) ;
+
+\hspace*{8em} N[j] = saved+(Uright-u)*temp;
+
+\hspace*{8em} saved = (u-Uleft)*temp;
+
+\hspace*{8em} \}
+
+\hspace*{7em} \}
+
+\hspace*{6em} \}
+
+\hspace*{4em} Nip = N[0];
+
+\hspace*{4em} \}
+
+\hspace*{1em} Now for fixed \(i\) , the computation of the derivatives, \({N}_{i,p}^{\left( k\right) }\left( u\right)\) , for \(k = 0,\ldots ,n\) ,
+
+\(n \leq  p\) , uses Eq. (2.9). For example, if \(p = 3\) and \(n = 3\) , then
+
+\[
+{N}_{i,3}^{\left( 1\right) } = 3\left( {\frac{{N}_{i,2}}{{u}_{i + 3} - {u}_{i}} - \frac{{N}_{i + 1,2}}{{u}_{i + 4} - {u}_{i + 1}}}\right)
+\]
+
+\[
+{N}_{i,3}^{\left( 2\right) } = 3\left( {\frac{{N}_{i,2}^{\left( 1\right) }}{{u}_{i + 3} - {u}_{i}} - \frac{{N}_{i + 1,2}^{\left( 1\right) }}{{u}_{i + 4} - {u}_{i + 1}}}\right)
+\]
+
+\[
+{N}_{i,3}^{\left( 3\right) } = 3\left( {\frac{{N}_{i,2}^{\left( 2\right) }}{{u}_{i + 3} - {u}_{i}} - \frac{{N}_{i + 1,2}^{\left( 2\right) }}{{u}_{i + 4} - {u}_{i + 1}}}\right)
+\]
+
+\HRule
+
+\section*{76 B-样条基函数}
+
+使用三角表，我们必须计算
+
+\[
+k = 0\text{ : }
+\]
+
+\[
+{N}_{i,0}
+\]
+
+\[
+{N}_{i,1}
+\]
+
+\[
+{N}_{i + 1,0}\;{N}_{i,2}
+\]
+
+\[
+{N}_{i + 2,0}\;{N}_{i + 1,2}
+\]
+
+\[
+{N}_{i + 2,1}
+\]
+
+\[
+{N}_{i + 3,0}
+\]
+
+\[
+k = 1\text{ : }
+\]
+
+\[
+k = 2\text{ : }
+\]
+
+\[
+{N}_{i,1}
+\]
+
+\[
+{N}_{i,2}^{\left( 1\right) }
+\]
+
+\[
+{N}_{i + 1,1}\;{N}_{i,3}^{\left( 2\right) }
+\]
+
+\[
+{N}_{i + 1,2}^{\left( 1\right) }
+\]
+
+\[
+{N}_{i + 2,1}
+\]
+
+\begin{center}
+\includegraphics[max width=0.2\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_87_539_732_216_155_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+\(k = 3\) :
+
+\({N}_{i,0}\)
+
+\({N}_{i,1}^{\left( 1\right) }\)
+
+\({N}_{i + 1,0}\;{N}_{i,2}^{\left( 2\right) }\)
+
+\({N}_{i + 1,1}^{\left( 1\right) }\;{N}_{i,3}^{\left( 3\right) }\)
+
+\({N}_{i + 2,0}\;{N}_{i + 1,2}^{\left( 2\right) }\)
+
+\({N}_{i + 2,1}^{\left( 1\right) }\)
+
+\({N}_{i + 3,0}\)
+
+用语言描述，该算法为:
+
+1. 计算并存储与 \(k = 0\) 对应的整个三角表；
+
+2. 要获得 \(k\) 阶导数，加载包含 \(p - k\) 次的函数的表列，并计算三角形的其余部分。
+
+算法 A2.5 计算 \({N}_{i,p}^{\left( k\right) }\left( u\right)\) 对于 \(k = 0,\ldots ,n,n \leq  p\) 。 \(k\) 阶导数在 ders \(\left\lbrack  \mathrm{k}\right\rbrack\) 中返回。
+
+算法 A2.5
+
+DersOneBasisFun(p, m, U, i, u, n, ders)
+
+\{ /* 计算基函数 Nip 的导数 */
+
+\HRule
+
+\hspace*{1em} /* Input: p, m, U, i, u, n */
+
+\hspace*{1em} /* Output: ders */
+
+if \(\left( {u < U\left\lbrack  i\right\rbrack  \;\left| \right| u >  = U\left\lbrack  {i + p + 1}\right\rbrack  }\right) \;/ *\) Local property \(*\) /
+
+\hspace*{1em} \{
+
+\hspace*{1em} for \(\left( {k = 0;k <  = n;k +  + }\right) \operatorname{ders}\left\lbrack  k\right\rbrack   = {0.0}\) ;
+
+\hspace*{1em} return;
+
+\hspace*{1em} \}
+
+for \(\left( {j = 0;j <  = p;j +  + }\right) / *\) Initialize zeroth-degree functs \(* /\)
+
+\hspace*{1em} if \(\left( u\right)  = U\left\lbrack  {i + j}\right\rbrack  \& \& u < U\left\lbrack  {i + j + 1}\right\rbrack  \;N\left\lbrack  j\right\rbrack  \left\lbrack  0\right\rbrack   = {1.0}\) ;
+
+\hspace*{3em} else N[j][0] = 0.0 ;
+
+for \(\left( {k = 1;k <  = p;k +  + }\right) \;/ *\) Compute full triangular table \(*\) /
+
+\hspace*{1em} \(\begin{cases}  & {u}_{0} = 0, \\   & {u}_{1} = 0, \\   & {u}_{2} = 0, \\   & {u}_{3} = 0, \\   & {u}_{4} = 0, \\   & {u}_{5} = 0, \\   & {u}_{6} = 0, \\   & {u}_{7} = 0, \\   & {u}_{8} = 0, \\   & {u}_{9} = 0, \\   & {u}_{10} = 0, \\   & {u}_{11} = 0, \\   & {u}_{12} = 0, \\   & {u}_{13} = 0, \\   & {u}_{14} = 0, \\   & {u}_{15} = 0, \\   & {u}_{16} = 0, \\   & {u}_{21} = 0, \\   & {u}_{22} = 0, \\   & {u}_{22} = 0, \\   & {u}_{22} = 0, \\   & {u}_{33} = 0, \\   & {u}_{33} = 0, \\   & {u}_{44} = 0, \\   & {u}_{22} = 0, \\   & {u}_{33} = 0, \\   & {u}_{44} = 0, \\   & {u}_{22} = 0, \\   & {u}_{33} = 0, \\   & {u}_{44} = 0, \\   & {u}_{22} = 0, \\   & {u}_{33} = 0, \\   & {u}_{44} = 0, \\   & {u}_{22} = 0, \\   & {u}_{33} = 0, \\   & {u}_{44} = 0, \\   & {u}_{22} = 0, \\   & {u}_{33} = 0, \\   & {u}_{44} = 0, \\   & {u}_{22} = 0, \\   & {u}_{33} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   & {u}_{44} = 0, \\   &  \end{cases}\)
+
+\hspace*{1em} if \(\left( {N\left\lbrack  0\right\rbrack  \left\lbrack  {k - 1}\right\rbrack   =  = {0.0}}\right)\) saved \(= {0.0}\) ;
+
+\hspace*{3em} else saved \(= \left( {\left( {u - U\left\lbrack  i\right\rbrack  }\right)  * N\left\lbrack  0\right\rbrack  \left\lbrack  {k - 1}\right\rbrack  }\right) /\left( {U\left\lbrack  {i + k}\right\rbrack   - U\left\lbrack  i\right\rbrack  }\right)\) ;
+
+\hspace*{1em} for \(\left( {j = 0;j < p - k + 1;j +  + }\right)\)
+
+\hspace*{3em} \{
+
+\hspace*{3em} Uleft = U[i+j+1];
+
+\hspace*{3em} Uright = U[i+j+k+1];
+
+\hspace*{3em} if \(\left( {N\left\lbrack  {j + 1}\right\rbrack  \left\lbrack  {k - 1}\right\rbrack   =  = {0.0}}\right)\)
+
+\hspace*{4em} \{
+
+\hspace*{4em} \(\mathrm{N}\left\lbrack  \mathrm{j}\right\rbrack  \left\lbrack  \mathrm{k}\right\rbrack   =\) saved; saved \(= {0.0}\) ;
+
+\hspace*{4em} \}
+
+\hspace*{4em} else
+
+\hspace*{4em} \{
+
+\hspace*{4em} temp \(= N\left\lbrack  {j + 1}\right\rbrack  \left\lbrack  {k - 1}\right\rbrack  /\left( \text{ Uright-Uleft }\right)\) ;
+
+\hspace*{4em} N[j][k] = saved+(Uright-u)*temp;
+
+\hspace*{4em} saved = (u-Uleft)*temp;
+
+\hspace*{4em} \}
+
+\hspace*{3em} \}
+
+\hspace*{1em} \}
+
+ders[0] = N[0][p]; /* The function value */
+
+for \(\left( {k = 1;k <  = n;k +  + }\right) \;/ *\) Compute the derivatives \(*\) /
+
+\hspace*{1em} \{
+
+\hspace*{1em} for \(\left( {j = 0;j <  = k;j +  + }\right) \;/ *\) Load appropriate column \(* /\)
+
+\hspace*{3em} ND[j] = N[j][p-k];
+
+\hspace*{1em} for \(\left( {{jj} = 1;{jj} <  = k;{jj} +  + }\right) \;/ *\) Compute table of width \(k * /\)
+
+\hspace*{3em} \{
+
+\hspace*{3em} if \(\left( {\mathrm{{ND}}\left\lbrack  0\right\rbrack   =  = {0.0}}\right)\) saved \(= {0.0}\) ;
+
+\hspace*{4em} else saved \(= {ND}\left\lbrack  0\right\rbrack  /\left( {U\left\lbrack  {i + p - k + {jj}}\right\rbrack   - U\left\lbrack  i\right\rbrack  }\right)\) ;
+
+\hspace*{3em} for (j=0; j<k-jj+1; j++)
+
+\hspace*{4em} \{
+
+\hspace*{4em} Uleft = U[i+j+1];
+
+\hspace*{4em} Uright = U[i+j+p+jj+1];
+
+\hspace*{4em} if (ND[j+1] == 0.0)
+
+\hspace*{5em} \{
+
+\hspace*{5em} ND[j] = (p-k+jj)*saved; saved = 0.0;
+
+\hspace*{5em} \}
+
+\hspace*{5em} else
+
+\hspace*{5em} \{
+
+\hspace*{5em} temp \(= \mathrm{{ND}}\left\lbrack  {j + 1}\right\rbrack  /\left( \text{ Uright-Uleft }\right)\) ;
+
+\hspace*{5em} ND[j] = (p-k+jj)*(saved-temp);
+
+\hspace*{5em} saved = temp;
+
+\hspace*{5em} \}
+
+\hspace*{3em} \}
+
+\hspace*{2em} \}
+
+\hspace*{1em} ders[k] = ND[0]; /* kth derivative */
+
+\hspace*{1em} \}
+
+\}
+
+\HRule
+
+最后，请注意算法 A2.3 和 A2.5 在 \(u\) 是节点时从右侧计算导数。然而，本章中的方程 (2.5)、(2.9)、(2.10) 以及其他方程可以使用形式为 \(u \in  \left( {{u}_{i},{u}_{i + 1}}\right\rbrack\) 的区间来定义。这不会改变算法 A2.2 到 A2.5。换句话说，从左侧获得导数只需让跨度查找算法使用形式为 \(\left( {{u}_{i},{u}_{i + 1}}\right\rbrack\) 的区间，而不是 \(\left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) 。在前面的例子中，若 \(p = 2\) 和 \(U = \{ 0,0,0,1,2,3,4,4,5,5,5\}\) ，如果 \(u = 2\) ，则跨度 \(i = 3\) 产生来自左侧的导数，而 \(i = 4\) 产生来自右侧的导数。
+
+\section*{练习}
+
+2.1. 考虑之前计算的线性和二次函数，并在图 2.5 和 2.6 中显示。将 \(u = 5/2\) 代入多项式方程以获得 \({N}_{3,1}\left( {5/2}\right)\) 、 \({N}_{4,1}\left( {5/2}\right) ,{N}_{2,2}\left( {5/2}\right) ,{N}_{3,2}\left( {5/2}\right)\) 和 \({N}_{4,2}\left( {5/2}\right)\) 。你注意到两个线性函数的和以及三个二次函数的和有什么不同吗？
+
+2.2. 考虑图 2.6 中的二次函数。使用 \({N}_{3,2}\left( u\right)\) 的多项式表达式，在 \(u = 2\) 处从左侧和右侧评估该函数及其一阶和二阶导数。观察连续性。性质 P2.5 是否成立？在 \(u = 4\) 处对 \({N}_{4,2}\left( u\right)\) 进行相同的操作。
+
+2.3. 设 \(U = \{ 0,0,0,0,1,2,3,4,4,5,5,5,5\}\) 。这如何改变图 2.4-2.6 中的 0、1 和 2 次函数？计算并绘制与 \(U\) 相关的九个三次基函数。
+
+2.4. 考虑图 \({2.5},{N}_{2,2}\left( u\right)  = 1/2{u}^{2}\) 中的函数 \({N}_{2,2}\left( u\right)\) 在 \(\lbrack 0,1), - 3/2 +\)  \({3u} - {u}^{2}\) 上的表现，以及在 \(\lbrack 1,2)\) 和 \(1/2{\left( 3 - u\right) }^{2}\) 上的表现。使用公式 (2.10) 来获得 \({N}_{2,2}\left( u\right)\) 的一阶和二阶导数的表达式。
+
+2.5. 再次考虑图 2.5 中的 \({N}_{2,2}\left( u\right)\) 。通过直接对多项式表达式进行求导，获得 \({N}_{2,1}\) 和 \({N}_{3,1}\) 的一阶导数。然后结合公式 (2.11) 来获得 \({N}_{2,2}^{\prime }\) 。
+
+2.6. 再次设定 \(p = 2,u = 5/2\) 和 \(U = \{ 0,0,0,1,2,3,4,4,5,5,5\}\) 。手动跟踪算法 A2.2，以找到三个非零基函数的值。跟踪算法 A2.3，以找到基函数的一阶和二阶导数。
+
+2.7. 使用与练习 2.6 中相同的 \(p\) 和 \(U\) ，设定 \(u = 2\) 。使用 \(n = 1\) 跟踪算法 A2.3，一次使用 \(i = 3\) ，一次使用 \(i = 4\) 。然后对第 2.2 节中给出的 \({N}_{j,2}\) 的适当多项式表达式进行求导，并在 \(u = 2\) 处从左侧和右侧评估导数。将结果与从算法 A2.3 获得的结果进行比较。
+
+2.8. 使用与练习 2.6 中相同的 \(p\) 和 \(U\) ，设定 \(u = 4\) 。跟踪算法 A2.2 和 A2.3，以确保没有双重节点的问题。
+
+2.9. 使用与练习 2.6 中相同的 \(p\) 和 \(U\) ，设定 \(u = 5/2\) 。跟踪算法 A2.5 并计算 \(k = 0,1,2\) 的导数 \({N}_{4,2}^{\left( k\right) }\left( {5/2}\right)\) 。
+
+
+
+\clearpage
+
+\end{document}

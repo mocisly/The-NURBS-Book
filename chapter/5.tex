@@ -1,0 +1,3212 @@
+\documentclass[main.tex]{subfiles}                                              
+\begin{document}
+
+\section{引言}
+
+在本章中，我们介绍五种在实现 B 样条曲线和曲面中至关重要的工具；这些工具包括节点插入、节点细化、节点删除、度数提升和度数降低。我们为每个主题专门设立一个部分，每个部分的布局大致如下:
+
+\begin{itemize}
+\item 问题陈述(对于曲线)；
+\end{itemize}
+
+\begin{itemize}
+\item 应用列表；
+\end{itemize}
+
+\begin{itemize}
+\item 问题和解决方法的澄清(曲线)；
+\end{itemize}
+
+\begin{itemize}
+\item 可以找到更严格的推导和证明的参考文献列表；
+\end{itemize}
+
+\begin{itemize}
+\item 解决方案公式(曲线)；
+\end{itemize}
+
+\begin{itemize}
+\item 具体示例(曲线)；
+\end{itemize}
+
+\begin{itemize}
+\item 计算机算法；
+\end{itemize}
+
+\begin{itemize}
+\item 应用示例；
+\end{itemize}
+
+\begin{itemize}
+\item 表面的解决方案，以及表面算法的概述。
+\end{itemize}
+
+
+
+\section{节点插入}
+
+设 \({\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w}\) 为定义在 \(U = \left\{  {{u}_{0},\ldots ,{u}_{m}}\right\}\) 上的 NURBS 曲线。设 \(\bar{u} \in  \left\lbrack  {{u}_{k},{u}_{k + 1}}\right)\) ，并将 \(\bar{u}\) 插入 \(U\) 以形成新的结点向量 \(\bar{U} =\)  \(\left\{  {{\bar{u}}_{0} = {u}_{0},\ldots ,{\bar{u}}_{k} = {u}_{k},{\bar{u}}_{k + 1} = \bar{u},{\bar{u}}_{k + 2} = {u}_{k + 1},\ldots ,{\bar{u}}_{m + 1} = {u}_{m}}\right\}\) 。如果 \({\mathcal{V}}_{U}\) 和 \({\mathcal{V}}_{\bar{U}}\) 分别表示定义在 \(U\) 和 \(\bar{U}\) 上的曲线的向量空间，则显然 \({\mathcal{V}}_{U} \subset  {\mathcal{V}}_{\bar{U}}\left( {\operatorname{and}\dim \left( {\mathcal{V}}_{\bar{U}}\right)  = \dim \left( {\mathcal{V}}_{U}\right)  + 1}\right)\) ；因此 \({\mathbf{C}}^{w}\left( u\right)\) 在 \(\bar{U}\) 上的表示形式为
+
+\[
+{\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{{n + 1}}{\bar{N}}_{i,p}\left( u\right) {\mathbf{Q}}_{i}^{w} \tag{5.1}
+\]
+
+其中 \(\left\{  {{\widetilde{N}}_{i,p}\left( u\right) }\right\}\) 是 \(p\) 阶的基函数，定义在 \(\bar{U}\) 上。术语 \({knot}\) 插入通常指的是确定 Eq. (5.1) 中的 \(\left\{  {\mathbf{Q}}_{i}^{w}\right\}\) 的过程。需要注意的是，节点插入实际上只是向量空间基的变化；曲线在几何上或参数上并没有改变。
+
+尽管并不明显，节点插入是所有 B-spline 算法中最重要的之一。它的一些用途包括:
+
+\begin{itemize}
+\item 在曲线和曲面上评估点和导数；
+\end{itemize}
+
+\begin{itemize}
+\item 对曲线和曲面进行细分；
+\end{itemize}
+
+\begin{itemize}
+\item 添加控制点以增加形状控制的灵活性(交互设计)。
+\end{itemize}
+
+现在可以通过建立并求解线性方程组来获得 Eq. (5.1) 中的 \(\left\{  {\mathbf{Q}}_{i}^{w}\right\}\) 。如果我们设定
+
+\[
+\mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w} = \mathop{\sum }\limits_{{i = 0}}^{{n + 1}}{\bar{N}}_{i,p}\left( u\right) {\mathbf{Q}}_{i}^{w} \tag{5.2}
+\]
+
+那么通过将 \(u\) 的适当值代入 Eq. (5.2)，我们得到一个非奇异的带状 \(n + 2\) 线性方程组，未知数为 \(n + 2\) ，即 \({\mathbf{Q}}_{i}^{w}\) 。然而，还有一种更有效的解决方案。性质 P2.2 和 \(\bar{u} \in  \left\lbrack  {{u}_{k},{u}_{k + 1}}\right)\) 意味着
+
+\[
+\mathop{\sum }\limits_{{i = k - p}}^{k}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w} = \mathop{\sum }\limits_{{i = k - p}}^{{k + 1}}{\bar{N}}_{i,p}\left( u\right) {\mathbf{Q}}_{i}^{w} \tag{5.3}
+\]
+
+对于所有 \(u \in  \left\lbrack  {{u}_{k},{u}_{k + 1}}\right)\) ，以及
+
+\[
+{N}_{i,p}\left( u\right)  = {\bar{N}}_{i,p}\left( u\right) \;i = 0,\ldots ,k - p - 1
+\]
+
+\[
+{N}_{i,p}\left( u\right)  = {\bar{N}}_{i + 1,p}\left( u\right) \;i = k + 1,\ldots ,n \tag{5.4}
+\]
+
+方程 (5.3) 和 (5.4)，结合基函数的线性独立性(第 2.4 节)，意味着
+
+\[
+{\mathbf{P}}_{i}^{w} = {\mathbf{Q}}_{i}^{w}\;i = 0,\ldots ,k - p - 1
+\]
+
+\[
+{\mathbf{P}}_{i}^{w} = {\mathbf{Q}}_{i + 1}^{w}\;i = k + 1,\ldots ,n \tag{5.5}
+\]
+
+现在考虑 \({N}_{i,p}\left( u\right)\) 对于 \(i = k - p,\ldots ,k\) 。当 \(i = k - p,\ldots ,k + 1\) 时，它们可以用 \({\bar{N}}_{i,p}\left( u\right)\) 表示，通过
+
+\[
+{N}_{i,p}\left( u\right)  = \frac{\bar{u} - {\bar{u}}_{i}}{{\bar{u}}_{i + p + 1} - {\bar{u}}_{i}}{\bar{N}}_{i,p}\left( u\right)  + \frac{{\bar{u}}_{i + p + 2} - \bar{u}}{{\bar{u}}_{i + p + 2} - {\bar{u}}_{i + 1}}{\bar{N}}_{i + 1,p}\left( u\right)  \tag{5.6}
+\]
+
+方程 (5.6) 通过对 \(p\) 的归纳法证明(并使用 Eq. [2.5])，但我们在这里省略证明，因为它相当繁琐。使用分割差的证明见于 [DeBo78; Boeh80; Lee83]。
+
+为了简洁，我们现在将 \({\bar{N}}_{i}\) 写作 \({\bar{N}}_{i,p}\left( u\right)\) 。将方程 (5.6) 代入方程 (5.3) 得到
+
+\[
+\left( {\frac{\bar{u} - {\bar{u}}_{k - p}}{{\bar{u}}_{k + 1} - {\bar{u}}_{k - p}}{\bar{N}}_{k - p} + \frac{{\bar{u}}_{k + 2} - \bar{u}}{{\bar{u}}_{k + 2} - {\bar{u}}_{k - p + 1}}{\bar{N}}_{k - p + 1}^{w}}\right) {\mathbf{P}}_{k - p}^{w}
+\]
+
+\[
++ \left( {\frac{\bar{u} - {\bar{u}}_{k - p + 1}}{{\bar{u}}_{k + 2} - {\bar{u}}_{k - p + 1}}{\bar{N}}_{k - p + 1} + \frac{{\bar{u}}_{k + 3} - \bar{u}}{{\bar{u}}_{k + 3} - {\bar{u}}_{k - p + 2}}{\bar{N}}_{k - p + 2}^{w}}\right) {\mathbf{P}}_{k - p + 1}^{w}
+\]
+
+\[
+\vdots
+\]
+
+\[
++ \left( {\frac{\bar{u} - {\bar{u}}_{k}}{{\bar{u}}_{k + p + 1} - {\bar{u}}_{k}}{\bar{N}}_{k} + \frac{{\bar{u}}_{k + p + 2} - \bar{u}}{{\bar{u}}_{k + p + 2} - {\bar{u}}_{k + 1}}{\bar{N}}_{k + 1}}\right) {\mathbf{P}}_{k}^{w}
+\]
+
+\[
+= {\bar{N}}_{k - p}{\mathbf{Q}}_{k - p}^{w} + \cdots  + {\bar{N}}_{k + 1}{\mathbf{Q}}_{k + 1}^{w}
+\]
+
+通过等同系数并使用结点向量 \(U\) 替代 \(\bar{U}\) ，我们得到
+
+\[
+0 = {\bar{N}}_{k - p}\left( {{\mathbf{Q}}_{k - p}^{w} - {\mathbf{P}}_{k - p}^{w}}\right)
+\]
+
+\[
++ {\bar{N}}_{k - p + 1}\left( {{\mathbf{Q}}_{k - p + 1}^{w} - \frac{\bar{u} - {u}_{k - p + 1}}{{u}_{k + 1} - {u}_{k - p + 1}}{\mathbf{P}}_{k - p + 1}^{w} - \frac{{u}_{k + 1} - \bar{u}}{{u}_{k + 1} - {u}_{k - p + 1}}{\mathbf{P}}_{k - p}^{w}}\right)
+\]
+
+\[
++ {\bar{N}}_{k}\left( {{\mathbf{Q}}_{k}^{w} - \frac{\bar{u} - {u}_{k}}{{u}_{k + p} - {u}_{k}}{\mathbf{P}}_{k}^{w} - \frac{{u}_{k + p} - \bar{u}}{{u}_{k + p} - {u}_{k}}{\mathbf{P}}_{k - 1}^{w}}\right)  + {\bar{N}}_{k + 1}\left( {{\mathbf{Q}}_{k + 1}^{w} - {\mathbf{P}}_{k}^{w}}\right)
+\]
+
+(5.7)
+
+对于 \(i = k - p + 1,\ldots ,k\) ，我们设定
+
+\[
+{\alpha }_{i} = \frac{\bar{u} - {u}_{i}}{{u}_{i + p} - {u}_{i}} \tag{5.8}
+\]
+
+并注意到
+
+\[
+1 - {\alpha }_{i} = \frac{{u}_{i + p} - \bar{u}}{{u}_{i + p} - {u}_{i}} \tag{5.9}
+\]
+
+利用基函数的线性独立性，并将方程 (5.8) 和 (5.9) 代入方程 (5.7)，得到
+
+\[
+{\mathbf{Q}}_{k - p}^{w} = {\mathbf{P}}_{k - p}^{w}
+\]
+
+\[
+{\mathbf{Q}}_{i}^{w} = {\alpha }_{i}{\mathbf{P}}_{i}^{w} + \left( {1 - {\alpha }_{i}}\right) {\mathbf{P}}_{i - 1}^{w}\;k - p + 1 \leq  i \leq  k
+\]
+
+\[
+{\mathbf{Q}}_{k + 1}^{w} = {\mathbf{P}}_{k}^{w} \tag{5.10}
+\]
+
+最后，通过结合方程 (5.5) 和 (5.10)，我们得到了计算方程 (5.1) 中所有新控制点 \({\mathbf{Q}}_{i}^{w}\) 的公式，即
+
+\[
+{\mathbf{Q}}_{i}^{w} = {\alpha }_{i}{\mathbf{P}}_{i}^{w} + \left( {1 - {\alpha }_{i}}\right) {\mathbf{P}}_{i - 1}^{w} \tag{5.11}
+\]
+
+其中
+
+\[
+{\alpha }_{i} = \left\{  \begin{matrix} 1 & i \leq  k - p \\  \frac{\bar{u} - {u}_{i}}{{u}_{i + p} - {u}_{i}} & k - p + 1 \leq  i \leq  k \\  0 & i \geq  k + 1 \end{matrix}\right.
+\]
+
+方程 (5.11) 表示仅需计算 \(p\) 个新控制点。为了简洁，我们在示例 Ex5.1-Ex5.4 中使用 \(\mathbf{P}\) 代替 \({\mathbf{P}}^{w}\) 。
+
+\section*{示例}
+
+Ex5.1 设 \(p = 3\) 和 \(U = \{ 0,0,0,0,1,2,3,4,5,5,5,5\}\) 。控制点为 \({\mathbf{P}}_{0},\ldots ,{\mathbf{P}}_{7}\) 。我们插入 \(\bar{u} = 5/2\) 。然后 \(\bar{u} \in  \left\lbrack  {{u}_{5},{u}_{6}}\right)\) 和 \(k = 5\) 。因此， \({\mathbf{Q}}_{0} = {\mathbf{P}}_{0},\ldots ,{\mathbf{Q}}_{2} = {\mathbf{P}}_{2}\) 和 \({\mathbf{Q}}_{6} = {\mathbf{P}}_{5},\ldots ,{\mathbf{Q}}_{8} = {\mathbf{P}}_{7}\) 。应用方程 (5.11)，我们发现
+
+\[
+{\alpha }_{3} = \frac{\frac{5}{2} - 0}{3 - 0} = \frac{5}{6} \Rightarrow  {\mathbf{Q}}_{3} = \frac{5}{6}{\mathbf{P}}_{3} + \frac{1}{6}{\mathbf{P}}_{2}
+\]
+
+\[
+{\alpha }_{4} = \frac{\frac{5}{2} - 1}{4 - 1} = \frac{1}{2} \Rightarrow  {\mathbf{Q}}_{4} = \frac{1}{2}{\mathbf{P}}_{4} + \frac{1}{2}{\mathbf{P}}_{3}
+\]
+
+\[
+{\alpha }_{5} = \frac{\frac{5}{2} - 2}{5 - 2} = \frac{1}{6} \Rightarrow  {\mathbf{Q}}_{5} = \frac{1}{6}{\mathbf{P}}_{5} + \frac{5}{6}{\mathbf{P}}_{4}
+\]
+
+图 5.1a 显示了插入前后的控制多边形，图 5.1b 显示了插入前后的基函数。图 5.1a 的底部显示了用于细分多边形边的比例。
+
+Ex5.2 使用与 Ex5.1 中相同的曲线，即 \(p = 3,U = \{ 0,0,0,0,1,2,3,4,5\) 、 \(5,5,5\}\) 和 \({\mathbf{P}}_{0},\ldots ,{\mathbf{P}}_{7}\) 。这次我们插入一个已经在节点向量中的节点，即 \(\bar{u} = 2\) 。然后 \(\bar{u} \in  \left\lbrack  {{u}_{5},{u}_{6}}\right) ,k = 5\) ，我们再次计算 \({\mathbf{Q}}_{3},{\mathbf{Q}}_{4}\) 和 \({\mathbf{Q}}_{5}\) 。
+
+\[
+{\alpha }_{3} = \frac{2 - 0}{3 - 0} = \frac{2}{3} \Rightarrow  {\mathbf{Q}}_{3} = \frac{2}{3}{\mathbf{P}}_{3} + \frac{1}{3}{\mathbf{P}}_{2}
+\]
+
+\[
+{\alpha }_{4} = \frac{2 - 1}{4 - 1} = \frac{1}{3} \Rightarrow  {\mathbf{Q}}_{4} = \frac{1}{3}{\mathbf{P}}_{4} + \frac{2}{3}{\mathbf{P}}_{3}
+\]
+
+\[
+{\alpha }_{5} = \frac{2 - 2}{5 - 2} = 0 \Rightarrow  {\mathbf{Q}}_{5} = {\mathbf{P}}_{4}
+\]
+
+控制多边形和基函数在插入节点之前和之后如图 5.2a 和 5.2b 所示。从公式 (5.6) 可以验证 \({N}_{5} = {\bar{N}}_{6}\) 。如我们之前所做，观察通过映射图 5.2a 底部所示的适当比例获得的腿的细分。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_154_264_252_994_1359_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.1. 将节点插入到三次曲线中。(a) 在节点向量 \(\{ 0,0,0,0,1,2,3,4,5,5,5,5\}\) 中插入 \(u = 5/2\) 后的控制多边形；(b) 插入节点前后的原始(实线)和新的(虚线)基函数。
+
+显然，节点插入类似于 Bézier 曲线的 deCasteljau 算法，实际上对于没有内部节点的曲线，即 Bézier 曲线，它们是等价的。然而，查看示例 Ex5.1 和图 5.1a 可以看出，控制多边形的每个 \(p\) 腿上的线性插值并不相同。实际上，在该示例中， \({\alpha }_{3} = 5/6,{\alpha }_{4} = 1/2\) 和 \({\alpha }_{5} = 1/6\) 。基于之前的
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_155_253_289_1029_1422_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.2. 将现有节点插入到三次曲线中。(a) 在 \(\{ 0,0,0,0,1,2,3,4,5,5,5,5\}\) 中插入 \(u = 2\) 后的控制多边形；(b) 插入节点前后的原始(实线)和新的(虚线)基函数。
+
+示例，我们得出一般结果:对于 \(i = 1,\ldots ,n\) ，令 \({L}_{i}\) 表示控制多边形的 \(i\) 腿。
+
+\[
+{L}_{i} = {\mathbf{P}}_{i - 1}^{w}{\mathbf{P}}_{i}^{w}\;\text{ and }\;{d}_{i} = \text{ length }\left( {L}_{i}\right)  = \left| {{\mathbf{P}}_{i}^{w} - {\mathbf{P}}_{i - 1}^{w}}\right|
+\]
+
+我们强调 \({d}_{i}\) 是在四维(均匀)空间中测量的，即
+
+\[
+{d}_{i} = \sqrt{{\left( {w}_{i}{x}_{i}\right) }^{2} + {\left( {w}_{i}{y}_{i}\right) }^{2} + {\left( {w}_{i}{z}_{i}\right) }^{2} + {\left( {w}_{i}\right) }^{2}}
+\]
+
+对于每个 \(\operatorname{leg}{L}_{i}\) ，我们关联结点 \({u}_{i + j},j = 0,\ldots ,p\) 。参见图 5.3a 和 \({5.3}\mathrm{\;b}\) 以及图 5.1a 和 5.2a。对于固定的 \(i\) ，设 \({\lambda }_{i}^{j},j = 0,\ldots ,p - 1\) ，表示相对于 \(\left\lbrack  {{u}_{i},{u}_{i + p}}\right)\) 的结点跨度 \(\left\lbrack  {{u}_{i + j},{u}_{i + j + 1}}\right)\) 的长度
+
+\[
+{\lambda }_{i}^{j} = \frac{{u}_{i + j + 1} - {u}_{i + j}}{{u}_{i + p} - {u}_{i}}\;j = 0,\ldots ,p - 1 \tag{5.12}
+\]
+
+然后 \({L}_{i}\) 被划分为段 \({L}_{i}^{j}\) ，其长度为
+
+\[
+{d}_{i}^{j} = {\lambda }_{i}^{j}{d}_{i} \tag{5.13}
+\]
+
+分别。注意到 \({\lambda }_{i}^{j}\) ，因此 \({d}_{i}^{j}\) 可以为零。例如，示例 Ex5.1 中的 \({d}_{1}^{0} = {d}_{1}^{1} = 0\) 和 \({d}_{1}^{2} = {d}_{1}\) ；因此，在第一条腿上只有一个段。
+
+现在图 5.3a 和 5.3b 以及公式 (5.13) 显示了多边形腿是如何细分的，图 5.1a 和 5.2a 显示了在结点插入过程中多边形角落是如何被切割的。特别地，如果 \(\bar{u} \in  \left\lbrack  {{u}_{k},{u}_{k + 1}}\right)\) 是重数为 \(s\) 的结点 \(0 \leq  s \leq  p - 1\) ，则带有控制点 \({\mathbf{P}}_{k - p + 1},\ldots ,{\mathbf{P}}_{k - s - 1}\) 的角落被切割，并在指示的段上生成以下 \(p - s\) 个新的控制点
+
+\[
+{\mathbf{Q}}_{k - j}^{w} \in  {L}_{k - j}^{j}\;j = p - 1,\ldots ,s \tag{5.14}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_156_296_1306_910_726_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.3. 控制多边形及其通过结点向量的划分。(a) 通过结点向量 \(\{ 0,0,0,0,1,2,3,4,4,5,6,7,7,7,7\}\) 划分整个多边形；(b) 通过结点跨度 \(\left\lbrack  {{u}_{3},{u}_{6}}\right\rbrack\) 划分多边形边 \({\mathbf{P}}_{2}{\mathbf{P}}_{3}\) 。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_157_354_257_816_763_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.3.(续)
+
+\section*{示例}
+
+Ex5.3 让我们检查示例 Ex5.1 中的公式 (5.12)-(5.14)。我们有 \(k = 5\) 和 \(s = 0\) 。根据公式 (5.14)
+
+\[
+{\mathbf{Q}}_{3} \in  {L}_{3}^{2}\;{\mathbf{Q}}_{4} \in  {L}_{4}^{1}\;{\mathbf{Q}}_{5} \in  {L}_{5}^{0}
+\]
+
+此外
+
+\[
+{\lambda }_{3}^{2} = \frac{{u}_{6} - {u}_{5}}{{u}_{6} - {u}_{3}} = \frac{3 - 2}{3 - 0} = \frac{1}{3}
+\]
+
+\[
+{\lambda }_{4}^{1} = \frac{{u}_{6} - {u}_{5}}{{u}_{7} - {u}_{4}} = \frac{3 - 2}{4 - 1} = \frac{1}{3}
+\]
+
+\[
+{\lambda }_{5}^{0} = \frac{{u}_{6} - {u}_{5}}{{u}_{8} - {u}_{5}} = \frac{3 - 2}{5 - 2} = \frac{1}{3}
+\]
+
+(这并不令人惊讶，因为节点是均匀分布的)。回想一下 \({\alpha }_{3} = 5/6,{\alpha }_{4} = 1/2\) 和 \({\alpha }_{5} = 1/6\) ，我们看到 \({\mathbf{Q}}_{3},{\mathbf{Q}}_{4}\) 和 \({\mathbf{Q}}_{5}\) 位于它们段的中点 \({L}_{3}^{2},{L}_{4}^{1}\) 和 \({L}_{5}^{0}\) 。这源于 \(\bar{u} = 5/2\) 位于 \({u}_{5} = 2\) 和 \({u}_{6} = 3\) 之间的中点。
+
+Ex5.4 例如 Ex5.2， \(k = 5\) 和 \(s = 1\) 。根据公式 (5.14)
+
+\[
+{\mathbf{Q}}_{3} \in  {L}_{3}^{2}\;{\mathbf{Q}}_{4} \in  {L}_{4}^{1}
+\]
+
+我们仍然有 \({\lambda }_{3}^{2} = {\lambda }_{4}^{1} = 1/3\) 。现在 \({\alpha }_{3} = 2/3\) 和 \({\alpha }_{4} = 1/3\) ，这意味着 \({\mathbf{Q}}_{3}\) 和 \({\mathbf{Q}}_{4}\) 分别位于它们段的起始点 \({L}_{3}^{2}\) 和 \({L}_{4}^{1}\) 。这源于 \(\bar{u} = 2\) 位于节点跨度的起始位置 \(\left\lbrack  {{u}_{5},{u}_{6}}\right)\) 。
+
+图 5.4 显示了与图 5.3a 相同控制多边形的划分，但使用了非均匀节点向量 \(U = \{ 0,0,0,0,1,{1.5},{2.3},{3.9},{4.3},5,{6.5}\) 和 \(7,7,7,7\}\) 。
+
+正如我们稍后将看到的，通常需要多次插入一个节点。方程 (5.11) 可以推广以处理这种情况。假设 \(\bar{u} \in  \left\lbrack  {{u}_{k},{u}_{k + 1}}\right)\) 最初具有重数 \(s\) ，并假设它将被插入 \(r\) 次，其中 \(r + s \leq  p\) (通常没有实际意义使内部节点重数大于 \(p\) )。将第 \(i\) 个新控制点在第 \(r\) 次插入步骤中表示为 \({\mathbf{Q}}_{i,r}^{w}\) (与 \(\left. {{\mathbf{Q}}_{i,0}^{w} = {\mathbf{P}}_{i}^{w}}\right)\) )。那么 \({\mathbf{Q}}_{i,r}^{w}\) 是
+
+\[
+{\mathbf{Q}}_{i,r}^{w} = {\alpha }_{i,r}{\mathbf{Q}}_{i,r - 1}^{w} + \left( {1 - {\alpha }_{i,r}}\right) {\mathbf{Q}}_{i - 1,r - 1}^{w} \tag{5.15}
+\]
+
+其中
+
+\[
+{\alpha }_{i,r} = \left\{  \begin{matrix} 1 & i \leq  k - p + r - 1 \\  \frac{\bar{u} - {u}_{i}}{{u}_{i + p - r + 1} - {u}_{i}} & k - p + r \leq  i \leq  k - s \\  0 & i \geq  k - s + 1 \end{matrix}\right.
+\]
+
+如果 \(s = 0\) 和 \(r = p\) ，则公式 (5.15) 生成控制点的三角形表(见表 5.1，见图 5.5 与 \(p = 3\) )。外部控制点
+
+\[
+{\mathbf{Q}}_{k - p + 1,1}^{w},{\mathbf{Q}}_{k - p + 2,2}^{w},\ldots ,{\mathbf{Q}}_{k,p}^{w},\ldots ,{\mathbf{Q}}_{k,2}^{w},{\mathbf{Q}}_{k,1}^{w}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_158_318_1381_890_651_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.4. 由节点向量 \(\{ 0,0,0,0,1,{1.5},{2.3},{3.9},{4.3},5,{6.5},7,7,7,7\}\) 定义的图 5.3a 中控制多边形的非均匀划分。
+
+\HRule
+
+\hspace*{1em} <img src="https://cdn.noedgeai.com/0193ba0d-ab19-7138-9798-cb281ce60de0\_159.jpg?x=499\&y=257\&w=531\&h=414"/>
+
+\HRule
+
+保留内层的控制点，外层的被丢弃。一般来说，如果 \(s > 0\) 和/或 \(r + s < p\) ，表格的填充程度会低于满格。但在任何情况下，最终控制点是通过顺时针遍历生成的表格获得的，从第一列的顶部开始。最后一列的新控制点数量为 \(p - \left( {s + r}\right)  + 1\) 。在所有其他列中，保留两个新点(顶部和底部)；因此，总的新(保留)控制点数量为
+
+\[
+p - s + r - 1 \tag{5.16}
+\]
+
+这些新控制点替代
+
+\[
+p - s - 1 \tag{5.17}
+\]
+
+旧控制点，从索引开始
+
+\[
+k - p + 1 \tag{5.18}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_159_305_1266_939_788_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.5. 三次将节点插入到三次曲线中。该曲线在 \(\{ 0,0,0,0,2,3,3,3,3\}\) 上定义。
+
+算法 A5.1 实现了公式 (5.15)。它计算与将 \(\bar{u}\) 插入 \(\left\lbrack  {{u}_{k},{u}_{k + 1}}\right) r\) 次相对应的新曲线，假设 \(r + s \leq  p\) 。Rw[] 是一个长度为 \(p + 1\) 的局部数组。UP[] 和 UQ[] 分别是插入节点前后的节点向量。
+
+算法 A5.1
+
+\HRule
+
+CurveKnotIns(np, p, UP, Pw, u, k, s, r, nq, UQ, Qw)
+
+\hspace*{2em} \{ /* Compute new curve from knot insertion */
+
+\hspace*{6em} /* Input: np, p, UP, Pw, u, k, s, r */
+
+\hspace*{6em} /* Output: nq, UQ, Qw */
+
+\hspace*{2em} mp = np+p+1;
+
+\hspace*{2em} \(\mathrm{{nq}} = \mathrm{{np}} + \mathrm{r}\) ;
+
+\hspace*{6em} /* Load new knot vector */
+
+\hspace*{2em} for(i=0; i<=k; i++) UQ[i] = UP[i];
+
+\hspace*{2em} for(i=1; i<=r; i++) UQ[k+i] = u;
+
+\hspace*{2em} for(i=k+1; i<=mp; i++) UQ[i+r] = UP[i];
+
+\hspace*{6em} /* Save unaltered control points \(*\) /
+
+\hspace*{2em} for(i=0; i<=k-p; i++) Qw[i] = Pw[i];
+
+\hspace*{2em} for(i=k; i<=np; i++) Qw[i+r] = Pw[i];
+
+\hspace*{2em} for(i=0; i<=p-s; i++) Rw[i] = Pw[k-p+i];
+
+\hspace*{2em} for \(\left( {j = 1;j <  = r;j +  + }\right) \;/ *\) Insert the knot \(r\) times \(*\) /
+
+\hspace*{5em} \{
+
+\hspace*{5em} \(\mathrm{L} = \mathrm{k} - \mathrm{p} + \mathrm{j}\) ;
+
+\hspace*{5em} for(i=0; i<=p-j-s; i++)
+
+\hspace*{7em} \{
+
+\hspace*{7em} alpha = (u-UP[L+i])/(UP[i+k+1]-UP[L+i]);
+
+\hspace*{7em} Rw[i] = alpha*Rw[i+1] + (1.0-alpha)*Rw[i];
+
+\hspace*{7em} \}
+
+\hspace*{5em} Qw[L] = Rw[0];
+
+\hspace*{5em} \(\operatorname{Qw}\left\lbrack  {k + r - j}\right\rbrack   = \operatorname{Rw}\left\lbrack  {p - j}\right\rbrack\) ;
+
+\hspace*{4em} \}
+
+\hspace*{2em} for(i=L+1; i<k; i++) /* Load remaining control points */
+
+\hspace*{5em} Qw[i] = Rw[i-L];
+
+\hspace*{2em} \}
+
+\HRule
+
+现在我们考虑结点插入的三个应用:曲线分割(或细分)、点和导数的评估，以及插入以获得额外的控制点用于交互式形状设计。请参见图 5.5。原始曲线 \(\mathbf{C}\left( u\right)\) 是由 \(U = \{ 0,0,0,0,2,3,3,3,3\}\) 定义的三次曲线，而 \({\mathbf{P}}_{0},\ldots ,{\mathbf{P}}_{4}.\bar{u} = 1\) 现在插入了三次。图 5.6a 和 5.6b 显示了插入前后的基函数。该过程将曲线分割。控制点集 \(\left\{  {{\mathbf{P}}_{0},{\mathbf{Q}}_{1,1},{\mathbf{Q}}_{2,2},{\mathbf{Q}}_{3,3}}\right\}\) 和 \(\left\{  {{\mathbf{Q}}_{3,3},{\mathbf{Q}}_{3,2},{\mathbf{Q}}_{3,1},{\mathbf{P}}_{3},{\mathbf{P}}_{4}}\right\}\) 定义了在结点向量 \({U}_{l} = \{ 0,0,0,0,1,1\) 、 \(1,1\}\) 和 \({U}_{r} = \{ 1,1,1,1,2,3,3,3,3\}\) 上的三次 B 样条曲线 \({\mathbf{C}}_{l}\left( u\right)\) 和 \({\mathbf{C}}_{r}\left( u\right)\) 。此外， \({\mathbf{C}}_{l}\left( u\right)\) 是在域 \(u \in  \left\lbrack  {0,1}\right\rbrack\) 上限制的 \(\mathbf{C}\left( u\right)\) ，而 \({\mathbf{C}}_{r}\left( u\right)\) 是在 \(u \in  \left\lbrack  {1,3}\right\rbrack\) 上限制的 \(\mathbf{C}\left( u\right)\) 。曲线分割与凸包性质 (P4.10) 共同构成了使用 NURBS 的“分而治之”算法的基础。图 5.7 显示了递归曲线分割的示例:原始曲线 \(\mathbf{C}\) 在 \(u = 1/2\) 处被分割，得到 \({\mathbf{C}}_{1}\) 和 \({\mathbf{C}}_{2}\) ，然后分别在 \(1/8\) 和 \(3/8\) 处被分割，产生 \({\mathbf{C}}_{1,1}\) 和 \({\mathbf{C}}_{1,2}\) ，以及 \({\mathbf{C}}_{2,1}\) 和 \({\mathbf{C}}_{2,2}\) 。
+
+图 5.5 和 \({5.6}\mathrm{\;b}\) 还显示了结点插入可以用于评估曲线上的点和导数。显然， \(\mathbf{C}\left( 1\right)  = {\mathbf{Q}}_{3,3}\) ；此外，可以使用起始点和终点导数公式(方程 (3.7)、(3.9)、(3.10)、(4.9) 和 (4.10))轻松计算左右两侧的导数。
+
+算法 A5.2 通过节点插入(“角落切割”)计算曲线上的一个点。它假设一个例程 FindSpanMult，该例程找到节点跨度 \(k\) 和重数 \(s\) 。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_161_272_959_978_1103_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.6. 对应于图 5.5 的基函数。 (a) 在节点插入之前；(b) 在节点插入之后。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_162_294_283_942_789_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.7. 在 \(\{ 0,0,0,0,1/4,1/2,3/4,1,1,1,1\}\) 上定义的三次曲线的分割。
+
+\HRule
+
+ALGORITHM A5.2
+
+\hspace*{2em} CurvePntByCornerCut(n, p, U, Pw, u, C)
+
+\hspace*{5em} \{ /* Compute point on rational B-spline curve */
+
+\hspace*{8em} /* Input: n, p, U, Pw, u */
+
+\hspace*{8em} /* Output: C */
+
+\hspace*{5em} if \(\left( {u =  = U\left\lbrack  0\right\rbrack  }\right) / *\) Endpoints are special cases \(* /\)
+
+\hspace*{7em} \{
+
+\hspace*{7em} \(C = {Pw}\left\lbrack  0\right\rbrack  /w;\;\) return;
+
+\hspace*{6em} \}
+
+\hspace*{4em} if (u == U[n+p+1])
+
+\hspace*{7em} \{
+
+\hspace*{7em} \(C = {Pw}\left\lbrack  n\right\rbrack  /w;\;\) return;
+
+\hspace*{6em} \}
+
+\hspace*{4em} FindSpanMult \(\left( {n,p,u,U,\& k,\& s}\right) ;\;/ *\) General case \(*\) /
+
+\hspace*{4em} r = p-s;
+
+\hspace*{4em} for (i=0; i<=r; i++) Rw[i] = Pw[k-p+i];
+
+\hspace*{4em} for (j=1; j<=r; j++)
+
+\hspace*{7em} for (i = 0; i<=r-j; i++)
+
+\hspace*{9em} \{
+
+\hspace*{9em} alfa = (u-U[k-p+j+i])/(U[i+k+1]-U[k-p+j+i]);
+
+\hspace*{9em} Rw[i] = alfa*Rw[i+1] + (1.0-alfa)*Rw[i];
+
+\HRule
+
+\[
+\text{ C = Rw[0]/w; }
+\]
+
+\[
+\text{ \textbackslash }}
+\]
+
+第三个应用是交互式形状设计。正如我们在第 4 章中看到的，曲线和表面可以通过移动控制点和/或修改权重来塑造。为了修改的目的，设计师可能希望在当前不存在的控制多边形上的某个地方添加一个控制点。例如，假设他在三维多边形 \(\operatorname{leg},{\mathbf{P}}_{i - 1}{\mathbf{P}}_{i}\) 上选择点 \(\mathbf{Q}\) (见图 5.8)。将对应的四维点 \({L}_{i} = {\mathbf{P}}_{i - 1}^{w}{\mathbf{P}}_{i}^{w}\) 表示为 \({\mathbf{Q}}^{w}\) 。然后存在一个 \(\bar{u} \in  \left\lbrack  {{u}_{i},{u}_{i + p}}\right)\) ，使得单次插入 \(\bar{u}\) 使 \({\mathbf{Q}}^{w}\) 成为一个新的控制点，而 \(\mathbf{Q}\) 为其投影。确定 \(\bar{u}\) 的过程称为逆节点插入 [Pieg89c]。现在存在一个值 \(s,0 \leq  s \leq  1\) ，使得
+
+\[
+{\mathbf{Q}}^{w} = \left( {1 - s}\right) {\mathbf{P}}_{i - 1}^{w} + s{\mathbf{P}}_{i}^{w}
+\]
+
+投影后得到
+
+\[
+\mathbf{Q} = \frac{\left( {1 - s}\right) {w}_{i - 1}{\mathbf{P}}_{i - 1} + s{w}_{i}{\mathbf{P}}_{i}}{\left( {1 - s}\right) {w}_{i - 1} + s{w}_{i}} \tag{5.19}
+\]
+
+因此
+
+\[
+s = \frac{{w}_{i - 1}\left| {\mathbf{Q} - {\mathbf{P}}_{i - 1}}\right| }{{w}_{i - 1}\left| {\mathbf{Q} - {\mathbf{P}}_{i - 1}}\right|  + {w}_{i}\left| {{\mathbf{P}}_{i} - \mathbf{Q}}\right| } \tag{5.20}
+\]
+
+因此
+
+\[
+\bar{u} = {u}_{i} + s\left( {{u}_{i + p} - {u}_{i}}\right)  \tag{5.21}
+\]
+
+通过简单地将先前的公式和算法应用于控制点的行和/或列，可以将节点插入到曲面中。特别地，设 \({\mathbf{P}}_{i,j}^{w}\) , \(0 \leq  i \leq  n,0 \leq  j \leq  m\) 为 NURBS 曲面的控制点；将 \(i\) 称为行索引，将 \(j\) 称为列索引。然后，通过对每个 \(m + 1\) 控制点列进行 \(\bar{u}\) 节点插入，将 \(\bar{u}\) 添加到节点向量 \(U\) 中。得到的控制网为 \({\mathbf{Q}}_{i,j}^{w},0 \leq  i \leq  n + 1,0 \leq  j \leq  m\) 。类似地，必须在每个 \(n + 1\) 控制点行上插入 \(\bar{v}\) 。得到的控制网为 \({\mathbf{Q}}_{i,j}^{w}\) , \(0 \leq  i \leq  n,0 \leq  j \leq  m + 1\) 。图 5.9 显示了在 \(\begin{matrix} U = \{ 0,0,0,0,1,1,1,1\} \text{ and }V = \{ 0,0,0,1/2,1,1,1\} .\text{ Figures }{5.10a}\text{ and }{5.10b} \end{matrix}\) 上的立方 \(\times\) 二次曲面，分别展示了节点 \(\bar{u} = 4/{10}\) 和 \(\bar{v} = 7/{10}\) 的插入，图 5.10c 显示了两个节点的插入。我们指出，曲面节点插入算法不应仅仅由一个循环组成，在该循环中调用算法 A5.1 \(m + 1\) (或 \(n + 1\) )次。阿尔法(A5.1 中的 alpha)的计算不依赖于控制点。因此，它们应仅计算一次并存储在本地数组中，然后再进入执行 \(m + 1\) 或 \(n + 1\) 节点插入的循环。算法 A5.3 就是这样一个算法。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_163_322_1610_886_412_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.8. 立方曲线的逆节点插入；点 \(\mathbf{Q}\) 位于由节点 \({u}_{i},{u}_{i + 1},{u}_{i + 2}\) 和 \({u}_{i + 3}\) 划分的腿 \({\mathbf{P}}_{i - 1}{\mathbf{P}}_{i}\) 上。
+
+算法 A5.3
+
+\HRule
+
+SurfaceKnotIns(np, p, UP, mp, q, VP, Pw, dir, uv, k, s, r, nq, UQ, mq, VQ, Qw)
+
+\hspace*{1em} \{ /* Surface knot insertion */
+
+\hspace*{2em} /* Input: np, p, UP, mp, q, VP, Pw, dir, uv, k, s, r */
+
+\hspace*{2em} /* Output: nq, UQ, mq, VQ, Qw */
+
+\hspace*{1em} if (dir == U\_DIRECTION)
+
+\HRule
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_164_318_1233_881_785_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.9. 定义在节点向量 \(U = \{ 0,0,0,0,1,1,1,1\}\) 和 \(V = \{ 0,0,0,1/2,1,1,1\}\) 上的 (立方 \(\times\) 二次) 曲面的控制网。
+
+156 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_165_327_263_903_1760_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.10. 将节点插入到图 5.9 的表面中。 (a) 在 \(u\) 方向上插入 \(u = 2/5\) 一次； (b) 在 \(v\) 方向上插入 \(v = 7/{10}\) 一次； (c) 同时插入两个节点。
+
+\HRule
+
+\hspace*{11em} <img src="https://cdn.noedgeai.com/0193ba0d-ab19-7138-9798-cb281ce60de0\_166.jpg?x=319\&y=257\&w=893\&h=799"/>
+
+\hspace*{26em} (c)
+
+\hspace*{6em} Figure 5.10. (Continued.)
+
+\hspace*{11em} \{
+
+\hspace*{11em} load u-vector as in A5.1
+
+\hspace*{11em} copy v-vector into VQ
+
+\hspace*{14em} /* Save the alphas */
+
+\hspace*{11em} for (j=1; j<=r; j++)
+
+\hspace*{12em} \{
+
+\hspace*{12em} \(\mathrm{L} = \mathrm{k} - \mathrm{p} + \mathrm{j}\) ;
+
+\hspace*{12em} for (i=0; i<=p-j-s; i++)
+
+\hspace*{14em} alpha[i][j] = (uv-UP[L+i])/(UP[i+k+1]-UP[L+i]);
+
+\hspace*{12em} \}
+
+\hspace*{11em} for (row=0; row<=mp; row++) /* For each row do */
+
+\hspace*{12em} \{
+
+\hspace*{16em} /* Save unaltered control points \(*\) /
+
+\hspace*{12em} for (i=0; i<=k-p; i++) Qw[i][row] = Pw[i][row];
+
+\hspace*{12em} for (i=k; i<=np; i++) Qw[i+r][row] = Pw[i][row];
+
+\hspace*{16em} /* Load auxiliary control points. */
+
+\hspace*{12em} for (i=0; i<=p-s; i++) Rw[i] = Pw[k-p+i][row];
+
+\hspace*{12em} for \(\left( {j = 1;j <  = r;j +  + }\right) \;/ *\) Insert the knot \(r\) times \(*\) /
+
+\hspace*{14em} \{
+
+\hspace*{14em} \(\mathrm{L} = \mathrm{k} - \mathrm{p} + \mathrm{j}\) ;
+
+\hspace*{14em} for (i=0; i<=p-j-s; i++)
+
+\HRule
+
+\HRule
+
+\hspace*{5em} Rw[i] = alpha[i][j]*Rw[i+1] + (1.0-alpha[i][j])*Rw[i];
+
+\hspace*{4em} Qw[L][row] = Rw[0];
+
+\hspace*{4em} \(\operatorname{Qw}\left\lbrack  {k + r - j}\right\rbrack  \left\lbrack  {row}\right\rbrack   = \operatorname{Rw}\left\lbrack  {p - j}\right\rbrack  ;\)
+
+\hspace*{4em} \}
+
+\hspace*{6em} /* Load the remaining control points \(*\) /
+
+\hspace*{3em} for (i=L+1; i<k; i++) Qw[i][row] = Rw[i-L];
+
+\hspace*{2em} \}
+
+\hspace*{1em} \}
+
+if (dir == V\_DIRECTION)
+
+\hspace*{1em} \{
+
+\hspace*{1em} /* Similar code as above with \(u\) and \(v\) directional
+
+\hspace*{3em} parameters switched */
+
+\hspace*{1em} \}
+
+\}
+
+\HRule
+
+我们以对表面节点插入的评论结束本节。
+
+\begin{itemize}
+\item 表面细分:设 \(\bar{u}\) 和 \(\bar{v}\) 为内部参数值。插入 \(\operatorname{ing}\bar{u}p\) 次和 \(\bar{v}q\) 次将表面细分为四个 B 样条(子)表面。这个事实，加上凸包性质，意味着递归细分适用于 B 样条表面问题。图 5.11 显示了一个待细分的表面。在图 5.12-5.14 中，分别展示了在 \(u\) 方向、 \(v\) 方向以及两个方向上的细分；
+\end{itemize}
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_167_351_1295_807_767_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.11. 如图 5.9 所示定义的 (立方 \(\times\) 二次) 表面。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_168_333_241_875_1830_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.12. 在 \(u = 2/5\) 处沿 \(v\) 方向细分图 5.11 的表面。 (a) 被细分表面的控制网； (b) 被细分的表面。
+
+160 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_169_327_246_890_1816_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.13. 在 \(v = 7/{10}\) 处沿 \(u\) 方向细分图 5.11 的表面。 (a) 被细分表面的控制网； (b) 被细分的表面。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_170_309_255_922_951_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.14. 在 \(u = 2/5\) 和 \(v = 7/{10}\) 处沿 \(u\) 和 \(v\) 两个方向细分图 5.11 的表面。 (a) 被细分表面的控制网； (b) 被细分的表面。
+
+\begin{itemize}
+\item 曲线提取:要提取等参数曲线 \({\mathbf{C}}_{\widetilde{u}}^{w}\left( v\right)\) ，我们必须在每个控制点列 \(m + 1\) 上进行 \(p\bar{u}\) 次节点插入，即总共进行 \(p\left( {m + 1}\right)\) 次节点插入；这将产生公式 (4.16) 的 \(\left\{  {{\mathbf{Q}}_{j}^{w}\left( \bar{u}\right) }\right\}\) 。提取曲线 \({\mathbf{C}}_{\bar{v}}^{w}\left( u\right)\) 需要 \(q\left( {n + 1}\right)\) 次节点插入；图 5.15 显示了一个例子；
+\end{itemize}
+
+\begin{itemize}
+\item 曲面评估:插入 \(\bar{u}p\) 次和 \(\bar{v}q\) 次会导致曲面点 \(\mathbf{S}\left( {\bar{u},\bar{v}}\right)\) 成为生成的四个子曲面的角控制点。可以开发类似于算法 A5.2 的角切割算法。可以先插入 \(\bar{u}\) 或 \(\bar{v}\) ，但正如使用 deCasteljau 算法进行 Bézier 曲面评估时的情况一样，计算复杂度是顺序相关的，如果 \(p \neq  q\) (见公式 [1.25] 和 [1.26])。因此，我们可以用以下任一方法计算 \(\mathbf{S}\left( {\bar{u},\bar{v}}\right)\) :
+\end{itemize}
+
+\begin{itemize}
+\item \(p\left( {q + 1}\right) \bar{u}\) 次节点插入，加上 \(q\bar{v}\) 次节点插入；
+\end{itemize}
+
+\begin{itemize}
+\item \(q\left( {p + 1}\right) \bar{v}\) 次节点插入，加上 \(p\bar{u}\) 次节点插入。
+\end{itemize}
+
+使用角点导数公式(例如，公式 [3.24]、[4.24]、[4.25] 和 [4.26])，从四个方向(左、右，分别针对 \(u\) 和 \(v\) )获得偏导数和法向量。
+
+162 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_171_315_243_908_930_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.14.(续)
+
+
+
+\section{节点细化}
+
+节点插入关注的是插入一个单一的节点，可能会多次插入。通常需要一次插入多个节点；这称为节点细化。为了解释这个问题，设 \({\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w}\) 定义在节点向量 \(U = \left\{  {{u}_{0},\ldots ,{u}_{m}}\right\}\) 上，并且设 \(X = \left\{  {{x}_{0},\ldots ,{x}_{r}}\right\}\) 满足 \({x}_{i} \leq  {x}_{i + 1}\) 和 \({u}_{0} < {x}_{i} < {u}_{m}\) 对所有 \(i\) 。将 \(X\) 的元素插入到 \(U\) 中，并计算相应的新控制点集 \(\left\{  {\mathbf{Q}}_{i}^{w}\right\}  ,i = 0,\ldots ,n + r + 1\) 。新的节点 \({x}_{i}\) 应在 \(X\) 中按其重数重复；例如，如果 \(x\) 和 \(y\left( {x < y}\right)\) 分别以重数 2 和 3 插入，则 \(X = \{ x,x,y,y,y\}\) 。显然，节点细化可以通过多次应用节点插入来完成。然而，我们在这里区分这两个问题，因为存在更高效的节点细化算法(见 [Cohe80; Boeh85a, 85b; Lych85])。
+
+节点细化的应用包括:
+
+\begin{itemize}
+\item 将 B-spline 曲线和曲面分解为其组成的(Bézier)多项式片段 - 我们将在后面详细阐述这一点；
+\end{itemize}
+
+\begin{itemize}
+\item 合并两个或多个节点向量，以获得在一个共同节点向量上定义的一组曲线；正如我们在后续章节中看到的，这在构建某些类型的曲面时非常重要；
+\end{itemize}
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_172_371_253_793_764_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.15. 通过节点插入提取曲面等参数曲线。
+
+\begin{itemize}
+\item 获取曲线(表面)的多边形(多面体)近似；细化结点向量使控制多边形(网)更接近曲线(表面)，在极限情况下，多边形(网)收敛于曲线(表面)。这一点的证明见于 [Lane80; DeBo87]。图 5.16b 和 5.16c 显示了对图 5.16a 中立方曲线应用的一次和两次中点结点细化(在每个结点跨度的中点插入一个新结点)。图 5.17a 到 5.17c 显示了对图 5.9 的表面进行的三次中点结点细化，分别在 \(u - ,v -\) 和两个方向上。
+\end{itemize}
+
+我们不需要额外的数学知识来开发结点细化算法；这实际上只是一个软件问题。解决步骤如下:
+
+1. 找到索引 \(a\) 和 \(b\) ，使得对于所有 \(i\) 有 \({u}_{a} \leq  {x}_{i} < {u}_{b}\) ；
+
+2. 从方程 (5.14) 和 (5.18) 可以得出控制点 \({\mathbf{P}}_{0}^{w},\ldots ,{\mathbf{P}}_{a - v}^{w}\) 和 \({\mathbf{P}}_{b - 1}^{w}\ldots ,{\mathbf{P}}_{n}^{w}\) 不变；因此，将这些复制到适当的 \({\mathbf{Q}}_{i}^{w}\) 位置，为新的控制点 \(r + p + b - a - 1\) 留出空间；
+
+3. 用 \(\bar{U}\left( {U\text{ merged with }X}\right)\) 表示新的结点向量；复制两端不变的结点；
+
+4. 进入循环并
+
+4.1. 计算新的控制点；
+
+4.2. 将 \(U\) 和 \(X\) 的元素合并到 \(\bar{U}\) 中；
+
+循环可以向前(从 \({\mathbf{Q}}_{a - p + 1}^{w}\) 开始)或向后(从 \(\left. {\mathbf{Q}}_{b + r - 1}^{w}\right)\) 开始)进行。
+
+164 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_173_355_239_816_1449_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.16. 曲线细化。(a) 定义在 \(\{ 0,0,0,0,{}^{3}/{}_{10},1,1,1,1\}\) 上的立方曲线；(b) 第一次中点结点细化；(c) 第二次中点结点细化。
+
+算法 A5.4 由 Boehm 和 Prautzsch 提出 [Boeh85a]。它向后工作，并在插入节点时覆盖中间控制点。Ubar 是新的节点向量， \(\bar{U}\) 。
+
+\HRule
+
+ALGORITHM A5.4
+
+\hspace*{1em} RefineKnotVectCurve(n, p, U, Pw, X, r, Ubar, Qw)
+
+\hspace*{2em} \{ /* Refine curve knot vector */
+
+\hspace*{4em} /* Input: n, p, U, Pw, X, r */
+
+\HRule
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_174_330_249_868_696_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.16. (续)
+
+\HRule
+
+\hspace*{3em} /* Output: Ubar, Qw */
+
+m = n+p+1;
+
+a = FindSpan(n, p, X[0], U); /* Algorithm A2.1 */
+
+b = FindSpan(n, p, X[r], U);
+
+b = b+1;
+
+for (j=0; j<=a-p; j++) Qw[j] = Pw[j];
+
+for \(\left( {j = b - 1;j <  = n;j +  + }\right) \;{Qw}\left\lbrack  {j + r + 1}\right\rbrack   = {Pw}\left\lbrack  j\right\rbrack\) ;
+
+for \(\left( {j = 0;j <  = a;j +  + }\right) \;\) Ubar \(\left\lbrack  j\right\rbrack   = U\left\lbrack  j\right\rbrack\) ;
+
+for (j=b+p; j<=m; j++) Ubar[j+r+1] = U[j];
+
+i = b+p-1; k = b+p+r;
+
+for (j=r; j>=0; j--)
+
+\hspace*{2em} \{
+
+\hspace*{2em} while ( \(X\left\lbrack  j\right\rbrack   <  = U\left\lbrack  i\right\rbrack  \& \& i > a\) )
+
+\hspace*{5em} \{
+
+\hspace*{5em} \(\operatorname{Qw}\left\lbrack  {k - p - 1}\right\rbrack   = \operatorname{Pw}\left\lbrack  {i - p - 1}\right\rbrack  ;\)
+
+\hspace*{5em} Ubar[k] = U[i];
+
+\hspace*{4em} \(\mathrm{k} = \mathrm{k} - 1;\;\mathrm{i} = \mathrm{i} - 1\) ;
+
+\hspace*{4em} \}
+
+\hspace*{2em} \(\operatorname{Qw}\left\lbrack  {k - p - 1}\right\rbrack   = \operatorname{Qw}\left\lbrack  {k - p}\right\rbrack  ;\)
+
+\hspace*{2em} for (l=1; l<=p; l++)
+
+\hspace*{5em} \{
+
+\hspace*{5em} ind = k-p+l;
+
+\hspace*{5em} alfa = Ubar[k+l]-X[j];
+
+\hspace*{5em} if (abs(alfa) == 0.0)
+
+\hspace*{7em} Qw[ind-1] = Qw[ind];
+
+\hspace*{5em} else
+
+\HRule
+
+166 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_175_355_245_822_1746_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.17. 对图 5.9 中的表面进行细化。 (a) 在 \(u\) 方向上的第三次中点细化； (b) 在 \(v\) 方向上的第二次中点细化； (c) 在 \(u\) 方向上的第三次细化和在 \(v\) 方向上的第二次细化。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_176_367_245_807_853_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.17. (续)
+
+\HRule
+
+\hspace*{3em} \{
+
+\hspace*{3em} alfa = alfa/(Ubar[k+l]-U[i-p+l]);
+
+\hspace*{3em} Qw[ind-1] = alfa*Qw[ind-1] + (1.0-alfa)*Qw[ind];
+
+\hspace*{3em} \}
+
+\hspace*{2em} \}
+
+\hspace*{1em} \(\operatorname{Ubar}\left\lbrack  k\right\rbrack   = X\left\lbrack  j\right\rbrack  ;\)
+
+\hspace*{1em} \(\mathrm{k} = \mathrm{k} - 1\) ;
+
+\hspace*{1em} \}
+
+\}
+
+\HRule
+
+设 \({\mathbf{S}}^{w}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right) {\mathbf{P}}_{i,j}^{w}\) 为 \(U\) 和 \(V\) 上的 NURBS 曲面。通过简单地将算法 A5.4 应用于 \(m + 1\) 列控制点来完成 \(U\) 节点向量细化。进行 \(V\) 细化需要 \(n + 1\) 次算法 A5.3 的应用。算法可以组织得如此，以消除冗余操作(例如，最后一个 for 循环中的 alfas 值对于每个 \(m + 1\) 列控制点都是相同的)。算法的草图是:
+
+\HRule
+
+ALGORITHM A5.5
+
+\hspace*{1em} RefineKnotVectSurface(n, p, U, m, q, V, Pw, X, r, dir, Ubar, Vbar, Qw)
+
+\hspace*{2em} \{ /* Refine surface knot vector */
+
+\hspace*{4em} /* Input: n, p, U, m, q, V, Pw, X, r, dir */
+
+\hspace*{4em} /* Output: Ubar, Vbar, Qw */
+
+\hspace*{4em} if (dir == U\_DIRECTION)
+
+\hspace*{5em} \{
+
+\hspace*{5em} find indexes \(a\) and \(b\) ;
+
+\hspace*{5em} initialize Ubar;
+
+\hspace*{5em} copy V into Vbar;
+
+\hspace*{13em} /* Save unaltered ctrl pts */
+
+\hspace*{5em} for (row=0; row<=m; row++)
+
+\hspace*{7em} \{
+
+\hspace*{7em} for \(\left( {k = 0;k <  = a - p;k +  + }\right) \;{Qw}\left\lbrack  k\right\rbrack  \left\lbrack  {row}\right\rbrack   = {Pw}\left\lbrack  k\right\rbrack  \left\lbrack  {row}\right\rbrack\) ;
+
+\hspace*{7em} for \(\left( {k = b - 1;k <  = n;k +  + }\right) \;{Qw}\left\lbrack  {k + r + 1}\right\rbrack  \left\lbrack  {row}\right\rbrack   = {Pw}\left\lbrack  k\right\rbrack  \left\lbrack  {row}\right\rbrack\) ;
+
+\hspace*{7em} \}
+
+\hspace*{5em} for (j=r; j>=0; j--)
+
+\hspace*{7em} \{
+
+\hspace*{7em} while ( \(X\left\lbrack  j\right\rbrack   <  = U\left\lbrack  i\right\rbrack\) \&\& i>a)
+
+\hspace*{8em} \{
+
+\hspace*{8em} compute Ubar;
+
+\hspace*{8em} for ( row ... ) Qw[k-p-1][row] = Pw[i-p-1][row];
+
+\hspace*{8em} \(\mathrm{k} = \mathrm{k} - 1;\;\mathrm{i} = \mathrm{i} - 1;\)
+
+\hspace*{8em} \}
+
+\hspace*{7em} for ( row ... ) Qw[k-p-1][row] = Qw[k-p][row];
+
+\hspace*{7em} for (l=1; l<=p; l++)
+
+\hspace*{8em} \{
+
+\hspace*{8em} ind = k-p+l;
+
+\hspace*{8em} compute alfa;
+
+\hspace*{8em} if (abs(alfa) == 0.0)
+
+\hspace*{10em} for ( row ... ) Qw[ind-1][row] = Qw[ind][row];
+
+\hspace*{8em} else
+
+\hspace*{10em} \{
+
+\hspace*{10em} compute alfa;
+
+\hspace*{10em} for ( row ... )
+
+\hspace*{11em} Qw[ind-1][row] =
+
+\hspace*{13em} alfa*Qw[ind-1][row]+(1.0-alfa)*Qw[ind][row];
+
+\hspace*{9em} \}
+
+\hspace*{8em} \}
+
+\hspace*{7em} Ubar[k] = X[j]; k = k-1;
+
+\hspace*{6em} \}
+
+\hspace*{5em} \}
+
+\hspace*{4em} if (dir == V\_DIRECTION)
+
+\hspace*{5em} \{
+
+\hspace*{5em} /* Similar code as above with \(u\) and \(v\) directional
+
+\hspace*{7em} parameters switched */
+
+\hspace*{5em} \}
+
+\hspace*{3em} \}
+
+An important application of knot refinement is the problem of decomposing a
+
+\HRule
+
+将 NURBS 曲线分解为其组成的(四维)多项式段。这在将 NURBS 曲线转换为另一种样条形式时是必需的，例如，转换为 IGES 参数样条曲线，实体类型 112 [IGE93]。在这样的转换中，第一步是将曲线分解为分段的 Bézier 形式。通过插入每个内部节点，直到其重数为 \(p\) ，可以获得段的 Bézier 控制点。这分两步完成:
+
+1. 通过 \(U\) 并构建细化向量 \(X\) ；
+
+2. 调用算法 A5.4。
+
+图 5.18a 和 5.18b 显示了一个立方曲线及其对应的基函数；图 5.19a 和 5.19b 显示了同一曲线及其基函数在分解后的情况。图 5.19a 中的控制点是曲线段的贝塞尔控制点。图 5.20a、5.20b、5.21a 和 5.21b 显示了一个表面的分解。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_178_264_893_1002_1167_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.18. 一个立方曲线。(a) 曲线及其控制多边形；(b) 定义在 \(\{ 0,0,0,0,1,2,3,4,4,4,4\}\) 上的基函数。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_179_252_241_1020_1159_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.19. 将图 5.18 中的曲线通过节点细化分解为分段贝塞尔曲线。(a) 分解后的曲线及其控制多边形；(b) 在插入节点 1、2 和 3 各两次后的基函数。
+
+现在我们给出一个算法，该算法以高效的方式从左到右提取曲线的所有贝塞尔段。为方便起见，我们省略控制点上的 \(w\) 上标。图 5.22a 到 \({5.22}\mathrm{\;d}\) 最好地解释了该算法。设 \(\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{5}{N}_{i,3}\left( u\right) {\mathbf{P}}_{i}\) 为一个具有两个不同内部节点的立方曲线，设 \({\mathbf{Q}}_{k}^{j}\) 为第 \(k\) 个贝塞尔段的第 \(j\) 个控制点， \(k = 0,\ldots ,p\) 和 \(j = 0,1,2\) 。注意在图 \({5.22}\mathrm{\;b}\) 和 \({5.22}\mathrm{c}\) 中，当计算第零段的最右侧贝塞尔控制点 \({\mathbf{Q}}_{2}^{0}\) 和 \({\mathbf{Q}}_{3}^{0}\) 时(通过节点插入)，第一段的最左侧贝塞尔点 \({\mathbf{Q}}_{0}^{1}\) 和 \({\mathbf{Q}}_{1}^{1}\) 也正在计算并存储。
+
+与使用一般结精细化相比，通过检查结插入α的计算(公式 [5.15])，实现了另一个主要的计算减少。假设 \(\left\lbrack  {{u}_{a},{u}_{b}}\right\rbrack\) 是当前正在处理的段，其中 \(a\) 和 \(b\) 是结 \({u}_{a}\) 和 \({u}_{b}\) 的最右侧出现的索引。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_180_372_239_786_1591_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.20. 要分解的(立方 \(\times\) 二次)曲面。(a)控制网；(b)在 \(U = \{ 0,0,0,0,3/5,1,1,1,1\}\) 和 \(V = \{ 0,0,0,2/5,1,1,1\}\) 上定义的曲面。
+
+然后，当我们开始插入 \({u}_{b}\) 时，结向量的形式为(局部)
+
+\[
+\ldots ,\underset{p}{\underbrace{{u}_{a - p + 1} = \cdots  = {u}_{a}}},\underset{s}{\underbrace{{u}_{b - s + 1} = \cdots  = {u}_{b}}} \tag{5.22}
+\]
+
+172 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_181_367_243_814_830_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.21. 通过结精细化进行的分段贝塞尔补丁分解。(a)控制网；(b)贝塞尔曲面补丁。
+
+其中 \(s\) 是 \({u}_{b}\) 的原始重数。根据公式 (5.15)，插入 \({u}_{b}p - s\) 次数更多会生成三角形表。
+
+\[
+{\alpha }_{b - p + 1,1}
+\]
+
+\({\alpha }_{b - p + 2,2}\)
+
+\[
+{\alpha }_{b - p + 2,1}
+\]
+
+\(\vdots\)
+
+\[
+\cdots {\alpha }_{b - s,p - s}
+\]
+
+\[
+{\alpha }_{b - s - 1,1}
+\]
+
+\[
+{\alpha }_{b - s,2}
+\]
+
+\[
+{\alpha }_{b - s,1}
+\]
+
+检查公式 (5.15) 和 (5.22) 显示了两个事实:
+
+\begin{itemize}
+\item \({\alpha }_{b - p + i,1} = {\alpha }_{b - p + i + 1,2} = \cdots  = {\alpha }_{b - s,p - s - i + 1}\) 对于 \(i = 1,\ldots ,p - s\) ； \(\alpha \mathrm{s}\) 在指向东南的对角线上是相等的；
+\end{itemize}
+
+\begin{itemize}
+\item 公式 (5.15) 中的分子在整个 \({\alpha }_{i,j}\) 集合中保持不变，即 \({u}_{b} - {u}_{a}\) 。
+\end{itemize}
+
+为了说明这一点，考虑图 5.23 中所示的例子。在提取第一个段后，结向量的形式为
+
+\[
+U = \{ 0,0,0,0,0,1/5,1/5,1/5,1/5,2/5,3/5,4/5,1,1,1,1,1\}
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_182_369_243_797_815_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.21. (续。)
+
+当计算第二个段时，生成 \(a = 8\) 和 \(b = 9\) ，以及以下 \(\alpha \mathrm{s}\) 。
+
+\[
+r = 1
+\]
+
+\[
+r = 2
+\]
+
+\[
+r = 3
+\]
+
+\[
+{\alpha }_{6,1} = \frac{{u}_{9} - {u}_{6}}{{u}_{10} - {u}_{6}} = \frac{0.2}{0.4}
+\]
+
+\[
+{\alpha }_{7,2} = \frac{{u}_{9} - {u}_{7}}{{u}_{10} - {u}_{7}} = \frac{0.2}{0.4}
+\]
+
+\[
+{\alpha }_{7,1} = \frac{{u}_{9} - {u}_{7}}{{u}_{11} - {u}_{7}} = \frac{0.2}{0.6}
+\]
+
+\[
+{\alpha }_{8,3} = \frac{{u}_{9} - {u}_{8}}{{u}_{10} - {u}_{8}} = \frac{0.2}{0.4}
+\]
+
+\[
+{\alpha }_{8,2} = \frac{{u}_{9} - {u}_{8}}{{u}_{11} - {u}_{8}} = \frac{0.2}{0.6}
+\]
+
+\[
+{\alpha }_{8,1} = \frac{{u}_{9} - {u}_{8}}{{u}_{12} - {u}_{8}} = \frac{0.2}{0.8}
+\]
+
+注意，沿东南对角线的 \(\alpha\) 分别为 \({0.2}/{0.4},{0.2}/{0.6}\) 和 \({0.2}/{0.8}\) ，而分子保持为 0.2。
+
+算法 A5.6 将 NURBS 曲线分解并返回 nb 个 Bézier 段。 \(\mathrm{{Qw}}\left\lbrack  \mathrm{j}\right\rbrack  \left\lbrack  \mathrm{k}\right\rbrack\) 是第 \(k\) 个控制点，属于第 \(j\) 个段。局部数组 alphas \(\left\lbrack  \right\rbrack\) 包含 alphas，其索引偏移以从 0 开始。
+
+\HRule
+
+ALGORITHM A5.6
+
+\hspace*{1em} DecomposeCurve(n, p, U, Pw, nb, Qw)
+
+\hspace*{2em} \{ /* Decompose curve into Bézier segments */
+
+\HRule
+
+174 基本几何算法插入的节点；(c)插入第二个节点；(d)为第二个段做准备。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_183_330_236_862_1473_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.22. 动态曲线分解。(a)原始三次曲线；(b)第一个
+
+\HRule
+
+\hspace*{1em} /* Input: n, p, U, Pw */
+
+\hspace*{1em} /* Output: nb, Qw */
+
+m = n+p+1;
+
+a = p;
+
+b = p+1;
+
+nb = 0 ;
+
+for (i=0; i<=p; i++) Qw[nb][i] = Pw[i];
+
+\HRule
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_184_348_228_815_1480_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.22. (续。)
+
+\HRule
+
+while (b < m)
+
+\hspace*{1em} \{
+
+\hspace*{1em} i = b;
+
+\hspace*{1em} while (b < m \&\& U[b+1] == U[b]) b++;
+
+\hspace*{1em} mult = b-i+1;
+
+\hspace*{1em} if (mult < p)
+
+\hspace*{2em} \{
+
+\hspace*{2em} numer \(= U\left\lbrack  b\right\rbrack   - U\left\lbrack  a\right\rbrack  ;\;/ *\) Numerator of alpha \(*\) /
+
+\HRule
+
+\HRule
+
+\hspace*{5em} /* Compute and store alphas \(* /\)
+
+\hspace*{3em} for (j=p; j>mult; j--)
+
+\hspace*{4em} alphas[j-mult-1] = numer/(U[a+j]-U[a]);
+
+\hspace*{3em} r = p-mult; /* Insert knot r times */
+
+\hspace*{3em} for (j=1; j<=r j++)
+
+\hspace*{4em} \{
+
+\hspace*{4em} save \(= r - j\) ;
+
+\hspace*{4em} s = mult + j; /* This many new points */
+
+\hspace*{4em} for (k=p; k>=s; k--)
+
+\hspace*{5em} \{
+
+\hspace*{5em} alpha = alphas[k-s];
+
+\hspace*{5em} Qw[nb][k] = alpha*Qw[nb][k] + (1.0-alpha)*Qw[nb][k-1];
+
+\hspace*{5em} \}
+
+\hspace*{4em} if \(\left( {b < m}\right) \;\) /* Control point of \(*\) /
+
+\hspace*{5em} Qw[nb+1][save] \(=\) Qw[nb][p]; /* next segment */
+
+\hspace*{4em} \}
+
+\hspace*{3em} \}
+
+\hspace*{1em} \(\mathrm{{nb}} = \mathrm{{nb}} + 1;\;/ *\) Bézier segment completed \(*\) /
+
+\hspace*{1em} if (b < m)
+
+\hspace*{3em} \{ /* Initialize for next segment */
+
+\hspace*{3em} for (i=p-mult; i<=p; i++) Qw[nb][i] = Pw[b-p+i];
+
+\hspace*{3em} a = b;
+
+\hspace*{3em} b = b+1;
+
+\hspace*{3em} \}
+
+\hspace*{1em} \}
+
+\}
+
+\HRule
+
+算法 A5.6 是 NURBS 系统与显示 Bézier 曲线的系统(硬件或软件)之间的理想接口。经过修改，算法 A5.6 动态计算 Bézier 段，将每个段传递以供显示，并用下一个段覆盖每个段。没有返回任何内容。这些修改包括:
+
+\begin{itemize}
+\item 从参数列表中移除 \(\mathrm{{nb}}\) 和 \(\mathrm{{Qw}}\) ；
+\end{itemize}
+
+\begin{itemize}
+\item 使用局部数组 \(\mathrm{{Qw}}\left\lbrack  \right\rbrack\) (长度 \(p + 1\) )和 \(\mathrm{{NextQw}}\left\lbrack  \right\rbrack\) (长度 \(p - 1\) )；NextQw 用于存储下一个段的最左控制点；
+\end{itemize}
+
+\begin{itemize}
+\item 在计算完一个段后(参见代码中的注释， \(/ *\) Bézier 段已完成 \(* /\) )，将其传递以供显示；
+\end{itemize}
+
+\begin{itemize}
+\item 在显示一个段后，用 NextQw[] 和 Pw[] 中的点覆盖它。
+\end{itemize}
+
+示例见图 5.24a-5.24c；更多细节请参见 [Pieg91b]。
+
+算法 A5.7 显示了表面分解的组织。该例程计算一个 Bézier 条带，即在一个方向上是 Bézier 而在另一个方向上是 B-spline 的 NURBS 表面。该例程必须被调用两次，第一次在 \(u\) 方向上获取 Bézier 条带，然后条带必须在 \(v\) 方向上输入到例程中以获取 Bézier 补丁。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_186_272_253_978_763_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.23. 用于计算四次曲线第二个 Bézier 段的 alpha 比例。
+
+\HRule
+
+ALGORITHM A5.7
+
+\hspace*{1em} DecomposeSurface \(\left( {n,p,U,m,q,V,{Pw},\operatorname{dir},{nb},{Qw}}\right)\)
+
+\hspace*{2em} \{ /* Decompose surface into Bézier patches */
+
+\hspace*{3em} /* Input: n, p, U, m, q, V, Pw, dir */
+
+\hspace*{3em} /* Output: nb, Qw */
+
+\hspace*{2em} if (dir == U\_DIRECTION)
+
+\HRule
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_186_305_1541_932_538_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.24. 四次曲线的即时分解。(a) 第一个 Bézier 段；(b) 第二个 Bézier 段；(c) 第三个 Bézier 段。
+
+178 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_187_360_253_950_1114_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.24.(续。)
+
+\HRule
+
+\{
+
+\(a = p;\;b = p + 1;\)
+
+nb=0;
+
+for (i = 0; i<=p; i++)
+
+\hspace*{1em} for (row = 0; row <=m; row ++)
+
+\hspace*{2em} Qw[nb][i][row] = Pw[i][row];
+
+while \(\left( {b < m}\right)\)
+
+\hspace*{1em} \{
+
+\hspace*{1em} get mult;
+
+\hspace*{1em} if ( mult<p )
+
+\hspace*{2em} \{
+
+\hspace*{2em} get the numerator and the alfas;
+
+\hspace*{2em} for (j=1; j<=p-mult; j++)
+
+\hspace*{3em} \{
+
+\hspace*{3em} save= ...;
+
+\hspace*{3em} s = ...;
+
+\hspace*{10em} for(k=p; k>=s; k--)
+
+\hspace*{12em} \{
+
+\hspace*{12em} get alfa;
+
+\hspace*{12em} for ( row ... )
+
+\hspace*{13em} Qw[nb][k][row] = alfa*Qw[nb][k][row]
+
+\[
+\text{ +(1.0-alfa)*Qw[nb][k-1][row]; }
+\]
+
+\hspace*{11em} \}
+
+\hspace*{10em} if ( b<m )
+
+\hspace*{12em} for ( row ... )
+
+\hspace*{13em} Qw[nb+1][save][row] = Qw[nb][p][row];
+
+\hspace*{10em} \}
+
+\hspace*{9em} \}
+
+\hspace*{8em} nb=nb+1;
+
+\hspace*{8em} if ( b<m )
+
+\hspace*{9em} \{
+
+\hspace*{9em} for (i=p-mult; i<=p; i++)
+
+\hspace*{10em} for ( row ... )
+
+\hspace*{12em} Qw[nb][i][row] = Pw[b-p+i][row];
+
+\hspace*{9em} \(a = b;\;b = b + 1;\)
+
+\hspace*{9em} \}
+
+\hspace*{7em} \}
+
+\hspace*{6em} \}
+
+\hspace*{5em} if (dir == V\_DIRECTION)
+
+\hspace*{6em} \{
+
+\hspace*{6em} /* Similar code as above with \(u\) - and \(v\) -directional
+
+\hspace*{7em} parameters switched */
+
+\hspace*{6em} \}
+
+\hspace*{5em} \}
+
+An example is shown in Figure 5.25.
+
+\HRule
+
+
+
+\section{节点移除}
+
+节点移除是节点插入的反向过程。设
+
+\[
+{\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w} \tag{5.23}
+\]
+
+在 \(U\) 上定义，并且设 \({u}_{r}\) 是 \(U\) 中重数为 \(s\) 的内部节点；端节点不被移除。设 \({U}_{t}\) 表示通过从 \(U\left( {1 \leq  t \leq  s}\right)\) 中移除 \({u}_{r}t\) 次得到的节点向量。我们说 \({u}_{r}\) 是 \(t\) 次可移除的，如果 \({\mathbf{C}}^{w}\left( u\right)\) 具有如下形式的精确表示
+
+\[
+{\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{{n - t}}{\bar{N}}_{i,p}\left( u\right) {\mathbf{Q}}_{i}^{w} \tag{5.24}
+\]
+
+其中 \({\bar{N}}_{i,p}\left( u\right)\) 是 \({U}_{t}\) 上的基函数，即，方程 (5.23) 和 (5.24) 在几何上和参数上表示相同的曲线。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_189_348_253_840_791_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.25. 即时表面分解；显示了三个 Bézier 补丁。
+
+从前面的章节我们知道，基函数 \({N}_{i,p}\left( u\right)\) 在 \({u}_{r}\) 处非零的只有 \({C}^{p - s}\) 是连续的。此外，尽管一般不期望曲线有超过 \({C}^{p - s}\) 的连续性，但控制点 \({\mathbf{P}}_{i}^{w}\) 可以位于某些位置，使得 \(\left( {p - s + 1}\right)\) 次(或更高)导数是连续的。因此，节点 \({u}_{r}\) 是 \(t\) 次可去除的，当且仅当曲线 \({\mathbf{C}}^{w}\left( u\right)\) 在 \(u = {u}_{r}\) 处是 \({C}^{p - s + t}\) 连续的。重要的是要注意，连续性必须是相对于 \({\mathbf{C}}^{w}\left( u\right)\) 的，而不是其投影 \(\mathbf{C}\left( u\right)\) ，后者即使 \({\mathbf{C}}^{w}\left( u\right)\) 不连续也可以是连续的。
+
+节点去除算法必须做两件事:
+
+\begin{itemize}
+\item 确定一个节点是否可去除以及可去除多少次；
+\end{itemize}
+
+\begin{itemize}
+\item 计算新的控制点 \({\mathbf{Q}}_{i}^{w}\) 。
+\end{itemize}
+
+详细信息可以在 [Till92] 中找到。
+
+节点去除在多个应用中是一个重要的工具:
+
+\begin{itemize}
+\item 将以幂基形式表示的样条曲线或曲面转换为 B 样条形式的标准方法是:
+\end{itemize}
+
+\begin{itemize}
+\item 将段(补丁)转换为贝塞尔形式；
+\end{itemize}
+
+\begin{itemize}
+\item 通过将贝塞尔段拼接在一起并使用所有内部节点的重数等于次数的节点向量来获得 B 样条表示；
+\end{itemize}
+
+\begin{itemize}
+\item 去除尽可能多的节点(因此控制点)，以允许样条曲线(曲面)的连续性；
+\end{itemize}
+
+\begin{itemize}
+\item 在交互式塑造 B 样条曲线和曲面时，有时会添加节点以增加可修改的控制点数量。当控制点被移动时，节点处的连续性水平可能会改变(增加或减少)；因此，在修改完成后，可以调用节点去除以获得曲线或曲面的最紧凑表示；
+\end{itemize}
+
+\begin{itemize}
+\item 有时将 B-spline 曲线连接在一起以形成复合曲线是有用的。第一步是使曲线兼容，即具有相同的阶数，并且第 \(i\) 条曲线的结束参数值等于第 \(\left( {i + 1}\right)\) 条曲线的起始参数值。一旦完成这一点，组合就通过使用内部结点，其重数等于曲线的共同阶数来实现。然后可以调用结点移除，以去除不必要的结点。
+\end{itemize}
+
+我们通过一个例子描述结点移除过程。像往常一样，算法在控制点的四个坐标上操作，但为了符号的方便，我们省略 \(w\) 上标。考虑图 5.26 中的三次曲线。假设原始曲线由 \(\left\{  {{\mathbf{P}}_{0}^{0},\ldots ,{\mathbf{P}}_{6}^{0}}\right\}\) 和 \(U = \left\{  {{u}_{0},\ldots ,{u}_{10}}\right\}\) 定义，其中控制点上的上标表示结点移除过程中的步骤编号，结点为 \({u}_{0} = \cdots  = {u}_{3} = 0\) 、 \({u}_{4} = {u}_{5} = {u}_{6} = 1\) 和 \({u}_{7} = \cdots  = {u}_{10} = 2\) 。考虑移除 \(u = 1\left( { = {u}_{6}}\right)\) 。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_190_218_1320_1082_754_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.26. 从具有三重结点的三次曲线中移除结点。
+
+当且仅当一阶导数连续时
+
+\[
+\frac{p}{{u}_{6} - {u}_{3}}\left( {{\mathbf{P}}_{3}^{0} - {\mathbf{P}}_{2}^{0}}\right)  = \frac{p}{{u}_{7} - {u}_{4}}\left( {{\mathbf{P}}_{4}^{0} - {\mathbf{P}}_{3}^{0}}\right)
+\]
+
+设置 \(u = {u}_{4} = {u}_{6}\) 并重新排列项得到
+
+\[
+{\mathbf{P}}_{3}^{0} = \frac{u - {u}_{3}}{{u}_{7} - {u}_{3}}{\mathbf{P}}_{4}^{0} + \frac{{u}_{7} - u}{{u}_{7} - {u}_{3}}{\mathbf{P}}_{2}^{0}
+\]
+
+使用 \({\mathbf{P}}_{2}^{0} = {\mathbf{P}}_{2}^{1}\) 和 \({\mathbf{P}}_{4}^{0} = {\mathbf{P}}_{3}^{1}\) 得到
+
+\[
+{\mathbf{P}}_{3}^{0} = {\alpha }_{3}{\mathbf{P}}_{3}^{1} + \left( {1 - {\alpha }_{3}}\right) {\mathbf{P}}_{2}^{1}\;{\alpha }_{3} = \frac{u - {u}_{3}}{{u}_{7} - {u}_{3}} \tag{5.25}
+\]
+
+方程 (5.25) 只是将 \(u = 1\) 插入具有 1 作为双重结点的结点向量的方程(在该结点向量中 \({u}_{7}\) 是 \({u}_{6}\) )。此外，当且仅当结点 \(u = 1\) 可以第二次移除时，二阶导数在 \(u = 1\) 处是连续的。它可以在
+
+\[
+{\mathbf{P}}_{2}^{1} = {\alpha }_{2}{\mathbf{P}}_{2}^{2} + \left( {1 - {\alpha }_{2}}\right) {\mathbf{P}}_{1}^{2}
+\]
+
+\[
+{\mathbf{P}}_{3}^{1} = {\alpha }_{3}{\mathbf{P}}_{3}^{2} + \left( {1 - {\alpha }_{3}}\right) {\mathbf{P}}_{2}^{2} \tag{5.26}
+\]
+
+与
+
+\[
+{\alpha }_{i} = \frac{u - {u}_{i}}{{u}_{i + p + 2} - {u}_{i}}\;i = 2,3
+\]
+
+最后，当且仅当 \(u = 1\) 可以第三次移除时，三阶导数是连续的，这意味着
+
+\[
+{\mathbf{P}}_{1}^{2} = {\alpha }_{1}{\mathbf{P}}_{1}^{3} + \left( {1 - {\alpha }_{1}}\right) {\mathbf{P}}_{0}^{3}
+\]
+
+\[
+{\mathbf{P}}_{2}^{2} = {\alpha }_{2}{\mathbf{P}}_{2}^{3} + \left( {1 - {\alpha }_{2}}\right) {\mathbf{P}}_{1}^{3}
+\]
+
+\[
+{\mathbf{P}}_{3}^{2} = {\alpha }_{3}{\mathbf{P}}_{3}^{3} + \left( {1 - {\alpha }_{3}}\right) {\mathbf{P}}_{2}^{3} \tag{5.27}
+\]
+
+与
+
+\[
+{\alpha }_{i} = \frac{u - {u}_{i}}{{u}_{i + p + 3} - {u}_{i}}\;i = 1,2,3
+\]
+
+设 \(n = p - s + 1\) ，其中 \(s\) 是要移除的结点的重数。然后注意到
+
+\begin{itemize}
+\item 在方程 (5.25) 中没有未知数， \({\mathbf{P}}_{2}^{2}\) 是方程 (5.26) 中唯一的未知数，而 \({\mathbf{P}}_{1}^{3}\) 和 \({\mathbf{P}}_{2}^{3}\) 是方程 (5.27) 中的未知数。去结产生了 \(n\) 个方程和 \(n - 1\) 个未知数；
+\end{itemize}
+
+\begin{itemize}
+\item 去结破坏了 \(n\) 控制点，并用 \(n - 1\) 个新控制点替换它们。
+\end{itemize}
+
+让我们求解方程 (5.25) 到 (5.27)。对于方程 (5.25)，我们计算单个方程的右侧，并检查它是否等于 \({\mathbf{P}}_{3}^{0}\) (在一个有意义的容差范围内)。如果不相等，则无法去结；如果相等，则去掉结并移除 \({\mathbf{P}}_{3}^{0}\) 。
+
+从方程 (5.26) 中的两个方程我们得到
+
+\[
+{\mathbf{P}}_{2}^{2} = \frac{{\mathbf{P}}_{2}^{1} - \left( {1 - {\alpha }_{2}}\right) {\mathbf{P}}_{1}^{2}}{{\alpha }_{2}}\;{\mathbf{P}}_{2}^{2} = \frac{{\mathbf{P}}_{3}^{1} - {\alpha }_{3}{\mathbf{P}}_{3}^{2}}{1 - {\alpha }_{3}}
+\]
+
+如果这两个 \({\mathbf{P}}_{2}^{2}\) 的值在容差范围内，则可以去结，并将 \({\mathbf{P}}_{2}^{1}\) 和 \({\mathbf{P}}_{3}^{1}\) 替换为 \({\mathbf{P}}_{2}^{2}\) 。
+
+求解方程 (5.27) 的第一和第三个方程，我们得到
+
+\[
+{\mathbf{P}}_{1}^{3} = \frac{{\mathbf{P}}_{1}^{2} - \left( {1 - {\alpha }_{1}}\right) {\mathbf{P}}_{0}^{3}}{{\alpha }_{1}}\;{\mathbf{P}}_{2}^{3} = \frac{{\mathbf{P}}_{3}^{2} - {\alpha }_{3}{\mathbf{P}}_{3}^{3}}{1 - {\alpha }_{3}}
+\]
+
+然后将 \({\mathbf{P}}_{1}^{3}\) 和 \({\mathbf{P}}_{2}^{3}\) 代入方程 (5.27) 的第二个方程的右侧，并检查它是否在 \({\mathbf{P}}_{2}^{2}\) 的容差范围内。如果是，则去掉结并用 \({\mathbf{P}}_{1}^{3}\) 和 \({\mathbf{P}}_{2}^{3}\) 替换 \({\mathbf{P}}_{1}^{2},{\mathbf{P}}_{2}^{2}\) 和 \({\mathbf{P}}_{3}^{2}\) 。
+
+一般来说，解决方程组的方法是从第一个和最后一个方程开始，向内推进，计算新的控制点。如果方程的数量是偶数(如方程 [5.26])，则最终的新控制点会被计算两次。如果控制点的两个值在容差范围内，则可以移除节点。如果方程的数量是奇数(如方程 [5.25] 和 [5.27])，则所有新的控制点只计算一次，最后计算的两个控制点被代入中间方程。如果结果在中间方程左侧旧控制点的容差范围内，则该节点是可移除的。
+
+现在我们给出一般公式。设 \(u = {u}_{r} \neq  {u}_{r + 1}\) 为重数为 \(s\) 的节点，其中 \(1 \leq  s \leq  p\) 。计算移除 \(u\) 的新控制点的方程为
+
+\[
+{\mathbf{P}}_{i}^{1} = \frac{{\mathbf{P}}_{i}^{0} - \left( {1 - {\alpha }_{i}}\right) {\mathbf{P}}_{i - 1}^{1}}{{\alpha }_{i}}\;r - p \leq  i \leq  \frac{1}{2}\left( {{2r} - p - s - 1}\right)
+\]
+
+\[
+{\mathbf{P}}_{j}^{1} = \frac{{\mathbf{P}}_{j}^{0} - {\alpha }_{j}{\mathbf{P}}_{j + 1}^{1}}{\left( 1 - {\alpha }_{j}\right) }\;\frac{1}{2}\left( {{2r} - p - s + 2}\right)  \leq  j \leq  r - s \tag{5.28}
+\]
+
+其中
+
+\[
+{\alpha }_{k} = \frac{u - {u}_{k}}{{u}_{k + p + 1} - {u}_{k}}\;k = i,j
+\]
+
+编程方程 (5.28) 的最简单方法是
+
+\[
+i = r - p;j = r - s;
+\]
+
+\[
+\text{ while }\left( {j - i > 0}\right)
+\]
+
+\[
+{\alpha }_{i} = \cdots
+\]
+
+\[
+{\alpha }_{j} = \cdots
+\]
+
+\[
+{\mathbf{P}}_{i}^{1} = \cdots
+\]
+
+\[
+{\mathbf{P}}_{j}^{1} = \cdots
+\]
+
+\[
+i = i + 1;j = j - 1;
+\]
+
+现在假设我们想要多次移除 \(u = {u}_{r}\) 。每次移除节点时， \(s\) 和 \(r\) 会在方程 (5.28) 中递减，控制点的上标会递增。因此，移除 \(u = {u}_{r}\) 第 \(t\) 次的方程为
+
+\[
+{\mathbf{P}}_{i}^{t} = \frac{{\mathbf{P}}_{i}^{t - 1} - \left( {1 - {\alpha }_{i}}\right) {\mathbf{P}}_{i - 1}^{t}}{{\alpha }_{i}}\;r - p - t + 1 \leq  i \leq  \frac{1}{2}\left( {{2r} - p - s - t}\right)
+\]
+
+\[
+{\mathbf{P}}_{j}^{t} = \frac{{\mathbf{P}}_{j}^{t - 1} - {\alpha }_{j}{\mathbf{P}}_{j + 1}^{t}}{\left( 1 - {\alpha }_{j}\right) }\;\frac{1}{2}\left( {{2r} - p - s + t + 1}\right)  \leq  j \leq  r - s + t - 1
+\]
+
+(5.29)
+
+其中
+
+\[
+{\alpha }_{i} = \frac{u - {u}_{i}}{{u}_{i + p + t} - {u}_{i}}\;{\alpha }_{j} = \frac{u - {u}_{j - t + 1}}{{u}_{j + p + 1} - {u}_{j - t + 1}}
+\]
+
+假设 \(u\) 要被移除 \(k\) 次。方程 (5.29) 可以编程为
+
+\[
+\text{ first } = r - p + 1;\text{ last } = r - s - 1\text{ ; }
+\]
+
+\[
+\text{ for }t = 1,\ldots ,k
+\]
+
+\[
+\text{ first } = \text{ first -1 ; last } = \text{ last +1 ; }
+\]
+
+\[
+i = \text{ first; }j = \text{ last; }
+\]
+
+\[
+\text{ while }\left( {j - i > t - 1}\right)
+\]
+
+\[
+{\alpha }_{i} = \cdots
+\]
+
+\[
+{\alpha }_{j} = \cdots
+\]
+
+\[
+{\mathbf{P}}_{i}^{t} = \cdots
+\]
+
+\[
+{\mathbf{P}}_{j}^{t} = \cdots
+\]
+
+\[
+i = i + 1;j = j - 1;
+\]
+
+使结去除实现复杂化的因素在于，通常无法提前知道一个结是否可以去除，以及如果可以去除，能够去除多少次。必须在临时存储中计算(潜在的)新的控制点，并且无法提前知道输出中将有多少个结和控制点。算法 A5.8 尝试去除结 \(u = {u}_{r}\) num 次，其中 \(1 \leq\) num \(\leq  s\) 。它返回 \(t\) ，即实际去除结的次数，如果 \(t > 0\) ，则返回新的结向量和控制点。它在原地计算新的控制点，覆盖旧的控制点。每一步只需要一个大小为 \({2p} + 1\) 的局部数组(temp)来计算新的控制点。如果在步骤 \(t\) 的去除失败，则步骤 \(t - 1\) 的控制点仍然完好无损。最后，结和控制点向下移动以填补去除留下的空隙。进行最少次数的移动。为了检查重合点，使用一个值 TOL 和一个函数 Distance4D(   )，该函数计算点之间的距离。如果曲线是有理的，我们假设采用齐次表示；在这种情况下，Distance4D(   ) 计算四维距离。权重被视为普通坐标。TOL 的含义 [Till92]
+
+\begin{itemize}
+\item 如果曲线是非有理的(所有 \({w}_{i} = 1\) )，那么一次结去除会导致曲线在整个参数域内与原始曲线的偏差小于 TOL；
+\end{itemize}
+
+\begin{itemize}
+\item 如果曲线是有理的，那么偏差在任何地方都小于
+\end{itemize}
+
+\[
+\frac{\operatorname{TOL}\left( {1 + {\left| \mathbf{P}\right| }_{\max }}\right) }{{w}_{\min }}
+\]
+
+在这里 \({w}_{\min }\) 是原始曲线上的最小权重，而 \({\left| \mathbf{P}\right| }_{\max }\) 是原始曲线上的任何三维点到原点的最大距离。B样条的凸包性质用于计算 \({w}_{\min }\) 和 \({\left| \mathbf{P}\right| }_{\max }\) 的界限。如果期望的偏差界限是 \(d\) ，那么
+
+TOL 应设置为
+
+\[
+\mathrm{{TOL}} = \frac{d{w}_{\min }}{1 + {\left| \mathbf{P}\right| }_{\max }} \tag{5.30}
+\]
+
+\HRule
+
+\section*{ALGORITHM A5.8}
+
+\(\mathrm{{RemoveCurveKnot}}\left( {\mathrm{n},\mathrm{p},\mathrm{U},\mathrm{{Pw}},\mathrm{u},\mathrm{r},\mathrm{s},\mathrm{{num}},\mathrm{t}}\right)\)
+
+\hspace*{3em} \{ /* Remove knot u (index r) num times. */
+
+\hspace*{6em} /* Input: n, p, U, Pw, u, r, s, num */
+
+\hspace*{6em} /* Output: t, new knots \& ctrl pts in U \& Pw */
+
+\hspace*{2em} \(\mathrm{m} = \mathrm{n} + \mathrm{p} + 1\) ;
+
+\hspace*{2em} ord = p+1;
+
+\hspace*{2em} fout \(= \left( {2 * r - s - p}\right) /2;\;/ *\) First control point out \(* /\)
+
+\hspace*{2em} last = r-s;
+
+\hspace*{2em} first = r-p;
+
+\hspace*{2em} for (t = 0; t < num; t++)
+
+\hspace*{5em} \{ /* This loop is Eq. (5.28) */
+
+\hspace*{5em} off = first-1; /* Diff in index between temp and P */
+
+\hspace*{5em} temp[0] = Pw[off]; temp[last+1-off] = Pw[last+1];
+
+\hspace*{5em} i = first; j=last;
+
+\hspace*{5em} ii = 1; j = last-off;
+
+\hspace*{5em} remflag = 0 ;
+
+\hspace*{5em} while \(\left( {j - i > t}\right)\)
+
+\hspace*{7em} \{ /* Compute new control points for one removal step */
+
+\hspace*{7em} alfi = (u-U[i])/(U[i+ord+t]-U[i]);
+
+\hspace*{7em} alfj = (u-U[j-t])/(U[j+ord]-U[j-t]);
+
+\hspace*{7em} temp[ii] = (Pw[i]-(1.0-alfi)*temp[ii-1])/alfi;
+
+\hspace*{7em} temp[jj] = (Pw[j]-alfj*temp[jj+1])/(1.0-alfj);
+
+\hspace*{7em} i = i+1; ii = ii+1;
+
+\hspace*{7em} j = j-1; jj = jj-1;
+
+\hspace*{7em} \} /* End of while-loop */
+
+\hspace*{5em} if \(\left( {j - i < t}\right) / *\) Check if knot removable \(* /\)
+
+\hspace*{7em} \{
+
+\hspace*{7em} if (Distance4D(temp[ii-1], temp[jj+1]) <= TOL)
+
+\hspace*{9em} remflag = 1 ;
+
+\hspace*{3em} \}
+
+\hspace*{2em} else
+
+\hspace*{3em} \{
+
+\hspace*{3em} alfi = (u-U[i])/(U[i+ord+t]-U[i]);
+
+\hspace*{3em} if (Distance4D(Pw[i], alfi*temp[ii+t+1]
+
+\[
+\text{ +(1.0-alfi)*temp[ii-1]) <= TOL) }
+\]
+
+\hspace*{4em} remflag = 1 ;
+
+\hspace*{3em} \}
+
+\hspace*{2em} if (remflag == 0 ) /* Cannot remove any more knots */
+
+\hspace*{3em} break; /* Get out of for-loop */
+
+\hspace*{2em} else
+
+\hspace*{3em} \{ /* Successful removal. Save new cont.pts. */
+
+\hspace*{3em} i = first; j = last;
+
+\hspace*{3em} while \(\left( {j - i > t}\right)\)
+
+\hspace*{4em} \{
+
+\hspace*{4em} Pw[i] = temp[i-off]; Pw[j] = temp[j-off];
+
+\hspace*{4em} i = i+1; j = j-1;
+
+\hspace*{4em} \}
+
+\hspace*{3em} \}
+
+\hspace*{1em} first = first-1; last = last+1;
+
+\hspace*{1em} \} /* End of for-loop */
+
+if (t == 0) return;
+
+for (k=r+1; k<=m; k++) U[k-t] = U[k]; /* Shift knots */
+
+\(j =\) fout; \(\;i = j;\;/ * {Pj}\) thru Pi will be overwritten \(* /\)
+
+for (k=1; k<t; k++)
+
+\hspace*{1em} if \(\left( {\operatorname{Mod}\left( {k,2}\right)  =  = 1}\right) \;/ * k\) modulo \(2 * /\)
+
+\hspace*{3em} i = i+1; else j = j-1;
+
+for (k=i+1; k<=n; k++) /* Shift */
+
+\hspace*{2em} \(\{ \;\operatorname{Pw}\left\lbrack  j\right\rbrack   = \operatorname{Pw}\left\lbrack  k\right\rbrack  ;\;j = j + 1;\;\}\)
+
+return;
+
+\}
+
+\HRule
+
+表 5.2 显示了图 5.26 中给出的三次曲线示例的控制点数组如何变化。第一行显示了进入 for 循环 \(\left( {0 \leq  t < \text{ num }}\right)\) 之前的内容。行 \(2 - 4\) 显示了 for 循环底部的数组(仅变化)对于 \(t = 0,t = 1\) 和 \(t = 2\) 。’ \(\mathrm{X}\) ’ 表示未使用的数组元素。
+
+我们注意到算法 A5.8 可以创建负权重或零权重。从理论上讲这是正确的，但从软件的角度来看可能是不理想的。可以通过在距离计算后、设置 remflag 为 1 之前插入一个检查来避免这种情况。
+
+设 \({\mathbf{S}}^{w}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right) {\mathbf{P}}_{i,j}^{w}\) 为 NURBS 曲面。通过将节点移除算法(算法 A5.8)应用于控制点的 \(m + 1\) 列 \(\left( {n + 1\text{ rows }}\right)\) ，可以从 \({\mathbf{S}}^{w}\left( {u,v}\right)\) 中移除一个 \(u\) 节点( \(v\) 节点)。但只有在所有 \(m + 1\) 列( \(n + 1\) 行)成功移除的情况下，节点才能被移除。
+
+在 [Till92] 中给出了两个额外的节点移除算法。这些是:
+
+\begin{itemize}
+\item 给定一条曲线，尽可能移除更多的节点；
+\end{itemize}
+
+表 5.2. 图 5.15 的三次曲线的控制点数组。
+
+\begin{center}
+\adjustbox{max width=\textwidth}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\({\mathbf{P}}_{0}^{0}\) & \({\mathbf{P}}_{1}^{0}\) & \({\mathbf{P}}_{2}^{0}\) & \({\mathbf{P}}_{3}^{0}\) & \({\mathbf{P}}_{4}^{0}\) & \({\mathbf{P}}_{5}^{0}\) & \({\mathbf{P}}_{6}^{0}\) & 循环之前 \\
+\cline{1-8}
+\phantom{X} & \phantom{X} & \phantom{X} & X & \phantom{X} & \phantom{X} & \phantom{X} & \(t = 0\) \\
+\cline{1-8}
+\phantom{X} & \phantom{X} & \({\mathbf{P}}_{2}^{2}\) & X & \({\mathbf{P}}_{2}^{2}\) & \phantom{X} & \phantom{X} & \(t = 1\) \\
+\cline{1-8}
+\phantom{X} & \({\mathbf{P}}_{1}^{3}\) & X & X & X & \({\mathbf{P}}_{2}^{3}\) & \phantom{X} & \(t = 2\) \\
+\cline{1-8}
+\hline
+\end{tabular}
+}
+\end{center}
+
+\begin{itemize}
+\item 给定一个曲面，尽可能移除更多的 \(u\) 节点( \(v\) 节点是类似的)。
+\end{itemize}
+
+我们通过各种示例说明曲线和曲面结点移除的效果，而不是详细介绍这些相当复杂的算法。图 5.27a 显示了一个具有单个、双重和三重结点的曲线。在图 \({5.27}\mathrm{\;b}\) 中，单个结点 \(u = 3/{10}\) 被移除，而在图 \({5.27}\mathrm{c} - {5.27}\mathrm{e}\) 中，分别移除了一个、两个和三个三重结点 \(u = 1/2\) 。
+
+曲面结点移除的示例显示在图 \({5.28}\mathrm{a} - {5.28}\mathrm{\;d}\) 中。图 \({5.28}\mathrm{a}\) 显示了原始曲面。在图 \({5.28}\mathrm{\;b}\) 中，三重结点 \(u = 3/{10}\) 被移除三次。在图 \({5.28}\mathrm{c}\) 中，单个结点 \(v = 1/4\) 被移除，而在图 5.28d 中，两个结点同时被移除。在图 5.27b-5.27d 以及图 \({5.28}\mathrm{\;b} - {5.28}\mathrm{\;d}\) 中，原始曲线/曲面以虚线表示，而移除结点的曲线/曲面以实线表示。
+
+图 5.29a 中的曲线移除了所有可移除的结点。图 \({5.29}\mathrm{\;b} - {5.29}\mathrm{f}\) 中显示的曲线分别使用容差值 0.007、0.025、0.07、0.6 和 1.2 计算得出。这些图示说明了有多少个结点是可移除的(被移除的结点用圆圈标出，原始多边形和曲线以虚线表示)；如何计算新的控制点。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_196_341_1443_827_580_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.27. 曲线结点移除示例。 (a) 定义在结点向量 \(\{ 0,0,0,0,3/{}_{10},1/2,1/2,1/2,1/2,7/{}_{10},7/{}_{10},1,1,1,1\}\) 上的原始三次曲线；(b) 移除 3/10，一次；(c) 移除 \(1/2\) 一次；(d) 移除 \(1/2\) 两次；(e) 移除 \(1/2\) 三次。
+
+188 基础几何算法
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_197_326_253_854_1203_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.27. (续。)
+
+点；以及原始曲线与去结点曲线之间的偏差。图5.30a和5.30b至图5.34a和5.34b展示了类似的示例。原始曲面的控制网如图5.30a所示。原始曲面如图5.30b所示。去结点曲面在图5.31a和 \({5.31}\mathrm{\;b}\) 至图5.34a和5.34b中进行了说明，使用的公差分别为0.05、0.1、0.3和0.5。
+
+
+
+
+\section{次数提升}
+
+设 \({\mathbf{C}}_{n}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{\mathbf{a}}_{i}{u}^{i}\) 为一个 \(n\) 次多项式曲线。显然，我们可以设定 \({\mathbf{a}}_{n + 1} = 0\) 并将 \({\mathbf{C}}_{n}\left( u\right)\) 写成一个 \(\left( {n + 1}\right)\) 次曲线。
+
+\[
+{\mathbf{C}}_{n}\left( u\right)  = {\mathbf{C}}_{n + 1}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{{n + 1}}{\mathbf{a}}_{i}{u}^{i}
+\]
+
+从向量空间的角度来看， \({\mathbf{C}}_{n + 1}\left( u\right)\) 只是 \({\mathbf{C}}_{n}\left( u\right)\) 嵌入在一个更高维的空间中。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_198_347_236_830_1206_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图5.27.(续)
+
+现在设 \({\textbf{C}}_{p}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,\;p}\left( u\right) {\textbf{P}}_{i}^{w}\) 为结点向量 \(U\) 上的一个 \(p\) 次NURBS曲线。由于 \({\mathbf{C}}_{p}^{w}\left( u\right)\) 是一个分段多项式曲线，因此应该可以将其次数提升到 \(p + 1\) ，也就是说，必须存在控制点 \({\mathbf{Q}}_{i}^{w}\) 和一个结点向量 \(\widehat{U}\) ，使得
+
+\[
+{\mathbf{C}}_{p}^{w}\left( u\right)  = {\mathbf{C}}_{p + 1}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{\widehat{n}}{N}_{i,p + 1}\left( u\right) {\mathbf{Q}}_{i}^{w} \tag{5.31}
+\]
+
+\({\mathbf{C}}_{p + 1}^{w}\left( u\right)\) 和 \({\mathbf{C}}_{p}^{w}\left( u\right)\) 在几何和参数上是相同的曲线。 \({\mathbf{C}}_{p + 1}^{w}\left( u\right)\) 只是 \({\mathbf{C}}_{p}^{w}\left( u\right)\) 嵌入在一个更高维的空间中。次数提升是指计算未知的 \({\mathbf{Q}}_{i}^{w}\) 和 \(\widehat{U}\) 的过程(算法)。
+
+次数提升的应用包括:190 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_199_350_245_835_1771_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.28. 表面结点移除示例。 (a) 定义在 \(U = \{ 0,0,0,0,3/{}_{10},3/{}_{10},3/{}_{10},7/{}_{10},1,1,1,1\}\) 和 \(V = \{ 0,0,0,1/4,1/2,3/4\) , \(1,1,1\}\) 上的原始 (三次 \(\times\) 二次) 表面；(b) 在 \(u\) 方向上移除 \(u = 3/{10}\) 三次。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_200_355_245_840_1784_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.28. 续。 (c) 在 \(v\) 方向上移除 \(v = 1/4\) 一次；(d) 在两个方向上移除结点。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_201_344_244_847_1359_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.29. 从三次曲线中移除所有可移除的结点。 (a) 定义在 \(\{ 0,0,0,0,{0.16},{0.31},{0.45},{0.5501},{0.702},{0.8},{0.901},1,1,1,1\} ;\) 上的原始曲线；(b) 使用容差 0.007 移除结点后的曲线；(c) 容差为 0.025；(d) 容差为 0.07；(e) 容差为 0.6；(f) 容差为 1.2。
+
+\begin{itemize}
+\item 在后续章节中，我们从一组曲线 \({\mathbf{C}}_{1},\ldots ,{\mathbf{C}}_{n},\left( {n \geq  2}\right)\) 构造某些类型的表面。使用张量积表面要求这些曲线具有共同的度数，因此某些曲线的度数可能需要提升；
+\end{itemize}
+
+\begin{itemize}
+\item 设 \({\mathbf{C}}_{1},\ldots ,{\mathbf{C}}_{n},\left( {n \geq  2}\right)\) 为一系列具有以下性质的 NURBS 曲线:曲线 \({\mathbf{C}}_{i}\) 的端点与曲线 \({\mathbf{C}}_{i + 1}\) 的起点重合；则这些曲线可以组合成一条单一的 NURBS 曲线。此过程中的一步是将曲线提升到共同的度数。
+\end{itemize}
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_202_348_242_825_1347_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.29. (续。)
+
+像往常一样，度数提升算法应用于四维空间中的 \({\mathbf{C}}_{p}^{w}\left( u\right)\) ，而不是 \({\mathbf{C}}_{p}\left( u\right)\) ，并且我们在本节的其余部分中再次省略 \(w\) 。
+
+在方程 (5.31) 中有三个未知数， \(\widehat{n},\widehat{U}\) 和 \(\left\{  {\mathbf{Q}}_{i}\right\}\) 。为了确定 \(\widehat{n}\) 和 \(\widehat{U}\) ，假设 \(U\) 具有以下形式
+
+\[
+U = \left\{  {{u}_{0},\ldots ,{u}_{m}}\right\}   = \left\{  {\underset{p + 1}{\underbrace{a,\ldots ,a}},\underset{{m}_{1}}{\underbrace{{u}_{1},\ldots ,{u}_{1}}},\ldots ,\underset{{m}_{s}}{\underbrace{{u}_{s},\ldots ,{u}_{s}}},\underset{p + 1}{\underbrace{b,\ldots ,b}}}\right\}
+\]
+
+其中 \({m}_{1},\ldots ,{m}_{s}\) 表示内部节点的重数。现在 \({\mathbf{C}}_{p}\left( u\right)\) 是每个非退化节点跨度上的多项式曲线，因此其度数可以在每个这样的节点跨度上提升到 \(p + 1\) 。在重数为 \({m}_{i},{\mathbf{C}}_{p}\left( u\right)\) 的节点上是 \({C}^{p - {m}_{i}}\) 连续的。由于提升度数的曲线 \({\mathbf{C}}_{p + 1}\left( u\right)\) 必须具有相同的连续性，因此可以得出相同的节点必须对 \({\mathbf{C}}_{p}\left( u\right)\) 具有重数 \({m}_{1},\ldots ,{m}_{s}\) 。这导致
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_203_315_242_886_1487_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.29. (续。)
+
+相同的连续性，因此可以得出相同的节点必须对 \({\mathbf{C}}_{p + 1}\left( u\right)\) 具有重数 \({m}_{i} + 1\) 。这导致
+
+\[
+\widehat{n} = n + s + 1 \tag{5.32}
+\]
+
+\[
+\text{ and }\;\widehat{U} = \left\{  {{u}_{0},\ldots ,{u}_{\widehat{m}}}\right\}   = \left\{  {\underset{p + 2}{\underbrace{a,\ldots ,a}},\underset{{m}_{1} + 1}{\underbrace{{u}_{1},\ldots ,{u}_{1}}},\ldots ,\underset{{m}_{s + 1}}{\underbrace{{u}_{s},\ldots ,{u}_{s}}},\underset{p + 2}{\underbrace{b,\ldots ,b}}}\right\}   \tag{5.33}
+\]
+
+其中 \(\widehat{m} = m + s + 2\) 。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_204_344_231_850_1777_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.30. 用于去除节点的(立方 \(\times\) 二次)曲面。(a)控制网；(b)在 \(U = \{ 0,0,0,0,{0.22},{0.3},{0.52},{0.7},{0.79},1,1,1,1\}\) 和 \(V =\)  \(\{ 0,0,0,{0.2},{0.42},{0.5},{0.81},{0.9},1,1,1\}\) 上定义的曲面。
+
+196 基本几何算法 (b)两个曲面的等参数线。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_205_350_241_856_1764_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.31. 在两个方向上使用容差 0.05 去除所有可去除的节点。(a)原始(虚线)和去除节点的曲面(实线)的控制网；
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_206_344_246_852_1755_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.32. 在两个方向上使用容差 0.1 去除所有可去除的节点。(a)原始(虚线)和去除节点的曲面(实线)的控制网；(b)两个曲面的等参数线。
+
+198 基本几何算法 (b)两个曲面的等参数线。(b)两个曲面的等参数线。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_207_347_248_844_1756_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.33. 在两个方向上使用容差 0.3 去除所有可去除的节点。(a)原始(虚线)和去除节点的曲面(实线)的控制网；
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_208_344_243_844_1761_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.34. 在两个方向上使用容差 0.5 去除所有可去除的节点。(a)原始(虚线)和去除节点的曲面(实线)的控制网；
+
+\begin{center}
+\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_209_383_250_760_1150_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.35. 定义在 \(\{ 0,0,0,0,3/{}_{10},7/{}_{10},1,1,1,1\}\) 上的三次曲线的度数提升。(a) 原始曲线；(b) 通过节点插入获得的第一个 Bézier 段。
+
+唯一剩下的问题是计算 \(\left\{  {\mathbf{Q}}_{i}\right\}\) 。一个显而易见但非常低效的方法是求解一个线性方程组。设定
+
+\[
+\mathop{\sum }\limits_{{i = 0}}^{\widehat{n}}{N}_{i,p + 1}\left( u\right) {\mathbf{Q}}_{i} = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}
+\]
+
+并在适当的 \(\widehat{n} + 1\) 值下评估 \({N}_{i,p}\left( u\right)\) 和 \({N}_{i,p + 1}\left( u\right)\) ，得到一个带状的 \(\widehat{n} + 1\) 线性方程组，未知数为 \({\mathbf{Q}}_{i}\) 。
+
+更高效但在数学上更复杂的方法由 Prautzsch [Prau84]、Cohen 等 [Cohe85] 和 Prautzsch 与 Piper [Prau91] 提供。Prautzsch 和 Piper 提出的算法在一般情况下是最有效的，但 Cohen 等人也为低度特殊情况(例如线性到二次，二次到三次)提供了简单而高效的算法。所有这些算法都将度数提升了 \(1\left( {p \rightarrow  p + 1}\right)\) 。
+
+\begin{center}
+\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_210_400_251_729_1156_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.35. 续。(c) 第一个 Bézier 段被提升度数，(d) 计算第二个 Bézier 段。
+
+我们在这里提出另一种算法，该算法在数学上更简单，并且与 [Prau91] 中给出的算法具有竞争力，特别是在度数需要提升超过 1 的情况下(见 [Pieg94])。该解决方案包括在遍历节点向量时实时应用三个步骤。这些步骤是:
+
+1. 使用算法 A5.6 的逻辑，从曲线中提取第 \(i\) 个 Bézier 段；
+
+2. 提升第 \(i\) 个 Bézier 段的度数；
+
+3. 移除分隔 (i - 1) 个和第 \(i\) 个段的多余节点。
+
+图 \({5.35}\mathrm{a} - {5.35}\mathrm{\;h}\) 显示了算法的进展。原始曲线是一个具有节点向量 \(U = \left\{  {0,0,0,0,{u}_{a},{u}_{b},1,1,1,1}\right\}\) 的三次曲线。它被提升到四次。图的解释如下:
+
+a. 原始曲线；
+
+b. \({u}_{a}\) 被插入两次，使其重数达到 3；
+
+202 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_211_406_247_734_1153_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.35. 继续。(e) 第二个贝塞尔段的次数被提升；(f) 移除了两个节点 \(u = 3/{10}\) 的出现。
+
+c. 在 \(\left\lbrack  {0,{u}_{a}}\right\rbrack\) 上的贝塞尔段的次数被提升；这用五个新控制点替换了前四个控制点(见后续文本)；
+
+d. \({u}_{b}\) 被插入两次以获得在 \(\left\lbrack  {{u}_{a},{u}_{b}}\right\rbrack\) 上的贝塞尔段；
+
+e. 在 \(\left\lbrack  {{u}_{a},{u}_{b}}\right\rbrack\) 上的贝塞尔段的次数被提升；
+
+f. 移除了两个节点 \({u}_{a}\) 的出现；
+
+g. 最后一个段 \(\left\lbrack  {{u}_{b},1}\right\rbrack\) 的次数被提升；
+
+h. 移除了两个 \({u}_{b}\) 的出现，得到了最终的四次 \({C}^{2}\) 连续曲线。
+
+第一步是算法 A5.6 的直接应用。它被修改为不返回 Bézier 段，而是实时处理它们。
+
+第二步是提升 Bézier 段的度数。我们提出了两个公式来实现这一点。第一个是众所周知的公式(由于 Forrest [Forr72])用于将度数从 \(p\) 提升到 \(p + 1\) 。设
+
+\[
+{\mathbf{C}}_{p}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{p}{B}_{i,p}\left( u\right) {\mathbf{P}}_{i}
+\]
+
+\begin{center}
+\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_212_408_255_704_1150_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.35. 继续。(g) 第三个 Bézier 段的度数被提升；(h) 删除了两个结点 \(u = 7/{10}\) 的出现。
+
+设为一个 \(p\) 次 Bézier 曲线。它作为 \(\left( {p + 1}\right)\) 次曲线的表示为
+
+\[
+{\mathbf{C}}_{p + 1}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{{p + 1}}{B}_{i,p + 1}\left( u\right) {\mathbf{Q}}_{i} \tag{5.34}
+\]
+
+将这些相等并将 \({\mathbf{C}}_{p}\left( u\right)\) 乘以 \(\left( {u + \left( {1 - u}\right) }\right) \left( { = 1}\right)\) 得到
+
+\[
+\mathop{\sum }\limits_{{i = 0}}^{{p + 1}}{B}_{i,p + 1}{\mathbf{Q}}_{i} = \left( {u + \left( {1 - u}\right) }\right) \mathop{\sum }\limits_{{i = 0}}^{p}{B}_{i,p}{\mathbf{P}}_{i}
+\]
+
+\[
+= \mathop{\sum }\limits_{{i = 0}}^{p}\left( {\left( {1 - u}\right) {B}_{i,p} + u{B}_{i,p}}\right) {\mathbf{P}}_{i}
+\]
+
+使用符号
+
+\[
+\frac{p!}{i!\left( {p - i}\right) !} = \left( \begin{array}{l} p \\  i \end{array}\right)
+\]
+
+并应用公式 (1.8)，我们得到
+
+\[
+\mathop{\sum }\limits_{{i = 0}}^{{p + 1}}\left( \begin{matrix} p + 1 \\  i \end{matrix}\right) {u}^{i}{\left( 1 - u\right) }^{p + 1 - i}{\mathbf{Q}}_{i}
+\]
+
+\[
+= \mathop{\sum }\limits_{{i = 0}}^{p}\left( \begin{matrix} p \\  i \end{matrix}\right) \left( {{u}^{i}{\left( 1 - u\right) }^{p + 1 - i} + {u}^{i + 1}{\left( 1 - u\right) }^{p - i}}\right) {\mathbf{P}}_{i}
+\]
+
+\[
+= \mathop{\sum }\limits_{{i = 0}}^{p}\left( \begin{matrix} p \\  i \end{matrix}\right) {u}^{i}{\left( 1 - u\right) }^{p + 1 - i}{\mathbf{P}}_{i} + \mathop{\sum }\limits_{{i = 1}}^{{p + 1}}\left( \begin{matrix} p \\  i - 1 \end{matrix}\right) {u}^{i}{\left( 1 - u\right) }^{p + 1 - i}{\mathbf{P}}_{i - 1}
+\]
+
+将 \({u}^{i}{\left( 1 - u\right) }^{p + 1 - i}\) 的系数相等得出
+
+\[
+\left( \begin{matrix} p + 1 \\  i \end{matrix}\right) {\mathbf{Q}}_{i} = \left( \begin{matrix} p \\  i \end{matrix}\right) {\mathbf{P}}_{i} + \left( \begin{matrix} p \\  i - 1 \end{matrix}\right) {\mathbf{P}}_{i - 1}
+\]
+
+从
+
+\[
+\left( \begin{matrix} p \\  i \end{matrix}\right) /\left( \begin{matrix} p + 1 \\  i \end{matrix}\right)  = \frac{p!i!\left( {p + 1 - i}\right) !}{i!\left( {p - i}\right) !\left( {p + 1}\right) !} = \frac{p + 1 - i}{p + 1} = 1 - \frac{i}{p + 1}
+\]
+
+和
+
+\[
+\left( \begin{matrix} p \\  i - 1 \end{matrix}\right) /\left( \begin{matrix} p + 1 \\  i \end{matrix}\right)  = \frac{p!i!\left( {p + 1 - i}\right) !}{\left( {i - 1}\right) !\left( {p + 1 - i}\right) !\left( {p + 1}\right) !} = \frac{i}{p + 1}
+\]
+
+可以得出
+
+\[
+{\mathbf{Q}}_{i} = \left( {1 - {\alpha }_{i}}\right) {\mathbf{P}}_{i} + {\alpha }_{i}{\mathbf{P}}_{i - 1} \tag{5.35}
+\]
+
+where
+
+\[
+{\alpha }_{i} = \frac{i}{p + 1}\;i = 0,\ldots ,p + 1
+\]
+
+注意，方程 (5.35) 表示一个角落切割过程(见图 \({5.35}\mathrm{c}\) 、 \({5.35}\mathrm{e}\) 和 \({5.35}\mathrm{g}\) )。关于方程 (5.35):
+
+\begin{itemize}
+\item 它可以递归应用以提升度 \(t\) 次 \(\left( {t \geq  1}\right)\) ；
+\end{itemize}
+
+\begin{itemize}
+\item 它的增长率为 \(\mathrm{O}\left( {t}^{2}\right)\) ；如果 \(t > 1\) ，方程 (5.35) 的递归应用涉及一些冗余计算；
+\end{itemize}
+
+\begin{itemize}
+\item \({\alpha }_{i}\) 仅依赖于度，而不依赖于应用的特定贝塞尔段，因此可以在处理段之前计算一次并存储在本地数组中；
+\end{itemize}
+
+\begin{itemize}
+\item 这是一种凸组合方案。
+\end{itemize}
+
+可以在一步中将度从 \(p\) 提升到 \(p + t\) 。写出方程 (5.35) 的多个递归应用，并巧妙地重新排列系数，得到
+
+\[
+{\mathbf{P}}_{i}^{t} = \mathop{\sum }\limits_{{j = \max \left( {0,i - t}\right) }}^{{\min \left( {p,i}\right) }}\frac{\left( \begin{matrix} p \\  j \end{matrix}\right) \left( \begin{matrix} t \\  i - j \end{matrix}\right) {\mathbf{P}}_{j}}{\left( \begin{matrix} p + t \\  i \end{matrix}\right) }\;i = 0,\ldots ,p + t \tag{5.36}
+\]
+
+其中 \({\mathbf{P}}_{i}^{t}\) 表示在 \(t\) 次度提升后的控制点。作为一个例子，考虑 \(p = 2\) 和 \(t = 4\) 的情况，即
+
+\[
+{\mathbf{P}}_{0}^{4} = {\mathbf{P}}_{0}
+\]
+
+\[
+{\mathbf{P}}_{1}^{4} = \frac{4}{6}{\mathbf{P}}_{0} + \frac{2}{6}{\mathbf{P}}_{1}
+\]
+
+\[
+{\mathbf{P}}_{2}^{4} = \frac{6}{15}{\mathbf{P}}_{0} + \frac{8}{15}{\mathbf{P}}_{1} + \frac{1}{15}{\mathbf{P}}_{2}
+\]
+
+\[
+{\mathbf{P}}_{3}^{4} = \frac{4}{20}{\mathbf{P}}_{0} + \frac{12}{20}{\mathbf{P}}_{1} + \frac{4}{20}{\mathbf{P}}_{2}
+\]
+
+\[
+{\mathbf{P}}_{4}^{4} = \frac{1}{15}{\mathbf{P}}_{0} + \frac{8}{15}{\mathbf{P}}_{1} + \frac{6}{15}{\mathbf{P}}_{2}
+\]
+
+\[
+{\mathbf{P}}_{5}^{4} = \frac{2}{6}{\mathbf{P}}_{1} + \frac{4}{6}{\mathbf{P}}_{2}
+\]
+
+\[
+{\mathbf{P}}_{6}^{4} = {\mathbf{P}}_{2}
+\]
+
+关于方程 (5.36):
+
+\begin{itemize}
+\item 它的增长率为 \(\mathrm{O}\left( t\right)\) ，因为方案的宽度是固定的(由 \(p + 1)\) 限制)；
+\end{itemize}
+
+\begin{itemize}
+\item 每个 \({\mathbf{P}}_{i}^{t}\) 的系数之和为一(见示例)，因此它是一种凸组合方案；
+\end{itemize}
+
+\begin{itemize}
+\item 没有冗余计算；
+\end{itemize}
+
+\begin{itemize}
+\item 系数矩阵相对于行 \({}^{p + t}/2\) 是对称的；
+\end{itemize}
+
+\begin{itemize}
+\item 系数同时依赖于 \(p\) 和 \(t\) ，但不依赖于它们所应用的特定 Bézier 段；因此，它们可以在处理段之前计算一次并存储在本地数组中。
+\end{itemize}
+
+第 3 步的节点移除比前一节中描述的一般节点移除便宜得多。这有两个原因:
+
+\begin{itemize}
+\item 我们知道可以移除多少个节点 - 插入的节点数量；
+\end{itemize}
+
+\begin{itemize}
+\item 节点向量在被移除的节点邻域具有特定结构。
+\end{itemize}
+
+作为一个例子，图 5.36 显示了一条曲线，其度数从 4 提高到 \(5\left( {p = 4}\right)\) 。设 \({u}_{c},{u}_{d},{u}_{e}\) 为定义所示两个段的三个参数值。假设原始重数 \({u}_{d}\) 为 1，则需要插入三个节点以形成两个 Bézier 段(注意 \(\left. {\mathbf{C}\left( {u}_{d}\right)  = {\mathbf{P}}_{k}^{0}}\right)\) ，现在需要三个移除。然而，我们可以跳过前两个，直接计算 \({\mathbf{P}}_{k - 1}^{3}\) 和 \({\mathbf{P}}_{k}^{3}\) 。这只需要计算两个点，形式为 Eq. (5.29)，且不需要检查点的相等性。这与一般情况下需要的六个点计算和三个点相等性检查相比。此外，Eq. (5.29) 的 \({\alpha }_{j}\) 不会改变，无论度数如何(但 \({\alpha }_{i}\mathrm{\;s}\) 一般可以改变)。这是因为算法已经插入了 \({u}_{e}\) 以具有重数 \(p + 1\) 。因此，在局部上，节点向量具有以下形式:
+
+\[
+\ldots ,{u}_{c},{u}_{c},\underset{p + 1}{\underbrace{{u}_{d},\ldots ,{u}_{d}}},\underset{p + 1}{\underbrace{{u}_{e},\ldots ,{u}_{e}}},\ldots
+\]
+
+其中 \({u}_{c}\) 的重数至少为 2。
+
+算法 A5.9 通过计算 \(\widehat{n}\) 、 \(\widehat{U}\) 和新的 \({\mathbf{Q}}_{i}\) (nh, Uh 和 Qw) 将度数从 \(p\) 提高到 \(p + t,t \geq  1\) ；它使用公式 (5.36) 来提升 Bézier 段的度数。Min(   ) 和 Max(   ) 分别计算两个整数的最小值和最大值，而 \(\operatorname{Bin}\left( {i,j}\right)\) 计算 \(\left( \begin{array}{l} i \\  j \end{array}\right)\) ，即二项式系数，可以预先计算并存储以提高效率。设 \(p\) 为原始曲线的度数。所需的局部数组为:
+
+\HRule
+
+bezalfs \(\left\lbrack  {p + t + 1}\right\rbrack  \left\lbrack  {p + 1}\right\rbrack\) : coefficients for degree elevating the Bézier
+
+\hspace*{19em} segments;
+
+bpts \(\left\lbrack  {p + 1}\right\rbrack\) : \(p\) th-degree Bézier control points of the current
+
+\hspace*{19em} segment;
+
+ebpts [p+t+1] : \(\left( {p + t}\right)\) th-degree Bézier control points of the
+
+\hspace*{19em} current segment;
+
+Nextbpts [p-1] : leftmost control points of the next Bézier
+
+\hspace*{19em} segment;
+
+alphas \(\left\lbrack  {p - 1}\right\rbrack\) : knot insertion \(\alpha \mathrm{s}\) .
+
+\hspace*{3em} \#\# ALGORITHM A5.9
+
+\hspace*{2em} DegreeElevateCurve(n, p, U, Pw, t, nh, Uh, Qw)
+
+\hspace*{4em} \{ /* Degree elevate a curve t times. */
+
+\hspace*{7em} /* Input: n, p, U, Pw, t */
+
+\hspace*{7em} /* Output: nh, Uh, Qw */
+
+\hspace*{4em} \(\mathrm{m} = \mathrm{n} + \mathrm{p} + 1;\;\mathrm{{ph}} = \mathrm{p} + \mathrm{t};\)
+
+\hspace*{5em} /* Compute Bézier degree elevation coefficients \(*\) /
+
+\hspace*{4em} ph2 = ph/2;
+
+\hspace*{4em} bezalfs[0][0] = bezalfs[ph][p] = 1.0;
+
+\hspace*{4em} for (i =1 ; i<=ph2 ; i++)
+
+\HRule
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_216_358_251_824_624_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.36. 从四次曲线中移除三个节点。
+
+\HRule
+
+\hspace*{1em} \{
+
+\hspace*{1em} inv = 1.0/Bin(ph, i);
+
+\hspace*{1em} mpi = Min(p, i);
+
+\hspace*{1em} for (j=Max(0, i-t); j<=mpi; j++)
+
+\hspace*{3em} bezalfs[i][j] = inv*Bin(p, j)*Bin(t, i-j);
+
+\hspace*{1em} \}
+
+for (i=ph2+1; i<=ph-1; i++)
+
+\hspace*{1em} \{
+
+\hspace*{1em} mpi = Min(p, i);
+
+\hspace*{1em} for (j=Max(0, i-t); j<=mpi; j++)
+
+\hspace*{3em} bezalfs[i][j] = bezalfs[ph-i][p-j];
+
+\hspace*{1em} \}
+
+mh = ph;
+
+ua = U[0];
+
+for (i = 0; i<=ph; i++) Uh[i] = ua;
+
+kind = ph+1;
+
+Qw[0] = Pw[0]; cind = 1;
+
+lbz = 1; r = -1; /* Initialize first Bézier seg */
+
+for (i=0; i<=p; i++) bpts[i] = Pw[i];
+
+\(a = p;\;b = p + 1;\)
+
+while (b < m) /* Big loop thru knot vector */
+
+\hspace*{1em} \{
+
+\hspace*{1em} i = b;
+
+\hspace*{1em} while \(\left( {b < m\text{ \&\& }U\left\lbrack  b\right\rbrack   =  = U\left\lbrack  {b + 1}\right\rbrack  }\right) \;b = b + 1\) ;
+
+\hspace*{1em} mul = b-i+1; mh = mh+mul+t;
+
+\hspace*{1em} ub = U[b];
+
+\hspace*{1em} oldr = r;
+
+r = p-mul; /* Insert knot u(b) r times */
+
+if (oldr > 0 ) lbz = (oldr+2)/2 ;
+
+\hspace*{2em} else 1 bz = 1 ;
+
+if \(\left( {r > 0}\right) \;{rbz} = {ph} - \left( {r + 1}\right) /2\) ;
+
+\hspace*{2em} else rbz = ph;
+
+if (r > 0 )
+
+\hspace*{2em} \{ /* Insert knot to get Bézier segment */
+
+\hspace*{2em} numer = ub-ua;
+
+\hspace*{2em} for (k=p; k>mul; k--)
+
+\hspace*{3em} alphas \(\left\lbrack  {k - \text{ mul } - 1}\right\rbrack   =\) numer/(U[a+k]-ua);
+
+\hspace*{2em} for (j=1; j<=r; j++)
+
+\hspace*{3em} \{
+
+\hspace*{3em} save = r-j; s = mul+j;
+
+\hspace*{3em} for (k=p; k>=s; k--)
+
+\hspace*{5em} \{
+
+\hspace*{5em} alf = alphas[k-s];
+
+\hspace*{5em} bpts[k] = alf*bpts[k] + (1.0-alf)*bpts[k-1];
+
+\hspace*{4em} \}
+
+\hspace*{3em} Nextbpts[save] = bpts[p];
+
+\hspace*{3em} \}
+
+\hspace*{1em} \} /* End of "insert knot" */
+
+if \(\left( {r > 0}\right) \mathrm{{RBZ}} = {rbz} + 1;/ *\) Degree elevate Bézier \(*\) /
+
+\hspace*{2em} else RBZ = rbz;
+
+for (i=lbz; i<=RBZ; i++)
+
+\hspace*{2em} \(\left\{  {\;/ * }\right.\) Only points lbz, \(\ldots ,\mathrm{{RBZ}}\) are used below \(*\) /
+
+\hspace*{2em} ebpts[i] = 0.0 ;
+
+\hspace*{2em} mpi = Min(p, i);
+
+\hspace*{2em} for (j=Max(0, i-t); j<=mpi; j++)
+
+\hspace*{3em} ebpts[i] = ebpts[i] + bezalfs[i][j]*bpts[j];
+
+\hspace*{1em} \} /* End of degree elevating Bezier */
+
+if (oldr > 1 )
+
+\hspace*{2em} \{ /* Must remove knot u=U[a] oldr times */
+
+\hspace*{2em} if (oldr > 2 )
+
+\hspace*{3em} \{ /* Alphas on the right do not change */
+
+\hspace*{3em} alfj = (ua-Uh[kind-1])/(ub-Uh[kind-1]);
+
+\hspace*{3em} \}
+
+\hspace*{1em} first = kind-2; last = kind;
+
+\hspace*{1em} for (tr=1; tr<oldr; tr++)
+
+\hspace*{3em} \{ /* Knot removal loop */
+
+\hspace*{3em} i = first; j = last;
+
+\hspace*{3em} kj = j-kind+1;
+
+\hspace*{3em} while (j-i > tr) /* Loop and compute the new */
+
+\hspace*{4em} \{ /* control points for one removal step */
+
+\hspace*{4em} if (i < cind)
+
+\hspace*{6em} \{
+
+\hspace*{10em} alf = (ua-Uh[i])/(ub-Uh[i]);
+
+\hspace*{10em} Qw[i] = (Qw[i]-(1.0-alf)*Qw[i-1])/alf;
+
+\hspace*{10em} \}
+
+\hspace*{8em} if ( \(\mathrm{{kj}} >  = 1\mathrm{{bz}}\) )
+
+\hspace*{10em} ebpts[kj] = ebpts[kj]-alfj*ebpts[kj+1]/(1.0-alfj);
+
+\hspace*{8em} i = i+1; j = j-1; kj = kj-1;
+
+\hspace*{8em} \}
+
+\hspace*{6em} first = first-1; last = last+1;
+
+\hspace*{6em} \}
+
+\hspace*{3em} \} /* End of removing knot, \(u = U\left\lbrack  a\right\rbrack   * /\)
+
+\hspace*{2em} if \(\left( {a! = p}\right) / *\) Load the knot ua \(* /\)
+
+\hspace*{4em} for (i=0; i<ph-oldr; i++)
+
+\hspace*{6em} \{ Uh[kind] = ua; kind = kind+1; \}
+
+\hspace*{2em} for (j=lbz; j<=rbz; j++) /* Load ctrl pts into Qw */
+
+\hspace*{4em} \{ Qw[cind] = ebpts[j]; cind = cind+1; \}
+
+\hspace*{2em} if (b < m)
+
+\hspace*{4em} \{ /* Set up for next pass thru loop */
+
+\hspace*{4em} lbz = 1;
+
+\hspace*{4em} for (j=0; j<r; j++) bpts[j] = Nextbpts[j];
+
+\hspace*{4em} for (j=r; j<=p; j++) bpts[j] = Pw[b-p+j];
+
+\hspace*{4em} \(a = b;\;b = b + 1;\;{ua} = {ub};\)
+
+\hspace*{4em} \}
+
+\hspace*{4em} else
+
+\hspace*{6em} /* End knot */
+
+\hspace*{6em} for (i=0; i<=ph; i++) Uh[kind+i] = ub;
+
+\hspace*{2em} \} /* End of while-loop (b < m) */
+
+nh = mh-ph-1;
+
+\}
+
+\HRule
+
+图 \({5.37}\mathrm{a} - {5.37}\mathrm{\;d}\) 显示了几个曲线度数提升的例子。原始的三次曲线(图 5.37a)在图 \({5.37}\mathrm{\;b},{5.37}\mathrm{c}\) 、 \({5.37}\mathrm{\;d}\) 中分别提升到四次、五次和七次。注意，控制多边形在度数提升时会收敛到曲线上。
+
+设 \({\mathbf{S}}^{w}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right) {\mathbf{P}}_{i,j}^{w}\) 为 NURBS 曲面。通过将其应用于控制点的行/列来实现曲面的度数提升。特别地，我们通过将算法 A5.9 应用于每个 \(m + 1\) 列的控制点来提升 \(p\) ( \(u\) 方向)的度数。通过将算法 A5.9 应用于每个 \(n + 1\) 行的控制点来提升 \(v\) 方向的度数 \(q\) 。一个高效的曲面度数提升算法组织需要存储 Bézier 条带的算法是 A5.10。
+
+\HRule
+
+\section*{ALGORITHM A5.10}
+
+DegreeElevateSurface(n, p, U, m, q, V, Pw, dir, t, nh, Uh, mh, Vh, Qw)
+
+\hspace*{1em} \{ /* Degree elevate a surface t times. */
+
+\hspace*{3em} /* Input: n, p, U, m, q, V, Pw, dir, t */
+
+\hspace*{3em} /* Output: nh, Uh, mh, Vh, Qw */
+
+\HRule
+
+210 基本几何算法 \(\{ 0,0,0,0,4/{10},7/{10},1,1,1,1\}\) ；(b) 度数提升了一次；(c) 度数提升了两次；(d) 度数提升了四次。
+
+\begin{center}
+\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_219_392_247_745_1259_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.37. 曲线度数提升示例。 (a) 定义在
+
+\HRule
+
+if (dir == U\_DIRECTION)
+
+\hspace*{1em} \{
+
+\hspace*{1em} allocate memory for Bezier and NextBezier strips;
+
+\hspace*{1em} initialize knot vectors and first row of control points;
+
+\hspace*{1em} initialize Bezier strip;
+
+\hspace*{1em} set variables;
+
+\hspace*{1em} while(b<m)
+
+\hspace*{2em} \{
+
+\hspace*{2em} get multiplicity;
+
+\hspace*{2em} get ub, r, oldr, etc;
+
+\hspace*{2em} save alfas
+
+\HRule
+
+度数提升 211
+
+\begin{center}
+\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_220_383_248_757_1250_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.37. (续。)
+
+对于 (j=0; j<=m; j++)
+
+\{
+
+插入节点;
+
+提升 Bezier 行[j] 的度数;
+
+移除节点;
+
+保存新的控制点;
+
+为下一次遍历初始化;
+
+\}
+
+更新节点向量;
+
+更新变量;
+
+获取端点节点；
+
+\}
+
+\}
+
+\HRule
+
+if (dir == V\_DIRECTION)
+
+\hspace*{1em} \{
+
+\hspace*{1em} /* Similar code as above with \(u\) - and \(v\) -directional
+
+\hspace*{2em} parameters switched */
+
+\hspace*{1em} \}
+
+\}
+
+\HRule
+
+表面度数提升的例子如图 5.38a-5.38e 所示。原始的 (3,2) 次表面(图 5.38a)提升至 \(\left( {4,3}\right) ,\left( {5,4}\right) ,\left( {6,6}\right)\) ，而图 \({5.38}\mathrm{\;b} - {5.38}\mathrm{e}\) 中分别为 (9,9) 次；原始网以虚线表示，提升后的网以实线绘制。
+
+
+
+\section{次数降低} %//TODO::度数降低
+
+设 \(\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{Q}}_{i}\) 为节点向量上的一个 \(p\) 阶 B-spline 曲线
+
+\[
+U = \{ \underset{p + 1}{\underbrace{a,\ldots ,a}},\underset{{m}_{1}}{\underbrace{{u}_{1},\ldots ,{u}_{1}}},\ldots ,\underset{{m}_{s}}{\underbrace{{u}_{s},\ldots ,{u}_{s}}},\underset{p + 1}{\underbrace{b,\ldots ,b}}\}
+\]
+
+像往常一样， \(\mathbf{C}\left( u\right)\) 可以是有理或无理的；在本节的其余部分，我们省略 \(w\) 上标。 \(\mathbf{C}\left( u\right)\) 是度可约的，如果它具有如下精确表示形式
+
+\[
+\mathbf{C}\left( u\right)  = \widehat{\mathbf{C}}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{\widehat{n}}{N}_{i,p - 1}\left( u\right) {\mathbf{P}}_{i} \tag{5.37}
+\]
+
+在节点向量上
+
+\[
+\widehat{U} = \{ \underset{p}{\underbrace{a,\ldots ,a}},\underset{{m}_{1} - 1}{\underbrace{{u}_{1},\ldots ,{u}_{1}}},\ldots ,\underset{{m}_{s} - 1}{\underbrace{{u}_{s},\ldots ,{u}_{s}}},\underset{p}{\underbrace{b,\ldots ,b}}\}  \tag{5.38}
+\]
+
+清晰地
+
+\[
+\widehat{n} = n - s - 1 \tag{5.39}
+\]
+
+注意到 \({m}_{i}\) 可以是 1，这意味着结 \({u}_{i}\) 不存在于 \(\widehat{U}\) 中。这意味着 \({u}_{i}\) 可以从 \(\mathbf{C}\left( u\right)\) 中精确移除。虽然总是可以提升曲线的次数，但显然曲线可能并不具有可约性。这种情况与结的移除类似，因为该问题是过度确定的，即，任何用于次数减少的算法必须产生比未知数 \({\mathbf{P}}_{i}\) 更多的方程。由于浮点数舍入误差，永远无法期望 \(\widehat{\mathbf{C}}\left( u\right)\) 与 \(\mathbf{C}\left( u\right)\) 精确重合，因此我们的算法必须测量误差 \(E\left( u\right)  = \left| {\mathbf{C}\left( u\right)  - \widehat{\mathbf{C}}\left( u\right) }\right|\) ，并仅在某些用户指定的容差 TOL 下声明 \(\mathbf{C}\left( u\right)\) 为可约的。
+
+\[
+\mathop{\max }\limits_{u}E\left( u\right)  \leq  \mathrm{{TOL}}
+\]
+
+在本节的大部分内容中，我们仅考虑精确的次数减少，即，我们假设 TOL 非常小。主要应用是逆转次数提升过程。例如，在分解复合体时，应对每个组成部分应用次数减少。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_222_350_255_838_1694_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.38. 表面度数提升示例。 (a) 原始的(立方 \(\times\) 二次)表面网，定义在 \(U = \{ 0,0,0,0,1,1,1,1\}\) 和 \(V = \{ 0,0,0,1/2,1,1,1\}\) 上； (b) 在两个方向上度数提升一个； (c) 在两个方向上度数提升两个； (d) 在 \(u\) 方向上度数提升三个，在 \(v\) 方向上度数提升四个； (e) 在 \(u\) 方向上度数提升六个，在 \(v\) 方向上度数提升七个。 214 基本几何算法
+
+图 5.38. (续)
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_223_350_246_841_1699_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+曲线，因为在组合过程中可能需要进行度数提升。本节的材料取自 [Pieg95]。
+
+贝塞尔曲线的降阶相对比较容易理解，现有多种算法(例如，参见参考文献 [Forr72; Dann85; Lach88; Watk88;
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_224_358_243_824_841_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.38. (续。)
+
+Wein92; Eck93])。遵循上一节中为升阶开发的策略，我们提出了一个用于B样条曲线降阶的三步算法:
+
+\HRule
+
+repeat
+
+\hspace*{1em} extract the \(i\) th Bézier segment from the B-spline curve,
+
+\hspace*{1em} degree reduce the \(i\) th Bézier piece,
+
+\hspace*{1em} remove unnecessary knots between the(i - 1)th and the
+
+\hspace*{2em} ith segments,
+
+until done
+
+\HRule
+
+在贝塞尔降阶和节点移除步骤中都会产生误差，我们的算法会累积这两种误差，并在任何节点区间超过 TOL 时立即退出。图 \({5.39}\mathrm{a} - {5.39}\mathrm{\;h}\) 展示了算法工作原理的演示示例。每个步骤的详细信息如下:
+
+a. 定义在节点向量上的原始四次 B 样条曲线
+
+\[
+U = \left\{  {0,0,0,0,0,{u}_{1},{u}_{1},{u}_{2},{u}_{2},1,1,1,1,1}\right\}
+\]
+
+坐标系统 (u, E) 用于绘制每个节点区间的误差，作为 \(u\) 的函数，随着算法遍历整个节点向量；
+
+b. 节点 \({u}_{1}\) 被插入两次，使总重数达到四；获得第一个 Bézier 片段；
+
+216 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_225_343_243_856_1601_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.39. 将四次 B 样条曲线降阶到三次的过程。(a) 要降阶的四次 B 样条曲线；(b) 提取第一个 Bézier 段。
+
+c. 第一个 Bézier 段被降阶，用四个新控制点替代前五个控制点；这是引入误差的第一次，如 (u, E) 系统中所示。实线曲线是原始曲线，而虚线曲线是近似曲线；
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_226_337_246_864_1549_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.39. 续。(c) 第一个 Bézier 段被降阶；(d) 提取第二个 Bézier 段。
+
+d. 节点 \({u}_{2}\) 被插入两次以获得第二个 Bézier 段；
+
+e. 第二个 Bézier 段被降阶。现在在两个段上存在误差；这两个都是 Bézier 降阶误差；
+
+f. 删除两个节点 \({u}_{1}\) ；注意节点的移除引入了额外的误差，影响了多个节点区间；
+
+218 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_227_333_245_865_1555_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.39. 续。(e) 第二个 Bézier 段被降阶；(f) 第一个内部多个节点被移除两次。
+
+g. 最后一个 Bézier 段被降阶；
+
+h. 删除两个 \({u}_{2}\) 的出现，得到最终曲线。
+
+曲线分解、节点移除以及节点移除误差的界定在第 5.3 和 5.4 节中进行了讨论。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_228_344_241_838_1589_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.39. 继续。(g) 第三个贝塞尔段的度数降低；(h) 第二个内部多重节点被移除两次。
+
+现在我们关注贝塞尔度数降低。设
+
+\[
+\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{p}{B}_{i,p}\left( u\right) {\mathbf{Q}}_{i}
+\]
+
+为一个 \(p\) 阶贝塞尔曲线，并用其度数降低的对应曲线表示为
+
+\[
+\widehat{\mathbf{C}}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{{p - 1}}{B}_{i,p - 1}\left( u\right) {\mathbf{P}}_{i}
+\]
+
+我们通过反转贝塞尔度数提升公式来计算未知的 \({\mathbf{P}}_{i}\) ，公式为 (5.34) 和 (5.35)；设
+
+\[
+r = \frac{p - 1}{2} \tag{5.40}
+\]
+
+(整数除法)并用 \({\alpha }_{i}\) 表示度数提升系数，即
+
+\[
+{\alpha }_{i} = \frac{i}{p}
+\]
+
+(我们需要从 \(p - 1\) 到 \(p\) 的度数提升系数)。需要考虑两种情况， \(p\) 为偶数，且 \(p\) 为奇数。首先假设 \(p\) 为偶数。通过求解公式 (5.35) 得到 \({\mathbf{P}}_{i}\) ，我们得到
+
+\[
+{\mathbf{P}}_{0} = {\mathbf{Q}}_{0}
+\]
+
+\[
+{\mathbf{P}}_{i} = \frac{{\mathbf{Q}}_{i} - {\alpha }_{i}{\mathbf{P}}_{i - 1}}{1 - {\alpha }_{i}}\;i = 1,\ldots ,r
+\]
+
+\[
+{\mathbf{P}}_{i} = \frac{{\mathbf{Q}}_{i + 1} - \left( {1 - {\alpha }_{i + 1}}\right) {\mathbf{P}}_{i + 1}}{{\alpha }_{i + 1}}\;i = p - 2,\ldots ,r + 1
+\]
+
+\[
+{\mathbf{P}}_{p - 1} = {\mathbf{Q}}_{p} \tag{5.41}
+\]
+
+现在假设 \(p\) 为奇数；则 \({\mathbf{P}}_{i}\) 的计算为
+
+\[
+{\mathbf{P}}_{0} = {\mathbf{Q}}_{0}
+\]
+
+\[
+{\mathbf{P}}_{i} = \frac{{\mathbf{Q}}_{i} - {\alpha }_{i}{\mathbf{P}}_{i - 1}}{1 - {\alpha }_{i}}\;i = 1,\ldots ,r - 1
+\]
+
+\[
+{\mathbf{P}}_{i} = \frac{{\mathbf{Q}}_{i + 1} - \left( {1 - {\alpha }_{i + 1}}\right) {\mathbf{P}}_{i + 1}}{{\alpha }_{i + 1}}\;i = p - 2,\ldots ,r + 1
+\]
+
+\[
+{\mathbf{P}}_{r} = \frac{1}{2}\left( {{\mathbf{P}}_{r}^{L} + {\mathbf{P}}_{r}^{R}}\right)
+\]
+
+\[
+{\mathbf{P}}_{p - 1} = {\mathbf{Q}}_{p} \tag{5.42}
+\]
+
+其中
+
+\[
+{\mathbf{P}}_{r}^{L} = \frac{{\mathbf{Q}}_{r} - {\alpha }_{r}{\mathbf{P}}_{r - 1}}{1 - {\alpha }_{r}}
+\]
+
+\[
+{\mathbf{P}}_{r}^{R} = \frac{{\mathbf{Q}}_{r + 1} - \left( {1 - {\alpha }_{r + 1}}\right) {\mathbf{P}}_{r + 1}}{{\alpha }_{r + 1}}
+\]
+
+请注意，奇数情况与偶数情况的不同之处在于，出于对称原因，中间控制点 \({\mathbf{P}}_{r}\) 被计算为从左侧和右侧分别计算的两个分量的平均值。一般来说，得到的 (p - 1) 阶曲线 \(\widehat{\mathbf{C}}\left( u\right)\) 是对 \(\mathbf{C}\left( u\right)\) 的近似；它们仅在 \(\mathbf{C}\left( u\right)\) 精确可降阶时重合。Piegl 和 Tiller [Pieg95] 推导了近似的误差界限
+
+\(p\) 偶数:
+
+\[
+\left| {\mathbf{C}\left( u\right)  - \widehat{\mathbf{C}}\left( u\right) }\right|  = \left| {{B}_{r + 1,p}\left( u\right) \left\lbrack  {{\mathbf{Q}}_{r + 1} - \frac{1}{2}\left( {{\mathbf{P}}_{r} + {\mathbf{P}}_{r + 1}}\right) }\right\rbrack  }\right|  \tag{5.43}
+\]
+
+\(p\) 奇数:
+
+\[
+\left| {\mathbf{C}\left( u\right)  - \widehat{\mathbf{C}}\left( u\right) }\right|  = \frac{1}{2}\left( {1 - {\alpha }_{r}}\right) \left| {\left( {{B}_{r,p}\left( u\right)  - {B}_{r + 1,p}\left( u\right) }\right) \left( {{\mathbf{P}}_{r}^{L} - {\mathbf{P}}_{r}^{R}}\right) }\right|  \tag{5.44}
+\]
+
+图 5.40a 和 5.40b 显示了将贝塞尔曲线的度数从七降至六，以及从六降至五的示例。误差曲线在图的底部绘制。我们注意到:
+
+\begin{itemize}
+\item 方程 (5.43) 和 (5.44) 表达了参数误差(在对应参数值处点之间的距离)；几何误差和参数误差的最大值不一定在相同的 \(u\) 值处；
+\end{itemize}
+
+\begin{itemize}
+\item 即使 \(\mathbf{C}\left( u\right)\) 不能降度，方程 (5.41) 和 (5.42) 从左侧产生 \(p/2\) 精确控制点，从右侧产生 \(p/2\) 精确控制点，这意味着如果 \(\widehat{\mathbf{C}}\left( u\right)\) 的度数提升以产生 \(\overline{\mathbf{C}}\left( u\right)\) ，那么 \(\mathbf{C}\left( u\right)\) 和 \(\overline{\mathbf{C}}\left( u\right)\) 在首尾的 \(p/2\) 控制点是相同的。因此， \(\mathbf{C}\left( u\right)\) 和 \(\widehat{\mathbf{C}}\left( u\right)\) 在两端的导数至多为 \(p/2 - 1\) 阶相同。这是 B 样条降度的重要性质，因为这意味着在贝塞尔降度步骤中保持至多 \({C}^{p/2 - 1}\) 的连续性，这反过来意味着前 \(p/2 - 1\) 个节点移除步骤不会产生误差；
+\end{itemize}
+
+\begin{itemize}
+\item 对于 \(p\) ，即使最大误差发生在 \(u = 1/2\) (见图 5.40b)；对于 \(p\) 奇数，误差在 \(u = 1/2\) 处为零，并且在 \(u = 1/2\) 的左右各有两个峰值(图 5.40a)。奇数情况在其他地方由 Piegl 和 Tiller [Pieg95] 进行了更详细的分析。
+\end{itemize}
+
+我们现在提出一种算法，用于在最大误差容忍度 TOL 的限制下降低 B 样条曲线的阶数。如果曲线是有理的，则应根据公式 (5.30) 调整 TOL。我们维护一个误差向量 \({e}_{i},i = 0,\ldots ,m - 1\) ，用于累积每个节点区间的误差。 \({e}_{i}\) 初始化为零。当第 \(i\) 个区间进行 Bézier 阶数降低时，产生的误差会被添加到 \({e}_{i}\) 中。为简化起见，我们从公式 (5.43) 和 (5.44) 中省略了标量函数(其值被限制在 1 之内)，并使用最大误差界限。
+
+\[
+\left| {\mathbf{C}\left( u\right)  - \widehat{\mathbf{C}}\left( u\right) }\right|  \leq  \left| {{\mathbf{Q}}_{r + 1} - \frac{1}{2}\left( {{\mathbf{P}}_{r} + {\mathbf{P}}_{r + 1}}\right) }\right|  \tag{5.45}
+\]
+
+和
+
+\[
+\left| {\mathbf{C}\left( u\right)  - \widehat{\mathbf{C}}\left( u\right) }\right|  \leq  \left| {{\mathbf{P}}_{r}^{L} - {\mathbf{P}}_{r}^{R}}\right|  \tag{5.46}
+\]
+
+222 基本几何算法
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_231_316_255_934_1796_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.40. Bézier 阶数降低。(a) 从七阶到六阶；(b) 从六阶到五阶。
+
+[Pieg95] 中的算法为 Bézier 阶数降低和节点移除步骤计算了更严格的误差界限。当移除一个节点时，最大节点移除误差会被添加到每个受移除影响的 \({e}_{i}\) 。使用的局部数组为:
+
+\HRule
+
+bpts [p+1] 2+1] : Bézier control points of the current segment;
+
+Nextbpts [p-1] : leftmost control points of the next Bézier
+
+\hspace*{1em} segment;
+
+rbpts[p] : degree reduced Bézier control points;
+
+alphas [p-1] : knot insertion alphas;
+
+e[m] : error vector.
+
+\HRule
+
+一个支持例程 BezDegreeReduce(bpts, rbpts, MaxErr)，它实现了 Bézier 阶数降低和最大误差的计算。该例程使用公式 (5.41)、(5.42)、(5.45) 和 (5.46)。返回代码 1 表示曲线无法降低阶数；如果曲线可降低阶数，则计算 \(\widehat{n},\widehat{U}\) 和 \({\mathbf{P}}_{i}\) (nh, Uh, Pw)，并返回代码 0。
+
+\HRule
+
+ALGORITHM A5.11
+
+DegreeReduceCurve(n, p, U, Qw, nh, Uh, Pw)
+
+\hspace*{2em} \{ /* Degree reduce a curve from p to p-1. */
+
+\hspace*{5em} /* Input: n, p, U, Qw */
+
+\hspace*{5em} /* Output: nh, Uh, Pw */
+
+\hspace*{2em} \(\mathrm{{ph}} = \mathrm{p} - 1;\;\mathrm{{mh}} = \mathrm{{ph}};\;/ *\) Initialize some variables \(*\) /
+
+\hspace*{2em} kind \(= {ph} + 1;\;r =  - 1;\;a = p\) ;
+
+\hspace*{2em} b = p+1; cind = 1; mult = p;
+
+\hspace*{2em} m = n+p+1; Pw[0] = Qw[0];
+
+\hspace*{2em} for (i=0; i<=ph; i++) /* Compute left end of knot vector */
+
+\hspace*{4em} Uh[i] = U[0];
+
+\hspace*{2em} for (i=0; i<=p; i++) /* Initialize first Bézier segment */
+
+\hspace*{4em} bpts[i] = Qw[i];
+
+\hspace*{2em} for (i=0; i<m; i++) /* Initialize error vector */
+
+\hspace*{4em} e[i] = 0.0 ;
+
+\hspace*{6em} /* Loop through the knot vector */
+
+\hspace*{2em} while (b < m)
+
+\hspace*{4em} \{ /* First compute knot multiplicity */
+
+\hspace*{4em} i = b;
+
+\hspace*{4em} while \(\left( {b < m\& \& U\left\lbrack  b\right\rbrack   =  = U\left\lbrack  {b + 1}\right\rbrack  }\right) \;b = b + 1\) ;
+
+\hspace*{4em} mult = b-i+1; mh = mh+mult-1;
+
+\hspace*{4em} oldr = r; r = p-mult;
+
+\hspace*{4em} if \(\left( {\text{ oldr } > 0}\right) \;{lbz} = \left( {\text{ oldr } + 2}\right) /2\) ; else \({lbz} = 1\) ;
+
+\hspace*{8em} /* Insert knot U[b] r times */
+
+\hspace*{4em} if (r > 0 )
+
+\hspace*{6em} \{
+
+\hspace*{6em} numer = U[b]-U[a];
+
+\hspace*{6em} for (k=p; k>=mult; k--)
+
+\hspace*{3em} alphas[k-mult-1] = numer/(U[a+k]-U[a]);
+
+\hspace*{1em} for (j=1; j<=r; j++)
+
+\hspace*{3em} \{
+
+\hspace*{3em} save = r-j; s = mult+j;
+
+\hspace*{3em} for (k=p; k>=s; k--)
+
+\hspace*{4em} bpts[k] = alphas[k-s]*bpts[k]
+
+\hspace*{18em} + (1.0-alphas[k-s])*bpts[k-1];
+
+\hspace*{3em} Nextbpts[save] = bpts[p];
+
+\hspace*{3em} \}
+
+\hspace*{1em} \}
+
+\hspace*{3em} /* Degree reduce Bézier segment */
+
+BezDegreeReduce(bpts, rbpts, MaxErr);
+
+e[a] = e[a]+MaxErr;
+
+if (e[a] > TOL)
+
+\hspace*{1em} return(1); /* Curve not degree reducible */
+
+\hspace*{3em} /* Remove knot U[a] oldr times */
+
+if (oldr > 0 )
+
+\hspace*{1em} \{
+
+\hspace*{1em} first = kind; last = kind;
+
+\hspace*{1em} for (k=0; k<oldr; k++)
+
+\hspace*{3em} \{
+
+\hspace*{3em} i = first; j = last; kj = j-kind;
+
+\hspace*{3em} while \(\left( {j - i > k}\right)\)
+
+\hspace*{4em} \{
+
+\hspace*{4em} alfa = (U[a]-Uh[i-1])/(U[b]-Uh[i-1]);
+
+\hspace*{4em} beta = (U[a]-Uh[j-k-1])/(U[b]-Uh[j-k-1]);
+
+\hspace*{4em} \(\texttt{Pw[i-1] = (Pw[i-1]-(1.0-alfa)*Pw[i-2])/alfa;}\)
+
+\hspace*{4em} rbpts[kj] = (rbpts[kj]-beta*rbpts[kj+1])/(1.0-beta);
+
+\hspace*{4em} i = i+1; j = j-1; kj = kj-1;
+
+\hspace*{4em} \}
+
+\hspace*{4em} /* Compute knot removal error bounds (Br) */
+
+\hspace*{3em} if \(\left( {j - i < k}\right) \;{Br} = \operatorname{Distance4D}\left( {{Pw}\left\lbrack  {i - 2}\right\rbrack  ,{rbpts}\left\lbrack  {{kj} + 1}\right\rbrack  }\right)\) ;
+
+\hspace*{4em} else
+
+\hspace*{4em} \{
+
+\hspace*{4em} delta = (U[a]-Uh[i-1])/(U[b]-Uh[i-1]);
+
+\hspace*{4em} A = delta*rbpts[kj+1] + (1.0-delta)*Pw[i-2];
+
+\hspace*{4em} Br = Distance4D(Pw[i-1], A);
+
+\hspace*{4em} \}
+
+\hspace*{4em} /* Update the error vector */
+
+\hspace*{2em} \(K = a + {oldr} - k;\;q = \left( {2 * p - k + 1}\right) /2;\)
+
+\hspace*{2em} \(\mathrm{L} = \mathrm{K} - \mathrm{q};\)
+
+\hspace*{3em} for (ii=L; ii<=a; ii++)
+
+\hspace*{4em} \{ /* These knot spans were affected */
+
+\hspace*{4em} e[ii] = e[ii] + Br;
+
+\hspace*{4em} if (e[ii] > TOL)
+
+\hspace*{11em} return (1); /* Curve not degree reducible */
+
+\hspace*{10em} \}
+
+\hspace*{9em} first = first-1; last = last+1;
+
+\hspace*{8em} \} /* End for (k=0; k<oldr; k++) loop */
+
+\hspace*{7em} cind = i-1;
+
+\hspace*{7em} \} /* End if (oldr > 0) */
+
+\hspace*{8em} /* Load knot vector and control points \(*\) /
+
+\hspace*{6em} if (a != p)
+
+\hspace*{7em} for (i=0; i<ph-oldr; i++)
+
+\hspace*{9em} \{ Uh[kind] = U[a]; kind = kind+1; \}
+
+\hspace*{6em} for (i=lbz; i<=ph; i++)
+
+\hspace*{7em} \{ Pw[cind] = rbpts[i]; cind = cind+1; \}
+
+\hspace*{9em} /* Set up for next pass through */
+
+\hspace*{6em} if (b < m)
+
+\hspace*{7em} \{
+
+\hspace*{7em} for (i=0; i<r; i++) bpts[i] = Nextbpts[i];
+
+\hspace*{7em} for (i=r; i<=p; i++) bpts[i] = Qw[b-p+i];
+
+\hspace*{7em} \(a = b;\;b = b + 1;\)
+
+\hspace*{7em} \}
+
+\hspace*{6em} else
+
+\hspace*{7em} for (i=0; i<=ph; i++) Uh[kind+i] = U[b];
+
+\hspace*{6em} \} /* End of while (b < m) loop */
+
+\hspace*{5em} nh = mh-ph-1;
+
+\hspace*{5em} return(0);
+
+\hspace*{4em} \}
+
+\hspace*{1em} Figure 5.41 shows an example of reducing the degree from five to four. The
+
+original knot vector is
+
+\HRule
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_234_333_1493_872_583_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.41. 将 B 样条曲线从五阶降低到四阶。
+
+\[
+U = \{ 0,0,0,0,0,0,{0.15},{0.15},{0.3},{0.3},{0.5},{0.5},
+\]
+
+\[
+{0.7},{0.7},{0.85},{0.85},1,1,1,1,1,1
+\]
+
+实线曲线为原始曲线，而虚线曲线为降低阶数后的曲线。图 5.42a 显示了在节点向量上定义的三次曲线。
+
+\[
+U = \left\{  {0,0,0,0,\frac{3}{10},\frac{3}{10},\frac{1}{2},\frac{1}{2},\frac{7}{10},\frac{7}{10},1,1,1,1}\right\}
+\]
+
+\begin{center}
+\includegraphics[max width=0.5\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_235_454_638_627_1422_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 5.42. 一条三次曲线。(a) 三次曲线不是可降阶的；(b) 在节点细化后，该曲线是可降阶的。
+
+不可能用二次 B 样条曲线在合理的容差范围内逼近该曲线。在细化节点向量后
+
+\[
+{U}^{\left( r\right) } = \{ 0,0,0,0,{0.15},{0.15},{0.3},{0.3},{0.4},{0.4},{0.5},{0.5},{0.5},
+\]
+
+\[
+{0.6},{0.6},{0.7},{0.7},{0.85},{0.85},1,1,1,1\}
+\]
+
+可以得到合理的近似，如图 5.42b 所示。注意 \(u = 1/2\) 处的间断。这是由于原始曲线中的三重节点。细化突出了一个有趣的观点:通过引入至少重数为二的额外节点，可以改善近似的质量。因此，结合节点细化，本节的工具可以用于开发算法，以用低阶曲线逼近高阶曲线。
+
+最后，我们指出，通过将这些曲线技术应用于控制点的行或列，可以降低曲面的 \(u\) 或 \(v\) 阶。
+
+\section*{练习}
+
+5.1. 设 \(p = 2\) 和 \(U = \{ 0,0,0,1,2,3,4,4,5,5,5\} .\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{7}{N}_{i,2}\left( u\right) {\mathbf{P}}_{i}\) ，一条 B 样条曲线，在 \(U\) 上由控制点 \(\{ \left( {-6, - 1}\right) ,\left( {-5,2}\right) ,\left( {-3,3}\right) ,\left( {-1,2}\right)\) 和 \(\left( {0,0}\right) ,\left( {3,1}\right) ,\left( {3,3}\right) ,\left( {1,5}\right) \}\) 定义。使用重复的节点插入，计算 \(\mathbf{C}\left( {5/4}\right)\) 和 \({\mathbf{C}}^{\prime }\left( {5/4}\right)\) 。检查方程 (5.12) - (5.14) 和 (5.16) - (5.18) 在此示例中是否成立。绘制曲线及其控制多边形。
+
+5.2. 使用与练习 5.1 中相同的曲线。必须插入什么值的 \(u\) 作为节点，以使点 \(\left( {-3/4,3/2}\right)\) 成为控制点？
+
+5.3. 考虑 B 样条曲面
+
+\[
+\mathbf{S}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{7}\mathop{\sum }\limits_{{j = 0}}^{8}{N}_{i,2}\left( u\right) {N}_{j,3}\left( v\right) {\mathbf{P}}_{i,j}
+\]
+
+其中
+
+\[
+U = \left\{  {0,0,0,\frac{1}{5},\frac{3}{10},\frac{3}{5},\frac{4}{5},\frac{9}{10},1,1,1}\right\}
+\]
+
+和
+
+\[
+V = \left\{  {0,0,0,0,\frac{1}{10},\frac{2}{5},\frac{1}{2},\frac{7}{10},\frac{4}{5},1,1,1,1}\right\}
+\]
+
+假设您想在由 \(3/{10} < u < 6/{10}\) 和 \(1/2 < v < 7/{10}\) 给出的参数空间的矩形区域内稍微修改表面形状。您希望通过添加节点(控制点)来实现这一点，直到您至少有一个可以自由移动的控制点，而不改变表面相对于 \(u\) 和 \(v\) 的连续性，并且不改变该矩形区域外的表面形状。您必须向 \(U\) 和 \(V\) 添加哪些节点？请明确说明数量和数值。
+
+5.4. 考虑 B-spline 表面
+
+\[
+\mathbf{S}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{3}\mathop{\sum }\limits_{{j = 0}}^{2}{N}_{i,2}\left( u\right) {N}_{j,2}\left( v\right) {\mathbf{P}}_{i,j}
+\]
+
+其中
+
+\[
+U = \left\{  {0,0,0,\frac{1}{2},1,1,1}\right\}
+\]
+
+228 基本几何算法
+
+和
+
+\[
+V = \{ 0,0,0,1,1,1\}
+\]
+
+和
+
+\[
+{\mathbf{P}}_{0,0} = \left( {0,0,0}\right) \;{\mathbf{P}}_{1,0} = \left( {3,0,3}\right) \;{\mathbf{P}}_{2,0} = \left( {6,0,3}\right) \;{\mathbf{P}}_{3,0} = \left( {9,0,0}\right)
+\]
+
+\[
+{\mathbf{P}}_{0,1} = \left( {0,2,2}\right) \;{\mathbf{P}}_{1,1} = \left( {3,2,5}\right) \;{\mathbf{P}}_{2,1} = \left( {6,2,5}\right) \;{\mathbf{P}}_{3,1} = \left( {9,2,2}\right)
+\]
+
+\[
+{\mathbf{P}}_{0,2} = \left( {0,4,0}\right) \;{\mathbf{P}}_{1,2} = \left( {3,4,3}\right) \;{\mathbf{P}}_{2,2} = \left( {6,4,3}\right) \;{\mathbf{P}}_{3,2} = \left( {9,4,0}\right)
+\]
+
+使用节点插入计算 \(\mathbf{S}\left( {3/{10},6/{10}}\right)\) 。将此与练习 3.8 进行比较。
+
+5.5. 设 \(p = 3\) 和 \(U = \{ 0,0,0,0,1,1,1,2,2,2,2\}\) 如图 5.26 的示例。假设控制点为 \({\mathbf{P}}_{i}^{0} = \{ \left( {-1,0}\right) ,\left( {-1,1}\right) ,\left( {-1/2,3/2}\right) ,\left( {1/4,3/2}\right) ,\left( {1,3/2}\right) ,\left( {2,1}\right)\) ， \(\left( {2,0}\right) \}\) 。确定 \(u = 1\) 可以移除多少次，并计算新的控制点。您可以通过使用公式 (5.29) 或通过追踪算法 A5.8 来完成此操作。
+
+
+
+\clearpage
+
+\end{document}
+

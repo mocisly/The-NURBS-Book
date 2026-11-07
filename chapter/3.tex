@@ -1,0 +1,1306 @@
+\documentclass[main.tex]{subfiles}                                              
+\begin{document}
+
+\section{引言}
+
+在本章中，我们定义了非有理B样条曲线和曲面，研究它们的性质，并推导出它们的导数表达式。为简洁起见，本章其余部分将省略“非有理”一词。主要目标是获得对B样条曲线和曲面的直观理解，为此，读者应仔细研究本章中给出的许多示例和图形。我们还提供了计算B样条曲线和曲面上的点及其导数的算法。Gordon和Riesenfeld首次提出使用B样条定义计算机辅助几何设计的曲线和曲面 [Gord74b; Ries73]。目前，许多关于曲线和曲面的书籍中都涵盖了B样条技术 - 参见 [DeBo78; Mort85; Bart87; Fari93; Yama88; Hosc93; Su89; Roge90; Beac91]。
+
+
+
+\section{B样条曲线的定义和性质}
+
+p次B样条曲线定义为
+
+\[
+\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}\;a \leq  u \leq  b \tag{3.1}
+\]
+
+其中 \(\left\{  {\mathbf{P}}_{i}\right\}\) 是控制点，而 \(\left\{  {{N}_{i,p}\left( u\right) }\right\}\) 是在非周期(且非均匀)节点向量上定义的 \(p\) 次B样条基函数(公式 [2.5])。
+
+\[
+U = \left\{  {\underset{p + 1}{\underbrace{a,\ldots ,a}},{u}_{p + 1},\ldots ,{u}_{m - p - 1},\underset{p + 1}{\underbrace{b,\ldots ,b}}}\right\}
+\]
+
+\(\left( {m + 1\text{ knots }}\right)\) 。除非另有说明，我们假设 \(a = 0\) 和 \(b = 1\) 。由 \(\left\{  {\mathbf{P}}_{i}\right\}\) 形成的多边形称为控制多边形。B样条曲线的示例(在某些情况下与其相应的基函数一起)显示在图3.1-3.14中。
+
+计算固定 \(u\) 值下的B样条曲线上的点需要三个步骤:
+
+1. 找到 \(u\) 所在的节点区间(算法A2.1)；
+
+2. 计算非零基函数(算法A2.2)；
+
+3. 将非零基函数的值与相应的控制点相乘。
+
+考虑第2.5节的例子Ex2.3，具有 \(U = \{ 0,0,0,1,2,3,4,4,5,5,5\}\) 、 \(u = 5/2\) 和 \(p = 2\) 。那么 \(u \in  \left\lbrack  {{u}_{4},{u}_{5}}\right)\) ，并且
+
+\[
+{N}_{2,2}\left( \frac{5}{2}\right)  = \frac{1}{8}\;{N}_{3,2}\left( \frac{5}{2}\right)  = \frac{6}{8}\;{N}_{4,2}\left( \frac{5}{2}\right)  = \frac{1}{8}
+\]
+
+与控制点相乘得到
+
+\[
+\mathbf{C}\left( \frac{5}{2}\right)  = \frac{1}{8}{\mathbf{P}}_{2} + \frac{6}{8}{\mathbf{P}}_{3} + \frac{1}{8}{\mathbf{P}}_{4}
+\]
+
+算法如下。
+
+\HRule
+
+ALGORITHM A3.1:
+
+\hspace*{1em} CurvePoint(n, p, U, P, u, C)
+
+\hspace*{2em} \{ /* Compute curve point */
+
+\hspace*{3em} /* Input: n, p, U, P, u */
+
+\hspace*{3em} /* Output: C */
+
+\hspace*{2em} span \(= \operatorname{FindSpan}\left( {\mathrm{n},\mathrm{p},\mathrm{u},\mathrm{U}}\right)\) ;
+
+\hspace*{2em} BasisFuns(span, u, p, U, N);
+
+\hspace*{2em} C = 0.0 ;
+
+\hspace*{2em} for (i = 0; i<=p; i++)
+
+\hspace*{3em} C = C + N[i]*P[span-p+i];
+
+\hspace*{2em} \}
+
+\HRule
+
+现在我们列出B样条曲线的一些性质。这些性质源于第2章中给出的关于函数 \({N}_{i,p}\left( u\right)\) 的性质。令 \(\mathbf{C}\left( u\right)\) 由方程(3.1)定义。
+
+P3.1 如果 \(n = p\) 和 \(U = \{ 0,\ldots ,0,1,\ldots ,1\}\) ，那么 \(\mathbf{C}\left( u\right)\) 是一条贝塞尔曲线(图3.1)；
+
+P3.2 \(\mathbf{C}\left( u\right)\) 是一条分段多项式曲线(因为 \({N}_{i,p}\left( u\right)\) 是分段多项式)；度数 \(p\) 、控制点数量 \(n + 1\) 和节点数量 \(m + 1\) 之间的关系为
+
+\[
+m = n + p + 1 \tag{3.2}
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_93_347_259_840_537_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图3.1. 在 \(U = \{ 0,0,0,0,1,1,1,1\}\) 上的三次B样条曲线，即三次贝塞尔曲线。
+
+(见第2.4节)。图3.2和3.3显示了与各个节点区间对应的B样条曲线的基函数和截面；在这两幅图中，交替的实线/虚线段对应于定义曲线的不同多项式(节点区间)。
+
+93.3 端点插值: \(\mathbf{C}\left( 0\right)  = {\mathbf{P}}_{0}\) 和 \(\mathbf{C}\left( 1\right)  = {\mathbf{P}}_{n}\) ；
+
+3.4 仿射不变性:通过对控制点应用仿射变换来对曲线应用仿射变换。令 \(\mathbf{r}\) 为 \({\mathcal{E}}^{3}\) 中的一个点(三维欧几里得空间)。仿射变换，记作 \(\Phi\) ，将 \({\mathcal{E}}^{3}\) 映射到 \({\mathcal{E}}^{3}\) ，其形式为
+
+\[
+\Phi \left( \mathbf{r}\right)  = A\mathbf{r} + \mathbf{v}
+\]
+
+其中 \(A\) 是一个 \(3 \times  3\) 矩阵，而 \(\mathbf{v}\) 是一个向量。仿射变换包括平移、旋转、缩放和剪切。B样条曲线的仿射不变性属性源于 \({N}_{i,p}\left( u\right)\) 的统一性划分属性。因此，设 \(\mathbf{r} = \sum {\alpha }_{i}{\mathbf{p}}_{i}\) ，其中 \({\mathbf{p}}_{i} \in  {\mathcal{E}}^{3}\) 和 \(\sum {\alpha }_{i} = 1\) 。然后
+
+\[
+\Phi \left( \mathbf{r}\right)  = \Phi \left( {\sum {\alpha }_{i}{\mathbf{p}}_{i}}\right)  = A\left( {\sum {\alpha }_{i}{\mathbf{p}}_{i}}\right)  + \mathbf{v} = \sum {\alpha }_{i}A{\mathbf{p}}_{i} + \sum {\alpha }_{i}\mathbf{v}
+\]
+
+\[
+= \sum {\alpha }_{i}\left( {A{\mathbf{p}}_{i} + \mathbf{v}}\right)  = \sum {\alpha }_{i}\Phi \left( {\mathbf{p}}_{i}\right)
+\]
+
+P3.5 强凸包属性:曲线包含在其控制多边形的凸包中；事实上，如果 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right) ,p \leq  i < m - p - 1\) ，则 \(\mathbf{C}\left( u\right)\) 在控制点 \({\mathbf{P}}_{i - p},\ldots ,{\mathbf{P}}_{i}\) 的凸包中(图 3.4、3.5 和 3.6)。这源于 \({N}_{i,p}\left( u\right)\) 的非负性和统一性划分属性(属性 P2.3 和 P2.4)，以及当 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) 时 \({N}_{j,p}\left( u\right)  = 0\) 对于 \(j < i - p\) 和 \(j > i\) 的属性(属性 P2.2)。图 3.6 显示了如何构造一个包含直线段的二次曲线。由于 \({\mathbf{P}}_{2},{\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4}\) 共线，强
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_94_265_256_1010_1254_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.2. (a) 三次基函数 \(U = \{ 0,0,0,0,1/4,1/2,3/4,1,1,1,1\}\) ; (b) 使用图 3.2a 的基函数构造的三次曲线。
+
+凸包属性强制曲线从 \(\mathbf{C}\left( {2/5}\right)\) 到 \(\mathbf{C}\left( {3/5}\right)\) 是一条直线段；
+
+P3.6 局部修改方案:移动 \({\mathbf{P}}_{i}\) 仅在区间 \(\left\lbrack  {{u}_{i},{u}_{i + p + 1}}\right)\) 内改变 \(\mathbf{C}\left( u\right)\) (图 3.7)。这源于 \(u \notin  \left\lbrack  {{u}_{i},{u}_{i + p + 1}}\right)\) 的 \({N}_{i,p}\left( u\right)  = 0\) (属性 P2.1)。
+
+P3.7 控制多边形表示曲线的分段线性近似；通过节点插入或次数提升可以改善这种近似(见第5章)。一般来说，次数越低，B样条曲线越接近其控制多边形(见图3.8和3.9)。图3.9中的曲线使用相同的六个控制点定义，并且节点向量
+
+\[
+p = 1 : U = \left\{  {0,0,\frac{1}{5},\frac{2}{5},\frac{3}{5},\frac{4}{5},1,1}\right\}
+\]
+
+\[
+p = 2 : U = \left\{  {0,0,0,\frac{1}{4},\frac{1}{2},\frac{3}{4},1,1,1}\right\}
+\]
+
+\[
+p = 3 : U = \left\{  {0,0,0,0,\frac{1}{3},\frac{2}{3},1,1,1,1}\right\}
+\]
+
+\[
+p = 4 : U = \left\{  {0,0,0,0,0,\frac{1}{2},1,1,1,1,1}\right\}
+\]
+
+\[
+p = 5 : U = \{ 0,0,0,0,0,0,1,1,1,1,1,1\}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_95_284_264_953_1193_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图3.3. (a) 在 \(U = \{ 0,0,0,1/5,2/5,3/5,4/5,1,1,1\}\) 上的二次基函数；(b) 使用图3.3a的基函数绘制的二次曲线。
+
+这一现象的原因是直观的:次数越低，参与计算的控制点越少
+
+86 B样条曲线和曲面
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_96_284_264_954_585_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图3.4. 二次B样条曲线的强凸包性质；对于 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right) ,\mathbf{C}\left( u\right)\) 位于三角形 \({\mathbf{P}}_{i - 2}{\mathbf{P}}_{i - 1}{\mathbf{P}}_{i}\) 内。
+
+\(\mathbf{C}\left( {u}_{0}\right)\) 对于任何给定的 \({u}_{0}\) 。极端情况是 \(p = 1\) ，在这种情况下，每个点 \(\mathbf{C}\left( u\right)\) 只是两个控制点之间的线性插值。在这种情况下，曲线就是控制多边形；
+
+P3.8 沿着曲线从 \(u = 0\) 移动到 \(u = 1\) ， \({N}_{i,p}\left( u\right)\) 函数像开关一样起作用；当 \(u\) 经过一个节点时，一个 \({N}_{i,p}\left( u\right)\) (以及相应的 \({\mathbf{P}}_{i}\) )关闭，下一个则开启(图3.2和3.3)。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_96_291_1451_946_589_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图3.5. 三次B样条曲线的强凸包性质；对于 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) ， \(\mathbf{C}\left( u\right)\) 位于四边形 \({\mathbf{P}}_{i - 3}{\mathbf{P}}_{i - 2}{\mathbf{P}}_{i - 1}{\mathbf{P}}_{i}\) 内。
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_97_382_263_769_668_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图3.6. 在 \(U = \{ 0,0,0,1/5,2/5,3/5,4/5,1,1,1\}\) 上的二次B样条曲线。该曲线是 \(\mathbf{C}\left( {2/5}\right)\) 和 \(\mathbf{C}\left( {3/5}\right)\) 之间的直线。
+
+P3.9 变异减少性质:没有平面与曲线的交点比与控制多边形的交点更多(对于二维曲线，将“平面”替换为“直线”) - 见 [Lane83] 的证明；
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_97_360_1336_800_701_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.7. 在 \(U = \{ 0,0,0,0,1/4,1/2,3/4,1,1,1,1\}\) 上的三次曲线；移动 \({\mathbf{P}}_{4}\) (到 \({\mathbf{P}}_{4}^{\prime }\) )会改变区间 \(\left\lbrack  {1/4,1}\right)\) 中的曲线。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_98_259_269_1000_1335_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.8. B-spline 曲线。(a)在节点向量 \(U =\)  \(\{ 0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1\}\) 上的九次 Bézier 曲线；(b)使用在 \(U = \{ 0,0,0,1/8,2/8,3/8,4/8,5/8,6/8,7/8,1,1,1\}\) 上定义的相同控制多边形的二次曲线。
+
+P3.10 \(\mathbf{C}\left( u\right)\) 的连续性和可微性源于 \({N}_{i,p}\left( u\right)\) 的连续性和可微性(因为 \(\mathbf{C}\left( u\right)\) 只是 \({N}_{i,p}\left( u\right)\) 的线性组合)。因此， \(\mathbf{C}\left( u\right)\) 在结点区间的内部是无限可微的，并且在重数为 \(k\) 的结点处至少是 \(p - k\) 次连续可微的。图 3.10 显示了一条二次曲线 \(\left( {p = 2}\right)\) 。该曲线在重数为 1 的所有内部结点处是 \({\mathbf{C}}^{1}\) 连续的(第一导数是连续的，但第二导数不是)。在双重结点处， \(u = 4/5,\mathbf{C}\left( u\right)\) 仅是 \({\mathbf{C}}^{0}\) 连续的，因此存在一个尖点(视觉不连续性)。图 3.11 显示了一条在同一结点向量上定义的二次曲线。因此，这两条曲线使用相同的基函数 \({N}_{i,p}\left( u\right)\) 进行定义。但图 3.11 的曲线在 \(u = 4/5\) 处是 \({\mathbf{C}}^{1}\) 连续的；这并不明显，但可以通过第 3.3 节中给出的导数表达式来观察到。这只是因为不连续函数有时可以以某种方式组合，从而使结果是连续的。注意 \({\mathbf{P}}_{4}\) 、 \({\mathbf{P}}_{5}\) 和 \({\mathbf{P}}_{6}\) 是共线的，长度为 \(\left( {{\mathbf{P}}_{4}{\mathbf{P}}_{5}}\right)  =\) 长度 \(\left( {{\mathbf{P}}_{5}{\mathbf{P}}_{6}}\right)\) 。图 3.12 显示了一条在 \(u = 1/4\) 和 \(u = 1/2\) 处是 \({\mathbf{C}}^{2}\) 连续的三次曲线，但在双重结点 \(u = 3/4\) 处仅是 \({\mathbf{C}}^{1}\) 连续的。眼睛能够检测到第二导数的不连续性，但可能无法检测到第三及更高阶导数的不连续性。因此，三次曲线通常适用于视觉目的。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_99_291_264_945_582_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.9. 不同阶数的 B-spline 曲线，使用相同的控制多边形。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_99_298_1537_938_499_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.10. 在 \(U = \{ 0,0,0,1/5,2/5,3/5,4/5,4/5,1,1,1\}\) 上的二次曲线，在 \(u = 4/5\) 处有一个尖点。
+
+90 B样条曲线和曲面
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_100_298_259_932_499_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.11. 在 \(U = \{ 0,0,0,1/5,2/5,3/5,4/5,4/5,1,1,1\}\) 上的二次曲线；在 \(u = 4/5\) 处一阶导数是连续的。
+
+P3.11 使用多个(重合的)控制点是可能的(有时也是有用的)。图 3.13 显示了一个具有双重控制点的二次曲线， \({\mathbf{P}}_{2} = {\mathbf{P}}_{3}\) 。该曲线的有趣部分位于 \(\mathbf{C}\left( {5/2}\right)\) 和 \(\mathbf{C}\left( {3/4}\right)\) 之间。实际上， \(\mathbf{C}\left( {1/2}\right)  = {\mathbf{P}}_{2} = {\mathbf{P}}_{3}\) ，并且在 \(\mathbf{C}\left( {1/4}\right)\) 和 \(\mathbf{C}\left( {1/2}\right)\) 之间，以及 \(\mathbf{C}\left( {1/2}\right)\) 和 \(\mathbf{C}\left( {3/4}\right)\) 之间的曲线段都是直线。这是由于性质 P3.5 的结果，例如， \(\mathbf{C}\left( u\right)\) 在 \({\mathbf{P}}_{1}{\mathbf{P}}_{2}{\mathbf{P}}_{3}\) 的凸包(即一条线)内，如果 \(u \in  \left\lbrack  {1/4,1/2}\right)\) 。此外，由于节点 \(u = 1/2\) 的重数为 \(= 1\) ，因此曲线在该处必须是 \({\mathbf{C}}^{1}\) 连续的，尽管它有一个尖点(视觉不连续性)。这是因为在 \(u = 1/2\) 处一阶导数向量的大小连续趋向于零的结果。在下一节中，我们将看到在 \(u = 1/2\) 处的导数与差值 \({\mathbf{P}}_{3} - {\mathbf{P}}_{2}\) 成正比。图 3.14a 和 \({3.14}\mathrm{\;b}\) 是使用相同控制多边形的三次示例，包括双重控制点 \({\mathbf{P}}_{2} = {\mathbf{P}}_{3}\) ，但具有不同的节点向量。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_100_277_1526_975_503_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.12. 在 \(U = \{ 0,0,0,0,1/4,1/2,3/4,3/4,1,1,1,1\} ,{\mathbf{C}}^{2}\) 上的三次曲线在 \(u = 1/4\) 和 \(u = 1/2\) 处是连续的，并且在 \({\mathbf{C}}^{1}\) 处在 \(u = 3/4\) 是连续的。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_101_308_247_915_560_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.13. 在 \(U = \{ 0,0,0,1/4,1/2,3/4,1,1,1\} ;{\mathbf{P}}_{2} = {\mathbf{P}}_{3}\) 上的二次曲线是一个双重控制点。
+
+控制多边形，包括双重控制点 \({\mathbf{P}}_{2} = {\mathbf{P}}_{3}\) ，但具有不同的节点向量。
+
+
+
+\section{B样条曲线的导数}
+
+令 \({\mathbf{C}}^{\left( k\right) }\left( u\right)\) 表示 \(k\) 阶导数的 \(\mathbf{C}\left( u\right)\) 。如果 \(u\) 固定，我们可以通过计算基函数的 \(k\) 阶导数来获得 \({\mathbf{C}}^{\left( k\right) }\left( u\right)\) (见方程 [2.7]、[2.9] 和 [2.10] 以及算法 A2.3)。特别地
+
+\[
+{\mathbf{C}}^{\left( k\right) }\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}^{\left( k\right) }\left( u\right) {\mathbf{P}}_{i} \tag{3.3}
+\]
+
+考虑第 2.5 节的例子，设 \(p = 2,U = \{ 0,0,0,1,2,3,4,4,5,5,5\}\) 和 \(u = 5/2\) 。从方程 (2.7) 我们得到
+
+\[
+{N}_{2,2}^{\prime }\left( \frac{5}{2}\right)  = 0 - \frac{2}{3 - 1}\frac{1}{2} =  - \frac{1}{2}
+\]
+
+\[
+{N}_{3,2}^{\prime }\left( \frac{5}{2}\right)  = \frac{2}{3 - 1}\frac{1}{2} - \frac{2}{4 - 2}\frac{1}{2} = 0
+\]
+
+\[
+{N}_{4,2}^{\prime }\left( \frac{5}{2}\right)  = \frac{2}{4 - 2}\frac{1}{2} - 0 = \frac{1}{2}
+\]
+
+由此可得
+
+\[
+{\mathbf{C}}^{\prime }\left( \frac{5}{2}\right)  =  - \frac{1}{2}{\mathbf{P}}_{2} + \frac{1}{2}{\mathbf{P}}_{4}
+\]
+
+92 B样条曲线和曲面
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_102_313_249_895_1518_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.14. 具有双控制点的三次曲线 \({\mathbf{P}}_{2} = {\mathbf{P}}_{3}\) 。(a) \(U = \{ 0,0,0,0,1/4,3/4\) ， \(1,1,1,1\}\) ; (b) \(U = \{ 0,0,0,0,1/2,1/2,1,1,1,1\}\) 。
+
+一个算法用于计算 B样条曲线上的点及其所有导数，直到并包括在固定的 \(u\) 值下的 \(d\) 阶导数。我们允许 \(d > p\) ，尽管在这种情况下导数为 0(对于非有理曲线)；这些导数对于有理曲线是必要的。算法的输入为 \(u,d\) ，以及 B样条曲线，通过本书其余部分定义为
+
+n : 控制点的数量为 \(n + 1\) ;
+
+p : 曲线的阶数；
+
+U : 节点；
+
+P : 控制点。
+
+输出为数组 \(\mathrm{{CK}}\left\lbrack  \right\rbrack\) ，其中 \(\mathrm{{CK}}\left\lbrack  \mathrm{k}\right\rbrack\) 是 \(k\) 阶导数 \(0 \leq  k \leq  d\) 。我们使用算法 A2.1 和 A2.3。一个局部数组 nders[][] 用于存储基函数的导数。
+
+\HRule
+
+ALGORITHM A3.2:
+
+\hspace*{1em} CurveDerivsAlg1(n, p, U, P, u, d, CK)
+
+\hspace*{3em} \{ /* Compute curve derivatives */
+
+\hspace*{4em} /* Input: n, p, U, P, u, d */
+
+\hspace*{4em} /* Output: CK */
+
+\hspace*{3em} du = min(d, p);
+
+\hspace*{3em} for (k=p+1; k<=d; k++) CK[k] = 0.0;
+
+\hspace*{3em} span = FindSpan(n, p, u, U);
+
+\hspace*{3em} DersBasisFuns(span, u, p, du, U, nders);
+
+\hspace*{3em} for ( \(k = 0\) ; \(k <  = {du}\) ; \(k +  +\) )
+
+\hspace*{4em} \{
+
+\hspace*{4em} CK[k] = 0.0 ;
+
+\hspace*{4em} for (j=0; j<=p; j++)
+
+\hspace*{5em} CK[k] = CK[k] + nders[k][j]*P[span-p+j];
+
+\hspace*{4em} \}
+
+\hspace*{3em} \}
+
+\HRule
+
+现在，我们想要正式区分 \(p\) 阶 B-样条曲线，而不是修正 \(u\) 。
+
+样条曲线，
+
+\[
+\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}
+\]
+
+定义在节点向量上
+
+\[
+U = \{ \underset{p + 1}{\underbrace{0,\ldots ,0}},{u}_{p + 1},\ldots ,{u}_{m - p - 1},\underset{p + 1}{\underbrace{1,\ldots ,1}}\}
+\]
+
+从方程 (3.3) 和 (2.7) 我们得到
+
+\[
+{\mathbf{C}}^{\prime }\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}^{\prime }\left( u\right) {\mathbf{P}}_{i}
+\]
+
+\[
+= \mathop{\sum }\limits_{{i = 0}}^{n}\left( {\frac{p}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1}\left( u\right)  - \frac{p}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1}\left( u\right) }\right) {\mathbf{P}}_{i}
+\]
+
+\[
+= \left( {p\mathop{\sum }\limits_{{i =  - 1}}^{{n - 1}}{N}_{i + 1,p - 1}\left( u\right) \frac{{\mathbf{P}}_{i + 1}}{{u}_{i + p + 1} - {u}_{i + 1}}}\right)
+\]
+
+94 B-样条曲线和曲面
+
+\[
+- \left( {p\mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i + 1,p - 1}\left( u\right) \frac{{\mathbf{P}}_{i}}{{u}_{i + p + 1} - {u}_{i + 1}}}\right)
+\]
+
+\[
+= p\frac{{N}_{0,p - 1}\left( u\right) {\mathbf{P}}_{0}}{{u}_{p} - {u}_{0}} + p\mathop{\sum }\limits_{{i = 0}}^{{n - 1}}{N}_{i + 1,p - 1}\left( u\right) \frac{\left( {\mathbf{P}}_{i + 1} - {\mathbf{P}}_{i}\right) }{{u}_{i + p + 1} - {u}_{i + 1}} - p\frac{{N}_{n + 1,p - 1}\left( u\right) {\mathbf{P}}_{n}}{{u}_{n + p + 1} - {u}_{n + 1}}
+\]
+
+第一个和最后一个项的值为 \(0/0\) ，根据定义为 0。因此
+
+\[
+{\mathbf{C}}^{\prime }\left( u\right)  = p\mathop{\sum }\limits_{{i = 0}}^{{n - 1}}{N}_{i + 1,p - 1}\left( u\right) \frac{\left( {\mathbf{P}}_{i + 1} - {\mathbf{P}}_{i}\right) }{{u}_{i + p + 1} - {u}_{i + 1}} = \mathop{\sum }\limits_{{i = 0}}^{{n - 1}}{N}_{i + 1,p - 1}\left( u\right) {\mathbf{Q}}_{i}
+\]
+
+其中
+
+\[
+{\mathbf{Q}}_{i} = p\frac{{\mathbf{P}}_{i + 1} - {\mathbf{P}}_{i}}{{u}_{i + p + 1} - {u}_{i + 1}} \tag{3.4}
+\]
+
+现在设 \({U}^{\prime }\) 为通过从 \(U\) 中去掉第一个和最后一个节点得到的节点向量，即
+
+\[
+{U}^{\prime } = \{ \underset{p}{\underbrace{0,\ldots ,0}},{u}_{p + 1},\ldots ,{u}_{m - p - 1},\underset{p}{\underbrace{1,\ldots ,1}}\}  \tag{3.5}
+\]
+
+\(\left( {U}^{\prime }\right.\) 有 \(m - 1\) 个节点)。然后很容易检查在 \(U\) 上计算的函数 \({N}_{i + 1,p - 1}\left( u\right)\) 等于在 \({U}^{\prime }\) 上计算的 \({N}_{i,p - 1}\left( u\right)\) 。因此
+
+\[
+{\mathbf{C}}^{\prime }\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{{n - 1}}{N}_{i,p - 1}\left( u\right) {\mathbf{Q}}_{i} \tag{3.6}
+\]
+
+其中 \({\mathbf{Q}}_{i}\) 由方程 (3.4) 定义，而 \({N}_{i,p - 1}\left( u\right)\) 在 \({U}^{\prime }\) 上计算。因此， \({\mathbf{C}}^{\prime }\left( u\right)\) 是一个 (p - 1) 阶 B-样条曲线。
+
+\section*{示例}
+
+Ex3.1 设 \(\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{4}{N}_{i,2}\left( u\right) {\mathbf{P}}_{i}\) 为定义在
+
+\[
+U = \{ 0,0,0,2/5,3/5,1,1,1\}
+\]
+
+然后 \({U}^{\prime } = \{ 0,0,2/5,3/5,1,1\}\) 和 \({\mathbf{C}}^{\prime }\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{3}{N}_{i,1}\left( u\right) {\mathbf{Q}}_{i}\) ，其中
+
+\[
+{\mathbf{Q}}_{0} = \frac{2\left( {{\mathbf{P}}_{1} - {\mathbf{P}}_{0}}\right) }{\frac{1}{3} - 0} = 6\left( {{\mathbf{P}}_{1} - {\mathbf{P}}_{0}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{1} = \frac{2\left( {{\mathbf{P}}_{2} - {\mathbf{P}}_{1}}\right) }{\frac{3}{4} - 0} = \frac{8}{3}\left( {{\mathbf{P}}_{2} - {\mathbf{P}}_{1}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{2} = \frac{2\left( {{\mathbf{P}}_{3} - {\mathbf{P}}_{2}}\right) }{1 - \frac{1}{3}} = 3\left( {{\mathbf{P}}_{3} - {\mathbf{P}}_{2}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{3} = \frac{2\left( {{\mathbf{P}}_{4} - {\mathbf{P}}_{3}}\right) }{1 - \frac{3}{4}} = 8\left( {{\mathbf{P}}_{4} - {\mathbf{P}}_{3}}\right)
+\]
+
+\(\mathbf{C}\left( u\right)\) 和 \({\mathbf{C}}^{\prime }\left( u\right)\) 分别如图 \({3.15}\mathrm{a}\) 和 \({3.15}\mathrm{\;b}\) 所示。
+
+Ex3.2 设 \(\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{6}{N}_{i,3}\left( u\right) {\mathbf{P}}_{i}\) 为定义在
+
+\[
+U = \{ 0,0,0,0,2/5,3/5,3/5,1,1,1,1\}
+\]
+
+然后 \({U}^{\prime } = \left\{  {0,0,0,2/5,3/5,3/5,1,1,1}\right\}\) 和 \({\mathbf{C}}^{\prime }\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{5}{N}_{i,2}\left( u\right) {\mathbf{Q}}_{i}\) ，
+
+其中
+
+\[
+{\mathbf{Q}}_{0} = \frac{3\left( {{\mathbf{P}}_{1} - {\mathbf{P}}_{0}}\right) }{\frac{1}{3} - 0} = 9\left( {{\mathbf{P}}_{1} - {\mathbf{P}}_{0}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{1} = \frac{3\left( {{\mathbf{P}}_{2} - {\mathbf{P}}_{1}}\right) }{\frac{2}{3} - 0} = \frac{9}{2}\left( {{\mathbf{P}}_{2} - {\mathbf{P}}_{1}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{2} = \frac{3\left( {{\mathbf{P}}_{3} - {\mathbf{P}}_{2}}\right) }{\frac{2}{3} - 0} = \frac{9}{2}\left( {{\mathbf{P}}_{3} - {\mathbf{P}}_{2}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{3} = \frac{3\left( {{\mathbf{P}}_{4} - {\mathbf{P}}_{3}}\right) }{1 - \frac{1}{3}} = \frac{9}{2}\left( {{\mathbf{P}}_{4} - {\mathbf{P}}_{3}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{4} = \frac{3\left( {{\mathbf{P}}_{5} - {\mathbf{P}}_{4}}\right) }{1 - \frac{2}{3}} = 9\left( {{\mathbf{P}}_{5} - {\mathbf{P}}_{4}}\right)
+\]
+
+\[
+{\mathbf{Q}}_{5} = \frac{3\left( {{\mathbf{P}}_{6} - {\mathbf{P}}_{5}}\right) }{1 - \frac{2}{3}} = 9\left( {{\mathbf{P}}_{6} - {\mathbf{P}}_{5}}\right)
+\]
+
+\(\mathbf{C}\left( u\right)\) 和 \({\mathbf{C}}^{\prime }\left( u\right)\) 分别如图 3.16a 和 \({3.16}\mathrm{\;b}\) 所示。注意 \({\mathbf{C}}^{\prime }\left( u\right)\) 是一个在双结点 \(u = 3/5\) 处具有尖点的二次曲线。
+
+Ex3.3 回想一下， \(p\) 阶 Bézier 曲线是 \(U = \{ 0,\ldots ,0,1,\ldots ,1\}\) 上的 B-spline 曲线(没有内部结点)，方程 (3.4) 简化为 \({\mathbf{Q}}_{i} =\)  \(p\left( {{\mathbf{P}}_{i + 1} - {\mathbf{P}}_{i}}\right)\) 对于 \(0 \leq  i \leq  n - 1\) 。由于 \(n = p\) 和 \({N}_{i,p - 1}\left( u\right)  = {B}_{i,n - 1}\left( u\right)\) ，伯恩斯坦多项式，方程 (3.6) 等价于方程 (1.9)。
+
+96 B-spline 曲线和曲面
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_106_280_263_995_1791_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.15. (a) 在 \(U = \{ 0,0,0,2/5,3/5,1,1,1\}\) 上的二次曲线；(b) 曲线的导数是 \({U}^{\prime } = \{ 0,0,2/5,3/5,1,1\}\) 上的一次 B-spline 曲线。
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_107_281_250_987_808_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.16. (a) 在 \(U = \{ 0,0,0,0,2/5,3/5,3/5,1,1,1,1\}\) 上的三次曲线；(b) 在 \({U}^{\prime } = \{ 0,0,0,2/5,3/5,3/5,1,1,1\}\) 上的二次导数曲线。
+
+B样条曲线在端点的第一导数由以下公式给出
+
+\[
+{\mathbf{C}}^{\prime }\left( 0\right)  = {\mathbf{Q}}_{0} = \frac{p}{{u}_{p + 1}}\left( {{\mathbf{P}}_{1} - {\mathbf{P}}_{0}}\right)
+\]
+
+\[
+{\mathbf{C}}^{\prime }\left( 1\right)  = {\mathbf{Q}}_{n - 1} = \frac{p}{1 - {u}_{m - p - 1}}\left( {{\mathbf{P}}_{n} - {\mathbf{P}}_{n - 1}}\right)  \tag{3.7}
+\]
+
+(见示例Ex3.1和Ex3.2，以及图3.15(a)和(b)以及图3.16(a)和(b))。注意，在图3.15b和 \({3.16}\mathrm{\;b}\) 中，导数向量和控制点差异被缩小以便于更好的可视化，分别由 \(1/2\) 和 \(1/3\) 表示。
+
+由于 \({\mathbf{C}}^{\prime }\left( u\right)\) 是B样条曲线，我们递归地应用方程(3.4)至(3.6)以获得更高阶的导数。设 \({\mathbf{P}}_{i}^{\left( 0\right) } = {\mathbf{P}}_{i}\) ，我们写成
+
+\[
+\mathbf{C}\left( u\right)  = {\mathbf{C}}^{\left( 0\right) }\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{\left( 0\right) }
+\]
+
+然后
+
+\[
+{\mathbf{C}}^{\left( k\right) }\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{{n - k}}{N}_{i,p - k}\left( u\right) {\mathbf{P}}_{i}^{\left( k\right) } \tag{3.8}
+\]
+
+具有
+
+\[
+{\mathbf{P}}_{i}^{\left( k\right) } = \left\{  \begin{array}{ll} {\mathbf{P}}_{i} & k = 0 \\  \frac{p - k + 1}{{u}_{i + p + 1} - {u}_{i + k}}\left( {{\mathbf{P}}_{i + 1}^{\left( k - 1\right) } - {\mathbf{P}}_{i}^{\left( k - 1\right) }}\right) & k > 0 \end{array}\right.
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_108_376_253_764_946_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图3.16。(续。)
+
+和
+
+\[
+{U}^{\left( k\right) } = \left\{  {\underset{p - k + 1}{\underbrace{0,\ldots ,0}},{u}_{p + 1},\ldots ,{u}_{m - p - 1},\underset{p - k + 1}{\underbrace{1,\ldots ,1}}}\right\}
+\]
+
+算法A3.3是方程(3.8)的非递归实现。它计算所有导数曲线的控制点，直到并包括 \(d\) 阶导数 \(\left( {d \leq  p}\right)\) 。输出时，PK[k][i]是 \(k\) 阶导数曲线的 \(i\) 阶控制点，其中 \(0 \leq  k \leq  d\) 和 \({r}_{1} \leq  i \leq  {r}_{2} - k\) 。如果 \({r}_{1} = 0\) 和 \({r}_{2} = n\) ，则计算所有控制点。
+
+\HRule
+
+ALGORITHM A3.3
+
+\hspace*{1em} CurveDerivCpts(n, p, U, P, d, r1, r2, PK)
+
+\hspace*{2em} \{ /* Compute control points of curve derivatives */
+
+\hspace*{3em} /* Input: n, p, U, P, d, r1, r2 */
+
+\hspace*{3em} /* Output: PK */
+
+\hspace*{2em} r = r2-r1;
+
+\hspace*{2em} for (i = 0; i<=r; i++)
+
+\hspace*{3em} PK[0][i] = P[r1+i];
+
+\hspace*{2em} for (k=1; k<=d; k++)
+
+\hspace*{3em} \{
+
+\hspace*{3em} tmp = p-k+1;
+
+\hspace*{1em} for (i = 0; i<=r-k; i++)
+
+\hspace*{2em} PK[k][i] = tmp*(PK[k-1][i+1]-PK[k-1][i])/
+
+\hspace*{4em} \(\left( {U\left\lbrack  {{r1} + i + p + 1}\right\rbrack   - U\left\lbrack  {{r1} + i + k}\right\rbrack  }\right) ;\)
+
+\hspace*{1em} \}
+
+\}
+
+\HRule
+
+使用方程(3.8)，我们计算B样条曲线 \(\left( {p > 1}\right)\) 在端点 \(u = 0\) 处的第二导数
+
+\[
+{\mathbf{C}}^{\left( 2\right) }\left( 0\right)  = {\mathbf{P}}_{0}^{\left( 2\right) } = \frac{p - 2 + 1}{{u}_{p + 1} - {u}_{2}}\left( {{\mathbf{P}}_{1}^{\left( 1\right) } - {\mathbf{P}}_{0}^{\left( 1\right) }}\right)
+\]
+
+\[
+= \frac{p - 1}{{u}_{p + 1} - {u}_{2}}\left\lbrack  {\frac{p}{{u}_{p + 2} - {u}_{2}}\left( {{\mathbf{P}}_{2}^{\left( 0\right) } - {\mathbf{P}}_{1}^{\left( 0\right) }}\right)  - \frac{p}{{u}_{p + 1} - {u}_{1}}\left( {{\mathbf{P}}_{1}^{\left( 0\right) } - {\mathbf{P}}_{0}^{\left( 0\right) }}\right) }\right\rbrack
+\]
+
+从 \({u}_{1} = {u}_{2} = 0\) 可以得出
+
+\[
+{\mathbf{C}}^{\left( 2\right) }\left( 0\right)  = \frac{p\left( {p - 1}\right) }{{u}_{p + 1}}\left\lbrack  {\frac{{\mathbf{P}}_{0}}{{u}_{p + 1}} - \frac{\left( {{u}_{p + 1} + {u}_{p + 2}}\right) {\mathbf{P}}_{1}}{{u}_{p + 1}{u}_{p + 2}} + \frac{{\mathbf{P}}_{2}}{{u}_{p + 2}}}\right\rbrack   \tag{3.9}
+\]
+
+类似地，
+
+\[
+{\mathbf{C}}^{\left( 2\right) }\left( 1\right)  = \frac{p\left( {p - 1}\right) }{1 - {u}_{m - p - 1}} \times
+\]
+
+\[
+\left\lbrack  {\frac{{\mathbf{P}}_{n}}{1 - {u}_{m - p - 1}} - \frac{\left( {2 - {u}_{m - p - 1} - {u}_{m - p - 2}}\right) {\mathbf{P}}_{n - 1}}{\left( {1 - {u}_{m - p - 1}}\right) \left( {1 - {u}_{m - p - 2}}\right) } + \frac{{\mathbf{P}}_{n - 2}}{1 - {u}_{m - p - 2}}}\right\rbrack   \tag{3.10}
+\]
+
+注意，对于贝塞尔曲线，这些方程简化为方程 (1.10) 的相应表达式。图 3.17 显示了图 3.15a 的二次曲线及其向量 \({\mathbf{C}}^{\left( 2\right) }\left( 0\right)\) 和 \({\mathbf{C}}^{\left( 2\right) }\left( 1\right)\) 。 \({\mathbf{C}}^{\left( 2\right) }\left( u\right)\) 是一条分段的零度曲线，即在三个区间 \(\lbrack 0,2/5)\) 、 \(\left\lbrack  {2/5,3/5}\right)\) 和 \(\left\lbrack  {3/5,1}\right\rbrack\) 上，它是一个常量(但不同)的向量。
+
+我们用另一个算法结束本节，该算法用于计算 B 样条曲线上的一点及其所有导数，直到并包括在固定的 \(u\) 值下的 \(d\) 阶导数(与算法 A3.2 比较)。该算法基于方程 (3.8) 和算法 A3.3。我们假设有一个例程 AllBasisFuns，这是对 BasisFuns(算法 A2.2)的简单修改，用于返回从 0 到 \(p\) 的所有非零基函数。特别地， \(\mathrm{N}\left\lbrack  j\right\rbrack  \left\lbrack  i\right\rbrack\) 是 \(i\) 阶基函数 \({N}_{\text{ span } - i + j,i}\left( u\right)\) 的值，其中 \(0 \leq  i \leq  p\) 和 \(0 \leq  j \leq  i\) 。
+
+\HRule
+
+ALGORITHM A3.4
+
+\hspace*{1em} CurveDerivsAlg2(n, p, U, P, u, d, CK)
+
+\hspace*{3em} \{ /* Compute curve derivatives */
+
+\hspace*{4em} /* Input: n, p, U, P, u, d */
+
+\hspace*{4em} /* Output: CK */
+
+\hspace*{2em} du = min(d, p);
+
+\HRule
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_110_308_255_891_808_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.17。图 3.15a 曲线端点的二阶导数。
+
+\HRule
+
+for \(\left( {k = p + 1;k <  = d;k +  + }\right) \;{CK}\left\lbrack  k\right\rbrack   = {0.0}\) ;
+
+span \(= \operatorname{FindSpan}\left( {\mathrm{n},\mathrm{p},\mathrm{u},\mathrm{U}}\right)\) ;
+
+AllBasisFuns(span, u, p, U, N);
+
+CurveDerivCpts(n, p, U, P, du, span-p, span, PK);
+
+for \(\left( {k = 0;k <  = {du};k +  + }\right)\)
+
+\hspace*{1em} \(\begin{cases}  & {u}_{0} = 0, \\   & {u}_{1} = 0, \\   & {u}_{2} = 0, \\   & {u}_{3} = 0, \\   & {u}_{4} = 0, \\   & {u}_{5} = 0, \\   & {u}_{6} = 0, \\   & {u}_{7} = 0, \\   & {u}_{8} = 0, \\   & {u}_{9} = 0, \\   & {u}_{10} = 0, \\   & {u}_{11} = 0, \\   & {u}_{12} = 0, \\   & {u}_{13} = 0, \\   & {u}_{14} = 0, \\   & {u}_{12} = 0, \\   & {u}_{13} = 0, \\   & {u}_{14} = 0, \\   & {u}_{12} = 0, \\   & {u}_{13} = 0, \\   & {u}_{24} = 0, \\   & {u}_{24} = 0, \\   & {u}_{24} = 0, \\   & {u}_{24} = 0, \\   & {u}_{24} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   &  \end{cases}\)
+
+\hspace*{1em} \(\mathrm{{CK}}\left\lbrack  \mathrm{k}\right\rbrack   = {0.0}\) ;
+
+\hspace*{1em} for \(\left( {j = 0;j <  = p - k;j +  + }\right)\)
+
+\hspace*{3em} \(\mathrm{{CK}}\left\lbrack  \mathrm{k}\right\rbrack   = \mathrm{{CK}}\left\lbrack  \mathrm{k}\right\rbrack   + \mathrm{N}\left\lbrack  \mathrm{j}\right\rbrack  \left\lbrack  {\mathrm{p} - \mathrm{k}}\right\rbrack   * \mathrm{{PK}}\left\lbrack  \mathrm{k}\right\rbrack  \left\lbrack  \mathrm{j}\right\rbrack  ;\)
+
+\hspace*{1em} \}
+
+\}
+
+\HRule
+
+图 3.18 显示了一条在 \(u = 2/5\) 处计算的一阶、二阶和三阶导数的三次曲线。(导数被缩放至 \(2/5\) 。)
+
+
+
+\section{B样条曲面的定义与性质}
+
+B 样条曲面是通过取一个双向控制点网、两个节点向量以及单变量 B 样条函数的乘积获得的。
+
+\[
+\mathbf{S}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right) {\mathbf{P}}_{i,j} \tag{3.11}
+\]
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_111_289_256_959_767_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.18。在 \(U = \{ 0,0,0,0,1/4,3/4,1,1,1\}\) 上的一条三次曲线，其一阶、二阶和三阶导数在 \(u = 2/5\) 处计算。
+
+具有
+
+\[
+U = \{ \underset{p + 1}{\underbrace{0,\ldots ,0}},{u}_{p + 1},\ldots ,{u}_{r - p - 1},\underset{p + 1}{\underbrace{1,\ldots ,1}}\}
+\]
+
+\[
+V = \left\{  {\underset{q + 1}{\underbrace{0,\ldots ,0}},{v}_{q + 1},\ldots ,{v}_{s - q - 1},\underset{q + 1}{\underbrace{1,\ldots ,1}}}\right\}
+\]
+
+\(U\) 具有 \(r + 1\) 个节点，且 \(V\) 具有 \(s + 1\) 个节点。方程 (3.2) 的形式为
+
+\[
+r = n + p + 1\text{ and }s = m + q + 1 \tag{3.12}
+\]
+
+设 \(U\) 和 \(\left\{  {{N}_{i,3}\left( u\right) }\right\}\) 为图 3.2a 中的节点向量和三次基函数，且 \(\left\{  {{N}_{j,2}\left( v\right) }\right\}\) 为定义在 \(V = \left\{  {0,0,0,1/5,2/5,3/5}\right.\) 和 \(\left. {{}^{3}/{}_{5},4/{}_{5},1,1,1}\right\}\) 上的二次基函数。图 \({3.19}\mathrm{a}\) 和 \({3.19}\mathrm{b}\) 分别显示了张量积基函数 \({N}_{4,3}\left( u\right) {N}_{4,2}\left( v\right)\) 和 \({N}_{4,3}\left( u\right) {N}_{2,2}\left( v\right)\) 。图 \({3.20} - {3.25}\) 显示了 B-spline 曲面的示例。
+
+计算固定 (u, v) 参数值下 B-spline 曲面上的一个点需要五个步骤:
+
+1. 找到 \(u\) 所在的节点区间，记为 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) (算法 A2.1)；
+
+2. 计算非零基函数 \({N}_{i - p,p}\left( u\right) ,\ldots ,{N}_{i,p}\left( u\right)\) (A2.2)；
+
+3. 找到 \(v\) 所在的节点区间，记为 \(v \in  \left\lbrack  {{v}_{j},{v}_{j + 1}}\right)\) (A2.1)；
+
+4. 计算非零基函数 \({N}_{j - q,q}\left( v\right) ,\ldots ,{N}_{j,q}\left( v\right)\) (A2.2)；
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_112_276_253_989_1557_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.19. 三次 \(\times\) 二次基函数。(a) \({N}_{4,3}\left( u\right) {N}_{4,2}\left( v\right)\) ；(b) \({N}_{4,3}\left( u\right) {N}_{2,2}\left( v\right)\) ； \(U = \{ 0,0,0,0,1/4,1/2,3/4,1,1,1,1\}\) 和 \(V = \{ 0,0,0,1/5,2/5,3/5,3/5,4/5,1,1,1\}\) 。
+
+5. 将非零基函数的值与相应的控制点相乘。
+
+最后一步的形式为
+
+\[
+\mathbf{S}\left( {u,v}\right)  = {\left\lbrack  {N}_{k,p}\left( u\right) \right\rbrack  }^{T}\left\lbrack  {\mathbf{P}}_{k,l}\right\rbrack  \left\lbrack  {{N}_{l,q}\left( v\right) }\right\rbrack  \;i - p \leq  k \leq  i,\;j - q \leq  l \leq  j \tag{3.13}
+\]
+
+注意 \({\left\lbrack  {N}_{k,p}\left( u\right) \right\rbrack  }^{T}\) 是一个 1 \(\times  \left( {p + 1}\right)\) 行的标量向量， \(\left\lbrack  {\mathbf{P}}_{k,l}\right\rbrack\) 是一个 \(\left( {p + 1}\right)  \times  \left( {q + 1}\right)\) 的控制点矩阵，而 \(\left\lbrack  {{N}_{l,q}\left( v\right) }\right\rbrack\) 是一个 \(\left( {q + 1}\right)  \times  1\) 列的标量向量。
+
+\section*{示例}
+
+Ex3.4 设 \(p = q = 2\) 和 \(\mathop{\sum }\limits_{{i = 0}}^{4}\mathop{\sum }\limits_{{j = 0}}^{5}{N}_{i,2}\left( u\right) {N}_{j,2}\left( v\right) {\mathbf{P}}_{i,j}\) ，并且
+
+\[
+U = \{ 0,0,0,2/5,3/5,1,1,1\}
+\]
+
+\[
+V = \{ 0,0,0,1/5,1/2,4/5,1,1,1\}
+\]
+
+计算 \(\mathbf{S}\left( {1/5,3/5}\right)\) 。然后 \(1/5 \in  \left\lbrack  {{u}_{2},{u}_{3}}\right)\) 和 \(3/5 \in  \left\lbrack  {{v}_{4},{v}_{5}}\right)\) ，并且
+
+\[
+\mathbf{S}\left( {\frac{1}{5},\frac{3}{5}}\right)  = \left\lbrack  \begin{array}{lll} {N}_{0,2}\left( \frac{1}{5}\right) & {N}_{1,2}\left( \frac{1}{5}\right) & {N}_{2,2}\left( \frac{1}{5}\right)  \end{array}\right\rbrack
+\]
+
+\[
+\left\lbrack  \begin{array}{lll} {\mathbf{P}}_{0,2} & {\mathbf{P}}_{0,3} & {\mathbf{P}}_{0,4} \\  {\mathbf{P}}_{1,2} & {\mathbf{P}}_{1,3} & {\mathbf{P}}_{1,4} \\  {\mathbf{P}}_{2,2} & {\mathbf{P}}_{2,3} & {\mathbf{P}}_{2,4} \end{array}\right\rbrack  \left\lbrack  \begin{array}{l} {N}_{2,2}\left( \frac{3}{5}\right) \\  {N}_{3,2}\left( \frac{3}{5}\right) \\  {N}_{4,2}\left( \frac{3}{5}\right)  \end{array}\right\rbrack
+\]
+
+算法 A3.5 计算在固定 (u, v) 值下的 B 样条曲面上的点。为了提高效率，它使用一个局部数组 temp[] 来存储向量/矩阵乘积 \({\left\lbrack  {N}_{k,p}\left( u\right) \right\rbrack  }^{T}\left\lbrack  {\mathbf{P}}_{k,l}\right\rbrack\) 。然后，将生成的点向量(在 temp[] 中)进行乘法运算
+
+与向量 \(\left\lbrack  {{N}_{l,q}\left( v\right) }\right\rbrack\) 。
+
+\HRule
+
+ALGORITHM A3.5
+
+\hspace*{1em} \(\operatorname{SurfacePoint}\left( {n,p,U,m,q,V,P,u,v,S}\right)\)
+
+\hspace*{3em} \{ /* Compute surface point */
+
+\hspace*{4em} /* Input: n, p, U, m, q, V, P, u, v */
+
+\hspace*{4em} /* Output: S */
+
+\hspace*{3em} uspan = FindSpan(n, p, u, U);
+
+\hspace*{3em} BasisFuns(uspan, u, p, U, Nu);
+
+\hspace*{3em} vspan = FindSpan(m, q, v, V);
+
+\hspace*{3em} BasisFuns(vspan, v, q, V, Nv);
+
+\hspace*{3em} for (l=0; l<=q; l++)
+
+\hspace*{4em} \{
+
+\hspace*{4em} temp[1] = 0.0 ;
+
+\hspace*{4em} for \(\left( {\mathrm{k} = 0;\mathrm{k} <  = \mathrm{p};\mathrm{k} +  + }\right)\)
+
+\hspace*{6em} temp[1] = temp[1] + Nu[k]*P[uspan-p+k][vspan-q+1];
+
+\hspace*{4em} \}
+
+\hspace*{3em} s = 0.0 ;
+
+\hspace*{3em} for (l=0; l<=q; l++)
+
+\hspace*{4em} S = S + Nv[l]*temp[l];
+
+\hspace*{3em} \}
+
+\HRule
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_114_346_270_843_874_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.20. B 样条曲面。(a) 控制网；(b) 曲面。
+
+张量积基函数的性质源于第 2 章中列出的单变量基函数的相应性质。
+
+P3.12 非负性: \({N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right)  \geq  0\) 对所有 \(i,j,p,q,u,v\) ；
+
+P3.13 单位划分: \(\mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right)  = 1\) 对所有 \(\left( {u,v}\right)  \in  \left\lbrack  {0,1}\right\rbrack   \times\)  \(\left\lbrack  {0,1}\right\rbrack\) ；
+
+P3.14 如果 \(n = p,m = q,U = \{ 0,\ldots ,0,1,\ldots ,1\}\) ，并且 \(V = \{ 0,\ldots ,0,1,\ldots ,1\}\) ，则对于所有 \(i,j\) ，有 \({N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right)  = {B}_{i,n}\left( u\right) {B}_{j,m}\left( v\right)\) ；即，B 样条函数的乘积退化为伯恩斯坦多项式的乘积；
+
+P3.15 \({N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right)  = 0\) 如果 (u, v) 在矩形 \(\left\lbrack  {{u}_{i},{u}_{i + p + 1}}\right)  \times\)  \(\left\lbrack  {{v}_{j},{v}_{j + q + 1}}\right)\) 之外(见图 \({3.19}\mathrm{a}\) 和 \({3.19}\mathrm{\;b}\) )；
+
+P3.16 在任何给定的矩形中， \(\left\lbrack  {{u}_{{i}_{0}},{u}_{{i}_{0} + 1}}\right)  \times  \left\lbrack  {{v}_{{j}_{0}},{v}_{{j}_{0} + 1}}\right)\) ，至多有 \(\left( {p + 1}\right) \left( {q + 1}\right)\) 个基函数非零，特别是 \({N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right)\) 对于 \({i}_{0} - p \leq\)  \(i \leq  {i}_{0}\) 和 \({j}_{0} - q \leq  j \leq  {j}_{0}\) ；
+
+P3.17 如果 \(p > 0\) 和 \(q > 0\) ，那么 \({N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right)\) 恰好达到一个最大值(见图 3.19a 和 3.19b)；
+
+在由 \(u\) 和 \(v\) 节点线形成的矩形内部，函数是一个双变量多项式，所有 \({N}_{i,p}\left( u\right)\)  \({N}_{j,q}\left( v\right)\) 的偏导数存在；在 \(u\) 节点( \(v\) 节点)处，它在 \(u\left( v\right)\) 方向上是 \(p - k\left( {q - k}\right)\) 次可微的，其中 \(k\) 是节点的重数。在
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_115_378_262_762_842_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.20.(续)
+
+在图 3.19a 中， \({N}_{4,3}\left( u\right) {N}_{4,2}\left( v\right)\) 关于 \(v\) 的第一个偏导数在节点线 \(v = 3/5\) 上是不连续的，那里 \({N}_{4,2}\left( v\right)\) 有一个尖点。关于 \(u\) 的第二个偏导数处处连续，因为 \({N}_{4,3}\left( u\right)\) 是 \({\mathbf{C}}^{2}\) 连续的。
+
+B-spline 曲面具有以下特性:
+
+P3.19 如果 \(n = p,m = q,U = \{ 0,\ldots ,0,1,\ldots ,1\}\) ，并且 \(V = \{ 0,\ldots ,0,1,\ldots ,1\}\) ，那么 \(\mathbf{S}\left( {u,v}\right)\) 是一个 Bézier 曲面；这来自 P3.14；
+
+P3.20 该曲面插值四个角控制点: \(\mathbf{S}\left( {0,0}\right)  = {\mathbf{P}}_{0,0}\) ， \(\mathbf{S}\left( {1,0}\right)  = {\mathbf{P}}_{n,0},\mathbf{S}\left( {0,1}\right)  = {\mathbf{P}}_{0,m}\) 和 \(\mathbf{S}\left( {1,1}\right)  = {\mathbf{P}}_{n,m}\) (见图 3.20 至 3.25)；这来自 P3.13 和该恒等式
+
+\[
+{N}_{0,p}\left( 0\right) {N}_{0,q}\left( 0\right)  = {N}_{n,p}\left( 1\right) {N}_{0,q}\left( 0\right)  = {N}_{0,p}\left( 0\right) {N}_{m,q}\left( 1\right)
+\]
+
+\[
+= {N}_{n,p}\left( 1\right) {N}_{m,q}\left( 1\right)  = 1
+\]
+
+P3.21 仿射不变性:通过对控制点应用仿射变换来对曲面应用该变换；这来自 P3.13；
+
+P3.22 强凸包性质:如果 \(\left( {u,v}\right)  \in  \left\lbrack  {{u}_{{i}_{0}},{u}_{{i}_{0} + 1}}\right)  \times  \left\lbrack  {{v}_{{j}_{0}},{v}_{{j}_{0} + 1}}\right)\) ，则 \(\mathbf{S}\left( {u,v}\right)\) 在控制点 \({\mathbf{P}}_{i,j},{i}_{0} - p \leq  i \leq  {i}_{0}\) 和 \({j}_{0} - q \leq  j \leq  {j}_{0}\) 的凸包内(见图 3.21)；这由 P3.12、P3.13 和 P3.16 得出；
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_116_343_250_862_1689_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.21. (a) 一个三次 \(\times\) 二次 B-spline 曲面；(b) 强凸包性质。
+
+P3.23 如果进行三角剖分，控制网形成对曲面的分段平面近似；与曲线的情况一样，度数越低，近似效果越好(见图 3.22a 和 3.22b)；108 B-spline 曲线和曲面
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_117_364_252_806_1808_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.22. (a) 一个双二次曲面；(b) 一个双四次曲面 \(\left( {p = q = 4}\right)\) 使用与图 3.22a 相同的控制点。
+
+\begin{center}
+\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_118_319_238_905_1590_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.23. (a) 一个平面二次 \(\times\) 三次曲面， \(U = \{ 0,0,0,1/4,1/2,3/4,1,1,1\}\) 和 \(V = \{ 0,0,0,0,1/5,2/5,3/5,4/5,1,1,1\}\) ；(b) \({\mathbf{P}}_{3,5}\) 被移动，仅在矩形 \(\lbrack 1/4,1) \times  \left\lbrack  {2/5,1}\right)\) 内影响曲面形状。
+
+P3.24 局部修改方案:如果 \({\mathbf{P}}_{i,j}\) 被移动，它仅在矩形 \(\left\lbrack  {{u}_{i},{u}_{i + p + 1}}\right)  \times  \left\lbrack  {{v}_{j},{v}_{j + q + 1}}\right)\) 内影响曲面；这由 P3.15 得出。现在考虑图 3.23a 和 3.23b:初始曲面是平坦的，因为所有控制点都位于同一平面内(P3.22)；控制网偏离曲面以便于可视化。当 \({\mathbf{P}}_{3,5}\) 被移动时，它仅在矩形 \(\left\lbrack  {1/4,1}\right)  \times  \left\lbrack  {2/5,1}\right)\) 内影响曲面形状；
+
+P3.25 \(\mathbf{S}\left( {u,v}\right)\) 的连续性和可微性源于基函数的连续性。特别地， \(\mathbf{S}\left( {u,v}\right)\) 在重数为 \(k\) 的 \(u\left( v\right)\) 节点的 \(u\left( v\right)\) 方向上是 \(p - k\left( {q - k}\right)\) 次可微的。图 3.24 显示了在节点向量 \(U = \{ 0,0,0,1/2,1/2,1,1,1\}\) 和 \(V = \{ 0,0,0,0,1/2,1,1,1,1\}\) 上定义的二次 \(\times\) 三次曲面。注意表面中的折痕，对应于节点线 \(u = 1/2\) 。当然，正如曲线的情况一样，可以以某种方式定位控制点，使其抵消基函数中的不连续性。通过使用重合的控制点，可以在基函数中没有相应不连续性的地方创建视觉不连续性；图 3.25 显示了这样一个表面，它是三次的且没有重节点。因此，二阶偏导数处处连续。折痕是由于多个控制点造成的。
+
+我们在此指出，目前尚无已知的 B-spline 曲面变差减小性质(见 [Prau92])。
+
+\(\mathbf{S}\left( {u,v}\right)\) 上的等参数曲线是以类似于 Bézier 曲面的方式获得的。固定 \(u = {u}_{0}\)
+
+\[
+{\mathbf{C}}_{{u}_{0}}\left( v\right)  = \mathbf{S}\left( {{u}_{0},v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,p}\left( {u}_{0}\right) {N}_{j,q}\left( v\right) {\mathbf{P}}_{i,j}
+\]
+
+\[
+= \mathop{\sum }\limits_{{j = 0}}^{m}{N}_{j,q}\left( v\right) \left( {\mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( {u}_{0}\right) {\mathbf{P}}_{i,j}}\right)  = \mathop{\sum }\limits_{{j = 0}}^{m}{N}_{j,q}\left( v\right) {\mathbf{Q}}_{j}\left( {u}_{0}\right)  \tag{3.14}
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_119_383_1263_768_780_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.24. 带折痕的二次 \(\times\) 三次曲面， \(U = \{ 0,0,0,1/2,1/2,1,1,1\}\) 和 \(V = \{ 0,0,0,0,0,1/2,1,1,1\} .\)
+
+\begin{center}
+\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_120_274_265_981_711_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.25. 带折痕的三次曲面， \(U = \{ 0,0,0,0,1/4,1/2,3/4,1,1,1\}\) 和 \(V = \{ 0,0,0,0,1/2,1,1,1\} ;{\mathbf{P}}_{2,j} = {\mathbf{P}}_{3,j} = {\mathbf{P}}_{4,j}\) 对于 \(0 \leq  j \leq  4\) 。
+
+其中
+
+\[
+{\mathbf{Q}}_{j}\left( {u}_{0}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( {u}_{0}\right) {\mathbf{P}}_{i,j}
+\]
+
+类似地
+
+\[
+{\mathbf{C}}_{{v}_{0}}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{Q}}_{i}\left( {v}_{0}\right)
+\]
+
+其中
+
+\[
+{\mathbf{Q}}_{i}\left( {v}_{0}\right)  = \mathop{\sum }\limits_{{j = 0}}^{m}{N}_{j,q}\left( {v}_{0}\right) {\mathbf{P}}_{i,j} \tag{3.15}
+\]
+
+是一个 \(u\) 等值线在 \(\mathbf{S}\left( {u,v}\right) .{\mathbf{C}}_{{u}_{0}}\left( v\right)\) 上，是一个 \(q\) 次 B 样条曲线在 \(V\) 上，而 \({\mathbf{C}}_{{v}_{0}}\left( u\right)\) 是一个 \(p\) 次 B 样条曲线在 \(U\) 上。点 \(\mathbf{S}\left( {{u}_{0},{v}_{0}}\right)\) 位于 \({\mathbf{C}}_{{u}_{0}}\left( v\right)\) 和 \({\mathbf{C}}_{{v}_{0}}\left( u\right)\) 的交点上。图 3.20-3.25 中显示的所有线条都是等高线。
+
+
+
+\section{B样条曲面的导数}
+
+设 (u, v) 为固定值。一般来说，人们感兴趣的是计算 \(\mathbf{S}\left( {u,v}\right)\) 的所有偏导数，直到包括 \(d\) 阶，即
+
+\[
+\frac{{\partial }^{k + l}}{{\partial }^{k}u{\partial }^{l}v}\mathbf{S}\left( {u,v}\right) \;0 \leq  k + l \leq  d \tag{3.16}
+\]
+
+对于曲线，我们通过计算基函数的导数来获得这些导数(见方程 [2.9] 和 [2.10] 以及算法 A2.3)。特别地，
+
+\[
+\frac{{\partial }^{k + l}}{{\partial }^{k}u{\partial }^{l}v}\mathbf{S}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,p}^{\left( k\right) }{N}_{j,q}^{\left( l\right) }{\mathbf{P}}_{i,j} \tag{3.17}
+\]
+
+算法 A3.6 计算 B 样条曲面上的点及所有偏导数，直到包括 \(d\) 阶(允许 \(d > p,q\) )。与算法 A3.5 类似，这是一个五步过程，最后一步是形式为向量/矩阵/向量的乘法。
+
+\[
+\frac{{\partial }^{k + l}}{{\partial }^{k}u{\partial }^{l}v}\mathbf{S}\left( {u,v}\right)  = {\left\lbrack  {N}_{r,p}^{\left( k\right) }\left( u\right) \right\rbrack  }^{T}\left\lbrack  {\mathbf{P}}_{r,s}\right\rbrack  \left\lbrack  {{N}_{s,q}^{\left( l\right) }\left( v\right) }\right\rbrack
+\]
+
+\[
+0 \leq  k + l \leq  d\;\text{ uspan } - p \leq  r \leq  u\text{ span }
+\]
+
+\[
+v\text{ span } - q \leq  s \leq  v\text{ span } \tag{3.18}
+\]
+
+输出是数组 SKL[] []，其中 SKL[k] [1] 是 \(\mathbf{S}\left( {u,v}\right)\) 关于 \({uk}\) 和 \({vl}\) 的导数。对于固定的 \(k,0 \leq  k \leq  d\) ，局部数组 temp [] 存储向量/矩阵乘积 \({\left\lbrack  {N}_{r,p}{}^{\left( k\right) }\left( u\right) \right\rbrack  }^{T}\left\lbrack  {\mathbf{P}}_{r,s}\right\rbrack\) ，同时它与 \(\left\lbrack  {{N}_{s,q}{}^{\left( l\right) }\left( v\right) }\right\rbrack\) 相乘，针对 \(0 \leq  l \leq  d - k\) 。数组 \(\mathrm{{Nu}}\left\lbrack  \right\rbrack  \left\lbrack  \right\rbrack\) 和 \(\mathrm{{Nv}}\left\lbrack  \right\rbrack\) [] 用于存储基函数的导数。
+
+\HRule
+
+ALGORITHM A3.6
+
+\hspace*{1em} SurfaceDerivsAlg1(n, p, U, m, q, V, P, u, v, d, SKL)
+
+\hspace*{3em} \{ /* Compute surface derivatives */
+
+\hspace*{4em} /* Input: n, p, U, m, q, V, P, u, v, d */
+
+\hspace*{4em} /* Output: SKL */
+
+\hspace*{2em} du = min(d, p);
+
+\hspace*{2em} for \(\left( {k = p + 1;k <  = d;k +  + }\right)\)
+
+\hspace*{4em} for \(\left( {1 = 0;1 <  = d - k;1 +  + }\right) \;\mathrm{{SKL}}\left\lbrack  k\right\rbrack  \left\lbrack  1\right\rbrack   = {0.0}\) ;
+
+\hspace*{2em} dv = min(d, q);
+
+\hspace*{2em} for (l=q+1; l<=d; l++)
+
+\hspace*{4em} for \(\left( {k = 0;k <  = d - l;k +  + }\right) \;\mathrm{{SKL}}\left\lbrack  k\right\rbrack  \left\lbrack  1\right\rbrack   = {0.0}\) ;
+
+\hspace*{2em} uspan = FindSpan(n, p, u, U);
+
+\hspace*{2em} DersBasisFuns(uspan, u, p, du, U, Nu);
+
+\hspace*{2em} vspan = FindSpan(m, q, v, V);
+
+\hspace*{2em} DersBasisFuns(vspan, v, q, dv, V, Nv);
+
+\hspace*{2em} for ( \(k = 0\) ; \(k <  = {du}\) ; \(k +  +\) )
+
+\hspace*{4em} \{
+
+\hspace*{4em} for (s = 0 ; s<=q ; s++)
+
+\hspace*{5em} \{
+
+\hspace*{5em} temp[s] = 0.0 ;
+
+\hspace*{5em} for (r=0; r<=p; r++)
+
+\hspace*{6em} temp[s] = temp[s] + Nu[k][r]*P[uspan-p+r][vspan-q+s];
+
+\hspace*{5em} \}
+
+\HRule
+
+112 B 样条曲线和曲面
+
+\HRule
+
+\hspace*{1em} dd = min(d-k, dv);
+
+\hspace*{1em} for (l=0; l<=dd; l++)
+
+\hspace*{3em} \{
+
+\hspace*{3em} SKL[k][l] = 0.0 ;
+
+\hspace*{2em} for \(\left( {s = 0;s <  = q;s +  + }\right)\)
+
+\hspace*{4em} SKL[k][1] = SKL[k][l] + Nv[l][s]*temp[s];
+
+\hspace*{2em} \}
+
+\hspace*{1em} \}
+
+\}
+
+\HRule
+
+图 3.26 显示了一个双立方曲面及其一阶和二阶偏导数。请注意，为了更好地可视化，导数被缩小了 \(1/2\) 。
+
+让我们正式区分 \(\mathbf{S}\left( {u,v}\right)\) 。关于 \(u\) 我们有
+
+\[
+{\mathbf{S}}_{u}\left( {u,v}\right)  = \frac{\partial }{\partial u}\mathbf{S}\left( {u,v}\right)  = \mathop{\sum }\limits_{{j = 0}}^{m}{N}_{j,q}\left( v\right) \left( {\frac{\partial }{\partial u}\mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i,j}}\right)  \tag{3.19}
+\]
+
+\[
+= \mathop{\sum }\limits_{{j = 0}}^{m}{N}_{j,q}\left( v\right) \left( {\frac{\partial }{\partial u}{\mathbf{C}}_{j}\left( u\right) }\right)
+\]
+
+其中
+
+\[
+{\mathbf{C}}_{j}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i,j}\;j = 0,\ldots ,m
+\]
+
+\begin{center}
+\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_122_336_1264_870_762_0.jpg}
+\end{center}
+\hspace*{3em} 
+
+图 3.26. 在 \(U = V = \{ 0,0,0,0,1/2,1,1,1,1\}\) 上定义的双三次曲面及其在 \(u = 3/4\) 和 \(v = 2/5\) 处计算的第一和第二偏导数。
+
+是 B 样条曲线。将公式 (3.6) 应用到每个 \({\mathbf{C}}_{j}\left( u\right)\) 并进行替换
+
+代入公式 (3.19)，我们得到
+
+\[
+{\mathbf{S}}_{u}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{{n - 1}}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,p - 1}\left( u\right) {N}_{j,q}\left( v\right) {\mathbf{P}}_{i,j}^{\left( 1,0\right) } \tag{3.20}
+\]
+
+其中
+
+\[
+{\mathbf{P}}_{i,j}^{\left( 1,0\right) } = p\frac{{\mathbf{P}}_{i + 1,j} - {\mathbf{P}}_{i,j}}{{u}_{i + p + 1} - {u}_{i + 1}}\;\text{ (see Eq. [3.4]) }
+\]
+
+\[
+{U}^{\left( 1\right) } = \left\{  {\underset{p}{\underbrace{0,\ldots ,0}},{u}_{p + 1},\ldots ,{u}_{r - p - 1},\underset{p}{\underbrace{1,\ldots ,1}}}\right\}
+\]
+
+\[
+{V}^{\left( 0\right) } = V
+\]
+
+类似地 \(\;{\mathbf{S}}_{v}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{{m - 1}}{N}_{i,p}\left( u\right) {N}_{j,q - 1}\left( v\right) {\mathbf{P}}_{i,j}^{\left( 0,1\right) }\)(3.21)
+
+其中
+
+\[
+{\mathbf{P}}_{i,j}^{\left( 0,1\right) } = q\frac{{\mathbf{P}}_{i,j + 1} - {\mathbf{P}}_{i,j}}{{v}_{j + q + 1} - {v}_{j + 1}}
+\]
+
+\[
+{U}^{\left( 0\right) } = U
+\]
+
+\[
+{V}^{\left( 1\right) } = \left\{  {\underset{q}{\underbrace{0,\ldots ,0}},{v}_{q + 1},\ldots ,{v}_{s - q - 1},\underset{q}{\underbrace{1,\ldots ,1}}}\right\}
+\]
+
+首先应用公式 (3.20)，然后应用公式 (3.21) 得到
+
+\[
+{\mathbf{S}}_{uv}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{{n - 1}}\mathop{\sum }\limits_{{j = 0}}^{{m - 1}}{N}_{i,p - 1}\left( u\right) {N}_{j,q - 1}\left( v\right) {\mathbf{P}}_{i,j}^{\left( 1,1\right) } \tag{3.22}
+\]
+
+其中
+
+\[
+{\mathbf{P}}_{i,j}^{\left( 1,1\right) } = q\frac{{\mathbf{P}}_{i,j + 1}^{\left( 1,0\right) } - {\mathbf{P}}_{i,j}^{\left( 1,0\right) }}{{v}_{j + q + 1} - {v}_{j + 1}}
+\]
+
+并且 \({U}^{\left( 1\right) }\) 和 \({V}^{\left( 1\right) }\) 的定义如前所述。
+
+一般来说
+
+\[
+\frac{{\partial }^{k + l}}{{\partial }^{k}u{\partial }^{l}v}\mathbf{S}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{{n - k}}\mathop{\sum }\limits_{{j = 0}}^{{m - l}}{N}_{i,p - k}\left( u\right) {N}_{j,q - l}\left( v\right) {\mathbf{P}}_{i,j}^{\left( k,l\right) } \tag{3.23}
+\]
+
+在哪里
+
+\[
+{\mathbf{P}}_{i,j}^{\left( k,l\right) } = \left( {q - l + 1}\right) \frac{{\mathbf{P}}_{i,j + 1}^{\left( k,l - 1\right) } - {\mathbf{P}}_{i,j}^{\left( k,l - 1\right) }}{{v}_{j + q + 1} - {v}_{j + l}}
+\]
+
+114 B样条曲线和曲面
+
+使用公式 (3.20)-(3.23)，我们推导出角导数的有用公式。例如，在角点 \(\left( {u,v}\right)  = \left( {0,0}\right)\) 处，我们有
+
+\[
+{\mathbf{S}}_{u}\left( {0,0}\right)  = {\mathbf{P}}_{0,0}^{\left( 1,0\right) } = \frac{p}{{u}_{p + 1}}\left( {{\mathbf{P}}_{1,0} - {\mathbf{P}}_{0,0}}\right)
+\]
+
+\[
+{\mathbf{S}}_{v}\left( {0,0}\right)  = {\mathbf{P}}_{0,0}^{\left( 0,1\right) } = \frac{q}{{v}_{q + 1}}\left( {{\mathbf{P}}_{0,1} - {\mathbf{P}}_{0,0}}\right)  \tag{3.24}
+\]
+
+\[
+{\mathbf{S}}_{uv}\left( {0,0}\right)  = {\mathbf{P}}_{0,0}^{\left( 1,1\right) } = \frac{q}{{v}_{q + 1}}\left( {{\mathbf{P}}_{0,1}^{\left( 1,0\right) } - {\mathbf{P}}_{0,0}^{\left( 1,0\right) }}\right)
+\]
+
+\[
+= \frac{pq}{{u}_{p + 1}{v}_{q + 1}}\left( {{\mathbf{P}}_{1,1} - {\mathbf{P}}_{0,1} - {\mathbf{P}}_{1,0} + {\mathbf{P}}_{0,0}}\right)
+\]
+
+现在设 \({u}_{0} = 0\) 和 \({v}_{0} = 0\) 。根据基函数的性质，很容易看出等曲线 \({\mathbf{C}}_{{u}_{0}}\left( v\right)\) 和 \({\mathbf{C}}_{{v}_{0}}\left( u\right)\) 是由以下公式给出的
+
+\[
+{\mathbf{C}}_{{u}_{0}}\left( v\right)  = \mathop{\sum }\limits_{{j = 0}}^{m}{N}_{j,q}\left( v\right) {\mathbf{P}}_{0,j}\;{\mathbf{C}}_{{v}_{0}}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i,0}
+\]
+
+从公式 (3.7) 可以得出
+
+\[
+{\mathbf{S}}_{u}\left( {0,0}\right)  = {\mathbf{C}}_{{v}_{0}}^{\prime }\left( 0\right) \;{\mathbf{S}}_{v}\left( {0,0}\right)  = {\mathbf{C}}_{{u}_{0}}^{\prime }\left( 0\right)
+\]
+
+算法 A3.7 计算所有(或可选的一些)控制点 \({\mathbf{P}}_{i,j}^{\left( k,l\right) }\) ，导数曲面最高到 \(d\left( {0 \leq  k + l \leq  d}\right)\) 阶。该算法基于公式 (3.23) 和算法 A3.3。输出为数组 PKL[][][][]，其中 \(\operatorname{PKL}\left\lbrack  \mathrm{k}\right\rbrack  \left\lbrack  1\right\rbrack  \left\lbrack  i\right\rbrack  \left\lbrack  j\right\rbrack\) 是曲面的第 \(i,j\) 个控制点，相对于 \(u\) 导数求导 \(k\) 次，相对于 \(l\) 导数求导 \(v\) 次。
+
+\HRule
+
+ALGORITHM A3.7
+
+\hspace*{1em} \(\mathrm{{SurfaceDerivCpts}}\left( {\mathrm{n},\mathrm{p},\mathrm{U},\mathrm{m},\mathrm{q},\mathrm{V},\mathrm{P},\mathrm{d},\mathrm{r}1,\mathrm{r}2,\mathrm{s}1,\mathrm{s}2,\mathrm{{PKL}}}\right)\)
+
+\hspace*{2em} \{ /* Compute control points of derivative surfaces */
+
+\hspace*{4em} /* Input: n, p, U, m, q, V, P, d, r1, r2, s1, s2 */
+
+\hspace*{4em} /* Output: PKL */
+
+\hspace*{3em} \({du} = \min \left( {d,p}\right) ;\;{dv} = \min \left( {d,q}\right) ;\)
+
+\hspace*{2em} r = r2-r1; s = s2-s1;
+
+\hspace*{2em} for (j=s1; j<=s2; j++)
+
+\hspace*{4em} \{
+
+\hspace*{4em} CurveDerivCpts(n, p, U,\&P[][j], du, r1, r2, temp);
+
+\hspace*{4em} for (k=0; k<=du; k++)
+
+\hspace*{5em} for (i = 0; i<=r-k; i++)
+
+\hspace*{6em} PKL[k][0][i][j-s1] = temp[k][i];
+
+\hspace*{4em} \}
+
+\hspace*{2em} for \(\left( {k = 0;k < {du};k +  + }\right)\)
+
+\hspace*{4em} for (i = 0; i<=r-k; i++)
+
+\HRule
+
+\{
+
+\HRule
+
+dd = min(d-k, dv);
+
+CurveDerivCpts(m, q,\&V[s1],\&PKL[k][0][i][], dd,0, s, temp);
+
+for (l=1; l<=dd; l++)
+
+\hspace*{1em} for (j=0; j<=s-1; j++)
+
+\hspace*{2em} PKL[k][l][i][j] = temp[l][j];
+
+\}
+
+\HRule
+
+\}
+
+算法 A3.8 计算 B样条曲面上的点及所有偏导数，最高到并包括 \(d\) 阶，固定参数 (u, v)(与算法 A3.6 比较)。允许使用 \(d > p,q\) 。输出时，SKL[k][1] 是相对于 \(u\) 导数求导 \(\mathbf{S}\left( {u,v}\right) k\) 次，相对于 \(v\) 导数求导 \(l\) 次。
+
+\HRule
+
+ALGORITHM A3.8:
+
+\hspace*{1em} SurfaceDerivsAlg2(n, p, U, m, q, V, P, u, v, d, SKL)
+
+\hspace*{2em} \{ /* Compute surface derivatives */
+
+\hspace*{3em} /* Input: n, p, U, m, q, V, P, u, v, d */
+
+\hspace*{3em} /* Output: SKL */
+
+\hspace*{2em} du = min(d, p);
+
+\hspace*{2em} for (k=p+1; k<=d; k++)
+
+\hspace*{3em} for (l=0; l<=d-k; l++) SKL[k][l] = 0.0;
+
+\hspace*{2em} dv = min(d, q);
+
+\hspace*{2em} for (l=q+1; l<=d; l++)
+
+\hspace*{3em} for \(\left( {k = 0;k <  = d - l;k +  + }\right) \;\mathrm{{SKL}}\left\lbrack  k\right\rbrack  \left\lbrack  1\right\rbrack   = {0.0}\) ;
+
+\hspace*{2em} uspan = FindSpan(n, p, u, U);
+
+\hspace*{2em} AllBasisFuns(uspan, u, p, U, Nu);
+
+\hspace*{2em} vspan = FindSpan(m, q, v, V);
+
+\hspace*{2em} AllBasisFuns(vspan, v, q, V, Nv);
+
+\hspace*{2em} SurfaceDerivCpts \((n,p,U,m,q,V,P,d,{uspan} - p,{uspan},\)
+
+\hspace*{26em} vspan-q, vspan, PKL);
+
+\hspace*{2em} for ( \(k = 0\) ; \(k <  = {du}\) ; \(k +  +\) )
+
+\hspace*{4em} \{
+
+\hspace*{4em} dd = min(d-k, dv);
+
+\hspace*{3em} for (l=0; l<=dd; l++)
+
+\hspace*{5em} \{
+
+\hspace*{5em} SKL[k][l] = 0.0 ;
+
+\hspace*{5em} for (i = 0; i<=q-l; i++)
+
+\hspace*{6em} \{
+
+\hspace*{6em} tmp = 0.0 ;
+
+\hspace*{6em} for (j=0; j<=p-k; j++)
+
+\hspace*{7em} tmp = tmp + Nu[j][p-k]*PKL[k][l][j][i];
+
+\hspace*{6em} SKL[k][l] = SKL[k][l] + Nv[i][q-l]*tmp;
+
+\hspace*{6em} \}
+
+\hspace*{5em} \}
+
+\hspace*{3em} \}
+
+\hspace*{2em} \}
+
+\HRule
+
+\section*{练习}
+
+\section*{3.1. 为什么二次曲线在节点处接触其控制多边形？}
+
+3.2. 如果一条二次曲线有一个拐点，它必须位于一个节点上(见图)。为什么？
+
+3.3. 构造一个具有尖点的 \({\mathbf{C}}^{2}\) 连续三次曲线。
+
+3.4. 设三次曲线由 \(\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{7}{N}_{i,3}\left( u\right) {\mathbf{P}}_{i}\) 和节点向量 \(U = \{ 0,0,0,0,1/4,1/4,2/3,3/4,1,1,1,1\} .\) 定义。
+
+a. 假设 \({\mathbf{P}}_{i}\) 的一些任意位置，并绘制曲线。
+
+b. 点 \(\mathbf{C}\left( {1/4}\right)\) 在哪里？
+
+c. 如果 \({\mathbf{P}}_{2}\) 被移动， \(\mathbf{C}\left( u\right)\) 在 \(\left\lbrack  {0,1}\right\rbrack\) 的哪个子区间受到影响？如果 \({\mathbf{P}}_{5}\) 被移动，哪个子区间受到影响？
+
+d. 哪些控制点在区间 \(u \in  \left\lbrack  {1/4,2/3}\right)\) 上影响曲线形状？在区间 \(u \in  \left\lbrack  {2/3,3/4}\right)\) 上呢？
+
+3.5. 设 \(\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{3}{N}_{i,2}\left( u\right) {\mathbf{P}}_{i}\) ，其中 \(U = \{ 0,0,0,1/2,1,1,1\}\) 和 \({\mathbf{P}}_{0} = \left( {-1,0}\right)\) ， \({\mathbf{P}}_{1} = \left( {-1,1}\right) ,{\mathbf{P}}_{2} = \left( {1,1}\right)\) 和 \({\mathbf{P}}_{3} = \left( {1,0}\right)\) 。绘制 \(\mathbf{C}\left( u\right)\) 。计算 \({\mathbf{C}}^{\prime }\left( u\right)\) ，即其控制点和节点向量。绘制 \({\mathbf{C}}^{\prime }\left( u\right)\) 。
+
+3.6. 对于图 3.16a 的三次曲线，假设控制点为 \(\left\{  {\mathbf{P}}_{i}\right\}   = \{ \left( {0,0}\right)\) ， \(\left( {1,2}\right) ,\left( {3,4}\right) ,\left( {5,2}\right) ,\left( {5,0}\right) ,\left( {8,0}\right) ,\left( {9,3}\right) \}\) 。绘制曲线。使用公式 (3.8) 计算二阶导数曲线 \({\mathbf{C}}^{\left( 2\right) }\left( u\right)\) 。绘制 \({\mathbf{C}}^{\left( 2\right) }\left( u\right)\) 。设 \({\mathbf{P}}_{0}^{\left( 2\right) }\) 和 \({\mathbf{P}}_{4}^{\left( 2\right) }\) 为 \({\mathbf{C}}^{\left( 2\right) }\left( u\right)\) 的第一个和最后一个控制点，即 \({\mathbf{P}}_{0}^{\left( 2\right) } = {\mathbf{C}}^{\left( 2\right) }\left( 0\right)\) 和 \({\mathbf{P}}_{4}^{\left( 2\right) } = {\mathbf{C}}^{\left( 2\right) }\left( 1\right)\) 。使用公式 (3.9) 和 (3.10) 计算 \({\mathbf{C}}^{\left( 2\right) }\left( 0\right)\) 和 \({\mathbf{C}}^{\left( 2\right) }\left( 1\right)\) 。
+
+3.7. 可以使用多个节点或多个控制点在表面上创建折痕(见图 3.24 和 3.25)。如果您想要一个折痕长度小于表面全长，您会使用哪种方法？构造并绘制这样的示例。
+
+3.8. 考虑 B-spline 表面 \(\mathbf{S}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{3}\mathop{\sum }\limits_{{j = 0}}^{2}{N}_{i,2}\left( u\right) {N}_{j,2}\left( v\right) {\mathbf{P}}_{i,j}\)
+
+其中
+
+\[
+U = \{ 0,0,0,1/2,1,1,1\}
+\]
+
+\[
+V = \{ 0,0,0,1,1,1\}
+\]
+
+和
+
+\[
+{\mathbf{P}}_{0,0} = \left( {0,0,0}\right) \;{\mathbf{P}}_{1,0} = \left( {3,0,3}\right) \;{\mathbf{P}}_{2,0} = \left( {6,0,3}\right) \;{\mathbf{P}}_{3,0} = \left( {9,0,0}\right)
+\]
+
+\[
+{\mathbf{P}}_{0,1} = \left( {0,2,2}\right) \;{\mathbf{P}}_{1,1} = \left( {3,2,5}\right) \;{\mathbf{P}}_{2,1} = \left( {6,2,5}\right) \;{\mathbf{P}}_{3,1} = \left( {9,2,2}\right)
+\]
+
+\[
+{\mathbf{P}}_{0,2} = \left( {0,4,0}\right) \;{\mathbf{P}}_{1,2} = \left( {3,4,3}\right) \;{\mathbf{P}}_{2,2} = \left( {6,4,3}\right) \;{\mathbf{P}}_{3,2} = \left( {9,4,0}\right)
+\]
+
+通过评估非零 \(\mathbf{B}\) -样条基函数并将其与适当的控制点相乘来计算 \(\mathbf{S}\left( {3/{10},6/{10}}\right)\) 。
+
+3.9. 推导 \({\mathbf{S}}_{u}\left( {u,v}\right) ,{\mathbf{S}}_{v}\left( {u,v}\right)\) 和 \({\mathbf{S}}_{uv}\left( {u,v}\right)\) 在三个角 \(\left( {u,v}\right)  = \left( {0,1}\right) ,\left( {1,0}\right)\) 和 (1,1) 的表达式(见公式 [3.24])。
+
+3.10. 设 \(\mathbf{S}\left( {u,v}\right)\) 如习题 3.8 所示。绘制该曲面。使用公式 (3.20) 和 (3.21)，计算曲面 \({\mathbf{S}}_{u}\left( {u,v}\right)\) 和 \({\mathbf{S}}_{v}\left( {u,v}\right)\) 。绘制这两个曲面。使用公式 (3.22) 和在习题 3.9 中推导的表达式，计算曲面四个角的混合偏导数 \({\mathbf{S}}_{uv}\left( {u,v}\right)\) 。这四个向量的几何意义是什么？
+
+
+
+
+\clearpage
+\end{document}
