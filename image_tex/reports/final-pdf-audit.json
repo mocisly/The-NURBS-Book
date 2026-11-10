@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "pdf": "image_tex/build/book-check/main.pdf",
+  "sha256": "363115086c22a425f1dfc3b9bdaeeb0a71bf42f400f00a9f1231445cfd58a488",
+  "pages": 220,
+  "content_page_range": [
+    7,
+    212
+  ],
+  "all_page_geometry_cm": [
+    40,
+    80
+  ],
+  "body_raster_image_objects": 0,
+  "non_body_image_resources": {},
+  "fatal_compile_errors": 0,
+  "missing_glyph_warnings": 0,
+  "frozen_snapshot": "image_tex/build/book-snapshots/final-native-book-20261109-161544-972950",
+  "all_active_original_references": 435,
+  "remaining_original_references": 0
+}

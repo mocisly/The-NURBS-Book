@@ -1,0 +1,32 @@
+\begin{tikzpicture}[book line,font=\fontsize{10}{12}\selectfont,scale=\BookGeometryScale]
+\path[book figure bounds] (-1,-4.2) rectangle (9,3.8);
+\node at (3.8,3.4) {\texttt{CPOLYGON}};
+\draw (1.7,2.9) rectangle (5.9,2);
+\node at (2.75,2.45) {$n$};
+\node at (4.85,2.45) {\texttt{Pw}};
+\draw[book grid] (3.8,2.9)--(3.8,2);
+\draw[book grid,book axis] (4.85,2)--(4.85,0);
+\draw (0,0) rectangle (7.6,-3.6);
+\node at (0.95,-0.45) {$w_0x_0$};
+\node at (2.85,-0.45) {$w_0y_0$};
+\node at (4.75,-0.45) {$w_0z_0$};
+\node at (6.65,-0.45) {$w_0$};
+\draw[book grid] (0,-0.9)--(7.6,-0.9);
+\node at (0.95,-1.35) {$w_1x_1$};
+\node at (2.85,-1.35) {$w_1y_1$};
+\node at (4.75,-1.35) {$w_1z_1$};
+\node at (6.65,-1.35) {$w_1$};
+\draw[book grid] (0,-1.8)--(7.6,-1.8);
+\node at (0.95,-2.25) {$\vdots$};
+\node at (2.85,-2.25) {$\vdots$};
+\node at (4.75,-2.25) {$\vdots$};
+\node at (6.65,-2.25) {$\vdots$};
+\draw[book grid] (0,-2.7)--(7.6,-2.7);
+\node at (0.95,-3.15) {$w_nx_n$};
+\node at (2.85,-3.15) {$w_ny_n$};
+\node at (4.75,-3.15) {$w_nz_n$};
+\node at (6.65,-3.15) {$w_n$};
+\draw[book grid] (1.9,0)--(1.9,-3.6);
+\draw[book grid] (3.8,0)--(3.8,-3.6);
+\draw[book grid] (5.7,0)--(5.7,-3.6);
+\end{tikzpicture}

@@ -1,0 +1,13 @@
+% Fig. 1.10: quadratic Bezier with P0=(0,0), P1=(3,4), P2=(6,0).
+% C(u)=(6u,8u(1-u)); representative control points, not scan tracing.
+\begin{tikzpicture}[book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \coordinate (P0) at (0,0);
+  \coordinate (P1) at (3,4);
+  \coordinate (P2) at (6,0);
+  \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P0) -- (P1);
+  \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P1) -- (P2);
+  \draw[shorten <=2pt,shorten >=2pt] (P0) .. controls (2,2.666667) and (4,2.666667) .. (P2);
+  \node[book point,label=below:{$\mathbf P_0=\mathbf C(0)$}] at (P0) {};
+  \node[book point,label=above:{$\mathbf P_1$}] at (P1) {};
+  \node[book point,label=below:{$\mathbf P_2=\mathbf C(1)$}] at (P2) {};
+\end{tikzpicture}

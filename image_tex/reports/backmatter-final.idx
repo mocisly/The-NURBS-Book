@@ -1,0 +1,519 @@
+\indexentry{quxian@曲线!006@导数|hyperindexformat{\hyperpage}}{5}
+\indexentry{quxian@曲线!009@隐式形式|hyperindexformat{\hyperpage}}{5}
+\indexentry{quxian@曲线!010@参数形式|hyperindexformat{\hyperpage}}{5}
+\indexentry{daoshu@导数!008@参数形式!001@曲线|hyperindexformat{\hyperpage}}{5}
+\indexentry{daoshu@导数!008@参数形式!002@曲面|hyperindexformat{\hyperpage}}{5}
+\indexentry{yinshifangcheng@隐式方程!001@与参数形式比较|hyperindexformat{\hyperpage}}{5}
+\indexentry{yinshifangcheng@隐式方程!002@曲线|hyperindexformat{\hyperpage}}{5}
+\indexentry{yinshifangcheng@隐式方程!003@曲面|hyperindexformat{\hyperpage}}{5}
+\indexentry{canshuxingshi@参数形式|hyperindexformat{\hyperpage}}{5}
+\indexentry{canshuxingshi@参数形式!001@与隐式形式比较|hyperindexformat{\hyperpage}}{5}
+\indexentry{canshuxingshi@参数形式!002@导数|hyperindexformat{\hyperpage}}{5}
+\indexentry{canshuxingshi@参数形式!003@曲线|hyperindexformat{\hyperpage}}{5}
+\indexentry{canshuxingshi@参数形式!004@曲面|hyperindexformat{\hyperpage}}{5}
+\indexentry{qumian@曲面!006@隐式形式|hyperindexformat{\hyperpage}}{5}
+\indexentry{qumian@曲面!010@参数形式|hyperindexformat{\hyperpage}}{5}
+\indexentry{qumian@曲面!011@偏导数|hyperindexformat{\hyperpage}}{5}
+\indexentry{junyuncanshuhua@均匀参数化|hyperindexformat{\hyperpage}}{5}
+\indexentry{yuan@圆|hyperindexformat{\hyperpage}}{5}
+\indexentry{qiumian@球面|hyperindexformat{\hyperpage}}{5}
+\indexentry{canshuxingshi@参数形式!005@曲面法向量|hyperindexformat{\hyperpage}}{5}
+\indexentry{qumian@曲面!008@法向量|hyperindexformat{\hyperpage}}{5}
+\indexentry{jihanshu@基函数!002@曲线!002@幂基|hyperindexformat{\hyperpage}}{5}
+\indexentry{hunhehanshu@混合函数|hyperindexformat{\see{基函数}}}{5}
+\indexentry{quxian@曲线!004@三次曲线|hyperindexformat{\hyperpage}}{5}
+\indexentry{quxian@曲线!006@导数|hyperindexformat{\hyperpage}}{5}
+\indexentry{quxian@曲线!012@幂基形式|hyperindexformat{\hyperpage}}{5}
+\indexentry{daoshu@导数!009@幂基!001@曲线|hyperindexformat{\hyperpage}}{5}
+\indexentry{horner@Horner 法!001@曲线|hyperindexformat{\hyperpage}}{5}
+\indexentry{zhixian@直线|hyperindexformat{\hyperpage}}{5}
+\indexentry{paowuxian@抛物线|hyperindexformat{\hyperpage}}{5}
+\indexentry{duoxiangshi@多项式|hyperindexformat{\hyperpage}}{5}
+\indexentry{mijixingshi@幂基形式|hyperindexformat{\hyperpage}}{5}
+\indexentry{mijixingshi@幂基形式!001@导数|hyperindexformat{\hyperpage}}{5}
+\indexentry{mijixingshi@幂基形式!002@曲线|hyperindexformat{\hyperpage}}{5}
+\indexentry{suanfa@算法!015@点与导数求值!007@幂基曲线|hyperindexformat{\hyperpage}}{6}
+\indexentry{horner@Horner 法!001@曲线|hyperindexformat{\hyperpage}}{6}
+\indexentry{guaidian@拐点|hyperindexformat{\hyperpage}}{6}
+\indexentry{jiandian@尖点|hyperindexformat{\hyperpage}}{6}
+\indexentry{huan@环|hyperindexformat{\hyperpage}}{6}
+\indexentry{jihanshu@基函数!002@曲线!001@Bézier|hyperindexformat{\hyperpage}}{6}
+\indexentry{bernstein@Bernstein 多项式|hyperindexformat{\hyperpage}}{6}
+\indexentry{bezier@Bézier!002@曲线|hyperindexformat{\hyperpage}}{6}
+\indexentry{bezier@Bézier!002@曲线!001@定义|hyperindexformat{\hyperpage}}{6}
+\indexentry{kongzhidian@控制点!001@Bézier|hyperindexformat{\hyperpage}}{6}
+\indexentry{quxian@曲线!001@Bézier!001@定义|hyperindexformat{\hyperpage}}{6}
+\indexentry{quxian@曲线!004@三次曲线|hyperindexformat{\hyperpage}}{6}
+\indexentry{zhixian@直线|hyperindexformat{\hyperpage}}{6}
+\indexentry{paowuxian@抛物线|hyperindexformat{\hyperpage}}{6}
+\indexentry{bezier@Bézier!001@与幂基形式比较|hyperindexformat{\hyperpage}}{6}
+\indexentry{kongzhiduobianxing@控制多边形!001@Bézier|hyperindexformat{\hyperpage}}{7}
+\indexentry{tubaoxingzhi@凸包性质!001@Bézier|hyperindexformat{\hyperpage}}{7}
+\indexentry{bezier@Bézier!002@曲线!005@性质|hyperindexformat{\hyperpage}}{7}
+\indexentry{bianchajianxiaoxingzhi@变差减小性质|hyperindexformat{\hyperpage}}{7}
+\indexentry{danweifenjie@单位分解|hyperindexformat{\hyperpage}}{7}
+\indexentry{suanfa@算法!011@基函数计算!002@单个 Bernstein 多项式|hyperindexformat{\hyperpage}}{8}
+\indexentry{suanfa@算法!011@基函数计算!007@全部 Bernstein 多项式|hyperindexformat{\hyperpage}}{8}
+\indexentry{suanfa@算法!011@基函数计算!007@全部 Bernstein 多项式|hyperindexformat{\hyperpage}}{8}
+\indexentry{suanfa@算法!015@点与导数求值!003@Bézier 曲线|hyperindexformat{\hyperpage}}{8}
+\indexentry{daoshu@导数!001@Bernstein 多项式|hyperindexformat{\hyperpage}}{8}
+\indexentry{bezier@Bézier!002@曲线!004@导数|hyperindexformat{\hyperpage}}{8}
+\indexentry{daoshu@导数!002@Bézier 曲线|hyperindexformat{\hyperpage}}{8}
+\indexentry{suanfa@算法!015@点与导数求值!003@Bézier 曲线|hyperindexformat{\hyperpage}}{9}
+\indexentry{decasteljau@de Casteljau 算法|hyperindexformat{\hyperpage}}{9}
+\indexentry{jihanshu@基函数!002@曲线!003@有理 Bézier|hyperindexformat{\hyperpage}}{9}
+\indexentry{yuan@圆|hyperindexformat{\hyperpage}}{9}
+\indexentry{quxian@曲线!013@有理 Bézier!001@定义|hyperindexformat{\hyperpage}}{9}
+\indexentry{quxian@曲线!013@有理 Bézier!003@性质|hyperindexformat{\hyperpage}}{9}
+\indexentry{tuoyuan@椭圆|hyperindexformat{\hyperpage}}{9}
+\indexentry{shuangquxian@双曲线|hyperindexformat{\hyperpage}}{9}
+\indexentry{paowuxian@抛物线|hyperindexformat{\hyperpage}}{9}
+\indexentry{youlibezier@有理 Bézier!001@曲线定义|hyperindexformat{\hyperpage}}{9}
+\indexentry{youlihanshu@有理函数|hyperindexformat{\hyperpage}}{9}
+\indexentry{quanzhong@权重!004@有理 Bézier|hyperindexformat{\hyperpage}}{9}
+\indexentry{yuanzhumian@圆柱面|hyperindexformat{\hyperpage}}{9}
+\indexentry{danweifenjie@单位分解|hyperindexformat{\hyperpage}}{10}
+\indexentry{bianchajianxiaoxingzhi@变差减小性质|hyperindexformat{\hyperpage}}{10}
+\indexentry{qici@齐次!001@坐标|hyperindexformat{\hyperpage}}{10}
+\indexentry{kongzhidian@控制点!009@加权控制点|hyperindexformat{\hyperpage}}{10}
+\indexentry{quxian@曲线!013@有理 Bézier!002@齐次形式|hyperindexformat{\hyperpage}}{10}
+\indexentry{toushiyingshe@透视映射|hyperindexformat{\hyperpage}}{10}
+\indexentry{qici@齐次!002@表示!001@圆弧|hyperindexformat{\hyperpage}}{11}
+\indexentry{jihanshu@基函数!003@曲面!001@Bézier|hyperindexformat{\hyperpage}}{11}
+\indexentry{jihanshu@基函数!003@曲面!002@幂基|hyperindexformat{\hyperpage}}{11}
+\indexentry{bezier@Bézier!003@曲面!001@定义|hyperindexformat{\hyperpage}}{11}
+\indexentry{kongzhiwang@控制网!001@Bézier|hyperindexformat{\hyperpage}}{11}
+\indexentry{daoshu@导数!009@幂基!002@曲面|hyperindexformat{\hyperpage}}{11}
+\indexentry{dengcanshuquxian@等参数曲线|hyperindexformat{\hyperpage}}{11}
+\indexentry{dengcanshuquxian@等参数曲线!002@Bézier 曲面|hyperindexformat{\hyperpage}}{11}
+\indexentry{mijixingshi@幂基形式!003@曲面|hyperindexformat{\hyperpage}}{11}
+\indexentry{qumian@曲面!001@Bézier|hyperindexformat{\hyperpage}}{11}
+\indexentry{qumian@曲面!007@等参数曲线|hyperindexformat{\hyperpage}}{11}
+\indexentry{qumian@曲面!008@法向量|hyperindexformat{\hyperpage}}{11}
+\indexentry{qumian@曲面!012@幂基形式|hyperindexformat{\hyperpage}}{11}
+\indexentry{qumian@曲面!016@张量积定义|hyperindexformat{\hyperpage}}{11}
+\indexentry{zhangliangji@张量积!002@曲面|hyperindexformat{\hyperpage}}{11}
+\indexentry{suanfa@算法!015@点与导数求值!008@幂基曲面|hyperindexformat{\hyperpage}}{12}
+\indexentry{jihanshu@基函数!003@曲面!002@幂基|hyperindexformat{\hyperpage}}{12}
+\indexentry{horner@Horner 法!002@曲面|hyperindexformat{\hyperpage}}{12}
+\indexentry{mijixingshi@幂基形式!003@曲面|hyperindexformat{\hyperpage}}{12}
+\indexentry{qumian@曲面!012@幂基形式|hyperindexformat{\hyperpage}}{12}
+\indexentry{bezier@Bézier!003@曲面!002@性质|hyperindexformat{\hyperpage}}{12}
+\indexentry{suanfa@算法!015@点与导数求值!004@Bézier 曲面|hyperindexformat{\hyperpage}}{12}
+\indexentry{decasteljau@de Casteljau 算法|hyperindexformat{\hyperpage}}{12}
+\indexentry{jihanshu@基函数!003@曲面!003@有理 Bézier|hyperindexformat{\hyperpage}}{12}
+\indexentry{youlibezier@有理 Bézier!002@曲面定义|hyperindexformat{\hyperpage}}{12}
+\indexentry{qumian@曲面!013@有理 Bézier|hyperindexformat{\hyperpage}}{12}
+\indexentry{chongcanshuhua@重参数化|hyperindexformat{\hyperpage}}{13}
+\indexentry{quxian@曲线!011@分段形式!003@有理曲线|hyperindexformat{\hyperpage}}{15}
+\indexentry{lianxuxing@连续性!006@分段多项式与有理曲线|hyperindexformat{\hyperpage}}{15}
+\indexentry{quxian@曲线!011@分段形式!002@多项式|hyperindexformat{\hyperpage}}{15}
+\indexentry{fenduanduoxiangshikongjian@分段多项式空间!001@曲线|hyperindexformat{\hyperpage}}{15}
+\indexentry{duandian@断点|hyperindexformat{\hyperpage}}{15}
+\indexentry{lianxuxing@连续性!007@连续阶数|hyperindexformat{\hyperpage}}{15}
+\indexentry{quxian@曲线!011@分段形式!001@Bézier|hyperindexformat{\hyperpage}}{15}
+\indexentry{jihanshu@基函数!001@B样条!003@定义与示例|hyperindexformat{\hyperpage}}{15}
+\indexentry{jihanshu@基函数!001@B样条!005@性质|hyperindexformat{\hyperpage}}{15}
+\indexentry{bernstein@Bernstein 多项式|hyperindexformat{\hyperpage}}{15}
+\indexentry{byangtiao@B样条!001@基函数|hyperindexformat{\see{基函数}}}{15}
+\indexentry{jiedian@结点!007@定义|hyperindexformat{\hyperpage}}{15}
+\indexentry{jiedian@结点!013@跨度|hyperindexformat{\hyperpage}}{15}
+\indexentry{jubuzhicheng@局部支撑|hyperindexformat{\hyperpage}}{15}
+\indexentry{jie@阶|hyperindexformat{\hyperpage}}{15}
+\indexentry{qumian@曲面!016@张量积定义|hyperindexformat{\hyperpage}}{15}
+\indexentry{danweifenjie@单位分解|hyperindexformat{\hyperpage}}{17}
+\indexentry{jihanshu@基函数!001@B样条!002@连续性|hyperindexformat{\hyperpage}}{18}
+\indexentry{jihanshu@基函数!001@B样条!004@导数|hyperindexformat{\hyperpage}}{18}
+\indexentry{lianxuxing@连续性!002@B样条基函数|hyperindexformat{\hyperpage}}{18}
+\indexentry{daoshu@导数!003@B样条基函数|hyperindexformat{\hyperpage}}{18}
+\indexentry{jiedian@结点!009@重数|hyperindexformat{\hyperpage}}{18}
+\indexentry{jihanshu@基函数!001@B样条!005@性质|hyperindexformat{\hyperpage}}{19}
+\indexentry{jiedian@结点!004@夹紧开放与非周期|hyperindexformat{\hyperpage}}{19}
+\indexentry{jiedian@结点!009@重数|hyperindexformat{\hyperpage}}{19}
+\indexentry{jiedian@结点!010@非周期向量|hyperindexformat{\hyperpage}}{19}
+\indexentry{jiedian@结点!014@均匀与非均匀|hyperindexformat{\hyperpage}}{19}
+\indexentry{fenduanduoxiangshikongjian@分段多项式空间!002@函数|hyperindexformat{\hyperpage}}{19}
+\indexentry{jihanshu@基函数!001@B样条!001@计算算法|hyperindexformat{\hyperpage}}{20}
+\indexentry{suanfa@算法!011@基函数计算!001@查找结点跨度|hyperindexformat{\hyperpage}}{20}
+\indexentry{jiedian@结点!013@跨度|hyperindexformat{\hyperpage}}{20}
+\indexentry{suanfa@算法!011@基函数计算!005@非零B样条基函数|hyperindexformat{\hyperpage}}{20}
+\indexentry{jihanshu@基函数!001@B样条!001@计算算法|hyperindexformat{\hyperpage}}{20}
+\indexentry{suanfa@算法!011@基函数计算!006@非零B样条基函数及其导数|hyperindexformat{\hyperpage}}{21}
+\indexentry{jihanshu@基函数!001@B样条!001@计算算法|hyperindexformat{\hyperpage}}{21}
+\indexentry{suanfa@算法!011@基函数计算!003@单个B样条基函数|hyperindexformat{\hyperpage}}{22}
+\indexentry{jihanshu@基函数!001@B样条!001@计算算法|hyperindexformat{\hyperpage}}{22}
+\indexentry{suanfa@算法!011@基函数计算!004@单个B样条基函数及其导数|hyperindexformat{\hyperpage}}{22}
+\indexentry{jihanshu@基函数!001@B样条!001@计算算法|hyperindexformat{\hyperpage}}{22}
+\indexentry{jihanshu@基函数!001@B样条!004@导数|hyperindexformat{\hyperpage}}{22}
+\indexentry{byangtiao@B样条!002@曲线|hyperindexformat{\see{曲线}}}{24}
+\indexentry{kongzhidian@控制点!002@B样条|hyperindexformat{\hyperpage}}{24}
+\indexentry{quxian@曲线!001@Bézier!001@定义|hyperindexformat{\hyperpage}}{24}
+\indexentry{quxian@曲线!002@B样条!001@定义与性质|hyperindexformat{\hyperpage}}{24}
+\indexentry{quxian@曲线!011@分段形式!002@多项式|hyperindexformat{\hyperpage}}{24}
+\indexentry{kongzhiduobianxing@控制多边形!002@B样条|hyperindexformat{\hyperpage}}{24}
+\indexentry{suanfa@算法!015@点与导数求值!001@B样条曲线|hyperindexformat{\hyperpage}}{24}
+\indexentry{suanfa@算法!015@点与导数求值!005@B样条曲线上的点|hyperindexformat{\hyperpage}}{24}
+\indexentry{fangshebianhuan@仿射变换|hyperindexformat{\hyperpage}}{24}
+\indexentry{tubaoxingzhi@凸包性质!002@B样条|hyperindexformat{\hyperpage}}{24}
+\indexentry{kongzhidian@控制点!007@重新定位|hyperindexformat{\hyperpage}}{25}
+\indexentry{bianchajianxiaoxingzhi@变差减小性质|hyperindexformat{\hyperpage}}{25}
+\indexentry{kongzhidian@控制点!005@多重控制点|hyperindexformat{\hyperpage}}{26}
+\indexentry{lianxuxing@连续性!003@B样条曲线|hyperindexformat{\hyperpage}}{26}
+\indexentry{quxian@曲线!002@B样条!002@导数与连续性|hyperindexformat{\hyperpage}}{26}
+\indexentry{quxian@曲线!006@导数|hyperindexformat{\hyperpage}}{26}
+\indexentry{daoshu@导数!004@B样条曲线|hyperindexformat{\hyperpage}}{26}
+\indexentry{suanfa@算法!015@点与导数求值!001@B样条曲线|hyperindexformat{\hyperpage}}{26}
+\indexentry{daoshu@导数!004@B样条曲线|hyperindexformat{\hyperpage}}{26}
+\indexentry{suanfa@算法!005@导数控制点!001@B样条曲线|hyperindexformat{\hyperpage}}{28}
+\indexentry{suanfa@算法!015@点与导数求值!001@B样条曲线|hyperindexformat{\hyperpage}}{28}
+\indexentry{daoshu@导数!004@B样条曲线|hyperindexformat{\hyperpage}}{28}
+\indexentry{jihanshu@基函数!001@B样条!006@张量积|hyperindexformat{\hyperpage}}{28}
+\indexentry{bernstein@Bernstein 多项式|hyperindexformat{\hyperpage}}{28}
+\indexentry{byangtiao@B样条!004@曲面|hyperindexformat{\see{曲面}}}{28}
+\indexentry{qumian@曲面!001@Bézier|hyperindexformat{\hyperpage}}{28}
+\indexentry{qumian@曲面!002@B样条!001@定义|hyperindexformat{\hyperpage}}{28}
+\indexentry{zhangliangji@张量积!001@B样条基函数|hyperindexformat{\hyperpage}}{28}
+\indexentry{suanfa@算法!015@点与导数求值!002@B样条曲面|hyperindexformat{\hyperpage}}{29}
+\indexentry{suanfa@算法!015@点与导数求值!006@B样条曲面上的点|hyperindexformat{\hyperpage}}{29}
+\indexentry{danweifenjie@单位分解|hyperindexformat{\hyperpage}}{29}
+\indexentry{qumian@曲面!002@B样条!003@性质|hyperindexformat{\hyperpage}}{29}
+\indexentry{dengcanshuquxian@等参数曲线!003@B样条曲面|hyperindexformat{\hyperpage}}{30}
+\indexentry{lianxuxing@连续性!004@B样条曲面|hyperindexformat{\hyperpage}}{30}
+\indexentry{daoshu@导数!006@B样条曲面|hyperindexformat{\hyperpage}}{30}
+\indexentry{qumian@曲面!002@B样条!002@导数与连续性|hyperindexformat{\hyperpage}}{30}
+\indexentry{qumian@曲面!011@偏导数|hyperindexformat{\hyperpage}}{30}
+\indexentry{suanfa@算法!015@点与导数求值!002@B样条曲面|hyperindexformat{\hyperpage}}{30}
+\indexentry{suanfa@算法!005@导数控制点!002@B样条曲面|hyperindexformat{\hyperpage}}{31}
+\indexentry{suanfa@算法!015@点与导数求值!002@B样条曲面|hyperindexformat{\hyperpage}}{31}
+\indexentry{jihanshu@基函数!002@曲线!004@有理B样条|hyperindexformat{\hyperpage}}{33}
+\indexentry{kongzhidian@控制点!006@有理B样条|hyperindexformat{\hyperpage}}{33}
+\indexentry{kongzhiduobianxing@控制多边形!004@有理B样条|hyperindexformat{\hyperpage}}{33}
+\indexentry{quxian@曲线!001@Bézier!001@定义|hyperindexformat{\hyperpage}}{33}
+\indexentry{quxian@曲线!014@有理B样条!001@定义与性质|hyperindexformat{\hyperpage}}{33}
+\indexentry{youlibyangtiao@有理B样条!001@基函数|hyperindexformat{\see{基函数}}}{33}
+\indexentry{youlibyangtiao@有理B样条!002@曲线|hyperindexformat{\see{曲线}}}{33}
+\indexentry{quanzhong@权重!002@修改|hyperindexformat{\hyperpage}}{33}
+\indexentry{quanzhong@权重!005@有理B样条|hyperindexformat{\hyperpage}}{33}
+\indexentry{danweifenjie@单位分解|hyperindexformat{\hyperpage}}{33}
+\indexentry{jubuzhicheng@局部支撑|hyperindexformat{\hyperpage}}{33}
+\indexentry{fangshebianhuan@仿射变换|hyperindexformat{\hyperpage}}{33}
+\indexentry{tubaoxingzhi@凸包性质!003@有理B样条|hyperindexformat{\hyperpage}}{33}
+\indexentry{bianchajianxiaoxingzhi@变差减小性质|hyperindexformat{\hyperpage}}{33}
+\indexentry{qici@齐次!002@表示!002@NURBS 曲线|hyperindexformat{\hyperpage}}{34}
+\indexentry{toushiyingshe@透视映射|hyperindexformat{\hyperpage}}{34}
+\indexentry{kongzhidian@控制点!009@加权控制点|hyperindexformat{\hyperpage}}{34}
+\indexentry{suanfa@算法!015@点与导数求值!009@有理B样条曲线|hyperindexformat{\hyperpage}}{34}
+\indexentry{quxian@曲线!006@导数|hyperindexformat{\hyperpage}}{34}
+\indexentry{quxian@曲线!014@有理B样条!002@导数|hyperindexformat{\hyperpage}}{34}
+\indexentry{daoshu@导数!011@有理B样条!001@曲线|hyperindexformat{\hyperpage}}{34}
+\indexentry{suanfa@算法!010@有理B样条导数!001@曲线|hyperindexformat{\hyperpage}}{35}
+\indexentry{jihanshu@基函数!003@曲面!004@有理B样条|hyperindexformat{\hyperpage}}{35}
+\indexentry{youlibyangtiao@有理B样条!003@曲面|hyperindexformat{\see{曲面}}}{35}
+\indexentry{qumian@曲面!001@Bézier|hyperindexformat{\hyperpage}}{35}
+\indexentry{qumian@曲面!014@有理B样条!001@定义|hyperindexformat{\hyperpage}}{35}
+\indexentry{quanzhong@权重!005@有理B样条|hyperindexformat{\hyperpage}}{35}
+\indexentry{qumian@曲面!014@有理B样条!003@性质|hyperindexformat{\hyperpage}}{36}
+\indexentry{danweifenjie@单位分解|hyperindexformat{\hyperpage}}{36}
+\indexentry{qici@齐次!002@表示!003@NURBS 曲面|hyperindexformat{\hyperpage}}{37}
+\indexentry{suanfa@算法!015@点与导数求值!010@有理B样条曲面|hyperindexformat{\hyperpage}}{37}
+\indexentry{dengcanshuquxian@等参数曲线!004@有理B样条曲面|hyperindexformat{\hyperpage}}{37}
+\indexentry{daoshu@导数!011@有理B样条!002@曲面|hyperindexformat{\hyperpage}}{37}
+\indexentry{qumian@曲面!011@偏导数|hyperindexformat{\hyperpage}}{37}
+\indexentry{qumian@曲面!014@有理B样条!002@导数|hyperindexformat{\hyperpage}}{37}
+\indexentry{suanfa@算法!010@有理B样条导数!002@曲面|hyperindexformat{\hyperpage}}{38}
+\indexentry{quxian@曲线!007@求值!001@结点插入|hyperindexformat{\hyperpage}}{39}
+\indexentry{quxian@曲线!016@分割与细分!001@结点插入|hyperindexformat{\hyperpage}}{39}
+\indexentry{decasteljau@de Casteljau 算法|hyperindexformat{\hyperpage}}{39}
+\indexentry{jiedian@结点!001@插入|hyperindexformat{\hyperpage}}{39}
+\indexentry{jiedian@结点!011@控制多边形划分|hyperindexformat{\hyperpage}}{39}
+\indexentry{suanfa@算法!012@结点插入!001@曲线|hyperindexformat{\hyperpage}}{41}
+\indexentry{suanfa@算法!015@点与导数求值!009@有理B样条曲线|hyperindexformat{\hyperpage}}{42}
+\indexentry{quxian@曲线!007@求值!001@结点插入|hyperindexformat{\hyperpage}}{42}
+\indexentry{nijiediancharu@逆结点插入|hyperindexformat{\hyperpage}}{42}
+\indexentry{suanfa@算法!012@结点插入!002@曲面|hyperindexformat{\hyperpage}}{42}
+\indexentry{qumian@曲面!015@分割与细分!001@结点插入|hyperindexformat{\hyperpage}}{43}
+\indexentry{dengcanshuquxian@等参数曲线!001@结点插入提取|hyperindexformat{\hyperpage}}{43}
+\indexentry{qumian@曲面!004@求值!001@结点插入|hyperindexformat{\hyperpage}}{43}
+\indexentry{fenjie@分解!002@B样条到分段多项式|hyperindexformat{\hyperpage}}{43}
+\indexentry{jiedian@结点!002@细化|hyperindexformat{\hyperpage}}{43}
+\indexentry{jiedian@结点!008@合并|hyperindexformat{\hyperpage}}{43}
+\indexentry{suanfa@算法!013@结点细化!001@曲线|hyperindexformat{\hyperpage}}{44}
+\indexentry{suanfa@算法!013@结点细化!002@曲面|hyperindexformat{\hyperpage}}{44}
+\indexentry{suanfa@算法!008@分解!001@B样条曲线分解为 Bézier 段|hyperindexformat{\hyperpage}}{46}
+\indexentry{fenjie@分解!001@B样条到 Bézier 段与曲面片|hyperindexformat{\hyperpage}}{46}
+\indexentry{suanfa@算法!008@分解!002@B样条曲面分解为 Bézier 曲面片|hyperindexformat{\hyperpage}}{46}
+\indexentry{fenjie@分解!001@B样条到 Bézier 段与曲面片|hyperindexformat{\hyperpage}}{46}
+\indexentry{fuhebyangtiaoq@复合B样条曲线|hyperindexformat{\hyperpage}}{47}
+\indexentry{jiedian@结点!003@移除|hyperindexformat{\hyperpage}}{47}
+\indexentry{suanfa@算法!003@结点移除!002@曲线结点移除|hyperindexformat{\hyperpage}}{48}
+\indexentry{quanzhong@权重!003@负权重|hyperindexformat{\hyperpage}}{49}
+\indexentry{bezier@Bézier!002@曲线!002@次数提升|hyperindexformat{\hyperpage}}{50}
+\indexentry{quxian@曲线!001@Bézier!002@次数提升|hyperindexformat{\hyperpage}}{50}
+\indexentry{cishu@次数!001@提升|hyperindexformat{\hyperpage}}{50}
+\indexentry{suanfa@算法!009@次数提升!001@曲线|hyperindexformat{\hyperpage}}{52}
+\indexentry{suanfa@算法!009@次数提升!002@曲面|hyperindexformat{\hyperpage}}{53}
+\indexentry{bezier@Bézier!002@曲线!003@次数降低|hyperindexformat{\hyperpage}}{53}
+\indexentry{quxian@曲线!001@Bézier!003@次数降低|hyperindexformat{\hyperpage}}{53}
+\indexentry{cishu@次数!002@降低|hyperindexformat{\hyperpage}}{53}
+\indexentry{canshuwucha@参数误差|hyperindexformat{\hyperpage}}{55}
+\indexentry{tubaoxingzhi@凸包性质|hyperindexformat{\hyperpage}}{57}
+\indexentry{dian@点!001@反演|hyperindexformat{\see{点，投影}}}{57}
+\indexentry{dian@点!002@投影!001@曲线|hyperindexformat{\hyperpage}}{57}
+\indexentry{dian@点!002@投影!002@曲面|hyperindexformat{\hyperpage}}{57}
+\indexentry{newton@Newton 迭代|hyperindexformat{\hyperpage}}{57}
+\indexentry{qiexiangliangfanyan@切向量反演|hyperindexformat{\hyperpage}}{58}
+\indexentry{fangshebianhuan@仿射变换|hyperindexformat{\hyperpage}}{59}
+\indexentry{touying@投影!001@平行投影|hyperindexformat{\hyperpage}}{59}
+\indexentry{bianhuan@变换!001@曲线与曲面|hyperindexformat{\hyperpage}}{59}
+\indexentry{touying@投影!002@透视投影|hyperindexformat{\hyperpage}}{59}
+\indexentry{daoshu@导数!007@复合函数|hyperindexformat{\hyperpage}}{60}
+\indexentry{chongcanshuhua@重参数化|hyperindexformat{\hyperpage}}{60}
+\indexentry{quanzhong@权重!002@修改|hyperindexformat{\hyperpage}}{60}
+\indexentry{chongcanshuhua@重参数化!002@线性有理函数|hyperindexformat{\hyperpage}}{61}
+\indexentry{chongcanshuhua@重参数化!005@多项式函数|hyperindexformat{\hyperpage}}{61}
+\indexentry{chongcanshuhua@重参数化!001@线性函数|hyperindexformat{\hyperpage}}{63}
+\indexentry{chongcanshuhua@重参数化!003@分段多项式函数|hyperindexformat{\hyperpage}}{63}
+\indexentry{chongcanshuhua@重参数化!004@分段有理函数|hyperindexformat{\hyperpage}}{64}
+\indexentry{yuanzhuiquxian@圆锥曲线!004@形状因子|hyperindexformat{\see{形状因子}}}{66}
+\indexentry{xingzhuangyinzi@形状因子|hyperindexformat{\hyperpage}}{66}
+\indexentry{xingzhuangbubian@形状不变|hyperindexformat{\see{形状因子}}}{66}
+\indexentry{quxian@曲线!015@反转|hyperindexformat{\hyperpage}}{66}
+\indexentry{qumian@曲面!009@反转|hyperindexformat{\hyperpage}}{66}
+\indexentry{bezier@Bézier!001@与幂基形式比较|hyperindexformat{\hyperpage}}{67}
+\indexentry{zhuanhuan@转换!001@Bézier 与幂基|hyperindexformat{\hyperpage}}{67}
+\indexentry{zhuanhuan@转换!002@B样条与分段幂基|hyperindexformat{\hyperpage}}{67}
+\indexentry{quxian@曲线!002@B样条!002@导数与连续性|hyperindexformat{\hyperpage}}{67}
+\indexentry{fenjie@分解!002@B样条到分段多项式|hyperindexformat{\hyperpage}}{67}
+\indexentry{jiedian@结点!002@细化|hyperindexformat{\hyperpage}}{67}
+\indexentry{jiedian@结点!003@移除|hyperindexformat{\hyperpage}}{67}
+\indexentry{mijixingshi@幂基形式|hyperindexformat{\hyperpage}}{67}
+\indexentry{chongcanshuhua@重参数化|hyperindexformat{\hyperpage}}{67}
+\indexentry{suanfa@算法!001@形式转换!001@Bézier 到幂基矩阵|hyperindexformat{\hyperpage}}{68}
+\indexentry{zhuanhuan@转换!001@Bézier 与幂基|hyperindexformat{\hyperpage}}{68}
+\indexentry{iges@IGES!001@参数样条|hyperindexformat{\hyperpage}}{68}
+\indexentry{suanfa@算法!001@形式转换!003@幂基到 Bézier 矩阵|hyperindexformat{\hyperpage}}{69}
+\indexentry{zhuanhuan@转换!001@Bézier 与幂基|hyperindexformat{\hyperpage}}{69}
+\indexentry{yuan@圆|hyperindexformat{\hyperpage}}{71}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!002@隐式方程|hyperindexformat{\hyperpage}}{71}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!003@标准位置|hyperindexformat{\hyperpage}}{71}
+\indexentry{tuoyuan@椭圆|hyperindexformat{\hyperpage}}{71}
+\indexentry{shuangquxian@双曲线|hyperindexformat{\hyperpage}}{71}
+\indexentry{paowuxian@抛物线|hyperindexformat{\hyperpage}}{71}
+\indexentry{yuanzhuiquxian@圆锥曲线!002@离心率|hyperindexformat{\hyperpage}}{71}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!007@有理幂基|hyperindexformat{\hyperpage}}{73}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!004@最大内切面积|hyperindexformat{\hyperpage}}{73}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!006@有理 Bézier|hyperindexformat{\hyperpage}}{73}
+\indexentry{tuoyuan@椭圆|hyperindexformat{\hyperpage}}{73}
+\indexentry{shuangquxian@双曲线|hyperindexformat{\hyperpage}}{73}
+\indexentry{paowuxian@抛物线|hyperindexformat{\hyperpage}}{73}
+\indexentry{xingzhuangyinzi@形状因子|hyperindexformat{\hyperpage}}{73}
+\indexentry{yuanzhuiquxian@圆锥曲线!005@肩点|hyperindexformat{\hyperpage}}{74}
+\indexentry{kongzhidian@控制点!004@无穷远控制点|hyperindexformat{\see{无穷远控制点}}}{75}
+\indexentry{wuqiongyuankongzhidian@无穷远控制点|hyperindexformat{\hyperpage}}{75}
+\indexentry{yuan@圆|hyperindexformat{\hyperpage}}{75}
+\indexentry{yuan@圆!001@构造|hyperindexformat{\hyperpage}}{75}
+\indexentry{wuqiongyuankongzhidian@无穷远控制点|hyperindexformat{\hyperpage}}{75}
+\indexentry{jiedian@结点!001@插入|hyperindexformat{\hyperpage}}{75}
+\indexentry{suanfa@算法!014@NURBS 构造!001@圆|hyperindexformat{\hyperpage}}{77}
+\indexentry{yuan@圆!001@构造|hyperindexformat{\hyperpage}}{77}
+\indexentry{yuanzhuiquxian@圆锥曲线!001@构造|hyperindexformat{\hyperpage}}{78}
+\indexentry{wuqiongyuankongzhidian@无穷远控制点|hyperindexformat{\hyperpage}}{78}
+\indexentry{suanfa@算法!014@NURBS 构造!005@二次有理 Bézier 弧|hyperindexformat{\hyperpage}}{78}
+\indexentry{decasteljau@de Casteljau 算法|hyperindexformat{\hyperpage}}{78}
+\indexentry{suanfa@算法!014@NURBS 构造!002@开放圆锥弧|hyperindexformat{\hyperpage}}{79}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!001@分类与转换|hyperindexformat{\hyperpage}}{80}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!002@隐式方程|hyperindexformat{\hyperpage}}{80}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!004@最大内切面积|hyperindexformat{\hyperpage}}{80}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!005@NURBS|hyperindexformat{\hyperpage}}{80}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!006@有理 Bézier|hyperindexformat{\hyperpage}}{80}
+\indexentry{yuanzhuiquxian@圆锥曲线!003@形式!007@有理幂基|hyperindexformat{\hyperpage}}{80}
+\indexentry{zhuanhuan@转换!003@圆锥曲线形式|hyperindexformat{\hyperpage}}{80}
+\indexentry{tuoyuan@椭圆!001@完整构造|hyperindexformat{\hyperpage}}{80}
+\indexentry{step@STEP|hyperindexformat{\hyperpage}}{80}
+\indexentry{yuan@圆!002@高阶有理 Bézier 表示|hyperindexformat{\hyperpage}}{81}
+\indexentry{cishu@次数!001@提升|hyperindexformat{\hyperpage}}{81}
+\indexentry{jiedian@结点!001@插入|hyperindexformat{\hyperpage}}{81}
+\indexentry{nurbs@NURBS 表示!001@双线性曲面|hyperindexformat{\hyperpage}}{83}
+\indexentry{nurbs@NURBS 表示!008@双曲抛物面|hyperindexformat{\hyperpage}}{83}
+\indexentry{nurbs@NURBS 表示!009@平面|hyperindexformat{\hyperpage}}{83}
+\indexentry{yuanzhumian@圆柱面|hyperindexformat{\hyperpage}}{83}
+\indexentry{nurbs@NURBS 表示!006@一般圆柱面|hyperindexformat{\hyperpage}}{83}
+\indexentry{nurbs@NURBS 表示!010@直纹曲面|hyperindexformat{\hyperpage}}{83}
+\indexentry{nurbs@NURBS 表示!005@一般圆锥面|hyperindexformat{\hyperpage}}{84}
+\indexentry{nurbs@NURBS 表示!013@旋转曲面|hyperindexformat{\hyperpage}}{84}
+\indexentry{qiumian@球面|hyperindexformat{\hyperpage}}{84}
+\indexentry{nurbs@NURBS 表示!017@环面|hyperindexformat{\hyperpage}}{85}
+\indexentry{nurbs@NURBS 表示!012@球面|hyperindexformat{\hyperpage}}{85}
+\indexentry{suanfa@算法!014@NURBS 构造!003@旋转曲面|hyperindexformat{\hyperpage}}{85}
+\indexentry{nurbs@NURBS 表示!003@椭球面|hyperindexformat{\hyperpage}}{86}
+\indexentry{nurbs@NURBS 表示!004@椭圆抛物面|hyperindexformat{\hyperpage}}{86}
+\indexentry{nurbs@NURBS 表示!016@三边球面片|hyperindexformat{\hyperpage}}{87}
+\indexentry{suanfa@算法!014@NURBS 构造!004@三边球面片|hyperindexformat{\hyperpage}}{89}
+\indexentry{bijin@逼近|hyperindexformat{\hyperpage}}{90}
+\indexentry{yueshu@约束|hyperindexformat{\hyperpage}}{90}
+\indexentry{chazhi@插值|hyperindexformat{\hyperpage}}{90}
+\indexentry{quanjunihe@全局拟合算法|hyperindexformat{\hyperpage}}{90}
+\indexentry{chazhi@插值|hyperindexformat{\hyperpage}}{90}
+\indexentry{quxian@曲线!008@拟合!002@插值|hyperindexformat{\hyperpage}}{90}
+\indexentry{nihe@拟合!001@结点选择|hyperindexformat{\hyperpage}}{90}
+\indexentry{nihe@拟合!002@参数选择|hyperindexformat{\hyperpage}}{90}
+\indexentry{junyuncanshuhua@均匀参数化|hyperindexformat{\hyperpage}}{90}
+\indexentry{suanfa@算法!007@曲线插值!002@全局点数据插值|hyperindexformat{\hyperpage}}{91}
+\indexentry{quxian@曲线!008@拟合!002@插值|hyperindexformat{\hyperpage}}{92}
+\indexentry{nihe@拟合!001@结点选择|hyperindexformat{\hyperpage}}{92}
+\indexentry{suanfa@算法!007@曲线插值!001@三次样条插值|hyperindexformat{\hyperpage}}{92}
+\indexentry{nihe@拟合!002@参数选择|hyperindexformat{\hyperpage}}{94}
+\indexentry{qumian@曲面!005@拟合!002@插值|hyperindexformat{\hyperpage}}{94}
+\indexentry{suanfa@算法!016@曲面拟合!002@插值参数计算|hyperindexformat{\hyperpage}}{94}
+\indexentry{suanfa@算法!016@曲面拟合!003@全局点数据插值|hyperindexformat{\hyperpage}}{94}
+\indexentry{chazhi@插值|hyperindexformat{\hyperpage}}{95}
+\indexentry{jubunihe@局部拟合算法|hyperindexformat{\hyperpage}}{95}
+\indexentry{lianxuxing@连续性!008@参数连续性与几何连续性|hyperindexformat{\hyperpage}}{95}
+\indexentry{nihe@拟合!002@参数选择|hyperindexformat{\hyperpage}}{95}
+\indexentry{bezier@Bézier!002@曲线|hyperindexformat{\hyperpage}}{96}
+\indexentry{quxian@曲线!008@拟合!002@插值|hyperindexformat{\hyperpage}}{96}
+\indexentry{yuanzhuiquxian@圆锥曲线!005@肩点|hyperindexformat{\hyperpage}}{97}
+\indexentry{quxian@曲线!008@拟合!002@插值|hyperindexformat{\hyperpage}}{97}
+\indexentry{decasteljau@de Casteljau 算法|hyperindexformat{\hyperpage}}{97}
+\indexentry{quxian@曲线!008@拟合!002@插值|hyperindexformat{\hyperpage}}{98}
+\indexentry{nihe@拟合!001@结点选择|hyperindexformat{\hyperpage}}{98}
+\indexentry{nihe@拟合!002@参数选择|hyperindexformat{\hyperpage}}{98}
+\indexentry{nihe@拟合!001@结点选择|hyperindexformat{\hyperpage}}{98}
+\indexentry{nihe@拟合!002@参数选择|hyperindexformat{\hyperpage}}{98}
+\indexentry{qumian@曲面!005@拟合!002@插值|hyperindexformat{\hyperpage}}{98}
+\indexentry{suanfa@算法!016@曲面拟合!004@局部点数据插值|hyperindexformat{\hyperpage}}{99}
+\indexentry{bijin@逼近|hyperindexformat{\hyperpage}}{100}
+\indexentry{quanjunihe@全局拟合算法|hyperindexformat{\hyperpage}}{100}
+\indexentry{quxian@曲线!008@拟合!001@逼近|hyperindexformat{\hyperpage}}{100}
+\indexentry{nihe@拟合!001@结点选择|hyperindexformat{\hyperpage}}{100}
+\indexentry{zuixiaoercheng@最小二乘逼近|hyperindexformat{\hyperpage}}{100}
+\indexentry{yueshu@约束|hyperindexformat{\hyperpage}}{101}
+\indexentry{quxian@曲线!008@拟合!001@逼近|hyperindexformat{\hyperpage}}{101}
+\indexentry{zuixiaoercheng@最小二乘逼近|hyperindexformat{\hyperpage}}{101}
+\indexentry{suanfa@算法!006@曲线逼近!001@全局点与导数拟合|hyperindexformat{\hyperpage}}{102}
+\indexentry{zuixiaoercheng@最小二乘逼近|hyperindexformat{\hyperpage}}{103}
+\indexentry{qumian@曲面!005@拟合!001@逼近|hyperindexformat{\hyperpage}}{103}
+\indexentry{suanfa@算法!016@曲面拟合!001@全局点数据逼近|hyperindexformat{\hyperpage}}{103}
+\indexentry{quxian@曲线!008@拟合!001@逼近|hyperindexformat{\hyperpage}}{104}
+\indexentry{jiedian@结点!003@移除|hyperindexformat{\hyperpage}}{104}
+\indexentry{qumian@曲面!005@拟合!001@逼近|hyperindexformat{\hyperpage}}{104}
+\indexentry{suanfa@算法!003@结点移除!001@曲线误差界限|hyperindexformat{\hyperpage}}{104}
+\indexentry{suanfa@算法!003@结点移除!003@误差有界的曲线结点移除|hyperindexformat{\hyperpage}}{105}
+\indexentry{suanfa@算法!006@曲线逼近!002@全局误差有界逼近|hyperindexformat{\hyperpage}}{105}
+\indexentry{bijin@逼近|hyperindexformat{\hyperpage}}{106}
+\indexentry{jubunihe@局部拟合算法|hyperindexformat{\hyperpage}}{106}
+\indexentry{yuanzhuiquxian@圆锥曲线!005@肩点|hyperindexformat{\hyperpage}}{106}
+\indexentry{quxian@曲线!008@拟合!001@逼近|hyperindexformat{\hyperpage}}{106}
+\indexentry{suanfa@算法!006@曲线逼近!004@局部误差有界二次拟合|hyperindexformat{\hyperpage}}{107}
+\indexentry{quxian@曲线!008@拟合!001@逼近|hyperindexformat{\hyperpage}}{107}
+\indexentry{decasteljau@de Casteljau 算法|hyperindexformat{\hyperpage}}{107}
+\indexentry{suanfa@算法!006@曲线逼近!003@局部误差有界三次拟合|hyperindexformat{\hyperpage}}{109}
+\indexentry{nurbs@NURBS 表示!015@摆动曲面|hyperindexformat{\hyperpage}}{111}
+\indexentry{baidongqumian@摆动曲面|hyperindexformat{\hyperpage}}{111}
+\indexentry{fangyangqumian@放样曲面|hyperindexformat{\see{蒙皮曲面}}}{111}
+\indexentry{nurbs@NURBS 表示!011@蒙皮曲面|hyperindexformat{\hyperpage}}{111}
+\indexentry{mengpiqumian@蒙皮曲面|hyperindexformat{\hyperpage}}{111}
+\indexentry{quanzhong@权重!003@负权重|hyperindexformat{\hyperpage}}{114}
+\indexentry{lianxuxing@连续性!001@蒙皮曲面|hyperindexformat{\hyperpage}}{114}
+\indexentry{pinghuahanshu@平滑函数|hyperindexformat{\hyperpage}}{114}
+\indexentry{nurbs@NURBS 表示!014@扫掠曲面|hyperindexformat{\hyperpage}}{114}
+\indexentry{pianzhi@偏置|hyperindexformat{\hyperpage}}{114}
+\indexentry{saoluequmian@扫掠曲面|hyperindexformat{\hyperpage}}{114}
+\indexentry{pianzhi@偏置|hyperindexformat{\hyperpage}}{115}
+\indexentry{suanfa@算法!017@扫掠曲面!001@插值轨迹|hyperindexformat{\hyperpage}}{115}
+\indexentry{suanfa@算法!017@扫掠曲面!002@不插值轨迹|hyperindexformat{\hyperpage}}{115}
+\indexentry{frenet@Frenet 标架|hyperindexformat{\hyperpage}}{116}
+\indexentry{gordon@Gordon 曲面|hyperindexformat{\hyperpage}}{117}
+\indexentry{nurbs@NURBS 表示!007@Gordon 曲面|hyperindexformat{\hyperpage}}{117}
+\indexentry{suanfa@算法!002@曲面构造!002@Gordon 曲面|hyperindexformat{\hyperpage}}{118}
+\indexentry{coons@Coons 曲面!001@双三次混合|hyperindexformat{\hyperpage}}{118}
+\indexentry{coons@Coons 曲面!002@双线性混合|hyperindexformat{\hyperpage}}{118}
+\indexentry{nurbs@NURBS 表示!002@Coons 曲面|hyperindexformat{\hyperpage}}{118}
+\indexentry{kuabianjiedaoshu@跨边界导数|hyperindexformat{\hyperpage}}{119}
+\indexentry{niuzhuanxiangliang@扭转向量|hyperindexformat{\hyperpage}}{119}
+\indexentry{suanfa@算法!002@曲面构造!001@双三次混合 Coons 曲面|hyperindexformat{\hyperpage}}{120}
+\indexentry{coons@Coons 曲面!001@双三次混合|hyperindexformat{\hyperpage}}{120}
+\indexentry{kongzhidian@控制点!007@重新定位|hyperindexformat{\hyperpage}}{121}
+\indexentry{nijiediancharu@逆结点插入|hyperindexformat{\hyperpage}}{121}
+\indexentry{byangtiaojiedian@B样条节点（Greville 横坐标）|hyperindexformat{\hyperpage}}{121}
+\indexentry{quanzhong@权重!002@修改|hyperindexformat{\hyperpage}}{123}
+\indexentry{daoshu@导数!005@对权重求导|hyperindexformat{\hyperpage}}{123}
+\indexentry{nijiediancharu@逆结点插入|hyperindexformat{\hyperpage}}{123}
+\indexentry{quanzhong@权重!001@对权重求导|hyperindexformat{\hyperpage}}{123}
+\indexentry{quanzhong@权重!002@修改|hyperindexformat{\hyperpage}}{123}
+\indexentry{quanzhong@权重!002@修改|hyperindexformat{\hyperpage}}{125}
+\indexentry{zhongxinzuobiao@重心坐标|hyperindexformat{\hyperpage}}{125}
+\indexentry{quanzhong@权重!002@修改|hyperindexformat{\hyperpage}}{126}
+\indexentry{jiaobi@交比|hyperindexformat{\hyperpage}}{126}
+\indexentry{jiedian@结点!002@细化|hyperindexformat{\hyperpage}}{126}
+\indexentry{jiedian@结点!003@移除|hyperindexformat{\hyperpage}}{126}
+\indexentry{xingzhuangsuanzi@形状算子|hyperindexformat{\hyperpage}}{126}
+\indexentry{kongzhidian@控制点!007@重新定位|hyperindexformat{\hyperpage}}{127}
+\indexentry{niuqu@扭曲|hyperindexformat{\hyperpage}}{127}
+\indexentry{zhanping@展平|hyperindexformat{\hyperpage}}{128}
+\indexentry{niuqu@扭曲|hyperindexformat{\hyperpage}}{128}
+\indexentry{wanqu@弯曲|hyperindexformat{\hyperpage}}{129}
+\indexentry{jiaobi@交比|hyperindexformat{\hyperpage}}{129}
+\indexentry{wanqu@弯曲!001@圆形|hyperindexformat{\hyperpage}}{129}
+\indexentry{wanqu@弯曲!002@圆柱形|hyperindexformat{\hyperpage}}{129}
+\indexentry{wanqu@弯曲!003@抛物线|hyperindexformat{\hyperpage}}{129}
+\indexentry{pianzhi@偏置|hyperindexformat{\hyperpage}}{130}
+\indexentry{jiyuyueshu@基于约束的修改!001@曲线|hyperindexformat{\hyperpage}}{130}
+\indexentry{yueshu@约束|hyperindexformat{\hyperpage}}{130}
+\indexentry{kongzhidian@控制点!007@重新定位|hyperindexformat{\hyperpage}}{130}
+\indexentry{daoshu@导数!010@有理基函数|hyperindexformat{\hyperpage}}{130}
+\indexentry{kongzhidian@控制点!008@最小长度解|hyperindexformat{\hyperpage}}{131}
+\indexentry{zhangli@张力|hyperindexformat{\hyperpage}}{132}
+\indexentry{jiyuyueshu@基于约束的修改!002@曲面|hyperindexformat{\hyperpage}}{132}
+\indexentry{kongzhidian@控制点!007@重新定位|hyperindexformat{\hyperpage}}{132}
+\indexentry{suanfa@算法!004@形状修改!001@基于约束的曲面修改|hyperindexformat{\hyperpage}}{132}
+\indexentry{jiajin@夹紧!002@结点向量|hyperindexformat{\hyperpage}}{134}
+\indexentry{shujujiaohuan@数据交换|hyperindexformat{\hyperpage}}{134}
+\indexentry{jiedian@结点!003@移除|hyperindexformat{\hyperpage}}{134}
+\indexentry{jiedian@结点!004@夹紧开放与非周期|hyperindexformat{\hyperpage}}{134}
+\indexentry{jiedian@结点!005@夹紧与非夹紧|hyperindexformat{\hyperpage}}{134}
+\indexentry{jiedian@结点!010@非周期向量|hyperindexformat{\hyperpage}}{134}
+\indexentry{jiedian@结点!012@周期与非周期|hyperindexformat{\hyperpage}}{134}
+\indexentry{jiedian@结点!014@均匀与非均匀|hyperindexformat{\hyperpage}}{134}
+\indexentry{zhouqiquxian@周期曲线与非周期曲线|hyperindexformat{\hyperpage}}{134}
+\indexentry{feijiajin@非夹紧!003@结点向量|hyperindexformat{\hyperpage}}{134}
+\indexentry{jiajin@夹紧!001@曲线|hyperindexformat{\hyperpage}}{134}
+\indexentry{quxian@曲线!003@夹紧曲线|hyperindexformat{\hyperpage}}{134}
+\indexentry{lianxuxing@连续性!005@闭合B样条曲线|hyperindexformat{\hyperpage}}{134}
+\indexentry{quxian@曲线!017@非夹紧曲线|hyperindexformat{\hyperpage}}{134}
+\indexentry{feijiajin@非夹紧!002@曲线|hyperindexformat{\hyperpage}}{134}
+\indexentry{suanfa@算法!001@形式转换!004@B样条曲线去夹紧|hyperindexformat{\hyperpage}}{135}
+\indexentry{yuan@圆!003@非夹紧表示|hyperindexformat{\hyperpage}}{135}
+\indexentry{feijiajin@非夹紧!001@圆|hyperindexformat{\hyperpage}}{135}
+\indexentry{shujujiaohuan@数据交换|hyperindexformat{\hyperpage}}{136}
+\indexentry{iges@IGES|hyperindexformat{\hyperpage}}{136}
+\indexentry{iges@IGES!001@参数样条|hyperindexformat{\hyperpage}}{136}
+\indexentry{shujujiaohuan@数据交换|hyperindexformat{\hyperpage}}{136}
+\indexentry{step@STEP|hyperindexformat{\hyperpage}}{136}
+\indexentry{shujujiaohuan@数据交换|hyperindexformat{\hyperpage}}{136}
+\indexentry{phigs@PHIGS|hyperindexformat{\hyperpage}}{136}
+\indexentry{duandian@断点|hyperindexformat{\hyperpage}}{136}
+\indexentry{lianxuxing@连续性!007@连续阶数|hyperindexformat{\hyperpage}}{136}
+\indexentry{lianxuxing@连续性!008@参数连续性与几何连续性|hyperindexformat{\hyperpage}}{136}
+\indexentry{shujujiaohuan@数据交换|hyperindexformat{\hyperpage}}{136}
+\indexentry{pianzhi@偏置|hyperindexformat{\hyperpage}}{136}
+\indexentry{chongcanshuhua@重参数化|hyperindexformat{\hyperpage}}{136}
+\indexentry{suanfa@算法!001@形式转换!002@NURBS 到其他样条形式|hyperindexformat{\hyperpage}}{137}
+\indexentry{byangtiao@B样条!003@编程|hyperindexformat{\see{软件}}}{138}
+\indexentry{biancheng@编程|hyperindexformat{\see{软件}}}{138}
+\indexentry{ruanjian@软件|hyperindexformat{\hyperpage}}{138}
+\indexentry{ruanjian@软件!003@数据类型|hyperindexformat{\hyperpage}}{138}
+\indexentry{kongzhidian@控制点!003@数据结构|hyperindexformat{\hyperpage}}{138}
+\indexentry{quxian@曲线!005@数据结构|hyperindexformat{\hyperpage}}{138}
+\indexentry{ruanjian@软件!002@数据结构|hyperindexformat{\hyperpage}}{138}
+\indexentry{kongzhiduobianxing@控制多边形!003@数据结构|hyperindexformat{\hyperpage}}{139}
+\indexentry{jiedian@结点!006@数据结构|hyperindexformat{\hyperpage}}{139}
+\indexentry{quxian@曲线!005@数据结构|hyperindexformat{\hyperpage}}{139}
+\indexentry{kongzhiwang@控制网!002@数据结构|hyperindexformat{\hyperpage}}{139}
+\indexentry{qumian@曲面!003@数据结构|hyperindexformat{\hyperpage}}{140}
+\indexentry{ruanjian@软件!006@内存分配|hyperindexformat{\hyperpage}}{140}
+\indexentry{ruanjian@软件!004@错误控制|hyperindexformat{\hyperpage}}{141}
+\indexentry{ruanjian@软件!008@实用例程|hyperindexformat{\hyperpage}}{142}
+\indexentry{ruanjian@软件!001@算术例程|hyperindexformat{\hyperpage}}{143}
+\indexentry{ruanjian@软件!005@示例程序|hyperindexformat{\hyperpage}}{143}
+\indexentry{ruanjian@软件!007@系统结构|hyperindexformat{\hyperpage}}{145}

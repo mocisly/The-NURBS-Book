@@ -1,0 +1,28 @@
+% Shared packages/styles; load once in the main preamble after subfiles.
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[export]{adjustbox}
+\pgfplotsset{compat=1.18}
+\providecommand{\BookGeometryScale}{1}
+\providecommand{\BookAxisInverseScale}{1}
+\usetikzlibrary{arrows.meta,calc}
+\tikzset{
+  book line/.style={line width=.7pt},
+  book axis/.style={book line,-{Stealth[length=5pt]}},
+  book point/.style={circle,draw,fill=none,inner sep=1.5pt},
+  book grid/.style={line width=.35pt},
+  book figure bounds/.style={},
+  book panel tag/.style={anchor=north,outer sep=3pt},
+  every picture/.append style={font=\small}
+}
+% All drawings inherit the text color, including on dark book pages.
+% Inside main.tex the cwd is the project root; standalone chapters use ../.
+\providecommand{\BookImageRoot}{image_tex/}
+\ifdefined\ifSubfilesClassLoaded
+  \ifSubfilesClassLoaded{\renewcommand{\BookImageRoot}{../image_tex/}}{}
+\fi
+\newcommand{\BookFigure}[2][]{%
+  \begin{adjustbox}{#1}%
+    \input{\BookImageRoot#2}%
+  \end{adjustbox}%
+}

@@ -1,0 +1,25 @@
+"""Persist a compact live handoff; counts are read, never inferred."""
+from pathlib import Path
+import json,hashlib
+root=Path(__file__).resolve().parents[1];m=json.loads((root/'image_tex/manifest.json').read_text(encoding='utf-8'));v=json.loads((root/'image_tex/validation.json').read_text(encoding='utf-8'));entries=m['images']
+counts=f"LIVE {sum(bool(e.get('applied')) for e in entries)} applied / {sum((root/e['tex']).exists() for e in entries)} authored; {sum(e['kind']!='unused' and not e.get('applied') for e in entries)} ordinary pending; 1HTML pending."
+note='''# LATEST LIVE OVERRIDE - 2026-11-09 weight modifications
+
+COUNTS
+Chapters1..10 ALL native/chapter/finalbook VIEWED/PUBLISHED. Printed11.1..11.10 ALL native/reviewed/applied/actualchapter VIEWED/checkpointed. Eq11.14 source08 separately restored editable math, native body font verified via pypdf (10.959bp vs11.13 body), no resize. Eq11.14 native preview and actualchapter3eq1114-context VIEWED/checkpointed. 11.8 source09A/10B native and actualchapter4fig118-context VIEWED/checkpointed. 11.9 source11 AB native and actualchapter4fig119-context VIEWED/checkpointed. 11.10source12 native and actualchapter5fig1110-context VIEWED/checkpointed.
+
+ONLY LIVE FULL COMPILER 96346: chapter11-surface-relocation-batch.json, frozen379applied. freeze27960terminal0; full compiler started from surface-freeze.json. Wait SAME96346 terminal0 ->prepare_book_evidence.py batch terminal0 ->VIEW ALL affectedPNG ->publish_verified_book.py terminal0. NO duplicate book-check compiler. Root currently through11.7 unless validation says newer; exact root below. Working11.10/11.11 not in frozen batch. Next batch weight11.10..13 shouldinclude corrected text about weight displacement maximum.
+
+11.8/9 surface_relocation_example_data.py: same9x7 p3/q2 wavy surface, U cubic9ctrl .2/.35/.5/.71/.9, V quadratic7ctrl .2/.4/.6/.8. ZU+ZV graph, unitweights. single movesP43 at(.55,.55) exactlydeltaZ.6;four movesP43/P53/P44/P54 at(.6,.6) delta24/55 gamma1/2 exactlydeltaZ.6. Each360 whole tensorBezier vector coefficient identities/all30patches/exterior unchanged. four all4 wholeboundarycurves unchanged. Same camera1.5*(-.8x+.6y,-.36x-.48y+.8z),font10/bbox18x15cm/AB37cm. Pure math +surface_relocation_native.py /create/place_surface_single_control_relocation.py /create/place_surface_four_control_relocation.py. NO changes applied native files/common.tex/pipeline.
+
+11.10 create/place_weight_cross_ratio.py source12: representative nine-control cubic originalconceptpolygon, onlyw4=0,1,4;exact303 perspective identities and crossratio4 atubar.5. Native rational Bezier with certifiedscreenerror1e-5cm, 20x? actual x=y2cm, parent26cm/font10. All labels clear. Placed atEq11.22.
+
+CURRENT11.11 source13: ORIGINALVIEWED. create_single_weight_pull.py takes11/12; PUREweight_pull_data.py solvesP3/P5 coordinates from TWO exact printed target pairs: u.52,w.2->2.45,d.075 alongunit(-3/5,4/5);u.46,w.2->.97,d.075 alongunit(3/5,4/5). Rest9ctrl chosen, sameU asabove. Controls now[(0,0),(.2,0),(.3,.18),(.21389,.41298),(.4,.6),(.77181,.57434),(.85,.2),(.6,0),(.45,.15)] approximate;exactFractions inhelper. Data representative, never scan tracing. DO NOT modify after11.11applied. Both exact targetdistance-squared andEq11.25 newweights validated. Nativeactualrationalcurves with certscreenerror<=1e-5cm,x=y20cm,parent26cm/font10. 37exact perspective lines. FINAL11.11 previewVIEWED after removing dimension (crowded) and moving Phat aboveleft32pt/P4aboveright10pt, distancelegendtop-left; actualpullarrow P->Phat. Review/setwidth/apply/place11 ALLterminal0. CURRENTchapter compiler67379 in functions cellg3:2619 then render fig1111-context. Need wait SAMEterminal, VIEWactualchapter,checkpoint before NEXT11.12 originalnotyetVIEWED. Source14 is11.12,source15 is11.13. place_single_weight_pull.py takes11/12 removes old scans (12 originally wronginside2weightsection), inserts before item '与控制点重新定位的情况一样' afternotes. 11.11 place fixes mathematically FALSE generic peak claim: d(u)=|deltaW|R|Pk-C|/|w+deltaW R|, not generically maximum atRpeak. Caption preserves printed2.45/.075, explains representative data shared11/12. 12 expectedarrowdirectiondifferent: recheck anchors forlabelcrowding beforeapply.
+
+No agents/no commits/no contours/no final until ALLordinary+HTML+finalbook. LastHTML ch12existingunused581_354_248_827_744activatewhenreached/DONTduplicate. Skills read/PDFmarker already exactlyONCE/no relevant memoryhits. Serialmanifest writes and SAME process TERMINAL waits, notPASS alone. DoNOT edit image_tex/common.tex or scripts/image_tex.py.
+
+'''.replace('COUNTS',counts)
+note+=f"ROOT validation: {v.get('book_compile')}; rootSHA {hashlib.sha256((root/'main.pdf').read_bytes()).hexdigest()}.\n\n"
+f=root/'image_tex/current_work.md';old=f.read_text(encoding='utf-8');f.write_text(note+old,encoding='utf-8')
+readme=root/'image_tex/README.md';old=readme.read_text(encoding='utf-8');readme.write_text('# 当前进度（实时清单）\n\n'+counts+'\n\n最新整书验证：`'+str(v.get('book_compile'))+'`。逐图工作和编译句柄详见 current_work.md。\n\n'+old,encoding='utf-8')
+print(counts)

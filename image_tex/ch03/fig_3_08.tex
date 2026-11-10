@@ -1,0 +1,85 @@
+% Fig3.8: identical representative ten-control polygon in both panels.
+% (a) ninth-degree Bezier; (b) quadratic, seven internal knots i/8.
+% High-degree curve evaluated directly in stable Bernstein form, no outline tracing.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\begin{scope}[scale=\BookAxisInverseScale]
+\begin{axis}[at={(0,{9cm*\BookGeometryScale})},anchor=south west,scale only axis,width={12cm*\BookGeometryScale},height={6cm*\BookGeometryScale},
+xmin=0,xmax=12,ymin=-3,ymax=3,axis lines=none,ticks=none,clip=false]
+\addplot[book line,no marks,samples=241,domain=0:1] ({(1)*9*x^1*(1-x)^8+(1.5)*36*x^2*(1-x)^7+(3)*84*x^3*(1-x)^6+(5)*126*x^4*(1-x)^5+(6)*126*x^5*(1-x)^4+(8)*84*x^6*(1-x)^3+(9)*36*x^7*(1-x)^2+(11)*9*x^8*(1-x)^1+(12)*1*x^9*(1-x)^0},{(1.5)*9*x^1*(1-x)^8+(3)*84*x^3*(1-x)^6+(2.7)*126*x^4*(1-x)^5+(-3)*126*x^5*(1-x)^4+(-1.5)*36*x^7*(1-x)^2+(2)*9*x^8*(1-x)^1+(1.25)*1*x^9*(1-x)^0});
+\coordinate (A0) at (axis cs:0,0);
+\coordinate (A1) at (axis cs:1,1.5);
+\coordinate (A2) at (axis cs:1.5,0);
+\coordinate (A3) at (axis cs:3,3);
+\coordinate (A4) at (axis cs:5,2.7);
+\coordinate (A5) at (axis cs:6,-3);
+\coordinate (A6) at (axis cs:8,0);
+\coordinate (A7) at (axis cs:9,-1.5);
+\coordinate (A8) at (axis cs:11,2);
+\coordinate (A9) at (axis cs:12,1.25);
+\draw[book grid] (A0)--(A1)--(A2)--(A3)--(A4)--(A5)--(A6)--(A7)--(A8)--(A9);
+\node[book point] at (A0) {};
+\node[below left=4pt] at (A0) {$\mathbf P_{0}$};
+\node[book point] at (A1) {};
+\node[above left=4pt] at (A1) {$\mathbf P_{1}$};
+\node[book point] at (A2) {};
+\node[below right=4pt] at (A2) {$\mathbf P_{2}$};
+\node[book point] at (A3) {};
+\node[above left=4pt] at (A3) {$\mathbf P_{3}$};
+\node[book point] at (A4) {};
+\node[above right=4pt] at (A4) {$\mathbf P_{4}$};
+\node[book point] at (A5) {};
+\node[below=4pt] at (A5) {$\mathbf P_{5}$};
+\node[book point] at (A6) {};
+\node[above left=4pt] at (A6) {$\mathbf P_{6}$};
+\node[book point] at (A7) {};
+\node[below right=4pt] at (A7) {$\mathbf P_{7}$};
+\node[book point] at (A8) {};
+\node[above=4pt] at (A8) {$\mathbf P_{8}$};
+\node[book point] at (A9) {};
+\node[below right=4pt] at (A9) {$\mathbf P_{9}$};
+\end{axis}
+\end{scope}
+\node[book panel tag] at (6cm,8cm) {(a)};
+\begin{scope}[x=1cm,y=1cm,yshift=3cm]
+\coordinate (B0) at (0,0);
+\coordinate (B1) at (1,1.5);
+\coordinate (B2) at (1.5,0);
+\coordinate (B3) at (3,3);
+\coordinate (B4) at (5,2.7);
+\coordinate (B5) at (6,-3);
+\coordinate (B6) at (8,0);
+\coordinate (B7) at (9,-1.5);
+\coordinate (B8) at (11,2);
+\coordinate (B9) at (12,1.25);
+\draw[book grid] (B0)--(B1)--(B2)--(B3)--(B4)--(B5)--(B6)--(B7)--(B8)--(B9);
+\draw (0,0) .. controls (0.6666666667,1) and (1.0833333333,1.25) .. (1.25,0.75);
+\draw (1.25,0.75) .. controls (1.4166666667,0.25) and (1.75,0.5) .. (2.25,1.5);
+\draw (2.25,1.5) .. controls (2.75,2.5) and (3.3333333333,2.95) .. (4,2.85);
+\draw (4,2.85) .. controls (4.6666666667,2.75) and (5.1666666667,1.75) .. (5.5,-0.15);
+\draw (5.5,-0.15) .. controls (5.8333333333,-2.05) and (6.3333333333,-2.5) .. (7,-1.5);
+\draw (7,-1.5) .. controls (7.6666666667,-0.5) and (8.1666666667,-0.25) .. (8.5,-0.75);
+\draw (8.5,-0.75) .. controls (8.8333333333,-1.25) and (9.3333333333,-0.9166666667) .. (10,0.25);
+\draw (10,0.25) .. controls (10.6666666667,1.4166666667) and (11.3333333333,1.75) .. (12,1.25);
+\node[book point] at (B0) {};
+\node[below left=4pt] at (B0) {$\mathbf P_{0}$};
+\node[book point] at (B1) {};
+\node[above left=4pt] at (B1) {$\mathbf P_{1}$};
+\node[book point] at (B2) {};
+\node[below right=4pt] at (B2) {$\mathbf P_{2}$};
+\node[book point] at (B3) {};
+\node[above left=4pt] at (B3) {$\mathbf P_{3}$};
+\node[book point] at (B4) {};
+\node[above right=4pt] at (B4) {$\mathbf P_{4}$};
+\node[book point] at (B5) {};
+\node[below=4pt] at (B5) {$\mathbf P_{5}$};
+\node[book point] at (B6) {};
+\node[above left=4pt] at (B6) {$\mathbf P_{6}$};
+\node[book point] at (B7) {};
+\node[below right=4pt] at (B7) {$\mathbf P_{7}$};
+\node[book point] at (B8) {};
+\node[above=4pt] at (B8) {$\mathbf P_{8}$};
+\node[book point] at (B9) {};
+\node[below right=4pt] at (B9) {$\mathbf P_{9}$};
+\end{scope}
+\node[book panel tag] at (6cm,-1cm) {(b)};
+\end{tikzpicture}

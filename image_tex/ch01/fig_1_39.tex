@@ -1,0 +1,35 @@
+% Fig.1.27: exact cylindrical patch from Ex1.15, not illustrative fitting.
+% S(u,v)=(1-2v,(1-u^2)/(1+u^2),2u/(1+u^2)); y^2+z^2=1.
+% Homogeneous rows: (1,1,0,1),(1,1,1,1),(2,0,2,2), and their x-negative partners.
+\begin{tikzpicture}[x={(-2.2cm,-1.2cm)},y={(2.8cm,-.7cm)},
+  z={(0cm,3.6cm)},book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \def\u{(\t/160)}
+  \foreach \j/\x in {0/1,1/-1}{
+    \coordinate (P0\j) at (\x,1,0);
+    \coordinate (P1\j) at (\x,1,1);
+    \coordinate (P2\j) at (\x,0,1);
+    \draw[line width=.4pt,dashed] (P0\j)--(P1\j)--(P2\j);
+    \draw plot[variable=\t,domain=0:160,samples=161]
+      (\x,{(1-\u^2)/(1+\u^2)},{2*\u/(1+\u^2)});
+  }
+  \draw[line width=.4pt,dashed] (P10)--(P11);
+  \draw (P00)--(P01);
+  \draw (P20)--(P21);
+  \draw plot[variable=\t,domain=0:160,samples=161]
+    (0,{(1-\u^2)/(1+\u^2)},{2*\u/(1+\u^2)});
+  \draw (1,.6,.8)--(-1,.6,.8);
+  \draw[book axis,line width=.45pt] (0,0,0)--(1.9,0,0) node[below left] {$x$};
+  \draw[book axis,line width=.45pt] (0,0,0)--(0,2.2,0) node[right] {$y$};
+  \draw[book axis,line width=.45pt] (0,0,0)--(0,0,1.65) node[above] {$z$};
+  \foreach \j in {0,1} \foreach \i in {0,1,2} \fill (P\i\j) circle (1.4pt);
+  \node[below] at (P00) {$\mathbf P_{0,0}$};
+  \node[below right] at (P10) {$\mathbf P_{1,0}$};
+  \node[left] at (P20) {$\mathbf P_{2,0}$};
+  \node[right] at (P01) {$\mathbf P_{0,1}$};
+  \node[right] at (P11) {$\mathbf P_{1,1}$};
+  \node[above] at (P21) {$\mathbf P_{2,1}$};
+  \node[right,yshift=-3pt] at (0,{(1-.35^2)/(1+.35^2)},{2*.35/(1+.35^2)}) {$\mathbf C_{v_0}(u)$};
+  \node at (canvas cs:x=-1.3cm,y=3.9cm) {$\mathbf C_{u_0}(v)$};
+  \draw[-{Stealth[length=4pt]},line width=.35pt] (canvas cs:x=-.4cm,y=3.7cm)--(.5,.6,.8);
+  \fill (0,.6,.8) circle (1.5pt);
+\end{tikzpicture}

@@ -1,0 +1,43 @@
+% Representative six-point cubic hat curve, U0quad,.3,.7,1quad; unit weights.
+% Middle Bezier controls extracted exactly, then b=R3*M3*B computed in global u.
+% Coefficient arrows display b_i/10, not endpoint derivatives or local-t coefficients.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\path[book figure bounds] (-7.8,-3.2489795918) rectangle (7.8,9.8);
+\draw[book grid] (-6,4)--(-3,4)--(-3,8)--(3,8)--(3,4)--(6,4);
+\draw (-6,4) .. controls (-3,4) and (-3,5.7142857143) .. (-2.2285714286,6.693877551);
+\draw (-2.2285714286,6.693877551) .. controls (-1.2,8) and (1.2,8) .. (2.2285714286,6.693877551);
+\draw (2.2285714286,6.693877551) .. controls (3,5.7142857143) and (3,4) .. (6,4);
+\draw (-6,4) circle[radius=1.7pt];
+\draw (-3,4) circle[radius=1.7pt];
+\draw (-3,8) circle[radius=1.7pt];
+\draw (3,8) circle[radius=1.7pt];
+\draw (3,4) circle[radius=1.7pt];
+\draw (6,4) circle[radius=1.7pt];
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (-2.2285714286,6.693877551) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (-2.0643428571,6.88) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (-1.8816,7.0465306122) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (-1.6824,7.1934693878) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (-1.4688,7.3208163265) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (-1.2428571429,7.4285714286) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (-1.0066285714,7.5167346939) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (-0.7621714286,7.5853061224) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (-0.5115428571,7.6342857143) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (-0.2568,7.6636734694) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (0,7.6734693878) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (0.2568,7.6636734694) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (0.5115428571,7.6342857143) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (0.7621714286,7.5853061224) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (1.0066285714,7.5167346939) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (1.2428571429,7.4285714286) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (1.4688,7.3208163265) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (1.6824,7.1934693878) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (1.8816,7.0465306122) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (2.0643428571,6.88) {};
+\node[rectangle,draw,line width=.35pt,inner sep=1.6pt] at (2.2285714286,6.693877551) {};
+\draw[book axis] (0,0)--(6.8,0) node[right=4pt] {$x$};
+\draw[book axis] (0,0)--(0,5.2) node[above=4pt] {$y$};
+\draw[book axis] (0,0)--(-0.1071428571,0.1551020408) node[above right=6pt] {$\mathbf b_0$};
+\draw[book axis] (0,0)--(-1.9285714286,2.4489795918) node[above left=6pt] {$\mathbf b_1$};
+\draw[book axis] (0,0)--(6.4285714286,-2.4489795918) node[below right=6pt] {$\mathbf b_2$};
+\draw[book axis] (0,0)--(-4.2857142857,0) node[below=6pt] {$\mathbf b_3$};
+\end{tikzpicture}

@@ -1,0 +1,24 @@
+% Fig. 1.17: cubic de Casteljau at u0=2/5, all levels computed from controls.
+% P0=(0,0), P1=(1.6,3.6), P2=(6.2,3.6), P3=(8,0).
+% Representative controls; original numeric source data are unavailable.
+\begin{tikzpicture}[book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \coordinate (P0) at (0,0); \coordinate (P1) at (1.6,3.6);
+  \coordinate (P2) at (6.2,3.6); \coordinate (P3) at (8,0);
+  \foreach \i/\j in {0/1,1/2,2/3}
+    \coordinate (Q\i) at ($(P\i)!.4!(P\j)$);
+  \foreach \i/\j in {0/1,1/2}
+    \coordinate (R\i) at ($(Q\i)!.4!(Q\j)$);
+  \coordinate (S0) at ($(R0)!.4!(R1)$);
+  \foreach \a/\b in {P0/P1,P1/P2,P2/P3,Q0/Q1,Q1/Q2,R0/R1}
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (\a)--(\b);
+  \draw[shorten <=2pt,shorten >=2pt] (P0) .. controls (P1) and (P2) .. (P3);
+  \foreach \i/\pos in {0/below left,1/above,2/above,3/below right}
+    \node[book point,label=\pos:{$\mathbf P_{\i}$}] at (P\i) {};
+  \node[book point,label=left:{$\mathbf P_{1,0}$}] at (Q0) {};
+  \node[book point,label=above:{$\mathbf P_{1,1}$}] at (Q1) {};
+  \node[book point,label=right:{$\mathbf P_{1,2}$}] at (Q2) {};
+  \node[book point,label={[yshift=8pt]above:{$\mathbf P_{2,0}$}}] at (R0) {};
+  \node[book point,label=above:{$\mathbf P_{2,1}$}] at (R1) {};
+  \node[book point,label=below:{$\mathbf P_{3,0}$}] at (S0) {};
+  \node at (4,-.65) {$u_0=\frac25$};
+\end{tikzpicture}

@@ -1,0 +1,86 @@
+{
+  "status": "complete",
+  "date": "2026-11-09",
+  "archived_reports": [
+    "final-book-validation.json",
+    "final-native-audit.json",
+    "final-pdf-audit.json",
+    "final-native-book-batch.json",
+    "final-native-book-freeze.json",
+    "final-native-book-published.json",
+    "book-check-result.json",
+    "final-scan.txt"
+  ],
+  "removed": [
+    {
+      "path": "image_tex/build",
+      "files": 54933,
+      "bytes": 3378139665.0
+    },
+    {
+      "path": "image_tex/backups",
+      "files": 13,
+      "bytes": 1066729.0
+    },
+    {
+      "path": "image_tex/unused",
+      "files": 0,
+      "bytes": null
+    },
+    {
+      "path": "_minted-main",
+      "files": 0,
+      "bytes": null
+    },
+    {
+      "path": "scripts/__pycache__",
+      "files": 136,
+      "bytes": 1066433.0
+    },
+    {
+      "path": "scripts/.mypy_cache",
+      "files": 155,
+      "bytes": 8720014.0
+    },
+    {
+      "path": "image_tex/current_work.md",
+      "files": 1,
+      "bytes": 1093.0
+    },
+    {
+      "path": "image_tex/continuous_notes.md",
+      "files": 1,
+      "bytes": 64849.0
+    },
+    {
+      "path": "main.aux",
+      "files": 1,
+      "bytes": 18668.0
+    },
+    {
+      "path": "main.log",
+      "files": 1,
+      "bytes": 113333.0
+    },
+    {
+      "path": "main.out",
+      "files": 1,
+      "bytes": 12986.0
+    },
+    {
+      "path": "main.toc",
+      "files": 1,
+      "bytes": 10050.0
+    },
+    {
+      "path": "main.synctex.gz",
+      "files": 1,
+      "bytes": 3278797.0
+    }
+  ],
+  "removed_bytes": 3392492617.0,
+  "protected_files_verified": 1597,
+  "protected_files_unchanged": true,
+  "published_pdf_sha256": "363115086c22a425f1dfc3b9bdaeeb0a71bf42f400f00a9f1231445cfd58a488",
+  "note": "Historical manifest evidence paths refer to removed previews and frozen builds. Regenerate evidence before running those validation workflows."
+}

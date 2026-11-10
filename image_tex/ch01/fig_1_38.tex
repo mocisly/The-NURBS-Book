@@ -1,0 +1,38 @@
+% Fig.1.26(b): same Pij as Fig.1.24(b), only w01=5, all other weights=1.
+% Srat=(S+4*f*P01)/(1+4*f). P01=(2/3,-2,2.2), f=B02*B13.
+\begin{tikzpicture}[x={(-.9cm,-.45cm)},y={(1.1cm,-.25cm)},
+  z={(0cm,1cm)},book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \path[book figure bounds] (canvas cs:x=-5.5cm,y=-4.2cm) rectangle (canvas cs:x=6.4cm,y=5.1cm);
+  \def\s{(\t/60)}
+  \pgfmathdeclarefunction{bezsurfz}{2}{\pgfmathparse{
+    (1-#1)^2*(6.6*#2*(1-#2)^2+2.4*#2^2*(1-#2)+3*#2^3)
+    +2*#1*(1-#1)*(.2*(1-#2)^3+8.4*#2*(1-#2)^2+3.9*#2^2*(1-#2)+3.5*#2^3)
+    +#1^2*(-.9*(1-#2)^3+2.7*#2*(1-#2)^2+1.2*#2^2*(1-#2)+2*#2^3)}}
+  \pgfmathdeclarefunction{rprod}{2}{\pgfmathparse{(1-#1)^2*3*#2*(1-#2)^2}}
+  \pgfmathdeclarefunction{ratX}{2}{\pgfmathparse{(2-4*#2+(8/3)*rprod(#1,#2))/(1+4*rprod(#1,#2))}}
+  \pgfmathdeclarefunction{ratY}{2}{\pgfmathparse{(4*#1-2-8*rprod(#1,#2))/(1+4*rprod(#1,#2))}}
+  \pgfmathdeclarefunction{ratZ}{2}{\pgfmathparse{(bezsurfz(#1,#2)+8.8*rprod(#1,#2))/(1+4*rprod(#1,#2))}}
+
+  \foreach \i/\j/\z in {0/0/0,0/1/2.2,0/2/.8,0/3/3,1/0/.2,1/1/2.8,1/2/1.3,1/3/3.5,2/0/-.9,2/1/.9,2/2/.4,2/3/2}
+    \coordinate (P\i\j) at ({2-4*\j/3},{2*\i-2},\z);
+  \foreach \i in {0,1,2}
+    \draw[line width=.35pt,dashed] (P\i0)--(P\i1)--(P\i2)--(P\i3);
+  \foreach \j in {0,1,2,3}
+    \draw[line width=.35pt,dashed] (P0\j)--(P1\j)--(P2\j);
+  \foreach \k in {0,...,4}
+    \draw plot[variable=\t,domain=0:60,samples=61] ({ratX(\k/4,\s)},{ratY(\k/4,\s)},{ratZ(\k/4,\s)});
+  \foreach \k in {0,...,6}
+    \draw plot[variable=\t,domain=0:60,samples=61] ({ratX(\s,\k/6)},{ratY(\s,\k/6)},{ratZ(\s,\k/6)});
+  \draw[book axis,line width=.45pt] (0,0,0)--(3.4,0,0) node[below left] {$x$};
+  \draw[book axis,line width=.45pt] (0,0,0)--(0,4,0) node[right] {$y$};
+  \draw[book axis,line width=.45pt] (0,0,0)--(0,0,4.5) node[above] {$z$};
+  \foreach \i in {0,1,2} \foreach \j in {0,1,2,3} \fill (P\i\j) circle (1.2pt);
+  \node[left] at (P00) {$\mathbf P_{0,0}$};
+  \node[above left] at (P01) {$\mathbf P_{0,1}$};
+  \node[below left,xshift=-5pt] at (P01) {$w_{0,1}=5$};
+  \node[above left] at (P03) {$\mathbf P_{0,3}$};
+  \node[below] at (P20) {$\mathbf P_{2,0}$};
+  \node[below right] at (P22) {$\mathbf P_{2,2}$};
+  \node[right] at (P23) {$\mathbf P_{2,3}$};
+  \node[book panel tag] at (canvas cs:x=.5cm,y=-4cm) {(b)};
+\end{tikzpicture}

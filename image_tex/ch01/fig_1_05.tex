@@ -1,0 +1,8 @@
+% Fig. 1.5: C(u)=a0+u*a1, 0<=u<=1; representative coordinates.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (5.2,3.4);
+  \draw[book axis] (A) -- (B) node[pos=.5,above left] {$\mathbf a_1$};
+  \node[book point,label=below:{$\mathbf a_0$}] at (A) {};
+  \node[book point,label=above right:{$\mathbf a_0+\mathbf a_1$}] at (B) {};
+\end{tikzpicture}

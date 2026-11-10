@@ -1,0 +1,3582 @@
+[
+  {
+    "path": "ch01/fig_1_01.tex",
+    "kind": "reference size",
+    "target_width_cm": 99,
+    "target_height_cm": 99,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch01/fig_1_02.tex",
+    "kind": "reference size",
+    "target_width_cm": 99,
+    "target_height_cm": 99,
+    "panels": 0,
+    "nodes": 5
+  },
+  {
+    "path": "ch01/fig_1_03.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch01/fig_1_04.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 5.5,
+    "target_height_cm": 5,
+    "panels": 0,
+    "nodes": 6
+  },
+  {
+    "path": "ch01/fig_1_05.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch01/fig_1_06.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch01/fig_1_07.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch01/fig_1_08.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 6
+  },
+  {
+    "path": "ch01/fig_1_09.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 14,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 12,
+    "reason": "individual proof: annotation clearance"
+  },
+  {
+    "path": "ch01/fig_1_10.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 9
+  },
+  {
+    "path": "ch01/fig_1_11.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 2
+  },
+  {
+    "path": "ch01/fig_1_12.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch01/fig_1_13.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 2
+  },
+  {
+    "path": "ch01/fig_1_14.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 2
+  },
+  {
+    "path": "ch01/fig_1_15.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 6
+  },
+  {
+    "path": "ch01/fig_1_16.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 4
+  },
+  {
+    "path": "ch01/fig_1_17.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 2
+  },
+  {
+    "path": "ch01/fig_1_18.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch01/fig_1_19.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch01/fig_1_20.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch01/fig_1_21.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch01/fig_1_22.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch01/fig_1_23.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 18
+  },
+  {
+    "path": "ch01/fig_1_24.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 14
+  },
+  {
+    "path": "ch01/fig_1_25.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 14
+  },
+  {
+    "path": "ch01/fig_1_26.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 5
+  },
+  {
+    "path": "ch01/fig_1_27.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 5.5,
+    "panels": 0,
+    "nodes": 8,
+    "reason": "individual proof: annotation clearance"
+  },
+  {
+    "path": "ch01/fig_1_28.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 15
+  },
+  {
+    "path": "ch01/fig_1_29.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 14
+  },
+  {
+    "path": "ch01/fig_1_30.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch01/fig_1_31.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 10,
+    "reason": "individual proof: annotation clearance"
+  },
+  {
+    "path": "ch01/fig_1_32.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 7,
+    "reason": "individual proof: annotation clearance"
+  },
+  {
+    "path": "ch01/fig_1_33.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 11,
+    "reason": "individual proof: annotation clearance"
+  },
+  {
+    "path": "ch01/fig_1_34.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 12
+  },
+  {
+    "path": "ch01/fig_1_35.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 10
+  },
+  {
+    "path": "ch01/fig_1_36.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 11
+  },
+  {
+    "path": "ch01/fig_1_37.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 12
+  },
+  {
+    "path": "ch01/fig_1_38.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 11
+  },
+  {
+    "path": "ch01/fig_1_39.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 11
+  },
+  {
+    "path": "ch02/fig_2_01.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 5
+  },
+  {
+    "path": "ch02/fig_2_02.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 5.5,
+    "panels": 0,
+    "nodes": 12,
+    "reason": "individual proof: annotation clearance"
+  },
+  {
+    "path": "ch02/fig_2_03.tex",
+    "kind": "annotated function plot",
+    "target_width_cm": 9.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 5
+  },
+  {
+    "path": "ch02/fig_2_04.tex",
+    "kind": "single geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 4,
+    "reason": "individual proof: annotation clearance"
+  },
+  {
+    "path": "ch02/fig_2_05.tex",
+    "kind": "annotated function plot",
+    "target_width_cm": 9.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch02/fig_2_06.tex",
+    "kind": "annotated function plot",
+    "target_width_cm": 9.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch02/fig_2_07.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch02/fig_2_08.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch02/fig_2_09.tex",
+    "kind": "annotated function plot",
+    "target_width_cm": 9.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 5
+  },
+  {
+    "path": "ch02/fig_2_10.tex",
+    "kind": "annotated function plot",
+    "target_width_cm": 9.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch02/fig_2_11.tex",
+    "kind": "annotated function plot",
+    "target_width_cm": 12,
+    "target_height_cm": 11,
+    "panels": 2,
+    "nodes": 18,
+    "reason": "individual proof: annotation clearance"
+  },
+  {
+    "path": "ch02/fig_2_12.tex",
+    "kind": "annotated function plot",
+    "target_width_cm": 12,
+    "target_height_cm": 11,
+    "panels": 2,
+    "nodes": 25,
+    "reason": "individual proof: annotation clearance"
+  },
+  {
+    "path": "ch02/fig_2_13.tex",
+    "kind": "annotated function plot",
+    "target_width_cm": 9.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch02/fig_2_14.tex",
+    "kind": "annotated function plot",
+    "target_width_cm": 9.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch02/fig_2_15.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 6
+  },
+  {
+    "path": "ch02/fig_2_16.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 11
+  },
+  {
+    "path": "ch02/fig_2_17.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch03/fig_3_01.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 5
+  },
+  {
+    "path": "ch03/fig_3_02.tex",
+    "kind": "basis and control polygon pair",
+    "target_width_cm": 12,
+    "target_height_cm": 10.5,
+    "panels": 2,
+    "nodes": 18
+  },
+  {
+    "path": "ch03/fig_3_03.tex",
+    "kind": "basis and control polygon pair",
+    "target_width_cm": 12,
+    "target_height_cm": 10.5,
+    "panels": 2,
+    "nodes": 18
+  },
+  {
+    "path": "ch03/fig_3_04.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 5.5,
+    "panels": 0,
+    "nodes": 8,
+    "reason": "individual proof: derivative and control labels"
+  },
+  {
+    "path": "ch03/fig_3_05.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 5.5,
+    "panels": 0,
+    "nodes": 8,
+    "reason": "individual proof: derivative and control labels"
+  },
+  {
+    "path": "ch03/fig_3_06.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch03/fig_3_07.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 5.5,
+    "panels": 0,
+    "nodes": 10,
+    "reason": "individual proof: derivative and control labels"
+  },
+  {
+    "path": "ch03/fig_3_08.tex",
+    "kind": "basis and control polygon pair",
+    "target_width_cm": 12,
+    "target_height_cm": 10.5,
+    "panels": 2,
+    "nodes": 42
+  },
+  {
+    "path": "ch03/fig_3_09.tex",
+    "kind": "basis and control polygon pair",
+    "target_width_cm": 12,
+    "target_height_cm": 10.5,
+    "panels": 0,
+    "nodes": 12
+  },
+  {
+    "path": "ch03/fig_3_10.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch03/fig_3_11.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch03/fig_3_12.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch03/fig_3_13.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 11
+  },
+  {
+    "path": "ch03/fig_3_14.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 10,
+    "target_height_cm": 11,
+    "panels": 2,
+    "nodes": 22
+  },
+  {
+    "path": "ch03/fig_3_15.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 9,
+    "target_height_cm": 9,
+    "panels": 2,
+    "nodes": 24,
+    "reason": "individual proof: derivative and control labels"
+  },
+  {
+    "path": "ch03/fig_3_16.tex",
+    "kind": "single geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 7,
+    "panels": 1,
+    "nodes": 17,
+    "reason": "individual proof: derivative and control labels"
+  },
+  {
+    "path": "ch03/fig_3_17.tex",
+    "kind": "single geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 7,
+    "panels": 1,
+    "nodes": 11,
+    "reason": "individual proof: derivative and control labels"
+  },
+  {
+    "path": "ch03/fig_3_18.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch03/fig_3_19.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 12
+  },
+  {
+    "path": "ch03/fig_3_20.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 24
+  },
+  {
+    "path": "ch03/fig_3_21.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 10
+  },
+  {
+    "path": "ch03/fig_3_22.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch03/fig_3_23.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch03/fig_3_24.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch03/fig_3_25.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 9
+  },
+  {
+    "path": "ch03/fig_3_26.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch03/fig_3_27.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 6
+  },
+  {
+    "path": "ch03/fig_3_28.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch04/fig_4_01.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 9,
+    "target_height_cm": 9,
+    "panels": 2,
+    "nodes": 30,
+    "reason": "individual proof: stacked plots and knot labels"
+  },
+  {
+    "path": "ch04/fig_4_02.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 18,
+    "reason": "individual proof: stacked plots and knot labels"
+  },
+  {
+    "path": "ch04/fig_4_03.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 9.5,
+    "target_height_cm": 11.5,
+    "panels": 3,
+    "nodes": 44,
+    "reason": "individual proof: stacked plots and knot labels"
+  },
+  {
+    "path": "ch04/fig_4_04.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 14
+  },
+  {
+    "path": "ch04/fig_4_05.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 9.5,
+    "target_height_cm": 11.5,
+    "panels": 3,
+    "nodes": 35,
+    "reason": "individual proof: stacked plots and knot labels"
+  },
+  {
+    "path": "ch04/fig_4_06.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 18
+  },
+  {
+    "path": "ch04/fig_4_07.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 17
+  },
+  {
+    "path": "ch04/fig_4_08.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 14
+  },
+  {
+    "path": "ch04/fig_4_09.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch04/fig_4_10.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 12
+  },
+  {
+    "path": "ch04/fig_4_11.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 12
+  },
+  {
+    "path": "ch04/fig_4_12.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 6
+  },
+  {
+    "path": "ch04/fig_4_13.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 6
+  },
+  {
+    "path": "ch04/fig_4_14.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch04/fig_4_15.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch05/fig_5_01.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 13,
+    "target_height_cm": 12,
+    "panels": 2,
+    "nodes": 31,
+    "reason": "individual proof: stacked plots and knot labels"
+  },
+  {
+    "path": "ch05/fig_5_02.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 13,
+    "target_height_cm": 12,
+    "panels": 2,
+    "nodes": 31,
+    "reason": "individual proof: stacked plots and knot labels"
+  },
+  {
+    "path": "ch05/fig_5_03.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 1,
+    "nodes": 20,
+    "reason": "individual proof: stacked plots and knot labels"
+  },
+  {
+    "path": "ch05/fig_5_04.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 1,
+    "nodes": 18,
+    "reason": "individual proof: stacked plots and knot labels"
+  },
+  {
+    "path": "ch05/fig_5_05.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 20,
+    "reason": "individual proof: stacked plots and knot labels"
+  },
+  {
+    "path": "ch05/fig_5_06.tex",
+    "kind": "single geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 8,
+    "panels": 0,
+    "nodes": 18,
+    "reason": "individual proof: stacked plots and knot labels"
+  },
+  {
+    "path": "ch05/fig_5_07.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 26
+  },
+  {
+    "path": "ch05/fig_5_08.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch05/fig_5_09.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch05/fig_5_10.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch05/fig_5_10c_reference.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch05/fig_5_11.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 16,
+    "target_height_cm": 12,
+    "panels": 3,
+    "nodes": 30,
+    "reason": "individual proof: control net and equality labels"
+  },
+  {
+    "path": "ch05/fig_5_12.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch05/fig_5_13.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_14.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_15.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch05/fig_5_16.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch05/fig_5_17.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch05/fig_5_18.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch05/fig_5_19.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch05/fig_5_20.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_21.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch05/fig_5_22.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 9
+  },
+  {
+    "path": "ch05/fig_5_23.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 9
+  },
+  {
+    "path": "ch05/fig_5_24.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_25.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch05/fig_5_26.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch05/fig_5_27.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 12
+  },
+  {
+    "path": "ch05/fig_5_28.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 11
+  },
+  {
+    "path": "ch05/fig_5_29.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 16,
+    "reason": "individual proof: control net and equality labels"
+  },
+  {
+    "path": "ch05/fig_5_30.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 1
+  },
+  {
+    "path": "ch05/fig_5_31.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch05/fig_5_32.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch05/fig_5_33.tex",
+    "kind": "single geometry",
+    "target_width_cm": 13,
+    "target_height_cm": 8,
+    "panels": 0,
+    "nodes": 13,
+    "reason": "individual proof: control net and equality labels"
+  },
+  {
+    "path": "ch05/fig_5_34.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 1
+  },
+  {
+    "path": "ch05/fig_5_35.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch05/fig_5_36.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch05/fig_5_37.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_38.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_39.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch05/fig_5_40.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch05/fig_5_41.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch05/fig_5_42.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_43.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_44.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_45.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_46.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_47.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 4
+  },
+  {
+    "path": "ch05/fig_5_48.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 4
+  },
+  {
+    "path": "ch05/fig_5_49.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 4
+  },
+  {
+    "path": "ch05/fig_5_50.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 4
+  },
+  {
+    "path": "ch05/fig_5_51.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 6,
+    "reason": "individual proof: long control-point labels"
+  },
+  {
+    "path": "ch05/fig_5_52.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch05/fig_5_53.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch05/fig_5_54.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_55.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch05/fig_5_56.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch05/fig_5_57.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 16
+  },
+  {
+    "path": "ch05/fig_5_58.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 16
+  },
+  {
+    "path": "ch05/fig_5_59.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 16
+  },
+  {
+    "path": "ch05/fig_5_60.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 16
+  },
+  {
+    "path": "ch05/fig_5_61.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 16,
+    "target_height_cm": 9,
+    "panels": 2,
+    "nodes": 38,
+    "reason": "individual proof: long control-point labels"
+  },
+  {
+    "path": "ch05/fig_5_62.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch05/fig_5_63.tex",
+    "kind": "annotated multiple panels",
+    "target_width_cm": 12,
+    "target_height_cm": 6.5,
+    "panels": 2,
+    "nodes": 13
+  },
+  {
+    "path": "ch05/table_5_01.tex",
+    "kind": "single geometry",
+    "target_width_cm": 14,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 10,
+    "reason": "individual proof: indexed table formulas"
+  },
+  {
+    "path": "ch06/fig_6_01.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch06/fig_6_02.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch06/fig_6_03.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch06/fig_6_04.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 15,
+    "reason": "individual proof: insets and bottom formulas"
+  },
+  {
+    "path": "ch06/fig_6_05.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch06/fig_6_06.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch06/fig_6_07.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch06/fig_6_08.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch06/fig_6_09.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 6
+  },
+  {
+    "path": "ch06/fig_6_10.tex",
+    "kind": "dense labels / diagram",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 29
+  },
+  {
+    "path": "ch06/fig_6_11.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 15,
+    "target_height_cm": 9,
+    "panels": 2,
+    "nodes": 17,
+    "reason": "individual proof: insets and bottom formulas"
+  },
+  {
+    "path": "ch06/fig_6_12.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 15,
+    "target_height_cm": 9,
+    "panels": 2,
+    "nodes": 17,
+    "reason": "individual proof: insets and bottom formulas"
+  },
+  {
+    "path": "ch06/fig_6_13.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch06/fig_6_14.tex",
+    "kind": "dense labels / diagram",
+    "target_width_cm": 14,
+    "target_height_cm": 10,
+    "panels": 1,
+    "nodes": 29,
+    "reason": "individual proof: insets and bottom formulas"
+  },
+  {
+    "path": "ch06/fig_6_15.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 14,
+    "target_height_cm": 10,
+    "panels": 2,
+    "nodes": 58,
+    "reason": "individual proof: insets and bottom formulas"
+  },
+  {
+    "path": "ch06/fig_6_16.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch06/fig_6_17.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch06/fig_6_18.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch06/fig_6_19.tex",
+    "kind": "dense labels / diagram",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 28
+  },
+  {
+    "path": "ch06/fig_6_20.tex",
+    "kind": "dense labels / diagram",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 29
+  },
+  {
+    "path": "ch06/fig_6_21.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 14
+  },
+  {
+    "path": "ch06/fig_6_22.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 7
+  },
+  {
+    "path": "ch06/fig_6_23.tex",
+    "kind": "dense labels / diagram",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 27
+  },
+  {
+    "path": "ch06/fig_6_24.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch06/fig_6_25.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 12
+  },
+  {
+    "path": "ch06/fig_6_26.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 9
+  },
+  {
+    "path": "ch06/fig_6_27.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 16,
+    "target_height_cm": 9,
+    "panels": 2,
+    "nodes": 35,
+    "reason": "individual proof: parameter lists and knot fractions"
+  },
+  {
+    "path": "ch06/fig_6_28.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch06/fig_6_29.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch07/fig_7_01.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch07/fig_7_02.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 5,
+    "reason": "individual proof: parameter lists and knot fractions"
+  },
+  {
+    "path": "ch07/fig_7_03.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 5,
+    "reason": "individual proof: parameter lists and knot fractions"
+  },
+  {
+    "path": "ch07/fig_7_04.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 4,
+    "reason": "individual proof: parameter lists and knot fractions"
+  },
+  {
+    "path": "ch07/fig_7_05.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch07/fig_7_06.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch07/fig_7_07.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch07/fig_7_08.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch07/fig_7_09.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch07/fig_7_10.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch07/fig_7_11.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch07/fig_7_12.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch07/fig_7_13.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch07/fig_7_14.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch07/fig_7_15.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch07/fig_7_16.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 11
+  },
+  {
+    "path": "ch07/fig_7_17.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6,
+    "panels": 1,
+    "nodes": 17,
+    "reason": "individual proof: parameter lists and knot fractions"
+  },
+  {
+    "path": "ch07/fig_7_18.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 9
+  },
+  {
+    "path": "ch07/fig_7_19.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6,
+    "panels": 1,
+    "nodes": 14,
+    "reason": "individual proof: parameter lists and knot fractions"
+  },
+  {
+    "path": "ch07/fig_7_20.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 6
+  },
+  {
+    "path": "ch07/fig_7_21.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 9
+  },
+  {
+    "path": "ch07/fig_7_22.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 17
+  },
+  {
+    "path": "ch07/fig_7_23.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 17
+  },
+  {
+    "path": "ch07/fig_7_24.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 24
+  },
+  {
+    "path": "ch07/fig_7_25.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 3
+  },
+  {
+    "path": "ch07/fig_7_26.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 3
+  },
+  {
+    "path": "ch07/fig_7_27.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 6
+  },
+  {
+    "path": "ch07/fig_7_28.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch07/fig_7_29.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch07/fig_7_30.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 16
+  },
+  {
+    "path": "ch07/fig_7_31.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 8
+  },
+  {
+    "path": "ch07/fig_7_32.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 22
+  },
+  {
+    "path": "ch07/fig_7_33.tex",
+    "kind": "single geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 6,
+    "panels": 1,
+    "nodes": 14,
+    "reason": "individual proof: projected control labels"
+  },
+  {
+    "path": "ch07/fig_7_34.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 7
+  },
+  {
+    "path": "ch07/fig_7_35.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 14,
+    "target_height_cm": 7,
+    "panels": 2,
+    "nodes": 16,
+    "reason": "individual proof: projected control labels"
+  },
+  {
+    "path": "ch07/fig_7_36.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 11
+  },
+  {
+    "path": "ch07/fig_7_37.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 6
+  },
+  {
+    "path": "ch07/fig_7_38.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 6
+  },
+  {
+    "path": "ch07/fig_7_39.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 6
+  },
+  {
+    "path": "ch07/fig_7_40.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 7,
+    "reason": "individual proof: projected control labels"
+  },
+  {
+    "path": "ch08/fig_8_01.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 17
+  },
+  {
+    "path": "ch08/fig_8_02.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch08/fig_8_03.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch08/fig_8_04.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch08/fig_8_05.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 7,
+    "panels": 1,
+    "nodes": 16,
+    "reason": "individual proof: projected control labels"
+  },
+  {
+    "path": "ch08/fig_8_06.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 14,
+    "target_height_cm": 8,
+    "panels": 2,
+    "nodes": 31,
+    "reason": "individual proof: projected control labels"
+  },
+  {
+    "path": "ch08/fig_8_07.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 12
+  },
+  {
+    "path": "ch08/fig_8_08.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch08/fig_8_09.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch08/fig_8_10.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch08/fig_8_11.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch08/fig_8_12.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 10,
+    "target_height_cm": 8.5,
+    "panels": 0,
+    "nodes": 19,
+    "reason": "individual proof: indexed labels and parameter bar legends"
+  },
+  {
+    "path": "ch08/fig_8_13.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch08/fig_8_14.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch08/fig_8_15.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch08/fig_8_16.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 5
+  },
+  {
+    "path": "ch08/fig_8_17.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch08/fig_8_18.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch08/fig_8_19.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch08/fig_8_20.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch08/fig_8_21.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 8,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 18,
+    "reason": "individual proof: indexed labels and parameter bar legends"
+  },
+  {
+    "path": "ch08/fig_8_22.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 6
+  },
+  {
+    "path": "ch08/fig_8_23.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 13
+  },
+  {
+    "path": "ch08/fig_8_24.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 11
+  },
+  {
+    "path": "ch09/fig_9_01.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch09/fig_9_02.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch09/fig_9_03.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 21,
+    "reason": "individual proof: indexed labels and parameter bar legends"
+  },
+  {
+    "path": "ch09/fig_9_04.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 3,
+    "reason": "individual proof: indexed labels and parameter bar legends"
+  },
+  {
+    "path": "ch09/fig_9_05.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 3,
+    "reason": "individual proof: indexed labels and parameter bar legends"
+  },
+  {
+    "path": "ch09/fig_9_06.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 3,
+    "reason": "individual proof: indexed labels and parameter bar legends"
+  },
+  {
+    "path": "ch09/fig_9_07.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_08.tex",
+    "kind": "single geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 3,
+    "reason": "individual proof: indexed labels and parameter bar legends"
+  },
+  {
+    "path": "ch09/fig_9_09.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch09/fig_9_10.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_11.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_12.tex",
+    "kind": "single geometry",
+    "target_width_cm": 11,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 3,
+    "reason": "individual proof: indexed labels and parameter bar legends"
+  },
+  {
+    "path": "ch09/fig_9_13.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_14.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 14,
+    "target_height_cm": 8,
+    "panels": 2,
+    "nodes": 39,
+    "reason": "individual proof: dense interpolation point labels"
+  },
+  {
+    "path": "ch09/fig_9_15.tex",
+    "kind": "single geometry",
+    "target_width_cm": 10,
+    "target_height_cm": 8.5,
+    "panels": 1,
+    "nodes": 22,
+    "reason": "individual proof: dense interpolation point labels"
+  },
+  {
+    "path": "ch09/fig_9_16.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch09/fig_9_17.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch09/fig_9_18.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch09/fig_9_19.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch09/fig_9_20.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch09/fig_9_21.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch09/fig_9_22.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch09/fig_9_23.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 11,
+    "reason": "individual proof: dense interpolation point labels"
+  },
+  {
+    "path": "ch09/fig_9_24.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 11,
+    "reason": "individual proof: dense interpolation point labels"
+  },
+  {
+    "path": "ch09/fig_9_25.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8,
+    "target_height_cm": 6,
+    "panels": 1,
+    "nodes": 12,
+    "reason": "individual proof: dense interpolation point labels"
+  },
+  {
+    "path": "ch09/fig_9_26.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8,
+    "target_height_cm": 6,
+    "panels": 1,
+    "nodes": 12,
+    "reason": "individual proof: dense interpolation point labels"
+  },
+  {
+    "path": "ch09/fig_9_27.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 9
+  },
+  {
+    "path": "ch09/fig_9_28.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 18
+  },
+  {
+    "path": "ch09/fig_9_29.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch09/fig_9_30.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch09/fig_9_31.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_32.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch09/fig_9_33.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_34.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch09/fig_9_35.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 14,
+    "reason": "individual proof: dense interpolation point labels"
+  },
+  {
+    "path": "ch09/fig_9_36.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_37.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_38.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch09/fig_9_39.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch09/fig_9_40.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch09/fig_9_41.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch09/fig_9_42.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch09/fig_9_43.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch09/fig_9_44.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 1
+  },
+  {
+    "path": "ch09/fig_9_45.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 2
+  },
+  {
+    "path": "ch09/fig_9_46.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_47.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 1
+  },
+  {
+    "path": "ch09/fig_9_48.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_48_html.tex",
+    "kind": "single geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 10,
+    "panels": 0,
+    "nodes": 18,
+    "reason": "individual proof: basis support annotation"
+  },
+  {
+    "path": "ch09/fig_9_49.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 2,
+    "reason": "individual proof: support and weighted-control annotations"
+  },
+  {
+    "path": "ch09/fig_9_50.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 0
+  },
+  {
+    "path": "ch09/fig_9_51.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 2,
+    "reason": "individual proof: support and weighted-control annotations"
+  },
+  {
+    "path": "ch09/fig_9_52.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch09/fig_9_53.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch09/fig_9_54.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch09/fig_9_55.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 4
+  },
+  {
+    "path": "ch09/fig_9_56.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch09/fig_9_57.tex",
+    "kind": "single geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 10,
+    "panels": 0,
+    "nodes": 20,
+    "reason": "individual proof: support and weighted-control annotations"
+  },
+  {
+    "path": "ch09/fig_9_58.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 5
+  },
+  {
+    "path": "ch09/fig_9_59.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 1
+  },
+  {
+    "path": "ch09/fig_9_60.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 9
+  },
+  {
+    "path": "ch09/fig_9_61.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch09/fig_9_62.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch09/fig_9_63.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch09/fig_9_64.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 4
+  },
+  {
+    "path": "ch09/fig_9_65.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 4
+  },
+  {
+    "path": "ch09/fig_9_66.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 2
+  },
+  {
+    "path": "ch09/fig_9_67.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 13
+  },
+  {
+    "path": "ch09/fig_9_68.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch09/fig_9_69.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 18.0,
+    "target_height_cm": 9.5,
+    "panels": 3,
+    "nodes": 6
+  },
+  {
+    "path": "ch09/fig_9_70.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch09/fig_9_71.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch10/fig_10_01.tex",
+    "kind": "single geometry",
+    "target_width_cm": 10,
+    "target_height_cm": 8,
+    "panels": 0,
+    "nodes": 22,
+    "reason": "individual proof: section curves and equations"
+  },
+  {
+    "path": "ch10/fig_10_02.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch10/fig_10_03.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch10/fig_10_04.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8,
+    "target_height_cm": 6,
+    "panels": 1,
+    "nodes": 7,
+    "reason": "individual proof: section curves and equations"
+  },
+  {
+    "path": "ch10/fig_10_05.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 9
+  },
+  {
+    "path": "ch10/fig_10_06.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 2
+  },
+  {
+    "path": "ch10/fig_10_07.tex",
+    "kind": "single geometry",
+    "target_width_cm": 11,
+    "target_height_cm": 9,
+    "panels": 0,
+    "nodes": 12,
+    "reason": "individual proof: section curves and equations"
+  },
+  {
+    "path": "ch10/fig_10_08.tex",
+    "kind": "single geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 8,
+    "panels": 0,
+    "nodes": 9,
+    "reason": "individual proof: section curves and equations"
+  },
+  {
+    "path": "ch10/fig_10_09.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 17,
+    "target_height_cm": 10,
+    "panels": 2,
+    "nodes": 21,
+    "reason": "individual proof: section curves and equations"
+  },
+  {
+    "path": "ch10/fig_10_10.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch10/fig_10_11.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch10/fig_10_12.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch10/fig_10_13.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 16,
+    "target_height_cm": 8,
+    "panels": 2,
+    "nodes": 14,
+    "reason": "individual proof: section curves and equations"
+  },
+  {
+    "path": "ch10/fig_10_14.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 7
+  },
+  {
+    "path": "ch10/fig_10_15.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch10/fig_10_16.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 13
+  },
+  {
+    "path": "ch10/fig_10_17.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch10/fig_10_18.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 13
+  },
+  {
+    "path": "ch10/fig_10_19.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch10/fig_10_20.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 13
+  },
+  {
+    "path": "ch10/fig_10_21.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch10/fig_10_22.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 12
+  },
+  {
+    "path": "ch10/fig_10_23.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 5
+  },
+  {
+    "path": "ch10/fig_10_24.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 9.5,
+    "panels": 2,
+    "nodes": 13
+  },
+  {
+    "path": "ch10/fig_10_25.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch10/fig_10_26.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 12
+  },
+  {
+    "path": "ch10/fig_10_27.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 12
+  },
+  {
+    "path": "ch10/fig_10_28.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 12
+  },
+  {
+    "path": "ch10/fig_10_29.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 16
+  },
+  {
+    "path": "ch10/fig_10_30.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 8
+  },
+  {
+    "path": "ch10/fig_10_31.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 13
+  },
+  {
+    "path": "ch10/fig_10_32.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 8
+  },
+  {
+    "path": "ch10/fig_10_33.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch10/fig_10_34.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch10/fig_10_35.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch10/fig_10_36.tex",
+    "kind": "single geometry",
+    "target_width_cm": 9,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 11,
+    "reason": "individual proof: derivative and displacement annotations"
+  },
+  {
+    "path": "ch10/fig_10_37.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 12
+  },
+  {
+    "path": "ch10/fig_10_38.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 12
+  },
+  {
+    "path": "ch10/fig_10_39.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 12
+  },
+  {
+    "path": "ch10/fig_10_40.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 12
+  },
+  {
+    "path": "ch11/fig_11_01.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 20,
+    "reason": "individual proof: derivative and displacement annotations"
+  },
+  {
+    "path": "ch11/fig_11_02.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch11/fig_11_03.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch11/fig_11_04.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 7,
+    "reason": "individual proof: derivative and displacement annotations"
+  },
+  {
+    "path": "ch11/fig_11_05.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch11/fig_11_06.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 10,
+    "target_height_cm": 9,
+    "panels": 2,
+    "nodes": 16,
+    "reason": "individual proof: derivative and displacement annotations"
+  },
+  {
+    "path": "ch11/fig_11_07.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch11/fig_11_08.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 1
+  },
+  {
+    "path": "ch11/fig_11_09.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch11/fig_11_10.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch11/fig_11_11.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch11/fig_11_12.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 13,
+    "reason": "individual proof: parameter labels and deformation legends"
+  },
+  {
+    "path": "ch11/fig_11_13.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch11/fig_11_14.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch11/fig_11_15.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 8,
+    "reason": "individual proof: parameter labels and deformation legends"
+  },
+  {
+    "path": "ch11/fig_11_16.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 17,
+    "reason": "individual proof: parameter labels and deformation legends"
+  },
+  {
+    "path": "ch11/fig_11_17.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 7,
+    "reason": "individual proof: parameter labels and deformation legends"
+  },
+  {
+    "path": "ch11/fig_11_18.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 7,
+    "reason": "individual proof: parameter labels and deformation legends"
+  },
+  {
+    "path": "ch11/fig_11_19.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 4
+  },
+  {
+    "path": "ch11/fig_11_20.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8,
+    "target_height_cm": 6,
+    "panels": 0,
+    "nodes": 11,
+    "reason": "individual proof: parameter labels and deformation legends"
+  },
+  {
+    "path": "ch11/fig_11_21.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 8
+  },
+  {
+    "path": "ch11/fig_11_22.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 6
+  },
+  {
+    "path": "ch11/fig_11_23.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 18.0,
+    "target_height_cm": 9.5,
+    "panels": 3,
+    "nodes": 12
+  },
+  {
+    "path": "ch11/fig_11_24.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch11/fig_11_25.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 3
+  },
+  {
+    "path": "ch11/fig_11_26.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch11/fig_11_27.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 3
+  },
+  {
+    "path": "ch11/fig_11_28.tex",
+    "kind": "single geometry",
+    "target_width_cm": 7.5,
+    "target_height_cm": 6.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch11/fig_11_29.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 6
+  },
+  {
+    "path": "ch11/fig_11_30.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch11/fig_11_31.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 18.0,
+    "target_height_cm": 9.5,
+    "panels": 3,
+    "nodes": 11
+  },
+  {
+    "path": "ch11/fig_11_32.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 6
+  },
+  {
+    "path": "ch11/fig_11_33.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch11/fig_11_34.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 9
+  },
+  {
+    "path": "ch11/fig_11_35.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 8,
+    "reason": "individual proof: parameter labels and deformation legends"
+  },
+  {
+    "path": "ch11/fig_11_36.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 8,
+    "reason": "individual proof: parameter labels and deformation legends"
+  },
+  {
+    "path": "ch11/fig_11_37.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 3
+  },
+  {
+    "path": "ch11/fig_11_38.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 0,
+    "nodes": 12,
+    "reason": "individual proof: parameter labels and knot domains"
+  },
+  {
+    "path": "ch11/fig_11_39.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch11/fig_11_40.tex",
+    "kind": "spatial geometry",
+    "target_width_cm": 7.0,
+    "target_height_cm": 6.0,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch11/fig_11_41.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 11
+  },
+  {
+    "path": "ch11/fig_11_42.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 15
+  },
+  {
+    "path": "ch11/fig_11_43.tex",
+    "kind": "single geometry",
+    "target_width_cm": 8.5,
+    "target_height_cm": 7,
+    "panels": 1,
+    "nodes": 11,
+    "reason": "individual proof: parameter labels and knot domains"
+  },
+  {
+    "path": "ch11/fig_11_44.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 16
+  },
+  {
+    "path": "ch11/fig_11_45.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 9
+  },
+  {
+    "path": "ch11/fig_11_46.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 9
+  },
+  {
+    "path": "ch11/fig_11_47.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch12/fig_12_01.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 14,
+    "target_height_cm": 11,
+    "panels": 2,
+    "nodes": 47,
+    "reason": "individual proof: parameter labels and knot domains"
+  },
+  {
+    "path": "ch12/fig_12_02.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 0,
+    "nodes": 10
+  },
+  {
+    "path": "ch12/fig_12_03.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 8
+  },
+  {
+    "path": "ch12/fig_12_03c.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 6
+  },
+  {
+    "path": "ch12/fig_12_04.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 9
+  },
+  {
+    "path": "ch12/fig_12_05.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 9
+  },
+  {
+    "path": "ch12/fig_12_06.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 18
+  },
+  {
+    "path": "ch12/fig_12_07.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 9
+  },
+  {
+    "path": "ch12/fig_12_08.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 19
+  },
+  {
+    "path": "ch12/fig_12_09.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch12/fig_12_10.tex",
+    "kind": "single geometry",
+    "target_width_cm": 5.0,
+    "target_height_cm": 4.5,
+    "panels": 1,
+    "nodes": 5
+  },
+  {
+    "path": "ch12/fig_12_11.tex",
+    "kind": "multiple panels",
+    "target_width_cm": 12.0,
+    "target_height_cm": 6.0,
+    "panels": 2,
+    "nodes": 10
+  },
+  {
+    "path": "ch13/fig_13_01.tex",
+    "kind": "data structure",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 19
+  },
+  {
+    "path": "ch13/fig_13_02.tex",
+    "kind": "data structure",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 7
+  },
+  {
+    "path": "ch13/fig_13_03.tex",
+    "kind": "data structure",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 28,
+    "min_scale": 0.75
+  },
+  {
+    "path": "ch13/fig_13_04.tex",
+    "kind": "data structure",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 41,
+    "min_scale": 1
+  },
+  {
+    "path": "ch13/fig_13_05.tex",
+    "kind": "data structure",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 44,
+    "min_scale": 1
+  },
+  {
+    "path": "ch13/fig_13_06.tex",
+    "kind": "data structure",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 27,
+    "min_scale": 0.65
+  },
+  {
+    "path": "ch13/fig_13_07.tex",
+    "kind": "data structure",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 5
+  },
+  {
+    "path": "ch13/fig_13_08.tex",
+    "kind": "data structure",
+    "target_width_cm": 9.5,
+    "target_height_cm": 7.5,
+    "panels": 0,
+    "nodes": 8,
+    "min_scale": 0.65
+  }
+]

@@ -1,4 +1,12 @@
 ## Core latex/pdflatex auxiliary files:
+__pycache__/
+/image_tex/build/
+/image_tex/backups/
+/tmp/minted-review/
+/tmp/a1-review/
+/tmp/figure-layout/
+/tmp/figure-size-review/
+/tmp/backmatter/
 *.aux
 *.lof
 *.log
@@ -192,6 +200,11 @@ acs-*.bib
 # minted
 _minted*
 *.data.minted
+
+# Retain the archived index review evidence, separate from active build files.
+!/image_tex/reports/backmatter-final.idx
+!/image_tex/reports/backmatter-final.ind
+!/image_tex/reports/backmatter-final.ilg
 *.pyg
 
 # morewrites

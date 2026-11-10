@@ -1,0 +1,29 @@
+% Exact compatible cubic/quadratic Coons boundaries; representative controls in scripts/coons_patch_data.py.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\path[book figure bounds] (-9,-7) rectangle (9,8);
+\draw (1.65,4.92) .. controls (0.69,3.528) and (-0.27,2.9417142857) .. (-1.23,2.5295510204);
+\draw (-1.23,2.5295510204) .. controls (-2.51,1.98) and (-3.79,1.74) .. (-5.07,1.5039183673);
+\draw (-5.07,1.5039183673) .. controls (-6.03,1.3268571429) and (-6.99,1.152) .. (-7.95,0.96);
+\node[above left=6pt] at (-3.15,1.8991836735) {$C_0(u)$};
+\draw (7.95,1.68) .. controls (6.99,0.288) and (6.03,0.0102857143) .. (5.07,-0.1175510204);
+\draw (5.07,-0.1175510204) .. controls (3.79,-0.288) and (2.51,-0.192) .. (1.23,-0.7151020408);
+\draw (1.23,-0.7151020408) .. controls (0.27,-1.1074285714) and (-0.69,-1.848) .. (-1.65,-3.12);
+\node[below right=6pt] at (3.15,-0.2840816327) {$C_1(u)$};
+\draw (1.65,4.92) .. controls (2.49,4.728) and (3.33,4.2426666667) .. (4.17,3.464);
+\draw (4.17,3.464) .. controls (4.59,3.0746666667) and (5.01,2.792) .. (5.43,2.616);
+\draw (5.43,2.616) .. controls (6.27,2.264) and (7.11,1.952) .. (7.95,1.68);
+\node[above right=6pt] at (4.8,2.96) {$C_0(v)$};
+\draw (-7.95,0.96) .. controls (-7.11,0.208) and (-6.27,-0.3973333333) .. (-5.43,-0.856);
+\draw (-5.43,-0.856) .. controls (-5.01,-1.0853333333) and (-4.59,-1.208) .. (-4.17,-1.224);
+\draw (-4.17,-1.224) .. controls (-3.33,-1.256) and (-2.49,-1.888) .. (-1.65,-3.12);
+\node[below left=6pt] at (-4.8,-1.12) {$C_1(v)$};
+\fill (1.65,4.92) circle[radius=1.4pt];
+\fill (7.95,1.68) circle[radius=1.4pt];
+\fill (-7.95,0.96) circle[radius=1.4pt];
+\fill (-1.65,-3.12) circle[radius=1.4pt];
+\draw (-7.95,0.96) circle[radius=2.8pt];
+\node[below=6pt] at (-7.95,0.96) {$S_{1,0}$};
+\draw[book grid,book axis] (-7.5,-5.5)--(-8.7,-6.04) node[below left=4pt] {$x$};
+\draw[book grid,book axis] (-7.5,-5.5)--(-6.6,-6.22) node[below right=4pt] {$y$};
+\draw[book grid,book axis] (-7.5,-5.5)--(-7.5,-4.3) node[above=4pt] {$z$};
+\end{tikzpicture}

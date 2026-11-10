@@ -1,0 +1,38 @@
+% Exact noncoplanar cubic P0(4,0,0),P1(4,4,0),P2(0,3,0),P3(0,0,4);pi:x+z=4.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\path[book figure bounds] (-12,-8) rectangle (11,14);
+\draw[book grid] (-8.16,-4.032)--(0.96,-6.432)--(9.12,7.2)--(0,9.6)--(-8.16,-4.032);
+\draw[book grid] (0.96,-6.432)--(6.84,-1.8);
+\draw[book grid,dashed] (6.84,-1.8)--(0,9.6);
+\draw[book grid,dashed] (0,0)--(-8.16,-4.032);
+\draw[book grid,book axis] (-8.16,-4.032)--(-10.608,-5.2416);
+\node[below left=5pt] at (-10.608,-5.2416) {$x$};
+\draw[book grid,dashed] (0,0)--(6.84,-1.8);
+\draw[book grid,book axis] (6.84,-1.8)--(9.576,-2.52);
+\node[right=5pt] at (9.576,-2.52) {$y$};
+\draw[book grid,dashed] (0,0)--(0,9.6);
+\draw[book grid,book axis] (0,9.6)--(0,12.48);
+\node[above=5pt] at (0,12.48) {$z$};
+\draw[dashed] (-8.16,-4.032) .. controls (0.96,-6.432) and (6.84,-1.8) .. (0,9.6);
+\draw[book grid,book axis] (-4.08,2.784)--(-0.66,1.884);
+\draw[book grid,dashed,book axis] (-0.66,1.884)--(1.905,-2.391);
+\draw[book grid,book axis] (-6.336,-4.512)--(-4.056,-5.112);
+\node[below=7pt] at (-3.144,-5.352) {$\mathbf T_s$};
+\draw[book grid,book axis] (0,9.6)--(-1.368,11.88);
+\node[above left=6pt] at (-1.368,11.88) {$\mathbf T_e$};
+\draw (-8.16,-4.032) circle[radius=2.3pt];
+\node[below left=6pt] at (-8.16,-4.032) {$\mathbf P_0$};
+\draw (0.96,-6.432) circle[radius=2.3pt];
+\node[below right=6pt] at (0.96,-6.432) {$\mathbf P_1$};
+\draw (6.84,-1.8) circle[radius=2.3pt];
+\node[right=6pt] at (6.84,-1.8) {$\mathbf P_2$};
+\draw (0,9.6) circle[radius=2.3pt];
+\node[left=6pt] at (0,9.6) {$\mathbf P_3$};
+\fill (-4.08,2.784) circle[radius=1.6pt];
+\node[left=7pt] at (-4.08,2.784) {$\mathbf P_c$};
+\fill (-0.66,1.884) circle[radius=1.6pt];
+\node[above=7pt] at (-0.66,1.884) {$\mathbf P_d$};
+\fill (1.905,-2.391) circle[radius=1.6pt];
+\node[below right=7pt] at (1.905,-2.391) {$\mathbf P$};
+\node at (8.208,6.84) {$\pi$};
+\end{tikzpicture}

@@ -1,7 +1,7 @@
-\documentclass[main.tex]{subfiles}                                              
+\documentclass[../main.tex]{subfiles}
 \begin{document}
 
-\section{曲线和曲面的点反演与投影}
+\section{曲线和曲面的点反演与投影}\BookIndexMark{p0114}
 
 在本章中，我们将讨论在实现 NURBS 几何时相当基础的各种主题。
 
@@ -57,7 +57,7 @@
 \item 之前解决方案的软件实现相当复杂。
 \end{itemize}
 
-一种更简单且完全足够的方法是使用牛顿迭代来最小化 \(\mathbf{P}\) 和 \(\mathbf{C}\left( u\right)\) 之间的距离(见图 6.1a 和 6.1b)。如果最小距离小于指定的容差 \({\epsilon }_{1}\) ，则认为 \(\mathbf{P}\) 在曲线上。这有效地解决了点投影到曲线的更一般问题。为了获得牛顿迭代的起始值 \({u}_{0}\) :
+一种更简单且完全足够的方法是使用牛顿\BookIndexMark{p0115}迭代来最小化 \(\mathbf{P}\) 和 \(\mathbf{C}\left( u\right)\) 之间的距离(见图 6.1a 和 6.1b)。如果最小距离小于指定的容差 \({\epsilon }_{1}\) ，则认为 \(\mathbf{P}\) 在曲线上。这有效地解决了点投影到曲线的更一般问题。为了获得牛顿迭代的起始值 \({u}_{0}\) :
 
 \begin{itemize}
 \item 如果已知该点位于曲线上(在容差范围内)，则使用强凸包性质来确定候选跨度；如果这是一个更一般的点投影问题，则选择所有跨度作为候选；
@@ -73,11 +73,22 @@
 f\left( u\right)  = {\mathbf{C}}^{\prime }\left( u\right)  \cdot  \left( {\mathbf{C}\left( u\right)  - \mathbf{P}}\right)
 \]
 
-当 \(f\left( u\right)  = 0\) 时，从 \(\mathbf{P}\) 到 \(\mathbf{C}\left( u\right)\) 的距离最小，无论 \(\mathbf{P}\) 是否在曲线上(图 6.1a 和 6.1b)。用 \({u}_{i}\) 表示在第 \(i\) 次牛顿迭代中获得的参数。然后
+距离平方在光滑曲线段内的驻点满足\(f(u)=0\)，无论\(\mathbf P\)是否在曲线上（图6.1a、6.1b）。确定最近投影点时，还须比较其他候选驻点、非光滑节点及端点的距离。用 \({u}_{i}\) 表示在第 \(i\) 次牛顿迭代中获得的参数。然后
 
 \[
 {u}_{i + 1} = {u}_{i} - \frac{f\left( {u}_{i}\right) }{{f}^{\prime }\left( {u}_{i}\right) } = {u}_{i} - \frac{{\mathbf{C}}^{\prime }\left( {u}_{i}\right)  \cdot  \left( {\mathbf{C}\left( {u}_{i}\right)  - \mathbf{P}}\right) }{{\mathbf{C}}^{\prime \prime }\left( {u}_{i}\right)  \cdot  \left( {\mathbf{C}\left( {u}_{i}\right)  - \mathbf{P}}\right)  + {\left| {\mathbf{C}}^{\prime }\left( {u}_{i}\right) \right| }^{2}} \tag{6.3}
 \]
+
+\begin{center}
+\begin{minipage}{25.2cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_01.tex}
+\par\smallskip
+图 6.1. 同一条代表性三次曲线上的点投影与点反演。\\
+(a)投影连线在最近点处与切向量$\mathbf C^{\prime}(u_i)$垂直；(b)目标点$\mathbf P=\mathbf C(\bar u)$在曲线上，箭头连接目标点与当前迭代点。
+\end{minipage}
+\end{center}
 
 可以使用两个零容差来指示收敛:
 
@@ -85,12 +96,7 @@ f\left( u\right)  = {\mathbf{C}}^{\prime }\left( u\right)  \cdot  \left( {\mathb
 
 \({\epsilon }_{2}\) : 零余弦度量。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_240_297_256_940_1043_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.1. (a) 点投影；(b) 点反演。
 
 收敛标准由以下给出
 
@@ -152,6 +158,17 @@ f\left( u\right)  = {\mathbf{C}}^{\prime }\left( u\right)  \cdot  \left( {\mathb
 
 如果条件 (1)、(2) 或 (4) 中的任何一个满足，则停止迭代。图 6.2 显示了一组点投影到 NURBS 曲线上的情况。
 
+\begin{center}
+\begin{minipage}{22.4cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_02.tex}
+\par\smallskip
+图 6.2. 一组点到代表性分段三次NURBS曲线的最近投影，各权重为一。\\
+细线表示采样点与最近曲线点的连线；光滑段上的投影沿法线方向，端点及$u=7/10$处的$C^0$转角允许多条连线汇聚。
+\end{minipage}
+\end{center}
+
 点反演和表面的投影是类似的。形成向量函数
 
 \[
@@ -168,12 +185,7 @@ f\left( {u,v}\right)  = \mathbf{r}\left( {u,v}\right)  \cdot  {\mathbf{S}}_{u}\l
 g\left( {u,v}\right)  = \mathbf{r}\left( {u,v}\right)  \cdot  {\mathbf{S}}_{v}\left( {u,v}\right)  = 0 \tag{6.5}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_241_369_1443_791_639_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.2. 将一组点投影到 NURBS 曲线。
 
 我们必须求解方程 (6.5)。设
 
@@ -216,10 +228,12 @@ g\left( {u,v}\right)  = \mathbf{r}\left( {u,v}\right)  \cdot  {\mathbf{S}}_{v}\l
 \]
 
 \[
-\frac{\left| {\mathbf{S}}_{u}\left( {u}_{i},{v}_{i}\right)  \cdot  \left( \mathbf{S}\left( {u}_{i},{v}_{i}\right)  - \mathbf{P}\right) \right| }{\left| {\mathbf{S}}_{u}\left( {u}_{i},{v}_{i}\right) \right| } \leq  {\epsilon }_{2}\;\frac{\left| {\mathbf{S}}_{v}\left( {u}_{i},{v}_{i}\right)  \cdot  \left( \mathbf{S}\left( {u}_{i},{v}_{i}\right)  - \mathbf{P}\right) \right| }{\left| {{\mathbf{S}}_{v}\left( {{u}_{i},{v}_{i}}\right) }\right| \left| {\mathbf{S}\left( {{u}_{i},{v}_{i}}\right) }\right| \left| {\mathbf{S}\left( {{u}_{i},{v}_{i}}\right)  - \mathbf{P}}\right| } \leq  {\epsilon }_{2}
+\begin{aligned}
+\frac{|\mathbf S_u(u_i,v_i)\cdot(\mathbf S(u_i,v_i)-\mathbf P)|}{\|\mathbf S_u(u_i,v_i)\|\,\|\mathbf S(u_i,v_i)-\mathbf P\|}&\le\epsilon_2,\\
+\frac{|\mathbf S_v(u_i,v_i)\cdot(\mathbf S(u_i,v_i)-\mathbf P)|}{\|\mathbf S_v(u_i,v_i)\|\,\|\mathbf S(u_i,v_i)-\mathbf P\|}&\le\epsilon_2.
+\end{aligned}\tag{6.8}
 \]
 
-(6.8)
 
 再次，通过以下方式检查条件:
 
@@ -232,7 +246,10 @@ g\left( {u,v}\right)  = \mathbf{r}\left( {u,v}\right)  \cdot  {\mathbf{S}}_{v}\l
 2. 零余弦:
 
 \[
-\frac{\left| {\mathbf{S}}_{u}\left( {u}_{i},{v}_{i}\right)  \cdot  \left( \mathbf{S}\left( {u}_{i},{v}_{i}\right)  - \mathbf{P}\right) \right| }{\left| {\mathbf{S}}_{u}\left( {u}_{i},{v}_{i}\right) \right| } \leq  {\epsilon }_{2}\;\frac{\left| {\mathbf{S}}_{v}\left( {u}_{i},{v}_{i}\right)  \cdot  \left( \mathbf{S}\left( {u}_{i},{v}_{i}\right)  - \mathbf{P}\right) \right| }{\left| {{\mathbf{S}}_{v}\left( {{u}_{i},{v}_{i}}\right) }\right| \left| {\mathbf{S}\left( {{u}_{i},{v}_{i}}\right) }\right| \left| {\mathbf{S}\left( {{u}_{i},{v}_{i}}\right)  - \mathbf{P}}\right| } \leq  {\epsilon }_{2}
+\begin{aligned}
+\frac{|\mathbf S_u(u_i,v_i)\cdot(\mathbf S(u_i,v_i)-\mathbf P)|}{\|\mathbf S_u(u_i,v_i)\|\,\|\mathbf S(u_i,v_i)-\mathbf P\|}&\le\epsilon_2,\\
+\frac{|\mathbf S_v(u_i,v_i)\cdot(\mathbf S(u_i,v_i)-\mathbf P)|}{\|\mathbf S_v(u_i,v_i)\|\,\|\mathbf S(u_i,v_i)-\mathbf P\|}&\le\epsilon_2.
+\end{aligned}
 \]
 
 如果这些条件不满足，则使用方程 (6.7) 计算新的值 \(\left( {{u}_{i + 1},{v}_{i + 1}}\right)\) 。然后检查两个条件:
@@ -287,16 +304,22 @@ g\left( {u,v}\right)  = \mathbf{r}\left( {u,v}\right)  \cdot  {\mathbf{S}}_{v}\l
 
 如果满足条件 (1)、(2) 或 (4) 中的任何一个，则停止迭代。图 6.3 显示了控制网的一组点投影到 NURBS 表面上的情况。
 
+
+
+
+
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_243_372_1269_791_791_0.jpg}
+\begin{minipage}{20.5cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_03.tex}
+\par\smallskip
+图 6.3. 控制网边上采样点到代表性三次$\times$二次曲面的最近投影。\\
+虚线为控制网，实线为曲面边界及部分等参线，细线连接184个采样点与迭代求得的最近曲面点。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 6.3. 将控制网的点投影到 NURBS 表面上。
-
-
-
-\section{曲面切向量反演}
+\section{曲面切向量反演}\BookIndexMark{p0116}
 
 设 \(\left( {\bar{u},\bar{v}}\right)\) 为一个固定参数点， \(\mathbf{P} = \mathbf{S}\left( {\bar{u},\bar{v}}\right)\) 为其在表面 \(\mathbf{S}\left( {u,v}\right)\) 上的像(见图 6.4)。设 \(\mathbf{T} = \left( {{dx},{dy},{dz}}\right)\) 为一个从 \(\mathbf{P}\) 开始并位于 \(\mathbf{S}\left( {u,v}\right)\) 在 \(\mathbf{P}\) 处的切平面上的向量。用 \({\mathbf{S}}_{u}\) 和 \({\mathbf{S}}_{v}\) 表示 \(\mathbf{S}\left( {u,v}\right)\) 在 \(\left( {\bar{u},\bar{v}}\right)\) 处的第一偏导数。如果 \({\mathbf{S}}_{u} \times  {\mathbf{S}}_{v} \neq  0\) ，根据基础微分几何 \(\left\lbrack  {\mathrm{{DoCa}}{76}}\right\rbrack\) ，存在一个向量 \(\mathbf{W} = \left( {{du},{dv}}\right)\) 在 \({uv}\) 平面中，使得
 
@@ -322,12 +345,7 @@ M\mathbf{W} = \mathbf{T}
 \left( {{M}^{T}M}\right) \mathbf{W} = {M}^{T}\mathbf{T}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_244_284_1310_974_748_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.4. 表面切向量反演。
 
 或
 
@@ -339,9 +357,20 @@ M\mathbf{W} = \mathbf{T}
 
 
 
-\section{曲线和曲面的变换与投影}
+\begin{center}
+\begin{minipage}{25cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_04.tex}
+\par\smallskip
+图 6.4. 曲面切向量反演：右侧参数曲线经曲面映射成为左侧的空间曲线。\\
+在对应点，$\mathbf W=(du,dv)$ 映为 $\mathbf T=\mathbf S_u\,du+\mathbf S_v\,dv$；虚线为经过该点的等参线。
+\end{minipage}
+\end{center}
 
-曲线和曲面的变换与投影在几何建模和计算机图形学中是常见的。变换包括平移、旋转、缩放、剪切和反射。平行投影和透视投影在视频屏幕或其他二维输出设备上查看三维几何体时是必不可少的。文献中对变换和投影有许多优秀的讨论，例如 [Faux81; Fole90; Roge90]。在本节中，我们假设读者熟悉一般概念，我们仅详细阐述这些概念在 NURBS 曲线和曲面上的应用。
+\section{曲线和曲面的变换与投影}\BookIndexMark{p0117}
+
+曲线和曲面的变换与投影在几何建模和计算机图形学中是常见的。变换包括平移、旋转、缩放、剪切和反射。平行投影和透视\BookIndexMark{p0118}投影在视频屏幕或其他二维输出设备上查看三维几何体时是必不可少的。文献中对变换和投影有许多优秀的讨论，例如 \cite{Faux81,Fole90,Roge90}。在本节中，我们假设读者熟悉一般概念，我们仅详细阐述这些概念在 NURBS 曲线和曲面上的应用。
 
 所有变换和投影都是通过对控制点和权重应用操作来对 NURBS 曲线和曲面进行的；因此，讨论可以限制在曲线上。方程 (4.1) 和 (4.5) 表示了思考 NURBS 曲线的两种不同方式，即作为欧几里得空间中的分段有理曲线，或作为齐次空间中的非有理 B 样条曲线。第一种方法使用 B 样条基函数来混合加权的三维控制点；第二种方法使用函数来混合四维控制点。因此，存在两种执行变换和投影的方法:
 
@@ -365,12 +394,7 @@ M\mathbf{W} = \mathbf{T}
 {\overline{\mathbf{P}}}_{i} = {\mathbf{P}}_{i} + \alpha \mathbf{W} \tag{6.13}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_246_348_251_840_819_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.5. NURBS 曲线的平行投影。
 
 从方程 (6.13) 我们得到
 
@@ -402,18 +426,24 @@ M\mathbf{W} = \mathbf{T}
 {\overline{\mathbf{P}}}_{i,j} = {\mathbf{P}}_{i,j} + \left( \frac{\mathbf{N} \cdot  \left( {\mathbf{Q} - {\mathbf{P}}_{i,j}}\right) }{\mathbf{N} \cdot  \mathbf{W}}\right) \mathbf{W} \tag{6.15}
 \]
 
+\begin{center}
+\begin{minipage}{19cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_05.tex}
+\par\smallskip
+图 6.5. 代表性三次 NURBS 曲线沿 $\mathbf W$ 平行投影到由 $\mathbf Q$、$\mathbf N$ 确定的平面。\\
+实线为原曲线及其控制多边形，虚线为投影结果；节点和权重均保持不变。
+\end{minipage}
+\end{center}
+
 图 6.6 显示了透视投影。与之前一样，设投影平面由 \(\mathbf{Q}\) 和 \(\mathbf{N}\) 定义。将眼睛位置表示为 \(\mathbf{E}\) 。那么
 
 \[
 {\overline{\mathbf{P}}}_{i} = \left( {1 - \alpha }\right) {\mathbf{P}}_{i} + \alpha \mathbf{E} \tag{6.16}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_247_362_250_816_814_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.6. NURBS 曲线的透视投影。
 
 因此得出
 
@@ -507,14 +537,29 @@ M\mathbf{W} = \mathbf{T}
 {\bar{w}}_{i,j} = {w}_{i,j}\left\lbrack  {\mathbf{N} \cdot  \left( {\mathbf{E} - {\mathbf{P}}_{i,j}}\right) }\right\rbrack   \tag{6.21}
 \]
 
+\begin{center}
+\begin{minipage}{20cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_06.tex}
+\par\smallskip
+图 6.6. 代表性闭合三次 NURBS 曲线从视点 $\mathbf E$ 透视投影到平面。\\
+实线为原曲线及控制多边形，虚线为投影结果；点线射线汇聚于视点，投影控制点和新权重由式(6.17)、(6.18)同时确定。
+\end{minipage}
+\end{center}
+
 图 6.7 显示了 NURBS 曲面的平行投影。
 
 \begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_249_403_263_730_824_0.jpg}
+\begin{minipage}{20cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_07.tex}
+\par\smallskip
+图 6.7. 代表性双二次 NURBS 曲面的平行投影。\\
+实线为原曲面的控制网及等参线，虚线为同一控制网和曲面的投影；各控制点均沿 $\mathbf W$ 投影，权重保持不变。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 6.7. NURBS 曲面的平行投影。
 
 现在设 \({\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w}\) 。所有变换和投影可以被打包成一个 \(4 \times  4\) 形式的矩阵。
 
@@ -547,7 +592,7 @@ Ex6.3 透视投影:设 \(\mathbf{E} = \left( {0,0,d}\right)\) 为位于 \(z\) �
 \]
 
 
-\section{NURBS 曲线和曲面的重参数化}
+\section{NURBS 曲线和曲面的重参数化}\BookIndexMark{p0119}
 
 设 \(\mathbf{C}\left( u\right)  = \left( {x\left( u\right) ,y\left( u\right) ,z\left( u\right) }\right)\) 为 \(u \in  \left\lbrack  {a,b}\right\rbrack\) 上的任意参数曲线，并假设 \(u = f\left( s\right)\) 是在 \(s \in  \left\lbrack  {c,d}\right\rbrack\) 上的标量值函数，满足:
 
@@ -567,6 +612,16 @@ Ex6.3 透视投影:设 \(\mathbf{E} = \left( {0,0,d}\right)\) 为位于 \(z\) �
 
 被称为 \(\mathbf{C}\left( u\right)\) 的重新参数化(见图 6.8)。
 
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_08.tex}
+\par\smallskip
+图 6.8. 曲线重参数化：$s\in[c,d]$ 先经严格递增的 $f$ 映到 $u\in[a,b]$，再经 $\mathbf C$ 映到同一曲线点。
+\end{minipage}
+\end{center}
+
 \(\mathbf{C}\left( s\right)\) 在几何上与 \(\mathbf{C}\left( u\right)\) 是相同的曲线，但在参数上它们是不同的。重新参数化的应用包括:
 
 \begin{itemize}
@@ -584,17 +639,8 @@ Ex6.3 透视投影:设 \(\mathbf{E} = \left( {0,0,d}\right)\) 为位于 \(z\) �
 注意，只有末端一阶导数的大小发生变化，但末端二阶及更高阶导数的大小和方向都会改变；
 
 \begin{itemize}
-\item 末端权重的修改:如果 \({\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w}\) 是 NURBS
+\item 末端权重的修改:如果 \({\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w}\) 是 NURBS 曲线，有时修改端点权重 \({w}_{0}\) 和 \({w}_{n}\) 以获得特定值而不改变曲线几何形状是有用的。我们将看到这实际上是可能的，并且简单等同于 \(\mathbf{C}\left( u\right)\) 的重新参数化。
 \end{itemize}
-
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_251_372_254_796_663_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 6.8. 曲线重新参数化。
-
-在曲线中，有时修改端点权重 \({w}_{0}\) 和 \({w}_{n}\) 以获得特定值而不改变曲线几何形状是有用的。我们将看到这实际上是可能的，并且简单等同于 \(\mathbf{C}\left( u\right)\) 的重新参数化。
 
 \section*{示例}
 
@@ -661,7 +707,7 @@ u = f\left( s\right)  = \frac{5}{12}{s}^{2} + \frac{7}{12}s \tag{6.26}
 \]
 
 \[
-\mathbf{C}\left( {s = 1}\right)  = \mathbf{C}\left( {u = 1}\right)  = \left( {0,0}\right)
+\mathbf{C}\left( {s = 1}\right)  = \mathbf{C}\left( {u = 1}\right)  = \left( {1,0}\right)
 \]
 
 注意，导数也发生了变化。例如，直接对方程 (6.24) 和 (6.27) 进行求导得到
@@ -673,11 +719,15 @@ u = f\left( s\right)  = \frac{5}{12}{s}^{2} + \frac{7}{12}s \tag{6.26}
 图 6.9 显示了曲线及其相对于 \(u\) 和 \(s\) 在 \(u = s = 0\) 处的第一导数。
 
 \begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_252_420_1421_684_661_0.jpg}
+\begin{minipage}{17cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_09.tex}
+\par\smallskip
+图 6.9. 例 Ex6.4 的同一条抛物线及重参数化后的端点一阶导数。\\
+$u=1/2$ 对应 $s=3/5$；两支切向量按同一坐标尺度绘制，长度比为 $7/12$。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 6.9. 示例 Ex6.4 的重新参数化曲线。
 
 Ex6.5 考虑由以下公式给出的圆弧
 
@@ -707,7 +757,7 @@ Ex6.5 考虑由以下公式给出的圆弧
 \left| {{\mathbf{C}}^{\prime }\left( {s = 0}\right) }\right|  = \left| {{\mathbf{C}}^{\prime }\left( {s = 1}\right) }\right|  \tag{6.30}
 \]
 
-我们选择形式为的线性有理函数
+我们选择形式为的线性有理函数\BookIndexMark{p0120}
 
 \[
 u = f\left( s\right)  = \frac{{as} + b}{{cs} + d}\;s \in  \left\lbrack  {0,1}\right\rbrack   \tag{6.31}
@@ -765,7 +815,7 @@ u = f\left( s\right)  = \frac{\sqrt{2}s}{\left( {\sqrt{2} - 2}\right) s + 2} \ta
 \item 形式为 \(u = \left( {{as} + b}\right) /\left( {{cs} + d}\right)\) 的线性有理函数将多项式曲线转换为相同次数的有理曲线。
 \end{itemize}
 
-现在我们讨论用多项式函数重新参数化 NURBS 曲线的问题。设 \({\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w}\) 为 \(p\) 次 NURBS 曲线，定义在 \(u \in  \left\lbrack  {a,b}\right\rbrack\) 上，且 \(u = f\left( s\right)\) 为 \(q\) 次多项式，定义在 \(s \in  \left\lbrack  {c,d}\right\rbrack\) 上。现在假设 \({\mathbf{C}}^{w}\left( u\right)\) 没有内部节点，因此 \(U\) 具有以下形式
+现在我们讨论用多项式函数\BookIndexMark{p0121}重新参数化 NURBS 曲线的问题。设 \({\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w}\) 为 \(p\) 次 NURBS 曲线，定义在 \(u \in  \left\lbrack  {a,b}\right\rbrack\) 上，且 \(u = f\left( s\right)\) 为 \(q\) 次多项式，定义在 \(s \in  \left\lbrack  {c,d}\right\rbrack\) 上。现在假设 \({\mathbf{C}}^{w}\left( u\right)\) 没有内部节点，因此 \(U\) 具有以下形式
 
 \[
 U = \{ \underset{p + 1}{\underbrace{a,\ldots ,a}},\underset{p + 1}{\underbrace{b,\ldots ,b}}\}
@@ -811,12 +861,7 @@ u = f\left( s\right)  = \frac{5}{12}{s}^{2} + \frac{7}{12}s\;\text{ on }\;s \in 
 = \frac{2}{1 - 0}\left( {{\mathbf{P}}_{1} - {\mathbf{P}}_{0}}\right) \left( \frac{7}{12}\right)
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_255_334_1280_868_768_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.10. 示例 Ex6.6 的重参数化 B-spline 曲线；+ 显示了原始参数化，而 \(\square\) 则说明了新的参数化。
 
 从中得出
 
@@ -851,6 +896,17 @@ u = f\left( s\right)  = \frac{5}{12}{s}^{2} + \frac{7}{12}s\;\text{ on }\;s \in 
 \[
 {\mathbf{Q}}_{2} = \frac{5}{72}\left( {1,2}\right)  + \frac{49}{1728}\left( {0, - 4}\right)  + 2\left( {\frac{7}{48},\frac{7}{24}}\right)  = \left( {\frac{156}{432},\frac{263}{432}}\right)
 \]
+
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_10.tex}
+\par\smallskip
+图 6.10. 例 Ex6.6 中二次抛物线重参数化后的四次 B 样条表示。\\
+虚线多边形连接原控制点 $\mathbf P_i$，实线连接新控制点 $\mathbf Q_i$；$+$ 为 $u=i/20$，$\square$ 为 $s=i/20$ 的曲线点。
+\end{minipage}
+\end{center}
 
 因此，重新参数化一个没有内部节点的 \(p\) 阶曲线 \({\mathbf{C}}^{w}\left( u\right)\) 为一个 \(q\) 阶多项式 \(f\left( s\right)\) 的一般过程是:
 
@@ -892,7 +948,7 @@ u = f\left( s\right)  = \frac{5}{12}{s}^{2} + \frac{7}{12}s\;\text{ on }\;s \in 
 {\mathbf{C}}^{w\left( n\right) }\left( s\right)  = \mathop{\sum }\limits_{{j = 0}}^{n}\mathop{\sum }\limits_{\substack{{{k}_{1} + {k}_{2} + \cdots  + {k}_{n} = j} \\  {{k}_{1} + 2{k}_{2} + \cdots  + {k}_{n} = j} \\  {{k}_{1} + 2{k}_{2} + \cdots  + {k}_{n} \geq  0} }}\frac{n!}{{k}_{1}!{\left( 1!\right) }^{{k}_{1}}\cdots {k}_{n}!{\left( n!\right) }^{{k}_{n}}}{\left( {f}^{\left( 1\right) }\left( s\right) \right) }^{{k}_{1}}\cdots {\left( {f}^{\left( n\right) }\left( s\right) \right) }^{{k}_{n}} \tag{6.40}
 \]
 
-是由 Faa di Bruno 提出的(见 [Knut73]，第 50 页)。尽管这个公式优雅，但它的实现并不简单。困难在于获得满足条件的 \(n\) -元组
+是由 Faa di Bruno 提出的(见 \cite{Knut73}，第 50 页)。尽管这个公式优雅，但它的实现并不简单。困难在于获得满足条件的 \(n\) -元组
 
 \[
 {k}_{1} + {k}_{2} + \cdots  + {k}_{n} = j
@@ -1092,9 +1148,9 @@ u = {\alpha s} + \beta \;s \in  \left\lbrack  {c,d}\right\rbrack   \tag{6.45}
 {\mathbf{Q}}_{i}^{w} = {\mathbf{P}}_{i}^{w}\;\text{ for all }i \tag{6.49}
 \]
 
-因此，既不改变次数也不改变(齐次)控制点；方程 (6.45) 的线性函数仅仅将参数范围从 \(\left\lbrack  {a,b}\right\rbrack\) 改变为 \(\left\lbrack  {c,d}\right\rbrack\) 。
+因此，既不改变次数也不改变(齐次)控制点；方程 (6.45) 的线性函数\BookIndexMark{p0122}仅仅将参数范围从 \(\left\lbrack  {a,b}\right\rbrack\) 改变为 \(\left\lbrack  {c,d}\right\rbrack\) 。
 
-现在让 \({\mathbf{C}}^{w}\left( u\right)\) 是在 \(u \in  \left\lbrack  {a,b}\right\rbrack\) 上的任意 \(p\) 次 NURBS 曲线，其节点向量为 \(U\) ，并且让 \(u = f\left( s\right)\) 是在 \(s \in  \left\lbrack  {c,d}\right\rbrack\) 上的 \(q\) 次分段多项式重新参数化函数。现在 \(f\left( s\right)\) 可以是任何形式，但为了方便术语，我们假设它是 B 样条形式，即
+现在让 \({\mathbf{C}}^{w}\left( u\right)\) 是在 \(u \in  \left\lbrack  {a,b}\right\rbrack\) 上的任意 \(p\) 次 NURBS 曲线，其节点向量为 \(U\) ，并且让 \(u = f\left( s\right)\) 是在 \(s \in  \left\lbrack  {c,d}\right\rbrack\) 上的 \(q\) 次分段多项式\BookIndexMark{p0123}重新参数化函数。现在 \(f\left( s\right)\) 可以是任何形式，但为了方便术语，我们假设它是 B 样条形式，即
 
 \[
 u = f\left( s\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,q}\left( s\right) {f}_{i} \tag{6.50}
@@ -1138,7 +1194,21 @@ s = g\left( u\right)  = {f}^{-1}\left( s\right)  \tag{6.51}
 
 图 6.11a-6.11d 显示了重新参数化的示例。曲线是定义在 \(U = \{ 0,0,0,0,1/2,1,1,1,1\}\) 上的三次 B 样条曲线。在图 6.11a 中，重新参数化函数(显示在右上角)由标量 \(F = \{ 0,2{/}_{5},1\}\) 定义，位于节点向量 \(S = \{ 0,0,0,1,1,1\}\) 上。图 6.11b 显示了由 \(F = \left\{  {0,2/5,9/{10},1}\right\}\) 和 \(S = \{ 0,0,0,1/2,1,1,1\}\) 定义的重新参数化。在图 6.11c 中，该函数由 \(F = \{ 0,1/2,7/{10},9/{10},1\}\) 和 \(S = \{ 0,0,0\) 、 \(\left. {1/2,1/2,1,1,1}\right\}\) 给出。图 6.11d 描绘了使用线性 B 样条函数进行的重新参数化，该函数由 \(F = \{ 0,1\}\) 和 \(S = \{ 0,0,1,1\}\) 给出。
 
-现在我们转向使用有理(或分段有理)函数进行重新参数化。
+\begin{center}
+\begin{minipage}{28cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_11.tex}
+\par\vspace{.8\baselineskip}
+\BookFigure[max width=\linewidth]{ch06/fig_6_12.tex}
+\par\smallskip
+图 6.11. 用四组给定标量 B 样条函数重参数化同一条代表性三次曲线。\\
+虚线为原控制多边形，实线为新控制多边形和未改变的曲线，圆圈为新控制点。\\
+(a)～(c)为二次映射，(d)为线性映射；各组给定节点见正文，(c)保留给定的重节点表示。
+\end{minipage}
+\end{center}
+
+现在我们转向使用有理\BookIndexMark{p0124}(或分段有理)函数进行重新参数化。
 
 形式为
 
@@ -1146,14 +1216,8 @@ s = g\left( u\right)  = {f}^{-1}\left( s\right)  \tag{6.51}
 u = f\left( s\right)  = \frac{g\left( s\right) }{h\left( s\right) } \tag{6.54}
 \]
 
-(a) \(F = \{ 0,2/5,1\} ,S = \{ 0,0,0,1,1,1\}\) ; (b) \(F = \{ 0,2/5,9/{10},1\} ,S = \{ 0,0,0,1/2,1,1,1\}\) 。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_261_268_250_990_1547_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.11. 使用二次 B 样条函数重新参数化的 B 样条曲线。
 
 如前所述，如果 \({\mathbf{C}}^{w}\left( u\right)\) 或 \(f\left( s\right)\) 有内部节点，我们可以分三步进行重新参数化:
 
@@ -1163,12 +1227,7 @@ u = f\left( s\right)  = \frac{g\left( s\right) }{h\left( s\right) } \tag{6.54}
 
 3. 移除不必要的节点。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_262_277_248_988_1537_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.11. (续)(c) \(F = \left\{  {0,1/2,7/{10},9/{10},1}\right\}  ,S = \{ 0,0,0,1/2,1/2,1,1,1\}\) ; (d) \(F = \{ 0,1\} ,S = \{ 0,0,1,1\}\) 。
 
 因此，我们可以假设 \({\mathbf{C}}^{w}\left( u\right)\) 和 \(f\left( s\right)\) 没有内部节点。从理论上讲，可以使用类似于多项式函数的技术通过有理函数进行重新参数化。设 \(r\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{p}{a}_{i}{u}^{i}\) 为一个 \(p\) 次多项式。
 
@@ -1244,7 +1303,18 @@ Ex6.7 由方程 (6.35) 给出的圆弧具有贝塞尔表示。显然，欧几里
 
 图 6.12 显示了新曲线 \({\overline{\mathbf{C}}}^{w}\left( s\right)\) 及其投影 \(\mathbf{C}\left( s\right)\) 。将此图与图 1.22 进行比较。
 
-在实践中，通常不需要使用高于一阶的有理重新参数化函数。Lee 和 Lucian [Lee91] 对使用线性有理函数的重新参数化进行了出色的描述。我们在此总结他们的结果。设
+\begin{center}
+\begin{minipage}{22cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_13.tex}
+\par\smallskip
+图 6.12. 权重为 $\{1,\sqrt2/2,1\}$ 的圆弧及其齐次表示。\\
+虚线为齐次多项式曲线和控制多边形，实线为它们在 $W=1$ 平面上的中心投影；点线连接同一参数处的对应点。
+\end{minipage}
+\end{center}
+
+在实践中，通常不需要使用高于一阶的有理重新参数化函数。Lee 和 Lucian \cite{Lee91} 对使用线性有理函数的重新参数化进行了出色的描述。我们在此总结他们的结果。设
 
 \[
 \mathbf{C}\left( u\right)  = \frac{\mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {w}_{i}{\mathbf{P}}_{i}}{\mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {w}_{i}}\;u \in  \left\lbrack  {a,b}\right\rbrack
@@ -1274,12 +1344,7 @@ u = f\left( s\right)  = \frac{-{\delta s} + \beta }{{\gamma s} - \alpha }\;s \in
 
 \(\lambda \left( s\right)  \neq  0\) 对所有 \(s \in  \left\lbrack  {c,d}\right\rbrack\) 重新参数化的曲线 \(\mathbf{C}\left( s\right)\) 如下获得:
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_264_347_1327_841_763_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.12. 使用权重 \(\left\{  {1,\sqrt{2}/2,1}\right\}\) 的圆弧的均匀表示。
 
 1. 控制点 \(\left\{  {\mathbf{P}}_{i}\right\}\) 不变；
 
@@ -1301,73 +1366,58 @@ u = f\left( s\right)  = \frac{-{\delta s} + \beta }{{\gamma s} - \alpha }\;s \in
 
 \({s}_{i + j}\) 和 \({u}_{i + j}\) 分别是新的和旧的节点。
 
-图 6.13a 到 \({6.13}\mathrm{c}\) 显示了重新参数化的例子。三次 NURBS 曲线最初在节点向量 \(U = \{ 0,0,0,0,{}^{3}{/}_{10},\)  \(7/{10},1,1,1,1\}\) 上定义。在图 \({6.13}\mathrm{a}\) 和 \({6.13}\mathrm{\;b}\) 中，所有权重最初都等于一。在图 \({6.13}\mathrm{c}\) 中，原始权重为 \(W = \{ 1,1/2,2,3,1/2,1\}\) 。在图 6.13a 中，合理函数是
+图 6.13 展示同一代表性六点控制多边形上的三组有理重参数化。原三次曲线的节点向量为
 
 \[
-g\left( u\right)  = \frac{{2u} + 1}{{3u} + 2}
+U=\{0,0,0,0,\tfrac3{10},\tfrac7{10},1,1,1,1\}.
+\]
+
+(a)、(b)的原权重均为一，(c)的原权重为 $\{1,1/2,2,3,1/2,1\}$。三组均保持控制点不变，并将节点映射到新的参数区间。由式(6.57)得到的新节点及权重如下，使用精确分数表示：
+
+(a) $g(u)=\frac{2u+1}{3u+2}$, $s\in[\frac{1}{2},\frac{3}{5}]$。
+
+\[
+\begin{aligned}
+S_{a}&=\left\{\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{16}{29},\frac{24}{41},\frac{3}{5},\frac{3}{5},\frac{3}{5},\frac{3}{5}\right\},\\
+\bar W_{a}&=\left\{\frac{1}{8},\frac{5}{58},\frac{50}{1189},\frac{20}{1189},\frac{2}{205},\frac{1}{125}\right\}.
+\end{aligned}
+\]
+
+(b) $g(u)=\frac{2u}{3u+1}$, $s\in[0,\frac{1}{2}]$。
+
+\[
+\begin{aligned}
+S_{b}&=\left\{0,0,0,0,\frac{6}{19},\frac{14}{31},\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2}\right\},\\
+\bar W_{b}&=\left\{1,\frac{10}{19},\frac{100}{589},\frac{25}{589},\frac{5}{248},\frac{1}{64}\right\}.
+\end{aligned}
+\]
+
+(c) $g(u)=\frac{2u-1}{3u+2}$, $s\in[-\frac{1}{2},\frac{1}{5}]$。
+
+\[
+\begin{aligned}
+S_{c}&=\left\{-\frac{1}{2},-\frac{1}{2},-\frac{1}{2},-\frac{1}{2},-\frac{4}{29},\frac{4}{41},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\},\\
+\bar W_{c}&=\left\{\frac{1}{8},\frac{5}{116},\frac{100}{1189},\frac{60}{1189},\frac{1}{205},\frac{1}{125}\right\}.
+\end{aligned}
 \]
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_265_271_1252_979_768_0.jpg}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\begin{minipage}[c]{12cm}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_14.tex}
+\end{minipage}\hspace{.6cm}
+\begin{minipage}[c]{24cm}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_15.tex}
+\end{minipage}
+\par\smallskip
+图 6.13. 三组分式线性映射下的有理重参数化；相同控制点构成的多边形保持不变。\\
+$+$ 表示原区间内的等步长 $u$ 采样，$\square$ 表示各自新区间内的等步长 $s$ 采样，步长均为对应区间长度的 $1/20$。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 6.13. NURBS 曲线的合理重新参数化；+ 显示了原始参数化，而 \(\square\) 说明了新的参数化。(a) \(g\left( u\right)  = \left( {{2u} + 1}\right) /\left( {{3u} + 2}\right)\) ；(b) \(g\left( u\right)  = {}^{2u}/{}_{\left( 3u + 1\right) }\) ；(c) \(g\left( u\right)  = {}^{\left( 2u - 1\right) }/{}_{\left( 3u + 2\right) }\) 。
-
-图 6.13.(续)。
-
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_266_196_250_1069_1578_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-导致新的节点向量
-
-\[
-U = \{ {0.5},{0.5},{0.5},{0.5},{0.55},{0.58},{0.6},{0.6},{0.6},{0.6}\}
-\]
-
-和权重
-
-\[
-W = \{ {0.125},{0.08},{0.04},{0.01},{0.009},{0.008}\}
-\]
-
-+ 显示了原始参数化，而 \(\square\) 标记了新的参数化。图 6.13b
-
-应用
-
-\[
-g\left( u\right)  = \frac{2u}{{3u} + 1}
-\]
-
-产生
-
-\[
-U = \{ 0,0,0,0,{0.31},{0.45},{0.5},{0.5},{0.5},{0.5}\}
-\]
-
-和
-
-\[
-W = \{ {1.0},{0.52},{0.16},{0.04},{0.02},{0.01}\}
-\]
-
-再次，+ 显示了原始参数化，而 \(\square\) 显示了新的参数化。最后，在
-
-图 6.13c 中，该函数
-
-\[
-g\left( u\right)  = \frac{{2u} - 1}{{3u} + 2}
-\]
-
-产生 \(\;U = \{  - {0.5}, - {0.5}, - {0.5}, - {0.5}, - {0.13},{0.09},{0.2},{0.2},{0.2},{0.2}\}\)
-
-和
-
-\[
-W = \{ {0.125},{0.04},{0.08},{0.05},{0.004},{0.008}\}
-\]
 
 表面公式是相似的。例如，方程 (6.56) 概括为
 
@@ -1407,23 +1457,33 @@ U = \{ 0,0,0,0,1,1,1,1\} \;V = \{ 0,0,0,\frac{1}{2},1,1,1\}
 g\left( u\right)  = \frac{{2u} + 1}{{3u} + 2}\;h\left( v\right)  = \frac{{2v} + 1}{{3v} + 2}
 \]
 
-图 6.14a 显示了原始表面；注意参数线的均匀分布。在图 6.14b 中，表面在 \(u\) 方向上进行了重新参数化，
+图 6.14a 显示原参数化下的等参数步长网格；(b)只改变 $u$ 参数，(c)只改变 $v$ 参数，(d)同时改变两个参数。曲面几何形状相同，而等参数步长线的空间分布发生变化。
+
+
+
+
+
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_268_371_238_792_1761_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_16.tex}
+\par\vspace{.6\baselineskip}
+\begin{minipage}[c]{12.5cm}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_17.tex}
+\end{minipage}\hspace{.5cm}
+\begin{minipage}[c]{12.5cm}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_18.tex}
+\end{minipage}
+\par\smallskip
+图 6.14. 同一代表性三次$\times$二次曲面的有理重参数化；四图共用控制点、几何形状与视角。\\
+(a)原参数化；(b)只改变 $u$；(c)只改变 $v$；(d)同时改变两个参数。\\
+每个方向均画11条等参数步长线；重参数化方向在新区间 $[1/2,3/5]$ 内取等步长，使用正文给定的分式线性映射。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 6.14. 使用 \(g\left( u\right)  = {}^{\left( 2u + 1\right) }/{}_{\left( 3u + 2\right) }\) 的 NURBS 表面的有理重新参数化。(a) 原始表面；(b) 在 \(u\) 方向上的重新参数化；(c) 在 \(v\) 方向上的重新参数化；(d) 在两个方向上的重新参数化。
-
-\begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_269_388_257_761_836_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 6.14. (续)
-
-图 6.14c 在 \(v\) 方向上，图 6.14d 在两个方向上。注意图 \({6.14}\mathrm{\;b} - {6.14}\mathrm{\;d}\) 中参数线的分布不均匀。
 
 现在假设 \(\mathbf{C}\left( u\right)\) 的末端权重不相等，即 \({w}_{0} \neq  {w}_{n}\) 。由于线性有理函数 \(s = g\left( u\right)\) 有三个自由度，因此应该能够确定满足三个条件的 \(g\left( u\right)\) 。
 
@@ -1431,7 +1491,7 @@ g\left( u\right)  = \frac{{2u} + 1}{{3u} + 2}\;h\left( v\right)  = \frac{{2v} + 
 c = g\left( a\right) \;d = g\left( b\right) \;{\bar{w}}_{0} = {\bar{w}}_{n}
 \]
 
-Lee 和 Lucian [Lee91] 推导出满足这些条件的函数。
+Lee 和 Lucian \cite{Lee91} 推导出满足这些条件的函数。
 
 \[
 s = g\left( u\right)  = \frac{\sqrt[p]{{w}_{0}}\left( {b - u}\right) c + \sqrt[p]{{w}_{n}}\left( {u - a}\right) d}{\sqrt[p]{{w}_{0}}\left( {b - u}\right)  + \sqrt[p]{{w}_{n}}\left( {u - a}\right) } \tag{6.58}
@@ -1443,32 +1503,32 @@ s = g\left( u\right)  = \frac{\sqrt[p]{{w}_{0}}\left( {b - u}\right) c + \sqrt[p
 U = \left\{  {0,0,0,0,\frac{3}{10},\frac{7}{10},1,1,1,1}\right\}  \;W = \{ 2,8,3,4,2,5\}
 \]
 
-选择的新区间为 \(\left\lbrack  {c,d}\right\rbrack   = \left\lbrack  {1/{10},4/5}\right\rbrack\) 。由公式 (6.58) 计算的重新参数化函数为
+选择的新区间为 $[c,d]=[1/10,4/5]$。将式(6.58)中的分子与分母同除以 $\sqrt[3]{2}$，得到精确映射
 
 \[
-g\left( u\right)  = \frac{{1.242u} + {0.126}}{{0.45u} + {1.26}}
+r=\sqrt[3]{\frac52},\qquad g(u)=\frac{\frac1{10}+\left(\frac45r-\frac1{10}\right)u}{1+(r-1)u}.
 \]
 
-产生新的节点和权重
-
-\[
-{U}^{\prime } = \{ {0.1},{0.1},{0.1},{0.1},{0.36},{0.63},{0.8},{0.8},{0.8},{0.8}\}
-\]
+由式(6.57)计算权重，再作共同归一化，得到以下新节点和权重（内项显示四位小数）：
 
 \[
-{W}^{\prime } = \{ 1,{3.61},{1.08},{1.06},{0.43},1\}
+U^{\prime}\simeq \{0.1,0.1,0.1,0.1,0.3574,0.632,0.8,0.8,0.8,0.8\},\qquad W^{\prime}\simeq \{1,3.6128,1.0838,1.0647,0.4343,1\}.
 \]
+
+两端权重等于1是精确等式：未归一化的端权重分别为 $2$ 和 $5/r^3=2$。控制点和曲线形状均保持不变。
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_270_388_256_763_841_0.jpg}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_19.tex}
+\par\smallskip
+图 6.15. 按式(6.58)重参数化，使两端权重归一化为一。\\
+$+$ 为 $u=i/20$ 的曲线点，$\square$ 为新区间 $[1/10,4/5]$ 内等步长 $s$ 的曲线点；控制多边形保持不变。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 6.14. (续)
-
-其中端权重被选择为 1。同样，+ 标记原始参数化，而 \(\square\) 标记新的参数化。
-
-我们在第 4 章中给出了例子，表明权重的任意变化通常会改变有理 NURBS 曲线的形状(例如，见图 4.2 和 4.4)。在本节中，我们在不修改曲线形状的情况下改变了权重，唯一的变化是曲线的参数化。这表明，对于给定的曲线，权重之间必定存在一种关系来决定曲线形状，即保持这种关系的权重变化会导致曲线的重新参数化，而不会改变形状。这些关系被称为形状不变量或形状因子。对于有理 Bézier 曲线，它们仅依赖于次数；对于 NURBS 曲线，它们依赖于次数和节点。一般来说，这些形状不变量的推导相当复杂(见 [Forr68; Vers75; Patt85; Lee87; Pieg91a])。我们在此提供一些供参考； \({c}_{i}\) 表示常数。
+我们在第 4 章中给出了例子，表明权重的任意变化通常会改变有理 NURBS 曲线的形状(例如，见图 4.2 和 4.4)。在本节中，我们在不修改曲线形状的情况下改变了权重，唯一的变化是曲线的参数化。这表明，对于给定的曲线，权重之间必定存在一种关系来决定曲线形状，即保持这种关系的权重变化会导致曲线的重新参数化，而不会改变形状。这些关系被称为形状不变量或形状因子\BookIndexMark{p0125}。对于有理 Bézier 曲线，它们仅依赖于次数；对于 NURBS 曲线，它们依赖于次数和节点。一般来说，这些形状不变量的推导相当复杂(见 \cite{Forr68,Vers75,Patt85,Lee87,Pieg91a})。我们在此提供一些供参考； \({c}_{i}\) 表示常数。
 
 \begin{itemize}
 \item 二次 Bézier 曲线(圆锥曲线):
@@ -1478,12 +1538,7 @@ g\left( u\right)  = \frac{{1.242u} + {0.126}}{{0.45u} + {1.26}}
 \frac{{w}_{0}{w}_{2}}{{w}_{1}^{2}} = {c}_{1} \tag{6.59}
 \]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_271_276_252_985_698_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.15. 曲线重新参数化以使端权重相等。
 
 考虑圆弧，由 \(\left\{  {w}_{i}\right\}   = \{ 1,1,2\}\) (图 1.19b)或 \(\left\{  {w}_{i}\right\}   = \left\{  {1,\sqrt{2}/2,1}\right\}\) (公式 [6.55])定义
 
@@ -1523,13 +1578,13 @@ g\left( u\right)  = \frac{{1.242u} + {0.126}}{{0.45u} + {1.26}}
 
 对于 \(i = 1,\ldots ,n - 1\) 。
 
-我们以提及另一种有趣的技术来结束曲线的重新参数化。Fuhr 和 Kallay [Fuhr92] 开发了一种使用 \({C}^{1}\) 连续分段线性有理函数插值一组函数值的技术。他们的方法可以用来获得 \({C}^{1}\) 连续重新参数化，这不会提高次数，但可以映射任意多个内部点， \({u}_{i} = f\left( {s}_{i}\right)\) 。
+我们以提及另一种有趣的技术来结束曲线的重新参数化。Fuhr 和 Kallay \cite{Fuhr92} 开发了一种使用 \({C}^{1}\) 连续分段线性有理函数插值一组函数值的技术。他们的方法可以用来获得 \({C}^{1}\) 连续重新参数化，这不会提高次数，但可以映射任意多个内部点， \({u}_{i} = f\left( {s}_{i}\right)\) 。
 
 NURBS 曲面 \(\;{\mathbf{S}}^{w}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,\;p}\left( u\right) {N}_{j,\;q}\left( v\right) {\mathbf{P}}_{i,j}^{w}\;\) 可以在 \(u\) 、 \(v\) 或两个方向上重新参数化。例如，它可以通过将 \(u\) 节点映射到 \(s\) 节点(方程 [6.51] 和 [6.52])在 \(u\) 方向上用多项式函数重新参数化，并将方程 (6.39) 到 (6.44) 应用于控制点的 \(m + 1\) 列。
 
 
 
-\section{曲线和曲面的反转}
+\section{曲线和曲面的反转}\BookIndexMark{p0126}
 
 在本节中，我们使用重新参数化来反转 NURBS 曲线的方向和曲面法向量的方向。
 
@@ -1589,7 +1644,18 @@ s = g\left( u\right)  =  - u + a + b \tag{6.65}
 {\mathbf{Q}}_{i}^{w} = {\mathbf{P}}_{n - i}^{w} \tag{6.67}
 \]
 
-方程 (6.63)-(6.67) 的效果是反转曲线的方向。这在图 6.16 中显示；注意参数化没有改变。
+方程 (6.63)-(6.67) 的效果是反转曲线的方向。这在图 6.16 中显示；曲线的几何形状保持不变，参数方向反转。
+
+\begin{center}
+\begin{minipage}{17cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_20.tex}
+\par\smallskip
+图 6.16. 代表性三次曲线的反向：$s=1-u$，控制点次序反转，曲线形状保持不变。\\
+两种参数化的等步长采样点（$+$ 与 $\square$）完全重合；箭头只表示相反的遍历方向。
+\end{minipage}
+\end{center}
 
 设 \({\textbf{S}}^{w}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,\;p}\left( u\right) {N}_{j,\;q}\left( v\right) {\textbf{P}}_{i,j}^{w}\) 为具有节点向量 \(U = \left\{  {{u}_{0},\ldots ,{u}_{r}}\right\}\) 和 \(V = \left\{  {{v}_{0},\ldots ,{v}_{s}}\right\}\) 的 NURBS 曲面。曲面的参数化也可以被反转。更具体地说， \(u\) 的反转产生
 
@@ -1627,12 +1693,7 @@ s = g\left( u\right)  =  - u + a + b \tag{6.65}
 {\mathbf{Q}}_{i,j}^{w} = {\mathbf{P}}_{i,m - j}^{w}\;i = 0,\ldots ,n\;j = 0,\ldots ,m \tag{6.73}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_273_281_1365_955_717_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.16. 曲线反转；没有参数化变化发生。
 
 在任意参数点 (u, v) 处，表面法向量由以下公式给出
 
@@ -1646,7 +1707,22 @@ s = g\left( u\right)  =  - u + a + b \tag{6.65}
 
 
 
-\section{B-spline 和分段幂基形式之间的转换}
+\begin{center}
+\begin{minipage}{28cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_21.tex}
+\par\vspace{.7\baselineskip}
+\BookFigure[max width=\linewidth]{ch06/fig_6_22.tex}
+\par\smallskip
+图 6.17. 同一曲面反向后，同一几何点处的偏导向量与法向量。\\
+(a)原参数化；(b)$s=1-u$，$\mathbf S_s=-\mathbf S_u$；(c)$t=1-v$，$\mathbf S_t=-\mathbf S_v$。\\
+两种单向反转均使法向变为 $-\mathbf N$；虚线等参线经过同一点。\\
+各图一阶偏导箭头均画为原长的 $1/2$，法向箭头均画为原长的 $1/8$。
+\end{minipage}
+\end{center}
+
+\section{B-spline 和分段幂基形式之间的转换}\BookIndexMark{p0127}
 
 将 B-spline 曲线或表面转换为分段幂基形式的步骤如下:
 
@@ -1682,21 +1758,10 @@ u = \left( {{u}_{j + 1} - {u}_{j}}\right) s + {u}_{j} \tag{6.75}
 {\mathbf{C}}_{j}\left( s\right)  = {\left\lbrack  {s}^{i}\right\rbrack  }^{T}\left\lbrack  {\mathbf{a}}_{i}\right\rbrack   \tag{6.78}
 \]
 
-266 高级几何算法
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_275_369_239_785_1786_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.17. 表面反转。(a) 原始表面显示偏导数和法向量；(b) 在 \(u\) 方向上反转参数化；(c) 在 \(v\) 方向上反转参数化。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_276_309_259_907_828_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.17.(续)
 
 这是参数 \(s\) 中第 \(j\) 段的幂基形式。
 
@@ -1765,7 +1830,7 @@ u = \left( {{u}_{j + 1} - {u}_{j}}\right) s + {u}_{j} \tag{6.75}
 总之，对于 \(k = 0,\ldots ,p\) ， \(k\) 列的 \({M}_{p}\) 由以下给出
 
 \[
-{M}_{p}\left( {j,k}\right)  = \left\{  \begin{matrix} 0 & j = 0,\ldots ,k - \\  {\left( -1\right) }^{j - k}\left( \begin{array}{l} p \\  k \end{array}\right) \left( \begin{array}{l} p - k \\  j - k \end{array}\right) & j = k,\ldots ,p \end{matrix}\right.  \tag{6.82}
+{M}_{p}\left( {j,k}\right)  = \left\{  \begin{matrix} 0 & j = 0,\ldots ,k - 1 \\  {\left( -1\right) }^{j - k}\left( \begin{array}{l} p \\  k \end{array}\right) \left( \begin{array}{l} p - k \\  j - k \end{array}\right) & j = k,\ldots ,p \end{matrix}\right.  \tag{6.82}
 \]
 
 我们将其留作练习以证明
@@ -1785,76 +1850,47 @@ u = \left( {{u}_{j + 1} - {u}_{j}}\right) s + {u}_{j} \tag{6.75}
 \end{itemize}
 
 \begin{itemize}
-\item 每行和每列的元素之和为一。方程 (6.83) 表示 \({M}_{p}\) 关于从左下角元素到右上角元素的对角线是对称的。
+\item 各行元素之和除首行为一外均为零；各列元素之和除末列为一外均为零。方程 (6.83) 表示 \({M}_{p}\) 关于从左下角元素到右上角元素的对角线是对称的。
 \end{itemize}
 
 算法 A6.1 高效地计算 \({M}_{p}\) 。一个数组 bin[i][j]，它包含
 
-\HRule
-
 the precomputed binomial coefficients, is used.
 
-\hspace*{3em} ALGORITHM A6.1
-
-\hspace*{5em} BezierToPowerMatrix(p, M)
-
-\hspace*{7em} \{ /* Compute pth degree Bézier matrix */
-
-\hspace*{10em} /* Input: p */
-
-\hspace*{10em} /* Output: M */
-
-\hspace*{7em} for (i=0; i<p; i++) /* Set upper triangle to zero */
-
-\hspace*{9em} for \(\left( {j = i + 1;j <  = p;j +  + }\right) \;M\left\lbrack  i\right\rbrack  \left\lbrack  j\right\rbrack   = {0.0}\) ;
-
-\hspace*{7em} \(M\left\lbrack  0\right\rbrack  \left\lbrack  0\right\rbrack   = M\left\lbrack  p\right\rbrack  \left\lbrack  p\right\rbrack   = {1.0};/ *\) Set corner elements \(* /\)
-
-\hspace*{7em} if (p mod 2) M[p][0] = -1.0;
-
-\hspace*{9em} else M[p][0] = 1.0 ;
-
-\hspace*{7em} sign = -1.0 ;
-
-\hspace*{7em} for (i=1; i<p; i++) /* Compute first column, last row,*/
-
-\hspace*{9em} /* and the diagonal */
-
-\hspace*{9em} M[i][i] = bin[p][i];
-
-\hspace*{9em} \(M\left\lbrack  i\right\rbrack  \left\lbrack  0\right\rbrack   = M\left\lbrack  p\right\rbrack  \left\lbrack  {p - i}\right\rbrack   = \operatorname{sign} * M\left\lbrack  i\right\rbrack  \left\lbrack  i\right\rbrack  ;\)
-
-\hspace*{9em} sign = -sign;
-
-\hspace*{9em} \}
-
-\hspace*{7em} /* Compute remaining elements \(*\) /
-
-\hspace*{7em} \(\mathrm{k}1 = \left( {\mathrm{p} + 1}\right) /2;\;\mathrm{{pk}} = \mathrm{p} - 1;\)
-
-\hspace*{7em} for (k=1; k<k1; k++)
-
-\hspace*{9em} \{
-
-\hspace*{9em} sign = -1.0 ;
-
-\hspace*{9em} for (j=k+1; j<=pk; j++)
-
-\hspace*{11em} \{
-
-\hspace*{11em} \(M\left\lbrack  j\right\rbrack  \left\lbrack  k\right\rbrack   = M\left\lbrack  {pk}\right\rbrack  \left\lbrack  {p - j}\right\rbrack   = \operatorname{sign} * \operatorname{bin}\left\lbrack  p\right\rbrack  \left\lbrack  k\right\rbrack   * \operatorname{bin}\left\lbrack  {p - k}\right\rbrack  \left\lbrack  {j - k}\right\rbrack  ;\)
-
-\hspace*{11em} sign = -sign;
-
-\hspace*{11em} \}
-
-\hspace*{9em} \(\mathrm{{pk}} = \mathrm{{pk}} - 1\) ;
-
-\hspace*{9em} \}
-
-\hspace*{7em} \}
-
-\HRule
+% book-code: algorithm A6.1
+\par\medskip\noindent\textbf{算法 A6.1（伪代码）}\BookIndexMark{p0128}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+BezierToPowerMatrix(p, M)
+{ /* Compute pth degree Bézier matrix */
+    /* Input: p */
+    /* Output: M */
+    for (i=0; i<p; i++) /* Set upper triangle to zero */
+        for ( j = i + 1;j <= p;j ++ ) M[i][j]= 0.0 ;
+    M[0][0]= M[p][p]= 1.0; /* Set corner elements  */
+    if (p mod 2) M[p][0] = -1.0;
+    else M[p][0] = 1.0 ;
+    sign = -1.0 ;
+    for (i=1; i<p; i++) /* Compute first column, last row,*/
+        /* and the diagonal */
+    {
+        M[i][i] = bin[p][i];
+        M[i][0]= M[p][p - i]= sign * M[i][i];
+        sign = -sign;
+    }
+    /* Compute remaining elements  */
+    k1 = ( p + 1) /2;pk = p - 1;
+    for (k=1; k<k1; k++)
+    {
+        sign = -1.0 ;
+        for (j=k+1; j<=pk; j++)
+        {
+            M[j][k]= M[pk][p - j]= sign * bin[p][k]* bin[p - k][j - k];
+            sign = -sign;
+        }
+        pk = pk - 1 ;
+    }
+}
+\end{minted}
 
 现在我们进入将 B-spline 曲线转换为分段幂基的步骤 3，即重新参数化方程 (6.78) 以获得
 
@@ -1912,22 +1948,28 @@ R\left\lbrack  {\mathbf{a}}_{i}\right\rbrack   = \left\lbrack  {\mathbf{b}}_{i}\
 
 关于以 Bézier 控制点为基础的幂基系数。图 6.18 显示了 B-spline 到幂基转换的一个示例。一个具有三个段的三次 NURBS 曲线被转换为分段幂基形式。图 6.18 说明了曲线并标记了其第二段。请注意，该段由中间的四个控制点定义。中间曲线段也被显示，以及向量系数 \({\mathbf{b}}_{0},{\mathbf{b}}_{1},{\mathbf{b}}_{2}\) 和 \({\mathbf{b}}_{3}\) ，它们经过 \(1/{10}\) 的缩放以适应图形。请注意，向量系数与曲线没有几何关系。多项式片段定义在 \(\left\lbrack  {3/{10},7/{10}}\right\rbrack\) 上。
 
+\begin{center}
+\begin{minipage}{21cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_23.tex}
+\par\smallskip
+图 6.18. 代表性三次 B 样条的中间段 $[3/10,7/10]$ 与全局参数的幂基系数。\\
+方框标出该段上的等参数步长点；从该段提取的 Bézier 控制点经基变换得到 $\mathbf C(u)=\sum_{i=0}^3\mathbf b_i u^i$，箭头显示 $\mathbf b_i/10$。
+\end{minipage}
+\end{center}
+
 我们以两个最后的备注完成 B-spline 到幂基转换的讨论:
 
 \begin{itemize}
-\item IGES 参数样条(实体 112 和 114)[IGE93] 假设每个段的参数化从零开始；这意味着在方程 (6.85) 中 \(d = 0\) ，因此 \({R}_{p}\) 简化为具有元素的对角矩阵。
+\item IGES 参数样条\BookIndexMark{p0129}(实体 112 和 114)\cite{IGE93} 假设每个段的参数化从零开始；这意味着在方程 (6.85) 中 \(d = 0\) ，因此 \({R}_{p}\) 简化为具有元素的对角矩阵。
 \end{itemize}
 
 \[
 {r}_{i,j} = \left\{  {\begin{array}{ll} 0 & i \neq  j \\  {c}^{i} & i = j \end{array}\;i = 0,\ldots ,p}\right.  \tag{6.90}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_280_323_266_880_750_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.18. 将 NURBS 曲线转换为以幂基形式表示的分段多项式曲线。
 
 \begin{itemize}
 \item 对于曲面，方程 (6.89) 变为
@@ -1939,7 +1981,7 @@ R\left\lbrack  {\mathbf{a}}_{i}\right\rbrack   = \left\lbrack  {\mathbf{b}}_{i}\
 
 其中 \({R}_{p}\) 和 \({R}_{q}^{T}\) 是重新参数化矩阵，将 \(u\) 转换为 \(s\) ，将 \(v\) 转换为 \(t\) ，分别 \(\left( {0 \leq  s,t \leq  1}\right)\) 。
 
-图 6.19a 和 \({6.19}\mathrm{\;b}\) 显示了 B-spline 曲面到幂基转换。测试曲面是一个定义在 的度 \(\left( {3 \times  2}\right)\) 曲面。
+图 6.19a 和 \({6.19}\mathrm{\;b}\) 显示了 B-spline 曲面到幂基转换。这里采用代表性控制网格重建曲面，其次数为 \(\left( {3 \times  2}\right)\)。
 
 \[
 U = \left\{  {0,0,0,0,\frac{3}{10},\frac{7}{10},1,1,1,1}\right\}  \;V = \left\{  {0,0,0,\frac{3}{10},\frac{3}{5},1,1,1}\right\}
@@ -1947,22 +1989,34 @@ U = \left\{  {0,0,0,0,\frac{3}{10},\frac{7}{10},1,1,1,1}\right\}  \;V = \left\{ 
 
 图6.19a中显示了三个多项式补丁:在 \(\left\lbrack  {0,{\;}^{3}{/}_{10}}\right\rbrack   \times  \left\lbrack  {{\;}^{3}{/}_{5},1}\right\rbrack\) 上定义的patch(0,2)；在 \(\left\lbrack  {{\;}^{3}{/}_{10},{\;}^{7}{/}_{10}}\right\rbrack   \times  \left\lbrack  {{\;}^{3}{/}_{10},{\;}^{3}{/}_{5}}\right\rbrack\) 上定义的patch(1,1)；以及在 \(\left\lbrack  {7/{10},1}\right\rbrack   \times  \left\lbrack  {0,3/{10}}\right\rbrack\) 上定义的patch(2,0)。图6.19b展示了一些在幂基形式下定义patch(1,1)的向量系数。这些向量经过 \(1/2\) 缩放以便更好地可视化。请注意补丁几何形状与向量系数之间缺乏任何几何关系。将此图与第5章的图5.25进行比较。
 
+\begin{center}
+\begin{minipage}{28cm}
+\vspace*{.6\baselineskip}
+\centering
+\begin{minipage}{13.6cm}\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_24.tex}
+\end{minipage}\hfill
+\begin{minipage}{13.6cm}\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_25.tex}
+\end{minipage}
+\par\smallskip
+图 6.19. 代表性三次 $\times$ 二次 B 样条曲面到幂基的转换。\\
+(a) 三个指定面片 $(0,2)$、$(1,1)$、$(2,0)$ 以交叉等参数线标出；(b) 中间面片的部分全局幂基系数向量，箭头为 $\mathbf b_{i,j}/2$。\\
+系数图采用独立的统一坐标比例；右上框将主图框内两支短向量的投影放大四倍。
+\end{minipage}
+\end{center}
+
 现在我们讨论将分段幂基曲线或曲面转换为B样条形式的过程。步骤如下:
 
 1. 应用矩阵乘法将幂基段(补丁)重新参数化到区间 \(\left\lbrack  {0,1}\right\rbrack\) ；
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_281_360_248_817_868_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图6.19. 将NURBS曲面转换为以幂基形式表示的多项式补丁集合。(a) 显示了索引为 \(\left( {0,2}\right) ,\left( {1,1}\right)\) 和(2,0)的补丁；(b) 定义patch(1,1)的一些向量系数。
 
 2. 应用矩阵乘法将每个幂基段(补丁)转换为Bézier形式；
 
 3. 将各段(补丁)拼接在一起形成B样条曲线或曲面，所有内部节点的重数等于度数(如果不能假设 \({C}^{0}\) 连续性，则为度数加一)；节点的值由原始幂基段(补丁)的参数边界给出；
 
-4. 使用节点移除以获得B样条曲线或曲面的最小表示(曲线的算法为A5.8，或参见[Till92]的曲面算法)。
+4. 使用节点移除以获得B样条曲线或曲面的最小表示(曲线的算法为A5.8，或参见\cite{Till92}的曲面算法)。
 
 第3步和第4步无需进一步阐述。首先考虑曲线。设
 
@@ -1986,12 +2040,7 @@ U = \left\{  {0,0,0,0,\frac{3}{10},\frac{7}{10},1,1,1,1}\right\}  \;V = \left\{ 
 \left\lbrack  {\mathbf{a}}_{i}\right\rbrack   = {R}_{p}{M}_{p}\left\lbrack  {\mathbf{P}}_{i}\right\rbrack
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_282_374_246_780_792_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.19. (续)
 
 和
 
@@ -2009,23 +2058,38 @@ U = \left\{  {0,0,0,0,\frac{3}{10},\frac{7}{10},1,1,1,1}\right\}  \;V = \left\{ 
 {M}_{2}^{-1} = \left\lbrack  \begin{array}{lll} 1 & 0 & 0 \\  1 & \frac{1}{2} & 0 \\  1 & 1 & 1 \end{array}\right\rbrack
 \]
 
-274 高级几何算法
 
 \[
 {M}_{3}^{-1} = \left\lbrack  \begin{matrix} 1 & 0 & 0 & 0 \\  1 & \frac{1}{3} & 0 & 0 \\  1 & \frac{2}{3} & \frac{1}{3} & 0 \\  1 & 1 & 1 & 1 \end{matrix}\right\rbrack   \tag{6.94}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_283_381_251_769_707_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.20. 将分段多项式曲线转换为 NURBS 形式。(a)在 \({s}_{0} < {s}_{1} < {s}_{2} < {s}_{3}\) 上定义的分段多项式；(b)将每一段转换为 Bézier 形式；(c)去除节点后的 NURBS 表示。
+
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\begin{minipage}{11.6cm}\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_26.tex}
+\end{minipage}\hfill
+\begin{minipage}{24.4cm}\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_27.tex}
+\end{minipage}
+\par\smallskip
+图 6.20. 同一条代表性分段三次曲线的三种表示：\\
+(a) 全局参数的分段幂基；(b) 转换得到的三段 Bézier 表示，两个内节点均为三重；(c) 精确去除多余节点后的七控制点表示。\\
+参数分点为 $0,3/10,3/5,1$；前一接点恰为 $C^2$ 连续，后一接点恰为 $C^1$ 连续，故最终分别保留单节点和双节点。
+\end{minipage}
+\end{center}
 
 给定 \({M}_{p}\) ， \({M}_{p}^{-1}\) 的 \(k\) 列的公式为
 
 \[
-{M}_{p}^{-1}\left( {j,k}\right)  = \left\{  \begin{matrix} 0 & j = 0,\ldots ,k - 1 \\  \frac{1}{{M}_{p}\left( {k,k}\right) } & j = k \\   - \mathop{\sum }\limits_{{i = k}}^{{j - 1}}{M}_{p}\left( {j,i}\right) {M}_{p}^{-1}\left( {i,k}\right) & \\  \frac{{M}_{p}\left( {j,j}\right) }{{M}_{p}\left( {j,j}\right) } & j = k + 1,\ldots ,p \end{matrix}\right.  \tag{6.95}
+M_p^{-1}(j,k)=\begin{cases}
+0, & 0\le j<k,\\
+1/M_p(k,k), & j=k,\\
+-\dfrac{\sum_{i=k}^{j-1}M_p(j,i)M_p^{-1}(i,k)}{M_p(j,j)}, & k<j\le p.
+\end{cases} \tag{6.95}
 \]
 
 如 \({M}_{p},{M}_{p}^{-1}\) 所示，关于从左下角元素到右上角元素的对角线是对称的，因此
@@ -2036,70 +2100,38 @@ U = \left\{  {0,0,0,0,\frac{3}{10},\frac{7}{10},1,1,1,1}\right\}  \;V = \left\{ 
 
 算法 A6.2 计算 \({M}_{p}^{-1}\) (记作 MI)。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_284_357_248_831_1586_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.20. (续)
 
-算法 A6.2
-
+% book-code: algorithm A6.2
+\par\medskip\noindent\textbf{算法 A6.2（伪代码）}\BookIndexMark{p0130}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
 PowerToBezierMatrix(p, M, MI)
-
-\{ /* 计算 p 次贝塞尔矩阵的逆 */
-
-/* 输入: p, M */
-
-/* 输出: MI */
-
-\HRule
-
-for (i=0; i<p; i++) /* Set upper triangle to zero */
-
-\hspace*{1em} for (j=i+1; j<=p; j++) MI[i][j] = 0.0;
-
-/* Set first col, last row, and diagonal */
-
-for (i = 0; i<=p; i++)
-
-\hspace*{1em} \{
-
-\hspace*{1em} MI[i][0] = MI[p][i] = 1.0;
-
-\hspace*{1em} MI[i][i] = 1.0/M[i][i];
-
-\hspace*{1em} \}
-
-/* Compute remaining elements \(*\) /
-
-\(\mathrm{k}1 = \left( {\mathrm{p} + 1}\right) /2;\;\mathrm{{pk}} = \mathrm{p} - 1;\)
-
-for (k=1; k<k1; k++)
-
-\hspace*{1em} \{
-
-\hspace*{1em} for (j=k+1; j<=pk; j++)
-
-\hspace*{3em} \{
-
-\hspace*{3em} d = 0.0 ;
-
-\hspace*{3em} for (i=k; i<j; i++) d = d-M[j][i]*MI[i][k];
-
-\hspace*{3em} MI[j][k] = d/M[j][j];
-
-\hspace*{3em} MI[pk][p-j] = MI[j][k];
-
-\hspace*{3em} \}
-
-\hspace*{1em} \(\mathrm{{pk}} = \mathrm{{pk}} - 1;\)
-
-\hspace*{1em} \}
-
-\}
-
-\HRule
+{ /* 计算 p 次贝塞尔矩阵的逆 */
+    /* 输入: p, M */
+    /* 输出: MI */
+    for (i=0; i<p; i++) /* Set upper triangle to zero */
+        for (j=i+1; j<=p; j++) MI[i][j] = 0.0;
+    /* Set first col, last row, and diagonal */
+    for (i = 0; i<=p; i++)
+    {
+        MI[i][0] = MI[p][i] = 1.0;
+        MI[i][i] = 1.0/M[i][i];
+    }
+    /* Compute remaining elements  */
+    k1 = ( p + 1) /2;pk = p - 1;
+    for (k=1; k<k1; k++)
+    {
+        for (j=k+1; j<=pk; j++)
+        {
+            d = 0.0 ;
+            for (i=k; i<j; i++) d = d-M[j][i]*MI[i][k];
+            MI[j][k] = d/M[j][j];
+            MI[pk][p-j] = MI[j][k];
+        }
+        pk = pk - 1;
+    }
+}
+\end{minted}
 
 回顾公式 (6.85) 和 (6.86)，我们有 \(s = {cu} + d\) 和
 
@@ -2140,7 +2172,7 @@ u = \frac{1}{c}s - \frac{d}{c} = \left( {{u}_{j + 1} - {u}_{j}}\right) s + {u}_{
 我们总结了两点:
 
 \begin{itemize}
-\item 对于 IGES 参数样条， \(\delta  = 0\) 和 \({R}_{p}^{-1}\) 简化为对角矩阵 [IGE93]，其元素为
+\item 对于 IGES 参数样条， \(\delta  = 0\) 和 \({R}_{p}^{-1}\) 简化为对角矩阵 \cite{IGE93}，其元素为
 \end{itemize}
 
 \[
@@ -2159,21 +2191,28 @@ u = \frac{1}{c}s - \frac{d}{c} = \left( {{u}_{j + 1} - {u}_{j}}\right) s + {u}_{
 
 图 \({6.21}\mathrm{a} - {6.21}\mathrm{c}\) 说明了从幂基到 NURBS 表面的转换。测试表面是九个度 \(\left( {3 \times  2}\right)\) 多项式片段的集合，如图 6.21a 所示。图 6.21b 说明了分段 Bézier 表示。去结点后产生的表面如图 6.21c 所示。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_286_361_1132_807_854_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 6.21. 将分段多项式表面转换为 NURBS 形式。(a) 分段多项式表面；(b) 将每个片段转换为 Bézier 形式；(c) 去结点后的 NURBS 表示。
 
-278 高级几何算法
+
+
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_287_405_242_887_1823_0.jpg}
+\begin{minipage}{28cm}
+\vspace*{.6\baselineskip}
+\centering
+\begin{minipage}{13cm}\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_28.tex}
+\end{minipage}
+\par\medskip
+\begin{minipage}{26.4cm}\centering
+\BookFigure[max width=\linewidth]{ch06/fig_6_29.tex}
+\end{minipage}
+\par\smallskip
+图 6.21. 同一代表性三次 $\times$ 二次曲面的九面片幂基到 B 样条转换。\\
+(a) 九个多项式面片的边界；(b) 逆变换并拼接得到的 $10\times7$ Bézier 控制网；(c) 精确去除多余节点后的 $6\times5$ 控制网。\\
+实线为面片边界，虚线与圆点为控制网；三图采用同一视角与比例，曲面几何形状相同。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 6.21.(续)
 
 \section*{练习}
 

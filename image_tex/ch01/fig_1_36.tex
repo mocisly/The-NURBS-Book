@@ -1,0 +1,68 @@
+% Fig.1.25: same degree-(2,3) surface/control net as Fig.1.24(b).
+% u0=21/50, v0=9/20. Qj and all de Casteljau levels computed with rational arithmetic.
+% Right panel magnifies the same projection by 1.35; all text retains book font size.
+\begin{tikzpicture}[x={(-.9cm,-.45cm)},y={(1.1cm,-.25cm)},
+  z={(0cm,1cm)},book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \path[book figure bounds] (canvas cs:x=-5.5cm,y=-4.2cm) rectangle (canvas cs:x=18.9cm,y=5.1cm);
+  \def\s{(\t/60)}
+  \pgfmathdeclarefunction{bezsurfz}{2}{\pgfmathparse{
+    (1-#1)^2*(6.6*#2*(1-#2)^2+2.4*#2^2*(1-#2)+3*#2^3)
+    +2*#1*(1-#1)*(.2*(1-#2)^3+8.4*#2*(1-#2)^2+3.9*#2^2*(1-#2)+3.5*#2^3)
+    +#1^2*(-.9*(1-#2)^3+2.7*#2*(1-#2)^2+1.2*#2^2*(1-#2)+2*#2^3)}}
+  \foreach \i/\j/\z in {0/0/0,0/1/2.2,0/2/.8,0/3/3,1/0/.2,1/1/2.8,1/2/1.3,1/3/3.5,2/0/-.9,2/1/.9,2/2/.4,2/3/2}
+    \coordinate (P\i\j) at ({2-4*\j/3},{2*\i-2},\z);
+  \foreach \i in {0,1,2}
+    \draw[line width=.35pt,dashed] (P\i0)--(P\i1)--(P\i2)--(P\i3);
+  \foreach \j in {0,1,2,3}
+    \draw[line width=.35pt,dashed] (P0\j)--(P1\j)--(P2\j);
+  \foreach \k in {0,...,4}
+    \draw plot[variable=\t,domain=0:60,samples=61] ({2-4*\s},{4*(\k/4)-2},{bezsurfz(\k/4,\s)});
+  \foreach \k in {0,...,6}
+    \draw plot[variable=\t,domain=0:60,samples=61] ({2-4*(\k/6)},{4*\s-2},{bezsurfz(\s,\k/6)});
+  \draw[book axis,line width=.45pt] (0,0,0)--(3.4,0,0) node[below left] {$x$};
+  \draw[book axis,line width=.45pt] (0,0,0)--(0,4,0) node[right] {$y$};
+  \draw[book axis,line width=.45pt] (0,0,0)--(0,0,4.5) node[above] {$z$};
+  \foreach \i in {0,1,2} \foreach \j in {0,1,2,3} \fill (P\i\j) circle (1.2pt);
+  
+
+\coordinate (Q0) at (2.000000000,-0.320000000,-0.061320000);
+\coordinate (Q1) at (0.666666667,-0.320000000,2.263000000);
+\coordinate (Q2) at (-0.666666667,-0.320000000,0.973040000);
+\coordinate (Q3) at (-2.000000000,-0.320000000,3.067200000);
+\coordinate (S) at (0.200000000,-0.320000000,1.518566100);
+\draw[line width=1pt] (Q0) .. controls (Q1) and (Q2) .. (Q3);
+\fill (S) circle (1.7pt);
+\node at (canvas cs:x=-4.1cm,y=1.2cm) {$\mathbf S(u_0,v_0)$};
+\draw[-{Stealth[length=4pt]},line width=.35pt] (canvas cs:x=-3.2cm,y=1.2cm)--([xshift=-3pt]S);
+\node[book panel tag] at (canvas cs:x=.5cm,y=-4cm) {(a)};
+\begin{scope}[xshift=12.5cm,yshift=-.8cm,x={(-1.215cm,-.6075cm)},y={(1.485cm,-.3375cm)},z={(0cm,1.35cm)}]
+\path[book figure bounds] (canvas cs:x=-5.5cm,y=-3.4cm) rectangle (canvas cs:x=6.4cm,y=5.9cm);
+\coordinate (L00) at (2.000000000,-0.320000000,-0.061320000);
+\coordinate (L01) at (0.666666667,-0.320000000,2.263000000);
+\coordinate (L02) at (-0.666666667,-0.320000000,0.973040000);
+\coordinate (L03) at (-2.000000000,-0.320000000,3.067200000);
+\draw[line width=.45pt] (L00)--(L01)--(L02)--(L03);
+\coordinate (L10) at (1.400000000,-0.320000000,0.984624000);
+\coordinate (L11) at (0.066666667,-0.320000000,1.682518000);
+\coordinate (L12) at (-1.266666667,-0.320000000,1.915412000);
+\draw[line width=.35pt,dashed] (L10)--(L11)--(L12);
+\coordinate (L20) at (0.800000000,-0.320000000,1.298676300);
+\coordinate (L21) at (-0.533333333,-0.320000000,1.787320300);
+\draw[line width=.35pt,dashed] (L20)--(L21);
+\coordinate (L30) at (0.200000000,-0.320000000,1.518566100);
+\draw[line width=1pt] (L00) .. controls (L01) and (L02) .. (L03);
+\node[book point,label=below left:{$\mathbf Q_0(u_0)$}] at (L00) {};
+\node[book point,label=above left:{$\mathbf Q_1(u_0)$}] at (L01) {};
+\node[book point,label=right:{$\mathbf Q_2(u_0)$}] at (L02) {};
+\node[book point,label=above right:{$\mathbf Q_3(u_0)$}] at (L03) {};
+\draw (L10) circle (1.1pt);
+\draw (L11) circle (1.1pt);
+\draw (L12) circle (1.1pt);
+\draw (L20) circle (1.1pt);
+\draw (L21) circle (1.1pt);
+\fill (L30) circle (1.7pt);
+\node at (canvas cs:x=-3.5cm,y=2cm) {$\mathbf S(u_0,v_0)$};
+\draw[-{Stealth[length=4pt]},line width=.35pt] (canvas cs:x=-2.6cm,y=1.9cm)--([xshift=-3pt]L30);
+\node[book panel tag] at (canvas cs:x=.5cm,y=-3.2cm) {(b)};
+\end{scope}
+\end{tikzpicture}

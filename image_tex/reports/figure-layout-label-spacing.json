@@ -1,0 +1,217 @@
+[
+  {
+    "path": "image_tex/ch03/fig_3_14.tex",
+    "before": "\\begin{scope}[yshift=11cm]",
+    "after": "\\begin{scope}[yshift=14cm]"
+  },
+  {
+    "path": "image_tex/ch03/fig_3_14.tex",
+    "before": "\\node[book panel tag] at (5,10) {(a)};",
+    "after": "\\node[book panel tag] at (5,13) {(a)};"
+  },
+  {
+    "path": "image_tex/ch05/fig_5_51.tex",
+    "before": "\\node[below left=8pt] at (-1.4,-1.2)",
+    "after": "\\node[below right=8pt] at (-1.4,-1.2)"
+  },
+  {
+    "path": "image_tex/ch07/fig_7_03.tex",
+    "before": "node[below right=6pt] {$(-a,0)$}",
+    "after": "node[below left=6pt] {$(-a,0)$}"
+  },
+  {
+    "path": "image_tex/ch07/fig_7_03.tex",
+    "before": "node[below left=6pt] {$(a,0)$}",
+    "after": "node[below right=6pt] {$(a,0)$}"
+  },
+  {
+    "path": "image_tex/ch06/fig_6_27.tex",
+    "before": "node[below right=6pt] {$\\mathbf P_1$}",
+    "after": "node[below left=6pt] {$\\mathbf P_1$}"
+  },
+  {
+    "path": "image_tex/ch06/fig_6_27.tex",
+    "before": "node[below left=6pt] {$\\mathbf P_8$}",
+    "after": "node[below right=6pt] {$\\mathbf P_8$}"
+  },
+  {
+    "path": "image_tex/ch06/fig_6_27.tex",
+    "before": "node[below right=6pt] {$\\mathbf Q_1$}",
+    "after": "node[below left=6pt] {$\\mathbf Q_1$}"
+  },
+  {
+    "path": "image_tex/ch06/fig_6_27.tex",
+    "before": "node[below left=6pt] {$\\mathbf Q_5$}",
+    "after": "node[below right=6pt] {$\\mathbf Q_5$}"
+  },
+  {
+    "path": "image_tex/ch08/fig_8_07.tex",
+    "before": "\\node[book panel tag] at (.35,-6) {(d)};",
+    "after": "\\node[book panel tag,yshift=-20pt] at (.35,-6) {(d)};"
+  },
+  {
+    "path": "image_tex/ch07/fig_7_21.tex",
+    "before": "\\node[book panel tag] at (6,-4.55) {(b)};",
+    "after": "\\node[book panel tag,yshift=-18pt] at (6,-4.55) {(b)};"
+  },
+  {
+    "path": "image_tex/ch07/fig_7_22.tex",
+    "before": "\\node[book panel tag] at (6,-1.55) {(b)};",
+    "after": "\\node[book panel tag,yshift=-10pt] at (6,-1.55) {(b)};"
+  },
+  {
+    "path": "image_tex/ch07/fig_7_23.tex",
+    "before": "\\node[book panel tag] at (6,-1.55) {(b)};",
+    "after": "\\node[book panel tag,yshift=-10pt] at (6,-1.55) {(b)};"
+  },
+  {
+    "path": "image_tex/ch07/fig_7_24.tex",
+    "before": "\\node[book panel tag] at (6,-1.55) {(b)};",
+    "after": "\\node[book panel tag,yshift=-10pt] at (6,-1.55) {(b)};"
+  },
+  {
+    "path": "image_tex/ch12/fig_12_03.tex",
+    "before": "\\node[book panel tag] at (0,-2.3) {(a)};",
+    "after": "\\node[book panel tag,yshift=-16pt] at (0,-2.3) {(a)};"
+  },
+  {
+    "path": "image_tex/ch12/fig_12_03c.tex",
+    "before": "\\node[book panel tag] at (0,-2.3) {(c)};",
+    "after": "\\node[book panel tag,yshift=-16pt] at (0,-2.3) {(c)};"
+  },
+  {
+    "path": "image_tex/ch12/fig_12_04.tex",
+    "before": "\\node[book panel tag] at (0,-2.3) {(b)};",
+    "after": "\\node[book panel tag,yshift=-16pt] at (0,-2.3) {(b)};"
+  },
+  {
+    "path": "image_tex/ch08/fig_8_13.tex",
+    "before": "yshift=32cm",
+    "after": "yshift=36cm"
+  },
+  {
+    "path": "image_tex/ch08/fig_8_21.tex",
+    "before": "yshift=26cm",
+    "after": "yshift=30cm"
+  },
+  {
+    "path": "image_tex/ch09/fig_9_69.tex",
+    "before": "yshift=36cm",
+    "after": "yshift=44cm"
+  },
+  {
+    "path": "image_tex/ch09/fig_9_69.tex",
+    "before": "yshift=18cm",
+    "after": "yshift=22cm"
+  },
+  {
+    "path": "image_tex/ch10/fig_10_24.tex",
+    "before": "yshift=14cm",
+    "after": "yshift=17cm"
+  },
+  {
+    "path": "image_tex/ch11/fig_11_06.tex",
+    "before": "yshift=10.5cm",
+    "after": "yshift=14cm"
+  },
+  {
+    "path": "image_tex/ch09/fig_9_23.tex",
+    "before": "\\node[left=8pt] at (7,1.9)",
+    "after": "\\node[right=8pt] at (7,1.9)"
+  },
+  {
+    "path": "image_tex/ch09/fig_9_23.tex",
+    "before": "\\node[below left=8pt] at (6.8,3)",
+    "after": "\\node[above right=8pt] at (6.8,3)"
+  },
+  {
+    "path": "image_tex/ch09/fig_9_14.tex",
+    "before": "\\node[above right=5pt] at (0.9,4.45)",
+    "after": "\\node[left=8pt] at (0.9,4.45)"
+  },
+  {
+    "path": "image_tex/ch09/fig_9_14.tex",
+    "before": "\\node[below left=5pt] at (-3.9,-2.55)",
+    "after": "\\node[below right=8pt] at (-3.9,-2.55)"
+  },
+  {
+    "path": "image_tex/ch10/fig_10_25.tex",
+    "before": "\\node[above right=6pt] at (5.262,1.0634311111)",
+    "after": "\\node[below right=6pt] at (5.262,1.0634311111)"
+  },
+  {
+    "path": "image_tex/ch10/fig_10_04.tex",
+    "before": "\\node at (0,4.55)",
+    "after": "\\node[yshift=22pt] at (0,4.55)"
+  },
+  {
+    "path": "image_tex/ch10/fig_10_05.tex",
+    "before": "\\node at (0,4.55)",
+    "after": "\\node[yshift=22pt] at (0,4.55)"
+  },
+  {
+    "path": "image_tex/ch11/fig_11_06.tex",
+    "before": "\\node at (4,3.8)",
+    "after": "\\node[yshift=22pt] at (4,3.8)"
+  },
+  {
+    "path": "image_tex/ch11/fig_11_15.tex",
+    "before": "\\node[anchor=west] at (.04,.64)",
+    "after": "\\node[anchor=west,yshift=22pt] at (.04,.64)"
+  },
+  {
+    "path": "image_tex/ch11/fig_11_17.tex",
+    "before": "\\node[anchor=west] at (.04,.55)",
+    "after": "\\node[anchor=west,yshift=22pt] at (.04,.55)"
+  },
+  {
+    "path": "image_tex/ch11/fig_11_18.tex",
+    "before": "\\node[anchor=west] at (.04,.55)",
+    "after": "\\node[anchor=west,yshift=22pt] at (.04,.55)"
+  },
+  {
+    "path": "image_tex/ch11/fig_11_12.tex",
+    "before": "node[above left=6pt] {$P_{8}$}",
+    "after": "node[below right=8pt] {$P_{8}$}"
+  },
+  {
+    "path": "image_tex/ch11/fig_11_12.tex",
+    "before": "\\node[align=left,anchor=north west] at (.1,6.6)",
+    "after": "\\node[align=left,anchor=north east] at (-.6,6.6)"
+  },
+  {
+    "path": "image_tex/ch11/fig_11_15.tex",
+    "before": "\\node[below=7pt] at (0.0266666667,-0.1)",
+    "after": "\\node[below left=7pt] at (0.0266666667,-0.1)"
+  },
+  {
+    "path": "image_tex/ch11/fig_11_15.tex",
+    "before": "\\node[below=7pt] at (0.1035469277,-0.1)",
+    "after": "\\node[below right=7pt] at (0.1035469277,-0.1)"
+  },
+  {
+    "path": "image_tex/ch11/fig_11_36.tex",
+    "before": "\\node[below right=7pt] at (4,-1)",
+    "after": "\\node[above right=7pt] at (4,-1)"
+  },
+  {
+    "path": "image_tex/ch12/fig_12_01.tex",
+    "before": "\\node at (3,-4.1)",
+    "after": "\\node[yshift=-20pt] at (3,-4.1)"
+  },
+  {
+    "path": "image_tex/ch12/fig_12_04.tex",
+    "before": "node[left=7pt] {$P_1$}",
+    "after": "node[below left=10pt] {$P_1$}"
+  },
+  {
+    "path": "image_tex/ch12/fig_12_04.tex",
+    "before": "node[left=7pt] {$P_6$}",
+    "after": "node[above left=10pt] {$P_6$}"
+  },
+  {
+    "path": "image_tex/ch12/fig_12_07.tex",
+    "before": "node[right=9pt] {$P_0^{2}$}",
+    "after": "node[below right=16pt] {$P_0^{2}$}"
+  }
+]

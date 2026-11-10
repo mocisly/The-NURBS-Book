@@ -1,0 +1,33 @@
+% Fig. 1.11(c,d). Exact cubic Beziers from representative control points.
+\begin{tikzpicture}[book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \begin{scope}
+    \path[book figure bounds] (-3.6,-.9) rectangle (3.6,5.3);
+    \coordinate (P0) at (-3,0); \coordinate (P1) at (-.5,3.6);
+    \coordinate (P2) at (2,.6); \coordinate (P3) at (3,4.8);
+    % The dashed closed boundary is the convex hull, not the control polygon.
+        \draw[line width=.45pt,dashed,shorten <=2pt,shorten >=2pt] (P0)--(P1);
+    \draw[line width=.45pt,dashed,shorten <=2pt,shorten >=2pt] (P1)--(P3);
+    \draw[line width=.45pt,dashed,shorten <=2pt,shorten >=2pt] (P3)--(P2);
+    \draw[line width=.45pt,dashed,shorten <=2pt,shorten >=2pt] (P2)--(P0);
+        \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P0)--(P1);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P1)--(P2);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P2)--(P3);
+    \draw[shorten <=2pt,shorten >=2pt] (P0) .. controls (P1) and (P2) .. (P3);
+    \foreach \i/\pos in {0/below left,1/above,2/below right,3/above}
+      \node[book point,label=\pos:{$\mathbf P_{\i}$}] at (P\i) {};
+    \node[book panel tag] at (0,-.8) {(c)};
+  \end{scope}
+  \begin{scope}[xshift=8cm]
+    \path[book figure bounds] (-3.6,-.9) rectangle (3.6,5.3);
+    \coordinate (Q0) at (-.7,0); \coordinate (Q1) at (-3,3.6);
+    \coordinate (Q2) at (3,4.8);
+        \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (Q0)--(Q1);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (Q1)--(Q2);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (Q2)--(Q0);
+    \draw[shorten <=2pt,shorten >=2pt] (Q0) .. controls (Q1) and (Q2) .. (Q0);
+    \node[book point,label=below:{$\mathbf P_0=\mathbf P_3$}] at (Q0) {};
+    \node[book point,label=above left:{$\mathbf P_1$}] at (Q1) {};
+    \node[book point,label=above:{$\mathbf P_2$}] at (Q2) {};
+    \node[book panel tag] at (0,-.8) {(d)};
+  \end{scope}
+\end{tikzpicture}

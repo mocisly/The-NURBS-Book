@@ -1,0 +1,53 @@
+% Fig3.14: cubic repeated control, identical representative polygon in(a),(b).
+% Knots copied from caption: (a)1/4,3/4; (b)1/2,1/2, clamped ends.
+% Exact native cubic segments; rounded apex(a), zero-speed C1 cusp(b). No tracing.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\begin{scope}[yshift=14cm]
+\coordinate (P0) at (2,0);
+\coordinate (P1) at (0,4.5);
+\coordinate (P2) at (5,7.5);
+\coordinate (P3) at (5,7.5);
+\coordinate (P4) at (10,4.5);
+\coordinate (P5) at (8,0);
+\draw[book grid] (P0)--(P1)--(P2)--(P4)--(P5);
+\draw (2,0) .. controls (0,4.5) and (1.6666666667,5.5) .. (2.7777777778,6.1666666667);
+\draw (2.7777777778,6.1666666667) .. controls (5,7.5) and (5,7.5) .. (7.2222222222,6.1666666667);
+\draw (7.2222222222,6.1666666667) .. controls (8.3333333333,5.5) and (10,4.5) .. (8,0);
+\node[book point] at (P0) {};
+\node[book point] at (P1) {};
+\node[book point] at (P2) {};
+\node[book point] at (P4) {};
+\node[book point] at (P5) {};
+\fill (2.7777777778,6.1666666667) circle[radius=1.7pt];
+\fill (7.2222222222,6.1666666667) circle[radius=1.7pt];
+\node[above=5pt] at (P2) {$\mathbf P_2=\mathbf P_3$};
+\node[below left=4pt] at (P0) {$\mathbf P_{0}$};
+\node[left=4pt] at (P1) {$\mathbf P_{1}$};
+\node[right=4pt] at (P4) {$\mathbf P_{4}$};
+\node[below right=4pt] at (P5) {$\mathbf P_{5}$};
+\end{scope}
+\node[book panel tag] at (5,13) {(a)};
+\begin{scope}[yshift=1cm]
+\coordinate (P0) at (2,0);
+\coordinate (P1) at (0,4.5);
+\coordinate (P2) at (5,7.5);
+\coordinate (P3) at (5,7.5);
+\coordinate (P4) at (10,4.5);
+\coordinate (P5) at (8,0);
+\draw[book grid] (P0)--(P1)--(P2)--(P4)--(P5);
+\draw (2,0) .. controls (0,4.5) and (5,7.5) .. (5,7.5);
+\draw (5,7.5) .. controls (5,7.5) and (10,4.5) .. (8,0);
+\node[book point] at (P0) {};
+\node[book point] at (P1) {};
+\node[book point] at (P2) {};
+\node[book point] at (P4) {};
+\node[book point] at (P5) {};
+\fill (5,7.5) circle[radius=1.7pt];
+\node[above=5pt] at (P2) {$\mathbf P_2=\mathbf P_3$};
+\node[below left=4pt] at (P0) {$\mathbf P_{0}$};
+\node[left=4pt] at (P1) {$\mathbf P_{1}$};
+\node[right=4pt] at (P4) {$\mathbf P_{4}$};
+\node[below right=4pt] at (P5) {$\mathbf P_{5}$};
+\end{scope}
+\node[book panel tag] at (5,0) {(b)};
+\end{tikzpicture}

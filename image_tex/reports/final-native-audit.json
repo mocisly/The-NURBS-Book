@@ -1,0 +1,25 @@
+{
+  "status": "all_native_sources_and_chapter_references_verified",
+  "active_original_references": 435,
+  "applied_native_drawings": 435,
+  "authored_manifest_sources": 436,
+  "remaining_original_images": 0,
+  "remaining_HTML_images": 0,
+  "chapter_files_checked": 15,
+  "content_chapters": 13,
+  "bibliography_and_index_also_checked": true,
+  "all_current_compile_and_review_signatures": true,
+  "all_individual_layout_evidence_present": true,
+  "no_contour_or_raster_wrappers": true,
+  "covered_unused_references": [
+    "image_tex/ch05/fig_5_10c_reference.tex"
+  ],
+  "inline_native_repairs": [
+    "13.1 POINT/CPOINT cells restored from adjacent typedefs"
+  ],
+  "adjacent_OCR_repairs": [
+    "SURFACE knv spelling",
+    "ENODE opening brace; removed spurious zero formula"
+  ],
+  "book_geometry": "40cm x80cm,11ptbody,1.5lines; originalgeometry retained; headfoot option replaced by valid dimensions"
+}

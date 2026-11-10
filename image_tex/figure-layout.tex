@@ -1,0 +1,18 @@
+% Physical figure sizes; geometry changes while label fonts and line widths stay fixed.
+\providecommand{\BookGeometryScale}{1}
+\providecommand{\BookAxisInverseScale}{1}
+\InputIfFileExists{\subfix{image_tex/figure-scales.tex}}{}{}
+\newsavebox{\BookSizedFigure}
+\newsavebox{\BookPlacedFigure}
+\renewcommand{\BookFigure}[2][]{%
+  \begingroup
+  \ifcsname BookFigureScale@#2\endcsname
+    \edef\BookGeometryScale{\csname BookFigureScale@#2\endcsname}%
+  \else\def\BookGeometryScale{1}\fi
+  \pgfmathsetmacro{\BookAxisInverseScale}{1/\BookGeometryScale}%
+  \sbox{\BookSizedFigure}{\input{\BookImageRoot#2}}%
+  \sbox{\BookPlacedFigure}{\begin{adjustbox}{#1}\usebox{\BookSizedFigure}\end{adjustbox}}%
+  \typeout{BOOKFIG|#2|\the\wd\BookSizedFigure|\the\wd\BookPlacedFigure|\the\dimexpr\ht\BookPlacedFigure+\dp\BookPlacedFigure\relax|\the\linewidth}%
+  \usebox{\BookPlacedFigure}%
+  \endgroup
+}

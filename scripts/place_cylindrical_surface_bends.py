@@ -1,0 +1,6 @@
+import argparse,re
+import image_tex as p
+parser=argparse.ArgumentParser();parser.add_argument('figure',type=int,choices=(33,34));fig=parser.parse_args().figure;d=p.load();e=next(e for e in d['images']if e['tex']==f'image_tex/ch11/fig_11_{fig+6}.tex');assert e['applied'];f=p.ROOT/'chapter/11.tex';s=f.read_text(encoding='utf-8');pat=r'\\begin\{center\}\s*'+re.escape(e['replacement'])+r'\s*\\end\{center\}\s*\\hspace\*\{3em\}\s*图\s*11\.'+str(fig)+r'\.[^\n]*'
+caption=(r'图 11.33. 用不接触原平面的圆柱弯曲同一张$3\times2$次平面，$\lambda=1/2,3/2,-3$。'+'\\\\\n'+r'参考圆柱半径2、轴线$O(w)=(0,w,3)$；三张曲面由相同原网按式(11.59)—(11.64)分别计算。'if fig==33 else r'图 11.34. 用与原平面相切的同一半径2圆柱进行弯曲，$\lambda=3/10,1,-1$。'+'\\\\\n'+r'轴线$O(w)=(0,w,2)$使参考圆柱沿$u_c=1/2$与原平面接触；原曲面仍为$3\times2$次。')
+caption+='\\\\\n'+r'正交比使选中控制点靠近轴线，负交比使其远离；两端控制点按正文逐行作刚体调整。'+'\\\\\n'+r'虚线为参考圆柱，点线为原平面轮廓；各边界和内部等参线均由实际张量积曲面计算。'
+block='\\begin{center}\n\\begin{minipage}{26cm}\n\\centering\n'+e['replacement']+'\n\\par\\smallskip\n'+caption+'\n\\end{minipage}\n\\end{center}';s,n=re.subn(pat,lambda _:block,s,count=1);assert n==1;s=s.replace('554 形状修改工具','');f.write_text(s,encoding='utf-8');print('Placed',fig,'with explicit common plane/cylinder and actual computed tensor surfaces.')

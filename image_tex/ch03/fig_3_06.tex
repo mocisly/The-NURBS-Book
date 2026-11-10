@@ -1,0 +1,32 @@
+% Fig3.6: p=2, U=(0,0,0,1/5,2/5,3/5,4/5,1,1,1).
+% Representative controls with exactly collinear, equally spaced P2,P3,P4.
+% C(2/5)..C(3/5) has exactly zero quadratic coefficient; native straight line.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (-1,3);
+\coordinate (P2) at (6,3.5);
+\coordinate (P3) at (4,0);
+\coordinate (P4) at (2,-3.5);
+\coordinate (P5) at (9,-3.5);
+\coordinate (P6) at (8,0);
+\draw[book grid] (P0)--(P1)--(P2)--(P3)--(P4)--(P5)--(P6);
+\draw (0,0) .. controls (-0.6666666667,2) and (0.1666666667,3.0833333333) .. (2.5,3.25);
+\draw (2.5,3.25) .. controls (4.8333333333,3.4166666667) and (5.6666666667,2.9166666667) .. (5,1.75);
+\draw (5,1.75)--(3,-1.75);
+\draw (3,-1.75) .. controls (2.3333333333,-2.9166666667) and (3.1666666667,-3.5) .. (5.5,-3.5);
+\draw (5.5,-3.5) .. controls (7.8333333333,-3.5) and (8.6666666667,-2.3333333333) .. (8,0);
+\fill (2.5,3.25) circle[radius=1.7pt];
+\fill (5,1.75) circle[radius=1.7pt];
+\node[right=7pt] at (5,1.75) {$\mathbf C\!\left(\frac{2}{5}\right)$};
+\fill (3,-1.75) circle[radius=1.7pt];
+\node[right=7pt] at (3,-1.75) {$\mathbf C\!\left(\frac{3}{5}\right)$};
+\fill (5.5,-3.5) circle[radius=1.7pt];
+\foreach \i in {0,...,6} \node[book point] at (P\i) {};
+\node[below=4pt] at (P0) {$\mathbf P_{0}$};
+\node[above left=4pt] at (P1) {$\mathbf P_{1}$};
+\node[above right=4pt] at (P2) {$\mathbf P_{2}$};
+\node[right=4pt] at (P3) {$\mathbf P_{3}$};
+\node[below left=4pt] at (P4) {$\mathbf P_{4}$};
+\node[below right=4pt] at (P5) {$\mathbf P_{5}$};
+\node[above right=4pt] at (P6) {$\mathbf P_{6}$};
+\end{tikzpicture}

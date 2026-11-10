@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "date": "2026-11-10",
+  "archived_reports": [],
+  "removed": [
+    {
+      "path": "image_tex/build",
+      "files": 16,
+      "bytes": 731522.0
+    },
+    {
+      "path": "tmp/figure-layout",
+      "files": 1488,
+      "bytes": 137787212.0
+    },
+    {
+      "path": "tmp/figure-size-review",
+      "files": 4,
+      "bytes": 1093892.0
+    }
+  ],
+  "removed_bytes": 139612626.0,
+  "protected_files_verified": 1615,
+  "protected_files_unchanged": true,
+  "published_pdf_sha256": "8aa4fd209e0df80ac719093008b9d492576e3a58eca1d3d3acbcb6ee55039b5b",
+  "note": "Historical manifest evidence paths refer to removed previews and frozen builds. Regenerate evidence before running those validation workflows."
+}

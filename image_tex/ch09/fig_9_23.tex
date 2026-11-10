@@ -1,0 +1,26 @@
+% Representative five-point geometry;all q,V,D are computed vectors,not placed arrows.
+\begin{tikzpicture}[book line,x=2.5cm,y=2.5cm,scale=\BookGeometryScale]
+\path[book figure bounds] (-.8,-.7) rectangle (9.4,5.9);
+\draw[book axis,shorten >=3pt] (0,0)--(0.4,3);
+\node[right=8pt] at (0.2,1.5) {$\mathbf q_{k-1}$};
+\draw[book axis,shorten >=3pt] (0.4,3)--(2.8,4.2);
+\node[below=8pt] at (1.6,3.6) {$\mathbf q_{k}$};
+\draw[book axis,shorten >=3pt] (2.8,4.2)--(6.8,3);
+\node[below=8pt] at (4.8,3.6) {$\mathbf q_{k+1}$};
+\draw[book axis,shorten >=3pt] (6.8,3)--(7.2,0.8);
+\node[right=8pt] at (7,1.9) {$\mathbf q_{k+2}$};
+\draw[book axis] (2.8,4.2)--(5.914893617,4.3276595745);
+\node[right=8pt] at (5.914893617,4.3276595745) {$\mathbf V_{k}$};
+\draw[book axis] (2.8,4.2)--(8.6723404255,5.0936170213);
+\node[above=8pt] at (5.7361702128,4.6468085106) {$\mathbf D_{k}$};
+\draw (0,0) circle[radius=2.4pt];
+\node[below right=8pt] at (0,0) {$\mathbf Q_{k-2}$};
+\draw (0.4,3) circle[radius=2.4pt];
+\node[above left=8pt] at (0.4,3) {$\mathbf Q_{k-1}$};
+\draw (2.8,4.2) circle[radius=2.4pt];
+\node[above left=8pt] at (2.8,4.2) {$\mathbf Q_{k}$};
+\draw (6.8,3) circle[radius=2.4pt];
+\node[above right=8pt] at (6.8,3) {$\mathbf Q_{k+1}$};
+\draw (7.2,0.8) circle[radius=2.4pt];
+\node[below left=8pt] at (7.2,0.8) {$\mathbf Q_{k+2}$};
+\end{tikzpicture}

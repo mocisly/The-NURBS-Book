@@ -1,0 +1,34 @@
+% Fig. 1.8(c,d), semantic redraw. All labels are editable LaTeX nodes.
+% (c) C(t)=(1.5t^3,-1.3t^2), -1.1<=t<=1.1: C'(0)=0.
+% (d) C(t)=(1.6(t^3-t),1.5(1-t^2)), -1.25<=t<=1.25.
+% C(-1)=C(1)=(0,0), with independent tangents at the intersection.
+% Representative cubic coefficients chosen to reproduce the geometric cases.
+\begin{tikzpicture}[book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \begin{scope}
+    \path[book figure bounds] (-3.35,-2.9) rectangle (3.35,1.85);
+    \draw plot[variable=\t,domain=-1.1:0,samples=61]
+      ({1.5*(\t)^3},{-1.3*(\t)^2});
+    \draw plot[variable=\t,domain=0:1.1,samples=61]
+      ({1.5*(\t)^3},{-1.3*(\t)^2});
+    \draw[book axis,line width=.45pt] (-1.9965,-1.573) -- (1.815,.429);
+    \draw[book axis,line width=.45pt] (1.9965,-1.573) -- (3.0855,-2.145);
+    \node[book point] at (-1.9965,-1.573) {};
+    \node[book point] at (1.9965,-1.573) {};
+    \draw[-{Stealth[length=4pt]},line width=.45pt] (-.75,.95)
+      node[above] {Cusp} -- (-.025,.04);
+    \node[align=center] at (-1.77,.25) {$\mathbf C'(0)=\mathbf0$};
+    \node[book panel tag] at (0,-2.65) {(c)};
+  \end{scope}
+  \begin{scope}[xshift=7.5cm]
+    \path[book figure bounds] (-3.35,-2.9) rectangle (3.35,1.85);
+    \draw plot[variable=\t,domain=-1.25:1.25,samples=161]
+      ({1.6*((\t)^3-\t)},{1.5*(1-(\t)^2)});
+    \draw[book axis,line width=.45pt] (-1.125,-.84375) -- (1.707,.95625);
+    \draw[book axis,line width=.45pt] (1.125,-.84375) -- (2.718,-1.85625);
+    \node[book point] at (-1.125,-.84375) {};
+    \node[book point] at (1.125,-.84375) {};
+    \draw[-{Stealth[length=4pt]},line width=.45pt] (-1.35,1.3)
+      node[left] {Loop} -- (-.55,1.02);
+    \node[book panel tag] at (0,-2.65) {(d)};
+  \end{scope}
+\end{tikzpicture}

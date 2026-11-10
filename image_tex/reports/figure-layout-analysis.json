@@ -1,0 +1,3582 @@
+{
+  "status": "passed",
+  "pdf_sha256": "8aa4fd209e0df80ac719093008b9d492576e3a58eca1d3d3acbcb6ee55039b5b",
+  "pages": 156,
+  "placed_figures": 435,
+  "font_clamped_figures": [],
+  "words_outside_paper": [],
+  "chapters": [
+    {
+      "title": "曲线和曲面基础",
+      "page": 7
+    },
+    {
+      "title": "B样条基函数距离空间",
+      "page": 17
+    },
+    {
+      "title": "B样条曲线和曲面",
+      "page": 26
+    },
+    {
+      "title": "有理B样条曲线与曲面",
+      "page": 35
+    },
+    {
+      "title": "基本几何算法",
+      "page": 41
+    },
+    {
+      "title": "高级几何算法",
+      "page": 59
+    },
+    {
+      "title": "圆锥曲线和圆",
+      "page": 73
+    },
+    {
+      "title": "常见曲面的构造",
+      "page": 85
+    },
+    {
+      "title": "曲线和曲面拟合",
+      "page": 92
+    },
+    {
+      "title": "高级表面构造技术",
+      "page": 113
+    },
+    {
+      "title": "形状修改工具",
+      "page": 123
+    },
+    {
+      "title": "标准与数据交换",
+      "page": 136
+    },
+    {
+      "title": "B-样条编程概念",
+      "page": 140
+    }
+  ],
+  "context_pages": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    26,
+    27,
+    35,
+    36,
+    41,
+    42,
+    59,
+    60,
+    73,
+    74,
+    85,
+    86,
+    92,
+    93,
+    113,
+    114,
+    123,
+    124,
+    136,
+    137,
+    140,
+    141
+  ],
+  "placements": [
+    {
+      "path": "ch01/fig_1_01.tex",
+      "native_width_pt": 102.41348,
+      "placed_width_pt": 102.41348,
+      "height_pt": 99.3642,
+      "container_width_pt": 1564.90158,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_02.tex",
+      "native_width_pt": 213.26822,
+      "placed_width_pt": 213.26822,
+      "height_pt": 117.57256,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_03.tex",
+      "native_width_pt": 140.21848,
+      "placed_width_pt": 140.21848,
+      "height_pt": 124.45107,
+      "container_width_pt": 284.52756,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_04.tex",
+      "native_width_pt": 145.01329,
+      "placed_width_pt": 145.01329,
+      "height_pt": 147.68066,
+      "container_width_pt": 284.52756,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_05.tex",
+      "native_width_pt": 149.05585,
+      "placed_width_pt": 149.05585,
+      "height_pt": 96.19626,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_06.tex",
+      "native_width_pt": 160.80858,
+      "placed_width_pt": 160.80858,
+      "height_pt": 88.77579,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_07.tex",
+      "native_width_pt": 161.27914,
+      "placed_width_pt": 161.27914,
+      "height_pt": 109.89125,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_08.tex",
+      "native_width_pt": 104.59746,
+      "placed_width_pt": 104.59746,
+      "height_pt": 130.07262,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_09.tex",
+      "native_width_pt": 387.1414,
+      "placed_width_pt": 387.1414,
+      "height_pt": 145.75587,
+      "container_width_pt": 426.79134,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_10.tex",
+      "native_width_pt": 330.73166,
+      "placed_width_pt": 330.73166,
+      "height_pt": 124.0429,
+      "container_width_pt": 426.79134,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_11.tex",
+      "native_width_pt": 148.68547,
+      "placed_width_pt": 148.68547,
+      "height_pt": 94.60596,
+      "container_width_pt": 184.9429,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_12.tex",
+      "native_width_pt": 154.41833,
+      "placed_width_pt": 154.41833,
+      "height_pt": 104.52817,
+      "container_width_pt": 184.9429,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_13.tex",
+      "native_width_pt": 148.67328,
+      "placed_width_pt": 148.67328,
+      "height_pt": 132.07664,
+      "container_width_pt": 159.3356,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_14.tex",
+      "native_width_pt": 149.05838,
+      "placed_width_pt": 149.05838,
+      "height_pt": 131.77069,
+      "container_width_pt": 159.3356,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_15.tex",
+      "native_width_pt": 336.13405,
+      "placed_width_pt": 336.13405,
+      "height_pt": 158.496,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_16.tex",
+      "native_width_pt": 336.13405,
+      "placed_width_pt": 336.13405,
+      "height_pt": 153.50146,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_17.tex",
+      "native_width_pt": 157.32658,
+      "placed_width_pt": 157.32658,
+      "height_pt": 123.06984,
+      "container_width_pt": 199.16928,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_18.tex",
+      "native_width_pt": 140.47859,
+      "placed_width_pt": 140.47859,
+      "height_pt": 110.46945,
+      "container_width_pt": 165.02606,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_19.tex",
+      "native_width_pt": 140.47859,
+      "placed_width_pt": 140.47859,
+      "height_pt": 110.46945,
+      "container_width_pt": 165.02606,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_20.tex",
+      "native_width_pt": 140.47859,
+      "placed_width_pt": 140.47859,
+      "height_pt": 110.46945,
+      "container_width_pt": 165.02606,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_21.tex",
+      "native_width_pt": 140.47859,
+      "placed_width_pt": 140.47859,
+      "height_pt": 110.46945,
+      "container_width_pt": 165.02606,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_22.tex",
+      "native_width_pt": 142.12192,
+      "placed_width_pt": 142.12192,
+      "height_pt": 88.6587,
+      "container_width_pt": 312.9803,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_23.tex",
+      "native_width_pt": 340.16939,
+      "placed_width_pt": 340.16939,
+      "height_pt": 167.56564,
+      "container_width_pt": 449.55362,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_24.tex",
+      "native_width_pt": 151.60246,
+      "placed_width_pt": 151.60246,
+      "height_pt": 91.97308,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_25.tex",
+      "native_width_pt": 149.8203,
+      "placed_width_pt": 149.8203,
+      "height_pt": 92.8942,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_26.tex",
+      "native_width_pt": 150.3671,
+      "placed_width_pt": 150.3671,
+      "height_pt": 111.53777,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_27.tex",
+      "native_width_pt": 201.87683,
+      "placed_width_pt": 201.87683,
+      "height_pt": 112.80724,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_28.tex",
+      "native_width_pt": 336.85367,
+      "placed_width_pt": 336.85367,
+      "height_pt": 143.38799,
+      "container_width_pt": 466.62502,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_29.tex",
+      "native_width_pt": 330.8886,
+      "placed_width_pt": 330.8886,
+      "height_pt": 163.18393,
+      "container_width_pt": 426.79134,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_30.tex",
+      "native_width_pt": 197.4411,
+      "placed_width_pt": 197.4411,
+      "height_pt": 145.82718,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_31.tex",
+      "native_width_pt": 237.39708,
+      "placed_width_pt": 237.39708,
+      "height_pt": 167.93262,
+      "container_width_pt": 369.88582,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_32.tex",
+      "native_width_pt": 243.61905,
+      "placed_width_pt": 243.61905,
+      "height_pt": 170.09991,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_33.tex",
+      "native_width_pt": 239.47908,
+      "placed_width_pt": 239.47908,
+      "height_pt": 182.99608,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_34.tex",
+      "native_width_pt": 194.56882,
+      "placed_width_pt": 194.56882,
+      "height_pt": 162.46886,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_35.tex",
+      "native_width_pt": 191.41484,
+      "placed_width_pt": 191.41484,
+      "height_pt": 168.98494,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_36.tex",
+      "native_width_pt": 335.49588,
+      "placed_width_pt": 335.49588,
+      "height_pt": 156.42465,
+      "container_width_pt": 699.93796,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_37.tex",
+      "native_width_pt": 194.56882,
+      "placed_width_pt": 194.56882,
+      "height_pt": 162.46886,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_38.tex",
+      "native_width_pt": 196.40742,
+      "placed_width_pt": 196.40742,
+      "height_pt": 168.98494,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch01/fig_1_39.tex",
+      "native_width_pt": 200.27988,
+      "placed_width_pt": 200.27988,
+      "height_pt": 159.3492,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_01.tex",
+      "native_width_pt": 146.15372,
+      "placed_width_pt": 146.15372,
+      "height_pt": 88.5952,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_02.tex",
+      "native_width_pt": 201.0156,
+      "placed_width_pt": 201.0156,
+      "height_pt": 116.9686,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_03.tex",
+      "native_width_pt": 250.39186,
+      "placed_width_pt": 250.39186,
+      "height_pt": 125.25536,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_04.tex",
+      "native_width_pt": 258.1922,
+      "placed_width_pt": 258.1922,
+      "height_pt": 175.67206,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_05.tex",
+      "native_width_pt": 249.19308,
+      "placed_width_pt": 249.19308,
+      "height_pt": 95.97162,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_06.tex",
+      "native_width_pt": 249.19308,
+      "placed_width_pt": 249.19308,
+      "height_pt": 95.97162,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_07.tex",
+      "native_width_pt": 111.03815,
+      "placed_width_pt": 111.03815,
+      "height_pt": 129.38942,
+      "container_width_pt": 284.52756,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_08.tex",
+      "native_width_pt": 111.03815,
+      "placed_width_pt": 111.03815,
+      "height_pt": 129.38942,
+      "container_width_pt": 284.52756,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_09.tex",
+      "native_width_pt": 249.19615,
+      "placed_width_pt": 249.19615,
+      "height_pt": 86.42441,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_10.tex",
+      "native_width_pt": 252.13425,
+      "placed_width_pt": 252.13425,
+      "height_pt": 106.5511,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_11.tex",
+      "native_width_pt": 301.22403,
+      "placed_width_pt": 301.22403,
+      "height_pt": 310.92656,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_12.tex",
+      "native_width_pt": 259.76369,
+      "placed_width_pt": 259.76369,
+      "height_pt": 313.07114,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_13.tex",
+      "native_width_pt": 271.17357,
+      "placed_width_pt": 271.17357,
+      "height_pt": 138.5135,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_14.tex",
+      "native_width_pt": 266.80836,
+      "placed_width_pt": 266.80836,
+      "height_pt": 121.77386,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_15.tex",
+      "native_width_pt": 138.42111,
+      "placed_width_pt": 138.42111,
+      "height_pt": 66.44574,
+      "container_width_pt": 284.52756,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_16.tex",
+      "native_width_pt": 149.46323,
+      "placed_width_pt": 149.46323,
+      "height_pt": 67.78783,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch02/fig_2_17.tex",
+      "native_width_pt": 96.57277,
+      "placed_width_pt": 96.57277,
+      "height_pt": 44.87454,
+      "container_width_pt": 284.52756,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_01.tex",
+      "native_width_pt": 161.09941,
+      "placed_width_pt": 161.09941,
+      "height_pt": 107.00877,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_02.tex",
+      "native_width_pt": 260.70738,
+      "placed_width_pt": 260.70738,
+      "height_pt": 298.40024,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_03.tex",
+      "native_width_pt": 284.05357,
+      "placed_width_pt": 284.05357,
+      "height_pt": 297.1903,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_04.tex",
+      "native_width_pt": 211.5444,
+      "placed_width_pt": 211.5444,
+      "height_pt": 129.25609,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_05.tex",
+      "native_width_pt": 211.5444,
+      "placed_width_pt": 211.5444,
+      "height_pt": 129.25609,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_06.tex",
+      "native_width_pt": 161.09941,
+      "placed_width_pt": 161.09941,
+      "height_pt": 118.15225,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_07.tex",
+      "native_width_pt": 206.8888,
+      "placed_width_pt": 206.8888,
+      "height_pt": 165.92728,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_08.tex",
+      "native_width_pt": 249.651,
+      "placed_width_pt": 249.651,
+      "height_pt": 306.9409,
+      "container_width_pt": 483.69684,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_09.tex",
+      "native_width_pt": 334.15855,
+      "placed_width_pt": 334.15855,
+      "height_pt": 196.75018,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_10.tex",
+      "native_width_pt": 163.43408,
+      "placed_width_pt": 163.43408,
+      "height_pt": 89.18642,
+      "container_width_pt": 483.69684,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_11.tex",
+      "native_width_pt": 163.43408,
+      "placed_width_pt": 163.43408,
+      "height_pt": 89.18642,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_12.tex",
+      "native_width_pt": 163.43408,
+      "placed_width_pt": 163.43408,
+      "height_pt": 89.18642,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_13.tex",
+      "native_width_pt": 163.93394,
+      "placed_width_pt": 163.93394,
+      "height_pt": 97.28253,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_14.tex",
+      "native_width_pt": 182.27797,
+      "placed_width_pt": 182.27797,
+      "height_pt": 326.56773,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_15.tex",
+      "native_width_pt": 157.33025,
+      "placed_width_pt": 157.33025,
+      "height_pt": 271.43253,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_16.tex",
+      "native_width_pt": 247.22177,
+      "placed_width_pt": 247.22177,
+      "height_pt": 201.70248,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_17.tex",
+      "native_width_pt": 148.62755,
+      "placed_width_pt": 148.62755,
+      "height_pt": 205.77664,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_18.tex",
+      "native_width_pt": 162.15163,
+      "placed_width_pt": 162.15163,
+      "height_pt": 119.95206,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_19.tex",
+      "native_width_pt": 182.67694,
+      "placed_width_pt": 182.67694,
+      "height_pt": 134.95816,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_20.tex",
+      "native_width_pt": 170.84871,
+      "placed_width_pt": 170.84871,
+      "height_pt": 272.5542,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_21.tex",
+      "native_width_pt": 197.43059,
+      "placed_width_pt": 197.43059,
+      "height_pt": 176.40265,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_22.tex",
+      "native_width_pt": 182.6907,
+      "placed_width_pt": 182.6907,
+      "height_pt": 176.40265,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_23.tex",
+      "native_width_pt": 169.99863,
+      "placed_width_pt": 169.99863,
+      "height_pt": 277.79175,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_24.tex",
+      "native_width_pt": 148.19801,
+      "placed_width_pt": 148.19801,
+      "height_pt": 277.687,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_25.tex",
+      "native_width_pt": 158.2759,
+      "placed_width_pt": 158.2759,
+      "height_pt": 283.57596,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_26.tex",
+      "native_width_pt": 153.77264,
+      "placed_width_pt": 153.77264,
+      "height_pt": 167.46063,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_27.tex",
+      "native_width_pt": 187.13742,
+      "placed_width_pt": 187.13742,
+      "height_pt": 162.18039,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch03/fig_3_28.tex",
+      "native_width_pt": 164.9561,
+      "placed_width_pt": 164.9561,
+      "height_pt": 169.92456,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_01.tex",
+      "native_width_pt": 248.92178,
+      "placed_width_pt": 248.92178,
+      "height_pt": 257.97699,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_02.tex",
+      "native_width_pt": 201.06355,
+      "placed_width_pt": 201.06355,
+      "height_pt": 115.48909,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_03.tex",
+      "native_width_pt": 244.93816,
+      "placed_width_pt": 244.93816,
+      "height_pt": 326.58798,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_04.tex",
+      "native_width_pt": 158.32053,
+      "placed_width_pt": 158.32053,
+      "height_pt": 95.47585,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_05.tex",
+      "native_width_pt": 244.93816,
+      "placed_width_pt": 244.93816,
+      "height_pt": 326.58798,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_06.tex",
+      "native_width_pt": 197.59166,
+      "placed_width_pt": 197.59166,
+      "height_pt": 151.96112,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_07.tex",
+      "native_width_pt": 166.44463,
+      "placed_width_pt": 166.44463,
+      "height_pt": 108.8997,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_08.tex",
+      "native_width_pt": 164.58925,
+      "placed_width_pt": 164.58925,
+      "height_pt": 281.45984,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_09.tex",
+      "native_width_pt": 188.28412,
+      "placed_width_pt": 188.28412,
+      "height_pt": 167.37425,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_10.tex",
+      "native_width_pt": 197.38945,
+      "placed_width_pt": 197.38945,
+      "height_pt": 158.42963,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_11.tex",
+      "native_width_pt": 197.38945,
+      "placed_width_pt": 197.38945,
+      "height_pt": 158.42963,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_12.tex",
+      "native_width_pt": 186.66512,
+      "placed_width_pt": 186.66512,
+      "height_pt": 181.87244,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_13.tex",
+      "native_width_pt": 186.66512,
+      "placed_width_pt": 186.66512,
+      "height_pt": 181.87244,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_14.tex",
+      "native_width_pt": 193.11946,
+      "placed_width_pt": 193.11946,
+      "height_pt": 142.63821,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch04/fig_4_15.tex",
+      "native_width_pt": 209.60175,
+      "placed_width_pt": 209.60175,
+      "height_pt": 165.70328,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_01.tex",
+      "native_width_pt": 253.78543,
+      "placed_width_pt": 253.78543,
+      "height_pt": 348.08415,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_02.tex",
+      "native_width_pt": 253.25648,
+      "placed_width_pt": 253.25648,
+      "height_pt": 348.08415,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_03.tex",
+      "native_width_pt": 244.80331,
+      "placed_width_pt": 244.80331,
+      "height_pt": 179.275,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_04.tex",
+      "native_width_pt": 234.769,
+      "placed_width_pt": 234.769,
+      "height_pt": 187.12088,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_05.tex",
+      "native_width_pt": 244.80331,
+      "placed_width_pt": 244.80331,
+      "height_pt": 163.13158,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/table_5_01.tex",
+      "native_width_pt": 364.93573,
+      "placed_width_pt": 364.93573,
+      "height_pt": 136.57281,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_06.tex",
+      "native_width_pt": 259.13307,
+      "placed_width_pt": 259.13307,
+      "height_pt": 226.69243,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_07.tex",
+      "native_width_pt": 260.59393,
+      "placed_width_pt": 260.59393,
+      "height_pt": 268.56906,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_08.tex",
+      "native_width_pt": 119.77005,
+      "placed_width_pt": 119.77005,
+      "height_pt": 120.08412,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_09.tex",
+      "native_width_pt": 133.2566,
+      "placed_width_pt": 133.2566,
+      "height_pt": 58.48927,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_10.tex",
+      "native_width_pt": 184.46101,
+      "placed_width_pt": 184.46101,
+      "height_pt": 173.17941,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_11.tex",
+      "native_width_pt": 340.43687,
+      "placed_width_pt": 340.43687,
+      "height_pt": 334.57248,
+      "container_width_pt": 682.86613,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_12.tex",
+      "native_width_pt": 170.25505,
+      "placed_width_pt": 170.25505,
+      "height_pt": 165.70938,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_13.tex",
+      "native_width_pt": 331.91106,
+      "placed_width_pt": 331.91106,
+      "height_pt": 172.90323,
+      "container_width_pt": 682.86613,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_14.tex",
+      "native_width_pt": 331.91106,
+      "placed_width_pt": 331.91106,
+      "height_pt": 172.90323,
+      "container_width_pt": 682.86613,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_15.tex",
+      "native_width_pt": 168.29555,
+      "placed_width_pt": 168.29555,
+      "height_pt": 173.35818,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_16.tex",
+      "native_width_pt": 168.29555,
+      "placed_width_pt": 168.29555,
+      "height_pt": 173.35818,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_17.tex",
+      "native_width_pt": 170.25505,
+      "placed_width_pt": 170.25505,
+      "height_pt": 165.70938,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_18.tex",
+      "native_width_pt": 331.8134,
+      "placed_width_pt": 331.8134,
+      "height_pt": 140.91382,
+      "container_width_pt": 643.03246,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_19.tex",
+      "native_width_pt": 132.93091,
+      "placed_width_pt": 132.93091,
+      "height_pt": 106.74664,
+      "container_width_pt": 301.59938,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_20.tex",
+      "native_width_pt": 327.78577,
+      "placed_width_pt": 327.78577,
+      "height_pt": 174.42218,
+      "container_width_pt": 662.9493,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_21.tex",
+      "native_width_pt": 160.96101,
+      "placed_width_pt": 160.96101,
+      "height_pt": 174.42218,
+      "container_width_pt": 321.51622,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_22.tex",
+      "native_width_pt": 241.49757,
+      "placed_width_pt": 241.49757,
+      "height_pt": 269.73674,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_23.tex",
+      "native_width_pt": 241.49757,
+      "placed_width_pt": 241.49757,
+      "height_pt": 269.73674,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_24.tex",
+      "native_width_pt": 325.25987,
+      "placed_width_pt": 325.25987,
+      "height_pt": 181.45673,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_25.tex",
+      "native_width_pt": 156.25652,
+      "placed_width_pt": 156.25652,
+      "height_pt": 181.88031,
+      "container_width_pt": 369.88582,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_26.tex",
+      "native_width_pt": 156.25652,
+      "placed_width_pt": 156.25652,
+      "height_pt": 181.88031,
+      "container_width_pt": 369.88582,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_27.tex",
+      "native_width_pt": 360.19127,
+      "placed_width_pt": 360.19127,
+      "height_pt": 144.84657,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_28.tex",
+      "native_width_pt": 360.19127,
+      "placed_width_pt": 360.19127,
+      "height_pt": 144.84657,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_29.tex",
+      "native_width_pt": 233.15529,
+      "placed_width_pt": 233.15529,
+      "height_pt": 211.85663,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_30.tex",
+      "native_width_pt": 133.1377,
+      "placed_width_pt": 133.1377,
+      "height_pt": 101.60541,
+      "container_width_pt": 347.12354,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_31.tex",
+      "native_width_pt": 331.99286,
+      "placed_width_pt": 331.99286,
+      "height_pt": 120.06512,
+      "container_width_pt": 717.00935,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_32.tex",
+      "native_width_pt": 191.30075,
+      "placed_width_pt": 191.30075,
+      "height_pt": 165.75606,
+      "container_width_pt": 569.05511,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_33.tex",
+      "native_width_pt": 353.31912,
+      "placed_width_pt": 353.31912,
+      "height_pt": 226.34065,
+      "container_width_pt": 682.86613,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_34.tex",
+      "native_width_pt": 133.1377,
+      "placed_width_pt": 133.1377,
+      "height_pt": 103.72917,
+      "container_width_pt": 347.12354,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_35.tex",
+      "native_width_pt": 331.99286,
+      "placed_width_pt": 331.99286,
+      "height_pt": 122.67148,
+      "container_width_pt": 717.00935,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_36.tex",
+      "native_width_pt": 331.99286,
+      "placed_width_pt": 331.99286,
+      "height_pt": 122.67148,
+      "container_width_pt": 1081.20471,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_37.tex",
+      "native_width_pt": 337.62907,
+      "placed_width_pt": 337.62907,
+      "height_pt": 173.40912,
+      "container_width_pt": 711.3189,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_38.tex",
+      "native_width_pt": 337.62907,
+      "placed_width_pt": 337.62907,
+      "height_pt": 173.40912,
+      "container_width_pt": 711.3189,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_39.tex",
+      "native_width_pt": 332.2866,
+      "placed_width_pt": 332.2866,
+      "height_pt": 110.74661,
+      "container_width_pt": 893.41635,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_40.tex",
+      "native_width_pt": 332.2866,
+      "placed_width_pt": 332.2866,
+      "height_pt": 112.44772,
+      "container_width_pt": 893.41635,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_41.tex",
+      "native_width_pt": 332.2866,
+      "placed_width_pt": 332.2866,
+      "height_pt": 151.69589,
+      "container_width_pt": 893.41635,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_42.tex",
+      "native_width_pt": 326.19429,
+      "placed_width_pt": 326.19429,
+      "height_pt": 181.06496,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_43.tex",
+      "native_width_pt": 326.19429,
+      "placed_width_pt": 326.19429,
+      "height_pt": 181.06496,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_44.tex",
+      "native_width_pt": 326.19429,
+      "placed_width_pt": 326.19429,
+      "height_pt": 181.06496,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_45.tex",
+      "native_width_pt": 326.19429,
+      "placed_width_pt": 326.19429,
+      "height_pt": 181.06496,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_46.tex",
+      "native_width_pt": 326.19429,
+      "placed_width_pt": 326.19429,
+      "height_pt": 181.06496,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_47.tex",
+      "native_width_pt": 332.20619,
+      "placed_width_pt": 332.20619,
+      "height_pt": 124.21645,
+      "container_width_pt": 859.27313,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_48.tex",
+      "native_width_pt": 332.20619,
+      "placed_width_pt": 332.20619,
+      "height_pt": 124.21645,
+      "container_width_pt": 859.27313,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_49.tex",
+      "native_width_pt": 332.20619,
+      "placed_width_pt": 332.20619,
+      "height_pt": 124.21645,
+      "container_width_pt": 859.27313,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_50.tex",
+      "native_width_pt": 332.20619,
+      "placed_width_pt": 332.20619,
+      "height_pt": 125.84811,
+      "container_width_pt": 859.27313,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_51.tex",
+      "native_width_pt": 189.74644,
+      "placed_width_pt": 189.74644,
+      "height_pt": 146.08435,
+      "container_width_pt": 534.9119,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_52.tex",
+      "native_width_pt": 331.95943,
+      "placed_width_pt": 331.95943,
+      "height_pt": 132.15036,
+      "container_width_pt": 728.39072,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_53.tex",
+      "native_width_pt": 331.95943,
+      "placed_width_pt": 331.95943,
+      "height_pt": 132.15036,
+      "container_width_pt": 728.39072,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_54.tex",
+      "native_width_pt": 340.62656,
+      "placed_width_pt": 340.62656,
+      "height_pt": 147.67165,
+      "container_width_pt": 725.54527,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_55.tex",
+      "native_width_pt": 340.62656,
+      "placed_width_pt": 340.62656,
+      "height_pt": 147.67165,
+      "container_width_pt": 725.54527,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_56.tex",
+      "native_width_pt": 188.73618,
+      "placed_width_pt": 188.73618,
+      "height_pt": 166.04208,
+      "container_width_pt": 725.54527,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_57.tex",
+      "native_width_pt": 348.9788,
+      "placed_width_pt": 348.9788,
+      "height_pt": 177.01971,
+      "container_width_pt": 773.91487,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_58.tex",
+      "native_width_pt": 348.9788,
+      "placed_width_pt": 348.9788,
+      "height_pt": 177.01971,
+      "container_width_pt": 773.91487,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_59.tex",
+      "native_width_pt": 348.9788,
+      "placed_width_pt": 348.9788,
+      "height_pt": 177.01971,
+      "container_width_pt": 773.91487,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_60.tex",
+      "native_width_pt": 348.9788,
+      "placed_width_pt": 348.9788,
+      "height_pt": 177.01971,
+      "container_width_pt": 773.91487,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_61.tex",
+      "native_width_pt": 470.02328,
+      "placed_width_pt": 470.02328,
+      "height_pt": 212.87158,
+      "container_width_pt": 867.80905,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_62.tex",
+      "native_width_pt": 133.56923,
+      "placed_width_pt": 133.56923,
+      "height_pt": 90.98817,
+      "container_width_pt": 654.41338,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch05/fig_5_63.tex",
+      "native_width_pt": 331.67503,
+      "placed_width_pt": 331.67503,
+      "height_pt": 157.18033,
+      "container_width_pt": 725.54527,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_01.tex",
+      "native_width_pt": 277.65599,
+      "placed_width_pt": 277.65599,
+      "height_pt": 162.59787,
+      "container_width_pt": 717.00935,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_02.tex",
+      "native_width_pt": 133.60251,
+      "placed_width_pt": 133.60251,
+      "height_pt": 109.37898,
+      "container_width_pt": 637.34155,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_03.tex",
+      "native_width_pt": 186.77885,
+      "placed_width_pt": 186.77885,
+      "height_pt": 168.2805,
+      "container_width_pt": 583.2815,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_04.tex",
+      "native_width_pt": 258.76738,
+      "placed_width_pt": 258.76738,
+      "height_pt": 154.28008,
+      "container_width_pt": 711.3189,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_05.tex",
+      "native_width_pt": 175.0307,
+      "placed_width_pt": 175.0307,
+      "height_pt": 176.79135,
+      "container_width_pt": 540.60236,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_06.tex",
+      "native_width_pt": 179.7087,
+      "placed_width_pt": 179.7087,
+      "height_pt": 185.0719,
+      "container_width_pt": 569.05511,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_07.tex",
+      "native_width_pt": 154.22717,
+      "placed_width_pt": 154.22717,
+      "height_pt": 171.33194,
+      "container_width_pt": 569.05511,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_08.tex",
+      "native_width_pt": 133.78151,
+      "placed_width_pt": 133.78151,
+      "height_pt": 110.8197,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_09.tex",
+      "native_width_pt": 145.92259,
+      "placed_width_pt": 145.92259,
+      "height_pt": 143.38097,
+      "container_width_pt": 483.69684,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_10.tex",
+      "native_width_pt": 222.46834,
+      "placed_width_pt": 222.46834,
+      "height_pt": 214.90884,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_11.tex",
+      "native_width_pt": 422.408,
+      "placed_width_pt": 422.408,
+      "height_pt": 182.54549,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_12.tex",
+      "native_width_pt": 422.408,
+      "placed_width_pt": 422.408,
+      "height_pt": 182.54549,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_13.tex",
+      "native_width_pt": 202.5346,
+      "placed_width_pt": 202.5346,
+      "height_pt": 163.38542,
+      "container_width_pt": 625.96062,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_14.tex",
+      "native_width_pt": 316.49321,
+      "placed_width_pt": 316.49321,
+      "height_pt": 276.6491,
+      "container_width_pt": 341.43306,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_15.tex",
+      "native_width_pt": 392.6582,
+      "placed_width_pt": 392.6582,
+      "height_pt": 173.54668,
+      "container_width_pt": 682.86613,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_16.tex",
+      "native_width_pt": 300.8614,
+      "placed_width_pt": 300.8614,
+      "height_pt": 177.91016,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_17.tex",
+      "native_width_pt": 153.07301,
+      "placed_width_pt": 153.07301,
+      "height_pt": 177.91016,
+      "container_width_pt": 355.65944,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_18.tex",
+      "native_width_pt": 153.07301,
+      "placed_width_pt": 153.07301,
+      "height_pt": 177.91016,
+      "container_width_pt": 355.65944,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_19.tex",
+      "native_width_pt": 257.1421,
+      "placed_width_pt": 257.1421,
+      "height_pt": 209.1847,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_20.tex",
+      "native_width_pt": 293.35066,
+      "placed_width_pt": 293.35066,
+      "height_pt": 173.71463,
+      "container_width_pt": 483.69684,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_21.tex",
+      "native_width_pt": 309.7284,
+      "placed_width_pt": 309.7284,
+      "height_pt": 177.68953,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_22.tex",
+      "native_width_pt": 154.62645,
+      "placed_width_pt": 154.62645,
+      "height_pt": 177.68953,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_23.tex",
+      "native_width_pt": 250.73141,
+      "placed_width_pt": 250.73141,
+      "height_pt": 214.4565,
+      "container_width_pt": 597.50787,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_24.tex",
+      "native_width_pt": 162.52675,
+      "placed_width_pt": 162.52675,
+      "height_pt": 175.92155,
+      "container_width_pt": 386.95764,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_25.tex",
+      "native_width_pt": 163.5632,
+      "placed_width_pt": 163.5632,
+      "height_pt": 178.52348,
+      "container_width_pt": 386.95764,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_26.tex",
+      "native_width_pt": 133.01205,
+      "placed_width_pt": 133.01205,
+      "height_pt": 112.8172,
+      "container_width_pt": 330.05214,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_27.tex",
+      "native_width_pt": 454.31851,
+      "placed_width_pt": 454.31851,
+      "height_pt": 176.95224,
+      "container_width_pt": 694.24707,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_28.tex",
+      "native_width_pt": 147.56815,
+      "placed_width_pt": 147.56815,
+      "height_pt": 183.70305,
+      "container_width_pt": 369.88582,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch06/fig_6_29.tex",
+      "native_width_pt": 294.3532,
+      "placed_width_pt": 294.3532,
+      "height_pt": 183.70305,
+      "container_width_pt": 751.15257,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_01.tex",
+      "native_width_pt": 134.0011,
+      "placed_width_pt": 134.0011,
+      "height_pt": 129.35963,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_02.tex",
+      "native_width_pt": 236.6674,
+      "placed_width_pt": 236.6674,
+      "height_pt": 150.82033,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_03.tex",
+      "native_width_pt": 218.80156,
+      "placed_width_pt": 218.80156,
+      "height_pt": 142.21883,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_04.tex",
+      "native_width_pt": 205.36421,
+      "placed_width_pt": 205.36421,
+      "height_pt": 159.92229,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_05.tex",
+      "native_width_pt": 157.1313,
+      "placed_width_pt": 157.1313,
+      "height_pt": 100.86977,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_06.tex",
+      "native_width_pt": 138.18626,
+      "placed_width_pt": 138.18626,
+      "height_pt": 137.72621,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_07.tex",
+      "native_width_pt": 145.44514,
+      "placed_width_pt": 145.44514,
+      "height_pt": 132.09712,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_08.tex",
+      "native_width_pt": 157.1313,
+      "placed_width_pt": 157.1313,
+      "height_pt": 100.86977,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_09.tex",
+      "native_width_pt": 138.18626,
+      "placed_width_pt": 138.18626,
+      "height_pt": 137.72621,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_10.tex",
+      "native_width_pt": 203.91275,
+      "placed_width_pt": 203.91275,
+      "height_pt": 169.694,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_11.tex",
+      "native_width_pt": 202.45448,
+      "placed_width_pt": 202.45448,
+      "height_pt": 137.14159,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_12.tex",
+      "native_width_pt": 196.23912,
+      "placed_width_pt": 196.23912,
+      "height_pt": 175.9966,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_13.tex",
+      "native_width_pt": 204.68896,
+      "placed_width_pt": 204.68896,
+      "height_pt": 117.1874,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_14.tex",
+      "native_width_pt": 215.98607,
+      "placed_width_pt": 215.98607,
+      "height_pt": 144.7419,
+      "container_width_pt": 625.96062,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_15.tex",
+      "native_width_pt": 206.17102,
+      "placed_width_pt": 206.17102,
+      "height_pt": 92.83015,
+      "container_width_pt": 569.05511,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_16.tex",
+      "native_width_pt": 150.1055,
+      "placed_width_pt": 150.1055,
+      "height_pt": 142.70247,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_17.tex",
+      "native_width_pt": 221.18279,
+      "placed_width_pt": 221.18279,
+      "height_pt": 123.523,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_18.tex",
+      "native_width_pt": 152.03235,
+      "placed_width_pt": 152.03235,
+      "height_pt": 143.80043,
+      "container_width_pt": 554.82874,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_19.tex",
+      "native_width_pt": 221.18279,
+      "placed_width_pt": 221.18279,
+      "height_pt": 123.523,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_20.tex",
+      "native_width_pt": 111.87212,
+      "placed_width_pt": 111.87212,
+      "height_pt": 145.29723,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_21.tex",
+      "native_width_pt": 162.47731,
+      "placed_width_pt": 162.47731,
+      "height_pt": 140.84729,
+      "container_width_pt": 398.33858,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_22.tex",
+      "native_width_pt": 349.9825,
+      "placed_width_pt": 349.9825,
+      "height_pt": 139.73979,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_23.tex",
+      "native_width_pt": 358.51418,
+      "placed_width_pt": 358.51418,
+      "height_pt": 124.18263,
+      "container_width_pt": 910.48817,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_24.tex",
+      "native_width_pt": 343.21729,
+      "placed_width_pt": 343.21729,
+      "height_pt": 165.75606,
+      "container_width_pt": 910.48817,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_25.tex",
+      "native_width_pt": 126.47752,
+      "placed_width_pt": 126.47752,
+      "height_pt": 142.06685,
+      "container_width_pt": 412.56496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_26.tex",
+      "native_width_pt": 126.47752,
+      "placed_width_pt": 126.47752,
+      "height_pt": 142.06685,
+      "container_width_pt": 412.56496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_27.tex",
+      "native_width_pt": 337.99356,
+      "placed_width_pt": 337.99356,
+      "height_pt": 175.55058,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_28.tex",
+      "native_width_pt": 152.46312,
+      "placed_width_pt": 152.46312,
+      "height_pt": 113.61201,
+      "container_width_pt": 540.60236,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_29.tex",
+      "native_width_pt": 154.3225,
+      "placed_width_pt": 154.3225,
+      "height_pt": 124.46033,
+      "container_width_pt": 540.60236,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_30.tex",
+      "native_width_pt": 362.21964,
+      "placed_width_pt": 362.21964,
+      "height_pt": 141.72554,
+      "container_width_pt": 1024.29921,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_31.tex",
+      "native_width_pt": 204.65115,
+      "placed_width_pt": 204.65115,
+      "height_pt": 115.97945,
+      "container_width_pt": 1024.29921,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_32.tex",
+      "native_width_pt": 374.82562,
+      "placed_width_pt": 374.82562,
+      "height_pt": 116.88815,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_33.tex",
+      "native_width_pt": 260.02036,
+      "placed_width_pt": 260.02036,
+      "height_pt": 110.78941,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_34.tex",
+      "native_width_pt": 160.13594,
+      "placed_width_pt": 160.13594,
+      "height_pt": 134.04579,
+      "container_width_pt": 369.88582,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_35.tex",
+      "native_width_pt": 393.18654,
+      "placed_width_pt": 393.18654,
+      "height_pt": 194.81883,
+      "container_width_pt": 654.41338,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_36.tex",
+      "native_width_pt": 184.3396,
+      "placed_width_pt": 184.3396,
+      "height_pt": 112.94618,
+      "container_width_pt": 654.41338,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_37.tex",
+      "native_width_pt": 137.6465,
+      "placed_width_pt": 137.6465,
+      "height_pt": 126.10538,
+      "container_width_pt": 569.05511,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_38.tex",
+      "native_width_pt": 155.5198,
+      "placed_width_pt": 155.5198,
+      "height_pt": 100.44809,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_39.tex",
+      "native_width_pt": 170.68408,
+      "placed_width_pt": 170.68408,
+      "height_pt": 131.49619,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch07/fig_7_40.tex",
+      "native_width_pt": 219.95233,
+      "placed_width_pt": 219.95233,
+      "height_pt": 130.36287,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_01.tex",
+      "native_width_pt": 333.56725,
+      "placed_width_pt": 333.56725,
+      "height_pt": 176.5415,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_02.tex",
+      "native_width_pt": 269.89832,
+      "placed_width_pt": 269.89832,
+      "height_pt": 174.0574,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_03.tex",
+      "native_width_pt": 154.58336,
+      "placed_width_pt": 154.58336,
+      "height_pt": 121.99284,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_04.tex",
+      "native_width_pt": 154.58336,
+      "placed_width_pt": 154.58336,
+      "height_pt": 124.85336,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_05.tex",
+      "native_width_pt": 160.83267,
+      "placed_width_pt": 160.83267,
+      "height_pt": 209.23813,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_06.tex",
+      "native_width_pt": 363.68936,
+      "placed_width_pt": 363.68936,
+      "height_pt": 234.91228,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_07.tex",
+      "native_width_pt": 149.18689,
+      "placed_width_pt": 149.18689,
+      "height_pt": 198.2322,
+      "container_width_pt": 406.87448,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_08.tex",
+      "native_width_pt": 115.60437,
+      "placed_width_pt": 115.60437,
+      "height_pt": 145.04543,
+      "container_width_pt": 406.87448,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_09.tex",
+      "native_width_pt": 141.10045,
+      "placed_width_pt": 141.10045,
+      "height_pt": 141.55528,
+      "container_width_pt": 625.96062,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_10.tex",
+      "native_width_pt": 261.92265,
+      "placed_width_pt": 261.92265,
+      "height_pt": 186.43713,
+      "container_width_pt": 1024.29921,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_11.tex",
+      "native_width_pt": 133.61868,
+      "placed_width_pt": 133.61868,
+      "height_pt": 186.43713,
+      "container_width_pt": 1024.29921,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_12.tex",
+      "native_width_pt": 286.1638,
+      "placed_width_pt": 286.1638,
+      "height_pt": 234.49278,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_13.tex",
+      "native_width_pt": 130.47021,
+      "placed_width_pt": 130.47021,
+      "height_pt": 288.98532,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_14.tex",
+      "native_width_pt": 204.81134,
+      "placed_width_pt": 204.81134,
+      "height_pt": 138.82208,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_15.tex",
+      "native_width_pt": 176.04056,
+      "placed_width_pt": 176.04056,
+      "height_pt": 185.39589,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_16.tex",
+      "native_width_pt": 196.5323,
+      "placed_width_pt": 196.5323,
+      "height_pt": 167.65924,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_17.tex",
+      "native_width_pt": 208.79507,
+      "placed_width_pt": 208.79507,
+      "height_pt": 177.4751,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_18.tex",
+      "native_width_pt": 153.3037,
+      "placed_width_pt": 153.3037,
+      "height_pt": 185.39589,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_19.tex",
+      "native_width_pt": 193.42534,
+      "placed_width_pt": 193.42534,
+      "height_pt": 193.74178,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_20.tex",
+      "native_width_pt": 193.42534,
+      "placed_width_pt": 193.42534,
+      "height_pt": 193.74178,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_21.tex",
+      "native_width_pt": 130.71024,
+      "placed_width_pt": 130.71024,
+      "height_pt": 289.26079,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_22.tex",
+      "native_width_pt": 207.04337,
+      "placed_width_pt": 207.04337,
+      "height_pt": 177.98969,
+      "container_width_pt": 796.67715,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_23.tex",
+      "native_width_pt": 191.26006,
+      "placed_width_pt": 191.26006,
+      "height_pt": 171.01555,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch08/fig_8_24.tex",
+      "native_width_pt": 208.2932,
+      "placed_width_pt": 208.2932,
+      "height_pt": 186.0748,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_01.tex",
+      "native_width_pt": 138.96167,
+      "placed_width_pt": 138.96167,
+      "height_pt": 94.36707,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_02.tex",
+      "native_width_pt": 133.70436,
+      "placed_width_pt": 133.70436,
+      "height_pt": 86.4865,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_03.tex",
+      "native_width_pt": 229.73927,
+      "placed_width_pt": 229.73927,
+      "height_pt": 157.84529,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_04.tex",
+      "native_width_pt": 213.36346,
+      "placed_width_pt": 213.36346,
+      "height_pt": 179.7589,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_05.tex",
+      "native_width_pt": 233.43828,
+      "placed_width_pt": 233.43828,
+      "height_pt": 152.23903,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_06.tex",
+      "native_width_pt": 232.774,
+      "placed_width_pt": 232.774,
+      "height_pt": 175.94742,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_07.tex",
+      "native_width_pt": 133.73424,
+      "placed_width_pt": 133.73424,
+      "height_pt": 92.12752,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_08.tex",
+      "native_width_pt": 246.99147,
+      "placed_width_pt": 246.99147,
+      "height_pt": 156.29208,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_09.tex",
+      "native_width_pt": 133.85608,
+      "placed_width_pt": 133.85608,
+      "height_pt": 87.66852,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_10.tex",
+      "native_width_pt": 134.11092,
+      "placed_width_pt": 134.11092,
+      "height_pt": 72.05669,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_11.tex",
+      "native_width_pt": 133.81064,
+      "placed_width_pt": 133.81064,
+      "height_pt": 88.5528,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_12.tex",
+      "native_width_pt": 238.04196,
+      "placed_width_pt": 238.04196,
+      "height_pt": 190.63242,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_13.tex",
+      "native_width_pt": 133.81064,
+      "placed_width_pt": 133.81064,
+      "height_pt": 88.5528,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_14.tex",
+      "native_width_pt": 413.99962,
+      "placed_width_pt": 413.99962,
+      "height_pt": 213.19089,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_15.tex",
+      "native_width_pt": 239.27295,
+      "placed_width_pt": 239.27295,
+      "height_pt": 244.989,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_16.tex",
+      "native_width_pt": 117.3198,
+      "placed_width_pt": 117.3198,
+      "height_pt": 135.41841,
+      "container_width_pt": 512.1496,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_17.tex",
+      "native_width_pt": 133.33554,
+      "placed_width_pt": 133.33554,
+      "height_pt": 131.60306,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_18.tex",
+      "native_width_pt": 282.21028,
+      "placed_width_pt": 282.21028,
+      "height_pt": 175.16135,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_19.tex",
+      "native_width_pt": 149.50613,
+      "placed_width_pt": 149.50613,
+      "height_pt": 188.73952,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_20.tex",
+      "native_width_pt": 282.21028,
+      "placed_width_pt": 282.21028,
+      "height_pt": 175.16135,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_21.tex",
+      "native_width_pt": 107.83293,
+      "placed_width_pt": 107.83293,
+      "height_pt": 136.98393,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_22.tex",
+      "native_width_pt": 332.5227,
+      "placed_width_pt": 332.5227,
+      "height_pt": 138.60951,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_23.tex",
+      "native_width_pt": 231.86813,
+      "placed_width_pt": 231.86813,
+      "height_pt": 149.48451,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_24.tex",
+      "native_width_pt": 236.41301,
+      "placed_width_pt": 236.41301,
+      "height_pt": 144.3186,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_25.tex",
+      "native_width_pt": 236.41301,
+      "placed_width_pt": 236.41301,
+      "height_pt": 167.85324,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_26.tex",
+      "native_width_pt": 236.41301,
+      "placed_width_pt": 236.41301,
+      "height_pt": 167.85324,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_27.tex",
+      "native_width_pt": 151.5813,
+      "placed_width_pt": 151.5813,
+      "height_pt": 105.7733,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_28.tex",
+      "native_width_pt": 342.27048,
+      "placed_width_pt": 342.27048,
+      "height_pt": 132.58607,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_29.tex",
+      "native_width_pt": 320.48357,
+      "placed_width_pt": 320.48357,
+      "height_pt": 273.13348,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_30.tex",
+      "native_width_pt": 217.18462,
+      "placed_width_pt": 217.18462,
+      "height_pt": 274.48618,
+      "container_width_pt": 654.41338,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_31.tex",
+      "native_width_pt": 133.89195,
+      "placed_width_pt": 133.89195,
+      "height_pt": 48.5454,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_32.tex",
+      "native_width_pt": 194.37706,
+      "placed_width_pt": 194.37706,
+      "height_pt": 178.64575,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_33.tex",
+      "native_width_pt": 204.72704,
+      "placed_width_pt": 204.72704,
+      "height_pt": 139.68123,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_34.tex",
+      "native_width_pt": 148.36035,
+      "placed_width_pt": 148.36035,
+      "height_pt": 119.31677,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_35.tex",
+      "native_width_pt": 218.6966,
+      "placed_width_pt": 218.6966,
+      "height_pt": 157.58125,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_36.tex",
+      "native_width_pt": 133.85335,
+      "placed_width_pt": 133.85335,
+      "height_pt": 64.448,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_37.tex",
+      "native_width_pt": 133.73424,
+      "placed_width_pt": 133.73424,
+      "height_pt": 92.12752,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_38.tex",
+      "native_width_pt": 282.21028,
+      "placed_width_pt": 282.21028,
+      "height_pt": 175.16135,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_39.tex",
+      "native_width_pt": 282.21028,
+      "placed_width_pt": 282.21028,
+      "height_pt": 175.16135,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_40.tex",
+      "native_width_pt": 277.68454,
+      "placed_width_pt": 277.68454,
+      "height_pt": 182.53813,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_41.tex",
+      "native_width_pt": 339.76817,
+      "placed_width_pt": 339.76817,
+      "height_pt": 159.25995,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_42.tex",
+      "native_width_pt": 332.30345,
+      "placed_width_pt": 332.30345,
+      "height_pt": 133.8689,
+      "container_width_pt": 938.94093,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_43.tex",
+      "native_width_pt": 282.21028,
+      "placed_width_pt": 282.21028,
+      "height_pt": 175.16135,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_44.tex",
+      "native_width_pt": 133.5196,
+      "placed_width_pt": 133.5196,
+      "height_pt": 123.86395,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_45.tex",
+      "native_width_pt": 332.45963,
+      "placed_width_pt": 332.45963,
+      "height_pt": 148.36938,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_46.tex",
+      "native_width_pt": 133.80138,
+      "placed_width_pt": 133.80138,
+      "height_pt": 87.27196,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_47.tex",
+      "native_width_pt": 138.48473,
+      "placed_width_pt": 138.48473,
+      "height_pt": 88.58191,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_48.tex",
+      "native_width_pt": 133.80138,
+      "placed_width_pt": 133.80138,
+      "height_pt": 94.1983,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_49.tex",
+      "native_width_pt": 190.40984,
+      "placed_width_pt": 190.40984,
+      "height_pt": 135.1491,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_50.tex",
+      "native_width_pt": 133.80138,
+      "placed_width_pt": 133.80138,
+      "height_pt": 94.1983,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_51.tex",
+      "native_width_pt": 190.40984,
+      "placed_width_pt": 190.40984,
+      "height_pt": 135.1491,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_52.tex",
+      "native_width_pt": 134.53319,
+      "placed_width_pt": 134.53319,
+      "height_pt": 126.28806,
+      "container_width_pt": 711.3189,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_53.tex",
+      "native_width_pt": 332.33566,
+      "placed_width_pt": 332.33566,
+      "height_pt": 150.52174,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_54.tex",
+      "native_width_pt": 203.93625,
+      "placed_width_pt": 203.93625,
+      "height_pt": 185.79079,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_55.tex",
+      "native_width_pt": 133.3913,
+      "placed_width_pt": 133.3913,
+      "height_pt": 129.61638,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_56.tex",
+      "native_width_pt": 203.93625,
+      "placed_width_pt": 203.93625,
+      "height_pt": 171.35205,
+      "container_width_pt": 625.96062,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_48_html.tex",
+      "native_width_pt": 261.20847,
+      "placed_width_pt": 261.20847,
+      "height_pt": 238.99625,
+      "container_width_pt": 654.41338,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_57.tex",
+      "native_width_pt": 261.20847,
+      "placed_width_pt": 261.20847,
+      "height_pt": 248.36984,
+      "container_width_pt": 654.41338,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_58.tex",
+      "native_width_pt": 140.8209,
+      "placed_width_pt": 140.8209,
+      "height_pt": 277.68555,
+      "container_width_pt": 711.3189,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_59.tex",
+      "native_width_pt": 133.90045,
+      "placed_width_pt": 133.90045,
+      "height_pt": 85.6804,
+      "container_width_pt": 882.03543,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_60.tex",
+      "native_width_pt": 332.33566,
+      "placed_width_pt": 332.33566,
+      "height_pt": 175.28131,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_61.tex",
+      "native_width_pt": 332.33566,
+      "placed_width_pt": 332.33566,
+      "height_pt": 175.28131,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_62.tex",
+      "native_width_pt": 179.229,
+      "placed_width_pt": 179.229,
+      "height_pt": 191.9871,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_63.tex",
+      "native_width_pt": 213.49802,
+      "placed_width_pt": 213.49802,
+      "height_pt": 149.10684,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_64.tex",
+      "native_width_pt": 332.33005,
+      "placed_width_pt": 332.33005,
+      "height_pt": 175.96086,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_65.tex",
+      "native_width_pt": 332.33005,
+      "placed_width_pt": 332.33005,
+      "height_pt": 175.96086,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_66.tex",
+      "native_width_pt": 136.8913,
+      "placed_width_pt": 136.8913,
+      "height_pt": 103.99815,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_67.tex",
+      "native_width_pt": 188.76448,
+      "placed_width_pt": 188.76448,
+      "height_pt": 179.0325,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_68.tex",
+      "native_width_pt": 171.55423,
+      "placed_width_pt": 171.55423,
+      "height_pt": 93.30283,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_69.tex",
+      "native_width_pt": 112.44498,
+      "placed_width_pt": 112.44498,
+      "height_pt": 284.86906,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_70.tex",
+      "native_width_pt": 326.32492,
+      "placed_width_pt": 326.32492,
+      "height_pt": 180.09071,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch09/fig_9_71.tex",
+      "native_width_pt": 131.93199,
+      "placed_width_pt": 131.93199,
+      "height_pt": 140.00142,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_01.tex",
+      "native_width_pt": 278.42262,
+      "placed_width_pt": 278.42262,
+      "height_pt": 219.08348,
+      "container_width_pt": 682.86613,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_02.tex",
+      "native_width_pt": 116.31592,
+      "placed_width_pt": 116.31592,
+      "height_pt": 143.12973,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_03.tex",
+      "native_width_pt": 265.36931,
+      "placed_width_pt": 265.36931,
+      "height_pt": 180.88722,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_04.tex",
+      "native_width_pt": 228.7745,
+      "placed_width_pt": 228.7745,
+      "height_pt": 182.82622,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_05.tex",
+      "native_width_pt": 346.57365,
+      "placed_width_pt": 346.57365,
+      "height_pt": 149.31868,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_06.tex",
+      "native_width_pt": 203.7427,
+      "placed_width_pt": 203.7427,
+      "height_pt": 153.41711,
+      "container_width_pt": 853.58267,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_07.tex",
+      "native_width_pt": 242.43402,
+      "placed_width_pt": 242.43402,
+      "height_pt": 253.12009,
+      "container_width_pt": 682.86613,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_08.tex",
+      "native_width_pt": 209.785,
+      "placed_width_pt": 209.785,
+      "height_pt": 219.08646,
+      "container_width_pt": 625.96062,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_09.tex",
+      "native_width_pt": 414.09926,
+      "placed_width_pt": 414.09926,
+      "height_pt": 286.21584,
+      "container_width_pt": 825.12991,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_10.tex",
+      "native_width_pt": 298.19974,
+      "placed_width_pt": 298.19974,
+      "height_pt": 180.0446,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_11.tex",
+      "native_width_pt": 275.0819,
+      "placed_width_pt": 275.0819,
+      "height_pt": 180.9231,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_12.tex",
+      "native_width_pt": 275.0819,
+      "placed_width_pt": 275.0819,
+      "height_pt": 180.9231,
+      "container_width_pt": 967.39369,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_13.tex",
+      "native_width_pt": 466.99379,
+      "placed_width_pt": 466.99379,
+      "height_pt": 222.09705,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_14.tex",
+      "native_width_pt": 200.74765,
+      "placed_width_pt": 200.74765,
+      "height_pt": 190.48134,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_15.tex",
+      "native_width_pt": 200.74765,
+      "placed_width_pt": 200.74765,
+      "height_pt": 190.48134,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_16.tex",
+      "native_width_pt": 296.89412,
+      "placed_width_pt": 296.89412,
+      "height_pt": 180.46849,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_17.tex",
+      "native_width_pt": 157.68648,
+      "placed_width_pt": 157.68648,
+      "height_pt": 193.30066,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_18.tex",
+      "native_width_pt": 314.60329,
+      "placed_width_pt": 314.60329,
+      "height_pt": 180.46849,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_19.tex",
+      "native_width_pt": 154.11383,
+      "placed_width_pt": 154.11383,
+      "height_pt": 180.46849,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_20.tex",
+      "native_width_pt": 343.0566,
+      "placed_width_pt": 343.0566,
+      "height_pt": 152.1481,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_21.tex",
+      "native_width_pt": 212.0784,
+      "placed_width_pt": 212.0784,
+      "height_pt": 183.58249,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_22.tex",
+      "native_width_pt": 332.37857,
+      "placed_width_pt": 332.37857,
+      "height_pt": 152.31583,
+      "container_width_pt": 995.84645,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_23.tex",
+      "native_width_pt": 199.63943,
+      "placed_width_pt": 199.63943,
+      "height_pt": 182.03046,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_24.tex",
+      "native_width_pt": 167.36339,
+      "placed_width_pt": 167.36339,
+      "height_pt": 279.57983,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_25.tex",
+      "native_width_pt": 171.30293,
+      "placed_width_pt": 171.30293,
+      "height_pt": 111.79713,
+      "container_width_pt": 682.86613,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_26.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 152.47829,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_27.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 152.47829,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_28.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 152.47829,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_29.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 152.47829,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_30.tex",
+      "native_width_pt": 147.73952,
+      "placed_width_pt": 147.73952,
+      "height_pt": 128.43309,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_31.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 152.47829,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_32.tex",
+      "native_width_pt": 155.22424,
+      "placed_width_pt": 155.22424,
+      "height_pt": 118.89557,
+      "container_width_pt": 682.86613,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_33.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 151.69536,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_34.tex",
+      "native_width_pt": 214.93208,
+      "placed_width_pt": 214.93208,
+      "height_pt": 180.96309,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_35.tex",
+      "native_width_pt": 214.93208,
+      "placed_width_pt": 214.93208,
+      "height_pt": 181.60716,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_36.tex",
+      "native_width_pt": 255.26663,
+      "placed_width_pt": 255.26663,
+      "height_pt": 200.3289,
+      "container_width_pt": 768.2244,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_37.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 152.47829,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_38.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 152.47829,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_39.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 152.47829,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch10/fig_10_40.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 152.47829,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_01.tex",
+      "native_width_pt": 232.51654,
+      "placed_width_pt": 232.51654,
+      "height_pt": 160.86714,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_02.tex",
+      "native_width_pt": 133.60007,
+      "placed_width_pt": 133.60007,
+      "height_pt": 72.13878,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_03.tex",
+      "native_width_pt": 133.60007,
+      "placed_width_pt": 133.60007,
+      "height_pt": 82.1233,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_04.tex",
+      "native_width_pt": 190.1226,
+      "placed_width_pt": 190.1226,
+      "height_pt": 102.08115,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_05.tex",
+      "native_width_pt": 170.72188,
+      "placed_width_pt": 170.72188,
+      "height_pt": 77.05222,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_06.tex",
+      "native_width_pt": 192.80792,
+      "placed_width_pt": 192.80792,
+      "height_pt": 280.53745,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_07.tex",
+      "native_width_pt": 133.60007,
+      "placed_width_pt": 133.60007,
+      "height_pt": 91.976,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_08.tex",
+      "native_width_pt": 282.49707,
+      "placed_width_pt": 282.49707,
+      "height_pt": 27.07053,
+      "container_width_pt": 1564.90158,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_09.tex",
+      "native_width_pt": 201.27669,
+      "placed_width_pt": 201.27669,
+      "height_pt": 172.95322,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_10.tex",
+      "native_width_pt": 201.27669,
+      "placed_width_pt": 201.27669,
+      "height_pt": 171.64275,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_11.tex",
+      "native_width_pt": 344.55026,
+      "placed_width_pt": 344.55026,
+      "height_pt": 152.47829,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_12.tex",
+      "native_width_pt": 282.35072,
+      "placed_width_pt": 282.35072,
+      "height_pt": 159.27882,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_13.tex",
+      "native_width_pt": 204.29677,
+      "placed_width_pt": 204.29677,
+      "height_pt": 182.01782,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_14.tex",
+      "native_width_pt": 204.29677,
+      "placed_width_pt": 204.29677,
+      "height_pt": 169.93477,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_15.tex",
+      "native_width_pt": 233.99474,
+      "placed_width_pt": 233.99474,
+      "height_pt": 212.84631,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_16.tex",
+      "native_width_pt": 241.8152,
+      "placed_width_pt": 241.8152,
+      "height_pt": 186.58527,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_17.tex",
+      "native_width_pt": 232.56305,
+      "placed_width_pt": 232.56305,
+      "height_pt": 174.10654,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_18.tex",
+      "native_width_pt": 232.56305,
+      "placed_width_pt": 232.56305,
+      "height_pt": 174.10654,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_19.tex",
+      "native_width_pt": 201.26291,
+      "placed_width_pt": 201.26291,
+      "height_pt": 166.8232,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_20.tex",
+      "native_width_pt": 233.23674,
+      "placed_width_pt": 233.23674,
+      "height_pt": 115.72705,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_21.tex",
+      "native_width_pt": 332.47055,
+      "placed_width_pt": 332.47055,
+      "height_pt": 84.55031,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_22.tex",
+      "native_width_pt": 332.47055,
+      "placed_width_pt": 332.47055,
+      "height_pt": 84.55031,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_23.tex",
+      "native_width_pt": 502.58188,
+      "placed_width_pt": 502.58188,
+      "height_pt": 236.60126,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_24.tex",
+      "native_width_pt": 332.47192,
+      "placed_width_pt": 332.47192,
+      "height_pt": 112.71625,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_25.tex",
+      "native_width_pt": 158.22166,
+      "placed_width_pt": 158.22166,
+      "height_pt": 175.13683,
+      "container_width_pt": 483.69684,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_26.tex",
+      "native_width_pt": 201.26291,
+      "placed_width_pt": 201.26291,
+      "height_pt": 171.59244,
+      "container_width_pt": 540.60236,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_27.tex",
+      "native_width_pt": 122.37506,
+      "placed_width_pt": 122.37506,
+      "height_pt": 137.70255,
+      "container_width_pt": 483.69684,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_28.tex",
+      "native_width_pt": 214.91832,
+      "placed_width_pt": 214.91832,
+      "height_pt": 182.39334,
+      "container_width_pt": 540.60236,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_29.tex",
+      "native_width_pt": 338.58214,
+      "placed_width_pt": 338.58214,
+      "height_pt": 172.5384,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_30.tex",
+      "native_width_pt": 200.798,
+      "placed_width_pt": 200.798,
+      "height_pt": 174.04195,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_31.tex",
+      "native_width_pt": 510.00381,
+      "placed_width_pt": 510.00381,
+      "height_pt": 218.85551,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_32.tex",
+      "native_width_pt": 332.46553,
+      "placed_width_pt": 332.46553,
+      "height_pt": 142.28253,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_33.tex",
+      "native_width_pt": 344.52881,
+      "placed_width_pt": 344.52881,
+      "height_pt": 153.72746,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_34.tex",
+      "native_width_pt": 234.74751,
+      "placed_width_pt": 234.74751,
+      "height_pt": 124.09555,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_35.tex",
+      "native_width_pt": 243.51978,
+      "placed_width_pt": 243.51978,
+      "height_pt": 152.57718,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_36.tex",
+      "native_width_pt": 240.59029,
+      "placed_width_pt": 240.59029,
+      "height_pt": 147.63577,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_37.tex",
+      "native_width_pt": 161.42972,
+      "placed_width_pt": 161.42972,
+      "height_pt": 80.37141,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_38.tex",
+      "native_width_pt": 242.85019,
+      "placed_width_pt": 242.85019,
+      "height_pt": 197.94685,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_39.tex",
+      "native_width_pt": 214.65878,
+      "placed_width_pt": 214.65878,
+      "height_pt": 155.62303,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_40.tex",
+      "native_width_pt": 215.70914,
+      "placed_width_pt": 215.70914,
+      "height_pt": 155.62303,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_41.tex",
+      "native_width_pt": 332.28642,
+      "placed_width_pt": 332.28642,
+      "height_pt": 134.65472,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_42.tex",
+      "native_width_pt": 332.28642,
+      "placed_width_pt": 332.28642,
+      "height_pt": 134.65472,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_43.tex",
+      "native_width_pt": 232.4159,
+      "placed_width_pt": 232.4159,
+      "height_pt": 162.50177,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_44.tex",
+      "native_width_pt": 332.48534,
+      "placed_width_pt": 332.48534,
+      "height_pt": 130.91055,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_45.tex",
+      "native_width_pt": 344.52875,
+      "placed_width_pt": 344.52875,
+      "height_pt": 149.77713,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_46.tex",
+      "native_width_pt": 344.52875,
+      "placed_width_pt": 344.52875,
+      "height_pt": 149.77713,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch11/fig_11_47.tex",
+      "native_width_pt": 359.95895,
+      "placed_width_pt": 359.95895,
+      "height_pt": 151.08267,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_01.tex",
+      "native_width_pt": 410.00995,
+      "placed_width_pt": 410.00995,
+      "height_pt": 209.26637,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_02.tex",
+      "native_width_pt": 176.17548,
+      "placed_width_pt": 176.17548,
+      "height_pt": 135.07712,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_03.tex",
+      "native_width_pt": 154.17566,
+      "placed_width_pt": 154.17566,
+      "height_pt": 149.80035,
+      "container_width_pt": 483.69684,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_04.tex",
+      "native_width_pt": 141.36285,
+      "placed_width_pt": 141.36285,
+      "height_pt": 152.72182,
+      "container_width_pt": 483.69684,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_03c.tex",
+      "native_width_pt": 164.51035,
+      "placed_width_pt": 164.51035,
+      "height_pt": 149.80035,
+      "container_width_pt": 483.69684,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_05.tex",
+      "native_width_pt": 153.66844,
+      "placed_width_pt": 153.66844,
+      "height_pt": 125.22395,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_06.tex",
+      "native_width_pt": 346.82967,
+      "placed_width_pt": 346.82967,
+      "height_pt": 140.79521,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_07.tex",
+      "native_width_pt": 158.14523,
+      "placed_width_pt": 158.14523,
+      "height_pt": 134.69301,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_08.tex",
+      "native_width_pt": 332.30353,
+      "placed_width_pt": 332.30353,
+      "height_pt": 145.4571,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_09.tex",
+      "native_width_pt": 143.85207,
+      "placed_width_pt": 143.85207,
+      "height_pt": 133.08534,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_10.tex",
+      "native_width_pt": 143.85207,
+      "placed_width_pt": 143.85207,
+      "height_pt": 134.54369,
+      "container_width_pt": 455.24408,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch12/fig_12_11.tex",
+      "native_width_pt": 341.52727,
+      "placed_width_pt": 341.52727,
+      "height_pt": 154.1594,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch13/fig_13_01.tex",
+      "native_width_pt": 259.28557,
+      "placed_width_pt": 259.28557,
+      "height_pt": 204.55963,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch13/fig_13_02.tex",
+      "native_width_pt": 259.28557,
+      "placed_width_pt": 259.28557,
+      "height_pt": 204.55963,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch13/fig_13_03.tex",
+      "native_width_pt": 366.35847,
+      "placed_width_pt": 366.35847,
+      "height_pt": 232.60135,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch13/fig_13_04.tex",
+      "native_width_pt": 572.64087,
+      "placed_width_pt": 572.64087,
+      "height_pt": 369.88565,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch13/fig_13_05.tex",
+      "native_width_pt": 857.1683,
+      "placed_width_pt": 857.1683,
+      "height_pt": 352.81425,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch13/fig_13_06.tex",
+      "native_width_pt": 521.42105,
+      "placed_width_pt": 521.42105,
+      "height_pt": 251.51971,
+      "container_width_pt": 1052.75197,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch13/fig_13_07.tex",
+      "native_width_pt": 262.04156,
+      "placed_width_pt": 262.04156,
+      "height_pt": 108.56262,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    },
+    {
+      "path": "ch13/fig_13_08.tex",
+      "native_width_pt": 373.46817,
+      "placed_width_pt": 373.46817,
+      "height_pt": 281.1104,
+      "container_width_pt": 739.77165,
+      "font_factor": 1.0
+    }
+  ],
+  "minimum_header_body_gap_mm": 12.1,
+  "minimum_body_footer_gap_mm": 8.1
+}

@@ -1,0 +1,545 @@
+{
+  "status": "passed",
+  "date": "2026-11-09",
+  "final_pdf_sha256": "22dcf203cc320ac1551ce23fb0cfa70e6cc780f1711cb450aab16e876bc2f12a",
+  "chapters_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "chapter_checks": {
+    "status": "passed",
+    "chapters": [
+      {
+        "chapter": 1,
+        "pdf_sha256": "950857128b0a51caed6fe5830d5e0277ea1b3097deb30081b4bcb28c2f7553a6",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/1.tex": "22e76bf1f0c171eca3947c1f5831324bded1fcbb08763ffeb381e0b96110c780"
+        },
+        "code_pages": [
+          2,
+          4,
+          5,
+          8,
+          9
+        ],
+        "segments": 8,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch1-sheet1.png",
+            "sha256": "cd4fa8545c543c382b252da19c8d8b7a35e05b8f6b94dec1591903502e117378"
+          }
+        ]
+      },
+      {
+        "chapter": 2,
+        "pdf_sha256": "f92afaae461d0e35d7800efa27b0331b6d29ad5ee44259a7b74d5803bac9fcfa",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/2.tex": "a0654e71c83cee5d0a22dfc97a96b28f0e94c3fd1d8ffc79f7a80fee71553365"
+        },
+        "code_pages": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "segments": 6,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch2-sheet1.png",
+            "sha256": "2cbc57f5bbec25294f537c7eab1b22234447ed14527cc0733112fd4a7bc0f569"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch2-sheet2.png",
+            "sha256": "2ce8b54a6e1cb28a432a0a5c2835446b9268074fa674e1eb6ddee48b3c3d6113"
+          }
+        ]
+      },
+      {
+        "chapter": 3,
+        "pdf_sha256": "eb9365f330c39531a9b9f66fe2fdd233c1963491d792b5f4f461e3aab97d1c8f",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/3.tex": "65e24471eefeca73034620f8913e8f93ddb76eb025a695aea83ed5d77d6b12b1"
+        },
+        "code_pages": [
+          1,
+          4,
+          6,
+          7,
+          10,
+          11
+        ],
+        "segments": 8,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch3-sheet1.png",
+            "sha256": "f09ef8362b29a73326b846aedf246f9ee7ea4ef26bdf5275fa3aa6a9a3de8ea4"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch3-sheet2.png",
+            "sha256": "cd38a5e3fe3e374aff936da62341695809115483d08e38b80cc1165b137999ea"
+          }
+        ]
+      },
+      {
+        "chapter": 4,
+        "pdf_sha256": "c0c7809381da248eae00f4aa4d46bb091008068cce2675b3f31be84824a91e10",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/4.tex": "9ec77138c1beed2b0405d39b3364a26788d65763984052d224f70ac22c5fb700"
+        },
+        "code_pages": [
+          3,
+          6,
+          7
+        ],
+        "segments": 4,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch4-sheet1.png",
+            "sha256": "a6b72d52fa04e85153ed2da1cbb546fe15a87b6a1ad350d17697e6c73416958e"
+          }
+        ]
+      },
+      {
+        "chapter": 5,
+        "pdf_sha256": "22bb39a42a3ff6258cb3238e0e6da3ac7177d56a22d9069add5bbdf3ade6cfa4",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/5.tex": "2b167e127a5c2e4076110644091318b4bbc9b11da98c74aedf9b5b289f094a42"
+        },
+        "code_pages": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          13,
+          18,
+          19,
+          20,
+          22,
+          23
+        ],
+        "segments": 20,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch5-sheet1.png",
+            "sha256": "4f5f23c269b90aa86e49473c15bdb4dd5b76491b0fe3dcb888e64b400be9e525"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch5-sheet2.png",
+            "sha256": "635bb5d686006c39e682804cc078781ef1f808234aac05ec129549a3872fd200"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch5-sheet3.png",
+            "sha256": "55a717da2d0b47930fcd126ceee699c8ccd1367c67326b0f908ff5fd30e2ea59"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch5-sheet4.png",
+            "sha256": "b443c0090c2b5499fe7c3bd35de513558fec8b5ecb1c3917b2f48918dbd839d9"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch5-sheet5.png",
+            "sha256": "527f1d6601475fdcee93ab0ab2b6e3a89e0f015bb44c4b8fdadb8a9c53579e36"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch5-sheet6.png",
+            "sha256": "ccf5d3dd0193b923303cda6232b4abd2ec2f441e190e25ca919c01328ccaedc6"
+          }
+        ]
+      },
+      {
+        "chapter": 6,
+        "pdf_sha256": "273cdf1a57780203a2a7c2ce61277d65f04225ad98ae6d78c11b969b1fec15f0",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/6.tex": "9ebabf25b7c7147cad458b1aaae0908cdbffaecf93cdababdf2cfbfe6f662731"
+        },
+        "code_pages": [
+          14,
+          15
+        ],
+        "segments": 2,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch6-sheet1.png",
+            "sha256": "694fe6f405d2dfcce4ee13cd3b17a52ee24646a27e42627809953fcc709c8858"
+          }
+        ]
+      },
+      {
+        "chapter": 7,
+        "pdf_sha256": "264114e37c5f6e9194ee239adcd7f93c6be9af24299a0e01acd66bc8aa128d43",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/7.tex": "b4aefe0938a35ccda281da38b93e6f420fd494a4d86ec3ba672004bf6460c825"
+        },
+        "code_pages": [
+          9,
+          11,
+          12
+        ],
+        "segments": 3,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch7-sheet1.png",
+            "sha256": "4af193adc59faffc2e6cdeb256038059e5fbf1de0e94eb97af426e15dc46969e"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch7-sheet2.png",
+            "sha256": "014c3863c3154b0363a66688dac358b3ee4b0469a4d543baf93fdf2795b782e0"
+          }
+        ]
+      },
+      {
+        "chapter": 8,
+        "pdf_sha256": "bdedd84fb34a003eeed907ec9a63110084f0659dcb143f39e07f00450fbf4e43",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/8.tex": "c8865dbb1106258b13b079d95a15b99d4abcda26ceb01caea99da8d35534649e"
+        },
+        "code_pages": [
+          9,
+          15,
+          16
+        ],
+        "segments": 3,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch8-sheet1.png",
+            "sha256": "e3fb8a8f10c1dc8bb6ac232b0c43d63dd5ef4cabbd116e54c3638eb31fa5cbc0"
+          }
+        ]
+      },
+      {
+        "chapter": 9,
+        "pdf_sha256": "40f5abd725505d7fd1d273707c22e638ee075a8a5bb14f180598b2079f70bf36",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/9.tex": "ba518483b5d774bdd63d2afca66d8e7fff727003b3a461cc85466b6c9e75444e"
+        },
+        "code_pages": [
+          3,
+          5,
+          7,
+          8,
+          16,
+          20,
+          22,
+          23,
+          24,
+          25,
+          28,
+          31
+        ],
+        "segments": 14,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch9-sheet1.png",
+            "sha256": "099460c8c63e74b486f49f2220aded1dc7dafcd180c2d097d06ae88e5e2038e6"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch9-sheet2.png",
+            "sha256": "4458945fcba65caa6f52aff4add6ba2320bcad8bae18afdaa0445379b2423d4d"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch9-sheet3.png",
+            "sha256": "847bd39cf82721e7dd6c5f9fcab4f709a618803759043b10438b4c65c2d603cc"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch9-sheet4.png",
+            "sha256": "80c5d97ea5ffaf064f97735297f926136ffcad3649666ae190c8132fd3c8504c"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch9-sheet5.png",
+            "sha256": "f9dfa53eafaf5ca6642c09d9f2ea81f7b10b4cd64141979ecce35da192e5f60b"
+          }
+        ]
+      },
+      {
+        "chapter": 10,
+        "pdf_sha256": "29193df58b26f01cb8c457002d4949562edb86ba4781c8883fec3f9d3c6b88bd",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/10.tex": "8444bfa51a4c3c5852480ef910d452cf1ad64c17e611fe763c4baacb88445516"
+        },
+        "code_pages": [
+          7,
+          8,
+          13,
+          16
+        ],
+        "segments": 5,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch10-sheet1.png",
+            "sha256": "a6fe0d7524bd0d3eca95887bdf59aad0513ad97d7c1ab36247e3ae32577af746"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch10-sheet2.png",
+            "sha256": "242f4cbf6f5326c1bdbadde19b331c91d251890cfcc37602260ae8682c8b69b6"
+          }
+        ]
+      },
+      {
+        "chapter": 11,
+        "pdf_sha256": "d2b347f0192842b0ad311121a56de2f7cb437837fe3209d8917b43b1ec822f71",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/11.tex": "0878ba1e78ae647cb9944b5c5c9dc4beba086e71b9ef52a3ebc07af61f554be5"
+        },
+        "code_pages": [
+          17
+        ],
+        "segments": 1,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch11-sheet1.png",
+            "sha256": "940e5c3e6c622430252e4ef5293c50094314e7302b53b3681ee2f1ebd4a060f7"
+          }
+        ]
+      },
+      {
+        "chapter": 12,
+        "pdf_sha256": "135a5f071290094967de935e992b8016a64b42ffdf7a77318ff844c892dc8501",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/12.tex": "f450b11a15473505f84fe845fc0a1f263046c7ebb40a3982604aee181f5f6dde"
+        },
+        "code_pages": [
+          2,
+          5
+        ],
+        "segments": 2,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch12-sheet1.png",
+            "sha256": "b67c57cff1c148d83c573055d82d5b284606c0fa91e4642e8d7339b2c4d74765"
+          }
+        ]
+      },
+      {
+        "chapter": 13,
+        "pdf_sha256": "9159af38dc8dae36738e5cfdc938ae7862368694c8455ee2bf8f6eb1eef64a1b",
+        "source_hashes": {
+          "main.tex": "22f31b4d09b6fc9271053732834e4a15650d362f236123c8549ccf9068bdf641",
+          "chapter/13.tex": "81028ee062b5fb3187c573502fc8dab5ce96ae8b1670f02943770534b821affa"
+        },
+        "code_pages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "segments": 48,
+        "visual_sheets": [
+          {
+            "path": "tmp/minted-review/visual/ch13-sheet1.png",
+            "sha256": "b3b543dd4dcf15fb3959002682768b83f898eed27690aedb4c67cb072f846f7a"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch13-sheet2.png",
+            "sha256": "06f38c9f9571f2069fc7d3a37c49af9d12b5f7b08de86c52df62d832db396016"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch13-sheet3.png",
+            "sha256": "6f4b8768712afee3ff6ba54995239c5dfff0a9edc4fc9e8f8ff2d228bf1d735a"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch13-sheet4.png",
+            "sha256": "d65460730b4cce8e48b7d3cd2e0cd868556faa9d45259b86a87af5ba901487b5"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch13-sheet5.png",
+            "sha256": "eb6511596e887555fcb4c88cd05474045c7c9a6ef217a06fe0e7aa9efca9557b"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch13-sheet6.png",
+            "sha256": "af4a9c2d00e12066ff02215c6278f4d3631ffd15678ae48e44c7477f3991b11e"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch13-sheet7.png",
+            "sha256": "9d282dc616fc487adaa6bdaa7545ada8082aa249d70f71d909a8e637421bdfdf"
+          },
+          {
+            "path": "tmp/minted-review/visual/ch13-sheet8.png",
+            "sha256": "98aa92de32727263b61b71e4dac064b38a6ca2402bccda269c2e22fd19b58c9a"
+          }
+        ]
+      }
+    ],
+    "visual_sheets_viewed": 33,
+    "all_code_pages": 66,
+    "all_code_segments": 124
+  },
+  "final_book_pages_reviewed": [
+    8,
+    15,
+    24,
+    26,
+    27,
+    28,
+    33,
+    41,
+    49,
+    63,
+    64,
+    83,
+    94,
+    110,
+    120,
+    148,
+    157,
+    166,
+    184,
+    187,
+    192,
+    194,
+    199
+  ],
+  "final_book_page_evidence": [
+    {
+      "page": 8,
+      "png": "tmp/minted-review/final-pages/page8.png",
+      "sha256": "fdadf1eba03fe4c88bdca2786281f74a92bf04d66530c11bc5162b92ab9d8603"
+    },
+    {
+      "page": 15,
+      "png": "tmp/minted-review/final-pages/page15.png",
+      "sha256": "65379a693793c6bd4cb61e921c326bbed24f79712e9199ef24c7b8177f1e1518"
+    },
+    {
+      "page": 24,
+      "png": "tmp/minted-review/final-pages/page24.png",
+      "sha256": "018d3491c1a17aadee383aae54150751f026dd5b9b8b9e5945ee31efeff20b87"
+    },
+    {
+      "page": 26,
+      "png": "tmp/minted-review/final-pages/page26.png",
+      "sha256": "655883567b853be081162b9a5470c41cc3cdb89ed2c1f93d02440fa9dd0e3a71"
+    },
+    {
+      "page": 27,
+      "png": "tmp/minted-review/final-pages/page27.png",
+      "sha256": "591eb26fbe0774cfde1db4aaecb7106ebdf37e0f08ce3a3bf0f831c6d6702c3c"
+    },
+    {
+      "page": 28,
+      "png": "tmp/minted-review/final-pages/page28.png",
+      "sha256": "7a667ef30fd809abbdef24019257454bac4c05940671cf858b21f9d27088ee1e"
+    },
+    {
+      "page": 33,
+      "png": "tmp/minted-review/final-pages/page33.png",
+      "sha256": "48fa480bae954d0441fabe4a13e706296407494ebc836309eb29e55c261067b4"
+    },
+    {
+      "page": 41,
+      "png": "tmp/minted-review/final-pages/page41.png",
+      "sha256": "0611abdefeb57b107c21bc58e997dd80cf75bdb89db3a9a489641d6a45bb1dde"
+    },
+    {
+      "page": 49,
+      "png": "tmp/minted-review/final-pages/page49.png",
+      "sha256": "265f54067a70949f1cad33674bbb8789256a3460da799ab2e6cdf21870932f6a"
+    },
+    {
+      "page": 63,
+      "png": "tmp/minted-review/final-pages/page63.png",
+      "sha256": "9329f2aa6adc03779c0b70dff41b42844eebfc14bbd31b6ce0e3493d3eb9162f"
+    },
+    {
+      "page": 64,
+      "png": "tmp/minted-review/final-pages/page64.png",
+      "sha256": "31d28212f3531d9ec155b2a0a9e9f0fa4eb7f4d4c492bc11d8f0118447a5ee4f"
+    },
+    {
+      "page": 83,
+      "png": "tmp/minted-review/final-pages/page83.png",
+      "sha256": "77d28b41b7b1eeac9c5cfcc466ca827d82ab703e3b27f3aae662ffdb5f631337"
+    },
+    {
+      "page": 94,
+      "png": "tmp/minted-review/final-pages/page94.png",
+      "sha256": "158e1369a1555a569b989b9ff188d8b387b4bdf30f8c1b35f346f8d9e14d2b8f"
+    },
+    {
+      "page": 110,
+      "png": "tmp/minted-review/final-pages/page110.png",
+      "sha256": "1b0dc1a507f80afb08c85c303da418cb7d491079aeae1b769f1adda018c2f94c"
+    },
+    {
+      "page": 120,
+      "png": "tmp/minted-review/final-pages/page120.png",
+      "sha256": "a4da75b60b5b5cbf762d0b6b6589bbec777b33bbeb8291972df2314f90f67d76"
+    },
+    {
+      "page": 148,
+      "png": "tmp/minted-review/final-pages/page148.png",
+      "sha256": "79f83d9138665dcfa49f1d244b7f5e4e644d3c6ae5187df5cc87fecadb72f2d7"
+    },
+    {
+      "page": 157,
+      "png": "tmp/minted-review/final-pages/page157.png",
+      "sha256": "eb4a7164099bc76b8c9892f6dc3f1ddb2f6c2cd5705fcc8360f15963ee554b30"
+    },
+    {
+      "page": 166,
+      "png": "tmp/minted-review/final-pages/page166.png",
+      "sha256": "cfb7cba558d428adebf3be904aae21039845b9f208a36553826408b49ede0e19"
+    },
+    {
+      "page": 184,
+      "png": "tmp/minted-review/final-pages/page184.png",
+      "sha256": "ab720717bbfd45da4023854e9d1ec8e943f8acad833a22916c76c5ed48f1fb0c"
+    },
+    {
+      "page": 187,
+      "png": "tmp/minted-review/final-pages/page187.png",
+      "sha256": "ea445b9040b49769bd6a424fe6c721b1233ae45bb1d72df1ccca9d07fb8b9157"
+    },
+    {
+      "page": 192,
+      "png": "tmp/minted-review/final-pages/page192.png",
+      "sha256": "272c6dfed78649df9ff9ddea740df9fbf2ffd05efdd0e3ac058775caf3d1ec52"
+    },
+    {
+      "page": 194,
+      "png": "tmp/minted-review/final-pages/page194.png",
+      "sha256": "f1fe3d0730ad63136fa5979f44aaf161fdc654744c0041ffee4103395ad96805"
+    },
+    {
+      "page": 199,
+      "png": "tmp/minted-review/final-pages/page199.png",
+      "sha256": "7c78c46baf12e06cd35beaef693ca6a18629b924e0197f8213f21906b13f94bc"
+    }
+  ],
+  "checks": [
+    "Uniform Monokai code typography with Chinese comments",
+    "All 109 listings and continuation segments visually inspected in actual chapter PDFs",
+    "Mathematical pseudocode escapes and restored comment boundaries checked",
+    "23 final whole-book context pages checked for code/prose/figure placement",
+    "No code clipping, glyph loss, lexer error boxes, or figure/caption overlap observed"
+  ],
+  "raster_image_objects": 0
+}

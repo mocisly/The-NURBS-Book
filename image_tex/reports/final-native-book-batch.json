@@ -1,0 +1,131 @@
+{
+  "id": "final-native-book",
+  "figures": {
+    "1.3": [
+      "ch01/fig_1_03.tex"
+    ],
+    "1.4": [
+      "ch01/fig_1_04.tex"
+    ],
+    "1.5": [
+      "ch01/fig_1_05.tex"
+    ],
+    "1.6": [
+      "ch01/fig_1_06.tex"
+    ],
+    "1.7": [
+      "ch01/fig_1_07.tex",
+      "ch01/fig_1_08.tex"
+    ],
+    "1.8": [
+      "ch01/fig_1_09.tex",
+      "ch01/fig_1_10.tex"
+    ],
+    "1.9": [
+      "ch01/fig_1_11.tex"
+    ],
+    "1.10": [
+      "ch01/fig_1_12.tex"
+    ],
+    "1.11": [
+      "ch01/fig_1_13.tex",
+      "ch01/fig_1_14.tex",
+      "ch01/fig_1_15.tex",
+      "ch01/fig_1_16.tex"
+    ],
+    "1.12": [
+      "ch01/fig_1_17.tex"
+    ],
+    "1.13": [
+      "ch01/fig_1_18.tex",
+      "ch01/fig_1_19.tex",
+      "ch01/fig_1_20.tex",
+      "ch01/fig_1_21.tex"
+    ],
+    "1.14": [
+      "ch01/fig_1_22.tex"
+    ],
+    "1.15": [
+      "ch01/fig_1_23.tex"
+    ],
+    "1.16": [
+      "ch01/fig_1_26.tex"
+    ],
+    "1.17": [
+      "ch01/fig_1_27.tex"
+    ],
+    "1.18": [
+      "ch01/fig_1_28.tex"
+    ],
+    "1.19": [
+      "ch01/fig_1_29.tex"
+    ],
+    "1.20": [
+      "ch01/fig_1_30.tex"
+    ],
+    "1.21": [
+      "ch01/fig_1_31.tex"
+    ],
+    "1.22": [
+      "ch01/fig_1_32.tex"
+    ],
+    "13.1": [],
+    "13.2": [
+      "ch13/fig_13_01.tex"
+    ],
+    "13.3": [
+      "ch13/fig_13_02.tex"
+    ],
+    "13.4": [
+      "ch13/fig_13_03.tex"
+    ],
+    "13.5": [
+      "ch13/fig_13_04.tex"
+    ],
+    "13.6": [
+      "ch13/fig_13_05.tex"
+    ],
+    "13.7": [
+      "ch13/fig_13_06.tex"
+    ],
+    "13.8": [
+      "ch13/fig_13_07.tex"
+    ],
+    "13.9": [
+      "ch13/fig_13_08.tex"
+    ]
+  },
+  "text_regions": {
+    "图1.1:": [
+      "ch01/fig_1_01.tex"
+    ],
+    "图1.2:": [
+      "ch01/fig_1_02.tex"
+    ],
+    "表1.1.": [
+      "ch01/fig_1_24.tex"
+    ],
+    "表1.2.": [
+      "ch01/fig_1_25.tex"
+    ],
+    "typedef struct enode": []
+  },
+  "next_figure": "complete",
+  "geometry_report": "image_tex/build/final-native-audit.json",
+  "geometry_note": "All435active originalreferences replaced by currentcompiled/reviewed semantic native sources,all13contentchapters plusbibliography/index checked,noactive raster/HTML references.436authoredmanifest sources include1coveredunusedreference. Finalbatch checks all8implementation figures, restoredinline13.1POINT/CPOINTtable andENODEbrace, andfreshens32legacychapter1layoutrecords withactualpage inspections,withoutchangingtheirgeometry. Everyactive source hascurrentlayoutsignature/evidence. Allpreviouschapterbatches compiled/published; finalfullsnapshot verifiesentireinputtree. Original40x80cmgeometry/11ptbody preserved;invalidheadfootoption fixed.",
+  "source_snapshot": "image_tex/build/book-snapshots/final-native-book-20261109-161544-972950",
+  "inspected_pages": {
+    "7": "image_tex/build/book-check/final-native-book-page-7.png",
+    "8": "image_tex/build/book-check/final-native-book-page-8.png",
+    "9": "image_tex/build/book-check/final-native-book-page-9.png",
+    "10": "image_tex/build/book-check/final-native-book-page-10.png",
+    "11": "image_tex/build/book-check/final-native-book-page-11.png",
+    "12": "image_tex/build/book-check/final-native-book-page-12.png",
+    "13": "image_tex/build/book-check/final-native-book-page-13.png",
+    "203": "image_tex/build/book-check/final-native-book-page-203.png",
+    "204": "image_tex/build/book-check/final-native-book-page-204.png",
+    "205": "image_tex/build/book-check/final-native-book-page-205.png",
+    "206": "image_tex/build/book-check/final-native-book-page-206.png",
+    "212": "image_tex/build/book-check/final-native-book-page-212.png"
+  }
+}

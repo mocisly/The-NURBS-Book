@@ -1,0 +1,8309 @@
+[
+  {
+    "id": "i001",
+    "source_lines": [
+      6
+    ],
+    "original_excerpt": "仿射变换, 83, 105, 118, 130",
+    "targets": [
+      "t:3:仿射不变性",
+      "t:4:仿射不变性",
+      "s:6:曲线和曲面的变换与投影"
+    ],
+    "paths": [
+      [
+        [
+          "fangshebianhuan",
+          "仿射变换"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i002",
+    "source_lines": [
+      12
+    ],
+    "original_excerpt": "矩阵, 269",
+    "targets": [
+      "a:6.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "001",
+          "形式转换"
+        ],
+        [
+          "001",
+          "Bézier 到幂基矩阵"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i003",
+    "source_lines": [
+      16
+    ],
+    "original_excerpt": "502",
+    "targets": [
+      "a:10.4"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "002",
+          "曲面构造"
+        ],
+        [
+          "001",
+          "双三次混合 Coons 曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i004",
+    "source_lines": [
+      20
+    ],
+    "original_excerpt": "曲线，428",
+    "targets": [
+      "a:9.8"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "003",
+          "结点移除"
+        ],
+        [
+          "001",
+          "曲线误差界限"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i005",
+    "source_lines": [
+      24
+    ],
+    "original_excerpt": "564",
+    "targets": [
+      "a:11.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "004",
+          "形状修改"
+        ],
+        [
+          "001",
+          "基于约束的曲面修改"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i006",
+    "source_lines": [
+      28
+    ],
+    "original_excerpt": "曲线，98",
+    "targets": [
+      "a:3.3"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "005",
+          "导数控制点"
+        ],
+        [
+          "001",
+          "B样条曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i007",
+    "source_lines": [
+      30
+    ],
+    "original_excerpt": "曲面，114",
+    "targets": [
+      "a:3.7"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "005",
+          "导数控制点"
+        ],
+        [
+          "002",
+          "B样条曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i008",
+    "source_lines": [
+      34
+    ],
+    "original_excerpt": "样条形式，590",
+    "targets": [
+      "a:12.2"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "001",
+          "形式转换"
+        ],
+        [
+          "002",
+          "NURBS 到其他样条形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i009",
+    "source_lines": [
+      42
+    ],
+    "original_excerpt": "到点和导数，417",
+    "targets": [
+      "a:9.6"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "006",
+          "曲线逼近"
+        ],
+        [
+          "001",
+          "全局点与导数拟合"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i010",
+    "source_lines": [
+      44
+    ],
+    "original_excerpt": "到点，误差有界，431",
+    "targets": [
+      "a:9.10"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "006",
+          "曲线逼近"
+        ],
+        [
+          "002",
+          "全局误差有界逼近"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i011",
+    "source_lines": [
+      48
+    ],
+    "original_excerpt": "误差有界的三次方程，448",
+    "targets": [
+      "a:9.12"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "006",
+          "曲线逼近"
+        ],
+        [
+          "003",
+          "局部误差有界三次拟合"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i012",
+    "source_lines": [
+      50
+    ],
+    "original_excerpt": "误差有界的二次方程，440",
+    "targets": [
+      "a:9.11"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "006",
+          "曲线逼近"
+        ],
+        [
+          "004",
+          "局部误差有界二次拟合"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i013",
+    "source_lines": [
+      54
+    ],
+    "original_excerpt": "到点的三次样条，373",
+    "targets": [
+      "a:9.2"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "007",
+          "曲线插值"
+        ],
+        [
+          "001",
+          "三次样条插值"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i014",
+    "source_lines": [
+      56
+    ],
+    "original_excerpt": "到点，369",
+    "targets": [
+      "a:9.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "007",
+          "曲线插值"
+        ],
+        [
+          "002",
+          "全局点数据插值"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i015",
+    "source_lines": [
+      62
+    ],
+    "original_excerpt": "段, 173",
+    "targets": [
+      "a:5.6"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "008",
+          "分解"
+        ],
+        [
+          "001",
+          "B样条曲线分解为 Bézier 段"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i016",
+    "source_lines": [
+      66
+    ],
+    "original_excerpt": "补丁, 177",
+    "targets": [
+      "a:5.7"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "008",
+          "分解"
+        ],
+        [
+          "002",
+          "B样条曲面分解为 Bézier 曲面片"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i017",
+    "source_lines": [
+      70
+    ],
+    "original_excerpt": "曲线, 206, 223",
+    "targets": [
+      "a:5.9"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "009",
+          "次数提升"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i018",
+    "source_lines": [
+      72
+    ],
+    "original_excerpt": "表面, 209",
+    "targets": [
+      "a:5.10"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "009",
+          "次数提升"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i019",
+    "source_lines": [
+      78
+    ],
+    "original_excerpt": "曲线, 127",
+    "targets": [
+      "a:4.2"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "010",
+          "有理B样条导数"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i020",
+    "source_lines": [
+      80
+    ],
+    "original_excerpt": "表面, 137",
+    "targets": [
+      "a:4.4"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "010",
+          "有理B样条导数"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i021",
+    "source_lines": [
+      82
+    ],
+    "original_excerpt": "查找节点跨度, 68",
+    "targets": [
+      "a:2.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "011",
+          "基函数计算"
+        ],
+        [
+          "001",
+          "查找结点跨度"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i022",
+    "source_lines": [
+      84
+    ],
+    "original_excerpt": "戈登表面, 494",
+    "targets": [
+      "a:10.3"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "002",
+          "曲面构造"
+        ],
+        [
+          "002",
+          "Gordon 曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i023",
+    "source_lines": [
+      90
+    ],
+    "original_excerpt": "曲线, 151",
+    "targets": [
+      "a:5.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "012",
+          "结点插入"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i024",
+    "source_lines": [
+      92
+    ],
+    "original_excerpt": "表面, 155",
+    "targets": [
+      "a:5.3"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "012",
+          "结点插入"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i025",
+    "source_lines": [
+      96
+    ],
+    "original_excerpt": "曲线, 164",
+    "targets": [
+      "a:5.4"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "013",
+          "结点细化"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i026",
+    "source_lines": [
+      98
+    ],
+    "original_excerpt": "表面, 167",
+    "targets": [
+      "a:5.5"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "013",
+          "结点细化"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i027",
+    "source_lines": [
+      100
+    ],
+    "original_excerpt": "移除曲线, 185",
+    "targets": [
+      "a:5.8"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "003",
+          "结点移除"
+        ],
+        [
+          "002",
+          "曲线结点移除"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i028",
+    "source_lines": [
+      104
+    ],
+    "original_excerpt": "圆, 308",
+    "targets": [
+      "a:7.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "014",
+          "NURBS 构造"
+        ],
+        [
+          "001",
+          "圆"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i029",
+    "source_lines": [
+      106
+    ],
+    "original_excerpt": "开放圆锥弧, 317",
+    "targets": [
+      "a:7.3"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "014",
+          "NURBS 构造"
+        ],
+        [
+          "002",
+          "开放圆锥弧"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i030",
+    "source_lines": [
+      108
+    ],
+    "original_excerpt": "旋转面, 346",
+    "targets": [
+      "a:8.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "014",
+          "NURBS 构造"
+        ],
+        [
+          "003",
+          "旋转曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i031",
+    "source_lines": [
+      110
+    ],
+    "original_excerpt": "球面上的三边补丁，359",
+    "targets": [
+      "a:8.2"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "014",
+          "NURBS 构造"
+        ],
+        [
+          "004",
+          "三边球面片"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i032",
+    "source_lines": [
+      116
+    ],
+    "original_excerpt": "曲线，93，99",
+    "targets": [
+      "a:3.1",
+      "a:3.2",
+      "a:3.4"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "015",
+          "点与导数求值"
+        ],
+        [
+          "001",
+          "B样条曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i033",
+    "source_lines": [
+      118
+    ],
+    "original_excerpt": "表面，111，115",
+    "targets": [
+      "a:3.5",
+      "a:3.6",
+      "a:3.8"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "015",
+          "点与导数求值"
+        ],
+        [
+          "002",
+          "B样条曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i034",
+    "source_lines": [
+      122
+    ],
+    "original_excerpt": "曲线，22，24",
+    "targets": [
+      "a:1.4",
+      "a:1.5"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "015",
+          "点与导数求值"
+        ],
+        [
+          "003",
+          "Bézier 曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i035",
+    "source_lines": [
+      124
+    ],
+    "original_excerpt": "表面，39",
+    "targets": [
+      "a:1.7"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "015",
+          "点与导数求值"
+        ],
+        [
+          "004",
+          "Bézier 曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i036",
+    "source_lines": [
+      128
+    ],
+    "original_excerpt": "曲线，82",
+    "targets": [
+      "a:3.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "015",
+          "点与导数求值"
+        ],
+        [
+          "005",
+          "B样条曲线上的点"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i037",
+    "source_lines": [
+      130
+    ],
+    "original_excerpt": "表面，103",
+    "targets": [
+      "a:3.5"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "015",
+          "点与导数求值"
+        ],
+        [
+          "006",
+          "B样条曲面上的点"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i038",
+    "source_lines": [
+      134
+    ],
+    "original_excerpt": "曲线, 7",
+    "targets": [
+      "a:1.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "015",
+          "点与导数求值"
+        ],
+        [
+          "007",
+          "幂基曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i039",
+    "source_lines": [
+      136
+    ],
+    "original_excerpt": "曲面, 36",
+    "targets": [
+      "a:1.6"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "015",
+          "点与导数求值"
+        ],
+        [
+          "008",
+          "幂基曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i040",
+    "source_lines": [
+      140
+    ],
+    "original_excerpt": "曲线, 124, 153",
+    "targets": [
+      "a:4.1",
+      "a:5.2"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "015",
+          "点与导数求值"
+        ],
+        [
+          "009",
+          "有理B样条曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i041",
+    "source_lines": [
+      142
+    ],
+    "original_excerpt": "曲面, 134",
+    "targets": [
+      "a:4.3"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "015",
+          "点与导数求值"
+        ],
+        [
+          "010",
+          "有理B样条曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i042",
+    "source_lines": [
+      146
+    ],
+    "original_excerpt": "矩阵, 275",
+    "targets": [
+      "a:6.2"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "001",
+          "形式转换"
+        ],
+        [
+          "003",
+          "幂基到 Bézier 矩阵"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i043",
+    "source_lines": [
+      150
+    ],
+    "original_excerpt": "二次有理 Bézier 弧, 314",
+    "targets": [
+      "a:7.2"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "014",
+          "NURBS 构造"
+        ],
+        [
+          "005",
+          "二次有理 Bézier 弧"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i044",
+    "source_lines": [
+      154
+    ],
+    "original_excerpt": "有界, 429",
+    "targets": [
+      "a:9.9"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "003",
+          "结点移除"
+        ],
+        [
+          "003",
+          "误差有界的曲线结点移除"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i045",
+    "source_lines": [
+      160
+    ],
+    "original_excerpt": "422",
+    "targets": [
+      "a:9.7"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "016",
+          "曲面拟合"
+        ],
+        [
+          "001",
+          "全局点数据逼近"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i046",
+    "source_lines": [
+      162
+    ],
+    "original_excerpt": "拟合参数值, 377",
+    "targets": [
+      "a:9.3"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "016",
+          "曲面拟合"
+        ],
+        [
+          "002",
+          "插值参数计算"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i047",
+    "source_lines": [
+      166
+    ],
+    "original_excerpt": "对点的全局, 380",
+    "targets": [
+      "a:9.4"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "016",
+          "曲面拟合"
+        ],
+        [
+          "003",
+          "全局点数据插值"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i048",
+    "source_lines": [
+      168
+    ],
+    "original_excerpt": "对点的局部, 404",
+    "targets": [
+      "a:9.5"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "016",
+          "曲面拟合"
+        ],
+        [
+          "004",
+          "局部点数据插值"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i049",
+    "source_lines": [
+      172
+    ],
+    "original_excerpt": "插值轨迹, 475",
+    "targets": [
+      "a:10.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "017",
+          "扫掠曲面"
+        ],
+        [
+          "001",
+          "插值轨迹"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i050",
+    "source_lines": [
+      174
+    ],
+    "original_excerpt": "未插值轨迹, 477",
+    "targets": [
+      "a:10.2"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "017",
+          "扫掠曲面"
+        ],
+        [
+          "002",
+          "不插值轨迹"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i051",
+    "source_lines": [
+      176
+    ],
+    "original_excerpt": "解锁 B-spline 曲线, 577",
+    "targets": [
+      "a:12.1"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "001",
+          "形式转换"
+        ],
+        [
+          "004",
+          "B样条曲线去夹紧"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i052",
+    "source_lines": [
+      180
+    ],
+    "original_excerpt": "伯恩斯坦多项式的值，20",
+    "targets": [
+      "a:1.2"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "011",
+          "基函数计算"
+        ],
+        [
+          "002",
+          "单个 Bernstein 多项式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i053",
+    "source_lines": [
+      182
+    ],
+    "original_excerpt": "一个 B 样条基函数的值，74",
+    "targets": [
+      "a:2.4"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "011",
+          "基函数计算"
+        ],
+        [
+          "003",
+          "单个B样条基函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i054",
+    "source_lines": [
+      184
+    ],
+    "original_excerpt": "及其导数，76",
+    "targets": [
+      "a:2.5"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "011",
+          "基函数计算"
+        ],
+        [
+          "004",
+          "单个B样条基函数及其导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i055",
+    "source_lines": [
+      190
+    ],
+    "original_excerpt": "函数，70",
+    "targets": [
+      "a:2.2"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "011",
+          "基函数计算"
+        ],
+        [
+          "005",
+          "非零B样条基函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i056",
+    "source_lines": [
+      192
+    ],
+    "original_excerpt": "及其导数，72",
+    "targets": [
+      "a:2.3"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "011",
+          "基函数计算"
+        ],
+        [
+          "006",
+          "非零B样条基函数及其导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i057",
+    "source_lines": [
+      196
+    ],
+    "original_excerpt": "多项式，20，21",
+    "targets": [
+      "a:1.2",
+      "a:1.3"
+    ],
+    "paths": [
+      [
+        [
+          "suanfa",
+          "算法"
+        ],
+        [
+          "011",
+          "基函数计算"
+        ],
+        [
+          "007",
+          "全部 Bernstein 多项式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i058",
+    "source_lines": [
+      198
+    ],
+    "original_excerpt": "逼近，361",
+    "targets": [
+      "s:9:引言",
+      "s:9:全局逼近",
+      "s:9:局部逼近"
+    ],
+    "paths": [
+      [
+        [
+          "bijin",
+          "逼近"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i059",
+    "source_lines": [
+      200
+    ],
+    "original_excerpt": "重心坐标，528",
+    "targets": [
+      "t:11:重心"
+    ],
+    "paths": [
+      [
+        [
+          "zhongxinzuobiao",
+          "重心坐标"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i060",
+    "source_lines": [
+      206
+    ],
+    "original_excerpt": "计算算法，67-78",
+    "targets": [
+      "s:2:计算算法",
+      "a:2.2",
+      "a:2.3",
+      "a:2.4",
+      "a:2.5"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "001",
+          "B样条"
+        ],
+        [
+          "001",
+          "计算算法"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i061",
+    "source_lines": [
+      208
+    ],
+    "original_excerpt": "连续性，57，58",
+    "targets": [
+      "s:2:B样条基函数的导数"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "001",
+          "B样条"
+        ],
+        [
+          "002",
+          "连续性"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i062",
+    "source_lines": [
+      210
+    ],
+    "original_excerpt": "定义和示例，50-55",
+    "targets": [
+      "s:2:B样条基函数的定义和性质"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "001",
+          "B样条"
+        ],
+        [
+          "003",
+          "定义与示例"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i063",
+    "source_lines": [
+      212
+    ],
+    "original_excerpt": "导数，57-63，78",
+    "targets": [
+      "s:2:B样条基函数的导数",
+      "a:2.5"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "001",
+          "B样条"
+        ],
+        [
+          "004",
+          "导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i064",
+    "source_lines": [
+      214
+    ],
+    "original_excerpt": "性质，55-58，63-67",
+    "targets": [
+      "s:2:B样条基函数的定义和性质",
+      "s:2:基函数的进一步性质"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "001",
+          "B样条"
+        ],
+        [
+          "005",
+          "性质"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i065",
+    "source_lines": [
+      218
+    ],
+    "original_excerpt": "贝塞尔，10，15-17",
+    "targets": [
+      "s:1:Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "002",
+          "曲线"
+        ],
+        [
+          "001",
+          "Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i066",
+    "source_lines": [
+      220
+    ],
+    "original_excerpt": "幂基，6",
+    "targets": [
+      "s:1:曲线的幂基形式"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "002",
+          "曲线"
+        ],
+        [
+          "002",
+          "幂基"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i067",
+    "source_lines": [
+      222
+    ],
+    "original_excerpt": "有理贝塞尔, 27",
+    "targets": [
+      "s:1:有理 Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "002",
+          "曲线"
+        ],
+        [
+          "003",
+          "有理 Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i068",
+    "source_lines": [
+      224
+    ],
+    "original_excerpt": "有理B样条, 118",
+    "targets": [
+      "s:4:NURBS曲线的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "002",
+          "曲线"
+        ],
+        [
+          "004",
+          "有理B样条"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i069",
+    "source_lines": [
+      226
+    ],
+    "original_excerpt": "B样条的乘积, 102, 104",
+    "targets": [
+      "s:3:B样条曲面的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "001",
+          "B样条"
+        ],
+        [
+          "006",
+          "张量积"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i070",
+    "source_lines": [
+      230
+    ],
+    "original_excerpt": "贝塞尔, 37",
+    "targets": [
+      "s:1:张量积曲面"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "003",
+          "曲面"
+        ],
+        [
+          "001",
+          "Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i071",
+    "source_lines": [
+      232
+    ],
+    "original_excerpt": "幂基, 35",
+    "targets": [
+      "s:1:张量积曲面",
+      "a:1.6"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "003",
+          "曲面"
+        ],
+        [
+          "002",
+          "幂基"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i072",
+    "source_lines": [
+      234
+    ],
+    "original_excerpt": "有理贝塞尔, 40",
+    "targets": [
+      "t:1:我们定义有理 Bézier 曲面"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "003",
+          "曲面"
+        ],
+        [
+          "003",
+          "有理 Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i073",
+    "source_lines": [
+      236
+    ],
+    "original_excerpt": "有理B样条, 128-130",
+    "targets": [
+      "s:4:NURBS曲面的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "jihanshu",
+          "基函数"
+        ],
+        [
+          "003",
+          "曲面"
+        ],
+        [
+          "004",
+          "有理B样条"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i074",
+    "source_lines": [
+      238
+    ],
+    "original_excerpt": "弯曲, 547",
+    "targets": [
+      "s:11:弯曲"
+    ],
+    "paths": [
+      [
+        [
+          "wanqu",
+          "弯曲"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i075",
+    "source_lines": [
+      240
+    ],
+    "original_excerpt": "圆形, 550",
+    "targets": [
+      "t:11:曲线的圆形弯曲"
+    ],
+    "paths": [
+      [
+        [
+          "wanqu",
+          "弯曲"
+        ],
+        [
+          "001",
+          "圆形"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i076",
+    "source_lines": [
+      242
+    ],
+    "original_excerpt": "圆柱形, 551",
+    "targets": [
+      "t:11:圆柱"
+    ],
+    "paths": [
+      [
+        [
+          "wanqu",
+          "弯曲"
+        ],
+        [
+          "002",
+          "圆柱形"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i077",
+    "source_lines": [
+      244
+    ],
+    "original_excerpt": "抛物线, 550",
+    "targets": [
+      "t:11:抛物线"
+    ],
+    "paths": [
+      [
+        [
+          "wanqu",
+          "弯曲"
+        ],
+        [
+          "003",
+          "抛物线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i078",
+    "source_lines": [
+      246
+    ],
+    "original_excerpt": "伯恩斯坦多项式, 10, 52, 104",
+    "targets": [
+      "s:1:Bézier 曲线",
+      "s:2:B样条基函数的定义和性质",
+      "s:3:B样条曲面的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "bernstein",
+          "Bernstein 多项式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i079",
+    "source_lines": [
+      252
+    ],
+    "original_excerpt": "24,25",
+    "targets": [
+      "t:1:在几何建模方面优于",
+      "s:6:B-spline 和分段幂基形式之间的转换"
+    ],
+    "paths": [
+      [
+        [
+          "bezier",
+          "Bézier"
+        ],
+        [
+          "001",
+          "与幂基形式比较"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i080",
+    "source_lines": [
+      254
+    ],
+    "original_excerpt": "曲线, 9, 382",
+    "targets": [
+      "s:1:Bézier 曲线",
+      "s:9:局部抛物线曲线插值"
+    ],
+    "paths": [
+      [
+        [
+          "bezier",
+          "Bézier"
+        ],
+        [
+          "002",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i081",
+    "source_lines": [
+      256
+    ],
+    "original_excerpt": "定义, 9",
+    "targets": [
+      "s:1:Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "bezier",
+          "Bézier"
+        ],
+        [
+          "002",
+          "曲线"
+        ],
+        [
+          "001",
+          "定义"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i082",
+    "source_lines": [
+      258
+    ],
+    "original_excerpt": "次数提升, 202-205",
+    "targets": [
+      "s:5:次数提升"
+    ],
+    "paths": [
+      [
+        [
+          "bezier",
+          "Bézier"
+        ],
+        [
+          "002",
+          "曲线"
+        ],
+        [
+          "002",
+          "次数提升"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i083",
+    "source_lines": [
+      260
+    ],
+    "original_excerpt": "次数降低, 214, 219-221",
+    "targets": [
+      "s:5:次数降低"
+    ],
+    "paths": [
+      [
+        [
+          "bezier",
+          "Bézier"
+        ],
+        [
+          "002",
+          "曲线"
+        ],
+        [
+          "003",
+          "次数降低"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i084",
+    "source_lines": [
+      262
+    ],
+    "original_excerpt": "导数, 22",
+    "targets": [
+      "t:1:Bézier 曲线导数的一般表达式"
+    ],
+    "paths": [
+      [
+        [
+          "bezier",
+          "Bézier"
+        ],
+        [
+          "002",
+          "曲线"
+        ],
+        [
+          "004",
+          "导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i085",
+    "source_lines": [
+      264
+    ],
+    "original_excerpt": "性质, 12-14",
+    "targets": [
+      "t:1:凸包性质"
+    ],
+    "paths": [
+      [
+        [
+          "bezier",
+          "Bézier"
+        ],
+        [
+          "002",
+          "曲线"
+        ],
+        [
+          "005",
+          "性质"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i086",
+    "source_lines": [
+      268
+    ],
+    "original_excerpt": "定义, 37",
+    "targets": [
+      "s:1:张量积曲面"
+    ],
+    "paths": [
+      [
+        [
+          "bezier",
+          "Bézier"
+        ],
+        [
+          "003",
+          "曲面"
+        ],
+        [
+          "001",
+          "定义"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i087",
+    "source_lines": [
+      270
+    ],
+    "original_excerpt": "属性, 38",
+    "targets": [
+      "t:1:表面插值四个角控制点"
+    ],
+    "paths": [
+      [
+        [
+          "bezier",
+          "Bézier"
+        ],
+        [
+          "003",
+          "曲面"
+        ],
+        [
+          "002",
+          "性质"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i088",
+    "source_lines": [
+      274
+    ],
+    "original_excerpt": "函数), 6",
+    "targets": [
+      "s:1:曲线的幂基形式",
+      "s:1:Bézier 曲线"
+    ],
+    "see": "基函数",
+    "paths": [
+      [
+        [
+          "hunhehanshu",
+          "混合函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i089",
+    "source_lines": [
+      276
+    ],
+    "original_excerpt": "突变点, 47, 51, 588",
+    "targets": [
+      "t:2:断点",
+      "s:12:NURBS 系统的数据交换"
+    ],
+    "paths": [
+      [
+        [
+          "duandian",
+          "断点"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i090",
+    "source_lines": [
+      282
+    ],
+    "original_excerpt": "函数), 50",
+    "targets": [
+      "s:2:B样条基函数的定义和性质"
+    ],
+    "see": "基函数",
+    "paths": [
+      [
+        [
+          "byangtiao",
+          "B样条"
+        ],
+        [
+          "001",
+          "基函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i091",
+    "source_lines": [
+      284
+    ],
+    "original_excerpt": "曲线(另见曲线, B样条), 81",
+    "targets": [
+      "s:3:B样条曲线的定义和性质"
+    ],
+    "see": "曲线",
+    "paths": [
+      [
+        [
+          "byangtiao",
+          "B样条"
+        ],
+        [
+          "002",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i092",
+    "source_lines": [
+      286
+    ],
+    "original_excerpt": "编程(另见软件), 593",
+    "targets": [
+      "s:13:引言"
+    ],
+    "see": "软件",
+    "paths": [
+      [
+        [
+          "byangtiao",
+          "B样条"
+        ],
+        [
+          "003",
+          "编程"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i093",
+    "source_lines": [
+      290
+    ],
+    "original_excerpt": "100",
+    "targets": [
+      "s:3:B样条曲面的定义与性质"
+    ],
+    "see": "曲面",
+    "paths": [
+      [
+        [
+          "byangtiao",
+          "B样条"
+        ],
+        [
+          "004",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i094",
+    "source_lines": [
+      292,
+      294
+    ],
+    "original_excerpt": "圆, 1, 26, 28, 32, 45, 244, 254, 279, / 295,296",
+    "targets": [
+      "f:1:fig_1_01.tex",
+      "s:1:有理 Bézier 曲线",
+      "s:7:表示圆锥曲线的各种形式",
+      "s:7:圆的构造"
+    ],
+    "paths": [
+      [
+        [
+          "yuan",
+          "圆"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i095",
+    "source_lines": [
+      296
+    ],
+    "original_excerpt": "构造, 298-309",
+    "targets": [
+      "s:7:圆的构造",
+      "a:7.1"
+    ],
+    "paths": [
+      [
+        [
+          "yuan",
+          "圆"
+        ],
+        [
+          "001",
+          "构造"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i096",
+    "source_lines": [
+      300
+    ],
+    "original_excerpt": "\\({326} - {330}\\)",
+    "targets": [
+      "s:7:高阶圆"
+    ],
+    "paths": [
+      [
+        [
+          "yuan",
+          "圆"
+        ],
+        [
+          "002",
+          "高阶有理 Bézier 表示"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i097",
+    "source_lines": [
+      302
+    ],
+    "original_excerpt": "非夹紧, 578",
+    "targets": [
+      "f:12:fig_12_08.tex"
+    ],
+    "paths": [
+      [
+        [
+          "yuan",
+          "圆"
+        ],
+        [
+          "003",
+          "非夹紧表示"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i098",
+    "source_lines": [
+      306
+    ],
+    "original_excerpt": "曲线, 576",
+    "targets": [
+      "t:12:夹紧曲线"
+    ],
+    "paths": [
+      [
+        [
+          "jiajin",
+          "夹紧"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i099",
+    "source_lines": [
+      308
+    ],
+    "original_excerpt": "节点, 571",
+    "targets": [
+      "s:12:结点向量"
+    ],
+    "paths": [
+      [
+        [
+          "jiajin",
+          "夹紧"
+        ],
+        [
+          "002",
+          "结点向量"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i100",
+    "source_lines": [
+      310
+    ],
+    "original_excerpt": "复合 B 样条曲线, 181, 192",
+    "targets": [
+      "s:5:节点移除"
+    ],
+    "paths": [
+      [
+        [
+          "fuhebyangtiaoq",
+          "复合B样条曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i101",
+    "source_lines": [
+      314
+    ],
+    "original_excerpt": "构造, 310-320",
+    "targets": [
+      "s:7:圆锥曲线的构造"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "001",
+          "构造"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i102",
+    "source_lines": [
+      316
+    ],
+    "original_excerpt": "离心率, 281",
+    "targets": [
+      "t:7:离心率"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "002",
+          "离心率"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i103",
+    "source_lines": [
+      322
+    ],
+    "original_excerpt": "分类，320-325",
+    "targets": [
+      "s:7:锥形分类与形式转换"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "003",
+          "形式"
+        ],
+        [
+          "001",
+          "分类与转换"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i104",
+    "source_lines": [
+      324
+    ],
+    "original_excerpt": "隐式方程，282，320",
+    "targets": [
+      "s:7:表示圆锥曲线的各种形式",
+      "s:7:锥形分类与形式转换"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "003",
+          "形式"
+        ],
+        [
+          "002",
+          "隐式方程"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i105",
+    "source_lines": [
+      326
+    ],
+    "original_excerpt": "标准位置，283",
+    "targets": [
+      "s:7:表示圆锥曲线的各种形式"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "003",
+          "形式"
+        ],
+        [
+          "003",
+          "标准位置"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i106",
+    "source_lines": [
+      328,
+      330
+    ],
+    "original_excerpt": "最大内切面积，289 / 320",
+    "targets": [
+      "t:7:最大内切面积",
+      "s:7:锥形分类与形式转换"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "003",
+          "形式"
+        ],
+        [
+          "004",
+          "最大内切面积"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i107",
+    "source_lines": [
+      332
+    ],
+    "original_excerpt": "NURBS，321",
+    "targets": [
+      "s:7:锥形分类与形式转换"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "003",
+          "形式"
+        ],
+        [
+          "005",
+          "NURBS"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i108",
+    "source_lines": [
+      334
+    ],
+    "original_excerpt": "有理贝塞尔，291，321",
+    "targets": [
+      "s:7:二次有理贝塞尔弧",
+      "s:7:锥形分类与形式转换"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "003",
+          "形式"
+        ],
+        [
+          "006",
+          "有理 Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i109",
+    "source_lines": [
+      338
+    ],
+    "original_excerpt": "有理幂基，288，321",
+    "targets": [
+      "t:7:有理幂",
+      "s:7:锥形分类与形式转换"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "003",
+          "形式"
+        ],
+        [
+          "007",
+          "有理幂基"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i110",
+    "source_lines": [
+      342
+    ],
+    "original_excerpt": "261",
+    "targets": [
+      "t:6:形状因子",
+      "s:7:二次有理贝塞尔弧"
+    ],
+    "see": "形状因子",
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "004",
+          "形状因子"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i111",
+    "source_lines": [
+      344
+    ],
+    "original_excerpt": "肩点，294，394，439",
+    "targets": [
+      "t:7:肩点",
+      "s:9:局部有理二次曲线插值",
+      "s:9:局部有理二次曲线逼近"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhuiquxian",
+          "圆锥曲线"
+        ],
+        [
+          "005",
+          "肩点"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i112",
+    "source_lines": [
+      348
+    ],
+    "original_excerpt": "曲线，555",
+    "targets": [
+      "s:11:基于约束的曲线修改"
+    ],
+    "paths": [
+      [
+        [
+          "jiyuyueshu",
+          "基于约束的修改"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i113",
+    "source_lines": [
+      350
+    ],
+    "original_excerpt": "表面，562",
+    "targets": [
+      "s:11:基于约束的表面修改"
+    ],
+    "paths": [
+      [
+        [
+          "jiyuyueshu",
+          "基于约束的修改"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i114",
+    "source_lines": [
+      352
+    ],
+    "original_excerpt": "约束，361",
+    "targets": [
+      "s:9:引言",
+      "s:9:加权和约束最小二乘曲线拟合",
+      "s:11:基于约束的曲线修改"
+    ],
+    "paths": [
+      [
+        [
+          "yueshu",
+          "约束"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i115",
+    "source_lines": [
+      356
+    ],
+    "original_excerpt": "在蒙皮中，469",
+    "targets": [
+      "t:10:连续性"
+    ],
+    "paths": [
+      [
+        [
+          "lianxuxing",
+          "连续性"
+        ],
+        [
+          "001",
+          "蒙皮曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i116",
+    "source_lines": [
+      360
+    ],
+    "original_excerpt": "基函数，57，58",
+    "targets": [
+      "s:2:B样条基函数的导数"
+    ],
+    "paths": [
+      [
+        [
+          "lianxuxing",
+          "连续性"
+        ],
+        [
+          "002",
+          "B样条基函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i117",
+    "source_lines": [
+      362
+    ],
+    "original_excerpt": "曲线，88",
+    "targets": [
+      "s:3:B样条曲线的导数"
+    ],
+    "paths": [
+      [
+        [
+          "lianxuxing",
+          "连续性"
+        ],
+        [
+          "003",
+          "B样条曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i118",
+    "source_lines": [
+      364
+    ],
+    "original_excerpt": "表面，109",
+    "targets": [
+      "s:3:B样条曲面的导数"
+    ],
+    "paths": [
+      [
+        [
+          "lianxuxing",
+          "连续性"
+        ],
+        [
+          "004",
+          "B样条曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i119",
+    "source_lines": [
+      366
+    ],
+    "original_excerpt": "闭合 B-spline 曲线, 575",
+    "targets": [
+      "t:12:闭合"
+    ],
+    "paths": [
+      [
+        [
+          "lianxuxing",
+          "连续性"
+        ],
+        [
+          "005",
+          "闭合B样条曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i120",
+    "source_lines": [
+      370
+    ],
+    "original_excerpt": "曲线, 47",
+    "targets": [
+      "t:2:分段"
+    ],
+    "paths": [
+      [
+        [
+          "lianxuxing",
+          "连续性"
+        ],
+        [
+          "006",
+          "分段多项式与有理曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i121",
+    "source_lines": [
+      372
+    ],
+    "original_excerpt": "的阶数, 47, 588",
+    "targets": [
+      "t:2:连续",
+      "s:12:NURBS 系统的数据交换"
+    ],
+    "paths": [
+      [
+        [
+          "lianxuxing",
+          "连续性"
+        ],
+        [
+          "007",
+          "连续阶数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i122",
+    "source_lines": [
+      376
+    ],
+    "original_excerpt": "382,588",
+    "targets": [
+      "s:9:局部曲线插值初步",
+      "s:12:NURBS 系统的数据交换"
+    ],
+    "paths": [
+      [
+        [
+          "lianxuxing",
+          "连续性"
+        ],
+        [
+          "008",
+          "参数连续性与几何连续性"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i123",
+    "source_lines": [
+      380
+    ],
+    "original_excerpt": "Bézier, 37",
+    "targets": [
+      "s:1:张量积曲面"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhiwang",
+          "控制网"
+        ],
+        [
+          "001",
+          "Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i124",
+    "source_lines": [
+      382
+    ],
+    "original_excerpt": "数据结构, 600",
+    "targets": [
+      "f:13:fig_13_04.tex"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhiwang",
+          "控制网"
+        ],
+        [
+          "002",
+          "数据结构"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i125",
+    "source_lines": [
+      386
+    ],
+    "original_excerpt": "Bézier, 10",
+    "targets": [
+      "s:1:Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhidian",
+          "控制点"
+        ],
+        [
+          "001",
+          "Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i126",
+    "source_lines": [
+      388
+    ],
+    "original_excerpt": "B-spline, 81",
+    "targets": [
+      "s:3:B样条曲线的定义和性质"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhidian",
+          "控制点"
+        ],
+        [
+          "002",
+          "B样条"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i127",
+    "source_lines": [
+      390
+    ],
+    "original_excerpt": "数据结构, 597",
+    "targets": [
+      "s:13:数据结构"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhidian",
+          "控制点"
+        ],
+        [
+          "003",
+          "数据结构"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i128",
+    "source_lines": [
+      394
+    ],
+    "original_excerpt": "点), 295",
+    "targets": [
+      "s:7:无限控制点"
+    ],
+    "see": "无穷远控制点",
+    "paths": [
+      [
+        [
+          "kongzhidian",
+          "控制点"
+        ],
+        [
+          "004",
+          "无穷远控制点"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i129",
+    "source_lines": [
+      396
+    ],
+    "original_excerpt": "多重, 90",
+    "targets": [
+      "t:3:重合的"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhidian",
+          "控制点"
+        ],
+        [
+          "005",
+          "多重控制点"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i130",
+    "source_lines": [
+      398
+    ],
+    "original_excerpt": "有理B样条, 117",
+    "targets": [
+      "s:4:NURBS曲线的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhidian",
+          "控制点"
+        ],
+        [
+          "006",
+          "有理B样条"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i131",
+    "source_lines": [
+      400,
+      402
+    ],
+    "original_excerpt": "重新定位, 84, 108, 511, 516, 533, / 555,562",
+    "targets": [
+      "t:3:局部修改",
+      "s:11:控制点重新定位",
+      "s:11:变形",
+      "s:11:基于约束的曲线修改",
+      "s:11:基于约束的表面修改"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhidian",
+          "控制点"
+        ],
+        [
+          "007",
+          "重新定位"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i132",
+    "source_lines": [
+      404
+    ],
+    "original_excerpt": "最小长度解, 557",
+    "targets": [
+      "t:11:最小长度"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhidian",
+          "控制点"
+        ],
+        [
+          "008",
+          "最小长度解"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i133",
+    "source_lines": [
+      406
+    ],
+    "original_excerpt": "加权, 30, 120",
+    "targets": [
+      "t:1:加权控制点",
+      "t:4:加权控制点"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhidian",
+          "控制点"
+        ],
+        [
+          "009",
+          "加权控制点"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i134",
+    "source_lines": [
+      410
+    ],
+    "original_excerpt": "贝塞尔, 11",
+    "targets": [
+      "t:1:控制多边形"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhiduobianxing",
+          "控制多边形"
+        ],
+        [
+          "001",
+          "Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i135",
+    "source_lines": [
+      412
+    ],
+    "original_excerpt": "B样条, 82",
+    "targets": [
+      "t:3:控制多边形"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhiduobianxing",
+          "控制多边形"
+        ],
+        [
+          "002",
+          "B样条"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i136",
+    "source_lines": [
+      414
+    ],
+    "original_excerpt": "数据结构, 598",
+    "targets": [
+      "f:13:fig_13_01.tex"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhiduobianxing",
+          "控制多边形"
+        ],
+        [
+          "003",
+          "数据结构"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i137",
+    "source_lines": [
+      416
+    ],
+    "original_excerpt": "有理 B-样条, 117",
+    "targets": [
+      "s:4:NURBS曲线的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "kongzhiduobianxing",
+          "控制多边形"
+        ],
+        [
+          "004",
+          "有理B样条"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i138",
+    "source_lines": [
+      422
+    ],
+    "original_excerpt": "多项式, 265, 272",
+    "targets": [
+      "s:6:B-spline 和分段幂基形式之间的转换",
+      "a:6.1",
+      "a:6.2"
+    ],
+    "paths": [
+      [
+        [
+          "zhuanhuan",
+          "转换"
+        ],
+        [
+          "001",
+          "Bézier 与幂基"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i139",
+    "source_lines": [
+      426
+    ],
+    "original_excerpt": "基多项式, 180, 265-278",
+    "targets": [
+      "s:6:B-spline 和分段幂基形式之间的转换"
+    ],
+    "paths": [
+      [
+        [
+          "zhuanhuan",
+          "转换"
+        ],
+        [
+          "002",
+          "B样条与分段幂基"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i140",
+    "source_lines": [
+      428
+    ],
+    "original_excerpt": "圆锥曲线, 320",
+    "targets": [
+      "s:7:锥形分类与形式转换"
+    ],
+    "paths": [
+      [
+        [
+          "zhuanhuan",
+          "转换"
+        ],
+        [
+          "003",
+          "圆锥曲线形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i141",
+    "source_lines": [
+      430
+    ],
+    "original_excerpt": "凸包性质, 229",
+    "targets": [
+      "s:6:曲线和曲面的点反演与投影"
+    ],
+    "paths": [
+      [
+        [
+          "tubaoxingzhi",
+          "凸包性质"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i142",
+    "source_lines": [
+      432
+    ],
+    "original_excerpt": "Bézier, 12, 38",
+    "targets": [
+      "t:1:凸包"
+    ],
+    "paths": [
+      [
+        [
+          "tubaoxingzhi",
+          "凸包性质"
+        ],
+        [
+          "001",
+          "Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i143",
+    "source_lines": [
+      436
+    ],
+    "original_excerpt": "B-spline, 83, 105",
+    "targets": [
+      "t:3:凸包"
+    ],
+    "paths": [
+      [
+        [
+          "tubaoxingzhi",
+          "凸包性质"
+        ],
+        [
+          "002",
+          "B样条"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i144",
+    "source_lines": [
+      438
+    ],
+    "original_excerpt": "有理 B-spline, 118, 130",
+    "targets": [
+      "t:4:凸包"
+    ],
+    "paths": [
+      [
+        [
+          "tubaoxingzhi",
+          "凸包性质"
+        ],
+        [
+          "003",
+          "有理B样条"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i145",
+    "source_lines": [
+      442
+    ],
+    "original_excerpt": "双立方混合, 497",
+    "targets": [
+      "s:10:库恩斯表面",
+      "a:10.4"
+    ],
+    "paths": [
+      [
+        [
+          "coons",
+          "Coons 曲面"
+        ],
+        [
+          "001",
+          "双三次混合"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i146",
+    "source_lines": [
+      444
+    ],
+    "original_excerpt": "双线性混合, 496",
+    "targets": [
+      "s:10:库恩斯表面"
+    ],
+    "paths": [
+      [
+        [
+          "coons",
+          "Coons 曲面"
+        ],
+        [
+          "002",
+          "双线性混合"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i147",
+    "source_lines": [
+      446
+    ],
+    "original_excerpt": "交叉比, 524, 547",
+    "targets": [
+      "t:11:交叉比",
+      "s:11:弯曲"
+    ],
+    "paths": [
+      [
+        [
+          "jiaobi",
+          "交比"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i148",
+    "source_lines": [
+      448
+    ],
+    "original_excerpt": "跨边界导数, 497",
+    "targets": [
+      "t:10:跨边界导数"
+    ],
+    "paths": [
+      [
+        [
+          "kuabianjiedaoshu",
+          "跨边界导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i149",
+    "source_lines": [
+      452
+    ],
+    "original_excerpt": "Bézier, 9, 82, 119",
+    "targets": [
+      "s:1:Bézier 曲线",
+      "s:3:B样条曲线的定义和性质",
+      "s:4:NURBS曲线的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "001",
+          "Bézier"
+        ],
+        [
+          "001",
+          "定义"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i150",
+    "source_lines": [
+      454
+    ],
+    "original_excerpt": "次数提升, 202-205",
+    "targets": [
+      "s:5:次数提升"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "001",
+          "Bézier"
+        ],
+        [
+          "002",
+          "次数提升"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i151",
+    "source_lines": [
+      456
+    ],
+    "original_excerpt": "次数降低, 214, 219-221",
+    "targets": [
+      "s:5:次数降低"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "001",
+          "Bézier"
+        ],
+        [
+          "003",
+          "次数降低"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i152",
+    "source_lines": [
+      460
+    ],
+    "original_excerpt": "定义和性质, 81-91",
+    "targets": [
+      "s:3:B样条曲线的定义和性质"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "002",
+          "B样条"
+        ],
+        [
+          "001",
+          "定义与性质"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i153",
+    "source_lines": [
+      462
+    ],
+    "original_excerpt": "导数和连续性, 88, 180",
+    "targets": [
+      "s:3:B样条曲线的导数",
+      "s:6:B-spline 和分段幂基形式之间的转换"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "002",
+          "B样条"
+        ],
+        [
+          "002",
+          "导数与连续性"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i154",
+    "source_lines": [
+      464
+    ],
+    "original_excerpt": "夹紧, 576",
+    "targets": [
+      "t:12:夹紧曲线"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "003",
+          "夹紧曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i155",
+    "source_lines": [
+      466
+    ],
+    "original_excerpt": "三次, 8, 12",
+    "targets": [
+      "s:1:曲线的幂基形式",
+      "s:1:Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "004",
+          "三次曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i156",
+    "source_lines": [
+      468
+    ],
+    "original_excerpt": "数据结构, 596, 599",
+    "targets": [
+      "s:13:数据结构",
+      "f:13:fig_13_03.tex"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "005",
+          "数据结构"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i157",
+    "source_lines": [
+      470
+    ],
+    "original_excerpt": "的导数, 2, 6",
+    "targets": [
+      "s:1:隐式和参数形式",
+      "s:1:曲线的幂基形式",
+      "s:3:B样条曲线的导数",
+      "s:4:NURBS曲线的导数"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "006",
+          "导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i158",
+    "source_lines": [
+      474
+    ],
+    "original_excerpt": "通过节点插入, 151",
+    "targets": [
+      "s:5:节点插入",
+      "a:5.2"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "007",
+          "求值"
+        ],
+        [
+          "001",
+          "结点插入"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i159",
+    "source_lines": [
+      478,
+      480
+    ],
+    "original_excerpt": "近似, 410, 413, 427, 438, / 441",
+    "targets": [
+      "s:9:最小二乘曲线逼近",
+      "s:9:加权和约束最小二乘曲线拟合",
+      "s:9:在指定精度内的逼近",
+      "s:9:局部有理二次曲线逼近",
+      "s:9:局部非有理三次曲线逼近"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "008",
+          "拟合"
+        ],
+        [
+          "001",
+          "逼近"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i160",
+    "source_lines": [
+      482,
+      484
+    ],
+    "original_excerpt": "插值，364，370，371，373， / 388,392,395",
+    "targets": [
+      "s:9:针对点数据的全局曲线插值",
+      "s:9:三次样条曲线插值",
+      "s:9:局部抛物线曲线插值",
+      "s:9:局部有理二次曲线插值",
+      "s:9:局部三次曲线插值"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "008",
+          "拟合"
+        ],
+        [
+          "002",
+          "插值"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i161",
+    "source_lines": [
+      486
+    ],
+    "original_excerpt": "隐式形式，1",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "009",
+          "隐式形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i162",
+    "source_lines": [
+      488
+    ],
+    "original_excerpt": "参数形式，1",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "010",
+          "参数形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i163",
+    "source_lines": [
+      492
+    ],
+    "original_excerpt": "贝塞尔，47，48",
+    "targets": [
+      "t:2:Bézier"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "011",
+          "分段形式"
+        ],
+        [
+          "001",
+          "Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i164",
+    "source_lines": [
+      494
+    ],
+    "original_excerpt": "多项式，47-49，82",
+    "targets": [
+      "t:2:分段",
+      "s:3:B样条曲线的定义和性质"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "011",
+          "分段形式"
+        ],
+        [
+          "002",
+          "多项式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i165",
+    "source_lines": [
+      496
+    ],
+    "original_excerpt": "有理，47，50",
+    "targets": [
+      "t:2:有理"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "011",
+          "分段形式"
+        ],
+        [
+          "003",
+          "有理曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i166",
+    "source_lines": [
+      498
+    ],
+    "original_excerpt": "幂基形式，6",
+    "targets": [
+      "s:1:曲线的幂基形式"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "012",
+          "幂基形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i167",
+    "source_lines": [
+      502
+    ],
+    "original_excerpt": "定义，27",
+    "targets": [
+      "s:1:有理 Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "013",
+          "有理 Bézier"
+        ],
+        [
+          "001",
+          "定义"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i168",
+    "source_lines": [
+      504
+    ],
+    "original_excerpt": "齐次形式，30",
+    "targets": [
+      "t:1:加权控制点"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "013",
+          "有理 Bézier"
+        ],
+        [
+          "002",
+          "齐次形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i169",
+    "source_lines": [
+      506
+    ],
+    "original_excerpt": "属性, 27",
+    "targets": [
+      "s:1:有理 Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "013",
+          "有理 Bézier"
+        ],
+        [
+          "003",
+          "性质"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i170",
+    "source_lines": [
+      510
+    ],
+    "original_excerpt": "定义和属性, 117-120",
+    "targets": [
+      "s:4:NURBS曲线的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "014",
+          "有理B样条"
+        ],
+        [
+          "001",
+          "定义与性质"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i171",
+    "source_lines": [
+      512
+    ],
+    "original_excerpt": "导数, 125-127",
+    "targets": [
+      "s:4:NURBS曲线的导数"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "014",
+          "有理B样条"
+        ],
+        [
+          "002",
+          "导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i172",
+    "source_lines": [
+      514
+    ],
+    "original_excerpt": "反转, 263",
+    "targets": [
+      "s:6:曲线和曲面的反转"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "015",
+          "反转"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i173",
+    "source_lines": [
+      518
+    ],
+    "original_excerpt": "插入, 151",
+    "targets": [
+      "s:5:节点插入"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "016",
+          "分割与细分"
+        ],
+        [
+          "001",
+          "结点插入"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i174",
+    "source_lines": [
+      520
+    ],
+    "original_excerpt": "非夹紧, 576",
+    "targets": [
+      "t:12:未固定的均匀曲线"
+    ],
+    "paths": [
+      [
+        [
+          "quxian",
+          "曲线"
+        ],
+        [
+          "017",
+          "非夹紧曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i175",
+    "source_lines": [
+      522
+    ],
+    "original_excerpt": "尖点, 8, 13",
+    "targets": [
+      "t:1:尖点"
+    ],
+    "paths": [
+      [
+        [
+          "jiandian",
+          "尖点"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i176",
+    "source_lines": [
+      524
+    ],
+    "original_excerpt": "圆柱, 40",
+    "targets": [
+      "t:1:圆柱",
+      "s:8:一般圆柱体"
+    ],
+    "paths": [
+      [
+        [
+          "yuanzhumian",
+          "圆柱面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i177",
+    "source_lines": [
+      526
+    ],
+    "original_excerpt": "数据交换, 571, 580, 583, 586",
+    "targets": [
+      "s:12:结点向量",
+      "s:12:IGES",
+      "s:12:STEP",
+      "s:12:PHIGS",
+      "s:12:NURBS 系统的数据交换"
+    ],
+    "paths": [
+      [
+        [
+          "shujujiaohuan",
+          "数据交换"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i178",
+    "source_lines": [
+      528,
+      530
+    ],
+    "original_excerpt": "deCasteljau 算法, 24, 32, 38, 145, / 314, 396, 446",
+    "targets": [
+      "a:1.5",
+      "a:1.7",
+      "s:5:节点插入",
+      "a:7.2",
+      "s:9:局部有理二次曲线插值",
+      "s:9:局部非有理三次曲线逼近"
+    ],
+    "paths": [
+      [
+        [
+          "decasteljau",
+          "de Casteljau 算法"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i179",
+    "source_lines": [
+      536
+    ],
+    "original_excerpt": "Bézier, 169-179",
+    "targets": [
+      "a:5.6",
+      "a:5.7"
+    ],
+    "paths": [
+      [
+        [
+          "fenjie",
+          "分解"
+        ],
+        [
+          "001",
+          "B样条到 Bézier 段与曲面片"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i180",
+    "source_lines": [
+      538
+    ],
+    "original_excerpt": "多项式, 162, 168",
+    "targets": [
+      "s:5:节点细化",
+      "s:6:B-spline 和分段幂基形式之间的转换"
+    ],
+    "paths": [
+      [
+        [
+          "fenjie",
+          "分解"
+        ],
+        [
+          "002",
+          "B样条到分段多项式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i181",
+    "source_lines": [
+      542
+    ],
+    "original_excerpt": "提升, 188-212, 326",
+    "targets": [
+      "s:5:次数提升",
+      "s:7:高阶圆"
+    ],
+    "paths": [
+      [
+        [
+          "cishu",
+          "次数"
+        ],
+        [
+          "001",
+          "提升"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i182",
+    "source_lines": [
+      544
+    ],
+    "original_excerpt": "降维, 212-227",
+    "targets": [
+      "s:5:次数降低"
+    ],
+    "paths": [
+      [
+        [
+          "cishu",
+          "次数"
+        ],
+        [
+          "002",
+          "降低"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i183",
+    "source_lines": [
+      548
+    ],
+    "original_excerpt": "伯恩斯坦多项式, 17",
+    "targets": [
+      "t:1:P1.7"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "001",
+          "Bernstein 多项式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i184",
+    "source_lines": [
+      550
+    ],
+    "original_excerpt": "Bézier 曲线, 22",
+    "targets": [
+      "t:1:Bézier 曲线导数的一般表达式"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "002",
+          "Bézier 曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i185",
+    "source_lines": [
+      554
+    ],
+    "original_excerpt": "基函数, 57-63",
+    "targets": [
+      "s:2:B样条基函数的导数"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "003",
+          "B样条基函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i186",
+    "source_lines": [
+      556
+    ],
+    "original_excerpt": "曲线, 88, 91-100",
+    "targets": [
+      "s:3:B样条曲线的导数",
+      "a:3.2",
+      "a:3.4"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "004",
+          "B样条曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i187",
+    "source_lines": [
+      558
+    ],
+    "original_excerpt": "关于权重, 520",
+    "targets": [
+      "s:11:单曲线权重的修改"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "005",
+          "对权重求导"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i188",
+    "source_lines": [
+      560
+    ],
+    "original_excerpt": "曲面, 109-115",
+    "targets": [
+      "s:3:B样条曲面的导数"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "006",
+          "B样条曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i189",
+    "source_lines": [
+      562
+    ],
+    "original_excerpt": "两个函数的组合, 247",
+    "targets": [
+      "s:6:NURBS 曲线和曲面的重参数化"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "007",
+          "复合函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i190",
+    "source_lines": [
+      566
+    ],
+    "original_excerpt": "曲线, 2",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "008",
+          "参数形式"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i191",
+    "source_lines": [
+      568
+    ],
+    "original_excerpt": "曲面, 4",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "008",
+          "参数形式"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i192",
+    "source_lines": [
+      572
+    ],
+    "original_excerpt": "曲线, 6",
+    "targets": [
+      "s:1:曲线的幂基形式"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "009",
+          "幂基"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i193",
+    "source_lines": [
+      574
+    ],
+    "original_excerpt": "表面，36",
+    "targets": [
+      "s:1:张量积曲面"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "009",
+          "幂基"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i194",
+    "source_lines": [
+      576
+    ],
+    "original_excerpt": "有理基函数，555",
+    "targets": [
+      "s:11:基于约束的曲线修改"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "010",
+          "有理基函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i195",
+    "source_lines": [
+      580
+    ],
+    "original_excerpt": "曲线，125-127",
+    "targets": [
+      "s:4:NURBS曲线的导数"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "011",
+          "有理B样条"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i196",
+    "source_lines": [
+      582
+    ],
+    "original_excerpt": "表面，136-138",
+    "targets": [
+      "s:4:NURBS曲面的导数"
+    ],
+    "paths": [
+      [
+        [
+          "daoshu",
+          "导数"
+        ],
+        [
+          "011",
+          "有理B样条"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i197",
+    "source_lines": [
+      584
+    ],
+    "original_excerpt": "椭圆，26，282，290，293",
+    "targets": [
+      "s:1:有理 Bézier 曲线",
+      "s:7:表示圆锥曲线的各种形式",
+      "s:7:二次有理贝塞尔弧"
+    ],
+    "paths": [
+      [
+        [
+          "tuoyuan",
+          "椭圆"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i198",
+    "source_lines": [
+      586
+    ],
+    "original_excerpt": "完整构造，320",
+    "targets": [
+      "s:7:锥形分类与形式转换"
+    ],
+    "paths": [
+      [
+        [
+          "tuoyuan",
+          "椭圆"
+        ],
+        [
+          "001",
+          "完整构造"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i199",
+    "source_lines": [
+      590,
+      592
+    ],
+    "original_excerpt": "节点，365，370，371，374，389，398， / 412",
+    "targets": [
+      "s:9:针对点数据的全局曲线插值",
+      "s:9:三次样条曲线插值",
+      "s:9:局部三次曲线插值",
+      "s:9:局部双三次曲面插值",
+      "s:9:最小二乘曲线逼近"
+    ],
+    "paths": [
+      [
+        [
+          "nihe",
+          "拟合"
+        ],
+        [
+          "001",
+          "结点选择"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i200",
+    "source_lines": [
+      594,
+      596
+    ],
+    "original_excerpt": "参数，364，365，376，386，389， / 398",
+    "targets": [
+      "s:9:针对点数据的全局曲线插值",
+      "s:9:全局曲面插值",
+      "s:9:局部曲线插值初步",
+      "s:9:局部三次曲线插值",
+      "s:9:局部双三次曲面插值"
+    ],
+    "paths": [
+      [
+        [
+          "nihe",
+          "拟合"
+        ],
+        [
+          "002",
+          "参数选择"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i201",
+    "source_lines": [
+      598
+    ],
+    "original_excerpt": "扁平化，542",
+    "targets": [
+      "s:11:扁平化"
+    ],
+    "paths": [
+      [
+        [
+          "zhanping",
+          "展平"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i202",
+    "source_lines": [
+      600
+    ],
+    "original_excerpt": "Frenet 框架, 479",
+    "targets": [
+      "t:10:Frenet"
+    ],
+    "paths": [
+      [
+        [
+          "frenet",
+          "Frenet 标架"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i203",
+    "source_lines": [
+      602
+    ],
+    "original_excerpt": "全局拟合算法, 363, 405",
+    "targets": [
+      "s:9:全局插值",
+      "s:9:全局逼近"
+    ],
+    "paths": [
+      [
+        [
+          "quanjunihe",
+          "全局拟合算法"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i204",
+    "source_lines": [
+      604
+    ],
+    "original_excerpt": "戈登曲面, 485",
+    "targets": [
+      "s:10:双向曲线网络的插值"
+    ],
+    "paths": [
+      [
+        [
+          "gordon",
+          "Gordon 曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i205",
+    "source_lines": [
+      608
+    ],
+    "original_excerpt": "坐标, 29",
+    "targets": [
+      "f:1:fig_1_30.tex"
+    ],
+    "paths": [
+      [
+        [
+          "qici",
+          "齐次"
+        ],
+        [
+          "001",
+          "坐标"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i206",
+    "source_lines": [
+      612
+    ],
+    "original_excerpt": "圆弧的, 33",
+    "targets": [
+      "f:1:fig_1_32.tex"
+    ],
+    "paths": [
+      [
+        [
+          "qici",
+          "齐次"
+        ],
+        [
+          "002",
+          "表示"
+        ],
+        [
+          "001",
+          "圆弧"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i207",
+    "source_lines": [
+      614
+    ],
+    "original_excerpt": "NURBS 曲线的, 120",
+    "targets": [
+      "t:4:同质坐标"
+    ],
+    "paths": [
+      [
+        [
+          "qici",
+          "齐次"
+        ],
+        [
+          "002",
+          "表示"
+        ],
+        [
+          "002",
+          "NURBS 曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i208",
+    "source_lines": [
+      616
+    ],
+    "original_excerpt": "NURBS 曲面的, 132",
+    "targets": [
+      "t:4:使用齐次坐标表示 NURBS 曲面"
+    ],
+    "paths": [
+      [
+        [
+          "qici",
+          "齐次"
+        ],
+        [
+          "002",
+          "表示"
+        ],
+        [
+          "003",
+          "NURBS 曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i209",
+    "source_lines": [
+      620
+    ],
+    "original_excerpt": "曲线, 6, 9",
+    "targets": [
+      "a:1.1",
+      "s:1:曲线的幂基形式"
+    ],
+    "paths": [
+      [
+        [
+          "horner",
+          "Horner 法"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i210",
+    "source_lines": [
+      622
+    ],
+    "original_excerpt": "表面, 36",
+    "targets": [
+      "a:1.6"
+    ],
+    "paths": [
+      [
+        [
+          "horner",
+          "Horner 法"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i211",
+    "source_lines": [
+      624
+    ],
+    "original_excerpt": "双曲线, 26, 282, 290, 293",
+    "targets": [
+      "s:1:有理 Bézier 曲线",
+      "s:7:表示圆锥曲线的各种形式",
+      "s:7:二次有理贝塞尔弧"
+    ],
+    "paths": [
+      [
+        [
+          "shuangquxian",
+          "双曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i212",
+    "source_lines": [
+      626
+    ],
+    "original_excerpt": "IGES, 580",
+    "targets": [
+      "s:12:IGES"
+    ],
+    "paths": [
+      [
+        [
+          "iges",
+          "IGES"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i213",
+    "source_lines": [
+      628
+    ],
+    "original_excerpt": "参数样条, 270, 277",
+    "targets": [
+      "t:6:IGES 参数样条",
+      "s:12:IGES"
+    ],
+    "paths": [
+      [
+        [
+          "iges",
+          "IGES"
+        ],
+        [
+          "001",
+          "参数样条"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i214",
+    "source_lines": [
+      632
+    ],
+    "original_excerpt": "与参数形式相比, 4, 5",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "yinshifangcheng",
+          "隐式方程"
+        ],
+        [
+          "001",
+          "与参数形式比较"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i215",
+    "source_lines": [
+      634
+    ],
+    "original_excerpt": "曲线的, 1",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "yinshifangcheng",
+          "隐式方程"
+        ],
+        [
+          "002",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i216",
+    "source_lines": [
+      636
+    ],
+    "original_excerpt": "表面的, 2",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "yinshifangcheng",
+          "隐式方程"
+        ],
+        [
+          "003",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i217",
+    "source_lines": [
+      638
+    ],
+    "original_excerpt": "无限控制点, 295, 298, 309, 312",
+    "targets": [
+      "s:7:无限控制点",
+      "s:7:圆的构造",
+      "s:7:圆锥曲线的构造"
+    ],
+    "paths": [
+      [
+        [
+          "wuqiongyuankongzhidian",
+          "无穷远控制点"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i218",
+    "source_lines": [
+      640
+    ],
+    "original_excerpt": "拐点, 8",
+    "targets": [
+      "t:1:拐点"
+    ],
+    "paths": [
+      [
+        [
+          "guaidian",
+          "拐点"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i219",
+    "source_lines": [
+      642
+    ],
+    "original_excerpt": "插值, 361",
+    "targets": [
+      "s:9:引言",
+      "s:9:全局插值",
+      "s:9:局部插值"
+    ],
+    "paths": [
+      [
+        [
+          "chazhi",
+          "插值"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i220",
+    "source_lines": [
+      644,
+      646
+    ],
+    "original_excerpt": "逆结点插入, 154, 512, 525 / 532",
+    "targets": [
+      "t:5:逆",
+      "t:11:逆节点插入",
+      "s:11:单曲线权重的修改"
+    ],
+    "paths": [
+      [
+        [
+          "nijiediancharu",
+          "逆结点插入"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i221",
+    "source_lines": [
+      648
+    ],
+    "original_excerpt": "等参曲线，35",
+    "targets": [
+      "s:1:张量积曲面"
+    ],
+    "paths": [
+      [
+        [
+          "dengcanshuquxian",
+          "等参数曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i222",
+    "source_lines": [
+      650
+    ],
+    "original_excerpt": "通过节点插入提取，161",
+    "targets": [
+      "t:5:曲线提取"
+    ],
+    "paths": [
+      [
+        [
+          "dengcanshuquxian",
+          "等参数曲线"
+        ],
+        [
+          "001",
+          "结点插入提取"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i223",
+    "source_lines": [
+      652
+    ],
+    "original_excerpt": "在贝塞尔曲面上，37",
+    "targets": [
+      "s:1:张量积曲面"
+    ],
+    "paths": [
+      [
+        [
+          "dengcanshuquxian",
+          "等参数曲线"
+        ],
+        [
+          "002",
+          "Bézier 曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i224",
+    "source_lines": [
+      654
+    ],
+    "original_excerpt": "在B样条曲面上，109",
+    "targets": [
+      "t:3:等参数曲线"
+    ],
+    "paths": [
+      [
+        [
+          "dengcanshuquxian",
+          "等参数曲线"
+        ],
+        [
+          "003",
+          "B样条曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i225",
+    "source_lines": [
+      656
+    ],
+    "original_excerpt": "在有理B样条曲面上，135",
+    "targets": [
+      "t:4:等参数曲线"
+    ],
+    "paths": [
+      [
+        [
+          "dengcanshuquxian",
+          "等参数曲线"
+        ],
+        [
+          "004",
+          "有理B样条曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i226",
+    "source_lines": [
+      660
+    ],
+    "original_excerpt": "插入，141-161，309，326",
+    "targets": [
+      "s:5:节点插入",
+      "s:7:圆的构造",
+      "s:7:高阶圆"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "001",
+          "插入"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i227",
+    "source_lines": [
+      662
+    ],
+    "original_excerpt": "精细化，162-179，265，533",
+    "targets": [
+      "s:5:节点细化",
+      "s:6:B-spline 和分段幂基形式之间的转换",
+      "s:11:形状操作符"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "002",
+          "细化"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i228",
+    "source_lines": [
+      664,
+      666
+    ],
+    "original_excerpt": "移除，179-188，272，427，533 / 576",
+    "targets": [
+      "s:5:节点移除",
+      "s:6:B-spline 和分段幂基形式之间的转换",
+      "s:9:在指定精度内的逼近",
+      "s:11:形状操作符",
+      "s:12:结点向量"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "003",
+          "移除"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i229",
+    "source_lines": [
+      670
+    ],
+    "original_excerpt": "夹紧开放(非周期性)，66，572",
+    "targets": [
+      "s:2:基函数的进一步性质",
+      "s:12:结点向量"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "004",
+          "夹紧开放与非周期"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i230",
+    "source_lines": [
+      672
+    ],
+    "original_excerpt": "夹紧与非夹紧，571",
+    "targets": [
+      "s:12:结点向量"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "005",
+          "夹紧与非夹紧"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i231",
+    "source_lines": [
+      674
+    ],
+    "original_excerpt": "数据结构，598",
+    "targets": [
+      "f:13:fig_13_02.tex"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "006",
+          "数据结构"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i232",
+    "source_lines": [
+      676
+    ],
+    "original_excerpt": "定义，50，51",
+    "targets": [
+      "s:2:B样条基函数的定义和性质"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "007",
+          "定义"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i233",
+    "source_lines": [
+      678
+    ],
+    "original_excerpt": "合并，162",
+    "targets": [
+      "s:5:节点细化"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "008",
+          "合并"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i234",
+    "source_lines": [
+      680
+    ],
+    "original_excerpt": "多重性，57，58，64",
+    "targets": [
+      "s:2:B样条基函数的导数",
+      "s:2:基函数的进一步性质"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "009",
+          "重数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i235",
+    "source_lines": [
+      682
+    ],
+    "original_excerpt": "非周期性(夹紧开放)，66，572",
+    "targets": [
+      "s:2:基函数的进一步性质",
+      "s:12:结点向量"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "010",
+          "非周期向量"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i236",
+    "source_lines": [
+      686
+    ],
+    "original_excerpt": "147",
+    "targets": [
+      "s:5:节点插入"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "011",
+          "控制多边形划分"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i237",
+    "source_lines": [
+      688
+    ],
+    "original_excerpt": "周期性与非周期性，574",
+    "targets": [
+      "s:12:结点向量"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "012",
+          "周期与非周期"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i238",
+    "source_lines": [
+      690
+    ],
+    "original_excerpt": "跨度，51",
+    "targets": [
+      "s:2:B样条基函数的定义和性质",
+      "a:2.1"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "013",
+          "跨度"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i239",
+    "source_lines": [
+      692
+    ],
+    "original_excerpt": "均匀与非均匀，66，571",
+    "targets": [
+      "s:2:基函数的进一步性质",
+      "s:12:结点向量"
+    ],
+    "paths": [
+      [
+        [
+          "jiedian",
+          "结点"
+        ],
+        [
+          "014",
+          "均匀与非均匀"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i240",
+    "source_lines": [
+      694
+    ],
+    "original_excerpt": "最小二乘逼近，410",
+    "targets": [
+      "s:9:最小二乘曲线逼近",
+      "s:9:加权和约束最小二乘曲线拟合",
+      "s:9:最小二乘曲面逼近"
+    ],
+    "paths": [
+      [
+        [
+          "zuixiaoercheng",
+          "最小二乘逼近"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i241",
+    "source_lines": [
+      696
+    ],
+    "original_excerpt": "线，7，10",
+    "targets": [
+      "s:1:曲线的幂基形式",
+      "s:1:Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "zhixian",
+          "直线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i242",
+    "source_lines": [
+      698
+    ],
+    "original_excerpt": "局部拟合算法，363，382，437",
+    "targets": [
+      "s:9:局部插值",
+      "s:9:局部逼近"
+    ],
+    "paths": [
+      [
+        [
+          "jubunihe",
+          "局部拟合算法"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i243",
+    "source_lines": [
+      700
+    ],
+    "original_excerpt": "局部支持，49，55，118，128",
+    "targets": [
+      "s:2:B样条基函数的定义和性质",
+      "t:4:局部支持"
+    ],
+    "paths": [
+      [
+        [
+          "jubuzhicheng",
+          "局部支撑"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i244",
+    "source_lines": [
+      704
+    ],
+    "original_excerpt": "表面), 457",
+    "targets": [
+      "s:10:皮肤表面"
+    ],
+    "see": "蒙皮曲面",
+    "paths": [
+      [
+        [
+          "fangyangqumian",
+          "放样曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i245",
+    "source_lines": [
+      706
+    ],
+    "original_excerpt": "循环, 8, 13",
+    "targets": [
+      "t:1:或一个环"
+    ],
+    "paths": [
+      [
+        [
+          "huan",
+          "环"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i246",
+    "source_lines": [
+      708
+    ],
+    "original_excerpt": "牛顿迭代, 230",
+    "targets": [
+      "t:6:牛顿"
+    ],
+    "paths": [
+      [
+        [
+          "newton",
+          "Newton 迭代"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i247",
+    "source_lines": [
+      710
+    ],
+    "original_excerpt": "节点, B样条, 512, 516, 530",
+    "targets": [
+      "t:11:被称为节点"
+    ],
+    "paths": [
+      [
+        [
+          "byangtiaojiedian",
+          "B样条节点（Greville 横坐标）"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i248",
+    "source_lines": [
+      714
+    ],
+    "original_excerpt": "双线性曲面，333",
+    "targets": [
+      "s:8:双线性曲面"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "001",
+          "双线性曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i249",
+    "source_lines": [
+      716
+    ],
+    "original_excerpt": "Coons 曲面，496",
+    "targets": [
+      "s:10:库恩斯表面"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "002",
+          "Coons 曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i250",
+    "source_lines": [
+      718
+    ],
+    "original_excerpt": "椭球体，349",
+    "targets": [
+      "f:8:fig_8_18.tex"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "003",
+          "椭球面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i251",
+    "source_lines": [
+      720
+    ],
+    "original_excerpt": "椭圆抛物面, 349",
+    "targets": [
+      "f:8:fig_8_19.tex"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "004",
+          "椭圆抛物面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i252",
+    "source_lines": [
+      722
+    ],
+    "original_excerpt": "一般圆锥, 338",
+    "targets": [
+      "f:8:fig_8_09.tex"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "005",
+          "一般圆锥面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i253",
+    "source_lines": [
+      724
+    ],
+    "original_excerpt": "一般圆柱, 334",
+    "targets": [
+      "s:8:一般圆柱体"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "006",
+          "一般圆柱面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i254",
+    "source_lines": [
+      726
+    ],
+    "original_excerpt": "戈登曲面, 485",
+    "targets": [
+      "s:10:双向曲线网络的插值"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "007",
+          "Gordon 曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i255",
+    "source_lines": [
+      728
+    ],
+    "original_excerpt": "双曲抛物面, 334",
+    "targets": [
+      "f:8:fig_8_01.tex"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "008",
+          "双曲抛物面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i256",
+    "source_lines": [
+      730
+    ],
+    "original_excerpt": "平面, 334",
+    "targets": [
+      "f:8:fig_8_01.tex"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "009",
+          "平面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i257",
+    "source_lines": [
+      732
+    ],
+    "original_excerpt": "规则曲面, 337",
+    "targets": [
+      "s:8:规则曲面"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "010",
+          "直纹曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i258",
+    "source_lines": [
+      734
+    ],
+    "original_excerpt": "皮肤曲面, 457",
+    "targets": [
+      "s:10:皮肤表面"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "011",
+          "蒙皮曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i259",
+    "source_lines": [
+      736
+    ],
+    "original_excerpt": "球体, 344",
+    "targets": [
+      "f:8:fig_8_15.tex"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "012",
+          "球面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i260",
+    "source_lines": [
+      738
+    ],
+    "original_excerpt": "旋转曲面, 340",
+    "targets": [
+      "s:8:旋转曲面"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "013",
+          "旋转曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i261",
+    "source_lines": [
+      740
+    ],
+    "original_excerpt": "扫描曲面, 472",
+    "targets": [
+      "s:10:扫掠表面"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "014",
+          "扫掠曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i262",
+    "source_lines": [
+      742
+    ],
+    "original_excerpt": "摆动表面, 455",
+    "targets": [
+      "s:10:摆动表面"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "015",
+          "摆动曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i263",
+    "source_lines": [
+      744
+    ],
+    "original_excerpt": "球面上的三边补丁, 351",
+    "targets": [
+      "s:8:三边球面"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "016",
+          "三边球面片"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i264",
+    "source_lines": [
+      746
+    ],
+    "original_excerpt": "环面, 344",
+    "targets": [
+      "f:8:fig_8_14.tex"
+    ],
+    "paths": [
+      [
+        [
+          "nurbs",
+          "NURBS 表示"
+        ],
+        [
+          "017",
+          "环面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i265",
+    "source_lines": [
+      748
+    ],
+    "original_excerpt": "偏移, 475, 479, 552, 588",
+    "targets": [
+      "s:10:扫掠表面",
+      "t:10:偏移",
+      "t:11:沿着表面法线",
+      "s:12:NURBS 系统的数据交换"
+    ],
+    "paths": [
+      [
+        [
+          "pianzhi",
+          "偏置"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i266",
+    "source_lines": [
+      750
+    ],
+    "original_excerpt": "顺序, 50",
+    "targets": [
+      "s:2:B样条基函数的定义和性质"
+    ],
+    "paths": [
+      [
+        [
+          "jie",
+          "阶"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i267",
+    "source_lines": [
+      752
+    ],
+    "original_excerpt": "抛物线, 7, 11, 26, 282, 290, 293",
+    "targets": [
+      "s:1:曲线的幂基形式",
+      "s:1:Bézier 曲线",
+      "s:1:有理 Bézier 曲线",
+      "s:7:表示圆锥曲线的各种形式",
+      "s:7:二次有理贝塞尔弧"
+    ],
+    "paths": [
+      [
+        [
+          "paowuxian",
+          "抛物线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i268",
+    "source_lines": [
+      754
+    ],
+    "original_excerpt": "参数误差, 221",
+    "targets": [
+      "t:5:参数误差"
+    ],
+    "paths": [
+      [
+        [
+          "canshuwucha",
+          "参数误差"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i269",
+    "source_lines": [
+      756
+    ],
+    "original_excerpt": "参数形式, 1, 4",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "canshuxingshi",
+          "参数形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i270",
+    "source_lines": [
+      760
+    ],
+    "original_excerpt": "形式, 4, 5",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "canshuxingshi",
+          "参数形式"
+        ],
+        [
+          "001",
+          "与隐式形式比较"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i271",
+    "source_lines": [
+      762
+    ],
+    "original_excerpt": "的导数, 2, 4",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "canshuxingshi",
+          "参数形式"
+        ],
+        [
+          "002",
+          "导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i272",
+    "source_lines": [
+      764
+    ],
+    "original_excerpt": "曲线的，1",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "canshuxingshi",
+          "参数形式"
+        ],
+        [
+          "003",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i273",
+    "source_lines": [
+      766
+    ],
+    "original_excerpt": "表面的，2",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "canshuxingshi",
+          "参数形式"
+        ],
+        [
+          "004",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i274",
+    "source_lines": [
+      768
+    ],
+    "original_excerpt": "表面法向量，4",
+    "targets": [
+      "f:1:fig_1_04.tex"
+    ],
+    "paths": [
+      [
+        [
+          "canshuxingshi",
+          "参数形式"
+        ],
+        [
+          "005",
+          "曲面法向量"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i275",
+    "source_lines": [
+      770,
+      772
+    ],
+    "original_excerpt": "统一划分，16, 27, 38, 57, 118, / 128",
+    "targets": [
+      "t:1:P1.2",
+      "t:1:P1.9",
+      "t:2:统一划分",
+      "t:3:P3.13",
+      "t:4:P4.2",
+      "t:4:P4.16"
+    ],
+    "paths": [
+      [
+        [
+          "danweifenjie",
+          "单位分解"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i276",
+    "source_lines": [
+      774
+    ],
+    "original_excerpt": "周期曲线与非周期曲线，575",
+    "targets": [
+      "s:12:结点向量"
+    ],
+    "paths": [
+      [
+        [
+          "zhouqiquxian",
+          "周期曲线与非周期曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i277",
+    "source_lines": [
+      776
+    ],
+    "original_excerpt": "透视图，30, 121",
+    "targets": [
+      "t:1:透视",
+      "t:4:透视映射"
+    ],
+    "paths": [
+      [
+        [
+          "toushiyingshe",
+          "透视映射"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i278",
+    "source_lines": [
+      778
+    ],
+    "original_excerpt": "PHIGS，585",
+    "targets": [
+      "s:12:PHIGS"
+    ],
+    "paths": [
+      [
+        [
+          "phigs",
+          "PHIGS"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i279",
+    "source_lines": [
+      784
+    ],
+    "original_excerpt": "229",
+    "targets": [
+      "s:6:曲线和曲面的点反演与投影"
+    ],
+    "see": "点，投影",
+    "paths": [
+      [
+        [
+          "dian",
+          "点"
+        ],
+        [
+          "001",
+          "反演"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i280",
+    "source_lines": [
+      788
+    ],
+    "original_excerpt": "到曲线，229-232",
+    "targets": [
+      "s:6:曲线和曲面的点反演与投影"
+    ],
+    "paths": [
+      [
+        [
+          "dian",
+          "点"
+        ],
+        [
+          "002",
+          "投影"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i281",
+    "source_lines": [
+      790
+    ],
+    "original_excerpt": "表面，232-234",
+    "targets": [
+      "s:6:曲线和曲面的点反演与投影"
+    ],
+    "paths": [
+      [
+        [
+          "dian",
+          "点"
+        ],
+        [
+          "002",
+          "投影"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i282",
+    "source_lines": [
+      792
+    ],
+    "original_excerpt": "多项式，6",
+    "targets": [
+      "s:1:曲线的幂基形式"
+    ],
+    "paths": [
+      [
+        [
+          "duoxiangshi",
+          "多项式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i283",
+    "source_lines": [
+      794
+    ],
+    "original_excerpt": "幂基形式，5，9，24",
+    "targets": [
+      "s:1:曲线的幂基形式",
+      "s:6:B-spline 和分段幂基形式之间的转换"
+    ],
+    "paths": [
+      [
+        [
+          "mijixingshi",
+          "幂基形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i284",
+    "source_lines": [
+      796
+    ],
+    "original_excerpt": "的导数，6",
+    "targets": [
+      "s:1:曲线的幂基形式"
+    ],
+    "paths": [
+      [
+        [
+          "mijixingshi",
+          "幂基形式"
+        ],
+        [
+          "001",
+          "导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i285",
+    "source_lines": [
+      798
+    ],
+    "original_excerpt": "曲线的，5",
+    "targets": [
+      "s:1:曲线的幂基形式"
+    ],
+    "paths": [
+      [
+        [
+          "mijixingshi",
+          "幂基形式"
+        ],
+        [
+          "002",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i286",
+    "source_lines": [
+      800
+    ],
+    "original_excerpt": "表面的，35",
+    "targets": [
+      "s:1:张量积曲面",
+      "a:1.6"
+    ],
+    "paths": [
+      [
+        [
+          "mijixingshi",
+          "幂基形式"
+        ],
+        [
+          "003",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i287",
+    "source_lines": [
+      804
+    ],
+    "original_excerpt": "软件)，593",
+    "targets": [
+      "s:13:引言"
+    ],
+    "see": "软件",
+    "paths": [
+      [
+        [
+          "biancheng",
+          "编程"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i288",
+    "source_lines": [
+      810
+    ],
+    "original_excerpt": "平行，236",
+    "targets": [
+      "s:6:曲线和曲面的变换与投影"
+    ],
+    "paths": [
+      [
+        [
+          "touying",
+          "投影"
+        ],
+        [
+          "001",
+          "平行投影"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i289",
+    "source_lines": [
+      812
+    ],
+    "original_excerpt": "视角，237",
+    "targets": [
+      "t:6:透视"
+    ],
+    "paths": [
+      [
+        [
+          "touying",
+          "投影"
+        ],
+        [
+          "002",
+          "透视投影"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i290",
+    "source_lines": [
+      820
+    ],
+    "original_excerpt": ")，118，534",
+    "targets": [
+      "s:4:NURBS曲线的定义与性质",
+      "s:11:形状操作符"
+    ],
+    "see": "基函数",
+    "paths": [
+      [
+        [
+          "youlibyangtiao",
+          "有理B样条"
+        ],
+        [
+          "001",
+          "基函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i291",
+    "source_lines": [
+      824
+    ],
+    "original_excerpt": "B样条)，117",
+    "targets": [
+      "s:4:NURBS曲线的定义与性质"
+    ],
+    "see": "曲线",
+    "paths": [
+      [
+        [
+          "youlibyangtiao",
+          "有理B样条"
+        ],
+        [
+          "002",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i292",
+    "source_lines": [
+      828
+    ],
+    "original_excerpt": "有理B样条)，128",
+    "targets": [
+      "s:4:NURBS曲面的定义与性质"
+    ],
+    "see": "曲面",
+    "paths": [
+      [
+        [
+          "youlibyangtiao",
+          "有理B样条"
+        ],
+        [
+          "003",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i293",
+    "source_lines": [
+      832
+    ],
+    "original_excerpt": "曲线定义，27",
+    "targets": [
+      "s:1:有理 Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "youlibezier",
+          "有理 Bézier"
+        ],
+        [
+          "001",
+          "曲线定义"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i294",
+    "source_lines": [
+      834
+    ],
+    "original_excerpt": "表面定义, 40",
+    "targets": [
+      "t:1:我们定义有理 Bézier 曲面"
+    ],
+    "paths": [
+      [
+        [
+          "youlibezier",
+          "有理 Bézier"
+        ],
+        [
+          "002",
+          "曲面定义"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i295",
+    "source_lines": [
+      836
+    ],
+    "original_excerpt": "函数, 26",
+    "targets": [
+      "s:1:有理 Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "youlihanshu",
+          "有理函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i296",
+    "source_lines": [
+      838,
+      840
+    ],
+    "original_excerpt": "重新参数化, 44, 241-263, 265, / 269,271,589",
+    "targets": [
+      "t:1:重新参数",
+      "s:6:NURBS 曲线和曲面的重参数化",
+      "s:6:B-spline 和分段幂基形式之间的转换",
+      "s:12:NURBS 系统的数据交换"
+    ],
+    "paths": [
+      [
+        [
+          "chongcanshuhua",
+          "重参数化"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i297",
+    "source_lines": [
+      844
+    ],
+    "original_excerpt": "线性函数, 250, 263",
+    "targets": [
+      "t:6:线性函数"
+    ],
+    "paths": [
+      [
+        [
+          "chongcanshuhua",
+          "重参数化"
+        ],
+        [
+          "001",
+          "线性函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i298",
+    "source_lines": [
+      846
+    ],
+    "original_excerpt": "线性有理函数, 255",
+    "targets": [
+      "t:6:线性有理函数"
+    ],
+    "paths": [
+      [
+        [
+          "chongcanshuhua",
+          "重参数化"
+        ],
+        [
+          "002",
+          "线性有理函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i299",
+    "source_lines": [
+      848
+    ],
+    "original_excerpt": "分段多项式函数, 250",
+    "targets": [
+      "t:6:分段多项式"
+    ],
+    "paths": [
+      [
+        [
+          "chongcanshuhua",
+          "重参数化"
+        ],
+        [
+          "003",
+          "分段多项式函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i300",
+    "source_lines": [
+      850
+    ],
+    "original_excerpt": "分段有理函数, 251",
+    "targets": [
+      "t:6:现在我们转向使用有理"
+    ],
+    "paths": [
+      [
+        [
+          "chongcanshuhua",
+          "重参数化"
+        ],
+        [
+          "004",
+          "分段有理函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i301",
+    "source_lines": [
+      852
+    ],
+    "original_excerpt": "多项式函数, 245",
+    "targets": [
+      "t:6:多项式函数"
+    ],
+    "paths": [
+      [
+        [
+          "chongcanshuhua",
+          "重参数化"
+        ],
+        [
+          "005",
+          "多项式函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i302",
+    "source_lines": [
+      854
+    ],
+    "original_excerpt": "形状因子, 261, 293",
+    "targets": [
+      "t:6:形状因子",
+      "s:7:二次有理贝塞尔弧"
+    ],
+    "paths": [
+      [
+        [
+          "xingzhuangyinzi",
+          "形状因子"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i303",
+    "source_lines": [
+      858
+    ],
+    "original_excerpt": "因子), 261",
+    "targets": [
+      "t:6:形状因子"
+    ],
+    "see": "形状因子",
+    "paths": [
+      [
+        [
+          "xingzhuangbubian",
+          "形状不变"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i304",
+    "source_lines": [
+      860
+    ],
+    "original_excerpt": "形状算子, 533",
+    "targets": [
+      "s:11:形状操作符"
+    ],
+    "paths": [
+      [
+        [
+          "xingzhuangsuanzi",
+          "形状算子"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i305",
+    "source_lines": [
+      862
+    ],
+    "original_excerpt": "皮肤表面, 457",
+    "targets": [
+      "s:10:皮肤表面"
+    ],
+    "paths": [
+      [
+        [
+          "mengpiqumian",
+          "蒙皮曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i306",
+    "source_lines": [
+      864
+    ],
+    "original_excerpt": "平滑函数, 471",
+    "targets": [
+      "t:10:平滑函数"
+    ],
+    "paths": [
+      [
+        [
+          "pinghuahanshu",
+          "平滑函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i307",
+    "source_lines": [
+      866
+    ],
+    "original_excerpt": "软件, 593",
+    "targets": [
+      "s:13:引言"
+    ],
+    "paths": [
+      [
+        [
+          "ruanjian",
+          "软件"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i308",
+    "source_lines": [
+      868
+    ],
+    "original_excerpt": "算术例程, 616",
+    "targets": [
+      "s:13:算术例程"
+    ],
+    "paths": [
+      [
+        [
+          "ruanjian",
+          "软件"
+        ],
+        [
+          "001",
+          "算术例程"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i309",
+    "source_lines": [
+      870
+    ],
+    "original_excerpt": "数据结构, 596",
+    "targets": [
+      "s:13:数据结构"
+    ],
+    "paths": [
+      [
+        [
+          "ruanjian",
+          "软件"
+        ],
+        [
+          "002",
+          "数据结构"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i310",
+    "source_lines": [
+      872
+    ],
+    "original_excerpt": "数据类型, 594",
+    "targets": [
+      "s:13:数据类型与可移植性"
+    ],
+    "paths": [
+      [
+        [
+          "ruanjian",
+          "软件"
+        ],
+        [
+          "003",
+          "数据类型"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i311",
+    "source_lines": [
+      874
+    ],
+    "original_excerpt": "错误控制, 607",
+    "targets": [
+      "s:13:错误控制"
+    ],
+    "paths": [
+      [
+        [
+          "ruanjian",
+          "软件"
+        ],
+        [
+          "004",
+          "错误控制"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i312",
+    "source_lines": [
+      876
+    ],
+    "original_excerpt": "示例程序, 618",
+    "targets": [
+      "s:13:示例程序"
+    ],
+    "paths": [
+      [
+        [
+          "ruanjian",
+          "软件"
+        ],
+        [
+          "005",
+          "示例程序"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i313",
+    "source_lines": [
+      878
+    ],
+    "original_excerpt": "内存分配, 601",
+    "targets": [
+      "s:13:内存分配"
+    ],
+    "paths": [
+      [
+        [
+          "ruanjian",
+          "软件"
+        ],
+        [
+          "006",
+          "内存分配"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i314",
+    "source_lines": [
+      880
+    ],
+    "original_excerpt": "系统结构, 626",
+    "targets": [
+      "s:13:系统结构"
+    ],
+    "paths": [
+      [
+        [
+          "ruanjian",
+          "软件"
+        ],
+        [
+          "007",
+          "系统结构"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i315",
+    "source_lines": [
+      882
+    ],
+    "original_excerpt": "实用例程, 613",
+    "targets": [
+      "s:13:实用程序"
+    ],
+    "paths": [
+      [
+        [
+          "ruanjian",
+          "软件"
+        ],
+        [
+          "008",
+          "实用例程"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i316",
+    "source_lines": [
+      884
+    ],
+    "original_excerpt": "球体, 2",
+    "targets": [
+      "f:1:fig_1_03.tex",
+      "s:8:旋转曲面"
+    ],
+    "paths": [
+      [
+        [
+          "qiumian",
+          "球面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i317",
+    "source_lines": [
+      886
+    ],
+    "original_excerpt": "STEP, 290, 583",
+    "targets": [
+      "s:7:锥形分类与形式转换",
+      "s:12:STEP"
+    ],
+    "paths": [
+      [
+        [
+          "step",
+          "STEP"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i318",
+    "source_lines": [
+      890
+    ],
+    "original_excerpt": "贝塞尔, 37, 38, 105, 130",
+    "targets": [
+      "s:1:张量积曲面",
+      "s:3:B样条曲面的定义与性质",
+      "s:4:NURBS曲面的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "001",
+          "Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i319",
+    "source_lines": [
+      894
+    ],
+    "original_excerpt": "定义, 100",
+    "targets": [
+      "s:3:B样条曲面的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "002",
+          "B样条"
+        ],
+        [
+          "001",
+          "定义"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i320",
+    "source_lines": [
+      896
+    ],
+    "original_excerpt": "导数和连续性, 109",
+    "targets": [
+      "s:3:B样条曲面的导数"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "002",
+          "B样条"
+        ],
+        [
+          "002",
+          "导数与连续性"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i321",
+    "source_lines": [
+      898
+    ],
+    "original_excerpt": "属性, 105-109",
+    "targets": [
+      "t:3:P3.15"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "002",
+          "B样条"
+        ],
+        [
+          "003",
+          "性质"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i322",
+    "source_lines": [
+      902
+    ],
+    "original_excerpt": "数据结构，601",
+    "targets": [
+      "f:13:fig_13_05.tex"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "003",
+          "数据结构"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i323",
+    "source_lines": [
+      906
+    ],
+    "original_excerpt": "通过节点插入，161",
+    "targets": [
+      "t:5:曲线提取"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "004",
+          "求值"
+        ],
+        [
+          "001",
+          "结点插入"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i324",
+    "source_lines": [
+      910
+    ],
+    "original_excerpt": "逼近，419，432",
+    "targets": [
+      "s:9:最小二乘曲面逼近",
+      "s:9:在指定精度内的逼近"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "005",
+          "拟合"
+        ],
+        [
+          "001",
+          "逼近"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i325",
+    "source_lines": [
+      912
+    ],
+    "original_excerpt": "插值，376，399",
+    "targets": [
+      "s:9:全局曲面插值",
+      "s:9:局部双三次曲面插值"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "005",
+          "拟合"
+        ],
+        [
+          "002",
+          "插值"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i326",
+    "source_lines": [
+      914
+    ],
+    "original_excerpt": "隐式形式，2",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "006",
+          "隐式形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i327",
+    "source_lines": [
+      916
+    ],
+    "original_excerpt": "等曲线，35，37",
+    "targets": [
+      "s:1:张量积曲面"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "007",
+          "等参数曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i328",
+    "source_lines": [
+      918
+    ],
+    "original_excerpt": "法向量，4，36",
+    "targets": [
+      "f:1:fig_1_04.tex",
+      "s:1:张量积曲面"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "008",
+          "法向量"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i329",
+    "source_lines": [
+      920
+    ],
+    "original_excerpt": "反转，265",
+    "targets": [
+      "s:6:曲线和曲面的反转"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "009",
+          "反转"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i330",
+    "source_lines": [
+      922
+    ],
+    "original_excerpt": "参数形式，2",
+    "targets": [
+      "s:1:隐式和参数形式"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "010",
+          "参数形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i331",
+    "source_lines": [
+      924
+    ],
+    "original_excerpt": "偏导数，4",
+    "targets": [
+      "s:1:隐式和参数形式",
+      "s:3:B样条曲面的导数",
+      "s:4:NURBS曲面的导数"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "011",
+          "偏导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i332",
+    "source_lines": [
+      926
+    ],
+    "original_excerpt": "幂基形式，35",
+    "targets": [
+      "s:1:张量积曲面",
+      "a:1.6"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "012",
+          "幂基形式"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i333",
+    "source_lines": [
+      928
+    ],
+    "original_excerpt": "有理Bézier，40",
+    "targets": [
+      "t:1:我们定义有理 Bézier 曲面"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "013",
+          "有理 Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i334",
+    "source_lines": [
+      932
+    ],
+    "original_excerpt": "定义，128",
+    "targets": [
+      "s:4:NURBS曲面的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "014",
+          "有理B样条"
+        ],
+        [
+          "001",
+          "定义"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i335",
+    "source_lines": [
+      934
+    ],
+    "original_excerpt": "导数，136-138",
+    "targets": [
+      "s:4:NURBS曲面的导数"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "014",
+          "有理B样条"
+        ],
+        [
+          "002",
+          "导数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i336",
+    "source_lines": [
+      936
+    ],
+    "original_excerpt": "性质，130",
+    "targets": [
+      "t:4:P4.15"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "014",
+          "有理B样条"
+        ],
+        [
+          "003",
+          "性质"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i337",
+    "source_lines": [
+      940
+    ],
+    "original_excerpt": "插入，158",
+    "targets": [
+      "f:5:fig_5_13.tex"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "015",
+          "分割与细分"
+        ],
+        [
+          "001",
+          "结点插入"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i338",
+    "source_lines": [
+      942
+    ],
+    "original_excerpt": "张量积定义，34，50",
+    "targets": [
+      "s:1:张量积曲面",
+      "s:2:B样条基函数的定义和性质"
+    ],
+    "paths": [
+      [
+        [
+          "qumian",
+          "曲面"
+        ],
+        [
+          "016",
+          "张量积定义"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i339",
+    "source_lines": [
+      944
+    ],
+    "original_excerpt": "扫掠曲面，472",
+    "targets": [
+      "s:10:扫掠表面"
+    ],
+    "paths": [
+      [
+        [
+          "saoluequmian",
+          "扫掠曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i340",
+    "source_lines": [
+      946
+    ],
+    "original_excerpt": "摆动表面, 455",
+    "targets": [
+      "s:10:摆动表面"
+    ],
+    "paths": [
+      [
+        [
+          "baidongqumian",
+          "摆动曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i341",
+    "source_lines": [
+      948
+    ],
+    "original_excerpt": "切向量反演, 235",
+    "targets": [
+      "s:6:曲面切向量反演"
+    ],
+    "paths": [
+      [
+        [
+          "qiexiangliangfanyan",
+          "切向量反演"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i342",
+    "source_lines": [
+      950
+    ],
+    "original_excerpt": "张力, 561",
+    "targets": [
+      "t:11:张力"
+    ],
+    "paths": [
+      [
+        [
+          "zhangli",
+          "张力"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i343",
+    "source_lines": [
+      954
+    ],
+    "original_excerpt": "B样条基函数, 102, 104 表面, 34",
+    "targets": [
+      "s:3:B样条曲面的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "zhangliangji",
+          "张量积"
+        ],
+        [
+          "001",
+          "B样条基函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i344",
+    "source_lines": [
+      954
+    ],
+    "original_excerpt": "B样条基函数, 102, 104 表面, 34",
+    "targets": [
+      "s:1:张量积曲面"
+    ],
+    "paths": [
+      [
+        [
+          "zhangliangji",
+          "张量积"
+        ],
+        [
+          "002",
+          "曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i345",
+    "source_lines": [
+      956
+    ],
+    "original_excerpt": "曲线和表面的变换, 236, 240",
+    "targets": [
+      "s:6:曲线和曲面的变换与投影"
+    ],
+    "paths": [
+      [
+        [
+          "bianhuan",
+          "变换"
+        ],
+        [
+          "001",
+          "曲线与曲面"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i346",
+    "source_lines": [
+      958
+    ],
+    "original_excerpt": "扭转向量, 500 均匀参数化, 2 非夹紧圆, 578 曲线, 576 结, 571 变差减小性质, 12, 38, 87, 119, 131",
+    "targets": [
+      "t:10:扭转向量"
+    ],
+    "paths": [
+      [
+        [
+          "niuzhuanxiangliang",
+          "扭转向量"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i347",
+    "source_lines": [
+      958
+    ],
+    "original_excerpt": "扭转向量, 500 均匀参数化, 2 非夹紧圆, 578 曲线, 576 结, 571 变差减小性质, 12, 38, 87, 119, 131",
+    "targets": [
+      "s:1:隐式和参数形式",
+      "s:9:针对点数据的全局曲线插值"
+    ],
+    "paths": [
+      [
+        [
+          "junyuncanshuhua",
+          "均匀参数化"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i348",
+    "source_lines": [
+      958
+    ],
+    "original_excerpt": "扭转向量, 500 均匀参数化, 2 非夹紧圆, 578 曲线, 576 结, 571 变差减小性质, 12, 38, 87, 119, 131",
+    "targets": [
+      "f:12:fig_12_08.tex"
+    ],
+    "paths": [
+      [
+        [
+          "feijiajin",
+          "非夹紧"
+        ],
+        [
+          "001",
+          "圆"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i349",
+    "source_lines": [
+      958
+    ],
+    "original_excerpt": "扭转向量, 500 均匀参数化, 2 非夹紧圆, 578 曲线, 576 结, 571 变差减小性质, 12, 38, 87, 119, 131",
+    "targets": [
+      "t:12:未固定的均匀曲线"
+    ],
+    "paths": [
+      [
+        [
+          "feijiajin",
+          "非夹紧"
+        ],
+        [
+          "002",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i350",
+    "source_lines": [
+      958
+    ],
+    "original_excerpt": "扭转向量, 500 均匀参数化, 2 非夹紧圆, 578 曲线, 576 结, 571 变差减小性质, 12, 38, 87, 119, 131",
+    "targets": [
+      "s:12:结点向量"
+    ],
+    "paths": [
+      [
+        [
+          "feijiajin",
+          "非夹紧"
+        ],
+        [
+          "003",
+          "结点向量"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i351",
+    "source_lines": [
+      958
+    ],
+    "original_excerpt": "扭转向量, 500 均匀参数化, 2 非夹紧圆, 578 曲线, 576 结, 571 变差减小性质, 12, 38, 87, 119, 131",
+    "targets": [
+      "t:1:变差减少性质",
+      "t:1:P1.15",
+      "t:3:变异减少性质",
+      "t:4:变化减小性质"
+    ],
+    "paths": [
+      [
+        [
+          "bianchajianxiaoxingzhi",
+          "变差减小性质"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i352",
+    "source_lines": [
+      960
+    ],
+    "original_excerpt": "分段多项式曲线的向量空间, 47, 48 函数, 63-66",
+    "targets": [
+      "t:2:分段多项式"
+    ],
+    "paths": [
+      [
+        [
+          "fenduanduoxiangshikongjian",
+          "分段多项式空间"
+        ],
+        [
+          "001",
+          "曲线"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i353",
+    "source_lines": [
+      960
+    ],
+    "original_excerpt": "分段多项式曲线的向量空间, 47, 48 函数, 63-66",
+    "targets": [
+      "s:2:基函数的进一步性质"
+    ],
+    "paths": [
+      [
+        [
+          "fenduanduoxiangshikongjian",
+          "分段多项式空间"
+        ],
+        [
+          "002",
+          "函数"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i354",
+    "source_lines": [
+      962
+    ],
+    "original_excerpt": "扭曲, 533, 538, 542",
+    "targets": [
+      "s:11:变形",
+      "s:11:扁平化"
+    ],
+    "paths": [
+      [
+        [
+          "niuqu",
+          "扭曲"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i355",
+    "source_lines": [
+      966
+    ],
+    "original_excerpt": "关于的微分, 520 的修改, 120, 130, 131, 261, 518, 526, 531",
+    "targets": [
+      "s:11:单曲线权重的修改"
+    ],
+    "paths": [
+      [
+        [
+          "quanzhong",
+          "权重"
+        ],
+        [
+          "001",
+          "对权重求导"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i356",
+    "source_lines": [
+      966
+    ],
+    "original_excerpt": "关于的微分, 520 的修改, 120, 130, 131, 261, 518, 526, 531",
+    "targets": [
+      "s:4:NURBS曲线的定义与性质",
+      "s:6:NURBS 曲线和曲面的重参数化",
+      "s:11:权重修改",
+      "s:11:单曲线权重的修改",
+      "s:11:两个相邻曲线权重的修改",
+      "s:11:单表面权重的修改"
+    ],
+    "paths": [
+      [
+        [
+          "quanzhong",
+          "权重"
+        ],
+        [
+          "002",
+          "修改"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i357",
+    "source_lines": [
+      968
+    ],
+    "original_excerpt": "负的, 186, 469",
+    "targets": [
+      "t:5:负权重",
+      "t:10:负权值"
+    ],
+    "paths": [
+      [
+        [
+          "quanzhong",
+          "权重"
+        ],
+        [
+          "003",
+          "负权重"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i358",
+    "source_lines": [
+      970
+    ],
+    "original_excerpt": "有理贝塞尔, 27",
+    "targets": [
+      "s:1:有理 Bézier 曲线"
+    ],
+    "paths": [
+      [
+        [
+          "quanzhong",
+          "权重"
+        ],
+        [
+          "004",
+          "有理 Bézier"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "i359",
+    "source_lines": [
+      972
+    ],
+    "original_excerpt": "有理B样条, 117, 120, 131",
+    "targets": [
+      "s:4:NURBS曲线的定义与性质",
+      "s:4:NURBS曲面的定义与性质"
+    ],
+    "paths": [
+      [
+        [
+          "quanzhong",
+          "权重"
+        ],
+        [
+          "005",
+          "有理B样条"
+        ]
+      ]
+    ]
+  }
+]

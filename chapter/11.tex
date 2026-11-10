@@ -1,5 +1,5 @@
 %10.连续函数的拓扑刻画
-\documentclass[main.tex]{subfiles}                                              
+\documentclass[../main.tex]{subfiles}
 \begin{document}
 \section{引言}
 
@@ -7,9 +7,9 @@
 
 本章的方法是局部的，因为 B-spline 的局部支持特性。然而，可以通过节点细化将要改变的曲线或表面区域的范围缩小，或通过节点移除将其范围扩大。交互性要求快速解决方案，这反过来意味着要么是简单的方程，要么是小的线性系统，或者是一个多阶段的解决方案，其中关键的交互阶段是快速的。第 11.2 节和第 11.3 节的方法简单且非常快速。第 11.4 节的形状算子需要将节点细化和节点移除作为前处理和后处理步骤。第 11.5 节中的技术需要将(通常较小的)矩阵反转作为前处理步骤。我们详细发展本章的数学，但仅提供可能的用户交互和算法组织的概要。用户界面和图形交互超出了本书的范围，而算法组织可以依赖于这些以及应用领域。
 
-在“形状控制与修改”这一广泛类别下，许多有趣的话题被排除在本章之外——必须在某处划定界限。有关“修整”或“平滑”的文献正在不断增加。对于这些概念的定义并没有普遍的共识，但它们通常涉及几何连续性、拐点、凸性和曲率等属性。该领域的许多解决技术导致约束非线性最小化问题。因此，在交互速度下解决这些问题是困难的。我们建议读者参考 \(\mathrm{{Su}}\) 和 Liu [Su89] 以及 Hoschek 和 Lasser [Hosc93] 的书籍及其众多参考文献。Welch 和 Witkin [Welc92] 描述了一种表面设计方法，其中他们最小化表面上第一和第二基本形式的加权和的积分。这些形式测量表面的拉伸和弯曲 [DoCa76]。设计师不仅可以指定点和导数，还可以指定超限约束(例如，嵌入曲线)。他们的方法导致具有线性约束的二次目标函数的约束最小化。
+在“形状控制与修改”这一广泛类别下，许多有趣的话题被排除在本章之外——必须在某处划定界限。有关“修整”或“平滑”的文献正在不断增加。对于这些概念的定义并没有普遍的共识，但它们通常涉及几何连续性、拐点、凸性和曲率等属性。该领域的许多解决技术导致约束非线性最小化问题。因此，在交互速度下解决这些问题是困难的。我们建议读者参考 \(\mathrm{{Su}}\) 和 Liu \cite{Su89} 以及 Hoschek 和 Lasser \cite{Hosc93} 的书籍及其众多参考文献。Welch 和 Witkin \cite{Welc92} 描述了一种表面设计方法，其中他们最小化表面上第一和第二基本形式的加权和的积分。这些形式测量表面的拉伸和弯曲 \cite{DoCa76}。设计师不仅可以指定点和导数，还可以指定超限约束(例如，嵌入曲线)。他们的方法导致具有线性约束的二次目标函数的约束最小化。
 
-一种称为自由形状变形(FFD)的技术可以用于粗略造型、变形和雕刻曲线和表面的集合(例如，可以形成一个封闭的物体)。几何体被认为嵌入在一个三维塑料环境中，该环境由三变量张量积贝塞尔或 B 样条函数定义(将 (u, v, w) 参数映射到 (x, y, z) 空间)。通过移动控制点来变形周围的塑料 \({\mathbf{P}}_{i,j,k}\) ，物体几何体继承这种变形。有关 FFD 的进一步阅读可以在 [Sede86; Coqu90, 91; Hsu92] 中找到。
+一种称为自由形状变形(FFD)的技术可以用于粗略造型、变形和雕刻曲线和表面的集合(例如，可以形成一个封闭的物体)。几何体被认为嵌入在一个三维塑料环境中，该环境由三变量张量积贝塞尔或 B 样条函数定义(将 (u, v, w) 参数映射到 (x, y, z) 空间)。通过移动控制点来变形周围的塑料 \({\mathbf{P}}_{i,j,k}\) ，物体几何体继承这种变形。有关 FFD 的进一步阅读可以在 \cite{Sede86,Coqu90,Coqu91,Hsu92} 中找到。
 
 B-spline 曲面(曲线)可以叠加形成一个新的曲面(曲线)。换句话说，如果一组曲面 \({\mathbf{S}}_{1},\ldots ,{\mathbf{S}}_{n}\) 都在相同的 \(u\) 和 \(v\) 节点向量上定义，则新曲面由相同的节点向量和控制点定义。
 
@@ -17,11 +17,11 @@ B-spline 曲面(曲线)可以叠加形成一个新的曲面(曲线)。换句话�
 {\mathbf{P}}_{i,j} = {\alpha }_{1}{\mathbf{P}}_{i,j}^{1} + \cdots  + {\alpha }_{n}{\mathbf{P}}_{i,j}^{n}
 \]
 
-其中 \(\left\{  {\alpha }_{k}\right\}\) 是标量， \(\left\{  {\mathbf{P}}_{i,j}^{k}\right\}\) 是定义 \({\mathbf{S}}_{k}\) 的控制点。Gordon 和 Coons 曲面的 NURBS 构造就是这种情况的例子(见方程 [10.33] 和 [10.43])。这表明可以使用“加法”或“修正”曲面或曲面补丁。可以使用小而简单的部分，然后将它们叠加形成一个新曲面或修改现有曲面的某个区域。边界条件易于控制。几位作者已经使用这些技术进行交互式曲面设计(见 [Fors88; Mats92; Welc92])。
+其中 \(\left\{  {\alpha }_{k}\right\}\) 是标量， \(\left\{  {\mathbf{P}}_{i,j}^{k}\right\}\) 是定义 \({\mathbf{S}}_{k}\) 的控制点。Gordon 和 Coons 曲面的 NURBS 构造就是这种情况的例子(见方程 [10.33] 和 [10.43])。这表明可以使用“加法”或“修正”曲面或曲面补丁。可以使用小而简单的部分，然后将它们叠加形成一个新曲面或修改现有曲面的某个区域。边界条件易于控制。几位作者已经使用这些技术进行交互式曲面设计(见 \cite{Fors88,Mats92,Welc92})。
 
 
 
-\section{控制点重新定位}
+\section{控制点重新定位}\BookIndexMark{p0205}
 
 设 \(\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{R}_{i,p}\left( u\right) {\mathbf{P}}_{i}\) 为一个有理或非有理的 B-spline 曲线。我们想要重新定位一个任意控制点 \({\mathbf{P}}_{k},0 \leq  k \leq  n\) 。用 \({\widehat{\mathbf{P}}}_{k}\) 表示新的、平移后的控制点，用 \(\mathbf{V} = {\widehat{\mathbf{P}}}_{k} - {\mathbf{P}}_{k}\) 表示平移向量。则新曲线 \(\widehat{\mathbf{C}}\left( u\right)\) 由下式给出:
 
@@ -53,14 +53,22 @@ B-spline 曲面(曲线)可以叠加形成一个新的曲面(曲线)。换句话�
 \alpha  = \frac{d}{\left| \mathbf{V}\right| {R}_{k,p}\left( \bar{u}\right) } \tag{11.3}
 \]
 
+
+
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_516_271_1401_990_633_0.jpg}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_01.tex}
+\par\smallskip
+图 11.1. 重新定位$P_4$引起的曲线局部移动（代表性控制数据）。\\
+三次曲线采用$\bar u=3/5$、$t_4=(u_5+u_6+u_7)/3=0.52$；实线为原曲线，虚线为移动后的曲线。\\
+$P_4$向下移动2个坐标单位，曲线上点的移动为$2N_{4,3}(u)$，$d$和$d_{\max}$取自同一个真实基函数。\\
+下方基函数与上方曲线均由原始节点和控制点精确生成；支撑区间$[u_4,u_8)$之外的整段曲线保持不变。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 11.1。通过重新定位 \({\mathbf{P}}_{4}\) 移动 \(\mathbf{P} = \mathbf{C}\left( {\bar{u} = 3/5}\right)\) ；相应的节点是 \({t}_{4} = {0.52}\) ，曲线的度数为三。
-
-从用户界面的角度来看，控制点重新定位有两种广泛的方法，区别在于用户是选择控制多边形还是曲线。在第一种情况下，用户可能会指定一个向量方向和距离，然后选择控制多边形上的一个点。如果选择的点是一个现有的控制点，系统会简单地平移它并重新绘制曲线。如果不是，那么系统通过逆节点插入将该点变为控制点(见第5章，方程[5.19]-[5.21])，然后平移新的控制点并重新绘制曲线。在第二种情况下，设计师选择一个曲线点 \(\mathbf{P}\) (系统由此计算 \(\bar{u}\) )，然后选择要移动到的点 \(\widehat{\mathbf{P}}\) (系统由此计算 \(d\) 和 \(\mathbf{V}\) )。系统需要选择一个控制点 \({\mathbf{P}}_{k}\) 进行平移，以产生 \(\mathbf{P}\) 所需的移动。一般来说，最多有 \(p + 1\) 个候选者，但通常希望选择 \({\mathbf{P}}_{k}\) ，使得 \({R}_{k,p}\left( u\right)\) 成为其最大值最接近 \(\bar{u}\) 的基函数。一个通常相当接近(但不一定重合于)任意基函数最大值的参数值 \({R}_{i,p}\left( u\right)\) 被称为节点 \({t}_{i}\) ，其定义为(见[Ries73])。
+从用户界面的角度来看，控制点重新定位有两种广泛的方法，区别在于用户是选择控制多边形还是曲线。在第一种情况下，用户可能会指定一个向量方向和距离，然后选择控制多边形上的一个点。如果选择的点是一个现有的控制点，系统会简单地平移它并重新绘制曲线。如果不是，那么系统通过逆节点插入\BookIndexMark{p0206}将该点变为控制点(见第5章，方程[5.19]-[5.21])，然后平移新的控制点并重新绘制曲线。在第二种情况下，设计师选择一个曲线点 \(\mathbf{P}\) (系统由此计算 \(\bar{u}\) )，然后选择要移动到的点 \(\widehat{\mathbf{P}}\) (系统由此计算 \(d\) 和 \(\mathbf{V}\) )。系统需要选择一个控制点 \({\mathbf{P}}_{k}\) 进行平移，以产生 \(\mathbf{P}\) 所需的移动。一般来说，最多有 \(p + 1\) 个候选者，但通常希望选择 \({\mathbf{P}}_{k}\) ，使得 \({R}_{k,p}\left( u\right)\) 成为其最大值最接近 \(\bar{u}\) 的基函数。一个通常相当接近(但不一定重合于)任意基函数最大值的参数值 \({R}_{i,p}\left( u\right)\) 被称为节点\BookIndexMark{p0207} \({t}_{i}\) ，其定义为(见\cite{Ries73})。
 
 \[
 {t}_{i} = \frac{1}{p}\mathop{\sum }\limits_{{j = 1}}^{p}{u}_{i + j}\;i = 0,\ldots ,n \tag{11.4}
@@ -74,7 +82,37 @@ B-spline 曲面(曲线)可以叠加形成一个新的曲面(曲线)。换句话�
 
 当然，这些节点可以作为起始值，通过牛顿迭代法来寻找最大值。
 
-图 11.2 和 11.3 显示了两个控制点重新定位的情况，其中索引 \(k\) 是基于 \(\bar{u}\) 与节点的接近度选择的。注意，图 11.2 是令人愉悦的，而图 11.3 是不对称且不令人愉悦的。原因在于，在图 \({11.2}\bar{u}\) 中非常接近节点 \({t}_{k}\) (并且接近 \({R}_{k,p}\left( u\right)\) 的最大值)，因此曲线的平移在 \(\mathbf{C}\left( \bar{u}\right)\) 周围是相当对称的，并且在那里大致达到最大值。在图 11.3 中， \(\bar{u}\) 位于 \({t}_{k}\) 和 \({t}_{k + 1}\) 之间的中点(但选择了 \({t}_{k}\) )，因此最大平移发生在 \(\mathbf{C}\left( \bar{u}\right)\) 的左侧。对此困境有两种解决方案:
+
+
+\begin{center}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_02.tex}
+\par\smallskip
+图 11.2. 单控制点$P_3$重新定位，$p=3$、$t_3=0.35$。\\
+选定$\bar u=0.37$，接近对应节点；实线为原曲线，虚线为修改曲线，细线为实际点位移，彼此平行但长度随参数变化。\\
+两较大圈点为$P=C(\bar u)$与$\widehat P$；其距离精确为$6/5$，方向为单位向量$(7/25,-24/25)$。\\
+本组示例采用相同曲线、移动方向和目标距离；控制点与节点数据记录于源码。
+\end{minipage}
+\end{center}
+
+
+
+\begin{center}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_03.tex}
+\par\smallskip
+图 11.3. 单控制点$P_3$重新定位，$p=3$、$t_3=0.35$。\\
+选定$\bar u=0.43$，接近$t_3$与$t_4=0.52$的中点；最大位移发生在选定点左侧，修改表现不对称。\\
+两较大圈点为$P=C(\bar u)$与$\widehat P$；其距离精确为$6/5$，方向为单位向量$(7/25,-24/25)$。\\
+本组示例采用相同曲线、移动方向和目标距离；控制点与节点数据记录于源码。
+\end{minipage}
+\end{center}
+
+图 11.2 和 11.3 显示了两个控制点重新定位的情况，其中索引 \(k\) 是基于 \(\bar{u}\) 与节点的接近度选择的。注意，图 11.2 是令人愉悦的，而图 11.3 是不对称且不令人愉悦的。原因在于，在图 \({11.2}\bar{u}\) 中非常接近节点 \({t}_{k}\) (并且接近 \({R}_{k,p}\left( u\right)\) 的最大值)，因此曲线的平移在 \(\mathbf{C}\left( \bar{u}\right)\) 周围是相当对称的，并且在那里大致达到最大值。在图 11.3 中， \(\bar{u}\) 接近 \({t}_{k}\) 和 \({t}_{k + 1}\) 之间的中点(但选择了 \({t}_{k}\) )，因此最大平移发生在 \(\mathbf{C}\left( \bar{u}\right)\) 的左侧。对此困境有两种解决方案:
 
 \begin{itemize}
 \item 插入一个节点，以便将一个节点放置在 \(\bar{u}\) ；
@@ -96,30 +134,43 @@ B-spline 曲面(曲线)可以叠加形成一个新的曲面(曲线)。换句话�
 \widehat{u} = p\bar{u} - \mathop{\sum }\limits_{{j = 2}}^{p}{u}_{k + j} \tag{11.6}
 \]
 
+
+
+图11.4显示了图11.3的曲线。将来自方程(11.6)的节点 \(\widehat{u}\) 插入，以强制 \(\bar{u}\) 成为第 \(\left( {k + 1}\right)\) 个节点。然后将得到的 \({\mathbf{Q}}_{k + 1}\) 移动以实现所需的曲线修改。请注意对称性和变化域的减小。
+
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_518_278_266_984_460_0.jpg}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_04.tex}
+\par\smallskip
+图 11.4. 对图11.3的同一曲线插入节点后，重新定位新控制点$Q_4$。\\
+按式(11.6)插入$\widehat u=0.44$，使新节点平均值$t_4=0.43=\bar u$；插入本身精确保持原曲线。\\
+移动$Q_4$使同一选定点沿相同方向移动$6/5$；实际位移线较集中，变化支撑域由$[0,.71)$缩为$[.2,.71)$。\\
+$P_3,P_4$为原控制点，$Q_3,Q_5$为插入生成的相邻控制点；原曲线、目标点、方向和绘图尺度与前两图一致。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 11.2。通过重新定位 \({\mathbf{P}}_{3}\) 移动 \(\mathbf{P} = \mathbf{C}\left( {\bar{u} = {0.37}}\right)\) ；相应的节点是 \({t}_{3} = {0.35}\) ，曲线的度数为三。注意曲线一段的平行平移。
+我们提醒读者， \(\widehat{u}\) 可能已经是一个节点，插入它可能是不必要的。例如，设 \(\mathbf{C}\left( u\right)\) 为图11.5中的二次曲线。节点为 \({t}_{i} = \{ 0,1/8,3/8,5/8,7/8,1\}\) 。如果设计者选择了点，使得 \(\bar{u} = 1/2\) ，那么根据方程(11.6)有 \(\widehat{u} = 1/2\) 。如果插入 \(\widehat{u} = 1/2\) ，则 \(\bar{u}\) 成为节点 \({t}_{3}\) ，如果移动 \({\mathbf{Q}}_{3}\left( { = \mathbf{C}\left( {1/2}\right) }\right)\) ，则得到的曲线在 \(u = 1/2\) 处有一个尖点，如图11.5所示。
 
-图11.4显示了图11.3的曲线。将来自方程(11.6)的节点 \(\widehat{u}\) 插入，以强制 \(\bar{u}\) 成为第 \(\left( {k + 1}\right)\) 个节点。然后将得到的 \({\mathbf{Q}}_{k + 1}\) 移动以实现所需的曲线修改。请注意对称性和变化域的减小。我们提醒读者， \(\widehat{u}\) 可能已经是一个节点，插入它可能是不必要的。例如，设 \(\mathbf{C}\left( u\right)\) 为图11.5中的二次曲线。节点为 \({t}_{i} = \{ 0,1/8,3/8,5/8,7/8,1\}\) 。如果设计者选择了点，使得 \(\bar{u} = 1/2\) ，那么根据方程(11.6)有 \(\widehat{u} = 1/2\) 。如果插入 \(\widehat{u} = 1/2\) ，则 \(\bar{u}\) 成为节点 \({t}_{3}\) ，如果移动 \({\mathbf{Q}}_{3}\left( { = \mathbf{C}\left( {1/2}\right) }\right)\) ，则得到的曲线在 \(u = 1/2\) 处有一个尖点，如图11.5所示。
+\begin{center}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_05.tex}
+\par\smallskip
+图 11.5. 在原有二次节点处再次插入后，移动新控制点产生尖角。\\
+原节点平均值为$\{0,1/8,3/8,5/8,7/8,1\}$；插入已有节点$1/2$使其重数成为2，且$Q_3=C(1/2)$。\\
+插入本身保持原曲线及其一阶连续性；随后将$Q_3$向下移动$9/5$，曲线位置连续，但在$u=1/2$左右的切向不一致。\\
+实线、虚线分别为移动前后曲线，细线为同参数点的真实位移；代表性控制点和左右导数记录于源码。
+\end{minipage}
+\end{center}
 
 假设我们现在想要沿着 \(\mathbf{V}\) 移动 \(\mathbf{P} = \mathbf{C}\left( \bar{u}\right)\) 一个距离 \(d\) ，通过在 \(\mathbf{V}\) 方向上平移 \({\mathbf{P}}_{k}\) 和 \({\mathbf{P}}_{k + 1}\) (假设 \(\bar{u} \in  \left\lbrack  {{u}_{k + 1},{u}_{k + p + 1}}\right)\) )。设定
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_518_271_1548_984_489_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图11.3。通过重新定位 \({\mathbf{P}}_{3}.\bar{u} = {0.43} = 1/2\left( {{t}_{3} + {t}_{4}}\right)\) 移动 \(\mathbf{P} = \mathbf{C}\left( \bar{u}\right)\) ；对应的节点是 \({t}_{3} = {0.35}\) ，曲线的度数为三。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_519_273_269_985_500_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图11.4。通过节点插入获得的新控制点的重新定位；曲线的度数为三。
 
 \(0 \leq  \gamma  \leq  1\) ，我们设定
 
@@ -149,23 +200,40 @@ B-spline 曲面(曲线)可以叠加形成一个新的曲面(曲线)。换句话�
 \alpha  = \frac{d}{\left| \mathbf{V}\right| \left\lbrack  {\left( {1 - \gamma }\right) {R}_{k,p}\left( \bar{u}\right)  + \gamma {R}_{k + 1,p}\left( \bar{u}\right) }\right\rbrack  } \tag{11.9}
 \]
 
+
+
+图 11.6a 显示了图 11.3 的曲线。 \({\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4}\) 都被移动了，使用了 \(\gamma=8/17\simeq0.47\)（由公式[11.8]计算的默认值）。显然，这种方法的缺点是变化的范围更广，即 \(\left\lbrack  {{u}_{k},{u}_{k + p + 2}}\right)\) 。在图 11.6b 中， \({\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4}\) 被移动，使用了 \(\gamma  = 4/5\) 。
+
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_519_271_1620_994_437_0.jpg}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_06.tex}
+\par\smallskip
+图 11.6. 同时移动$P_3$和$P_4$，两例均采用图11.3的曲线及$\bar u=0.43$。\\
+(a) 按式(11.8)取默认$\gamma=8/17\simeq0.47$；(b) 取$\gamma=4/5$，使$P_4$承担更大比例的移动。\\
+两例均按式(11.9)求$\alpha$，使同一选定点沿单位方向$(7/25,-24/25)$精确移动$6/5$。\\
+粗箭头为控制点移动，细线为同参数点的实际位移；实线和虚线分别为原曲线和修改曲线。\\
+两图与此前例子使用相同尺度和字号，修改支撑域扩大为$[0,.9)$；控制数据记录于源码。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 11.5. 通过节点插入获得的新控制点的重新定位；曲线的度数为二。
-
-图 11.6a 显示了图 11.3 的曲线。 \({\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4}\) 都被移动了，使用了 \(\gamma  = {0.47}\) (由公式 [11.8] 计算的默认值)。显然，这种方法的缺点是变化的范围更广，即 \(\left\lbrack  {{u}_{k},{u}_{k + p + 2}}\right)\) 。在图 11.6b 中， \({\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4}\) 被移动，使用了 \(\gamma  = 4/5\) 。
 
 使用这些工具，可以轻松实现一个用户友好、互动式的图形界面，用于控制点的重新定位。注意，当 \({\mathbf{P}}_{k}\) 沿相同的向量方向反复平移时，公式 (11.3) 中的值 \({R}_{k,p}\left( \bar{u}\right)\) 不会改变(因此 \(\alpha\) 也不会改变)。此外，只有曲线中 \(\left\lbrack  {{u}_{k},{u}_{k + p + 1}}\right)\) 的图像部分需要在每次重新定位时进行图形更新。图 11.7 显示了一个控制点的增量重新定位。指定了一个增量 \({\Delta d}\) ，它固定了一个 \({\Delta \alpha }\) 。相关的控制点然后被平移一个增量 \({\Delta \alpha }\mathbf{V}\) ，并且在每次激活指定的图形输入时，相关的曲线段被重新绘制。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_520_269_916_993_1149_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.6. 同时重新定位 \({\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4};\bar{u} = {0.43}\) 。 (a) \(\gamma  = {0.47}\) (默认)；(b) \(\gamma  = 4/5\) 。
+
+\begin{center}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_07.tex}
+\par\smallskip
+图 11.7. 在$\bar u=3/5$处，以四个相等的距离增量拉动同一条三次曲线。\\
+每次选定点精确移动$\Delta d=2/5$，控制点$P_4$按固定$\Delta\alpha=\Delta d/N_{4,3}(3/5)$沿同一单位方向移动。\\
+四条虚线为各步实际曲线；选定参数处的五个圈点共线且相邻距离相等，终点为$\widehat P$。\\
+细线显示最终实际位移；支撑域外的整段曲线不变。节点、控制点与增量核验记录于源码。
+\end{minipage}
+\end{center}
 
 最后，设计师可以通过选择两个额外的曲线点 \({\mathbf{Q}}_{1}\) 和 \({\mathbf{Q}}_{2}\) 来轻松限制曲线应变化的域，这两个点确定参数 \({\bar{u}}_{1}\) 和 \({\bar{u}}_{2}\) ，满足 \({\bar{u}}_{1} < \bar{u} < {\bar{u}}_{2}\) 。如果 \({\bar{u}}_{1}\) 和 \({\bar{u}}_{2}\) 还不是节点，则每个节点插入一次。然后，如果必要的话，在区间 \(\left\lbrack  {{\bar{u}}_{1},\bar{u}}\right)\) 和 \(\left\lbrack  {\bar{u},{\bar{u}}_{2}}\right)\) 上插入额外的节点，以确保存在一个合适的控制点 \({\mathbf{P}}_{k}\) ，使得 \(\bar{u}\) 接近节点 \({t}_{k}\) 、 \({\bar{u}}_{1} \leq  {u}_{k}\) 和 \({u}_{k + p + 1} \leq  {\bar{u}}_{2}\) 。节点不应以大于一个的重数插入，因为这可能导致在移动控制点时出现不必要的不连续性。
 
@@ -215,35 +283,46 @@ B-spline 曲面(曲线)可以叠加形成一个新的曲面(曲线)。换句话�
 {\widehat{\mathbf{P}}}_{k + 1,\ell  + 1} = {\mathbf{P}}_{k + 1,\ell  + 1} + {\delta \gamma \alpha }\mathbf{V} \tag{11.13}
 \]
 
-(11.14)
+\[
+\BookFigure[max width=\linewidth]{ch11/fig_11_08.tex}
+\tag{11.14}
+\]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_522_278_250_980_583_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 11.7。通过重新定位 \({\mathbf{P}}_{4};\bar{u} = 3/5\) 以相等的增量拉动曲线。
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_522_301_976_902_110_0.jpg}
-\end{center}
-\hspace*{3em} 
+ 
 
 图 11.8a 和 11.8b 显示了一个控制点的转换，图 11.9a 和 11.9b 则说明了四个相邻控制点的同时移动。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_522_348_1252_827_836_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.8. 重新定位 \({\mathbf{P}}_{4,3}\) ，与 \(\bar{u} = \bar{v} = {0.55}\) 。 (a) 控制网；(b) 一个表面，其局部补丁沿控制点移动的方向平行移动。
+
+
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_523_348_238_846_850_0.jpg}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_09.tex}\hspace{1cm}\BookFigure[max width=\linewidth]{ch11/fig_11_10.tex}
+\par\smallskip
+图 11.8. 按式(11.10)—(11.11)移动曲面控制点$P_{4,3}$，选定$\bar u=\bar v=0.55$。\\
+(a) 代表性三次$u$、二次$v$曲面的$9\times7$控制网，圈点与箭头表示原控制点及其实际移动；\\
+(b) 原曲面的细网格、修改后局部等参数虚线及同参数点的实际位移箭头，两个圈点的距离精确为$3/5$。\\
+只有$P_{4,3}$移动，故$\widehat S-S=N_{4,3}(u)N_{3,2}(v)\alpha(0,0,1)$；位移方向相同，大小随基函数变化。\\
+变化范围为$[.2,.9)\times[.2,.8)$，外部整片曲面保持不变；两图同投影、尺度、字号，控制数据记录于源码。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 11.8. (续)。
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_11.tex}
+\par\smallskip
+图 11.9. 对图11.8的同一曲面，按式(11.13)—(11.14)同时移动四个相邻控制点。\\
+(a) $P_{4,3},P_{5,3},P_{4,4},P_{5,4}$的实际移动及新邻接边；按节点平均值取$\delta=24/55$、$\gamma=1/2$。\\
+(b) 在$\bar u=\bar v=3/5$处的选定点精确向上移动$3/5$，虚线与箭头表示真实局部曲面及位移。\\
+修改范围扩大为$[.2,1)\times[.2,1)$，全部四条边界曲线仍保持不变；网格来自同一组原曲面数据。\\
+两图与图11.8共用投影、尺度、字号和线宽；控制点、混合系数和核验数据记录于源码。
+\end{minipage}
+\end{center}
 
 类似于曲线情况，节点插入可以用来限制表面变化的矩形域，而逆节点插入可以用来在表面控制网的边缘指定位置获取额外的控制点。点 \({\mathbf{Q}}_{u}\) 在 \(u\) 方向上，由公式插入。
 
@@ -257,7 +336,7 @@ B-spline 曲面(曲线)可以叠加形成一个新的曲面(曲线)。换句话�
 \alpha  = \frac{{w}_{k,\ell }\left| {{\mathbf{Q}}_{u} - {\mathbf{P}}_{k,\ell }}\right| }{{w}_{k,\ell }\left| {{\mathbf{Q}}_{u} - {\mathbf{P}}_{k,\ell }}\right|  + {w}_{k + 1,\ell }\left| {{\mathbf{P}}_{k + 1,\ell } - {\mathbf{Q}}_{u}}\right| }
 \]
 
-(见 [Pieg89d])。同样， \({\mathbf{Q}}_{v}\) 由以下公式插入。
+(见 \cite{Pieg89d})。同样， \({\mathbf{Q}}_{v}\) 由以下公式插入。
 
 \[
 \widehat{v} = {v}_{\ell  + 1} + \beta \left( {{v}_{\ell  + q + 1} - {v}_{\ell  + 1}}\right)  \tag{11.16}
@@ -271,20 +350,15 @@ B-spline 曲面(曲线)可以叠加形成一个新的曲面(曲线)。换句话�
 
 
 
-\section{权重修改}
+\section{权重修改}\BookIndexMark{p0208}
 
 在本节中，我们研究修改权重的效果，特别是对曲线的一个或两个相邻权重，以及对表面的一个权重。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_524_339_241_867_1802_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 11.9. 重新定位四个表面控制点 \({\mathbf{P}}_{4,3},{\mathbf{P}}_{5,3},{\mathbf{P}}_{4,4}\) 和 \({\mathbf{P}}_{5,4}\) ，与 \(\bar{u} = \bar{v} = 3/5\) 。 (a) 控制网；(b) 一个表面，其局部补丁沿控制点移动的方向平行移动。
 
 
 
-\subsection{单曲线权重的修改}
+
+\subsection{单曲线权重的修改}\BookIndexMark{p0209}
 让
 
 \[
@@ -390,11 +464,16 @@ B-spline 曲面(曲线)可以叠加形成一个新的曲面(曲线)。换句话�
 \]
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_527_291_254_956_710_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_12.tex}
+\par\smallskip
+图 11.10. 权重的几何意义：同一控制多边形，仅改变$w_4$。\\
+点线、实线、虚线分别取$w_4=0,1,4$；在同一$\bar u=1/2$处得到$R,M,P$。\\
+三点与$P_4$严格共线，式(11.24)的交比恰为4；其余权重均为1。\\
+控制多边形与节点采用明确记录于源码的代表性数据。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 11.10. 权重的几何意义。
 
 其中
 
@@ -468,7 +547,7 @@ s = \frac{{N}_{k,p}\left( \bar{u}\right) }{\mathop{\sum }\limits_{{i \neq  k}}{N
 = \frac{1 - s}{\mathrm{\;s}}/\frac{1 - t}{t} = \frac{{\mathbf{P}}_{k}\mathbf{M}}{\mathbf{{RM}}}/\frac{{\mathbf{P}}_{k}\mathbf{P}}{\mathbf{{RP}}} \tag{11.24}
 \]
 
-方程 (11.24) 表示 \({w}_{k}\) 是四个点 \({\mathbf{P}}_{k},\mathbf{R},\mathbf{M}\) 和 \(\mathbf{P}\) 的交比，记作 \(\left( {{\mathbf{P}}_{k},\mathbf{R};\mathbf{M},\mathbf{P}}\right)\) (见 [Coxe74; Boeh94])。交比是射影几何中的一个基本量。关于 NURBS 曲线的形状修改，我们提到方程 (11.21)-(11.24) 的以下结果:
+方程 (11.24) 表示 \({w}_{k}\) 是四个点 \({\mathbf{P}}_{k},\mathbf{R},\mathbf{M}\) 和 \(\mathbf{P}\) 的交比，记作 \(\left( {{\mathbf{P}}_{k},\mathbf{R};\mathbf{M},\mathbf{P}}\right)\) (见 \cite{Coxe74,Boeh94})。交比是射影几何中的一个基本量。关于 NURBS 曲线的形状修改，我们提到方程 (11.21)-(11.24) 的以下结果:
 
 \begin{itemize}
 \item 当 \({w}_{k}\) 增加(减少)时， \(t\) 增加(减少)，因此曲线被拉向(推离) \({\mathbf{P}}_{k}\) 。
@@ -522,7 +601,7 @@ s = \frac{{N}_{k,p}\left( \bar{u}\right) }{\mathop{\sum }\limits_{{i \neq  k}}{N
 {\widehat{w}}_{k} = {w}_{k}\left( {1 \pm  \frac{d}{{R}_{k,p}\left( \bar{u}\right) \left( {{\mathbf{P}}_{k}\mathbf{P} \mp  d}\right) }}\right)  \tag{11.25}
 \]
 
-当 \(\pm\) 或 \(\mp\) 出现时，拉操作时取上符号，推操作时取下符号 [Pieg89c]。
+当 \(\pm\) 或 \(\mp\) 出现时，拉操作时取上符号，推操作时取下符号 \cite{Pieg89c}。
 
 为了实现一个用户界面以修改一个曲线权重，设计者在曲线上选择一个点 \(\mathbf{P}\) 和控制多边形上的一个点。系统计算参数 \(\bar{u}\) 使得 \(\mathbf{P} = \mathbf{C}\left( \bar{u}\right)\) 。如果在控制多边形上选择的点还不是控制点，系统通过使用逆节点插入将其变为控制点。将控制点表示为 \({\mathbf{P}}_{k}\) 。然后系统通过 \(\mathbf{P}\) 和 \({\mathbf{P}}_{k}\) 画一条线。设计者在这条线上选择点 \(\widehat{\mathbf{P}}\) ，允许系统计算 \(d\) ，最后从方程 (11.25) 中得到 \({\widehat{w}}_{k}\) 。读者应注意到
 
@@ -535,29 +614,57 @@ s = \frac{{N}_{k,p}\left( \bar{u}\right) }{\mathop{\sum }\limits_{{i \neq  k}}{N
 \end{itemize}
 
 \begin{itemize}
-\item 如果我们固定权重变化 \(\Delta {w}_{k}\) ，并将距离 \(d\left( u\right)  =\)  \(\left| {\mathbf{C}\left( {u;{w}_{k}}\right)  - \mathbf{C}\left( {u;{\widehat{w}}_{k}}\right) }\right|\) 视为 \(u\) 的函数，则根据公式 (11.25)，可以得出 \(d\left( u\right)\) 在 \({R}_{k,p}\left( u\right)\) 的最大值处达到其最大值(图 11.11)；
+\item 如果我们固定权重变化 \(\Delta {w}_{k}\) ，并将距离 \(d\left( u\right)  =\)  \(\left| {\mathbf{C}\left( {u;{w}_{k}}\right)  - \mathbf{C}\left( {u;{\widehat{w}}_{k}}\right) }\right|\) 视为 \(u\) 的函数，由式(11.25)有$d(u)=|\Delta w_k|R_{k,p}(u)|P_k-C(u)|/|w_k+\Delta w_k R_{k,p}(u)|$。因此位移峰值还取决于曲线点到控制点的距离；一般不能仅由$R_{k,p}$的峰值决定（图11.11）；
 \end{itemize}
 
 \begin{itemize}
 \item 从实际的角度来看，权重修改只能/应该用于对曲线进行小幅度的变化。对于拉动操作， \({\mathbf{P}}_{k}\) 显然是可能拉动长度的内置限制。这个限制可能非常严格，特别是在通过逆结点插入添加 \({\mathbf{P}}_{k}\) 的情况下。此外，即使是适度的推拉操作通常也需要对权重进行 substantial 的修改；而广泛变化的权重可能会导致非常糟糕的参数化，这往往会在后续造成意想不到的问题。图 11.11 和 11.12 显示了这样的例子。因此，在严肃的软件实现中，限制可允许的权重值范围可能是明智的；
 \end{itemize}
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_530_318_1327_902_663_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.11. 通过改变权重 \({w}_{4} = {0.2}\) ，将曲线在 \({t}_{4} = u = {0.52}\) 处拉动 \(d = {0.075}\) 的距离朝向 \({\mathbf{P}}_{4}\) ；计算出的新权重为 \({\widehat{w}}_{4} = {2.45}\) 。注意由于权重变化而产生的曲线段的透视变换。
+
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_13.tex}
+\par\smallskip
+图 11.11. 仅改变$w_4=0.2$，在$t_4=\bar u=0.52$处将点$P$朝$P_4$拉动$d=0.075$。\\
+式(11.25)给出$\widehat w_4=2.45$；实线为原曲线，虚线为修改曲线，细线连接同参数点。\\
+图11.11、11.12共用一组代表性控制点；两组指定权重和距离均严格满足，数据见源码。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_14.tex}
+\par\smallskip
+图 11.12. 仅改变$w_4=0.2$，在$\bar u=0.46$处将点$P$朝$P_4$拉动$d=0.075$。\\
+式(11.25)给出$\widehat w_4=0.97$；实线为原曲线，虚线为修改曲线，细线连接同参数点。\\
+图11.11、11.12共用一组代表性控制点；两组指定权重和距离均严格满足，数据见源码。
+\end{minipage}
+\end{center}
 
 \begin{itemize}
 \item 与控制点重新定位的情况一样，结点插入可以在这里用于限制曲线变化的范围，使其位于两个用户指定的曲线点之间。
 \end{itemize}
 
 图 11.13 显示了增量拉动的一个例子。注意权重的指数变化。
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_15.tex}
+\par\smallskip
+图 11.13. 沿用图11.11、11.12的同一曲线，在$t_4=\bar u=0.52$处连续拉动四个相等距离增量$\Delta d=0.022$。\\
+初始$w_4=0.2$，按式(11.25)得到$\widehat w_4\simeq0.406,0.777,1.641,5.947$；各步位移严格等距。\\
+下方线性权重轴显示所需权重增量迅速增大；数值由本组代表性数据重新计算。
+\end{minipage}
+\end{center}
 
 
 
-\subsection{两个相邻曲线权重的修改}
+
+\subsection{两个相邻曲线权重的修改}\BookIndexMark{p0210}
 
 现在我们考虑同时修改两个邻近曲线的权重， \({w}_{k}\) 和 \({w}_{k + 1}\) 。这样的修改会将曲线拉向(或推离)控制多边形的边 \({\mathbf{P}}_{k}{\mathbf{P}}_{k + 1}\) 。固定 \(\bar{u} \in  \left\lbrack  {{u}_{k + 1},{u}_{k + p + 1}}\right)\) ，设 \(\mathbf{P} =\)  \(\mathbf{C}\left( {\bar{u};{w}_{k},{w}_{k + 1}}\right)\) 并定义
 
@@ -571,28 +678,12 @@ s = \frac{{N}_{k,p}\left( \bar{u}\right) }{\mathop{\sum }\limits_{{i \neq  k}}{N
 \mathbf{P} = \left( {1 - {a}_{k} - {a}_{k + 1}}\right) \mathbf{R} + {a}_{k}{\mathbf{P}}_{k} + {a}_{k + 1}{\mathbf{P}}_{k + 1} \tag{11.27}
 \]
 
-权重修改 527
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_531_318_1360_904_667_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.12。通过改变权重 \({w}_{4} = {0.2}\) ，将曲线在 \(u = {0.46}\) 处拉向 \({\mathbf{P}}_{4}\) 的距离 \(d = {0.075}\) ；计算得到的新权重为 \({\widehat{w}}_{4} = {0.97}\) 。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_532_348_238_836_764_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.13。通过改变权重 \({w}_{4} = {0.2}\) ，以相等增量 \(\Delta  = {0.022}\) 将曲线在 \({t}_{4} = u = {0.52}\) 处拉向 \({\mathbf{P}}_{4}\) ；计算得到的新权重为 \({\widehat{w}}_{4} =\)  \(\{ {0.4},{0.77},{1.63},{6.11}\}\) 。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_532_291_1321_954_711_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.14。通过同时改变 \({w}_{4}\) 和 \({w}_{5}\) ，同时向 \({\mathbf{P}}_{4}\) 和 \({\mathbf{P}}_{5}\) 拉动。
 
 与
 
@@ -600,7 +691,7 @@ s = \frac{{N}_{k,p}\left( \bar{u}\right) }{\mathop{\sum }\limits_{{i \neq  k}}{N
 {a}_{k} = \frac{{N}_{k,p}\left( \bar{u}\right) {w}_{k}}{\mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( \bar{u}\right) {w}_{i}}\;{a}_{k + 1} = \frac{{N}_{k + 1,p}\left( \bar{u}\right) {w}_{k + 1}}{\mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( \bar{u}\right) {w}_{i}} \tag{11.28}
 \]
 
-方程 (11.27) 表示 \(\mathbf{P}\) 位于重心坐标系 \(\left( {{\mathbf{{RP}}}_{k}{\mathbf{P}}_{k + 1}}\right)\) 的平面上(不熟悉重心坐标的读者应参考 Boehm 和 Prautzsch [Boeh94] 或 Farin [Fari93])。现在假设 \(\mathbf{P}\) 移动到一个新位置 \(\widehat{\mathbf{P}}\) 。我们必须确定新的权重 \({\widehat{w}}_{k}\) 和 \({\widehat{w}}_{k + 1}\) ，以导致所需的移动。根据方程 (11.27)， \(\widehat{\mathbf{P}}\) 可以表示为
+方程 (11.27) 表示 \(\mathbf{P}\) 位于重心\BookIndexMark{p0211}坐标系 \(\left( {{\mathbf{{RP}}}_{k}{\mathbf{P}}_{k + 1}}\right)\) 的平面上(不熟悉重心坐标的读者应参考 Boehm 和 Prautzsch \cite{Boeh94} 或 Farin \cite{Fari93})。现在假设 \(\mathbf{P}\) 移动到一个新位置 \(\widehat{\mathbf{P}}\) 。我们必须确定新的权重 \({\widehat{w}}_{k}\) 和 \({\widehat{w}}_{k + 1}\) ，以导致所需的移动。根据方程 (11.27)， \(\widehat{\mathbf{P}}\) 可以表示为
 
 \[
 \widehat{\mathbf{P}} = \left( {1 - {\widehat{a}}_{k} - {\widehat{a}}_{k + 1}}\right) \mathbf{R} + {\widehat{a}}_{k}{\mathbf{P}}_{k} + {\widehat{a}}_{k + 1}{\mathbf{P}}_{k + 1} \tag{11.29}
@@ -634,6 +725,18 @@ d = \mathop{\sum }\limits_{{i \neq  k,k + 1}}{N}_{i,p}\left( \bar{u}\right) {w}_
 {\beta }_{k + 1} = \frac{1 - {a}_{k} - {a}_{k + 1}}{{a}_{k + 1}}/\frac{1 - {\widehat{a}}_{k} - {\widehat{a}}_{k + 1}}{{\widehat{a}}_{k + 1}} \tag{11.31}
 \]
 
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_16.tex}
+\par\smallskip
+图 11.14. 同时改变相邻权重$w_4,w_5$，以重心坐标构造实际拉动及辅助线。\\
+在$\bar u=3/5$处，两权重从$1/5$同时增至1，其余权重保持1；实线与虚线为前后曲线。\\
+$R$取两权重均为零的曲线点，$Q=RP\cap P_4P_5$；$A,B,C,D$由式(11.32)的平行投影精确计算。\\
+控制多边形采用与图11.10相同的代表性数据；辅助线、交比与重心坐标均已核验。
+\end{minipage}
+\end{center}
+
 方程 (11.27)-(11.31) 导致了一种简单的几何方法来求解未知数 \({\beta }_{k}\) 和 \({\beta }_{k + 1}\) ，从而从 \({w}_{k}\) 和 \({w}_{k + 1}\) 中获得 \({\widehat{w}}_{k}\) 和 \({\widehat{w}}_{k + 1}\) 。由于 \({a}_{k},{a}_{k + 1},{\widehat{a}}_{k}\) 和 \({\widehat{a}}_{k + 1}\) 是相对于 \(\mathbf{R},{\mathbf{P}}_{k}\) 和 \({\mathbf{P}}_{k + 1}\) 的重心坐标，它们可以通过(见图 11.14)表示。
 
 \[
@@ -652,7 +755,7 @@ d = \mathop{\sum }\limits_{{i \neq  k,k + 1}}{N}_{i,p}\left( \bar{u}\right) {w}_
 
 即，同时修改退化为单一权重修改。
 
-图 11.15 和 11.16 显示了同时的推拉。注意，在图 11.15 中曲线变化是令人愉悦且对称的，而在图 11.16 中则不是。这是因为在图 11.15 中，运动沿着由 \(\mathbf{R}\) 和初始 \(\mathbf{P} = \mathbf{C}\left( {\bar{u};{w}_{k}}\right)\) 定义的线进行。在这种情况下，我们有
+图 11.15 和 11.16 显示了同时的推拉。注意，在图11.15采用保持权重比的协调拉动，而图11.16改变权重比，产生向一侧偏移的效果。这是因为在图 11.15 中，运动沿着由 \(\mathbf{R}\) 和初始 \(\mathbf{P} = \mathbf{C}\left( {\bar{u};{w}_{k}}\right)\) 定义的线进行。在这种情况下，我们有
 
 \[
 \frac{{\widehat{a}}_{k}}{{a}_{k}} = \frac{{\widehat{a}}_{k + 1}}{{a}_{k + 1}}
@@ -666,23 +769,29 @@ d = \mathop{\sum }\limits_{{i \neq  k,k + 1}}{N}_{i,p}\left( \bar{u}\right) {w}_
 
 也就是说，权重的比率被保留。
 
-同时权重修改的用户界面可能如下所示。设计师选择一个控制多边形边， \({\mathbf{P}}_{k}{\mathbf{P}}_{k + 1}\) 。系统计算相应的节点， \({t}_{k}\) 和 \({t}_{k + 1}\) ，并设置 \(\bar{u} = 1/2\left( {{t}_{k} + {t}_{k + 1}}\right)\) 。然后系统计算 \(\mathbf{R},\mathbf{P} = \mathbf{C}\left( \bar{u}\right)\) 和 \(\mathbf{Q}\) ( \(\mathbf{{RP}}\) 与 \({\mathbf{P}}_{k}{\mathbf{P}}_{k + 1}\) 的交点；见
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_17.tex}
+\par\smallskip
+图 11.15. 在$\bar u=(t_4+t_5)/2=0.608$处沿$RQ$拉动$d=0.088$。\\
+$w_4=w_5=0.05$同时改为$\widehat w_4=\widehat w_5=1.23$；权重比保持不变。\\
+两图共用一组代数构造的代表性控制点；参数、指定权重和拉动距离均严格满足，数值记录于源码。
+\end{minipage}
+\end{center}
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_534_312_1334_905_661_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_18.tex}
+\par\smallskip
+图 11.16. 在$\bar u=0.612$处沿不同于$RQ$的方向拉动$d=0.088$。\\
+$w_4=w_5=0.05$改为$\widehat w_4=1.89$、$\widehat w_5=0.48$；权重比发生变化。\\
+两图共用一组代数构造的代表性控制点；参数、指定权重和拉动距离均严格满足，数值记录于源码。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 11.15。在 \(u = 1/2\left( {{t}_{4} + {t}_{5}}\right)  = {0.608}\) 处以距离 \(d = {0.088}\) 沿着 \(\mathbf{{RQ}}\) 方向进行同时拉动，通过改变 \({w}_{4} = {w}_{5} = {0.05}\) ；新的权重为 \({\widehat{w}}_{4} = {\widehat{w}}_{5} = {1.23}\) 。曲线的变化既不是透视的也不是平行的。
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_535_312_255_907_672_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 11.16。在 \(u = {0.612}\) 处以距离 \(d = {0.088}\) 沿着与 RQ 不同的方向进行同时拉动，通过改变 \({w}_{4} = {w}_{5} = {0.05}\) ；新的权重为 \({\widehat{w}}_{4} = {1.89}\) 和 \({\widehat{w}}_{5} = {0.48}\) 。
-
-图 11.14。这些组件，包括线段 \(\mathbf{{RQ}}\) ，被绘制在屏幕上。设计师现在可以交互式地重新定位 \(\mathbf{P}\) 沿着线 \(\mathbf{{RQ}}\) ，同时系统计算新的权重并重新绘制受影响的曲线段。当然，设计师应该能够覆盖默认值 \(\bar{u}\) 和默认线段 \(\mathbf{{RQ}}\) 。
+同时权重修改的用户界面可能如下所示。设计师选择一个控制多边形边， \({\mathbf{P}}_{k}{\mathbf{P}}_{k + 1}\) 。系统计算相应的节点， \({t}_{k}\) 和 \({t}_{k + 1}\) ，并设置 \(\bar{u} = 1/2\left( {{t}_{k} + {t}_{k + 1}}\right)\) 。然后系统计算 \(\mathbf{R},\mathbf{P} = \mathbf{C}\left( \bar{u}\right)\) 和 \(\mathbf{Q}\) ( \(\mathbf{{RP}}\) 与 \({\mathbf{P}}_{k}{\mathbf{P}}_{k + 1}\) 的交点；见图11.14）。这些组件，包括线段 \(\mathbf{{RQ}}\) ，被绘制在屏幕上。设计师现在可以交互式地重新定位 \(\mathbf{P}\) 沿着线 \(\mathbf{{RQ}}\) ，同时系统计算新的权重并重新绘制受影响的曲线段。当然，设计师应该能够覆盖默认值 \(\bar{u}\) 和默认线段 \(\mathbf{{RQ}}\) 。
 
 另一种情况是允许设计师选择曲线点 \(\mathbf{P}\) (从而 \(\bar{u}\) )，然后系统通过找到两个节点 \({t}_{k}\) 和 \({t}_{k + 1}\) 来选择多边形边 \({\mathbf{P}}_{k}{\mathbf{P}}_{k + 1}\) ，使得 \({t}_{k} < \bar{u} < {t}_{k + 1}\) 。然而，如果 \(\bar{u}\) 等于或接近一个节点，这将是有问题的，因为如果任意选择一个多边形边，推拉效果是非对称的。在这种情况下，可以插入一个节点 \(\widehat{u}\) ，将 \(\bar{u}\) 放置在两个节点之间的中间位置。具体来说
 
@@ -706,10 +815,10 @@ d = \mathop{\sum }\limits_{{i \neq  k,k + 1}}{N}_{i,p}\left( \bar{u}\right) {w}_
 
 然而，我们提醒读者， \(\widehat{u}\) 可能已经是一个结；此外，生成的新多边形腿 \({\mathbf{P}}_{k}{\mathbf{P}}_{k + 1}\) 可能非常接近 \(\mathbf{P} = \mathbf{C}\left( \bar{u}\right)\) ，在这种情况下，可用的拉伸长度非常有限。
 
-最后，请注意我们之前假设修改权重的两个控制点是相邻的。这是因为这样可以产生令人满意的结果，并且通常是所期望的。然而，方程 (11.27)-(11.32) 的推导并没有利用这一假设。事实上，如果选择 \({\mathbf{P}}_{r}\) 和 \({\mathbf{P}}_{s}\) ，那么唯一的要求是 \(\bar{u} \in  \left\lbrack  {{u}_{r},{u}_{r + p + 1}}\right)\) 和 \(\bar{u} \in  \left\lbrack  {{u}_{s},{u}_{s + p + 1}}\right)\) ，以便重心坐标 \({a}_{r}\) 和 \({a}_{s}\) 不会消失。有关此情况的更多细节，请参见 [Pieg89c]。
+最后，请注意我们之前假设修改权重的两个控制点是相邻的。这是因为这样可以产生令人满意的结果，并且通常是所期望的。然而，方程 (11.27)-(11.32) 的推导并没有利用这一假设。事实上，如果选择 \({\mathbf{P}}_{r}\) 和 \({\mathbf{P}}_{s}\) ，那么唯一的要求是 \(\bar{u} \in  \left\lbrack  {{u}_{r},{u}_{r + p + 1}}\right)\) 和 \(\bar{u} \in  \left\lbrack  {{u}_{s},{u}_{s + p + 1}}\right)\) ，以便重心坐标 \({a}_{r}\) 和 \({a}_{s}\) 不会消失。有关此情况的更多细节，请参见 \cite{Pieg89c}。
 
 
-\subsection{单表面权重的修改}
+\subsection{单表面权重的修改}\BookIndexMark{p0212}
 
 修改单个表面权重 \({w}_{k,\ell }\) 类似于曲线情况。假设 \(\bar{u} \in  \left\lbrack  {{u}_{k},{u}_{k + p + 1}}\right)\) 和 \(\bar{v} \in  \left\lbrack  {{v}_{\ell },{v}_{\ell  + q + 1}}\right)\) ，并定义
 
@@ -745,7 +854,7 @@ s = \frac{{N}_{k,p}\left( \bar{u}\right) {N}_{\ell ,q}\left( \bar{v}\right) }{\m
 t = \frac{{N}_{k,p}\left( \bar{u}\right) {N}_{\ell ,q}\left( \bar{v}\right) {w}_{k,\ell }}{\mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,p}\left( \bar{u}\right) {N}_{j,q}\left( \bar{v}\right) {w}_{i,j}} = {R}_{k,\ell }\left( {\bar{u},\bar{v}}\right)  \tag{11.37}
 \]
 
-\(\left( {i,j \neq  k,\ell \text{ means exclude the }\left( {k,\ell }\right) \text{ th term. }}\right)\) 使用方程 (11.36) 和 (11.37)，可以得到交叉比
+\(\left( {i,j \neq  k,\ell \text{ means exclude the }\left( {k,\ell }\right) \text{ th term. }}\right)\) 使用方程 (11.36) 和 (11.37)，可以得到交叉比\BookIndexMark{p0213}
 
 \[
 {w}_{k,\ell } = \frac{1 - s}{\mathrm{\;s}}/\frac{1 - t}{t} = \frac{{\mathbf{P}}_{k,\ell }\mathbf{M}}{\mathbf{{RM}}}/\frac{{\mathbf{P}}_{k,\ell }\mathbf{P}}{\mathbf{{RP}}} \tag{11.38}
@@ -771,19 +880,24 @@ t = \frac{{N}_{k,p}\left( \bar{u}\right) {N}_{\ell ,q}\left( \bar{v}\right) {w}_
 {\widehat{w}}_{k,\ell } = {w}_{k,\ell }\left( {1 \pm  \frac{d}{{R}_{k,\ell }\left( {\bar{u},\bar{v}}\right) \left( {{\mathbf{P}}_{k,\ell }\mathbf{P} \mp  d}\right) }}\right)  \tag{11.39}
 \]
 
-当出现 \(\pm\) 或 \(\mp\) 时，拉动操作的情况下取上面的符号，而推送操作的情况下取下面的符号 [Pieg89d]。
+当出现 \(\pm\) 或 \(\mp\) 时，拉动操作的情况下取上面的符号，而推送操作的情况下取下面的符号 \cite{Pieg89d}。
 
 单个表面权重的修改用户界面可以以类似于曲线的方式实现。设计师可以选择一个现有的控制点或一个或两个位于控制网边缘的点；如果是两个，则它们必须位于控制网的一个四边形上，一个在 \(u\) 方向的边上，另一个在 \(v\) 方向的边上。如果没有选择现有的控制点，则使用逆节点插入来获得 \({\mathbf{P}}_{k,\ell }\) 。从那里，过程与曲线修改相同。与之前提到的五个关于曲线权重修改的备注类似的声明也适用于表面权重修改。图 11.17 说明了表面推送。
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_537_354_1252_827_785_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_19.tex}
+\par\smallskip
+图 11.17. 在$\bar u=\bar v=0.55$处减小单个权重，将曲面点推离固定控制点$P_{4,3}$，距离$d=1$。\\
+实线为原曲面，虚线为修改后的局部等参线；箭头连接同一参数点，圆点标出指定的精确位移。\\
+代表性控制网沿用图11.8的节点与其余控制点，升高$P_{4,3}$并使指定射线竖直；其余权重均为1。\\
+$N=N_{4,3}(0.55)N_{3,2}(0.55)$，$w_{4,3}$由1减为$(1-N)/(2-N)>0$，四条边界保持不变。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 11.17. 在 \(u = v = {0.55}\) 处向 \({\mathbf{P}}_{4,3}\) 推送表面，距离 \(d = 1\) ；注意表面形状的透视变化。
 
 
-\section{形状操作符}
+\section{形状操作符}\BookIndexMark{p0214}
 在此定义的形状操作符是用于粗略雕刻曲线和表面的工具。它们的操作如下:
 
 1. 指定一个局部曲线段或表面区域，在其中进行形状修改；然后使用节点细化在局部引入更多控制点；
@@ -792,7 +906,7 @@ t = \frac{{N}_{k,p}\left( \bar{u}\right) {N}_{\ell ,q}\left( \bar{v}\right) {w}_
 
 3. 对局部段或区域应用在指定容差内的节点移除，以减少定义控制点的数量。
 
-我们在这里介绍三种操作符:扭曲、展平和弯曲。文献中可以找到其他类似的操作符，例如，拉伸、扭转和渐变 [Barr83; Cobb84]。我们强调我们的算法完全基于几何；它们不考虑材料的物理特性或弹性和塑性理论。
+我们在这里介绍三种操作符:扭曲、展平和弯曲。文献中可以找到其他类似的操作符，例如，拉伸、扭转和渐变 \cite{Barr83,Cobb84}。我们强调我们的算法完全基于几何；它们不考虑材料的物理特性或弹性和塑性理论。
 
 在介绍操作符之前，我们提到一些与节点细化和移除步骤相关的问题。细化的方法和程度会影响应用形状操作符的结果。因此，尽管设计者应该免于细节，但他必须能够控制细化的程度。假设 \(\left\lbrack  {{u}_{s},{u}_{e}}\right\rbrack\) 是一个感兴趣的曲线段。如果 \({u}_{s}\) 和 \({u}_{e}\) 还不是节点，则将其插入。将 \(n\) 额外节点递归插入到 \(\left\lbrack  {{u}_{s},{u}_{e}}\right\rbrack\) 中最长节点跨度的中点是一个好的方法。这往往会生成大致均匀间隔的节点，并且希望(但不一定)控制点也会大致均匀间隔。现在，如果 \({u}_{s}\) 和 \({u}_{e}\) 是定义最终细化区间限制的节点(注意 \(e\) 在细化过程中会变化)，那么可以在不修改 \(\left\lbrack  {{u}_{s},{u}_{e}}\right\rbrack\) 外部曲线的情况下重新定位以下控制点。
 
@@ -812,7 +926,7 @@ t = \frac{{N}_{k,p}\left( \bar{u}\right) {N}_{\ell ,q}\left( \bar{v}\right) {w}_
 
 
 
-\subsection{变形}
+\subsection{变形}\BookIndexMark{p0215}
 
 扭曲是一种工具，可以用来相对任意地变形曲线的局部段或表面上的区域。首先考虑曲线扭曲，它是通过基于公式的控制点重新定位来实现的。
 
@@ -847,11 +961,14 @@ T = \left\{  {0,0,0,0,\frac{1}{4},\frac{1}{2},\frac{3}{4},1,1,1,1}\right\}   \ta
 图 11.18 显示了 \(f\left( t\right)\) 对于 \({w}_{3}\) 的几个不同值。显然，这种形式的函数适合于拉出一个隆起或在曲线上推入一个凹陷。现在假设 \({w}_{3}\) 是固定的，设计师指定一个最大变形距离 \(d\) 。变形方向 \(\mathbf{W}\) 仍需指定。合理的选择包括:
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_539_249_1517_1030_538_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_20.tex}
+\par\smallskip
+图 11.18. 式(11.43)—(11.45)的归一化有理变形函数，$w_3=1/5,1,30$。\\
+点线、虚线、实线依次对应三个权重；各曲线关于$t=1/2$对称，峰值严格为1。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 11.18. 使用有理基函数 \({R}_{3,3}\left( {t;{w}_{3}}\right)\) 和 \({w}_{3} = \left\{  {1/5,1,{30}}\right\}\) 的变形函数。
 
 \begin{itemize}
 \item 由以下给出的变量方向
@@ -877,21 +994,39 @@ T = \left\{  {0,0,0,0,\frac{1}{4},\frac{1}{2},\frac{3}{4},1,1,1,1}\right\}   \ta
 
 图 11.19a-11.19d 显示了曲线扭曲的步骤。在图 11.19a 中，选择了曲线段 \(\left\lbrack  {\mathbf{C}\left( {u}_{s}\right) ,\mathbf{C}\left( {u}_{e}\right) }\right\rbrack\) 、(恒定)方向 \(\mathbf{W}\) 和距离 \(d\) 。图 11.19b 显示了节点细化后的曲线。局部控制点被重新定位，如图 11.19c 所示。图 11.19d 描绘了应用节点移除后的最终曲线。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_540_260_1491_1009_538_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.19. 曲线扭曲。 (a) 原始曲线，跨度为 \(\left\lbrack  {\mathbf{C}\left( {u}_{s}\right) ,\mathbf{C}\left( {u}_{e}\right) }\right\rbrack\) ，将在方向 \(\mathbf{W}\) 上扭曲距离 \(d\) ；(b) 细化后的曲线跨度；(c) 重新定位的控制点；(d) 移除的节点。
+
+
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_541_249_262_1033_1377_0.jpg}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_21.tex}
+\par\medskip
+\BookFigure[max width=\linewidth]{ch11/fig_11_22.tex}
+\par\smallskip
+图 11.19. 曲线变形的实际计算步骤（同一代表性抛物线，$u_s=1/4,u_e=3/4$）。\\
+(a) 原三次曲线和指定方向$W=(0,-1)$、上限$d=3/5$；(b) 区间内三轮中点细化，曲线完全不变。\\
+(c) 按控制多边形累积弦长确定$t_i$，以$w_3=1$应用式(11.48)；点线为原曲线。\\
+(d) 在全曲线误差预算$\varepsilon=1/200$内实际移除节点；误差以公共基函数系数给出严格上界。\\
+两端区间外的曲线始终完全保持不变；全部控制点、细化和移除记录见源码。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 11.19. (续。)
 
 改变定义参数的效果在图 11.20a-11.20c 中得以展示。在图 11.20a 中，使用不同的权重来“平方”扭曲区域。图 11.20b 显示了在保持权重和距离不变的情况下，改变扭曲方向的效果。最后，在图 11.20c 中，应用不同的距离来控制扭曲的幅度。
+
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_23.tex}
+\par\smallskip
+图 11.20. 相同曲线段、细化和弦长参数下，分别改变式(11.48)的三个参数。\\
+(a) $w_3=1/5,1,30$，固定$d=0.12,W=(0,-1)$；(b) 固定$w_3=20,d=0.12$，改变三个单位方向。\\
+$W_1=(-3/5,-4/5),W_2=(0,-1),W_3=(3/5,-4/5)$；箭头表示各方向的上限位移。\\
+(c) 固定$w_3=20,W=(0,-1)$，取$d=0.05,0.10,0.15$；点线、虚线、实线依图例一一对应。\\
+原曲线为$C(u)=(4u/5,4u(1-u)/5)$，区间仍为$[1/4,3/4]$，区间外所有曲线完全重合。
+\end{minipage}
+\end{center}
 
 我们通过以下几点总结曲线扭曲:
 
@@ -899,12 +1034,7 @@ T = \left\{  {0,0,0,0,\frac{1}{4},\frac{1}{2},\frac{3}{4},1,1,1,1}\right\}   \ta
 \item 显然，几乎任何形状和幅度的扭曲都是可能的；只需适当地定义函数 \(f\left( t\right)\) 和 \(\mathbf{W}\left( t\right)\) 。图 11.21a 和 11.21b 显示了两个进一步的例子；
 \end{itemize}
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_542_249_278_1026_1385_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.20。曲线扭曲 (a) 使用不同的权重 \({w}_{3} = \left\{  {1/5,1,{30}}\right\}\) ；(b) 使用不同的方向 \({w}_{3} = {20}\) ；(c) 使用不同的距离 \(d = \{ {0.05},{0.1},{0.15}\}\) 。
 
 \begin{itemize}
 \item 对于交互式扭曲，设计者可能希望选择一个曲线点作为扭曲的中心，然后在滑动尺度上修改幅度 \(d\) 、权重 \({w}_{3}\) 和扭曲段的范围。该段选择尽可能对称于扭曲中心，沿控制多边形的距离进行测量。交互完成后进行节点移除；节点细化必须作为预处理步骤进行(可以在整个曲线上，或者在用户指定的“最大”段上)，或者细化必须在段长度扩展时进行更新(扩展)；
@@ -914,14 +1044,21 @@ T = \left\{  {0,0,0,0,\frac{1}{4},\frac{1}{2},\frac{3}{4},1,1,1,1}\right\}   \ta
 \item 而不是将 \({t}_{i}\) 计算为归一化距离，可以使用由方程 (11.4) 计算的 B 样条节点；在这种情况下，函数 \(f\) 和 \(\mathbf{W}\) 必须在区间 \(\left\lbrack  {{u}_{s},{u}_{e}}\right\rbrack\) 上进行参数化。
 \end{itemize}
 
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_24.tex}
+\par\smallskip
+图 11.21. 两种不同形状函数驱动的局部曲线变形，下方绘出实际使用的$f(t)$。\\
+(a) 三峰形状函数；(b) 平顶形状函数。各段用端点斜率为零的三次Hermite函数连接，函数整体为$C^1$。\\
+两例使用图11.19的同一抛物线，区间内五轮中点细化后按累积弦长应用式(11.48)，$d=3/5,W=(0,-1)$。\\
+点线表示原曲线，方框表示区间端点；区间外的曲线完全不变，明确函数及控制数据见源码。
+\end{minipage}
+\end{center}
+
 表面变形类似于曲线变形。我们区分两种类型，区域变形和表面曲线变形。在区域变形中，我们对非零表面积的区域应用变形函数；对于表面曲线变形，我们允许单变量变形函数沿着位于表面上的曲线滑动。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_543_281_660_966_1447_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.21. 具有不同形状函数的曲线变形。
 
 设 \(\mathcal{R}\) 为表面参数空间中的一个闭合区域， \(\mathbf{S}\left( {u,v}\right)\) 。示例见图 11.22a 和 11.23a。区域变形是通过重新定位控制点产生的，基于公式
 
@@ -941,19 +1078,9 @@ T = \left\{  {0,0,0,0,\frac{1}{4},\frac{1}{2},\frac{3}{4},1,1,1,1}\right\}   \ta
 f\left( {s,t}\right)  = \frac{{R}_{3,3;3,3}\left( {s,t}\right) }{{R}_{\max }} \tag{11.50}
 \]
 
-\begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_544_423_1304_698_760_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图11.22. 表面区域变形。(a) 一个具有边界框和局部控制点的区域；(b) 控制点重新定位后的表面变形。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_545_365_260_838_882_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图11.22.(续)
 
 定义在节点向量上
 
@@ -982,13 +1109,43 @@ u\left( s\right)  = \left( {{u}_{\beta } - {u}_{\alpha }}\right) s + {u}_{\alpha
 \]
 
 该变形函数像一个模具冲头，即，每个控制点 \(\left( {u\left( {s}_{i}\right) ,v\left( {t}_{j}\right) }\right)  \in  \mathcal{R}\) 在 \(\mathbf{W}\) 方向上移动了距离 \(d\) 。向量 \(\mathbf{W}\) 可以是每个点的表面法线，或任何其他用户定义的向量。对于图11.22和11.23，使用了光线投射、点在多边形内的例程来确定点在多边形区域内的包含关系。注意在图11.23中，该例程处理自相交的多边形。
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\begin{minipage}[c]{17cm}\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_25.tex}
+\end{minipage}\hspace{.5cm}
+\begin{minipage}[c]{19cm}\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_26.tex}
+\end{minipage}
+\par\smallskip
+图 11.22. 用式(11.49)、(11.51)对非凸多边形区域进行曲面变形。\\
+(a) 参数域、区域边界、虚线包围框及实际选中的控制点（+）；(b) 由同一组修改后控制点计算的真实曲面。\\
+代表性原曲面为平面，均匀三次细化后为$35\times35$控制网；归一化弦长参数恰等于节点平均值。\\
+区域内控制点沿$W=(0,0,1)$移动$d=6/5$，曲面经三次基函数平滑过渡，四条外边界保持不变。\\
+曲面变化范围随基函数支撑延伸至多边形外；精确选点、支撑范围和控制数据记录于源码。
+\end{minipage}
+\end{center}
+
+
+
 
 \begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_546_423_271_699_779_0.jpg}
+\begin{minipage}{37cm}
+\centering
+\begin{minipage}[c]{17cm}\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_27.tex}
+\end{minipage}\hspace{.5cm}
+\begin{minipage}[c]{19cm}\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_28.tex}
+\end{minipage}
+\par\smallskip
+图 11.23. 对具有五个自交点的星形多边形应用相同的区域变形。\\
+(a) 精确奇偶规则选出的控制点（+）和包围框；(b) 由这组控制点实际计算的双三次曲面。\\
+中心五边形按奇偶规则不选控制点；水平与竖直射线分别检验，1225个候选点的归属一致。\\
+沿用图11.22的平面、$35\times35$控制网、$d=6/5$、投影和字号；平滑过渡由基函数支撑决定。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图11.23. 表面区域变形。(a) 一个具有边界框和局部控制点的区域；(b) 控制点重新定位后的表面变形。
 
 现在我们描述表面曲线变形。假设
 
@@ -1010,12 +1167,7 @@ u\left( s\right)  = \left( {{u}_{\beta } - {u}_{\alpha }}\right) s + {u}_{\alpha
 
 在这里 \(\mathbf{N}\left( {u,v}\right)\) 是表面法向量。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_547_351_268_826_875_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.23. (续)
 
 再次， \(f\) 的定义可能很微妙。我们使用了这个函数
 
@@ -1026,18 +1178,27 @@ f\left( {d}_{i,j}\right)  = \left\{  \begin{array}{ll} 1 & \text{ if }{d}_{i,j} 
 应用方程 (11.53) 的关键步骤是计算 \({d}_{i,j}\) 。如果 \(\mathbf{C}\left( \lambda \right)\) 是一条折线，这个过程会简化。图 11.24 显示了折线扭曲的一个例子。图 11.24a 描述了由五条折线构成的缩写 NURBS。图 11.24b 显示了控制点的边界框(用 + 标记)，这些控制点位于五个字母的重力场内。最终的折线扭曲表面在图 11.24c 中进行了说明。
 
 
-\subsection{扁平化}
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_29.tex}
+\par\medskip
+\BookFigure[max width=\linewidth]{ch11/fig_11_30.tex}
+\par\smallskip
+图 11.24. 曲面折线变形：五条明确的字母中心折线驱动同一组控制点。\\
+(a) 直接定义的NURBS折线笔画；(b) 到任一线段的精确距离不超过$r=1/100$的控制点（+）及包围框。\\
+(c) 在代表性平面细化得到的$67\times67$控制网上，对选中控制点沿$W=(0,0,1)$移动$d=3/5$后的实际曲面。\\
+最近线段投影、端点截断和4489个候选点的距离逐一核验；四条外边界保持不变，过渡范围由基函数支撑决定。
+\end{minipage}
+\end{center}
+
+\subsection{扁平化}\BookIndexMark{p0216}
 
 扁平化操作符允许设计师轻松地将直线段引入曲线和将平面区域引入表面。没有插入多个节点，因此曲线或表面的弯曲部分与平坦部分之间的过渡具有原始几何形状固有的平滑性。
 
 首先考虑曲线扁平化，如图 11.25 和 11.26 所示；给定一条曲线 \(\mathbf{C}\left( u\right)\) 和一条线 \(\mathbf{L}\) 。曲线扁平化由三个步骤组成:
 
-\begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_548_423_269_700_1527_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.24. 表面折线扭曲。 (a) 表示缩写 NURBS 的折线； (b) 局部于折线重力场的控制点； (c) 控制点重新定位后的表面折线扭曲。
 
 1. 精炼曲线的节点以获得更多控制点；
 
@@ -1045,12 +1206,7 @@ f\left( {d}_{i,j}\right)  = \left\{  \begin{array}{ll} 1 & \text{ if }{d}_{i,j} 
 
 3. 移除不必要的节点。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_549_339_273_891_855_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.24. (续。)
 
 除了 \(\mathbf{L}\) 和 \(\mathbf{C}\left( u\right)\) ，以下项目可以由设计者指定或由系统默认(图 11.25a):
 
@@ -1068,23 +1224,34 @@ f\left( {d}_{i,j}\right)  = \left\{  \begin{array}{ll} 1 & \text{ if }{d}_{i,j} 
 
 请注意，最后两个项目是规则，分别指示要投影哪些 \({\mathbf{P}}_{i}\) 和接受哪些 \({\widehat{\mathbf{P}}}_{i}\) 。对于图 11.25a 中所示的情况，将 \({\mathbf{Q}}_{1} = \mathbf{C}\left( {u}_{s}\right)\) 和 \({\mathbf{Q}}_{2} = \mathbf{C}\left( {u}_{e}\right)\) 设置为 \(\mathbf{L}\) 与 \(\mathbf{C}\left( u\right)\) 相交的点是一个合理的系统默认值。如果曲线是 \({xy}\) 平面并与 \(\mathbf{L}\) 相交，如图 11.25a 所示，另一个直观的规则是仅投影位于 \(\mathbf{L}\) 一侧的那些 \({\mathbf{P}}_{i}\) ，如图 11.25b 所示。如果仅投影与 \(\left\lbrack  {{u}_{s},{u}_{e}}\right\rbrack\) 相关的控制点，当 \(\mathbf{L}\) 与曲线相交时，可能会出现意外结果(图 11.25c)。如果曲线不与 \(\mathbf{L}\) 相交，则投影所有与 \(\left\lbrack  {{u}_{s},{u}_{e}}\right\rbrack\) 相关的控制点会使线段 \(\left\lbrack  {\mathbf{C}\left( {u}_{s}\right) ,\mathbf{C}\left( {u}_{e}\right) }\right\rbrack\) 平坦化，而曲线的其余部分不受影响。这在图 11.26a 和 11.26b 中得到了说明。
 
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_31.tex}
+\par\smallskip
+图 11.25. 对同一条细化抛物线投影到相交直线$L:y=3/4$，比较两种选点规则。\\
+(a) 原曲线、控制网和沿$W=(0,-1)$的实际投影；(b) 投影所有位于$L$上方的控制点。\\
+(c) 仅投影支撑完全位于$[u_s,u_e]=[1/4,3/4]$内的控制点：外部曲线严格不变，但端部出现凸起。\\
+点线为原曲线；两种结果均含精确直线段，已逐区间核验其纵坐标多项式恒为$3/4$。
+\end{minipage}
+\end{center}
+
 最后，我们提醒注意，只有当投影结果至少为 \(p + 1\) 个连续点时，才能获得平坦的线段， \({\widehat{\mathbf{P}}}_{i}\) ，其中 \(p\) 是曲线的度数。如果
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_550_264_259_1002_1509_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.25. 曲线平坦化。(a) 原始曲线，其跨度为 \(\left\lbrack  {\mathbf{C}\left( {u}_{s}\right) ,\mathbf{C}\left( {u}_{e}\right) }\right\rbrack\) ，将在 \(\mathbf{W}\) 的方向上平坦化，直到与曲线相交的线 \(\mathbf{L}\) ；(b) 通过投影位于 \(\mathbf{L}\) 一侧的所有控制点获得的平坦曲线；(c) 通过投影与跨度 \(\left\lbrack  {{u}_{s},{u}_{e}}\right\rbrack\) 相关的控制点获得的平坦曲线。
 
 如果未能满足该条件，则需要更多的节点细化。如果指定了 \({u}_{s}\) 和 \({u}_{e}\) ，则仅在区间 \(\left\lbrack  {{u}_{i},{u}_{j}}\right\rbrack\) 内需要细化，其中 \({u}_{i}\) 是满足 \({u}_{i} < {u}_{s}\) 的最大节点，而 \({u}_{j}\) 是满足 \({u}_{e} < {u}_{j}\) 的最小节点。
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_551_259_273_1010_1428_0.jpg}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_32.tex}
+\par\smallskip
+图 11.26. 向与原曲线不相交的直线$L:-4x+3y=1$作局部正交投影。\\
+(a) 代表性原曲线及控制多边形；(b) 对$[u_s,u_e]=[1/8,1/2]$内局部细化后的控制点作投影，得到精确直线段。\\
+点线为原曲线；所选区间外的全部多项式段严格不变，简单节点保留原有光滑过渡。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 11.26. 曲线扁平化。 (a) 原始曲线，其跨度为 \(\left\lbrack  {\mathbf{C}\left( {u}_{s}\right) ,\mathbf{C}\left( {u}_{e}\right) }\right\rbrack\) ，在与不交叉曲线的直线 \(\mathbf{L}\) 垂直的方向上进行扁平化；(b) 通过投影控制点获得的扁平化曲线，控制点局部于跨度 \(\left\lbrack  {{u}_{s},{u}_{e}}\right\rbrack\) 。
 
 通过将控制点 \({\mathbf{P}}_{i,j}\) 投影到平面 \(\pi\) 上来扁平化一个表面区域。 \({\mathbf{P}}_{i,j}\) 被它们的投影 \({\widehat{\mathbf{P}}}_{i,j}\) 替代。除了 \(\pi\) ，还可以指定(或默认)以下内容:
 
@@ -1100,12 +1267,24 @@ f\left( {d}_{i,j}\right)  = \left\{  \begin{array}{ll} 1 & \text{ if }{d}_{i,j} 
 \item 一个区域， \({\mathcal{R}}_{\pi }\) ，在平面上 \(\pi\) ，由边界曲线 \({\mathbf{C}}_{\pi }\left( w\right)\) 定义；控制点 \({\mathbf{P}}_{i,j}\) 仅在 \({\widehat{\mathbf{P}}}_{i,j}\) 位于区域 \({\mathcal{R}}_{\pi }\) 内时被其投影 \({\widehat{\mathbf{P}}}_{i,j}\) 替代。
 \end{itemize}
 
-最常见的是， \({\mathbf{C}}_{uv}\left( w\right)\) 和 \({\mathbf{C}}_{\pi }\left( w\right)\) 是简单曲线，例如多边形或圆，对于这些曲线，确定点是否包含在相应区域内是简单且高效的。如果平面 \(\pi\) 与表面相交，则设计者可能希望指定仅在 \(\pi\) 一侧的那些 \({\mathbf{P}}_{i,j}\) 被投影，而不是要求一个区域 \({\mathcal{R}}_{uv}\) 。Cobb [Cobb84]建议使用额外的平面来限制要投影的控制网区域。最后，投影必须产生至少 \(\left( {p + 1}\right)  \times  \left( {q + 1}\right) {\widehat{\mathbf{P}}}_{i,j}\) 的连接网格，以便在表面上获得一个平坦区域。图11.27a和11.27b展示了表面展平的一个例子。
+最常见的是， \({\mathbf{C}}_{uv}\left( w\right)\) 和 \({\mathbf{C}}_{\pi }\left( w\right)\) 是简单曲线，例如多边形或圆，对于这些曲线，确定点是否包含在相应区域内是简单且高效的。如果平面 \(\pi\) 与表面相交，则设计者可能希望指定仅在 \(\pi\) 一侧的那些 \({\mathbf{P}}_{i,j}\) 被投影，而不是要求一个区域 \({\mathcal{R}}_{uv}\) 。Cobb \cite{Cobb84}建议使用额外的平面来限制要投影的控制网区域。最后，投影必须产生至少 \(\left( {p + 1}\right)  \times  \left( {q + 1}\right) {\widehat{\mathbf{P}}}_{i,j}\) 的连接网格，以便在表面上获得一个平坦区域。图11.27a和11.27b展示了表面展平的一个例子。
 
 
-\subsection{弯曲}
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_33.tex}
+\par\smallskip
+图 11.27. 对图11.8的同一代表性波状曲面作平面展平。\\
+(a) 经实际节点插入细化后的原曲面和参考平面$\pi:z=4/5$；细化不改变曲面。\\
+(b) 仅将平面上方的控制点沿$z$方向投影到$\pi$，其余控制点保持原位。\\
+已核验内部存在整片严格平坦的参数矩形；每片的全部$4\times3$活跃控制点均位于平面，过渡保留简单节点的光滑性。
+\end{minipage}
+\end{center}
 
-几位作者研究了曲线的圆形弯曲和表面的圆柱形弯曲，例如，参见文献[Barr83; Four83; Cobb84]。这些作者基于三角学发展了将点映射到圆上的方程。在这些映射下，直线段映射到一个圆上，而一般曲线段则以圆形方式弯曲。Cobb [Cobb84]将这种技术与节点细化相结合，应用于控制点的映射，从而弯曲B样条曲线和表面。
+\subsection{弯曲}\BookIndexMark{p0217}
+
+几位作者研究了曲线的圆形弯曲\BookIndexMark{p0218}和表面的圆柱\BookIndexMark{p0219}形弯曲，例如，参见文献\cite{Barr83,Four83,Cobb84}。这些作者基于三角学发展了将点映射到圆上的方程。在这些映射下，直线段映射到一个圆上，而一般曲线段则以圆形方式弯曲。Cobb \cite{Cobb84}将这种技术与节点细化相结合，应用于控制点的映射，从而弯曲B样条曲线和表面。
 
 我们采取一种更一般的几何方法来进行弯曲。类似于其他形状操作，弯曲分为三个步骤:
 
@@ -1121,25 +1300,14 @@ f\left( {d}_{i,j}\right)  = \left\{  \begin{array}{ll} 1 & \text{ if }{d}_{i,j} 
 {\mathbf{R}}_{i} = \left( {1 - {s}_{i}}\right) \mathbf{O} + {s}_{i}{\mathbf{P}}_{i}
 \]
 
-548 形状修改工具
 
 \[
 {\widehat{\mathbf{P}}}_{i} = \left( {1 - {t}_{i}}\right) \mathbf{O} + {t}_{i}{\mathbf{P}}_{i} \tag{11.56}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_553_346_271_867_1800_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.27. 表面展平。(a)一个表面和一个平面；(b)通过投影所有位于平面一侧的控制点获得的展平表面。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_554_330_272_875_765_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.28. 曲线弯曲。
 
 由此可得
 
@@ -1161,11 +1329,57 @@ f\left( {d}_{i,j}\right)  = \left\{  \begin{array}{ll} 1 & \text{ if }{d}_{i,j} 
 
 将 \({t}_{i}\) 代入公式 (11.56) 产生 \({\widehat{\mathbf{P}}}_{i}\) 。
 
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_34.tex}
+\par\smallskip
+图 11.28. 式(11.56)—(11.58)的曲线弯曲构造，代表性交比$\lambda=3$。\\
+每条射线$OP_i$与抛物线$B(w)=(2+w,2+w^2/2)$相交于$R_i$，再按同一交比确定$\widehat P_i$。\\
+上下两条实曲线分别由原控制点与映射后的控制点计算；细虚线为各自控制多边形。\\
+图中展示一个完整弯曲区段，九组交点和交比均精确成立；与相邻区段的刚体衔接由下文说明。
+\end{minipage}
+\end{center}
+
 总结来说， \({u}_{s},{u}_{e},\mathbf{B}\left( w\right) ,\mathbf{O}\) 和 \(\lambda\) 被给出，弯曲算法依次计算: \({\mathbf{R}}_{i}\) (线/曲线交点)、 \({s}_{i},{t}_{i}\) 和 \({\widehat{\mathbf{P}}}_{i}\) 。交叉比 \(\lambda\) 可以在 \(- \infty\) 到 \(\infty\) 的范围内进行交互式修改。注意 \(\lambda  = 1\) 意味着 \({t}_{i} = {s}_{i}\) ，因此 \({\widehat{\mathbf{P}}}_{i} = {\mathbf{R}}_{i}\) ；即 \(\lambda  = 1\) 将所有 \({\mathbf{P}}_{i}\) 映射到 \(\mathbf{B}\left( w\right)\) ，因此 \(\mathbf{C}\left( u\right)\) 在 \(\mathbf{C}\left( {u}_{s}\right)\) 和 \(\mathbf{C}\left( {u}_{e}\right)\) 之间的区域假设了 \(\mathbf{B}\left( w\right)\) 的(近似)形状。对于 \(\lambda  = 0\) ，所有 \({\widehat{\mathbf{P}}}_{i} = \mathbf{O}\) ；以及 \({\widehat{\mathbf{P}}}_{i} \rightarrow  {\mathbf{P}}_{i}\) 作为 \(\lambda  \rightarrow  \infty\) 。
 
 设 \(t = e - p - 1\) 。在计算 \({\widehat{\mathbf{P}}}_{s},\ldots ,{\widehat{\mathbf{P}}}_{t}\) 后，控制点 \({\mathbf{P}}_{0},\ldots ,{\mathbf{P}}_{s - 1}\) 和 \({\mathbf{P}}_{t + 1},\ldots ,{\mathbf{P}}_{n}\) 必须旋转并平移到位置，以实现 \(\left\lbrack  {{u}_{\min },{u}_{s}}\right\rbrack\) 和 \(\left\lbrack  {{u}_{e},{u}_{\max }}\right\rbrack\) 上未改变的曲线段与 \(\left\lbrack  {{u}_{s},{u}_{e}}\right\rbrack\) 上的弯曲段之间的自然过渡。设 \(\theta\) 表示弯曲映射旋转向量 \({\mathbf{P}}_{t} - {\mathbf{P}}_{t - 1}\) 的角度。新的 \({\widehat{\mathbf{P}}}_{t + 1},\ldots ,{\widehat{\mathbf{P}}}_{n}\) 通过围绕点 \({\mathbf{P}}_{t}\) 旋转 \({\mathbf{P}}_{t + 1},\ldots ,{\mathbf{P}}_{n}\) 一个角度 \(\theta\) ，然后通过向量 \({\widehat{\mathbf{P}}}_{t} - {\mathbf{P}}_{t}\) 进行平移而获得。类似的旋转(由 \(\left. {{\mathbf{P}}_{s + 1} - {\mathbf{P}}_{s}}\right)\) 的旋转定义)和平移必须应用于 \({\mathbf{P}}_{0},\ldots ,{\mathbf{P}}_{s - 1}\) 。
 
-图 11.29-11.31 显示了圆形和抛物线弯曲的示例。在图 11.29 中，变化 \(\lambda\) 的效果得到了说明。弯曲区域关于通过弯曲中心 \(\mathbf{O}\) 的线 \(\mathbf{L}\) 是对称的，并且与 \(\mathbf{C}\left( u\right)\) 垂直。注意，当 \(\lambda\) 接近 1 时，弯曲区域逐渐呈现出圆形的形状。图 11.30 显示了将中心 O 放置在圆内的效果。 \({\mathbf{O}}_{1}\) 是圆心， \({\mathbf{O}}_{2}\) 位于线 \(\mathbf{L}\) 上，而 \({\mathbf{O}}_{3}\) 是一个任意点。图 11.31 说明了使用抛物线弯曲曲线来消除曲线中的两个不必要的拐点。
+图 11.29-11.31 显示了圆形和抛物线\BookIndexMark{p0220}弯曲的示例。在图 11.29 中，变化 \(\lambda\) 的效果得到了说明。弯曲区域关于通过弯曲中心 \(\mathbf{O}\) 的线 \(\mathbf{L}\) 是对称的，并且与 \(\mathbf{C}\left( u\right)\) 垂直。注意，当 \(\lambda\) 接近 1 时，弯曲区域逐渐呈现出圆形的形状。图 11.30 显示了将中心 O 放置在圆内的效果。 \({\mathbf{O}}_{1}\) 是圆心， \({\mathbf{O}}_{2}\) 位于线 \(\mathbf{L}\) 上，而 \({\mathbf{O}}_{3}\) 是一个任意点。图 11.31 说明了使用抛物线弯曲曲线来消除曲线中的两个不必要的拐点。
+
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_35.tex}
+\par\smallskip
+图 11.29. 同一曲线和圆弧弯曲目标下，交比$\lambda=1/2,1,2,5$的实际比较。\\
+原曲线为代表性抛物线，圆心$O=(0,3)$、半径2；中部$[1/4,3/4]$按式(11.58)映射。\\
+两端控制点按正文规定作旋转和平移，使未弯曲区段自然衔接；点线为原曲线，虚线为目标圆弧。\\
+圆弧交点、交比与外部刚体变换逐点核验；当$\lambda=1$时映射控制点位于圆上，曲线近似圆弧。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_36.tex}
+\par\smallskip
+图 11.30. 在同一原曲线、圆弧和交比$\lambda=2$下，仅改变弯曲中心的位置。\\
+$O_1=(0,3)$为圆心，$O_2=(0,6/5)$位于对称轴上，$O_3=(-1,2)$偏离对称轴；三点均严格位于圆内。\\
+曲线及两端刚体调整均由相应中心重新计算；线型与下方图例一一对应。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_37.tex}
+\par\smallskip
+图 11.31. 将含有两个拐点的代表性三次曲线向抛物线$B:y=3-x^2/8$弯曲，取$\lambda=1$。\\
+方框标出原曲线的弯曲区间$[1/8,7/8]$；区间内控制点沿射线映射，两端按正文作刚体调整。\\
+虚线为目标抛物线，两条实线为前后曲线；原来的两个拐点精确定位，修改后逐段曲率分子严格为负。
+\end{minipage}
+\end{center}
 
 最后，我们指出，为了实现额外的形状控制，交叉比可以是一个函数 \(\lambda \left( u\right)\) ，定义在 \(u \in  \left\lbrack  {{u}_{s},{u}_{e}}\right\rbrack\) 上。然后计算 \({\mathbf{P}}_{i},{\lambda }_{i} = \lambda \left( {t}_{i}\right)\) ，其中 \({t}_{i}\) 是第 \(i\) 个节点(与方程 [11.58] 的 \({t}_{i}\) 无关)。
 
@@ -1181,19 +1395,9 @@ f\left( {d}_{i,j}\right)  = \left\{  \begin{array}{ll} 1 & \text{ if }{d}_{i,j} 
 {t}_{i,j} = \frac{\lambda {s}_{i,j}}{1 + \left( {\lambda  - 1}\right) {s}_{i,j}} \tag{11.60}
 \]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_555_273_1311_988_718_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.29。使用圆弧作为弯曲曲线的曲线弯曲示例 \(\mathbf{B}\left( w\right)\) ；交叉比为 \(\lambda  = \left\{  {1/2,1,2,5}\right\}\) 。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_556_256_268_1026_674_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.30。通过使用不同的弯曲中心位置获得的曲线弯曲示例。
 
 最后
 
@@ -1205,27 +1409,17 @@ f\left( {d}_{i,j}\right)  = \left\{  \begin{array}{ll} 1 & \text{ if }{d}_{i,j} 
 
 在其完全一般性下，表面弯曲显然是复杂的。 \({\mathbf{R}}_{i,j}\) 的计算需要线/面交点，获得合适的参数 \({w}_{i,j}\) 可能很困难，并且如何旋转和移动未映射的控制点并不明显。我们在此详细说明关于表面等值线全长的通用圆柱形弯曲的特殊情况；即，弯曲区域具有 \(\left\lbrack  {{u}_{\alpha },{u}_{\beta }}\right\rbrack   \times  \left\lbrack  {{v}_{\min },{v}_{\max }}\right\rbrack\) 或 \(\left\lbrack  {{u}_{\min },{u}_{\max }}\right\rbrack   \times  \left\lbrack  {{v}_{\gamma },{v}_{\delta }}\right\rbrack\) 的形式，而 \(\mathbf{B}\left( {s,t}\right)\) 是通过沿着(可能是弯曲的)轴线扫过一个圆而获得的通用圆柱体。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_557_282_375_968_542_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.31. 用于消除拐点的抛物线弯曲。
 
-\(\mathbf{O}\left( w\right)\) 。我们展示了在固定 \(u = {u}_{c}\) 下关于等值线的弯曲；固定 \(v = {v}_{c}\) 的情况是类似的。假设 \({u}_{c},{u}_{\alpha }\) 和 \({u}_{\beta }\) 满足 \({u}_{\alpha } < {u}_{c} < {u}_{\beta }\) 。令 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 表示在 \(\mathbf{S}\left( {u,v}\right)\) 上的等值线，位于 \(u = {u}_{c}\) (见图 11.32)。轴 \(\mathbf{O}\left( w\right)\) 可以通过两种方式定义。它可以被定义为沿着表面法线的 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 的偏移，即。
+\(\mathbf{O}\left( w\right)\) 。我们展示了在固定 \(u = {u}_{c}\) 下关于等值线的弯曲；固定 \(v = {v}_{c}\) 的情况是类似的。假设 \({u}_{c},{u}_{\alpha }\) 和 \({u}_{\beta }\) 满足 \({u}_{\alpha } < {u}_{c} < {u}_{\beta }\) 。令 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 表示在 \(\mathbf{S}\left( {u,v}\right)\) 上的等值线，位于 \(u = {u}_{c}\) (见图 11.32)。轴 \(\mathbf{O}\left( w\right)\) 可以通过两种方式定义。它可以被定义为沿着表面法线\BookIndexMark{p0221}的 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 的偏移，即。
 
 \[
 \mathbf{O}\left( v\right)  = {\mathbf{C}}_{{u}_{c}}\left( v\right)  + d\mathbf{N}\left( {{u}_{c},v}\right)  \tag{11.62}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_557_344_1304_847_782_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 11.32. 使用圆柱体的表面弯曲。
 
-在这里， \(\mathbf{N}\left( {{u}_{c},v}\right)\) 是位于 \(\left( {{u}_{c},v}\right)\) 的单位长度表面法向量， \(d\) 是一个常量偏移距离。我们注意到，通常情况下， \(\mathbf{O}\left( v\right)\) 的形状可能与 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 的形状截然不同，并且 \(\mathbf{O}\left( v\right)\) 不能精确表示为 NURBS 曲线(例如，见 [Till84; Coqu87b; Hosc88])。然而，我们在这里假设 \(\mathbf{O}\left( v\right)\) 行为良好，并且在形状上与 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 相似；对于表面弯曲，这是一个合理的假设。此外，我们只需要计算 \(\mathbf{O}\left( v\right)\) 上的选定点(使用公式 [11.62])；我们不需要 \(\mathbf{O}\left( v\right)\) 的显式 NURBS 表示。最后，我们注意到在这种情况下，参数 \(w\) 对应于 \(v\) 。
+在这里， \(\mathbf{N}\left( {{u}_{c},v}\right)\) 是位于 \(\left( {{u}_{c},v}\right)\) 的单位长度表面法向量， \(d\) 是一个常量偏移距离。我们注意到，通常情况下， \(\mathbf{O}\left( v\right)\) 的形状可能与 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 的形状截然不同，并且 \(\mathbf{O}\left( v\right)\) 不能精确表示为 NURBS 曲线(例如，见 \cite{Till84,Coqu87b,Hosc88})。然而，我们在这里假设 \(\mathbf{O}\left( v\right)\) 行为良好，并且在形状上与 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 相似；对于表面弯曲，这是一个合理的假设。此外，我们只需要计算 \(\mathbf{O}\left( v\right)\) 上的选定点(使用公式 [11.62])；我们不需要 \(\mathbf{O}\left( v\right)\) 的显式 NURBS 表示。最后，我们注意到在这种情况下，参数 \(w\) 对应于 \(v\) 。
 
 定义 \(\mathbf{O}\left( w\right)\) 的第二种方法是让它成为位于 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 定义的平面中的一条直线。在这种情况下， \(w\) 并不对应于 \(v\) 。通过计算一个最小二乘平面(由 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 的控制点定义)，该方法甚至可以用于非平面 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 。
 
@@ -1255,27 +1449,49 @@ f\left( {d}_{i,j}\right)  = \left\{  \begin{array}{ll} 1 & \text{ if }{d}_{i,j} 
 
 2. 通过类似于曲线弯曲的过程，将 \({\mathbf{P}}_{0,j},\ldots ,{\mathbf{P}}_{s - 1,j}\) 和 \({\mathbf{P}}_{e - p,j},\ldots ,{\mathbf{P}}_{n,j}\) 旋转并平移到新位置。
 
-图 11.33 和 11.34 显示了圆柱面弯曲的示例。在图 11.33 中，平面表面使用 \(\lambda  = \left\{  {1/2,3/2, - 3}\right\}\) 进行弯曲。注意，正的 \(\lambda\) 会将表面弯曲向圆柱内，而负的则会将其弯曲远离圆柱。图 11.34 显示了使用沿等参数曲线 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 接触表面的圆柱对同一平面表面的圆柱弯曲。同样， \(\lambda\) 的符号允许表面向两个方向弯曲。重要的是要注意，尽管表面是平面的，但它的度数不是 \(\left( {1 \times  1}\right)\) ；图 11.34 中的表面具有度数 \(\left( {3 \times  2}\right)\) 。一般来说，表面必须至少具有度数 \(\left( {2 \times  2}\right)\) ，以避免在控制点重新定位后出现不连续性。554 形状修改工具
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_38.tex}
+\par\smallskip
+图 11.32. 圆柱弯曲的轴线、最近点投影和交比构造（代表性平面及半径1的圆柱）。\\
+$O(w)=(0,w,2)=Q+wV$位于中心等参线$C_{u_c}(v)$上方；$O(w_{i,j})$是$P_{i,j}$到轴线的正交投影。\\
+$R_{i,j}$是射线与圆柱的交点，$\widehat P_{i,j}$按式(11.59)—(11.61)及$\lambda=2$计算。\\
+圆截面用原生仿射椭圆表示；所有点的位置均由同一三维构造计算，标注与正文变量对应。
+\end{minipage}
+\end{center}
+
+图 11.33 和 11.34 显示了圆柱面弯曲的示例。在图 11.33 中，平面表面使用 \(\lambda  = \left\{  {1/2,3/2, - 3}\right\}\) 进行弯曲。注意，正的 \(\lambda\) 会将表面弯曲向圆柱内，而负的则会将其弯曲远离圆柱。图 11.34 显示了使用沿等参数曲线 \({\mathbf{C}}_{{u}_{c}}\left( v\right)\) 接触表面的圆柱对同一平面表面的圆柱弯曲。同样， \(\lambda\) 的符号允许表面向两个方向弯曲。重要的是要注意，尽管表面是平面的，但它的度数不是 \(\left( {1 \times  1}\right)\) ；图 11.34 中的表面具有度数 \(\left( {3 \times  2}\right)\) 。一般来说，表面必须至少具有度数 \(\left( {2 \times  2}\right)\) ，以避免在控制点重新定位后出现不连续性。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_559_325_250_888_813_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_39.tex}
+\par\smallskip
+图 11.33. 用不接触原平面的圆柱弯曲同一张$3\times2$次平面，$\lambda=1/2,3/2,-3$。\\
+参考圆柱半径2、轴线$O(w)=(0,w,3)$；三张曲面由相同原网按式(11.59)—(11.64)分别计算。\\
+正交比使选中控制点靠近轴线，负交比使其远离；两端控制点按正文逐行作刚体调整。\\
+虚线为参考圆柱，点线为原平面轮廓；各边界和内部等参线均由实际张量积曲面计算。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 11.33. 使用不接触圆柱的表面弯曲示例， \(\lambda  = \left\{  {1/2,3/2, - 3}\right\}\) 。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_559_317_1236_912_840_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_40.tex}
+\par\smallskip
+图 11.34. 用与原平面相切的同一半径2圆柱进行弯曲，$\lambda=3/10,1,-1$。\\
+轴线$O(w)=(0,w,2)$使参考圆柱沿$u_c=1/2$与原平面接触；原曲面仍为$3\times2$次。\\
+正交比使选中控制点靠近轴线，负交比使其远离；两端控制点按正文逐行作刚体调整。\\
+虚线为参考圆柱，点线为原平面轮廓；各边界和内部等参线均由实际张量积曲面计算。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 11.34. 使用接触圆柱的表面弯曲示例， \(\lambda  = \left\{  {3/{}_{10},1, - 1}\right\}\) 。
 
 
 \section{基于约束的曲线和表面造型}
 
-接下来，我们提出了一种强制曲线或曲面在选定参数值处假定指定导数的方法。该方法允许任意阶数的导数，包括零阶导数，因此也包括点约束。通过约束一阶和二阶导数，可以控制曲线/曲面的切线和曲率。这些约束通过以最小化所有控制点的组合移动的方式重新定位控制点来满足。通过两步过程解决完全或欠定的线性方程组。这个两步解决方案允许基于约束的修改以交互速度实现。关于这个主题的更多材料可以在 [Fowl92, 93] 中找到。
-\subsection{基于约束的曲线修改}
+接下来，我们提出了一种强制曲线或曲面在选定参数值处假定指定导数的方法。该方法允许任意阶数的导数，包括零阶导数，因此也包括点约束。通过约束一阶和二阶导数，可以控制曲线/曲面的切线和曲率。这些约束通过以最小化所有控制点的组合移动的方式重新定位控制点来满足。通过两步过程解决完全或欠定的线性方程组。这个两步解决方案允许基于约束的修改以交互速度实现。关于这个主题的更多材料可以在 \cite{Fowl92,Fowl93} 中找到。
+\subsection{基于约束的曲线修改}\BookIndexMark{p0222}
 设 \(\;\mathbf{C}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{R}_{i,p}\left( u\right) {\mathbf{P}}_{i}\;\) 为一条 NURBS 曲线。假设我们给定参数值 \(\left\{  {u}_{r}\right\}  ,r = 1,\ldots ,R\) 和一组导数约束， \(\left\{  {\Delta {\mathbf{D}}_{r}^{\left( k\right) }}\right\}  .\Delta {\mathbf{D}}_{r}^{\left( k\right) }\) 表示在 \(u = {u}_{r} \cdot  k\) 处 \(k\) 阶导数的变化可以取任何非负值，但通常为 \(k = 0,1,2\) ，因为这些值控制位置、切线和曲率的直观几何属性。注意，我们以导数变化的形式指定约束，而不是以目标值的形式。
 
 现在固定 \(k\) 和 \(r\) ，并用 \({\mathbf{D}}_{r}^{\left( k\right) }\) 表示在 \(u = {u}_{r}\) 处 \(\mathbf{C}\left( u\right)\) 的 \(k\) 阶导数。然后
@@ -1337,7 +1553,7 @@ B\left\lbrack  {\Delta {\mathbf{P}}_{i}}\right\rbrack   = \left\lbrack  {\Delta 
 \end{itemize}
 
 \begin{itemize}
-\item 我们需要对方程 (11.69) 的精确解；然而，系统可能是欠定、完全确定或超定的，并且它可能没有精确解。对于后面提出的解法，我们需要一个欠定 \(\left( {M < N}\right)\) 或完全确定 \(\left( {M = N}\right)\) 的系统，其中 \(B\) 的所有行都是线性独立的。当指定的约束条件超过受影响控制点的度 \(p\) 或数量 \(N\) 时，就会出现超定系统 \(\left( {M > N}\right)\) 。显然，每个节点区间上不能指定超过 \(p + 1\) 的约束条件。如有必要，可以使用节点插入和/或度提升来确保一组约束产生一个欠定或完全确定的系统。如果 \(M \leq  N\) ，那么 \(B\) 的行的线性依赖通常不是问题 - 参见 [Scho66; Good81; Fowl93] 获取数学细节 - 但一个稳健的算法应该在解过程的第一步检查这一点；
+\item 我们需要对方程 (11.69) 的精确解；然而，系统可能是欠定、完全确定或超定的，并且它可能没有精确解。对于后面提出的解法，我们需要一个欠定 \(\left( {M < N}\right)\) 或完全确定 \(\left( {M = N}\right)\) 的系统，其中 \(B\) 的所有行都是线性独立的。当指定的约束条件超过受影响控制点的度 \(p\) 或数量 \(N\) 时，就会出现超定系统 \(\left( {M > N}\right)\) 。显然，每个节点区间上不能指定超过 \(p + 1\) 的约束条件。如有必要，可以使用节点插入和/或度提升来确保一组约束产生一个欠定或完全确定的系统。如果 \(M \leq  N\) ，那么 \(B\) 的行的线性依赖通常不是问题 - 参见 \cite{Scho66,Good81,Fowl93} 获取数学细节 - 但一个稳健的算法应该在解过程的第一步检查这一点；
 \end{itemize}
 
 \begin{itemize}
@@ -1354,7 +1570,7 @@ B\left\lbrack  {\Delta {\mathbf{P}}_{{i}_{\ell }}}\right\rbrack   = \left\lbrack
 {B\Delta }\mathbf{P} = \Delta \mathbf{D} \tag{11.71}
 \]
 
-目前，假设 \(M < N\) 。方程 (11.70) 存在无穷多解。我们希望找到最小长度解，即最小化所有控制点的组合移动的解(最小化 \(N\) 维向量 \(\Delta \mathbf{P}\) 的长度)。根据线性代数，我们可以将 \(N\) 向量 \(\Delta \mathbf{P}\) 表示为两个相互正交的分量，一个在 \(B\) 的行空间中，另一个在 \(B\) 的零空间中，即
+目前，假设 \(M < N\) 。方程 (11.70) 存在无穷多解。我们希望找到最小长度\BookIndexMark{p0223}解，即最小化所有控制点的组合移动的解(最小化 \(N\) 维向量 \(\Delta \mathbf{P}\) 的长度)。根据线性代数，我们可以将 \(N\) 向量 \(\Delta \mathbf{P}\) 表示为两个相互正交的分量，一个在 \(B\) 的行空间中，另一个在 \(B\) 的零空间中，即
 
 \[
 \Delta \mathbf{P} = {B}^{T}\lambda  + \mathbf{z} \tag{11.72}
@@ -1454,12 +1670,6 @@ B = \left\lbrack  {{R}_{2,3}\left( \frac{1}{2}\right) ,{R}_{3,3}\left( \frac{1}{
 
 因此， \(B{B}^{T}\) 是一个 \(1 \times  1\) 矩阵，而 \(A = {B}^{T}{\left( B{B}^{T}\right) }^{-1}\) 是一个 \(4 \times  1\) 矩阵
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_564_314_252_917_1369_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 11.35. 基于约束的曲线修改使用位置约束。 (a) 原始立方曲线及要移动的点；(b) 所有四个局部控制点均可移动；(c) 仅允许 \({\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4}\) 移动；(d) 仅允许 \({\mathbf{P}}_{3}\) 移动。
 
 具有以下分量
 
@@ -1473,18 +1683,7 @@ B = \left\lbrack  {{R}_{2,3}\left( \frac{1}{2}\right) ,{R}_{3,3}\left( \frac{1}{
 \Delta {\mathbf{P}}_{i} = {a}_{i - 2}\Delta {\mathbf{D}}_{1}\;i = 2,3,4,5
 \]
 
-应用 \(\Delta {\mathbf{P}}_{i}\) 的结果如图 11.35b 所示。注意到 \({\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4}\) 移动得最多，因为这些控制点具有最大的
-
-560 形状修改工具
-
-图 11.35. (续)
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_565_315_246_900_1371_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-在 \(u = 1/2\) 处对曲线的影响。我们可以限制 \({\mathbf{P}}_{2}\) 和 \({\mathbf{P}}_{5}\) 的移动。然后 \(B\) 是 \(1 \times  2\) 矩阵
+应用 \(\Delta {\mathbf{P}}_{i}\) 的结果如图 11.35b 所示。注意到 \({\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4}\) 移动得最多，因为这些控制点具有最大的在 \(u = 1/2\) 处对曲线的影响。我们可以限制 \({\mathbf{P}}_{2}\) 和 \({\mathbf{P}}_{5}\) 的移动。然后 \(B\) 是 \(1 \times  2\) 矩阵
 
 \[
 B = \left\lbrack  {{R}_{3,3}\left( \frac{1}{2}\right) ,{R}_{4,3}\left( \frac{1}{2}\right) }\right\rbrack
@@ -1498,31 +1697,51 @@ B = \left\lbrack  {{R}_{3,3}\left( \frac{1}{2}\right) ,{R}_{4,3}\left( \frac{1}{
 
 图 11.35c 显示了仅允许 \({\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4}\) 变化的结果，而图 11.35d 则说明了仅允许 \({\mathbf{P}}_{3}\) 移动的情况。
 
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_41.tex}
+\par\medskip
+\BookFigure[max width=\linewidth]{ch11/fig_11_42.tex}
+\par\smallskip
+图 11.35. 同一三次曲线的位置约束，$u=1/2$，$\Delta D=(0.04,-0.08)$。\\
+(a) 原曲线；(b) 移动$P_2,P_3,P_4,P_5$；(c) 只移动$P_3,P_4$；(d) 只移动$P_3$。\\
+采用正文节点向量和代表性控制多边形，逐例精确求解式(11.76)；三种结果在方框点处满足相同位移。\\
+实线与虚线分别为原曲线和修改结果，细线为相应控制多边形；四图采用相同坐标尺度。
+\end{minipage}
+\end{center}
+
+
 这个例子清楚地表明，对于给定的一组点和导数约束，通常在指定多少个以及哪些控制点应该变化时存在灵活性，而这个选择会影响相应曲线变化的范围和外观(例如，对称性)。然而，对于设计师而言，处理控制点可能不如对曲线施加纯点和导数约束直观。一个良好的用户界面应该同时提供一组合理的默认值和方便的工具，以便更复杂的设计师限制控制点的移动。最后，请注意，任何控制点的限制必须纳入方程 (11.70) 和解决过程的第一阶段。
 
-在图11.36a-11.36c中，展示了点和导数约束。图11.36a仅显示了导数约束的应用，同时允许 \({\mathbf{P}}_{3},{\mathbf{P}}_{4}\) 和 \({\mathbf{P}}_{5}\) 移动。在 \(u = {0.556}\) 处，第一导数向量的大小增加，导致局部张力效应。如果仅允许一个控制点移动，如图11.36b所示，观察结果非常有趣。曲线采用了新的导数，但由于缺乏位置约束，它遭受了位置位移。在图11.36c中，通过约束曲线在 \(u = {0.556}\) 处不移动，并假设通过减小旧导数的大小获得的新导数，解决了这个问题。允许两个控制点移动，以获得一个不被过度确定的方程组。
+在图11.36a-11.36c中，展示了点和导数约束。图11.36a仅显示了导数约束的应用，同时允许 \({\mathbf{P}}_{3},{\mathbf{P}}_{4}\) 和 \({\mathbf{P}}_{5}\) 移动。在 \(u = {0.556}\) 处，第一导数向量的大小增加，导致局部张力\BookIndexMark{p0224}效应。如果仅允许一个控制点移动，如图11.36b所示，观察结果非常有趣。曲线采用了新的导数，但由于缺乏位置约束，它遭受了位置位移。在图11.36c中，通过约束曲线在 \(u = {0.556}\) 处不移动，并假设通过减小旧导数的大小获得的新导数，解决了这个问题。允许两个控制点移动，以获得一个不被过度确定的方程组。
 
-最后，我们提到Fowler和Bartels [Fowl93] 提供了一种不同(但等效)的方法来表示方程(11.76)和(11.77)中的矩阵 \(A\) 。这种方法在数学上稍微复杂一些，但在某些情况下更有效。
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_566_281_1301_966_689_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图11.36. 基于约束的曲线修改，使用位置和导数约束。(a) 应用导数约束，并允许 \({\mathbf{P}}_{3},{\mathbf{P}}_{4}\) 和 \({\mathbf{P}}_{5}\) 移动；(b) 应用导数约束，仅允许 \({\mathbf{P}}_{4}\) 移动；(c) 应用导数和位置约束，并允许 \({\mathbf{P}}_{3}\) 和 \({\mathbf{P}}_{4}\) 移动。
-
-562 形状修改工具
+最后，我们提到Fowler和Bartels \cite{Fowl93} 提供了一种不同(但等效)的方法来表示方程(11.76)和(11.77)中的矩阵 \(A\) 。这种方法在数学上稍微复杂一些，但在某些情况下更有效。
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_567_340_242_870_1431_0.jpg}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_43.tex}
+\par\medskip
+\BookFigure[max width=\linewidth]{ch11/fig_11_44.tex}
+\par\smallskip
+图 11.36. 同一三次曲线在$u=0.556$处的导数约束，$D=C^{\prime}(u)$。\\
+(a) 允许$P_3,P_4,P_5$移动，使$\widehat D=1.6D$；(b) 仅允许$P_4$移动，仍满足$\widehat D=1.6D$，但所选点发生位移。\\
+(c) 允许$P_3,P_4$移动，同时保持$C(u)$不变并使$\widehat D=0.6D$。\\
+沿用图11.35的代表性控制多边形；按式(11.76)精确求解，箭头以相同的$1/4$比例表示实际导数。\\
+实线为原曲线，虚线为修改结果；三图采用相同坐标尺度，方框标出施加约束的曲线点。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图11.36. (续)
 
 
 
-\subsection{基于约束的表面修改}
+
+
+
+
+
+
+\subsection{基于约束的表面修改}\BookIndexMark{p0225}
 
 设 \(\;\mathbf{S}\left( {u,v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{R}_{i,p;j,q}\left( {u,v}\right) {\mathbf{P}}_{i,j}\;\) 为一个 \(\;\left( {p,q}\right)\) 次NURBS曲面。在本节中，我们选择将 \(\mathbf{S}\left( {u,v}\right)\) 写成以下形式
 
@@ -1600,150 +1819,107 @@ CpInd[] : 变化的控制点的绝对地址 \({s}_{\alpha }\) 。
 
 为了构建 A 和 CpInd，使用了三个局部二维数组 B[M][Nmax]、FreeCp[p+1][q+1] 和 Map[n+1][m+1]，以及一个四维数组 Funs 和两个新例程 FreeCtrlPts(u, v, FreeCp) 和 RatDersBasisFuns(u, v, Funs)。B 包含方程 (11.84) 的矩阵 \(B\) 。如果 \({\mathbf{P}}_{i,j}\) 不是由方程 (11.84) 定义的系统的一部分，则 Map[i] \(\left\lbrack  j\right\rbrack   =  - 1\) ；否则，Map[i] \(\left\lbrack  j\right\rbrack   = \alpha  \geq  0\) 是 CpInd 的索引，而 CpInd \(\left\lbrack  \alpha \right\rbrack   = s\) 是对应于 (i, j) 的绝对地址。对于给定的 (u, v)，FreeCtrlPts(   ) 返回布尔数组 FreeCp，指示在 (u, v) 处影响表面的可能 \(\left( {p + 1}\right)  \times  \left( {q + 1}\right)\) 控制点中哪些是可以移动的。这个例程可以以多种有意义的方式实现，因此我们在这里不再详细说明。例程 RatDersBasisFuns(u, v, Funs) 返回基函数及其偏导数。Funs \(\left\lbrack  k\right\rbrack  \left\lbrack  1\right\rbrack  \left\lbrack  i\right\rbrack  \left\lbrack  j\right\rbrack\) 是 (i, j)th 基函数的 \(\left( {k,\ell }\right)\) 次偏导数。
 
-\HRule
-
-\section*{ALGORITHM A11.1}
-
+% book-code: algorithm A11.1
+\par\medskip\noindent\textbf{算法 A11.1（伪代码）}\BookIndexMark{p0226}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
 ConstBasedSurfMod1(n, m, p, q, U, V, Pw, CList, R, M, N, A, CpInd)
-
-\hspace*{3em} \{ /* Build the A matrix for surface constraints */
-
-\hspace*{6em} /* Input: n, m, p, q, U, V, Pw, CList, R */
-
-\hspace*{6em} /* Output: M, N, A, CpInd */
-
-\hspace*{2em} Loop through the list CList and count constraints
-
-\hspace*{5em} to obtain M.
-
-\hspace*{2em} Nmax \(=\) Max \(\left( {\left( {n + 1}\right)  * \left( {m + 1}\right) ,R * \left( {p + 1}\right)  * \left( {q + 1}\right) }\right) ;/ *\) Max possible \(N * /\)
-
-\hspace*{2em} for (i=0; i<M; i++)
-
-\hspace*{5em} for \(\left( {j = 0;j < \text{ Nmax; }j +  + }\right) \;B\left\lbrack  i\right\rbrack  \left\lbrack  j\right\rbrack   = {0.0}\) ;
-
-\hspace*{2em} for (i = 0; i<=n; i++)
-
-\hspace*{5em} for \(\left( {j = 0;j <  = m;j +  + }\right) \;\operatorname{Map}\left\lbrack  i\right\rbrack  \left\lbrack  j\right\rbrack   =  - 1\) ;
-
-\hspace*{2em} brow \(= 0;\;N = 0;\;/ * N\) is computed in this loop \(* /\)
-
-\hspace*{2em} for (r=1; r<=R; r++)
-
-\hspace*{5em} \{
-
-\hspace*{5em} Extract (u, v) value from the \(r\) th list node.
-
-\hspace*{5em} FreeCtrlPts(u, v, FreeCp);
-
-\hspace*{5em} uspan = FindSpan(n, p, u, U);
-
-\hspace*{5em} vspan = FindSpan(m, q, v, V);
-
-\hspace*{5em} for (i = 0; i<=p; i++)
-
-\hspace*{5em} for (j=0; j<=q; j++)
-
-\hspace*{7em} if (FreeCp[i][j])
-
-\hspace*{9em} \{ /* This ctrl pt is free to move */
-
-\hspace*{9em} iup = i+uspan-p; jvq = j+vspan-q;
-
-\hspace*{9em} if (Map[iup][jvq] == -1)
-
-\hspace*{12em} \{ /* Ctrl pt not yet in Eq. system */
-
-\hspace*{12em} Map[iup][jvq] = N;
-
-\hspace*{12em} \(\operatorname{CpInd}\left\lbrack  \mathrm{N}\right\rbrack   = {jvq} * \left( {\mathrm{n} + 1}\right)  + {iup};\)
-
-\hspace*{12em} \(\mathrm{N} = \mathrm{N} + 1\) ;
-
-\hspace*{11em} \}
-
-\hspace*{9em} \}
-
-\hspace*{3em} /* Compute required functions */
-
-\hspace*{3em} RatDersBasisFuns(u, v, Funs);
-
-\hspace*{3em} Loop through each type of constraint for this(u, v)and \({do}\) :
-
-\hspace*{5em} \{
-
-\hspace*{5em} Set \(k\) and \(\ell\) indicating which derivative.
-
-\hspace*{5em} for (i = 0; i<=p; i++)
-
-\hspace*{7em} for (j=0; j<=q; j++)
-
-\hspace*{9em} \{
-
-\hspace*{9em} alf = Map[i+uspan-p][j+vspan-q];
-
-\hspace*{9em} if (alf >= 0) B[brow][alf] = Funs[k][l][i][j];
-
-\hspace*{9em} \}
-
-\hspace*{5em} brow = brow+1;
-
-\hspace*{5em} \} /* End of loop through each type of constraint */
-
-\hspace*{1em} \} /* End of for-loop: \(r = 1,\ldots ,R * /\)
-
-if \(\left( {M > N}\right)\) return (1); /* system overdetermined */
-
-if (M == N)
-
-\hspace*{3em} if(B singular)return(2);
-
-\hspace*{5em} else
-
-\hspace*{5em} \{
-
-\hspace*{5em} \(A = {B}^{-1};\;\) return \(\left( 0\right) ;\)
-
-\hspace*{5em} \}
-
-if \(\left( {B{B}^{T}}\right.\) singular) return(2);
-
-\hspace*{3em} else
-
-\hspace*{3em} \{
-
-\hspace*{3em} \(\mathbf{A} = {B}^{T}{\left( B{B}^{T}\right) }^{-1};\;\operatorname{return}\left( 0\right) ;\)
-
-\hspace*{2em} \}
-
-\}
-
-\HRule
+{ /* Build the A matrix for surface constraints */
+    /* Input: n, m, p, q, U, V, Pw, CList, R */
+    /* Output: M, N, A, CpInd */
+    Loop through the list CList and count constraints
+    to obtain M.
+    Nmax = Max ( ( n + 1)  * ( m + 1) ,R * ( p + 1)  * ( q + 1) ) ; /* Max possible N */
+    for (i=0; i<M; i++)
+        for ( j = 0;j <  Nmax; j ++ ) B[i][j]= 0.0 ;
+    for (i = 0; i<=n; i++)
+        for ( j = 0;j <= m;j ++ ) Map[i][j]=  - 1 ;
+    brow = 0;N = 0;/* N is computed in this loop  */
+    for (r=1; r<=R; r++)
+    {
+        Extract (u, v) value from the r th list node.
+        FreeCtrlPts(u, v, FreeCp);
+        uspan = FindSpan(n, p, u, U);
+        vspan = FindSpan(m, q, v, V);
+        for (i = 0; i<=p; i++)
+            for (j=0; j<=q; j++)
+                if (FreeCp[i][j])
+                { /* This ctrl pt is free to move */
+                    iup = i+uspan-p; jvq = j+vspan-q;
+                    if (Map[iup][jvq] == -1)
+                    { /* Ctrl pt not yet in Eq. system */
+                        Map[iup][jvq] = N;
+                        CpInd[N]= jvq * ( n + 1)  + iup;
+                        N = N + 1 ;
+                    }
+                }
+        /* Compute required functions */
+        RatDersBasisFuns(u, v, Funs);
+        Loop through each type of constraint for this(u, v)and do :
+        {
+            Set k and @$\ell$@ indicating which derivative.
+            for (i = 0; i<=p; i++)
+                for (j=0; j<=q; j++)
+                {
+                    alf = Map[i+uspan-p][j+vspan-q];
+                    if (alf >= 0) B[brow][alf] = Funs[k][l][i][j];
+                }
+            brow = brow+1;
+        } /* End of loop through each type of constraint */
+    } /* End of for-loop: $r = 1,\ldots ,R$ */
+    if ( M > N) return (1); /* system overdetermined */
+    if (M == N)
+        if(B singular)return(2);
+        else
+        {
+            @$A = {B}^{-1};\;$@ return ( 0) ;
+        }
+    if @$\left( {B{B}^{T}}\right.$@ singular) return(2);
+    else
+    {
+        @$\mathbf{A} = {B}^{T}{\left( B{B}^{T}\right) }^{-1};\;\operatorname{return}\left( 0\right) ;$@
+    }
+}
+\end{minted}
 
 图 11.37-11.39 显示了应用表面约束的示例。在图 11.37a 和 \({11.37}\mathrm{\;b}\) 中，在 \(u = v = 1/2\) 处施加了一个点约束，允许所有影响该点表面的控制点移动。图 11.37a 显示了新的控制网，图 11.37b 则说明了表面形状的变化。请注意，局部域周围的控制点移动非常有限。图 11.38a 和 \({11.38}\mathrm{\;b}\) 显示了如果仅允许 \({\mathbf{P}}_{1,2},{\mathbf{P}}_{2,2}\) 和 \({\mathbf{P}}_{4,2}\) 在形状中移动会发生什么。最后，在图 11.39a 和 \({11.39}\mathrm{\;b}\) 中施加了偏导数和位置约束。在图 11.39a 中，偏导数的大小增加，导致了张力效应，而在图 11.39b 中，偏导数围绕点 \(\mathbf{S}\left( {1/2,1/2}\right)\) 旋转，导致表面形状扭曲。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_571_308_253_916_1779_0.jpg}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_45.tex}
+\par\smallskip
+图 11.37. 基于位置约束的曲面修改；$u=v=1/2$，$\Delta S=(0,0,1)$。\\
+允许所有12个有影响的局部控制点移动，按式(11.85)—(11.86)求最小范数解。\\
+(a) 原控制网及修改后的虚线控制网，箭头表示控制点位移；(b) 实际张量积曲面的原网格与修改后的虚线等参线。\\
+采用同一张代表性$3\times2$次、$6\times5$控制点曲面，四条完整边界保持不变；两图使用相同投影和尺度。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 11.37. 基于约束的表面修改，带有位置约束。(a) 显示所有移动的局部控制点的表面网；(b) 形状发生变化的表面。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_572_306_250_921_1786_0.jpg}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_46.tex}
+\par\smallskip
+图 11.38. 基于位置约束的曲面修改；$u=v=1/2$，$\Delta S=(0,0,1)$。\\
+只允许$P_{1,2},P_{2,2},P_{4,2}$移动，其余控制点固定；仍精确达到相同目标位置。\\
+(a) 原控制网及修改后的虚线控制网，箭头表示控制点位移；(b) 实际张量积曲面的原网格与修改后的虚线等参线。\\
+采用同一张代表性$3\times2$次、$6\times5$控制点曲面，四条完整边界保持不变；两图使用相同投影和尺度。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 11.38. 基于约束的表面修改，带有位置约束。(a) 显示仅允许 \({\mathbf{P}}_{1,2},{\mathbf{P}}_{2,2}\) 和 \({\mathbf{P}}_{4,2}\) 移动的表面网；(b) 形状发生变化的表面。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_573_302_249_925_1783_0.jpg}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch11/fig_11_47.tex}
+\par\smallskip
+图 11.39. 同一曲面的位置与偏导数约束，所选中心点$S(1/2,1/2)$始终固定。\\
+(a) 两个一阶偏导数均增大到原来的2倍；(b) 两个偏导数均按$R_y(-\pi/2)$旋转，保持各自长度。\\
+沿用图11.37的代表性曲面，允许12个局部控制点移动，精确求解位置及两个偏导数共三组约束；四条边界保持不变。\\
+细实线为原曲面，虚线为修改后的实际等参线；实线和虚线箭头分别表示原偏导数与新偏导数，统一缩放为$1/4$。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 11.39. 基于约束的表面修改，带有位置和导数约束。(a) 偏导数大小的增加引发局部张力效应；(b) 偏导数方向的变化引发局部扭曲效应。
-
-最后，我们指出，Fowler [Fowl92] 提出了一个替代(等效)解决方案，用于求解 \(\Delta {\mathbf{P}}_{i,j}\) ，该方案利用了 \(\mathbf{S}\left( {u,v}\right)\) 的张量积结构。它的通用性不如这种方法，但在某些情况下更为高效。
+最后，我们指出，Fowler \cite{Fowl92} 提出了一个替代(等效)解决方案，用于求解 \(\Delta {\mathbf{P}}_{i,j}\) ，该方案利用了 \(\mathbf{S}\left( {u,v}\right)\) 的张量积结构。它的通用性不如这种方法，但在某些情况下更为高效。
 
 
 \clearpage

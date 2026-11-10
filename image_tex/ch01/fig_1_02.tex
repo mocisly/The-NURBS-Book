@@ -1,0 +1,22 @@
+% Migrated from chapter/1.tex; native drawing retained.
+\begin{tikzpicture}[scale=\BookGeometryScale]
+
+        % 坐标轴
+
+        \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
+
+        \draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};
+
+        % 圆
+
+        \draw (0,0) circle (1);
+
+        % 导数向量
+
+        \draw[->, thick] (1,0) -- (1,1) node[above right] {$\mathbf{C}'(u=0)$};
+
+        \draw[->, thick] (0,1) -- (-1,1) node[left] {$\mathbf{C}'(u=1)=\mathbf{C}'(t=1)$};
+
+        \draw[->, thick] (1,0) -- (1,2) node[above] {$\mathbf{C}'(t=0)$};
+
+    \end{tikzpicture}

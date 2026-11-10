@@ -1,0 +1,39 @@
+% Fig3.9: p=1..5, knot vectors exactly as listed after P3.7.
+% Same representative six-control polygon as Figs3.4 and3.5.
+% Native cubic paths or Bernstein polynomial plots; no image geometry traced.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\begin{scope}[scale=\BookAxisInverseScale]
+\begin{axis}[at={({-.4cm*\BookGeometryScale},{-2cm*\BookGeometryScale})},anchor=south west,scale only axis,width={10.9cm*\BookGeometryScale},height={6cm*\BookGeometryScale},
+xmin=-.4,xmax=10.5,ymin=-2,ymax=4,axis lines=none,ticks=none,clip=false]
+\addplot[book line,no marks,samples=101,domain=0:1] ({(-0.4)*4*x^1*(1-x)^3+(2.3)*6*x^2*(1-x)^2+(2.975)*4*x^3*(1-x)^1+(4)*1*x^4*(1-x)^0},{(4)*4*x^1*(1-x)^3+(4)*6*x^2*(1-x)^2+(2.5)*4*x^3*(1-x)^1+(1)*1*x^4*(1-x)^0});
+\addplot[book line,no marks,samples=101,domain=0:1] ({(4)*1*x^0*(1-x)^4+(5.025)*4*x^1*(1-x)^3+(6.4)*6*x^2*(1-x)^2+(10.5)*4*x^3*(1-x)^1+(8.5)*1*x^4*(1-x)^0},{(1)*1*x^0*(1-x)^4+(-0.5)*4*x^1*(1-x)^3+(-2)*6*x^2*(1-x)^2+(-2)*4*x^3*(1-x)^1+(2)*1*x^4*(1-x)^0});
+\addplot[book line,no marks,samples=101,domain=0:1] ({(-0.4)*5*x^1*(1-x)^4+(5)*10*x^2*(1-x)^3+(2.3)*10*x^3*(1-x)^2+(10.5)*5*x^4*(1-x)^1+(8.5)*1*x^5*(1-x)^0},{(4)*5*x^1*(1-x)^4+(4)*10*x^2*(1-x)^3+(-2)*10*x^3*(1-x)^2+(-2)*5*x^4*(1-x)^1+(2)*1*x^5*(1-x)^0});
+\end{axis}
+\end{scope}
+\draw (0,0) .. controls (-0.2666666667,2.6666666667) and (0.5,4) .. (2.3,4);
+\draw (2.3,4) .. controls (4.1,4) and (4.55,3) .. (3.65,1);
+\draw (3.65,1) .. controls (2.75,-1) and (3.6666666667,-2) .. (6.4,-2);
+\draw (6.4,-2) .. controls (9.1333333333,-2) and (9.8333333333,-0.6666666667) .. (8.5,2);
+\draw (0,0) .. controls (-0.4,4) and (2.3,4) .. (3.2,3);
+\draw (3.2,3) .. controls (4.1,2) and (3.2,0) .. (4.8,-1);
+\draw (4.8,-1) .. controls (6.4,-2) and (10.5,-2) .. (8.5,2);
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (-0.4,4);
+\coordinate (P2) at (5,4);
+\coordinate (P3) at (2.3,-2);
+\coordinate (P4) at (10.5,-2);
+\coordinate (P5) at (8.5,2);
+\draw (P0)--(P1)--(P2)--(P3)--(P4)--(P5);
+\foreach \i in {0,...,5} \node[book point] at (P\i) {};
+\node[below left=4pt] at (P0) {$\mathbf P_{0}$};
+\node[above left=4pt] at (P1) {$\mathbf P_{1}$};
+\node[above right=4pt] at (P2) {$\mathbf P_{2}$};
+\node[below left=4pt] at (P3) {$\mathbf P_{3}$};
+\node[below right=4pt] at (P4) {$\mathbf P_{4}$};
+\node[above=4pt] at (P5) {$\mathbf P_{5}$};
+\node at (1.6,2) {$p=1$};
+\node at (1.6,1.5) {$p=2$};
+\node at (1.6,1) {$p=3$};
+\node at (1.6,0.5) {$p=4$};
+\node at (1.6,0) {$p=5$};
+\end{tikzpicture}

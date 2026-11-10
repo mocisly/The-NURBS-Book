@@ -1,0 +1,70 @@
+% Fig3.2: cubic basis U=(0,0,0,0,1/4,1/2,3/4,1,1,1,1).
+% Control coordinates are representative (not specified by text/scan).
+% Exact Cox-de Boor polynomials -> cubic Bezier controls; no contour tracing.
+% All basis pieces and curve pieces use the same alternating span styles.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\begin{scope}[scale=\BookAxisInverseScale]
+\begin{axis}[at={(0,{11cm*\BookGeometryScale})},anchor=south west,scale only axis,width={14cm*\BookGeometryScale},height={5.2cm*\BookGeometryScale},
+axis lines=left,xmin=-.015,xmax=1.1,ymin=0,ymax=1.35,
+xtick={0,.25,.5,.75,1},xticklabels={$0$,$\frac14$,$\frac12$,$\frac34$,$1$},
+ytick={1},tick align=outside,axis line style={-{Stealth}},clip=false]
+\pgfplotsinvokeforeach{.25,.5,.75}{\draw[book grid] (axis cs:#1,0)--(axis cs:#1,1);}
+\addplot[book line,no marks,samples=51,domain=0:1] ({0+0.25*x},{((((-1/1)*x+(3/1))*x+(-3/1))*x+(1/1))});
+\addplot[book line,no marks,samples=51,domain=0:1] ({0+0.25*x},{((((7/4)*x+(-9/2))*x+(3/1))*x+(0/1))});
+\addplot[book line,no marks,samples=51,domain=0:1,dashed] ({0.25+0.25*x},{((((-1/4)*x+(3/4))*x+(-3/4))*x+(1/4))});
+\addplot[book line,no marks,samples=51,domain=0:1] ({0+0.25*x},{((((-11/12)*x+(3/2))*x+(0/1))*x+(0/1))});
+\addplot[book line,no marks,samples=51,domain=0:1,dashed] ({0.25+0.25*x},{((((7/12)*x+(-5/4))*x+(1/4))*x+(7/12))});
+\addplot[book line,no marks,samples=51,domain=0:1] ({0.5+0.25*x},{((((-1/6)*x+(1/2))*x+(-1/2))*x+(1/6))});
+\addplot[book line,no marks,samples=51,domain=0:1] ({0+0.25*x},{((((1/6)*x+(0/1))*x+(0/1))*x+(0/1))});
+\addplot[book line,no marks,samples=51,domain=0:1,dashed] ({0.25+0.25*x},{((((-1/2)*x+(1/2))*x+(1/2))*x+(1/6))});
+\addplot[book line,no marks,samples=51,domain=0:1] ({0.5+0.25*x},{((((1/2)*x+(-1/1))*x+(0/1))*x+(2/3))});
+\addplot[book line,no marks,samples=51,domain=0:1,dashed] ({0.75+0.25*x},{((((-1/6)*x+(1/2))*x+(-1/2))*x+(1/6))});
+\addplot[book line,no marks,samples=51,domain=0:1,dashed] ({0.25+0.25*x},{((((1/6)*x+(0/1))*x+(0/1))*x+(0/1))});
+\addplot[book line,no marks,samples=51,domain=0:1] ({0.5+0.25*x},{((((-7/12)*x+(1/2))*x+(1/2))*x+(1/6))});
+\addplot[book line,no marks,samples=51,domain=0:1,dashed] ({0.75+0.25*x},{((((11/12)*x+(-5/4))*x+(-1/4))*x+(7/12))});
+\addplot[book line,no marks,samples=51,domain=0:1] ({0.5+0.25*x},{((((1/4)*x+(0/1))*x+(0/1))*x+(0/1))});
+\addplot[book line,no marks,samples=51,domain=0:1,dashed] ({0.75+0.25*x},{((((-7/4)*x+(3/4))*x+(3/4))*x+(1/4))});
+\addplot[book line,no marks,samples=51,domain=0:1,dashed] ({0.75+0.25*x},{((((1/1)*x+(0/1))*x+(0/1))*x+(0/1))});
+\node[above right=4pt] at (axis cs:0,1) {$N_{0,3}$};
+\node[above left=4pt] at (axis cs:1,1) {$N_{6,3}$};
+\fill (axis cs:1,1) circle[radius=1.5pt];
+\node[above left=3pt] at (axis cs:1.1,0) {$u$};
+\node[above=4pt] at (axis cs:.112,.6) {$N_{1,3}$};
+\node[above=4pt] at (axis cs:.888,.6) {$N_{5,3}$};
+\node (n2) at (axis cs:.33,.87) {$N_{2,3}$};
+\draw[book grid,-{Stealth[length=4pt]}] (n2.south)--(axis cs:.277,.595);
+\node (n3) at (axis cs:.555,.94) {$N_{3,3}$};
+\draw[book grid,-{Stealth[length=4pt]}] (n3.south)--(axis cs:.51,.665);
+\node (n4) at (axis cs:.67,.87) {$N_{4,3}$};
+\draw[book grid,-{Stealth[length=4pt]}] (n4.south)--(axis cs:.723,.595);
+\pgfplotsinvokeforeach{-.008,.008,.992,1.008}{\draw[book grid] (axis cs:#1,-.025)--(axis cs:#1,.025);}
+\end{axis}
+\end{scope}
+\node[book panel tag] at (6.8cm,9.8cm) {(a)};
+\begin{scope}[xshift=2cm,yshift=4cm,x=1cm,y=1cm]
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (4,0);
+\coordinate (P2) at (4,4);
+\coordinate (P3) at (8,4);
+\coordinate (P4) at (10,0);
+\coordinate (P5) at (7,-3);
+\coordinate (P6) at (4,-1.5);
+\draw[book grid] (P0)--(P1)--(P2)--(P3)--(P4)--(P5)--(P6);
+\draw (0,0) .. controls (4,0) and (4,2) .. (4.666666667,3);
+\draw[dashed] (4.666666667,3) .. controls (5.333333333,4) and (6.666666667,4) .. (7.666666667,3.333333333);
+\draw (7.666666667,3.333333333) .. controls (8.666666667,2.666666667) and (9.333333333,1.333333333) .. (8.916666667,-0.083333333);
+\draw[dashed] (8.916666667,-0.083333333) .. controls (8.5,-1.5) and (7,-3) .. (4,-1.5);
+\fill (4.666666667,3) circle[radius=1.7pt];
+\fill (7.666666667,3.333333333) circle[radius=1.7pt];
+\fill (8.916666667,-0.083333333) circle[radius=1.7pt];
+\foreach \i in {0,...,6} \node[book point] at (P\i) {};
+\node[below left=4pt] at (P0) {$\mathbf P_{0}$};
+\node[below=4pt] at (P1) {$\mathbf P_{1}$};
+\node[above left=4pt] at (P2) {$\mathbf P_{2}$};
+\node[above right=4pt] at (P3) {$\mathbf P_{3}$};
+\node[right=4pt] at (P4) {$\mathbf P_{4}$};
+\node[below=4pt] at (P5) {$\mathbf P_{5}$};
+\node[below left=4pt] at (P6) {$\mathbf P_{6}$};
+\end{scope}
+\node[book panel tag] at (6.8cm,0cm) {(b)};
+\end{tikzpicture}

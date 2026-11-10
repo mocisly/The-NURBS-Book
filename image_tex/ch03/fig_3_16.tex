@@ -1,0 +1,40 @@
+% Printed Fig3.16(a), first of two original image pieces.
+% Exact caption knots; representative controls recorded in cubic_derivative_data.py.
+% Tangent arrows at1/3 length, consistent with the text. Native cubic paths, no tracing.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\draw[book axis] (0,0)--(8.2,0) node[right=4pt] {$x$};
+\draw[book axis] (0,0)--(0,4.4) node[above=4pt] {$y$};
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (0.5,2);
+\coordinate (P2) at (3,2.7);
+\coordinate (P3) at (4,2);
+\coordinate (P4) at (5.25,0);
+\coordinate (P5) at (7,0);
+\coordinate (P6) at (7.5,1);
+\draw[book grid] (P0)--(P1)--(P2)--(P3)--(P4)--(P5)--(P6);
+\draw (0,0) .. controls (0.5,2) and (2.1666666667,2.4666666667) .. (3.1666666667,2.3111111111);
+\draw (3.1666666667,2.3111111111) .. controls (3.6666666667,2.2333333333) and (4,2) .. (4.4166666667,1.3333333333);
+\draw (4.4166666667,1.3333333333) .. controls (5.25,0) and (7,0) .. (7.5,1);
+\draw[book axis] (0,0)--(1.25,5);
+\node[above right=5pt] at (1.25,5) {$\mathbf C'\!\left(0\right)$};
+\draw[book axis,dashed] (1.3958333333,1.9638888889)--(4.4166666667,3.7);
+\node[above right=5pt] at (4.4166666667,3.7) {$\mathbf C'\!\left(\frac15\right)$};
+\draw[book axis] (3.1666666667,2.3111111111)--(5.6666666667,1.9222222222);
+\node[right=5pt] at (5.6666666667,1.9222222222) {$\mathbf C'\!\left(\frac25\right)$};
+\draw[book axis] (4.4166666667,1.3333333333)--(6.5,-2);
+\node[right=5pt] at (6.5,-2) {$\mathbf C'\!\left(\frac35\right)$};
+\draw[book axis] (7.5,1)--(8.75,3.5);
+\node[above right=5pt] at (8.75,3.5) {$\mathbf C'\!\left(1\right)$};
+\foreach \i in {0,...,6} \node[book point] at (P\i) {};
+\fill (3.1666666667,2.3111111111) circle[radius=1.7pt];
+\fill (4.4166666667,1.3333333333) circle[radius=1.7pt];
+\node[book point] at (1.3958333333,1.9638888889) {};
+\node[below left=4pt] at (P0) {$\mathbf P_{0}$};
+\node[above right=4pt] at (P1) {$\mathbf P_{1}$};
+\node[above=14pt] at (P2) {$\mathbf P_{2}$};
+\node[above right=4pt] at (P3) {$\mathbf P_{3}$};
+\node[below left=4pt] at (P4) {$\mathbf P_{4}$};
+\node[below left=4pt] at (P5) {$\mathbf P_{5}$};
+\node[right=4pt] at (P6) {$\mathbf P_{6}$};
+\node[book panel tag] at (4.5,-2.5) {(a)};
+\end{tikzpicture}

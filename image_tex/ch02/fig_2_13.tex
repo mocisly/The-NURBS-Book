@@ -1,0 +1,54 @@
+% Printed Fig2.11: N_i3 and nonzero derivatives, computed exactly.
+% Representative local knots (0,4/5,12/5,21/5,27/5); scan has no numeric data.
+% Dashed verticals are jump guides for the piecewise-constant third derivative.
+\begin{tikzpicture}[scale=\BookGeometryScale]
+\begin{scope}[scale=\BookAxisInverseScale]
+\begin{axis}[scale only axis,width={14cm*\BookGeometryScale},height={8cm*\BookGeometryScale},
+axis x line=middle,axis y line=left,xmin=-.35,xmax=6.2,ymin=-1.2,ymax=1.35,
+xtick={0,.8,2.4,4.2,5.4},xticklabels=\empty,ytick={-1,1},
+xlabel={$u$},axis line style={-{Stealth}},tick align=outside,clip=false]
+\addplot[book line,no marks,samples=41,domain=0.000000:0.800000] {((((125/1008)*x+(0/1))*x+(0/1))*x+(0/1))};
+\addplot[book line,no marks,samples=41,domain=0.800000:2.400000] {((((-114875/788256)*x+(2025/3128))*x+(-405/782))*x+(54/391))};
+\addplot[book line,no marks,samples=41,domain=2.400000:4.200000] {((((2825/24633)*x+(-480/391))*x+(1557/391))*x+(-6768/1955))};
+\addplot[book line,no marks,samples=41,domain=4.200000:5.400000] {((((-25/414)*x+(45/46))*x+(-243/46))*x+(2187/230))};
+\addplot[book line,no marks,samples=41,domain=0.000000:0.800000] {(((125/336)*x+(0/1))*x+(0/1))};
+\addplot[book line,no marks,samples=41,domain=0.800000:2.400000] {(((-114875/262752)*x+(2025/1564))*x+(-405/782))};
+\addplot[book line,no marks,samples=41,domain=2.400000:4.200000] {(((2825/8211)*x+(-960/391))*x+(1557/391))};
+\addplot[book line,no marks,samples=41,domain=4.200000:5.400000] {(((-25/138)*x+(45/23))*x+(-243/46))};
+\addplot[line width=.55pt,no marks,samples=41,domain=0.000000:0.800000] {((125/168)*x+(0/1))};
+\addplot[line width=.55pt,no marks,samples=41,domain=0.800000:2.400000] {((-114875/131376)*x+(2025/1564))};
+\addplot[line width=.55pt,no marks,samples=41,domain=2.400000:4.200000] {((5650/8211)*x+(-960/391))};
+\addplot[line width=.55pt,no marks,samples=41,domain=4.200000:5.400000] {((-25/69)*x+(45/23))};
+\addplot[line width=.55pt,no marks,samples=41,domain=0.000000:0.800000,shorten <=1.5pt,shorten >=1.5pt] {(125/168)};
+\draw (axis cs:0.000000,0.74404762) circle[radius=1.5pt];
+\draw (axis cs:0.800000,0.74404762) circle[radius=1.5pt];
+\addplot[line width=.55pt,no marks,samples=41,domain=0.800000:2.400000,shorten <=1.5pt,shorten >=1.5pt] {(-114875/131376)};
+\draw (axis cs:0.800000,-0.87439867) circle[radius=1.5pt];
+\draw (axis cs:2.400000,-0.87439867) circle[radius=1.5pt];
+\addplot[line width=.55pt,no marks,samples=41,domain=2.400000:4.200000,shorten <=1.5pt,shorten >=1.5pt] {(5650/8211)};
+\draw (axis cs:2.400000,0.68810133) circle[radius=1.5pt];
+\draw (axis cs:4.200000,0.68810133) circle[radius=1.5pt];
+\addplot[line width=.55pt,no marks,samples=41,domain=4.200000:5.400000,shorten <=1.5pt,shorten >=1.5pt] {(-25/69)};
+\draw (axis cs:4.200000,-0.36231884) circle[radius=1.5pt];
+\draw (axis cs:5.400000,-0.36231884) circle[radius=1.5pt];
+\draw[book grid,dashed] (axis cs:0.000000,0.00000000)--(axis cs:0.000000,0.74404762);
+\draw[book grid,dashed] (axis cs:0.800000,0.74404762)--(axis cs:0.800000,-0.87439867);
+\draw[book grid,dashed] (axis cs:2.400000,-0.87439867)--(axis cs:2.400000,0.68810133);
+\draw[book grid,dashed] (axis cs:4.200000,0.68810133)--(axis cs:4.200000,-0.36231884);
+\draw[book grid,dashed] (axis cs:5.400000,-0.36231884)--(axis cs:5.400000,0.00000000);
+\node[below left=4pt] at (axis cs:0,0) {$u_i$};
+\node[below right=4pt] at (axis cs:0.8,0) {$u_{i+1}$};
+\node[below left=4pt] at (axis cs:2.4,0) {$u_{i+2}$};
+\node[below left=4pt] at (axis cs:4.2,0) {$u_{i+3}$};
+\node[below right=4pt] at (axis cs:5.4,0) {$u_{i+4}$};
+\node (d0) at (axis cs:2.85,0.25) {$N_{i,3}$};
+\draw[book grid,-{Stealth[length=4pt]}] (d0)--(axis cs:2.5,0.61264665);
+\node (d1) at (axis cs:3.5,-1.02) {$N'_{i,3}$};
+\draw[book grid,-{Stealth[length=4pt]}] (d1)--(axis cs:3.4,-0.38850323);
+\node (d2) at (axis cs:5.3,0.55) {$N''_{i,3}$};
+\draw[book grid,-{Stealth[length=4pt]}] (d2)--(axis cs:4.5,0.32608696);
+\node (d3) at (axis cs:3.45,1.08) {$N'''_{i,3}$};
+\draw[book grid,-{Stealth[length=4pt]}] (d3)--(axis cs:3.3,0.68810133);
+\end{axis}
+\end{scope}
+\end{tikzpicture}

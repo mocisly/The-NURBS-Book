@@ -1,0 +1,3784 @@
+[
+  {
+    "chapter": 1,
+    "offset": 73,
+    "entries": [
+      "i157",
+      "i161",
+      "i162",
+      "i190",
+      "i191",
+      "i214",
+      "i215",
+      "i216",
+      "i269",
+      "i270",
+      "i271",
+      "i272",
+      "i273",
+      "i326",
+      "i330",
+      "i331",
+      "i347"
+    ],
+    "selectors": [
+      "s:1:隐式和参数形式"
+    ],
+    "matched": "隐式和参数形式",
+    "id": "p0001",
+    "line_without_marks": 4,
+    "context": "\\documentclass[../main.tex]{subfiles}\n\\begin{document}\n\n\\section{隐式和参数形式}\n\n在几何建模中，表示曲线和曲面的两种最常见的方法是隐式方程和参数函数。\n\n位于 \\({xy}\\) 平面的曲线的隐式方程具有形式 \\(f\\left( {x,y}\\right)  = 0\\) 。该方程描述了曲线上点的 \\(x\\) 和 \\(y\\) 坐标之间的隐式关系。对于给定的曲线，该方程在乘法常数的情况下是唯一的。一个例"
+  },
+  {
+    "chapter": 1,
+    "offset": 550,
+    "entries": [
+      "i094"
+    ],
+    "selectors": [
+      "f:1:fig_1_01.tex"
+    ],
+    "matched": "\\BookFigure[]{ch01/fig_1_01.tex}",
+    "id": "p0002",
+    "line_without_marks": 17,
+    "context": "\\end{center}\n%\\hspace*{3em} \n\n\\begin{figure}[ht]\n    \\centering\n    \\BookFigure[]{ch01/fig_1_01.tex}\n    \\caption{半径为 1，中心位于原点的圆}\\label{fig:unit_circle}\n\\end{figure}\n\n在参数形式中，曲线上点的每个坐标都作为独立参数的显式函数单独表示。\n\n\\[\n\\mathbf{C}\\left( u\\right)  = \\left( {x\\left( u\\right) ,"
+  },
+  {
+    "chapter": 1,
+    "offset": 3589,
+    "entries": [
+      "i316"
+    ],
+    "selectors": [
+      "f:1:fig_1_03.tex"
+    ],
+    "matched": "\\BookFigure[max width=0.6\\textwidth]{ch01/fig_1_03.tex}",
+    "id": "p0003",
+    "line_without_marks": 100,
+    "context": "in{center}\n\\begin{minipage}{10cm}\n\\centering\n\\BookFigure[max width=0.6\\textwidth]{ch01/fig_1_03.tex}\n\\captionsetup{font=small,justification=centering,singlelinecheck=false,skip=6pt}\n\\captionof*{figure}{图 1.3. 半径为 1 的球体，位于原点。}\n\\end{minipage}\n\\end{center}\n\n记 \\(\\"
+  },
+  {
+    "chapter": 1,
+    "offset": 4451,
+    "entries": [
+      "i274",
+      "i328"
+    ],
+    "selectors": [
+      "f:1:fig_1_04.tex"
+    ],
+    "matched": "\\BookFigure[max width=0.7\\textwidth]{ch01/fig_1_04.tex}",
+    "id": "p0004",
+    "line_without_marks": 115,
+    "context": "in{center}\n\\begin{minipage}{10cm}\n\\centering\n\\BookFigure[max width=0.7\\textwidth]{ch01/fig_1_04.tex}\n\\captionsetup{font=small,justification=centering,singlelinecheck=false,skip=6pt}\n\\captionof*{figure}{图 1.4. \\(\\mathbf{S}\\left( {u,v}\\right)\\) 的偏导数和单位法向量。}\n\\end"
+  },
+  {
+    "chapter": 1,
+    "offset": 6135,
+    "entries": [
+      "i066",
+      "i088",
+      "i155",
+      "i157",
+      "i166",
+      "i192",
+      "i209",
+      "i241",
+      "i267",
+      "i282",
+      "i283",
+      "i284",
+      "i285"
+    ],
+    "selectors": [
+      "s:1:曲线的幂基形式"
+    ],
+    "matched": "曲线的幂基形式",
+    "id": "p0005",
+    "line_without_marks": 159,
+    "context": "\n本书其余部分几乎完全关注参数形式。关于隐式和参数形式的更多细节可以在标准文献中找到(\\cite{Faux81,Mort85,Hoff89,Beac91})。\n\n\n\n\\section{曲线的幂基形式}\n\n显然，通过允许坐标函数 \\(x\\left( u\\right) ,y\\left( u\\right)\\) 和 \\(z\\left( u\\right)\\) 为任意，我们可以获得各种各样的曲线。然而，在实现几何建模系统时存在权衡。理想的情况是将自己限制在一类函数中，这些函数\n\n\\begin{itemize}\n\\item 能够"
+  },
+  {
+    "chapter": 1,
+    "offset": 8720,
+    "entries": [
+      "i038",
+      "i209"
+    ],
+    "selectors": [
+      "a:1.1"
+    ],
+    "matched": "\\textbf{算法 A1.1",
+    "id": "p0006",
+    "line_without_marks": 236,
+    "context": "bf{a}}_{0}}\\right.\n\\]\n\n一般算法是\n\n% book-code: algorithm A1.1\n\\par\\medskip\\noindent\\textbf{算法 A1.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nHorner1(a, n, u0, C)\n{ /* Compute point on power basis curve. */\n    /* Input: a, n, u0 */\n    /* Output: C *"
+  },
+  {
+    "chapter": 1,
+    "offset": 11661,
+    "entries": [
+      "i218"
+    ],
+    "selectors": [
+      "t:1:拐点"
+    ],
+    "matched": "拐点",
+    "id": "p0007",
+    "line_without_marks": 301,
+    "context": "athbf{a}}_{2}{u}^{2} + {\\mathbf{a}}_{3}{u}^{3}\\) 是一种非常一般的曲线；它可以是一个真正扭曲的三维曲线，不在同一平面内(图 1.8a)；它可以有一个拐点(图 1.8b)；一个尖点(图 1.8c)；或一个环(图 1.8d)。如果 \\({\\mathbf{a}}_{0},{\\mathbf{a}}_{1},{\\mathbf{a}}_{2},{\\mathbf{a}}_{3}\\) 不在唯一平面内，则会产生扭曲曲线。平面曲线上的拐点被定义为曲线光滑(没有尖点)且该点的切线通过曲线的"
+  },
+  {
+    "chapter": 1,
+    "offset": 11674,
+    "entries": [
+      "i175"
+    ],
+    "selectors": [
+      "t:1:尖点"
+    ],
+    "matched": "尖点",
+    "id": "p0008",
+    "line_without_marks": 301,
+    "context": "{u}^{2} + {\\mathbf{a}}_{3}{u}^{3}\\) 是一种非常一般的曲线；它可以是一个真正扭曲的三维曲线，不在同一平面内(图 1.8a)；它可以有一个拐点(图 1.8b)；一个尖点(图 1.8c)；或一个环(图 1.8d)。如果 \\({\\mathbf{a}}_{0},{\\mathbf{a}}_{1},{\\mathbf{a}}_{2},{\\mathbf{a}}_{3}\\) 不在唯一平面内，则会产生扭曲曲线。平面曲线上的拐点被定义为曲线光滑(没有尖点)且该点的切线通过曲线的点。这意味着曲线的转向方向"
+  },
+  {
+    "chapter": 1,
+    "offset": 11687,
+    "entries": [
+      "i245"
+    ],
+    "selectors": [
+      "t:1:或一个环"
+    ],
+    "matched": "或一个环",
+    "id": "p0009",
+    "line_without_marks": 301,
+    "context": "athbf{a}}_{3}{u}^{3}\\) 是一种非常一般的曲线；它可以是一个真正扭曲的三维曲线，不在同一平面内(图 1.8a)；它可以有一个拐点(图 1.8b)；一个尖点(图 1.8c)；或一个环(图 1.8d)。如果 \\({\\mathbf{a}}_{0},{\\mathbf{a}}_{1},{\\mathbf{a}}_{2},{\\mathbf{a}}_{3}\\) 不在唯一平面内，则会产生扭曲曲线。平面曲线上的拐点被定义为曲线光滑(没有尖点)且该点的切线通过曲线的点。这意味着曲线的转向方向发生了变化。在拐点处，要么"
+  },
+  {
+    "chapter": 1,
+    "offset": 12585,
+    "entries": [
+      "i065",
+      "i078",
+      "i080",
+      "i081",
+      "i125",
+      "i149",
+      "i155",
+      "i241",
+      "i267"
+    ],
+    "selectors": [
+      "s:1:Bézier 曲线"
+    ],
+    "matched": "Bézier 曲线",
+    "id": "p0010",
+    "line_without_marks": 317,
+    "context": "曲；(b) 拐点；(c) 尖点；(d) 环。}\n\\end{minipage}\n\\end{center}\n\\end{minipage}\n\\par\\medskip\n\n\\section{Bézier 曲线}\n\n接下来我们研究另一种参数多项式曲线，贝塞尔曲线。由于它们都使用多项式作为坐标函数，幂基和贝塞尔形式在数学上是等价的；即，任何可以用一种形式表示的曲线也可以用另一种形式表示。然而，贝塞尔方法在几何建模方面优于幂基形式。我们对贝塞尔曲线的介绍相对非正式；对于更严格和完整的处理，读者应参考其他文献 \\cite{Forr7"
+  },
+  {
+    "chapter": 1,
+    "offset": 12690,
+    "entries": [
+      "i079"
+    ],
+    "selectors": [
+      "t:1:在几何建模方面优于"
+    ],
+    "matched": "在几何建模方面优于",
+    "id": "p0011",
+    "line_without_marks": 319,
+    "context": "我们研究另一种参数多项式曲线，贝塞尔曲线。由于它们都使用多项式作为坐标函数，幂基和贝塞尔形式在数学上是等价的；即，任何可以用一种形式表示的曲线也可以用另一种形式表示。然而，贝塞尔方法在几何建模方面优于幂基形式。我们对贝塞尔曲线的介绍相对非正式；对于更严格和完整的处理，读者应参考其他文献 \\cite{Forr72,Bezi72,Bezi86,Gord74a,Chan81,Fari93,Yama88,Hosc93,Roge90}。\n\n幂基形式有以下缺点:\n\n\\begin{itemize}\n\\item 对于交互式形状设计"
+  },
+  {
+    "chapter": 1,
+    "offset": 14681,
+    "entries": [
+      "i134"
+    ],
+    "selectors": [
+      "t:1:控制多边形"
+    ],
+    "matched": "控制多边形",
+    "id": "p0012",
+    "line_without_marks": 373,
+    "context": "ze}\n\\item 由 \\(\\left\\{  {{\\mathbf{P}}_{0},{\\mathbf{P}}_{1},{\\mathbf{P}}_{2}}\\right\\}\\) 形成的多边形，称为控制多边形，较好地近似了曲线的形状；\n\\item \\({\\mathbf{P}}_{0} = \\mathbf{C}\\left( 0\\right)\\) 和 \\({\\mathbf{P}}_{2} = \\mathbf{C}\\left( 1\\right)\\) ；\n\\item 曲线在其端点的切线方向与 \\({\\mathbf{P}}_{1} "
+  },
+  {
+    "chapter": 1,
+    "offset": 15821,
+    "entries": [
+      "i142"
+    ],
+    "selectors": [
+      "t:1:凸包"
+    ],
+    "matched": "凸包",
+    "id": "p0013",
+    "line_without_marks": 397,
+    "context": "切线方向与 \\({\\mathbf{P}}_{1} - {\\mathbf{P}}_{0}\\) 和 \\({\\mathbf{P}}_{3} - {\\mathbf{P}}_{2}\\) 平行；\n\\item 凸包性质:曲线包含在其定义控制点的凸包内(图 1.11c)；\n\\item 变差减少性质:没有直线与曲线相交的次数超过它与曲线的控制多边形相交的次数(对于三维 Bézier 曲线，将“直线”替换为“平面”)。这表达了贝塞尔曲线紧密跟随其控制多边形的特性，并且不会比其控制多边形更大幅度地摆动(图 1.11f)；\n\\item 最"
+  },
+  {
+    "chapter": 1,
+    "offset": 15823,
+    "entries": [
+      "i085"
+    ],
+    "selectors": [
+      "t:1:凸包性质"
+    ],
+    "matched": "凸包性质",
+    "id": "p0014",
+    "line_without_marks": 397,
+    "context": "方向与 \\({\\mathbf{P}}_{1} - {\\mathbf{P}}_{0}\\) 和 \\({\\mathbf{P}}_{3} - {\\mathbf{P}}_{2}\\) 平行；\n\\item 凸包性质:曲线包含在其定义控制点的凸包内(图 1.11c)；\n\\item 变差减少性质:没有直线与曲线相交的次数超过它与曲线的控制多边形相交的次数(对于三维 Bézier 曲线，将“直线”替换为“平面”)。这表达了贝塞尔曲线紧密跟随其控制多边形的特性，并且不会比其控制多边形更大幅度地摆动(图 1.11f)；\n\\item 最初("
+  },
+  {
+    "chapter": 1,
+    "offset": 15862,
+    "entries": [
+      "i351"
+    ],
+    "selectors": [
+      "t:1:变差减少性质"
+    ],
+    "matched": "变差减少性质",
+    "id": "p0015",
+    "line_without_marks": 398,
+    "context": "0}\\) 和 \\({\\mathbf{P}}_{3} - {\\mathbf{P}}_{2}\\) 平行；\n\\item 凸包性质:曲线包含在其定义控制点的凸包内(图 1.11c)；\n\\item 变差减少性质:没有直线与曲线相交的次数超过它与曲线的控制多边形相交的次数(对于三维 Bézier 曲线，将“直线”替换为“平面”)。这表达了贝塞尔曲线紧密跟随其控制多边形的特性，并且不会比其控制多边形更大幅度地摆动(图 1.11f)；\n\\item 最初(在 \\(u = 0\\) 时)曲线的转向与 \\({\\mathbf{P}}_{0}"
+  },
+  {
+    "chapter": 1,
+    "offset": 18556,
+    "entries": [
+      "i275"
+    ],
+    "selectors": [
+      "t:1:P1.2"
+    ],
+    "matched": "P1.2",
+    "id": "p0016",
+    "line_without_marks": 473,
+    "context": "质：\n\nP1.1 非负性:对于所有 \\(i,n\\) 和 \\(0 \\leq  u \\leq  1\\) ，有 \\({B}_{i,n}\\left( u\\right)  \\geq  0\\) ；\n\n\n\nP1.2 单位分割:对于所有 \\(0 \\leq  u \\leq  1\\) ，有 \\(\\mathop{\\sum }\\limits_{{i = 0}}^{n}{B}_{i,n}\\left( u\\right)  = 1\\) ；\n\nP1.3 \\({B}_{0,n}\\left( 0\\right)  = {B}_{n,n}\\left( 1"
+  },
+  {
+    "chapter": 1,
+    "offset": 21233,
+    "entries": [
+      "i052",
+      "i057"
+    ],
+    "selectors": [
+      "a:1.2"
+    ],
+    "matched": "\\textbf{算法 A1.2",
+    "id": "p0017",
+    "line_without_marks": 550,
+    "context": " \\({B}_{1,3}\\) 的计算如表 1.1 所示。\n\n% book-code: algorithm A1.2\n\\par\\medskip\\noindent\\textbf{算法 A1.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nBernstein(i, n, u, B)\n{ /* Compute the value of a Bernstein polynomial. */\n    /* Input: i, n, u */\n    /* Ou"
+  },
+  {
+    "chapter": 1,
+    "offset": 22107,
+    "entries": [
+      "i057"
+    ],
+    "selectors": [
+      "a:1.3"
+    ],
+    "matched": "\\textbf{算法 A1.3",
+    "id": "p0018",
+    "line_without_marks": 580,
+    "context": "要的零项计算。该算法在表 1.2 中展示了立方体的情况。\n\n% book-code: algorithm A1.3\n\\par\\medskip\\noindent\\textbf{算法 A1.3（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nAllBernstein (n, u, B)\n{ /* Compute all nth-degree Bernstein polynomials. */\n    /* Input: n, u */\n    /* Out"
+  },
+  {
+    "chapter": 1,
+    "offset": 23033,
+    "entries": [
+      "i034"
+    ],
+    "selectors": [
+      "a:1.4"
+    ],
+    "matched": "\\textbf{算法 A1.4",
+    "id": "p0019",
+    "line_without_marks": 618,
+    "context": "urve at a fixed \\(u\\) value.\n\n% book-code: algorithm A1.4\n\\par\\medskip\\noindent\\textbf{算法 A1.4（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nPointOnBezierCurve(P, n, u, C)\n{ /* 计算贝塞尔曲线上的点. */\n    /* 输入: P, n, u */\n    /* 输出: C (一个点) */\n    AllBernste"
+  },
+  {
+    "chapter": 1,
+    "offset": 23313,
+    "entries": [
+      "i183"
+    ],
+    "selectors": [
+      "t:1:P1.7"
+    ],
+    "matched": "P1.7",
+    "id": "p0020",
+    "line_without_marks": 630,
+    "context": "局部数组  */\n    C = 0.0 ;\n    @对于@ ( k = 0;k <= n;k ++ ) C = C + B[k]* P[k] ;\n}\n\\end{minted}\n\n使用性质 P1.7，可以轻松推导出 Bézier 曲线导数的一般表达式。\n\n\\[\n{\\mathbf{C}}^{\\prime }\\left( u\\right)  = \\frac{d\\left( {\\mathop{\\sum }\\limits_{{i = 0}}^{n}{B}_{i,n}\\left( u\\right) {\\mathbf{P}}"
+  },
+  {
+    "chapter": 1,
+    "offset": 23339,
+    "entries": [
+      "i084",
+      "i184"
+    ],
+    "selectors": [
+      "t:1:Bézier 曲线导数的一般表达式"
+    ],
+    "matched": "Bézier 曲线导数的一般表达式",
+    "id": "p0021",
+    "line_without_marks": 630,
+    "context": " @对于@ ( k = 0;k <= n;k ++ ) C = C + B[k]* P[k] ;\n}\n\\end{minted}\n\n使用性质 P1.7，可以轻松推导出 Bézier 曲线导数的一般表达式。\n\n\\[\n{\\mathbf{C}}^{\\prime }\\left( u\\right)  = \\frac{d\\left( {\\mathop{\\sum }\\limits_{{i = 0}}^{n}{B}_{i,n}\\left( u\\right) {\\mathbf{P}}_{i}}\\right) }{du} = \\math"
+  },
+  {
+    "chapter": 1,
+    "offset": 27525,
+    "entries": [
+      "i034",
+      "i178"
+    ],
+    "selectors": [
+      "a:1.5"
+    ],
+    "matched": "\\textbf{算法 A1.5",
+    "id": "p0022",
+    "line_without_marks": 726,
+    "context": " 和 1.17)，生成表 1.3 中所示的点的三角形表。\n\n% book-code: algorithm A1.5\n\\par\\medskip\\noindent\\textbf{算法 A1.5（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\ndeCasteljau1(P, n, u, C)\n{ /* Compute point on a Bézier curve */\n    /* using deCasteljau */\n    /* Input: P,"
+  },
+  {
+    "chapter": 1,
+    "offset": 28756,
+    "entries": [
+      "i067",
+      "i094",
+      "i167",
+      "i169",
+      "i197",
+      "i211",
+      "i267",
+      "i293",
+      "i295",
+      "i358"
+    ],
+    "selectors": [
+      "s:1:有理 Bézier 曲线"
+    ],
+    "matched": "有理 Bézier 曲线",
+    "id": "p0023",
+    "line_without_marks": 776,
+    "context": "插值时，这一点是直观清晰的。Bézier 形式的唯一缺点是点评估效率较低(见算法 A1.1、A1.4 和 A1.5，以及本章后面的练习 1.13)。\n\n\n\n\\section{有理 Bézier 曲线}\n\n接下来，我们介绍有理曲线和齐次坐标的概念。为了说明这些概念，我们简要介绍有理贝塞尔曲线。这些曲线是有理B样条曲线的特例，因此在后续章节中将更全面和严格地处理。\n\n尽管多项式提供了许多优势，但存在一些重要的曲线和曲面类型无法用多项式精确表示，例如圆、椭圆、双曲线、圆柱、圆锥、球体等。作为一个例子，我们证明单位圆在 \\"
+  },
+  {
+    "chapter": 1,
+    "offset": 28891,
+    "entries": [
+      "i176"
+    ],
+    "selectors": [
+      "t:1:圆柱"
+    ],
+    "matched": "圆柱",
+    "id": "p0024",
+    "line_without_marks": 780,
+    "context": "要介绍有理贝塞尔曲线。这些曲线是有理B样条曲线的特例，因此在后续章节中将更全面和严格地处理。\n\n尽管多项式提供了许多优势，但存在一些重要的曲线和曲面类型无法用多项式精确表示，例如圆、椭圆、双曲线、圆柱、圆锥、球体等。作为一个例子，我们证明单位圆在 \\({xy}\\) 平面中，以原点为中心，无法用多项式坐标函数表示。相反，假设\n\n\\[\nx\\left( u\\right)  = {a}_{0} + {a}_{1}u + \\cdots  + {a}_{n}{u}^{n}\n\\]\n\n\\[\ny\\left( u\\right)  = "
+  },
+  {
+    "chapter": 1,
+    "offset": 33429,
+    "entries": [
+      "i275"
+    ],
+    "selectors": [
+      "t:1:P1.9"
+    ],
+    "matched": "P1.9",
+    "id": "p0025",
+    "line_without_marks": 908,
+    "context": "的特性:\n\nP1.8 非负性:对所有 \\(i,n\\) 和 \\(0 \\leq  u \\leq  1\\) ，都有 \\({R}_{i,n}\\left( u\\right)  \\geq  0\\) ；\n\nP1.9 统一划分:对所有 \\(0 \\leq  u \\leq  1\\) ，都有 \\(\\mathop{\\sum }\\limits_{{i = 0}}^{n}{R}_{i,n}\\left( u\\right)  = 1\\) ；\n\nP1.10 \\({R}_{0,n}\\left( 0\\right)  = {R}_{n,n}\\left( "
+  },
+  {
+    "chapter": 1,
+    "offset": 34005,
+    "entries": [
+      "i351"
+    ],
+    "selectors": [
+      "t:1:P1.15"
+    ],
+    "matched": "P1.15",
+    "id": "p0026",
+    "line_without_marks": 922,
+    "context": ":\n\nP1.13 凸包性质:曲线包含在其定义控制点( \\({\\mathbf{P}}_{i}\\) )的凸包内；\n\nP1.14 变换不变性:通过对控制点应用旋转、平移和缩放来对曲线进行变换；\n\nP1.15 变差减小性质:与多项式 Bézier 曲线相同(见前一节)；\n\nP1.16 端点插值: \\(\\mathbf{C}\\left( 0\\right)  = {\\mathbf{P}}_{0}\\) 和 \\(\\mathbf{C}\\left( 1\\right)  = {\\mathbf{P}}_{n}\\) ；\n\nP1.17 在 \\("
+  },
+  {
+    "chapter": 1,
+    "offset": 36557,
+    "entries": [
+      "i205"
+    ],
+    "selectors": [
+      "f:1:fig_1_30.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch01/fig_1_30.tex}",
+    "id": "p0027",
+    "line_without_marks": 972,
+    "context": "begin{center}\n\\begin{minipage}{12cm}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch01/fig_1_30.tex}\n\\captionsetup{font=small,skip=6pt,justification=centering}\n\\captionof*{figure}{图 1.20. 欧几里得点的齐次表示与到 $W=1$ 平面的中心投影。}\n\\end{minipage}\n\\end{center}\n\\end{minipage}\n"
+  },
+  {
+    "chapter": 1,
+    "offset": 37162,
+    "entries": [
+      "i133",
+      "i168"
+    ],
+    "selectors": [
+      "t:1:加权控制点"
+    ],
+    "matched": "加权控制点",
+    "id": "p0028",
+    "line_without_marks": 990,
+    "context": "\\}\n\\]\n\n现在，对于给定的一组控制点 \\(\\left\\{  {\\mathbf{P}}_{i}\\right\\}\\) 和权重 \\(\\left\\{  {w}_{i}\\right\\}\\) ，构造加权控制点 \\({\\mathbf{P}}_{i}^{w} = \\left( {{w}_{i}{x}_{i},{w}_{i}{y}_{i},{w}_{i}{z}_{i},{w}_{i}}\\right)\\) 。然后在四维空间中定义非有理(多项式)Bézier 曲线。\n\n\\[\n{\\mathbf{C}}^{w}\\left( u\\righ"
+  },
+  {
+    "chapter": 1,
+    "offset": 37431,
+    "entries": [
+      "i277"
+    ],
+    "selectors": [
+      "t:1:透视"
+    ],
+    "matched": "透视",
+    "id": "p0029",
+    "line_without_marks": 997,
+    "context": "thop{\\sum }\\limits_{{i = 0}}^{n}{B}_{i,n}\\left( u\\right) {\\mathbf{P}}_{i}^{w} \\tag{1.17}\n\\]\n\n\n然后，将透视映射 \\(H\\) 应用于 \\({\\mathbf{C}}^{w}\\left( u\\right)\\) ，得到 Eq. (1.14) 的相应有理 Bézier 曲线(见图 1.21)，即写出 Eq. (1.17) 的坐标函数，我们得到\n\n\\[\nX\\left( u\\right)  = \\mathop{\\sum }\\limits"
+  },
+  {
+    "chapter": 1,
+    "offset": 40397,
+    "entries": [
+      "i206"
+    ],
+    "selectors": [
+      "f:1:fig_1_32.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch01/fig_1_32.tex}",
+    "id": "p0030",
+    "line_without_marks": 1053,
+    "context": "begin{center}\n\\begin{minipage}{14cm}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch01/fig_1_32.tex}\n\\captionsetup{font=small,skip=6pt,justification=centering}\n\\captionof*{figure}{图 1.22. 圆弧的齐次表示：抛物线投影为 $W=1$ 平面上的四分之一圆。\\\\[2pt]构造点取 $u=1/2$，其投影为 $(3/5,4/5)$。}\n\\e"
+  },
+  {
+    "chapter": 1,
+    "offset": 43397,
+    "entries": [
+      "i070",
+      "i071",
+      "i086",
+      "i123",
+      "i193",
+      "i221",
+      "i223",
+      "i286",
+      "i318",
+      "i327",
+      "i328",
+      "i332",
+      "i338",
+      "i344"
+    ],
+    "selectors": [
+      "s:1:张量积曲面"
+    ],
+    "matched": "张量积曲面",
+    "id": "p0031",
+    "line_without_marks": 1125,
+    "context": " 离起始点的弧长超过一半。这在直观上是正确的，因为通过对 \\(\\mathbf{C}\\left( u\\right)\\) 进行微分，可以看出起始速度是结束速度的两倍。\n\n\n\n\\section{张量积曲面}\n\n曲线 \\(\\mathbf{C}\\left( u\\right)\\) 是一个单参数的向量值函数。它是将一段直线段映射(变形)到欧几里得三维空间中的一种方式。表面是一个双参数的向量值函数 \\(u\\) 和 \\(v\\) ，表示将 \\({uv}\\) 平面上的一个区域 \\(\\mathcal{R}\\) 映射到欧几里得三维空间中的一"
+  },
+  {
+    "chapter": 1,
+    "offset": 47916,
+    "entries": [
+      "i039",
+      "i071",
+      "i210",
+      "i286",
+      "i332"
+    ],
+    "selectors": [
+      "a:1.6"
+    ],
+    "matched": "\\textbf{算法 A1.6",
+    "id": "p0032",
+    "line_without_marks": 1212,
+    "context": "该算法，我们获得曲面上的点。因此，我们有算法 A1.6。\n\n% book-code: algorithm A1.6\n\\par\\medskip\\noindent\\textbf{算法 A1.6（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nHorner2(a, n, u0, v0, S)\n{ /* Compute point on a power basis surface. */\n    /* Input: a, n, m, u0, v0 */\n   "
+  },
+  {
+    "chapter": 1,
+    "offset": 51247,
+    "entries": [
+      "i087"
+    ],
+    "selectors": [
+      "t:1:表面插值四个角控制点"
+    ],
+    "matched": "表面插值四个角控制点",
+    "id": "p0033",
+    "line_without_marks": 1296,
+    "context": "控制点的凸包内；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 变换不变性；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 表面插值四个角控制点；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 当进行三角剖分时，控制网形成表面的平面多面体近似。\n\\end{itemize}\n\n有趣的是，目前尚无已知的贝塞尔曲面变差性质(见 \\cite{Prau92})。\n\n\\noindent\\begin{minipage}{\\linewidth}\nd"
+  },
+  {
+    "chapter": 1,
+    "offset": 53117,
+    "entries": [
+      "i035",
+      "i178"
+    ],
+    "selectors": [
+      "a:1.7"
+    ],
+    "matched": "\\textbf{算法 A1.7",
+    "id": "p0034",
+    "line_without_marks": 1336,
+    "context": "0}}\\left( {v}_{0}\\right)\\) 。\n\n% book-code: algorithm A1.7\n\\par\\medskip\\noindent\\textbf{算法 A1.7（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\ndeCasteljau2(P, n, m, u0, v0, S)\n{ /* Compute a point on a Bézier surface */\n    /* by the deCasteljau. */\n  "
+  },
+  {
+    "chapter": 1,
+    "offset": 53657,
+    "entries": [
+      "i072",
+      "i294",
+      "i333"
+    ],
+    "selectors": [
+      "t:1:我们定义有理 Bézier 曲面"
+    ],
+    "matched": "我们定义有理 Bézier 曲面",
+    "id": "p0035",
+    "line_without_marks": 1358,
+    "context": "jau1(P[][i], m, v0, Q[i]);\n        deCasteljau1(Q, n, u0, S);\n    }\n}\n\\end{minted}\n\n我们定义有理 Bézier 曲面为四维多项式 Bézier 曲面的透视投影(见 \\cite{Pieg86,Fari89})。\n\n\\[\n{\\mathbf{S}}^{w}\\left( {u,v}\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}\\mathop{\\sum }\\limits_{{j = 0}}^{m}"
+  },
+  {
+    "chapter": 1,
+    "offset": 61345,
+    "entries": [
+      "i296"
+    ],
+    "selectors": [
+      "t:1:重新参数"
+    ],
+    "matched": "重新参数",
+    "id": "p0036",
+    "line_without_marks": 1544,
+    "context": "hbf{C}\\left( v\\right)\\) 有什么看法？ \\(\\mathbf{C}\\left( v\\right)\\) 被称为 \\(\\mathbf{C}\\left( u\\right)\\) 的重新参数化。\n\n1.10. 检查伯恩斯坦多项式在 \\(n = 2\\) 和 \\(n = 3\\) 情况下的性质 P1.7。\n\n1.11. 有时需要反转一条曲线，即，给定 \\({\\mathbf{C}}_{1}\\left( u\\right) ,0 \\leq  u \\leq  1\\) ，生成 \\({\\mathbf{C}}_{2}\\lef"
+  },
+  {
+    "chapter": 2,
+    "offset": 79,
+    "entries": [
+      "i165"
+    ],
+    "selectors": [
+      "t:2:有理"
+    ],
+    "matched": "有理",
+    "id": "p0037",
+    "line_without_marks": 5,
+    "context": "\\documentclass[../main.tex]{subfiles}\n\\begin{document}\n\n\\section{引言}\n仅由一个多项式或有理段组成的曲线通常是不够的。它们的缺点是:\n\n\\begin{itemize}\n\\item 为了满足大量约束，需要高阶；例如，(n - 1) 阶需要通过 \\(\\dot{n}\\) 数据点的多项式贝塞尔曲线。然而，高阶曲线处理效率低且数值不稳定；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 为了准"
+  },
+  {
+    "chapter": 2,
+    "offset": 370,
+    "entries": [
+      "i120",
+      "i164"
+    ],
+    "selectors": [
+      "t:2:分段"
+    ],
+    "matched": "分段",
+    "id": "p0038",
+    "line_without_marks": 19,
+    "context": "\\begin{itemize}\n\\item 单段曲线(曲面)不适合交互式形状设计；尽管贝塞尔曲线可以通过其控制点(和权重)进行塑形，但控制并不够局部。\n\\end{itemize}\n\n解决方案是使用分段多项式或分段有理曲线(曲面)。图 2.1 显示了一条曲线 \\(\\mathbf{C}\\left( u\\right)\\) ，由 \\(m\\left( { = 3}\\right) n\\) 次多项式段组成。 \\(\\mathbf{C}\\left( u\\right)\\) 定义在 \\(u \\in  \\left\\lbrack  {0,1"
+  },
+  {
+    "chapter": 2,
+    "offset": 373,
+    "entries": [
+      "i352"
+    ],
+    "selectors": [
+      "t:2:分段多项式"
+    ],
+    "matched": "分段多项式",
+    "id": "p0039",
+    "line_without_marks": 19,
+    "context": "gin{itemize}\n\\item 单段曲线(曲面)不适合交互式形状设计；尽管贝塞尔曲线可以通过其控制点(和权重)进行塑形，但控制并不够局部。\n\\end{itemize}\n\n解决方案是使用分段多项式或分段有理曲线(曲面)。图 2.1 显示了一条曲线 \\(\\mathbf{C}\\left( u\\right)\\) ，由 \\(m\\left( { = 3}\\right) n\\) 次多项式段组成。 \\(\\mathbf{C}\\left( u\\right)\\) 定义在 \\(u \\in  \\left\\lbrack  {0,1}\\r"
+  },
+  {
+    "chapter": 2,
+    "offset": 608,
+    "entries": [
+      "i089"
+    ],
+    "selectors": [
+      "t:2:断点"
+    ],
+    "matched": "断点",
+    "id": "p0040",
+    "line_without_marks": 19,
+    "context": "in  \\left\\lbrack  {0,1}\\right\\rbrack\\) 上。参数值 \\({u}_{0} = 0 < {u}_{1} < {u}_{2} < {u}_{3} = 1\\) 被称为断点。它们映射到三个多项式段的端点。我们用 \\({\\mathbf{C}}_{i}\\left( u\\right) ,1 \\leq  i \\leq  m\\) 表示这些段。段的构造方式使得它们在某种程度上具有连续性(不一定在每个断点处相同)。设 \\({\\mathbf{C}}_{i}^{\\left( j\\right) }\\) 表示"
+  },
+  {
+    "chapter": 2,
+    "offset": 709,
+    "entries": [
+      "i121"
+    ],
+    "selectors": [
+      "t:2:连续"
+    ],
+    "matched": "连续",
+    "id": "p0041",
+    "line_without_marks": 19,
+    "context": "它们映射到三个多项式段的端点。我们用 \\({\\mathbf{C}}_{i}\\left( u\\right) ,1 \\leq  i \\leq  m\\) 表示这些段。段的构造方式使得它们在某种程度上具有连续性(不一定在每个断点处相同)。设 \\({\\mathbf{C}}_{i}^{\\left( j\\right) }\\) 表示 \\(j\\) 次导数，如果对于所有 \\(0 \\leq  j \\leq  k\\) ，在断点 \\({u}_{i}\\) 处是 \\({C}^{k}\\) 连续的。\n\n\\begin{center}\n\\begin{m"
+  },
+  {
+    "chapter": 2,
+    "offset": 4147,
+    "entries": [
+      "i163"
+    ],
+    "selectors": [
+      "t:2:Bézier"
+    ],
+    "matched": "Bézier",
+    "id": "p0042",
+    "line_without_marks": 83,
+    "context": "行修改。此外， \\(\\left\\{  {f}_{i}\\right\\}\\) 应具有“通常”的良好解析性质，例如在第 1.3 节中列出的那些。这确保了由方程 (2.2) 定义的曲线具有类似于 Bézier 曲线的良好几何性质，例如，凸包、变差减小、变换不变性。我们在基函数中寻求的另一个重要性质是局部支持；这意味着每个 \\({f}_{i}\\left( u\\right)\\) 仅在有限数量的子区间上非零，而不是整个域。 \\(\\left\\lbrack  {{u}_{0},{u}_{m}}\\right\\rbrack\\) 。由于 "
+  },
+  {
+    "chapter": 2,
+    "offset": 5084,
+    "entries": [
+      "i062",
+      "i064",
+      "i078",
+      "i090",
+      "i232",
+      "i238",
+      "i243",
+      "i266",
+      "i338"
+    ],
+    "selectors": [
+      "s:2:B样条基函数的定义和性质"
+    ],
+    "matched": "B样条基函数的定义和性质",
+    "id": "p0043",
+    "line_without_marks": 104,
+    "context": "余部分，我们研究所谓的 B-spline 基函数。在第 3 章和第 4 章中，我们将这些函数与三维和四维控制点结合，以分别获得非有理和有理曲线和曲面。\n\n\n\\section{B样条基函数的定义和性质}\n\n有多种方法可以定义 B-spline 基函数并证明其重要性质，例如，通过截断幂函数的差商 \\cite{Curr47,Scho46}、通过开花法 \\cite{Rams87}，以及通过 deBoor、Cox 和 Mansfield 提出的递归公式 \\cite{Cox72,DeBo72,DeBo78}。我们使用递归公式，"
+  },
+  {
+    "chapter": 2,
+    "offset": 16057,
+    "entries": [
+      "i275"
+    ],
+    "selectors": [
+      "t:2:统一划分"
+    ],
+    "matched": "统一划分",
+    "id": "p0044",
+    "line_without_marks": 417,
+    "context": "^{i}{N}_{j,p}\\left( u\\right)  = 1\\) 对于所有 \\(u \\in  \\left\\lbrack  {{u}_{i},{u}_{i + 1}}\\right)\\) (统一划分)。为了证明这一点，考虑\n\n\\[\n\\mathop{\\sum }\\limits_{{j = i - p}}^{i}{N}_{j,p}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{j = i - p}}^{i}\\frac{u - {u}_{j}}{{u}_{j + p} - {u}_"
+  },
+  {
+    "chapter": 2,
+    "offset": 18668,
+    "entries": [
+      "i061",
+      "i063",
+      "i116",
+      "i185",
+      "i234"
+    ],
+    "selectors": [
+      "s:2:B样条基函数的导数"
+    ],
+    "matched": "B样条基函数的导数",
+    "id": "p0045",
+    "line_without_marks": 497,
+    "context": "仅在 \\(u \\in  \\lbrack 4,5)\\) 上非零，并且它仅在 \\(u = 4\\) 和 \\(u = 5\\) 处是 \\({C}^{0}\\) 连续的。\n\n\n\\section{B样条基函数的导数}\n\n基函数的导数由以下公式给出\n\n\\[\n{N}_{i,p}^{\\prime } = \\frac{p}{{u}_{i + p} - {u}_{i}}{N}_{i,p - 1}\\left( u\\right)  - \\frac{p}{{u}_{i + p + 1} - {u}_{i + 1}}{N}_{i + 1,p - 1"
+  },
+  {
+    "chapter": 2,
+    "offset": 26621,
+    "entries": [
+      "i064",
+      "i229",
+      "i234",
+      "i235",
+      "i239",
+      "i353"
+    ],
+    "selectors": [
+      "s:2:基函数的进一步性质"
+    ],
+    "matched": "基函数的进一步性质",
+    "id": "p0046",
+    "line_without_marks": 755,
+    "context": "数 \\({N}_{i,3}\\) 及其一至三阶导数。空心端点和竖虚线表示三阶导数的左右极限及跳跃辅助线。\n\\end{minipage}\n\\end{center}\n\n\\section{基函数的进一步性质}\n\n设 \\(\\left\\{  {u}_{j}\\right\\}  ,0 \\leq  j \\leq  k\\) 为一个严格递增的断点集合。在 \\(\\left\\{  {u}_{j}\\right\\}\\) 上，所有在 \\(u = {u}_{j}\\) 处 \\({C}^{{r}_{j}}\\) 连续的 \\(p\\) 次分段多项式函数的集合"
+  },
+  {
+    "chapter": 2,
+    "offset": 30837,
+    "entries": [
+      "i060"
+    ],
+    "selectors": [
+      "s:2:计算算法"
+    ],
+    "matched": "计算算法",
+    "id": "p0047",
+    "line_without_marks": 859,
+    "context": "2.12. 定义在 \\(U = \\{ 0,0,0,0,1,5,6,8,8,8,8\\}\\) 上的非均匀立方基函数。\n\\end{minipage}\n\\end{center}\n\n\\section{计算算法}\n\n在本节中，我们开发算法来计算基函数及其导数的值。设 \\(U = \\left\\{  {{u}_{0},\\ldots ,{u}_{m}}\\right\\}\\) 为形式如公式 (2.13) 的节点向量，并假设我们对度数为 \\(p\\) 的基函数感兴趣。此外，假设 \\(u\\) 是固定的，并且 \\(u \\in  \\left\\lb"
+  },
+  {
+    "chapter": 2,
+    "offset": 32290,
+    "entries": [
+      "i021",
+      "i238"
+    ],
+    "selectors": [
+      "a:2.1"
+    ],
+    "matched": "\\textbf{算法 A2.1",
+    "id": "p0048",
+    "line_without_marks": 890,
+    "context": " 。FindSpan 是一个整数函数，返回跨度索引。\n\n\n\n% book-code: algorithm A2.1\n\\par\\medskip\\noindent\\textbf{算法 A2.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nint FindSpan(n, p, u, U)\n{ /* Determine the knot span index */\n    /* Input: n, p, u, U */\n    /* Return: the"
+  },
+  {
+    "chapter": 2,
+    "offset": 36319,
+    "entries": [
+      "i055",
+      "i060"
+    ],
+    "selectors": [
+      "a:2.2"
+    ],
+    "matched": "\\textbf{算法 A2.2",
+    "id": "p0049",
+    "line_without_marks": 1007,
+    "context": "\\mathrm{p}\\right\\rbrack\\) 中。\n\n% book-code: algorithm A2.2\n\\par\\medskip\\noindent\\textbf{算法 A2.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nBasisFuns(i, u, p, U, N)\n{ /* Compute the nonvanishing basis functions */\n    /* Input: i, u, p, U */\n    /* "
+  },
+  {
+    "chapter": 2,
+    "offset": 40909,
+    "entries": [
+      "i056",
+      "i060"
+    ],
+    "selectors": [
+      "a:2.3"
+    ],
+    "matched": "\\textbf{算法 A2.3",
+    "id": "p0050",
+    "line_without_marks": 1141,
+    "context": "免了除以零和/或使用不在数组 ndu[] [] 中的项。\n\n% book-code: algorithm A2.3\n\\par\\medskip\\noindent\\textbf{算法 A2.3（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nDersBasisFuns(i, u, p, n, U, ders)\n{ /* Compute nonzero basis functions and their */\n    /* derivatives. Firs"
+  },
+  {
+    "chapter": 2,
+    "offset": 44182,
+    "entries": [
+      "i053",
+      "i060"
+    ],
+    "selectors": [
+      "a:2.4"
+    ],
+    "matched": "\\textbf{算法 A2.4",
+    "id": "p0051",
+    "line_without_marks": 1268,
+    "context": "量 temp 和 saved 时与算法 A2.2 类似。\n\n% book-code: algorithm A2.4\n\\par\\medskip\\noindent\\textbf{算法 A2.4（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nOneBasisFun( p,m,U,i,u,Nip)\n{ /* Compute the basis function Nip */\n    /* Input: p, m, U, i, u */\n    /* Outp"
+  },
+  {
+    "chapter": 2,
+    "offset": 47635,
+    "entries": [
+      "i054",
+      "i060",
+      "i063"
+    ],
+    "selectors": [
+      "a:2.5"
+    ],
+    "matched": "\\textbf{算法 A2.5",
+    "id": "p0052",
+    "line_without_marks": 1396,
+    "context": "athrm{k}\\right\\rbrack\\) 中返回。\n\n% book-code: algorithm A2.5\n\\par\\medskip\\noindent\\textbf{算法 A2.5（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nDersOneBasisFun(p, m, U, i, u, n, ders)\n{ /* 计算基函数 Nip 的导数 */\n    /* Input: p, m, U, i, u, n */\n    /* Output"
+  },
+  {
+    "chapter": 3,
+    "offset": 399,
+    "entries": [
+      "i091",
+      "i126",
+      "i149",
+      "i152",
+      "i164"
+    ],
+    "selectors": [
+      "s:3:B样条曲线的定义和性质"
+    ],
+    "matched": "B样条曲线的定义和性质",
+    "id": "p0053",
+    "line_without_marks": 10,
+    "context": "术 - 参见 \\cite{DeBo78,Mort85,Bart87,Fari93,Yama88,Hosc93,Su89,Roge90,Beac91}。\n\n\n\n\\section{B样条曲线的定义和性质}\n\np次B样条曲线定义为\n\n\\[\n\\mathbf{C}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,p}\\left( u\\right) {\\mathbf{P}}_{i}\\;a \\leq  u \\leq  b \\tag{3.1}\n\\]\n\n其中 \\"
+  },
+  {
+    "chapter": 3,
+    "offset": 979,
+    "entries": [
+      "i135"
+    ],
+    "selectors": [
+      "t:3:控制多边形"
+    ],
+    "matched": "控制多边形",
+    "id": "p0054",
+    "line_without_marks": 24,
+    "context": "}\\right)\\) 。除非另有说明，我们假设 \\(a = 0\\) 和 \\(b = 1\\) 。由 \\(\\left\\{  {\\mathbf{P}}_{i}\\right\\}\\) 形成的多边形称为控制多边形。B样条曲线的示例(在某些情况下与其相应的基函数一起)显示在图3.1-3.14中。\n\n计算固定 \\(u\\) 值下的B样条曲线上的点需要三个步骤:\n\n1. 找到 \\(u\\) 所在的节点区间(算法A2.1)；\n\n2. 计算非零基函数(算法A2.2)；\n\n3. 将非零基函数的值与相应的控制点相乘。\n\n考虑第2.5节的例子Ex"
+  },
+  {
+    "chapter": 3,
+    "offset": 1646,
+    "entries": [
+      "i032",
+      "i036"
+    ],
+    "selectors": [
+      "a:3.1"
+    ],
+    "matched": "\\textbf{算法 A3.1",
+    "id": "p0055",
+    "line_without_marks": 49,
+    "context": "8}{\\mathbf{P}}_{4}\n\\]\n\n算法如下。\n\n% book-code: algorithm A3.1\n\\par\\medskip\\noindent\\textbf{算法 A3.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nCurvePoint(n, p, U, P, u, C)\n{ /* Compute curve point */\n    /* Input: n, p, U, P, u */\n    /* Output: C */\n "
+  },
+  {
+    "chapter": 3,
+    "offset": 3304,
+    "entries": [
+      "i001"
+    ],
+    "selectors": [
+      "t:3:仿射不变性"
+    ],
+    "matched": "仿射不变性",
+    "id": "p0056",
+    "line_without_marks": 109,
+    "context": "ft( 0\\right)  = {\\mathbf{P}}_{0}\\) 和 \\(\\mathbf{C}\\left( 1\\right)  = {\\mathbf{P}}_{n}\\) ；\n\nP3.4 仿射不变性:通过对控制点应用仿射变换来对曲线应用仿射变换。令 \\(\\mathbf{r}\\) 为 \\({\\mathcal{E}}^{3}\\) 中的一个点(三维欧几里得空间)。仿射变换，记作 \\(\\Phi\\) ，将 \\({\\mathcal{E}}^{3}\\) 映射到 \\({\\mathcal{E}}^{3}\\) ，其形式为\n\n\\[\n\\"
+  },
+  {
+    "chapter": 3,
+    "offset": 4164,
+    "entries": [
+      "i143"
+    ],
+    "selectors": [
+      "t:3:凸包"
+    ],
+    "matched": "凸包",
+    "id": "p0057",
+    "line_without_marks": 125,
+    "context": "f{p}}_{i} + \\mathbf{v}}\\right)  = \\sum {\\alpha }_{i}\\Phi \\left( {\\mathbf{p}}_{i}\\right)\n\\]\n\nP3.5 强凸包属性:曲线包含在其控制多边形的凸包中；事实上，如果 \\(u \\in  \\left\\lbrack  {{u}_{i},{u}_{i + 1}}\\right) ,p \\leq  i < m - p - 1\\) ，则 \\(\\mathbf{C}\\left( u\\right)\\) 在控制点 \\({\\mathbf{P}}_{i -"
+  },
+  {
+    "chapter": 3,
+    "offset": 5800,
+    "entries": [
+      "i131"
+    ],
+    "selectors": [
+      "t:3:局部修改"
+    ],
+    "matched": "局部修改",
+    "id": "p0058",
+    "line_without_marks": 157,
+    "context": "ft( {2/5}\\right)\\) 和 \\(\\mathbf{C}\\left( {3/5}\\right)\\) 之间的直线。\n\\end{minipage}\n\\end{center}\n\nP3.6 局部修改方案:移动 \\({\\mathbf{P}}_{i}\\) 仅在区间 \\(\\left\\lbrack  {{u}_{i},{u}_{i + p + 1}}\\right)\\) 内改变 \\(\\mathbf{C}\\left( u\\right)\\) (图 3.7)。这源于 \\(u \\notin  \\left\\lbrack  {{u}_"
+  },
+  {
+    "chapter": 3,
+    "offset": 7790,
+    "entries": [
+      "i351"
+    ],
+    "selectors": [
+      "t:3:变异减少性质"
+    ],
+    "matched": "变异减少性质",
+    "id": "p0059",
+    "line_without_marks": 221,
+    "context": "时，一个 \\({N}_{i,p}\\left( u\\right)\\) (以及相应的 \\({\\mathbf{P}}_{i}\\) )关闭，下一个则开启(图3.2和3.3)。\n\n\n\n\n\nP3.9 变异减少性质:没有平面与曲线的交点比与控制多边形的交点更多(对于二维曲线，将“平面”替换为“直线”) - 见 \\cite{Lane83} 的证明；\n\n\n\n\n\nP3.10 \\(\\mathbf{C}\\left( u\\right)\\) 的连续性和可微性源于 \\({N}_{i,p}\\left( u\\right)\\) 的连续性和可微性(因为"
+  },
+  {
+    "chapter": 3,
+    "offset": 9699,
+    "entries": [
+      "i129"
+    ],
+    "selectors": [
+      "t:3:重合的"
+    ],
+    "matched": "重合的",
+    "id": "p0060",
+    "line_without_marks": 267,
+    "context": "在 \\(u=1/4,1/2\\) 处为 \\(C^2\\) 连续，在 \\(u=3/4\\) 处为 \\(C^1\\) 连续。\n\\end{minipage}\n\\end{center}\n\nP3.11 使用多个(重合的)控制点是可能的(有时也是有用的)。图 3.13 显示了一个具有双重控制点的二次曲线， \\({\\mathbf{P}}_{2} = {\\mathbf{P}}_{3}\\) 。该曲线的有趣部分位于 \\(\\mathbf{C}\\left( {1/4}\\right)\\) 和 \\(\\mathbf{C}\\left( {3/4}\\rig"
+  },
+  {
+    "chapter": 3,
+    "offset": 11171,
+    "entries": [
+      "i117",
+      "i153",
+      "i157",
+      "i186"
+    ],
+    "selectors": [
+      "s:3:B样条曲线的导数"
+    ],
+    "matched": "B样条曲线的导数",
+    "id": "p0061",
+    "line_without_marks": 297,
+    "context": "4,1,1,1,1\\}\\)；(b) \\(U=\\{0,0,0,0,1/2,1/2,1,1,1,1\\}\\)。\n\\end{minipage}\n\\end{center}\n\n\\section{B样条曲线的导数}\n\n令 \\({\\mathbf{C}}^{\\left( k\\right) }\\left( u\\right)\\) 表示 \\(k\\) 阶导数的 \\(\\mathbf{C}\\left( u\\right)\\) 。如果 \\(u\\) 固定，我们可以通过计算基函数的 \\(k\\) 阶导数来获得 \\({\\mathbf{C}}^{\\left("
+  },
+  {
+    "chapter": 3,
+    "offset": 12565,
+    "entries": [
+      "i032",
+      "i186"
+    ],
+    "selectors": [
+      "a:3.2"
+    ],
+    "matched": "\\textbf{算法 A3.2",
+    "id": "p0062",
+    "line_without_marks": 342,
+    "context": "一个局部数组 nders[][] 用于存储基函数的导数。\n\n% book-code: algorithm A3.2\n\\par\\medskip\\noindent\\textbf{算法 A3.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nCurveDerivsAlg1(n, p, U, P, u, d, CK)\n{ /* Compute curve derivatives */\n    /* Input: n, p, U, P, u, d */\n   "
+  },
+  {
+    "chapter": 3,
+    "offset": 20638,
+    "entries": [
+      "i006"
+    ],
+    "selectors": [
+      "a:3.3"
+    ],
+    "matched": "\\textbf{算法 A3.3",
+    "id": "p0063",
+    "line_without_marks": 562,
+    "context": "和 \\({r}_{2} = n\\) ，则计算所有控制点。\n\n% book-code: algorithm A3.3\n\\par\\medskip\\noindent\\textbf{算法 A3.3（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nCurveDerivCpts(n, p, U, P, d, r1, r2, PK)\n{ /* Compute control points of curve derivatives */\n    /* Input: n"
+  },
+  {
+    "chapter": 3,
+    "offset": 23513,
+    "entries": [
+      "i032",
+      "i186"
+    ],
+    "selectors": [
+      "a:3.4"
+    ],
+    "matched": "\\textbf{算法 A3.4",
+    "id": "p0064",
+    "line_without_marks": 622,
+    "context": "\\) 和 \\(0 \\leq  j \\leq  i\\) 。\n\n% book-code: algorithm A3.4\n\\par\\medskip\\noindent\\textbf{算法 A3.4（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nCurveDerivsAlg2(n, p, U, P, u, d, CK)\n{ /* Compute curve derivatives */\n    /* Input: n, p, U, P, u, d */\n   "
+  },
+  {
+    "chapter": 3,
+    "offset": 24404,
+    "entries": [
+      "i069",
+      "i078",
+      "i093",
+      "i318",
+      "i319",
+      "i343"
+    ],
+    "selectors": [
+      "s:3:B样条曲面的定义与性质"
+    ],
+    "matched": "B样条曲面的定义与性质",
+    "id": "p0065",
+    "line_without_marks": 656,
+    "context": "三次曲线。\\\\ 在 \\(u=2/5\\) 处计算的一至三阶导数向量，均按 \\(2/5\\) 缩放显示。\n\\end{minipage}\n\\end{center}\n\n\\section{B样条曲面的定义与性质}\n\nB 样条曲面是通过取一个双向控制点网、两个节点向量以及单变量 B 样条函数的乘积获得的。\n\n\\[\n\\mathbf{S}\\left( {u,v}\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}\\mathop{\\sum }\\limits_{{j = 0}}^{m}{N}_{i"
+  },
+  {
+    "chapter": 3,
+    "offset": 28062,
+    "entries": [
+      "i033",
+      "i037"
+    ],
+    "selectors": [
+      "a:3.5"
+    ],
+    "matched": "\\textbf{算法 A3.5",
+    "id": "p0066",
+    "line_without_marks": 743,
+    "context": " v\\right) }\\right\\rbrack\\) 。\n\n% book-code: algorithm A3.5\n\\par\\medskip\\noindent\\textbf{算法 A3.5（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nSurfacePoint( n,p,U,m,q,V,P,u,v,S)\n{ /* Compute surface point */\n    /* Input: n, p, U, m, q, V, P, u, v */\n "
+  },
+  {
+    "chapter": 3,
+    "offset": 29132,
+    "entries": [
+      "i275"
+    ],
+    "selectors": [
+      "t:3:P3.13"
+    ],
+    "matched": "P3.13",
+    "id": "p0067",
+    "line_without_marks": 783,
+    "context": ".12 非负性: \\({N}_{i,p}\\left( u\\right) {N}_{j,q}\\left( v\\right)  \\geq  0\\) 对所有 \\(i,j,p,q,u,v\\) ；\n\nP3.13 单位划分: \\(\\mathop{\\sum }\\limits_{{i = 0}}^{n}\\mathop{\\sum }\\limits_{{j = 0}}^{m}{N}_{i,p}\\left( u\\right) {N}_{j,q}\\left( v\\right)  = 1\\) 对所有 \\(\\left( {u,v}\\right"
+  },
+  {
+    "chapter": 3,
+    "offset": 29642,
+    "entries": [
+      "i321"
+    ],
+    "selectors": [
+      "t:3:P3.15"
+    ],
+    "matched": "P3.15",
+    "id": "p0068",
+    "line_without_marks": 787,
+    "context": "t( v\\right)  = {B}_{i,n}\\left( u\\right) {B}_{j,m}\\left( v\\right)\\) ；即，B 样条函数的乘积退化为伯恩斯坦多项式的乘积；\n\nP3.15 \\({N}_{i,p}\\left( u\\right) {N}_{j,q}\\left( v\\right)  = 0\\) 如果 (u, v) 在矩形 \\(\\left\\lbrack  {{u}_{i},{u}_{i + p + 1}}\\right)  \\times\\)  \\(\\left\\lbrack  {{v}_{j},{"
+  },
+  {
+    "chapter": 3,
+    "offset": 34433,
+    "entries": [
+      "i224"
+    ],
+    "selectors": [
+      "t:3:等参数曲线"
+    ],
+    "matched": "等参数曲线",
+    "id": "p0069",
+    "line_without_marks": 877,
+    "context": "nter}\n\n我们在此指出，目前尚无已知的 B-spline 曲面变差减小性质(见 \\cite{Prau92})。\n\n\\(\\mathbf{S}\\left( {u,v}\\right)\\) 上的等参数曲线是以类似于 Bézier 曲面的方式获得的。固定 \\(u = {u}_{0}\\)\n\n\\[\n{\\mathbf{C}}_{{u}_{0}}\\left( v\\right)  = \\mathbf{S}\\left( {{u}_{0},v}\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}"
+  },
+  {
+    "chapter": 3,
+    "offset": 35810,
+    "entries": [
+      "i118",
+      "i188",
+      "i320",
+      "i331"
+    ],
+    "selectors": [
+      "s:3:B样条曲面的导数"
+    ],
+    "matched": "B样条曲面的导数",
+    "id": "p0070",
+    "line_without_marks": 913,
+    "context": "\\) 和 \\({\\mathbf{C}}_{{v}_{0}}\\left( u\\right)\\) 的交点上。图 3.20-3.25 中显示的所有线条都是等高线。\n\n\n\n\\section{B样条曲面的导数}\n\n设 (u, v) 为固定值。一般来说，人们感兴趣的是计算 \\(\\mathbf{S}\\left( {u,v}\\right)\\) 的所有偏导数，直到包括 \\(d\\) 阶，即\n\n\\[\n\\frac{{\\partial }^{k + l}}{{\\partial }^{k}u{\\partial }^{l}v}\\mathbf{S"
+  },
+  {
+    "chapter": 3,
+    "offset": 37497,
+    "entries": [
+      "i033"
+    ],
+    "selectors": [
+      "a:3.6"
+    ],
+    "matched": "\\textbf{算法 A3.6",
+    "id": "p0071",
+    "line_without_marks": 944,
+    "context": "ight\\rbrack\\) [] 用于存储基函数的导数。\n\n% book-code: algorithm A3.6\n\\par\\medskip\\noindent\\textbf{算法 A3.6（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nSurfaceDerivsAlg1(n, p, U, m, q, V, P, u, v, d, SKL)\n{ /* Compute surface derivatives */\n    /* Input: n, p, "
+  },
+  {
+    "chapter": 3,
+    "offset": 43632,
+    "entries": [
+      "i007"
+    ],
+    "selectors": [
+      "a:3.7"
+    ],
+    "matched": "\\textbf{算法 A3.7",
+    "id": "p0072",
+    "line_without_marks": 1108,
+    "context": "\\) 次，相对于 \\(l\\) 导数求导 \\(v\\) 次。\n\n% book-code: algorithm A3.7\n\\par\\medskip\\noindent\\textbf{算法 A3.7（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nSurfaceDerivCpts( n,p,U,m,q,V,P,d,r1,r2,s1,s2,PKL)\n{ /* Compute control points of derivative surfaces */\n    "
+  },
+  {
+    "chapter": 3,
+    "offset": 44755,
+    "entries": [
+      "i033"
+    ],
+    "selectors": [
+      "a:3.8"
+    ],
+    "matched": "\\textbf{算法 A3.8",
+    "id": "p0073",
+    "line_without_marks": 1138,
+    "context": "\\) 次，相对于 \\(v\\) 导数求导 \\(l\\) 次。\n\n% book-code: algorithm A3.8\n\\par\\medskip\\noindent\\textbf{算法 A3.8（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nSurfaceDerivsAlg2(n, p, U, m, q, V, P, u, v, d, SKL)\n{ /* Compute surface derivatives */\n    /* Input: n, p, "
+  },
+  {
+    "chapter": 4,
+    "offset": 287,
+    "entries": [
+      "i068",
+      "i130",
+      "i137",
+      "i149",
+      "i170",
+      "i290",
+      "i291",
+      "i356",
+      "i359"
+    ],
+    "selectors": [
+      "s:4:NURBS曲线的定义与性质"
+    ],
+    "matched": "NURBS曲线的定义与性质",
+    "id": "p0074",
+    "line_without_marks": 9,
+    "context": "对应物为基础。关于 NURBS 的最早出版作品是 \\cite{Vers75,Till83}。更近期的综述可以在 \\cite{Pieg91a} 中找到。\n\n\\section{NURBS曲线的定义与性质}\n\n一个 \\(p\\) 次 NURBS 曲线定义为\n\n\\[\n\\mathbf{C}\\left( u\\right)  = \\frac{\\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,p}\\left( u\\right) {w}_{i}{\\mathbf{P}}_{i}}{\\mathop{\\su"
+  },
+  {
+    "chapter": 4,
+    "offset": 1551,
+    "entries": [
+      "i275"
+    ],
+    "selectors": [
+      "t:4:P4.2"
+    ],
+    "matched": "P4.2",
+    "id": "p0075",
+    "line_without_marks": 41,
+    "context": "i,p\\) 和 \\(u \\in  \\left\\lbrack  {0,1}\\right\\rbrack\\) ，有 \\({R}_{i,p}\\left( u\\right)  \\geq  0\\) ；\n\nP4.2 单位分割:对于所有 \\(u \\in  \\left\\lbrack  {0,1}\\right\\rbrack\\) ，有 \\(\\mathop{\\sum }\\limits_{{i = 0}}^{n}{R}_{i,p}\\left( u\\right)  = 1\\) ；\n\nP4. \\(3{R}_{0,p}\\left( 0\\right"
+  },
+  {
+    "chapter": 4,
+    "offset": 1872,
+    "entries": [
+      "i243"
+    ],
+    "selectors": [
+      "t:4:局部支持"
+    ],
+    "matched": "局部支持",
+    "id": "p0076",
+    "line_without_marks": 47,
+    "context": " \\({R}_{i,p}\\left( u\\right)\\) 在区间 \\(u \\in  \\left\\lbrack  {0,1}\\right\\rbrack\\) 上恰好达到一个最大值。\n\nP4.5 局部支持:对于 \\(u \\notin  \\left\\lbrack  {{u}_{i},{u}_{i + p + 1}}\\right)\\) ，有 \\({R}_{i,p}\\left( u\\right)  = 0\\) 。此外，在任何给定的节点区间内，最多有 \\(p + 1\\) 个 \\({R}_{i,p}\\left( u\\right)"
+  },
+  {
+    "chapter": 4,
+    "offset": 2820,
+    "entries": [
+      "i001"
+    ],
+    "selectors": [
+      "t:4:仿射不变性"
+    ],
+    "matched": "仿射不变性",
+    "id": "p0077",
+    "line_without_marks": 57,
+    "context": " = {\\mathbf{P}}_{0}\\) 和 \\(\\mathbf{C}\\left( 1\\right)  = {\\mathbf{P}}_{n}\\) ；这由 P4.3 推导而来；\n\nP4.9 仿射不变性:通过对控制点应用仿射变换来对曲线施加仿射变换(见 P3.4，第 3.1 节)；NURBS 曲线在透视投影下也是不变的(\\cite{Lee87,Pieg91a})，这一事实在计算机图形学中非常重要；\n\nP4.10 强凸包性质：如果 \\(u\\in[u_i,u_{i+1})\\)，则 \\(\\mathbf C(u)\\) 位于控"
+  },
+  {
+    "chapter": 4,
+    "offset": 2930,
+    "entries": [
+      "i144"
+    ],
+    "selectors": [
+      "t:4:凸包"
+    ],
+    "matched": "凸包",
+    "id": "p0078",
+    "line_without_marks": 59,
+    "context": "射变换来对曲线施加仿射变换(见 P3.4，第 3.1 节)；NURBS 曲线在透视投影下也是不变的(\\cite{Lee87,Pieg91a})，这一事实在计算机图形学中非常重要；\n\nP4.10 强凸包性质：如果 \\(u\\in[u_i,u_{i+1})\\)，则 \\(\\mathbf C(u)\\) 位于控制点 \\(\\mathbf P_{i-p},\\ldots,\\mathbf P_i\\) 的凸包内。见图4.1，当 \\(u\\in[1/4,1/2)\\) 时，曲线的虚线段位于 \\(\\{\\mathbf P_1,\\mathbf P_"
+  },
+  {
+    "chapter": 4,
+    "offset": 3561,
+    "entries": [
+      "i351"
+    ],
+    "selectors": [
+      "t:4:变化减小性质"
+    ],
+    "matched": "变化减小性质",
+    "id": "p0079",
+    "line_without_marks": 76,
+    "context": "\nP4.11 \\(\\mathbf{C}\\left( u\\right)\\) 在节点跨度的内部是无限可微的，并且在重数为 \\(k\\) 的节点处是 \\(p - k\\) 次可微的；\n\nP4.12 变化减小性质:没有平面与曲线的交点比与控制多边形的交点更多(对于二维曲线，将“平面”一词替换为“直线”)；\n\nP4.13 没有内部节点的 NURBS 曲线是有理 Bézier 曲线，因为 \\({N}_{i,p}\\left( u\\right)\\) 简化为 \\({B}_{i,n}\\left( u\\right)\\) ；将方程 (4.2)"
+  },
+  {
+    "chapter": 4,
+    "offset": 6172,
+    "entries": [
+      "i207"
+    ],
+    "selectors": [
+      "t:4:同质坐标"
+    ],
+    "matched": "同质坐标",
+    "id": "p0080",
+    "line_without_marks": 144,
+    "context": " B_3\\) 分别对应 \\(w_3=0,1,3\\)，三点均与 \\(\\mathbf P_3\\) 共线。\n\\end{minipage}\n\\end{center}\n\n与有理 Bézier 曲线一样，同质坐标提供了一种有效的方法来表示 NURBS 曲线。设 \\(H\\) 为由方程 (1.16) 给出的透视映射。对于给定的一组控制点 \\(\\left\\{  {\\mathbf{P}}_{i}\\right\\}\\) 和权重 \\(\\left\\{  {w}_{i}\\right\\}\\) ，构造加权控制点 \\({\\mathbf{P}}_{i}"
+  },
+  {
+    "chapter": 4,
+    "offset": 6222,
+    "entries": [
+      "i277"
+    ],
+    "selectors": [
+      "t:4:透视映射"
+    ],
+    "matched": "透视映射",
+    "id": "p0081",
+    "line_without_marks": 144,
+    "context": "\n\\end{minipage}\n\\end{center}\n\n与有理 Bézier 曲线一样，同质坐标提供了一种有效的方法来表示 NURBS 曲线。设 \\(H\\) 为由方程 (1.16) 给出的透视映射。对于给定的一组控制点 \\(\\left\\{  {\\mathbf{P}}_{i}\\right\\}\\) 和权重 \\(\\left\\{  {w}_{i}\\right\\}\\) ，构造加权控制点 \\({\\mathbf{P}}_{i}^{w} = \\left( {{w}_{i}{x}_{i},{w}_{i}{y}_{i},{w}_{"
+  },
+  {
+    "chapter": 4,
+    "offset": 6313,
+    "entries": [
+      "i133"
+    ],
+    "selectors": [
+      "t:4:加权控制点"
+    ],
+    "matched": "加权控制点",
+    "id": "p0082",
+    "line_without_marks": 144,
+    "context": ") 给出的透视映射。对于给定的一组控制点 \\(\\left\\{  {\\mathbf{P}}_{i}\\right\\}\\) 和权重 \\(\\left\\{  {w}_{i}\\right\\}\\) ，构造加权控制点 \\({\\mathbf{P}}_{i}^{w} = \\left( {{w}_{i}{x}_{i},{w}_{i}{y}_{i},{w}_{i}{z}_{i},{w}_{i}}\\right)\\) 。然后在四维空间中定义非有理(分段多项式)B-spline 曲线为\n\n空间为\n\n\\[\n{\\mathbf{C}}^{w}\\lef"
+  },
+  {
+    "chapter": 4,
+    "offset": 8817,
+    "entries": [
+      "i040"
+    ],
+    "selectors": [
+      "a:4.1"
+    ],
+    "matched": "\\textbf{算法 A4.1",
+    "id": "p0083",
+    "line_without_marks": 218,
+    "context": "我们使用符号 \\(C = {Cw}/w\\) 来表示投影。\n\n% book-code: algorithm A4.1\n\\par\\medskip\\noindent\\textbf{算法 A4.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nCurvePoint(n, p, U, Pw, u, C)\n{ /* Compute point on rational B-spline curve */\n    /* Input: n, p, U, Pw, u *"
+  },
+  {
+    "chapter": 4,
+    "offset": 9221,
+    "entries": [
+      "i157",
+      "i171",
+      "i195"
+    ],
+    "selectors": [
+      "s:4:NURBS曲线的导数"
+    ],
+    "matched": "NURBS曲线的导数",
+    "id": "p0084",
+    "line_without_marks": 235,
+    "context": " N[j]* Pw[span - p + j];\n    C = Cw/w; /* Divide by weight */\n}\n\\end{minted}\n\n\n\n\\section{NURBS曲线的导数}\n\n有理函数的导数是复杂的，涉及高次幂的分母。在第 3.3 节中，我们开发了计算非有理 B-样条曲线导数的公式和算法。这些公式和算法当然适用于 \\({\\mathbf{C}}^{w}\\left( u\\right)\\) ，因为它是四维空间中的非有理曲线。在本节中，我们开发了公式，以导数 \\(\\mathbf{C}\\left("
+  },
+  {
+    "chapter": 4,
+    "offset": 14963,
+    "entries": [
+      "i019"
+    ],
+    "selectors": [
+      "a:4.2"
+    ],
+    "matched": "\\textbf{算法 A4.2",
+    "id": "p0085",
+    "line_without_marks": 346,
+    "context": "\\  i \\end{array}\\right)\\) )。\n\n% book-code: algorithm A4.2\n\\par\\medskip\\noindent\\textbf{算法 A4.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nRatCurveDerivs (Aders, wders, d, CK)\n{ /* Compute C(u) derivatives from Cw(u) derivatives */\n    /* Input: Ad"
+  },
+  {
+    "chapter": 4,
+    "offset": 15691,
+    "entries": [
+      "i073",
+      "i292",
+      "i318",
+      "i334",
+      "i359"
+    ],
+    "selectors": [
+      "s:4:NURBS曲面的定义与性质"
+    ],
+    "matched": "NURBS曲面的定义与性质",
+    "id": "p0086",
+    "line_without_marks": 378,
+    "context": "_3=1/2\\)，其他权重为1；一至三阶导数向量分别按0.4、0.08、0.03缩放。\n\\end{minipage}\n\\end{center}\n\n\n\n\n\n\\section{NURBS曲面的定义与性质}\n\n在 \\(u\\) 方向上为 \\(p\\) 阶，在 \\(v\\) 方向上为 \\(q\\) 阶的 NURBS 曲面是一个双变量向量值分段有理函数，形式为\n\n\\[\n\\mathbf{S}\\left( {u,v}\\right)  = \\frac{\\mathop{\\sum }\\limits_{{i = 0}}^{n}\\mathop{\\"
+  },
+  {
+    "chapter": 4,
+    "offset": 17857,
+    "entries": [
+      "i336"
+    ],
+    "selectors": [
+      "t:4:P4.15"
+    ],
+    "matched": "P4.15",
+    "id": "p0087",
+    "line_without_marks": 434,
+    "context": "\\) 大致与第 3.4 节中给出的非理性基函数的属性相同 \\({N}_{i,p}\\left( u\\right) {N}_{j,q}\\left( v\\right)\\) 。我们在此总结它们。\n\nP4.15 非负性: \\({R}_{i,j}\\left( {u,v}\\right)  \\geq  0\\) 对所有 \\(i,j,u\\) 和 \\(v\\) 成立；\n\nP4.16 单位划分: \\(\\mathop{\\sum }\\limits_{{i = 0}}^{n}\\mathop{\\sum }\\limits_{{j = 0}}^{m}{"
+  },
+  {
+    "chapter": 4,
+    "offset": 17937,
+    "entries": [
+      "i275"
+    ],
+    "selectors": [
+      "t:4:P4.16"
+    ],
+    "matched": "P4.16",
+    "id": "p0088",
+    "line_without_marks": 436,
+    "context": "\\) 。我们在此总结它们。\n\nP4.15 非负性: \\({R}_{i,j}\\left( {u,v}\\right)  \\geq  0\\) 对所有 \\(i,j,u\\) 和 \\(v\\) 成立；\n\nP4.16 单位划分: \\(\\mathop{\\sum }\\limits_{{i = 0}}^{n}\\mathop{\\sum }\\limits_{{j = 0}}^{m}{R}_{i,j}\\left( {u,v}\\right)  = 1\\) 对所有 \\(\\left( {u,v}\\right)  \\in  \\left\\lbrack "
+  },
+  {
+    "chapter": 4,
+    "offset": 22578,
+    "entries": [
+      "i208"
+    ],
+    "selectors": [
+      "t:4:使用齐次坐标表示 NURBS 曲面"
+    ],
+    "matched": "使用齐次坐标表示 NURBS 曲面",
+    "id": "p0089",
+    "line_without_marks": 520,
+    "context": "\\ 各曲面绘出过该参数点的两条等参数线及共同边界；三点均与 \\(\\mathbf P_{2,2}\\) 共线。\n\\end{minipage}\n\\end{center}\n\n使用齐次坐标表示 NURBS 曲面是方便的，\n\n即\n\n\\[\n{\\mathbf{S}}^{w}\\left( {u,v}\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}\\mathop{\\sum }\\limits_{{j = 0}}^{m}{N}_{i,p}\\left( u\\right) {N}_{j,q}\\lef"
+  },
+  {
+    "chapter": 4,
+    "offset": 25341,
+    "entries": [
+      "i041"
+    ],
+    "selectors": [
+      "a:4.3"
+    ],
+    "matched": "\\textbf{算法 A4.3",
+    "id": "p0090",
+    "line_without_marks": 593,
+    "context": " {Sw}/w\\) 来计算有理 B 样条曲面上的一个点。\n\n% book-code: algorithm A4.3\n\\par\\medskip\\noindent\\textbf{算法 A4.3（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nSurfacePoint(n, p, U, m, q, V, Pw, u, v, S)\n{ /* Compute point on rational B-spline surface */\n    /* Input: "
+  },
+  {
+    "chapter": 4,
+    "offset": 25995,
+    "entries": [
+      "i225"
+    ],
+    "selectors": [
+      "t:4:等参数曲线"
+    ],
+    "matched": "等参数曲线",
+    "id": "p0091",
+    "line_without_marks": 618,
+    "context": " Sw = Sw + Nv[1]*temp[1];\n    S = Sw/w\n}\n\\end{minted}\n\n\n\n通过应用方程 (3.14) 和 (3.15)，我们在 NURBS 表面上获得等参数曲线。首先，固定 \\(u = {u}_{0}\\)\n\n\\[\n{\\mathbf{C}}_{{u}_{0}}^{w}\\left( v\\right)  = {\\mathbf{S}}^{w}\\left( {{u}_{0},v}\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}\\mathop{"
+  },
+  {
+    "chapter": 4,
+    "offset": 27817,
+    "entries": [
+      "i196",
+      "i331",
+      "i335"
+    ],
+    "selectors": [
+      "s:4:NURBS曲面的导数"
+    ],
+    "matched": "NURBS曲面的导数",
+    "id": "p0092",
+    "line_without_marks": 662,
+    "context": "{0}}\\right) }\\right\\}   = \\mathbf{S}\\left( {u,{v}_{0}}\\right)  \\tag{4.18}\n\\]\n\n\n\n\\section{NURBS曲面的导数}\n\n\\({\\mathbf{S}}^{w}\\left( {u,v}\\right)\\) 的导数通过公式 (3.17)-(3.24) 计算。我们现在推导 \\(\\mathbf{S}\\left( {u,v}\\right)\\) 的导数公式，基于 \\({\\mathbf{S}}^{w}\\left( {u,v}\\right)\\) 的导数"
+  },
+  {
+    "chapter": 4,
+    "offset": 32265,
+    "entries": [
+      "i020"
+    ],
+    "selectors": [
+      "a:4.4"
+    ],
+    "matched": "\\textbf{算法 A4.4",
+    "id": "p0093",
+    "line_without_marks": 753,
+    "context": "\\right\\rbrack\\) 包含预计算的二项式系数。\n\n% book-code: algorithm A4.4\n\\par\\medskip\\noindent\\textbf{算法 A4.4（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nRatSurfaceDerivs (Aders, wders, d, SKL)\n{ /* Compute S( u,v) derivatives */\n    /* from Sw( u,v) derivatives "
+  },
+  {
+    "chapter": 5,
+    "offset": 623,
+    "entries": [
+      "i158",
+      "i173",
+      "i178",
+      "i226",
+      "i236"
+    ],
+    "selectors": [
+      "s:5:节点插入"
+    ],
+    "matched": "节点插入",
+    "id": "p0094",
+    "line_without_marks": 46,
+    "context": "\n\\item 应用示例；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 表面的解决方案，以及表面算法的概述。\n\\end{itemize}\n\n\n\n\\section{节点插入}\n\n设 \\({\\mathbf{C}}^{w}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,p}\\left( u\\right) {\\mathbf{P}}_{i}^{w}\\) 为定义在 \\(U = \\left\\{  {{u}_{0},\\ldots "
+  },
+  {
+    "chapter": 5,
+    "offset": 14654,
+    "entries": [
+      "i023"
+    ],
+    "selectors": [
+      "a:5.1"
+    ],
+    "matched": "\\textbf{算法 A5.1",
+    "id": "p0095",
+    "line_without_marks": 399,
+    "context": "。UP[] 和 UQ[] 分别是插入节点前后的节点向量。\n\n% book-code: algorithm A5.1\n\\par\\medskip\\noindent\\textbf{算法 A5.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nCurveKnotIns(np, p, UP, Pw, u, k, s, r, nq, UQ, Qw)\n{ /* Compute new curve from knot insertion */\n    /* Inpu"
+  },
+  {
+    "chapter": 5,
+    "offset": 17746,
+    "entries": [
+      "i040",
+      "i158"
+    ],
+    "selectors": [
+      "a:5.2"
+    ],
+    "matched": "\\textbf{算法 A5.2",
+    "id": "p0096",
+    "line_without_marks": 462,
+    "context": "找到节点跨度 \\(k\\) 和重数 \\(s\\) 。\n\n\n\n\n\n% book-code: algorithm A5.2\n\\par\\medskip\\noindent\\textbf{算法 A5.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nCurvePntByCornerCut(n, p, U, Pw, u, C)\n{ /* Compute point on rational B-spline curve */\n    /* Input: n, p, U"
+  },
+  {
+    "chapter": 5,
+    "offset": 18886,
+    "entries": [
+      "i220"
+    ],
+    "selectors": [
+      "t:5:逆"
+    ],
+    "matched": "逆",
+    "id": "p0097",
+    "line_without_marks": 489,
+    "context": ")\\) ，使得单次插入 \\(\\bar{u}\\) 使 \\({\\mathbf{Q}}^{w}\\) 成为一个新的控制点，而 \\(\\mathbf{Q}\\) 为其投影。确定 \\(\\bar{u}\\) 的过程称为逆节点插入 \\cite{Pieg89c}。现在存在一个值 \\(s,0 \\leq  s \\leq  1\\) ，使得\n\n\\[\n{\\mathbf{Q}}^{w} = \\left( {1 - s}\\right) {\\mathbf{P}}_{i - 1}^{w} + s{\\mathbf{P}}_{i}^{w}\n\\]\n\n投影后得到\n"
+  },
+  {
+    "chapter": 5,
+    "offset": 21335,
+    "entries": [
+      "i024"
+    ],
+    "selectors": [
+      "a:5.3"
+    ],
+    "matched": "\\textbf{算法 A5.3",
+    "id": "p0098",
+    "line_without_marks": 548,
+    "context": "\n\\end{minipage}\n\\end{center}\n\n% book-code: algorithm A5.3\n\\par\\medskip\\noindent\\textbf{算法 A5.3（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nSurfaceKnotIns(np, p, UP, mp, q, VP, Pw, dir, uv, k, s, r, nq, UQ, mq, VQ, Qw)\n{ /* Surface knot insertion */"
+  },
+  {
+    "chapter": 5,
+    "offset": 23500,
+    "entries": [
+      "i337"
+    ],
+    "selectors": [
+      "f:5:fig_5_13.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch05/fig_5_13.tex}",
+    "id": "p0099",
+    "line_without_marks": 614,
+    "context": "age}{24cm}\n\\vspace*{.6\\baselineskip}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch05/fig_5_13.tex}\n\\par\\smallskip\n图 5.12. 在 \\(u=2/5\\) 处细分图 5.11 的曲面。(a) 两块子曲面的 \\(4\\times4\\) 控制网；(b) 对应的子曲面。显示时仅将两块沿 \\(y\\) 方向分开，实际公共边界重合，细分前后几何曲面不变。\n\\end{minipage}\n\\end{center}\n\n\n"
+  },
+  {
+    "chapter": 5,
+    "offset": 24429,
+    "entries": [
+      "i222",
+      "i323"
+    ],
+    "selectors": [
+      "t:5:曲线提取"
+    ],
+    "matched": "曲线提取",
+    "id": "p0100",
+    "line_without_marks": 656,
+    "context": "；(b) 对应的子曲面。各块保持原参数化，实际沿公共边界相接；图中仅作平移分开显示。\n\\end{minipage}\n\\end{center}\n\n\n\n\\begin{itemize}\n\\item 曲线提取：固定 \\(u=\\bar u\\)，在 \\(m+1\\) 个控制点列中各插入 \\(p\\) 次节点 \\(\\bar u\\)，共进行 \\(p(m+1)\\) 次插入，得到等参曲线 \\(\\mathbf C_{\\bar u}^{w}(v)\\) 的 \\(m+1\\) 个齐次控制点 \\(\\mathbf Q_j^w(\\bar u)\\)（式(4"
+  },
+  {
+    "chapter": 5,
+    "offset": 25635,
+    "entries": [
+      "i180",
+      "i227",
+      "i233"
+    ],
+    "selectors": [
+      "s:5:节点细化"
+    ],
+    "matched": "节点细化",
+    "id": "p0101",
+    "line_without_marks": 689,
+    "context": "(例如，公式 [3.24]、[4.24]、[4.25] 和 [4.26])，从四个方向(左、右，分别针对 \\(u\\) 和 \\(v\\) )获得偏导数和法向量。\n\n\n\n\n\n\n\n\\section{节点细化}\n\n节点插入关注的是插入一个单一的节点，可能会多次插入。通常需要一次插入多个节点；这称为节点细化。为了解释这个问题，设 \\({\\mathbf{C}}^{w}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,p}\\left( u\\right) {\\m"
+  },
+  {
+    "chapter": 5,
+    "offset": 28590,
+    "entries": [
+      "i025"
+    ],
+    "selectors": [
+      "a:5.4"
+    ],
+    "matched": "\\textbf{算法 A5.4",
+    "id": "p0102",
+    "line_without_marks": 766,
+    "context": "。Ubar 是新的节点向量， \\(\\bar{U}\\) 。\n\n% book-code: algorithm A5.4\n\\par\\medskip\\noindent\\textbf{算法 A5.4（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nRefineKnotVectCurve(n, p, U, Pw, X, r, Ubar, Qw)\n{ /* Refine curve knot vector */\n    /* Input: n, p, U, Pw, "
+  },
+  {
+    "chapter": 5,
+    "offset": 30201,
+    "entries": [
+      "i026"
+    ],
+    "selectors": [
+      "a:5.5"
+    ],
+    "matched": "\\textbf{算法 A5.5",
+    "id": "p0103",
+    "line_without_marks": 811,
+    "context": "\\(m + 1\\) 列控制点都是相同的)。算法的草图是:\n\n% book-code: algorithm A5.5\n\\par\\medskip\\noindent\\textbf{算法 A5.5（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nRefineKnotVectSurface(n, p, U, m, q, V, Pw, X, r, dir, Ubar, Vbar, Qw)\n{ /* Refine surface knot vector */\n   "
+  },
+  {
+    "chapter": 5,
+    "offset": 36874,
+    "entries": [
+      "i015",
+      "i179"
+    ],
+    "selectors": [
+      "a:5.6"
+    ],
+    "matched": "\\textbf{算法 A5.6",
+    "id": "p0104",
+    "line_without_marks": 1053,
+    "context": "ck\\) 包含 alphas，其索引偏移以从 0 开始。\n\n% book-code: algorithm A5.6\n\\par\\medskip\\noindent\\textbf{算法 A5.6（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nDecomposeCurve(n, p, U, Pw, nb, Qw)\n{ /* Decompose curve into Bézier segments */\n    /* Input: n, p, U, Pw */"
+  },
+  {
+    "chapter": 5,
+    "offset": 39555,
+    "entries": [
+      "i016",
+      "i179"
+    ],
+    "selectors": [
+      "a:5.7"
+    ],
+    "matched": "\\textbf{算法 A5.7",
+    "id": "p0105",
+    "line_without_marks": 1141,
+    "context": "\\) 方向上输入到例程中以获取 Bézier 补丁。\n\n\n\n% book-code: algorithm A5.7\n\\par\\medskip\\noindent\\textbf{算法 A5.7（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nDecomposeSurface ( n,p,U,m,q,V,Pw,dir,nb,Qw)\n{ /* Decompose surface into Bézier patches */\n    /* Input: n, p"
+  },
+  {
+    "chapter": 5,
+    "offset": 41441,
+    "entries": [
+      "i100",
+      "i228"
+    ],
+    "selectors": [
+      "s:5:节点移除"
+    ],
+    "matched": "节点移除",
+    "id": "p0106",
+    "line_without_marks": 1210,
+    "context": "=\\{0,0,0,1/2,1,1,1\\}$。\\\\\n图中取$v\\in[1/2,1]$的三个面片，公共边界保持相接。\n\\end{minipage}\n\\end{center}\n\n\\section{节点移除}\n\n节点移除是节点插入的反向过程。设\n\n\\[\n{\\mathbf{C}}^{w}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,p}\\left( u\\right) {\\mathbf{P}}_{i}^{w} \\tag{5.23}\n\\]\n\n在 \\(U\\"
+  },
+  {
+    "chapter": 5,
+    "offset": 50429,
+    "entries": [
+      "i027"
+    ],
+    "selectors": [
+      "a:5.8"
+    ],
+    "matched": "\\textbf{算法 A5.8",
+    "id": "p0107",
+    "line_without_marks": 1496,
+    "context": "ht| }_{\\max }} \\tag{5.30}\n\\]\n\n% book-code: algorithm A5.8\n\\par\\medskip\\noindent\\textbf{算法 A5.8（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nRemoveCurveKnot( n,p,U,Pw,u,r,s,num,t)\n{ /* Remove knot u (index r) num times. */\n    /* Input: n, p, U, Pw, "
+  },
+  {
+    "chapter": 5,
+    "offset": 52825,
+    "entries": [
+      "i357"
+    ],
+    "selectors": [
+      "t:5:负权重"
+    ],
+    "matched": "负权重",
+    "id": "p0108",
+    "line_without_marks": 1562,
+    "context": "for 循环底部的数组(仅变化)对于 \\(t = 0,t = 1\\) 和 \\(t = 2\\) 。’ \\(\\mathrm{X}\\) ’ 表示未使用的数组元素。\n\n我们注意到算法 A5.8 可以创建负权重或零权重。从理论上讲这是正确的，但从软件的角度来看可能是不理想的。可以通过在距离计算后、设置 remflag 为 1 之前插入一个检查来避免这种情况。\n\n设 \\({\\mathbf{S}}^{w}\\left( {u,v}\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}\\math"
+  },
+  {
+    "chapter": 5,
+    "offset": 58361,
+    "entries": [
+      "i082",
+      "i150",
+      "i181"
+    ],
+    "selectors": [
+      "s:5:次数提升"
+    ],
+    "matched": "次数提升",
+    "id": "p0109",
+    "line_without_marks": 1724,
+    "context": "；(b)两曲面的对应等参数线。\\\\\n虚线与实线分别表示原始数据和近似结果；示意拟合的全域误差上界不超过所列容差。\n\\end{minipage}\n\\end{center}\n\n\\section{次数提升}\n\n设 \\({\\mathbf{C}}_{n}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{\\mathbf{a}}_{i}{u}^{i}\\) 为一个 \\(n\\) 次多项式曲线。显然，我们可以设定 \\({\\mathbf{a}}_{n + 1} = 0\\) 并将"
+  },
+  {
+    "chapter": 5,
+    "offset": 70183,
+    "entries": [
+      "i017"
+    ],
+    "selectors": [
+      "a:5.9"
+    ],
+    "matched": "\\textbf{算法 A5.9",
+    "id": "p0110",
+    "line_without_marks": 2062,
+    "context": " \\mathrm{s}$@ .\n\\end{minted}\n\n% book-code: algorithm A5.9\n\\par\\medskip\\noindent\\textbf{算法 A5.9（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nDegreeElevateCurve(n, p, U, Pw, t, nh, Uh, Qw)\n{ /* Degree elevate a curve t times. */\n    /* Input: n, p, U,"
+  },
+  {
+    "chapter": 5,
+    "offset": 75128,
+    "entries": [
+      "i018"
+    ],
+    "selectors": [
+      "a:5.10"
+    ],
+    "matched": "\\textbf{算法 A5.10",
+    "id": "p0111",
+    "line_without_marks": 2194,
+    "context": "织需要存储 Bézier 条带的算法是 A5.10。\n\n% book-code: algorithm A5.10\n\\par\\medskip\\noindent\\textbf{算法 A5.10（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nDegreeElevateSurface(n, p, U, m, q, V, Pw, dir, t, nh, Uh, mh, Vh, Qw)\n{ /* Degree elevate a surface t times."
+  },
+  {
+    "chapter": 5,
+    "offset": 76840,
+    "entries": [
+      "i083",
+      "i151",
+      "i182"
+    ],
+    "selectors": [
+      "s:5:次数降低"
+    ],
+    "matched": "次数降低",
+    "id": "p0112",
+    "line_without_marks": 2253,
+    "context": ",0,1,1,1,1\\}$、$V=\\{0,0,0,1/2,1,1,1\\}$，所有权重为一；两个方向分别精确升次。\n\\end{minipage}\n\\end{center}\n\n\\section{次数降低} %//TODO::度数降低\n\n设 \\(\\mathbf{C}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,p}\\left( u\\right) {\\mathbf{Q}}_{i}\\) 为节点向量上的一个 \\(p\\) 阶 B-spline 曲线\n\n\\"
+  },
+  {
+    "chapter": 5,
+    "offset": 83025,
+    "entries": [
+      "i268"
+    ],
+    "selectors": [
+      "t:5:参数误差"
+    ],
+    "matched": "参数误差",
+    "id": "p0113",
+    "line_without_marks": 2461,
+    "context": "0b 显示了将贝塞尔曲线的度数从七降至六，以及从六降至五的示例。误差曲线在图的底部绘制。我们注意到:\n\n\\begin{itemize}\n\\item 方程 (5.43) 和 (5.44) 表达了参数误差(在对应参数值处点之间的距离)；几何误差和参数误差的最大值不一定在相同的 \\(u\\) 值处；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 即使 \\(\\mathbf{C}\\left( u\\right)\\) 不能降度，方程 (5.41) 和 (5.42) 从左侧产生 \\(p/2\\) 精确控制点"
+  },
+  {
+    "chapter": 6,
+    "offset": 78,
+    "entries": [
+      "i141",
+      "i279",
+      "i280",
+      "i281"
+    ],
+    "selectors": [
+      "s:6:曲线和曲面的点反演与投影"
+    ],
+    "matched": "曲线和曲面的点反演与投影",
+    "id": "p0114",
+    "line_without_marks": 4,
+    "context": "\\documentclass[../main.tex]{subfiles}\n\\begin{document}\n\n\\section{曲线和曲面的点反演与投影}\n\n在本章中，我们将讨论在实现 NURBS 几何时相当基础的各种主题。\n\n给定一个点 \\(\\mathbf{P} = \\left( {x,y,z}\\right)\\) ，假设它位于 NURBS 曲线 \\(\\mathbf{C}\\left( u\\right)\\) 上，该曲线的度数为 \\(p\\) ，点反演是寻找相应参数 \\(\\b"
+  },
+  {
+    "chapter": 6,
+    "offset": 1958,
+    "entries": [
+      "i246"
+    ],
+    "selectors": [
+      "t:6:牛顿"
+    ],
+    "matched": "牛顿",
+    "id": "p0115",
+    "line_without_marks": 60,
+    "context": "况很常见)，问题会加剧；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 之前解决方案的软件实现相当复杂。\n\\end{itemize}\n\n一种更简单且完全足够的方法是使用牛顿迭代来最小化 \\(\\mathbf{P}\\) 和 \\(\\mathbf{C}\\left( u\\right)\\) 之间的距离(见图 6.1a 和 6.1b)。如果最小距离小于指定的容差 \\({\\epsilon }_{1}\\) ，则认为 \\(\\mathbf{P}\\) 在曲线上。这有效地解决了点投影到曲线的更一般问题。为了获得牛"
+  },
+  {
+    "chapter": 6,
+    "offset": 9747,
+    "entries": [
+      "i341"
+    ],
+    "selectors": [
+      "s:6:曲面切向量反演"
+    ],
+    "matched": "曲面切向量反演",
+    "id": "p0116",
+    "line_without_marks": 322,
+    "context": "的最近投影。\\\\\n虚线为控制网，实线为曲面边界及部分等参线，细线连接184个采样点与迭代求得的最近曲面点。\n\\end{minipage}\n\\end{center}\n\n\\section{曲面切向量反演}\n\n设 \\(\\left( {\\bar{u},\\bar{v}}\\right)\\) 为一个固定参数点， \\(\\mathbf{P} = \\mathbf{S}\\left( {\\bar{u},\\bar{v}}\\right)\\) 为其在表面 \\(\\mathbf{S}\\left( {u,v}\\right)\\) 上的像(见图 6.4)"
+  },
+  {
+    "chapter": 6,
+    "offset": 11787,
+    "entries": [
+      "i001",
+      "i288",
+      "i345"
+    ],
+    "selectors": [
+      "s:6:曲线和曲面的变换与投影"
+    ],
+    "matched": "曲线和曲面的变换与投影",
+    "id": "p0117",
+    "line_without_marks": 371,
+    "context": "f T=\\mathbf S_u\\,du+\\mathbf S_v\\,dv$；虚线为经过该点的等参线。\n\\end{minipage}\n\\end{center}\n\n\\section{曲线和曲面的变换与投影}\n\n曲线和曲面的变换与投影在几何建模和计算机图形学中是常见的。变换包括平移、旋转、缩放、剪切和反射。平行投影和透视投影在视频屏幕或其他二维输出设备上查看三维几何体时是必不可少的。文献中对变换和投影有许多优秀的讨论，例如 \\cite{Faux81,Fole90,Roge90}。在本节中，我们假设读者熟悉一般概念，我们仅详"
+  },
+  {
+    "chapter": 6,
+    "offset": 11844,
+    "entries": [
+      "i289"
+    ],
+    "selectors": [
+      "t:6:透视"
+    ],
+    "matched": "透视",
+    "id": "p0118",
+    "line_without_marks": 373,
+    "context": "nipage}\n\\end{center}\n\n\\section{曲线和曲面的变换与投影}\n\n曲线和曲面的变换与投影在几何建模和计算机图形学中是常见的。变换包括平移、旋转、缩放、剪切和反射。平行投影和透视投影在视频屏幕或其他二维输出设备上查看三维几何体时是必不可少的。文献中对变换和投影有许多优秀的讨论，例如 \\cite{Faux81,Fole90,Roge90}。在本节中，我们假设读者熟悉一般概念，我们仅详细阐述这些概念在 NURBS 曲线和曲面上的应用。\n\n所有变换和投影都是通过对控制点和权重应用操作来对 NURBS"
+  },
+  {
+    "chapter": 6,
+    "offset": 22189,
+    "entries": [
+      "i189",
+      "i296",
+      "i356"
+    ],
+    "selectors": [
+      "s:6:NURBS 曲线和曲面的重参数化"
+    ],
+    "matched": "NURBS 曲线和曲面的重参数化",
+    "id": "p0119",
+    "line_without_marks": 595,
+    "context": "}\\left( {d - {z}_{i}}\\right)  \\end{matrix}\\right\\rbrack   \\tag{6.23}\n\\]\n\n\n\\section{NURBS 曲线和曲面的重参数化}\n\n设 \\(\\mathbf{C}\\left( u\\right)  = \\left( {x\\left( u\\right) ,y\\left( u\\right) ,z\\left( u\\right) }\\right)\\) 为 \\(u \\in  \\left\\lbrack  {a,b}\\right\\rbrack\\) 上的任意参数曲"
+  },
+  {
+    "chapter": 6,
+    "offset": 27480,
+    "entries": [
+      "i298"
+    ],
+    "selectors": [
+      "t:6:线性有理函数"
+    ],
+    "matched": "线性有理函数",
+    "id": "p0120",
+    "line_without_marks": 760,
+    "context": "ight|  = \\left| {{\\mathbf{C}}^{\\prime }\\left( {s = 1}\\right) }\\right|  \\tag{6.30}\n\\]\n\n我们选择形式为的线性有理函数\n\n\\[\nu = f\\left( s\\right)  = \\frac{{as} + b}{{cs} + d}\\;s \\in  \\left\\lbrack  {0,1}\\right\\rbrack   \\tag{6.31}\n\\]\n\n显然，我们可以假设 \\(d = 1\\) ，条件 \\(f\\left( 0\\right)  = 0"
+  },
+  {
+    "chapter": 6,
+    "offset": 29540,
+    "entries": [
+      "i301"
+    ],
+    "selectors": [
+      "t:6:多项式函数"
+    ],
+    "matched": "多项式函数",
+    "id": "p0121",
+    "line_without_marks": 818,
+    "context": "{{as} + b}\\right) /\\left( {{cs} + d}\\right)\\) 的线性有理函数将多项式曲线转换为相同次数的有理曲线。\n\\end{itemize}\n\n现在我们讨论用多项式函数重新参数化 NURBS 曲线的问题。设 \\({\\mathbf{C}}^{w}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,p}\\left( u\\right) {\\mathbf{P}}_{i}^{w}\\) 为 \\(p\\) 次 NURBS 曲线，定"
+  },
+  {
+    "chapter": 6,
+    "offset": 43136,
+    "entries": [
+      "i297"
+    ],
+    "selectors": [
+      "t:6:线性函数"
+    ],
+    "matched": "线性函数",
+    "id": "p0122",
+    "line_without_marks": 1151,
+    "context": "i}^{w} = {\\mathbf{P}}_{i}^{w}\\;\\text{ for all }i \\tag{6.49}\n\\]\n\n因此，既不改变次数也不改变(齐次)控制点；方程 (6.45) 的线性函数仅仅将参数范围从 \\(\\left\\lbrack  {a,b}\\right\\rbrack\\) 改变为 \\(\\left\\lbrack  {c,d}\\right\\rbrack\\) 。\n\n现在让 \\({\\mathbf{C}}^{w}\\left( u\\right)\\) 是在 \\(u \\in  \\left\\lbrack  {a,b"
+  },
+  {
+    "chapter": 6,
+    "offset": 43440,
+    "entries": [
+      "i299"
+    ],
+    "selectors": [
+      "t:6:分段多项式"
+    ],
+    "matched": "分段多项式",
+    "id": "p0123",
+    "line_without_marks": 1153,
+    "context": "为 \\(U\\) ，并且让 \\(u = f\\left( s\\right)\\) 是在 \\(s \\in  \\left\\lbrack  {c,d}\\right\\rbrack\\) 上的 \\(q\\) 次分段多项式重新参数化函数。现在 \\(f\\left( s\\right)\\) 可以是任何形式，但为了方便术语，我们假设它是 B 样条形式，即\n\n\\[\nu = f\\left( s\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,q}\\left( s\\right) {f}_{i} "
+  },
+  {
+    "chapter": 6,
+    "offset": 46435,
+    "entries": [
+      "i300"
+    ],
+    "selectors": [
+      "t:6:现在我们转向使用有理"
+    ],
+    "matched": "现在我们转向使用有理",
+    "id": "p0124",
+    "line_without_marks": 1211,
+    "context": "曲线，圆圈为新控制点。\\\\\n(a)～(c)为二次映射，(d)为线性映射；各组给定节点见正文，(c)保留给定的重节点表示。\n\\end{minipage}\n\\end{center}\n\n现在我们转向使用有理(或分段有理)函数进行重新参数化。\n\n形式为\n\n\\[\nu = f\\left( s\\right)  = \\frac{g\\left( s\\right) }{h\\left( s\\right) } \\tag{6.54}\n\\]\n\n\n\n\n如前所述，如果 \\({\\mathbf{C}}^{w}\\left( u\\right)\\) 或 \\"
+  },
+  {
+    "chapter": 6,
+    "offset": 56706,
+    "entries": [
+      "i110",
+      "i302",
+      "i303"
+    ],
+    "selectors": [
+      "t:6:形状因子"
+    ],
+    "matched": "形状因子",
+    "id": "p0125",
+    "line_without_marks": 1531,
+    "context": "改变了权重，唯一的变化是曲线的参数化。这表明，对于给定的曲线，权重之间必定存在一种关系来决定曲线形状，即保持这种关系的权重变化会导致曲线的重新参数化，而不会改变形状。这些关系被称为形状不变量或形状因子。对于有理 Bézier 曲线，它们仅依赖于次数；对于 NURBS 曲线，它们依赖于次数和节点。一般来说，这些形状不变量的推导相当复杂(见 \\cite{Forr68,Vers75,Patt85,Lee87,Pieg91a})。我们在此提供一些供参考； \\({c}_{i}\\) 表示常数。\n\n\\begin{itemize}"
+  },
+  {
+    "chapter": 6,
+    "offset": 58908,
+    "entries": [
+      "i172",
+      "i329"
+    ],
+    "selectors": [
+      "s:6:曲线和曲面的反转"
+    ],
+    "matched": "曲线和曲面的反转",
+    "id": "p0126",
+    "line_without_marks": 1587,
+    "context": ".51] 和 [6.52])在 \\(u\\) 方向上用多项式函数重新参数化，并将方程 (6.39) 到 (6.44) 应用于控制点的 \\(m + 1\\) 列。\n\n\n\n\\section{曲线和曲面的反转}\n\n在本节中，我们使用重新参数化来反转 NURBS 曲线的方向和曲面法向量的方向。\n\n设 \\({\\mathbf{C}}^{w}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,p}\\left( u\\right) {\\mathbf{P}}_{i}^{"
+  },
+  {
+    "chapter": 6,
+    "offset": 63581,
+    "entries": [
+      "i079",
+      "i138",
+      "i139",
+      "i153",
+      "i180",
+      "i227",
+      "i228",
+      "i283",
+      "i296"
+    ],
+    "selectors": [
+      "s:6:B-spline 和分段幂基形式之间的转换"
+    ],
+    "matched": "B-spline 和分段幂基形式之间的转换",
+    "id": "p0127",
+    "line_without_marks": 1725,
+    "context": "\n各图一阶偏导箭头均画为原长的 $1/2$，法向箭头均画为原长的 $1/8$。\n\\end{minipage}\n\\end{center}\n\n\\section{B-spline 和分段幂基形式之间的转换}\n\n将 B-spline 曲线或表面转换为分段幂基形式的步骤如下:\n\n1. 使用节点细化，例如算法 A5.4-A5.7，将曲线或表面分解为分段 Bézier 形式；\n\n2. 通过应用矩阵乘法(基变换)将每个 Bézier 曲线段(或表面片)转换为幂基形式；\n\n3. 应用矩阵乘法对步骤 2 中获得的幂基形式进行重新参数化"
+  },
+  {
+    "chapter": 6,
+    "offset": 68806,
+    "entries": [
+      "i002",
+      "i138"
+    ],
+    "selectors": [
+      "a:6.1"
+    ],
+    "matched": "\\textbf{算法 A6.1",
+    "id": "p0128",
+    "line_without_marks": 1861,
+    "context": "omial coefficients, is used.\n\n% book-code: algorithm A6.1\n\\par\\medskip\\noindent\\textbf{算法 A6.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nBezierToPowerMatrix(p, M)\n{ /* Compute pth degree Bézier matrix */\n    /* Input: p */\n    /* Output: M */\n   "
+  },
+  {
+    "chapter": 6,
+    "offset": 72265,
+    "entries": [
+      "i213"
+    ],
+    "selectors": [
+      "t:6:IGES 参数样条"
+    ],
+    "matched": "IGES 参数样条",
+    "id": "p0129",
+    "line_without_marks": 1965,
+    "context": "i/10$。\n\\end{minipage}\n\\end{center}\n\n我们以两个最后的备注完成 B-spline 到幂基转换的讨论:\n\n\\begin{itemize}\n\\item IGES 参数样条(实体 112 和 114)\\cite{IGE93} 假设每个段的参数化从零开始；这意味着在方程 (6.85) 中 \\(d = 0\\) ，因此 \\({R}_{p}\\) 简化为具有元素的对角矩阵。\n\\end{itemize}\n\n\\[\n{r}_{i,j} = \\left\\{  {\\begin{array}{ll} 0 & "
+  },
+  {
+    "chapter": 6,
+    "offset": 77289,
+    "entries": [
+      "i042",
+      "i138"
+    ],
+    "selectors": [
+      "a:6.2"
+    ],
+    "matched": "\\textbf{算法 A6.2",
+    "id": "p0130",
+    "line_without_marks": 2106,
+    "context": " \\({M}_{p}^{-1}\\) (记作 MI)。\n\n\n\n% book-code: algorithm A6.2\n\\par\\medskip\\noindent\\textbf{算法 A6.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nPowerToBezierMatrix(p, M, MI)\n{ /* 计算 p 次贝塞尔矩阵的逆 */\n    /* 输入: p, M */\n    /* 输出: MI */\n    for (i=0; i<p; i+"
+  },
+  {
+    "chapter": 7,
+    "offset": 384,
+    "entries": [
+      "i094",
+      "i104",
+      "i105",
+      "i197",
+      "i211",
+      "i267"
+    ],
+    "selectors": [
+      "s:7:表示圆锥曲线的各种形式"
+    ],
+    "matched": "表示圆锥曲线的各种形式",
+    "id": "p0131",
+    "line_without_marks": 10,
+    "context": "出了构建任意圆和圆锥的 NURBS 表示的算法，包括完整的圆和椭圆。第 7.7 节涵盖了各种表示形式之间的转换，第 7.8 节给出了高阶圆表示的示例。\n\n\n\n\\section{表示圆锥曲线的各种形式}\n\n有许多方法可以定义和表示圆锥曲线。我们首先给出一个几何定义，然后利用它推导出 \\({xy}\\) 平面中圆锥曲线的一般隐式(代数)方程(见 \\cite{Lawr72})。圆锥曲线是一个点的轨迹，该点移动的方式使得它与固定点(焦点)的距离与它到固定直线(准线)的距离成比例，即(见图 7.1)\n\n\\[\n\\text{ Co"
+  },
+  {
+    "chapter": 7,
+    "offset": 661,
+    "entries": [
+      "i102"
+    ],
+    "selectors": [
+      "t:7:离心率"
+    ],
+    "matched": "离心率",
+    "id": "p0132",
+    "line_without_marks": 18,
+    "context": "{\\mathbf{P}\\left| {\\;\\frac{\\mathbf{{PF}}}{\\mathbf{{PD}}} = e}\\right. }\\right\\}\n\\]\n\n其中 \\(e\\) 是一个称为离心率的比例常数。离心率决定了圆锥曲线的类型，即\n\n\\[\ne = \\left\\{  \\begin{array}{ll}  = 1 & \\text{ parabola } \\\\   < 1 & \\text{ ellipse } \\\\   > 1 & \\text{ hyperbola } \\end{array}\\right.\n\\"
+  },
+  {
+    "chapter": 7,
+    "offset": 7758,
+    "entries": [
+      "i109"
+    ],
+    "selectors": [
+      "t:7:有理幂"
+    ],
+    "matched": "有理幂",
+    "id": "p0133",
+    "line_without_marks": 313,
+    "context": "{i}{\\mathbf{a}}_{i}{u}^{i}}{\\mathop{\\sum }\\limits_{{i = 0}}^{2}{w}_{i}{u}^{i}} \\tag{7.12}\n\\]\n\n圆锥的有理幂基形式。设置\n\n\\[\n{\\mathbf{a}}_{i}^{w} = \\left( {{w}_{i}{x}_{i},{w}_{i}{y}_{i},{w}_{i}{z}_{i},{w}_{i}}\\right)  \\tag{7.13}\n\\]\n\n产生\n\n\\[\n{\\mathbf{C}}^{w}\\left( u\\right)  ="
+  },
+  {
+    "chapter": 7,
+    "offset": 8708,
+    "entries": [
+      "i106"
+    ],
+    "selectors": [
+      "t:7:最大内切面积"
+    ],
+    "matched": "最大内切面积",
+    "id": "p0134",
+    "line_without_marks": 335,
+    "context": "ldots ,\\mathbf{C}\\left( {u}_{n}\\right)\\) 形成在 \\(\\mathbf{C}\\left( u\\right)\\) 上的 (n - 1) 边形，其闭合具有最大内切面积。椭圆由\n\n\\[\nx\\left( u\\right)  = a\\cos u\n\\]\n\n\\[\ny\\left( u\\right)  = b\\sin u\\;0 \\leq  u \\leq  {2\\pi } \\tag{7.15}\n\\]\n\n(见图 7.8)。如果 \\(a = b\\) 方程 (7.15) 表示一个圆，并且参数化是均匀的。"
+  },
+  {
+    "chapter": 7,
+    "offset": 11417,
+    "entries": [
+      "i108",
+      "i197",
+      "i211",
+      "i267",
+      "i302"
+    ],
+    "selectors": [
+      "s:7:二次有理贝塞尔弧"
+    ],
+    "matched": "二次有理贝塞尔弧",
+    "id": "p0135",
+    "line_without_marks": 457,
+    "context": " \\cite{Smit71} 提出。Liming 的两本书 (\\cite{Limi44,Limi79}) 包含了关于圆锥构造和圆锥在工程设计中应用的大量信息。\n\n\n\\section{二次有理贝塞尔弧}\n\n二次有理贝塞尔弧的形式为\n\n\\[\n\\mathbf{C}\\left( u\\right)  = \\frac{{\\left( 1 - u\\right) }^{2}{w}_{0}{\\mathbf{P}}_{0} + {2u}\\left( {1 - u}\\right) {w}_{1}{\\mathbf{P}}_{1} + {u"
+  },
+  {
+    "chapter": 7,
+    "offset": 16127,
+    "entries": [
+      "i111"
+    ],
+    "selectors": [
+      "t:7:肩点"
+    ],
+    "matched": "肩点",
+    "id": "p0136",
+    "line_without_marks": 594,
+    "context": "}_{2}\\) 平行。然而，指定权重并不是一个方便的设计工具。从这个系列中选择一个圆锥的更方便的方法是指定圆锥上的第三个点，该点在某个参数值下获得，设为 \\(u = 1/2\\) 。这个点称为圆锥的肩点， \\(\\mathbf{S} = \\mathbf{C}\\left( {1/2}\\right)\\) (见图 7.12)。将 \\(u = 1/2\\) 代入方程 (7.21) 得到\n\n\\[\n\\mathbf{S} = \\frac{1}{1 + {w}_{1}}\\mathbf{M} + \\frac{{w}_{1}}{1 + {w"
+  },
+  {
+    "chapter": 7,
+    "offset": 18549,
+    "entries": [
+      "i128",
+      "i217"
+    ],
+    "selectors": [
+      "s:7:无限控制点"
+    ],
+    "matched": "无限控制点",
+    "id": "p0137",
+    "line_without_marks": 651,
+    "context": "溯到 Coons 和 Forrest 的工作 \\cite{Coon67,Ahuj68,Forr68}。它也可以在 \\cite{Lee87,Pieg87a} 中找到。\n\n\n\\section{无限控制点}\n在本节中，我们引入无限控制点，这是一个用于构造扫掠 \\({180}^{ \\circ  }\\) 的圆形和椭圆弧的概念。Versprille \\cite{Vers75} 简要提到无限控制点，而 Piegl 则使用它们构造了许多不同的曲线和曲面 \\cite{Pieg87c,Pieg88a,Pieg88b}。\n\n在射影几何中"
+  },
+  {
+    "chapter": 7,
+    "offset": 24144,
+    "entries": [
+      "i094",
+      "i095",
+      "i217",
+      "i226"
+    ],
+    "selectors": [
+      "s:7:圆的构造"
+    ],
+    "matched": "圆的构造",
+    "id": "p0138",
+    "line_without_marks": 751,
+    "context": "出的 B 样条算法中造成问题。例如，前几章的点评估和节点插入算法(算法 A4.1 和 A5.1)在处理零权重或无限控制点时没有问题(当然，假设并非所有权重都是零)。\n\n\n\n\\section{圆的构造}\n\n在这一部分，我们开发了构造任意扫掠角的圆弧的算法，包括完整的圆。构造一般的 NURBS 圆弧比最初预期的要复杂，并且有许多方法可以实现。此部分的大部分材料取自 \\cite{Pieg89b}，这是对 NURBS 圆的详细研究。\n\n本节仅讨论二次表示。当需要的弧大于或等于 \\({180}^{ \\circ  }\\) 时，"
+  },
+  {
+    "chapter": 7,
+    "offset": 34873,
+    "entries": [
+      "i028",
+      "i095"
+    ],
+    "selectors": [
+      "a:7.1"
+    ],
+    "matched": "\\textbf{算法 A7.1",
+    "id": "p0139",
+    "line_without_marks": 1047,
+    "context": "的乘法。该算法计算 NURBS 圆弧的节点和加权控制点。\n\n% book-code: algorithm A7.1\n\\par\\medskip\\noindent\\textbf{算法 A7.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nMakeNurbsCircle(0, X, Y, r, ths, the, n, U, Pw)\n{ /* Create arbitrary NURBS circular arc */\n    /* Input: 0, "
+  },
+  {
+    "chapter": 7,
+    "offset": 37519,
+    "entries": [
+      "i101",
+      "i217"
+    ],
+    "selectors": [
+      "s:7:圆锥曲线的构造"
+    ],
+    "matched": "圆锥曲线的构造",
+    "id": "p0140",
+    "line_without_marks": 1127,
+    "context": "点和双重节点，但参数化通常不如前者好。还证明了，使用正权重的二次 NURBS 无法在没有双重内部节点的情况下表示完整的圆 \\cite{Pieg89b}。\n\n\n\n\n\n\n\\section{圆锥曲线的构造}\n在这一部分中，我们开发了构造圆锥曲线的算法，仅讨论二次表示。抛物线和双曲线弧总是可以用一条有理 Bézier 曲线(无内部节点)和正权重来表示。与圆的情况一样，我们可能需要用内部节点将多个段拼接在一起，以仅使用正权重获得任意椭圆弧。在此过程中，问题再次涉及连续性、参数化、凸包和控制点的数量。\n\n我们首先考虑三维空间中"
+  },
+  {
+    "chapter": 7,
+    "offset": 42638,
+    "entries": [
+      "i043",
+      "i178"
+    ],
+    "selectors": [
+      "a:7.2"
+    ],
+    "matched": "\\textbf{算法 A7.2",
+    "id": "p0141",
+    "line_without_marks": 1211,
+    "context": " 和 \\({\\mathbf{V}}_{2}\\) 的点积。\n\n% book-code: algorithm A7.2\n\\par\\medskip\\noindent\\textbf{算法 A7.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nMakeOneArc(PO, TO, P2, T2, P, P1, w1)\n{ /* Create one Bézier conic arc */\n    /* Input: P0, T0, P2, T2, P */\n"
+  },
+  {
+    "chapter": 7,
+    "offset": 46598,
+    "entries": [
+      "i029"
+    ],
+    "selectors": [
+      "a:7.3"
+    ],
+    "matched": "\\textbf{算法 A7.3",
+    "id": "p0142",
+    "line_without_marks": 1343,
+    "context": " R)，它返回角度 \\(\\angle {PQR}\\) 。\n\n% book-code: algorithm A7.3\n\\par\\medskip\\noindent\\textbf{算法 A7.3（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nMakeOpenConic(PO, TO, P2, T2, P, n, U, Pw)\n{ /* Construct open conic arc in 3D */\n    /* Input: P0, T0, P2, T"
+  },
+  {
+    "chapter": 7,
+    "offset": 50027,
+    "entries": [
+      "i103",
+      "i104",
+      "i106",
+      "i107",
+      "i108",
+      "i109",
+      "i140",
+      "i198",
+      "i317"
+    ],
+    "selectors": [
+      "s:7:锥形分类与形式转换"
+    ],
+    "matched": "锥形分类与形式转换",
+    "id": "p0143",
+    "line_without_marks": 1478,
+    "context": "athbf{Q}}_{6} + {r}_{1}\\mathbf{U}\n\\]\n\n步骤 2 和 3 的详细信息在下一节中给出，结果在图 7.28 中进行了说明。\n\n\n\n\\section{锥形分类与形式转换}\n\n在前面的章节中，我们介绍了五种表示锥曲线的形式:\n\n\\begin{itemize}\n\\item 隐式方程 (方程 [7.3] 和 [7.5]-[7.7])；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 最大内切面积形式 (方程 [7.15]-[7.17])；\n\\end{itemize}"
+  },
+  {
+    "chapter": 7,
+    "offset": 59725,
+    "entries": [
+      "i096",
+      "i181",
+      "i226"
+    ],
+    "selectors": [
+      "s:7:高阶圆"
+    ],
+    "matched": "高阶圆",
+    "id": "p0144",
+    "line_without_marks": 1785,
+    "context": "f P_i$ 为给定弧的控制点，$\\mathbf Q_i$ 为恢复出的矩形控制多边形；给定控制三角形用细虚线表示。\n\\end{minipage}\n\\end{center}\n\n\\section{高阶圆}\n在某些应用中，使用一个有理贝塞尔段(没有内部节点)、没有无限控制点和没有负权重来表示完整的圆或扫角大于 \\({180}^{ \\circ  }\\) 的圆弧是有用的。在前面的部分中，我们通过使用节点插入消除了无限控制点和负权重。度提升也能达到这个目的。以下是几个例子:\n\n\n\n\\section*{示例}\n\n示例 Ex7.7"
+  },
+  {
+    "chapter": 8,
+    "offset": 486,
+    "entries": [
+      "i248"
+    ],
+    "selectors": [
+      "s:8:双线性曲面"
+    ],
+    "matched": "双线性曲面",
+    "id": "p0145",
+    "line_without_marks": 15,
+    "context": "q}\\left( {u,v}\\right)\\) 表示度数为 \\(p \\times  q\\) 的第 \\(i,j\\) 个有理基函数(与方程 [4.12] 进行比较)。\n\n\n\n\\section{双线性曲面}\n\n设 \\({\\mathbf{P}}_{0,0},{\\mathbf{P}}_{1,0},{\\mathbf{P}}_{0,1},{\\mathbf{P}}_{1,1}\\) 为三维空间中的四个点。我们希望构造通过在四条线段之间进行双线性插值而获得的曲面的 NURBS 表示， \\({\\mathbf{P}}_{0,0}{\\mat"
+  },
+  {
+    "chapter": 8,
+    "offset": 1268,
+    "entries": [
+      "i255",
+      "i256"
+    ],
+    "selectors": [
+      "f:8:fig_8_01.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch08/fig_8_01.tex}",
+    "id": "p0146",
+    "line_without_marks": 37,
+    "context": "age}{30cm}\n\\vspace*{.6\\baselineskip}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch08/fig_8_01.tex}\n\\par\\smallskip\n图 8.1. 式 (8.1) 的双线性曲面；两个参数方向的等参数线均为直线，两图采用相同投影和比例。\\\\\n(a) 四个角点位于平面 $\\Pi$ 内；(b) 单位立方体两条不平行面对角线之间的插值形成双曲抛物面。\n\\end{minipage}\n\\end{center}\n\n\\section{"
+  },
+  {
+    "chapter": 8,
+    "offset": 1434,
+    "entries": [
+      "i176",
+      "i253"
+    ],
+    "selectors": [
+      "s:8:一般圆柱体"
+    ],
+    "matched": "一般圆柱体",
+    "id": "p0147",
+    "line_without_marks": 44,
+    "context": "\\\\\n(a) 四个角点位于平面 $\\Pi$ 内；(b) 单位立方体两条不平行面对角线之间的插值形成双曲抛物面。\n\\end{minipage}\n\\end{center}\n\n\\section{一般圆柱体}\n\n设 \\(\\mathbf{W}\\) 为单位长度的向量， \\(\\mathbf{C}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{R}_{i,p}\\left( u\\right) {\\mathbf{P}}_{i}\\) 为节点向量 \\(U\\) 上的 \\(p\\) "
+  },
+  {
+    "chapter": 8,
+    "offset": 4121,
+    "entries": [
+      "i257"
+    ],
+    "selectors": [
+      "s:8:规则曲面"
+    ],
+    "matched": "规则曲面",
+    "id": "p0148",
+    "line_without_marks": 123,
+    "context": "次段组成，平移方向为一次。\\\\\n实线为曲面边界，细虚线为两层同权重控制网；投影和坐标比例与图8.2、8.3相同。\n\\end{minipage}\n\\end{center}\n\n\\section{规则曲面}\n\n假设我们有两个 NURBS 曲线\n\n\\[\n{\\mathbf{C}}_{k}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{{n}_{k}}{R}_{i,{p}_{k}}\\left( u\\right) {\\mathbf{P}}_{i}^{k}\\;k = 1,2\n"
+  },
+  {
+    "chapter": 8,
+    "offset": 7349,
+    "entries": [
+      "i252"
+    ],
+    "selectors": [
+      "f:8:fig_8_09.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch08/fig_8_09.tex}",
+    "id": "p0149",
+    "line_without_marks": 209,
+    "context": "age}{22cm}\n\\vspace*{.6\\baselineskip}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch08/fig_8_09.tex}\n\\par\\smallskip\n图 8.6. 直圆锥面片：将单位圆的270度圆弧与顶点$\\mathbf P=(0,0,23/10)$相连，得到二次乘一次有理曲面。\\\\\n细虚线为$7\\times2$控制网；顶层控制点全部重合于顶点，且上下层对应权重相同。\\\\\n实线为圆弧边界、两条端部母线与一条中间母线；采用透明线框表示，"
+  },
+  {
+    "chapter": 8,
+    "offset": 8362,
+    "entries": [
+      "i260",
+      "i316"
+    ],
+    "selectors": [
+      "s:8:旋转曲面"
+    ],
+    "matched": "旋转曲面",
+    "id": "p0150",
+    "line_without_marks": 237,
+    "context": "同投影、坐标比例及透明线框。\\\\\n上述次数指NURBS的参数次数，直母线上的有理参数与空间线性插值参数一般不同。\n\\end{minipage}\n\\end{center}\n\n\\section{旋转曲面}\n设 \\(\\mathbf{C}\\left( v\\right)  = \\mathop{\\sum }\\limits_{{j = 0}}^{m}{R}_{j,q}\\left( v\\right) {\\mathbf{P}}_{j}\\) 为在节点向量 \\(V\\) 上的 \\(q\\) 阶 NURBS 曲线。 \\(\\mathbf{C}\\"
+  },
+  {
+    "chapter": 8,
+    "offset": 11718,
+    "entries": [
+      "i264"
+    ],
+    "selectors": [
+      "f:8:fig_8_14.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch08/fig_8_14.tex}",
+    "id": "p0151",
+    "line_without_marks": 310,
+    "context": "age}{34cm}\n\\vspace*{.6\\baselineskip}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch08/fig_8_14.tex}\n\\par\\smallskip\n图 8.10. 将$xz$平面内以$(8/5,0,0)$为圆心、半径为$1/2$的圆绕$z$轴旋转，得到大半径$R=8/5$、管半径$r=1/2$的环面。\\\\\n曲面为二次乘二次；细虚线为$9\\times9$控制网，两个方向首尾控制列均重合，共64个不同控制点，权重按两组圆权重相乘。\\\\\n"
+  },
+  {
+    "chapter": 8,
+    "offset": 12311,
+    "entries": [
+      "i259"
+    ],
+    "selectors": [
+      "f:8:fig_8_15.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch08/fig_8_15.tex}",
+    "id": "p0152",
+    "line_without_marks": 324,
+    "context": "age}{28cm}\n\\vspace*{.6\\baselineskip}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch08/fig_8_15.tex}\n\\par\\smallskip\n图 8.11. 将半径$3/2$的五点二次半圆绕$z$轴旋转所得的球面，表示次数为$2\\times2$。\\\\\n细虚线为$9\\times5$控制网，权重为圆与半圆权重的乘积；两极各有9个重合控制点，整个网共有26个不同控制点。\\\\\n实线为$v=i/12$的11条纬圆与$u=i/12$的12"
+  },
+  {
+    "chapter": 8,
+    "offset": 13327,
+    "entries": [
+      "i030"
+    ],
+    "selectors": [
+      "a:8.1"
+    ],
+    "matched": "\\textbf{算法 A8.1",
+    "id": "p0153",
+    "line_without_marks": 359,
+    "context": "三维线。\n\n注意这个算法与算法 A7.1 之间的相似性。\n\n% book-code: algorithm A8.1\n\\par\\medskip\\noindent\\textbf{算法 A8.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nMakeRevolvedSurf (S, T, theta, m, Pj, wj, n, U, Pij, wij)\n{ /* Create NURBS surface of revolution */\n    /* I"
+  },
+  {
+    "chapter": 8,
+    "offset": 16580,
+    "entries": [
+      "i250"
+    ],
+    "selectors": [
+      "f:8:fig_8_18.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch08/fig_8_18.tex}",
+    "id": "p0154",
+    "line_without_marks": 463,
+    "context": "age}{26cm}\n\\vspace*{.6\\baselineskip}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch08/fig_8_18.tex}\n\\par\\smallskip\n图 8.14. 将单位球的控制点按$F=(1,3/4,9/5)$缩放所得的椭球；权重及节点向量均不变，半轴分别为$a=1$、$b=3/4$、$c=9/5$。\\\\\n细虚线为$9\\times5$控制网，仍有26个不同控制点；实线为15条纬椭圆和12条子午半椭圆，采用透明线框。\\\\\n每个相同参"
+  },
+  {
+    "chapter": 8,
+    "offset": 17248,
+    "entries": [
+      "i251"
+    ],
+    "selectors": [
+      "f:8:fig_8_19.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch08/fig_8_19.tex}",
+    "id": "p0155",
+    "line_without_marks": 483,
+    "context": "age}{27cm}\n\\vspace*{.6\\baselineskip}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch08/fig_8_19.tex}\n\\par\\medskip\n\\BookFigure[max width=\\linewidth]{ch08/fig_8_20.tex}\n\\par\\smallskip\n图 8.15. 旋转抛物面及其非均匀缩放；两图采用相同投影、坐标比例与等参数位置。\\\\\n(a) 将二次抛物线$r(v)=3v/2$、$z(v)=9v^2/4"
+  },
+  {
+    "chapter": 8,
+    "offset": 18234,
+    "entries": [
+      "i263"
+    ],
+    "selectors": [
+      "s:8:三边球面"
+    ],
+    "matched": "三边球面",
+    "id": "p0156",
+    "line_without_marks": 525,
+    "context": " {f}_{i}{p}_{i}^{w} + \\left( {1 - {f}_{i}}\\right) w{c}_{i},i = 1,2,3 \\tag{8.11}\n\\]\n\n\n\n\\section{三边球面}\n当三个表面相交时，结果是三条边缘曲线在一个角点相遇(见图8.16a)。由于在制造零件中，尖锐的边缘和角通常是不受欢迎的，因此需要一些“平滑”或“圆滑”尖锐边缘和角的表面。这些被称为圆角表面。获得圆角表面的一个常见概念方法是滚动弹珠模型。如果一个半径为 \\(R\\) 的弹珠沿着所有边缘曲线滚动并进入角落，则会得到图 \\("
+  },
+  {
+    "chapter": 8,
+    "offset": 32883,
+    "entries": [
+      "i031"
+    ],
+    "selectors": [
+      "a:8.2"
+    ],
+    "matched": "\\textbf{算法 A8.2",
+    "id": "p0157",
+    "line_without_marks": 977,
+    "context": "}\\right)\\) 度的有理 Bézier 填角补丁。\n\n% book-code: algorithm A8.2\n\\par\\medskip\\noindent\\textbf{算法 A8.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nMakeCornerFilletSurf (C1, C2, C3, Pwij)\n{ /* 创建 NURBS 角落填角表面 */\n    /* 输入: C1, C2, C3 */\n    /* 输出: Pwij */\n "
+  },
+  {
+    "chapter": 9,
+    "offset": 89,
+    "entries": [
+      "i058",
+      "i114",
+      "i219"
+    ],
+    "selectors": [
+      "s:9:引言"
+    ],
+    "matched": "引言",
+    "id": "p0158",
+    "line_without_marks": 5,
+    "context": "%连续映射, 介值定理, 初等函数的构造\n\\documentclass[../main.tex]{subfiles}\n\\begin{document}\n\n\\section{引言}\n\n在第七章和第八章中，我们展示了如何构建常见且相对简单的曲线和曲面的 NURBS 表示，例如圆、圆锥曲线、圆柱体、旋转曲面等。这些实体只需少量数据项即可指定，例如中心点、高度、半径、旋转轴等。此外，这些少量数据项唯一地指定了几何实体。在本章中，我们进入自由形状(或雕刻)曲线和曲面的领域。我们研究拟合，即构建适合相当任"
+  },
+  {
+    "chapter": 9,
+    "offset": 3028,
+    "entries": [
+      "i203",
+      "i219"
+    ],
+    "selectors": [
+      "s:9:全局插值"
+    ],
+    "matched": "全局插值",
+    "id": "p0159",
+    "line_without_marks": 63,
+    "context": "方法还提供全局控制，例如全局张力参数。无论采用何种方法，如果结果是分段多项式或有理曲线或曲面，通常可以在最后一步转换为 NURBS 形式。\n\\end{itemize}\n\n\n\\section{全局插值}\n在本节中，我们提出了将曲线插值到点和导数数据的方法，以及将曲面插值到点数据的方法。\n\n\\subsection{针对点数据的全局曲线插值}%TODO::将曲线插值到点数据\n假设我们给定一组点 \\(\\left\\{  {\\mathbf{Q}}_{k}\\right\\}  ,k = 0,\\ldots ,n\\) ，并希望用一个 "
+  },
+  {
+    "chapter": 9,
+    "offset": 3097,
+    "entries": [
+      "i160",
+      "i199",
+      "i200",
+      "i347"
+    ],
+    "selectors": [
+      "s:9:针对点数据的全局曲线插值"
+    ],
+    "matched": "针对点数据的全局曲线插值",
+    "id": "p0160",
+    "line_without_marks": 66,
+    "context": "\n\\end{itemize}\n\n\n\\section{全局插值}\n在本节中，我们提出了将曲线插值到点和导数数据的方法，以及将曲面插值到点数据的方法。\n\n\\subsection{针对点数据的全局曲线插值}%TODO::将曲线插值到点数据\n假设我们给定一组点 \\(\\left\\{  {\\mathbf{Q}}_{k}\\right\\}  ,k = 0,\\ldots ,n\\) ，并希望用一个 \\(p\\) 次非有理 B 样条曲线来插值这些点。如果我们为每个 \\({\\mathbf{Q}}_{k}\\) 分配一个参数值 \\({\\bar{"
+  },
+  {
+    "chapter": 9,
+    "offset": 9958,
+    "entries": [
+      "i014"
+    ],
+    "selectors": [
+      "a:9.1"
+    ],
+    "matched": "\\textbf{算法 A9.1",
+    "id": "p0161",
+    "line_without_marks": 280,
+    "context": " FindSpan( ) 和 BasisFuns( )。\n\n% book-code: algorithm A9.1\n\\par\\medskip\\noindent\\textbf{算法 A9.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nGlobalCurveInterp( n,Q,r,p,m,U,P)\n{ /* Global interpolation through n + 1 points */\n    /* Input: n, Q, r, p "
+  },
+  {
+    "chapter": 9,
+    "offset": 13179,
+    "entries": [
+      "i160",
+      "i199"
+    ],
+    "selectors": [
+      "s:9:三次样条曲线插值"
+    ],
+    "matched": "三次样条曲线插值",
+    "id": "p0162",
+    "line_without_marks": 383,
+    "context": "均通过七个代表性数据点。\\\\\n各箭头与对应曲线使用相同线型，并统一按实际导数向量的$1/8$绘制。\n\\end{minipage}\n\\end{center}\n\n\\subsection{三次样条曲线插值}\n\n之前的方法(方程 [9.9]-[9.12])适用于任何阶数 \\(p > 1\\) 。如果 \\(p = 3\\) ，则存在一种更高效的算法，产生传统的 \\({C}^{2}\\) 三次样条。 \\({\\bar{u}}_{k}\\) 的计算与之前相同。节点是\n\n\\[\n{u}_{0} = \\cdots  = {u}_{3} = 0\\"
+  },
+  {
+    "chapter": 9,
+    "offset": 15545,
+    "entries": [
+      "i013"
+    ],
+    "selectors": [
+      "a:9.2"
+    ],
+    "matched": "\\textbf{算法 A9.2",
+    "id": "p0163",
+    "line_without_marks": 446,
+    "context": "{P}\\) 中。该算法可以适应处理具有任意数量坐标的点。\n\n% book-code: algorithm A9.2\n\\par\\medskip\\noindent\\textbf{算法 A9.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nSolveTridiagonal(n, Q, U, P)\n{ /* Solve tridiagonal system for C2 cubic spline */\n    /* Input: n, Q, U, P[0]"
+  },
+  {
+    "chapter": 9,
+    "offset": 21120,
+    "entries": [
+      "i200",
+      "i325"
+    ],
+    "selectors": [
+      "s:9:全局曲面插值"
+    ],
+    "matched": "全局曲面插值",
+    "id": "p0164",
+    "line_without_marks": 641,
+    "context": "点重合。\\\\\n曲线满足全部五个位置和五个导数约束，箭头与图 9.11 一样按实际导数的$1/5$绘制。\n\\end{minipage}\n\\end{center}\n\n\\subsection{全局曲面插值}\n\n我们现在转向曲面的全局插值。我们给定一组 \\((n +\\) 1) \\(\\times  \\left( {m + 1}\\right)\\) 数据点 \\(\\left\\{  {\\mathbf{Q}}_{k,\\ell }\\right\\}  ,k = 0,\\ldots ,n\\) 和 \\(\\ell  = 0,\\ldots ,m\\)"
+  },
+  {
+    "chapter": 9,
+    "offset": 22506,
+    "entries": [
+      "i046"
+    ],
+    "selectors": [
+      "a:9.3"
+    ],
+    "matched": "\\textbf{算法 A9.3",
+    "id": "p0165",
+    "line_without_marks": 658,
+    "context": "一行的总弦长等于零的情况，这是构造三面体表面的必要条件。\n\n% book-code: algorithm A9.3\n\\par\\medskip\\noindent\\textbf{算法 A9.3（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nSurfMeshParams(n, m, Q, uk, vl)\n{ /* Compute parameters for */\n    /* global surface interpolation */\n    /* "
+  },
+  {
+    "chapter": 9,
+    "offset": 26105,
+    "entries": [
+      "i047"
+    ],
+    "selectors": [
+      "a:9.4"
+    ],
+    "matched": "\\textbf{算法 A9.4",
+    "id": "p0166",
+    "line_without_marks": 747,
+    "context": "end{center}\n\n总结来说，表面插值的过程如下:\n\n% book-code: algorithm A9.4\n\\par\\medskip\\noindent\\textbf{算法 A9.4（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nGlobalSurfInterp(n, m, Q, p, q, U, V, P)\n{ /* Global surface interpolation */\n    /* Input: n, m, Q, p, q */\n"
+  },
+  {
+    "chapter": 9,
+    "offset": 29267,
+    "entries": [
+      "i219",
+      "i242"
+    ],
+    "selectors": [
+      "s:9:局部插值"
+    ],
+    "matched": "局部插值",
+    "id": "p0167",
+    "line_without_marks": 840,
+    "context": "节点插入和表面节点移除，可以调整算法A9.4以处理个别数据点的偏导数约束。最后，局部表面插值方法(见第9.3节)非常适合处理导数约束，因为它们在每个点上都需要导数。\n\n\n\n\\section{局部插值}\n\n在本节中，我们介绍曲线和表面对点和切线数据的局部插值。我们从一些初步概念开始。\n\n\\subsection{局部曲线插值初步}\n\n设定 \\(\\left\\{  {\\mathbf{Q}}_{k}\\right\\}  ,k = 0,\\ldots ,n\\) 。局部曲线插值是指构造 \\(n\\) 多项式或有理曲线段 \\({\\mat"
+  },
+  {
+    "chapter": 9,
+    "offset": 29331,
+    "entries": [
+      "i122",
+      "i200"
+    ],
+    "selectors": [
+      "s:9:局部曲线插值初步"
+    ],
+    "matched": "局部曲线插值初步",
+    "id": "p0168",
+    "line_without_marks": 844,
+    "context": "约束，因为它们在每个点上都需要导数。\n\n\n\n\\section{局部插值}\n\n在本节中，我们介绍曲线和表面对点和切线数据的局部插值。我们从一些初步概念开始。\n\n\\subsection{局部曲线插值初步}\n\n设定 \\(\\left\\{  {\\mathbf{Q}}_{k}\\right\\}  ,k = 0,\\ldots ,n\\) 。局部曲线插值是指构造 \\(n\\) 多项式或有理曲线段 \\({\\mathbf{C}}_{i}\\left( u\\right) ,i =\\)  \\(0,\\ldots ,n - 1\\) 的一种方法，使得 "
+  },
+  {
+    "chapter": 9,
+    "offset": 33831,
+    "entries": [
+      "i080",
+      "i160"
+    ],
+    "selectors": [
+      "s:9:局部抛物线曲线插值"
+    ],
+    "matched": "局部抛物线曲线插值",
+    "id": "p0169",
+    "line_without_marks": 936,
+    "context": "f{T}}_{1}\\) 和 \\({\\mathbf{T}}_{n - 1},{\\mathbf{T}}_{n}\\) 。我们现在准备介绍几种局部插值方法。\n\n\n\n\\subsection{局部抛物线曲线插值}\n\n我们从一个简单的二维非理性二次方案开始。设 \\(\\left\\{  {\\mathbf{Q}}_{k}\\right\\}  ,k = 0,\\ldots ,n\\) 为 \\({xy}\\) 平面中的点。使用某种切线估计方案来计算相应的 \\(\\left\\{  {\\mathbf{T}}_{k}\\right\\}\\) ，例如，方程 ("
+  },
+  {
+    "chapter": 9,
+    "offset": 41587,
+    "entries": [
+      "i111",
+      "i160",
+      "i178"
+    ],
+    "selectors": [
+      "s:9:局部有理二次曲线插值"
+    ],
+    "matched": "局部有理二次曲线插值",
+    "id": "p0170",
+    "line_without_marks": 1129,
+    "context": "—(9.44) 构造二次曲线段；每个数据点均被插值，首尾位置与切向精确满足$G^1$闭合条件。\n\\end{minipage}\n\\end{center}\n\n\\subsection{局部有理二次曲线插值}\n\n前述方法可以修改为生成有理二次曲线。所有在 \\({\\mathbf{Q}}_{k}\\) 的权重设置为 1；在 \\({\\mathbf{R}}_{k}\\) 的权重可以自由选择。例如，一些应用可能希望段更“圆形”而不是抛物线形。更具体地，对于 \\(k = 1,\\ldots ,n\\) ，定义了一个圆锥弧，由 \\({\\math"
+  },
+  {
+    "chapter": 9,
+    "offset": 44203,
+    "entries": [
+      "i160",
+      "i199",
+      "i200"
+    ],
+    "selectors": [
+      "s:9:局部三次曲线插值"
+    ],
+    "matched": "局部三次曲线插值",
+    "id": "p0171",
+    "line_without_marks": 1198,
+    "context": "权重为$1$，各四分之一圆段取中间权重$\\sqrt2/2$，因此圆弧和两个圆孔在数学上被精确再现。\n\\end{minipage}\n\\end{center}\n\n\\subsection{局部三次曲线插值}\n三次曲线能够轻松处理三维数据和拐点，而无需特殊处理。我们首先推导出关于三次贝塞尔曲线的一般事实，这本身就是一个有趣的主题。设 \\({\\mathbf{P}}_{0}\\) 和 \\({\\mathbf{P}}_{3}\\) 为两个端点， \\({\\mathbf{T}}_{0}\\) 和 \\({\\mathbf{T}}_{3}\\) 为"
+  },
+  {
+    "chapter": 9,
+    "offset": 49804,
+    "entries": [
+      "i199",
+      "i200",
+      "i325"
+    ],
+    "selectors": [
+      "s:9:局部双三次曲面插值"
+    ],
+    "matched": "局部双三次曲面插值",
+    "id": "p0172",
+    "line_without_marks": 1337,
+    "context": "段精确表示；全部数据点被插值，内部连接满足$C^1$连续。图形采用与图 9.7 相同的坐标尺度。\n\\end{minipage}\n\\end{center}\n\n\\subsection{局部双三次曲面插值}\n\n也可以实现一个 \\({C}^{\\left( 1,1\\right) }\\) 连续的双三次局部曲面插值方案( \\({C}^{1}\\) 在 \\(u\\) 和 \\(v\\) 方向上均连续)。设 \\(\\left\\{  {\\mathbf{Q}}_{k,\\ell }\\right\\}  ,k = 0,\\ldots ,n\\) 和 \\(\\"
+  },
+  {
+    "chapter": 9,
+    "offset": 55079,
+    "entries": [
+      "i048"
+    ],
+    "selectors": [
+      "a:9.5"
+    ],
+    "matched": "\\textbf{算法 A9.5",
+    "id": "p0173",
+    "line_without_marks": 1432,
+    "context": "right\\rbrack\\) ，分别存储行和列的总弦长。\n\n% book-code: algorithm A9.5\n\\par\\medskip\\noindent\\textbf{算法 A9.5（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nLocalSurfInterp(n, m, Q, U, V, P)\n{ /* Local surface interpolation */\n    /* through ( n + 1) ( m + 1) points"
+  },
+  {
+    "chapter": 9,
+    "offset": 59827,
+    "entries": [
+      "i058",
+      "i203"
+    ],
+    "selectors": [
+      "s:9:全局逼近"
+    ],
+    "matched": "全局逼近",
+    "id": "p0174",
+    "line_without_marks": 1566,
+    "context": "^1$连续；四十一条等参数线显示不均匀数据引起的局部弯曲和间距变化。两图及图 9.32 采用相同视角与坐标尺度。\n\\end{minipage}\n\\end{center}\n\n\\section{全局逼近}\n\n逼近比插值更为困难。在插值中，控制点的数量由所选的次数和数据项的数量自动确定，节点放置也很简单，并且没有需要检查的曲线或表面误差。在逼近中，曲线/表面误差界限 \\(E\\) 与要拟合的数据一起输入。通常事先并不知道需要多少个控制点才能获得所需的精度 \\(E\\) 。因此，近似方法通常是迭代的。粗略来说，全局方法有两种进"
+  },
+  {
+    "chapter": 9,
+    "offset": 60616,
+    "entries": [
+      "i159",
+      "i199",
+      "i240"
+    ],
+    "selectors": [
+      "s:9:最小二乘曲线逼近"
+    ],
+    "matched": "最小二乘曲线逼近",
+    "id": "p0175",
+    "line_without_marks": 1600,
+    "context": "aur93})。在第 9.4.1-9.4.3 节中，我们介绍了曲线和表面拟合方法，其中固定数量的控制点是唯一的未知数，并使用线性最小二乘技术进行求解。\n\n\n\n\\subsection{最小二乘曲线逼近}\n\n为了避免非线性问题，我们将权重设置为 1，并预计算参数和节点的值。然后我们建立并求解未知控制点的(唯一)线性最小二乘问题。我们从对点数据的简单曲线拟合开始。假设 \\(p \\geq  1,n \\geq  p\\) 和 \\({\\mathbf{Q}}_{0},\\ldots ,{\\mathbf{Q}}_{m}\\left( {"
+  },
+  {
+    "chapter": 9,
+    "offset": 67124,
+    "entries": [
+      "i114",
+      "i159",
+      "i240"
+    ],
+    "selectors": [
+      "s:9:加权和约束最小二乘曲线拟合"
+    ],
+    "matched": "加权和约束最小二乘曲线拟合",
+    "id": "p0176",
+    "line_without_marks": 1728,
+    "context": "短刻线分别表示实际数据参数与节点位置；两端四重节点稍微错开。三图采用相同坐标尺度和字体。\n\\end{minipage}\n\\end{center}\n\n\\subsection{加权和约束最小二乘曲线拟合}\n\n现在我们提出一种非常通用的加权约束最小二乘曲线拟合方法。这是对Smith等人算法的NURBS适应 \\cite{Smit74}。设 \\(\\left\\{  {\\mathbf{Q}}_{i}\\right\\}  ,i = 0,\\ldots ,r\\) 为要近似的点。可选地，可以指定任意 \\({\\mathbf{Q}}_{i}\\"
+  },
+  {
+    "chapter": 9,
+    "offset": 74336,
+    "entries": [
+      "i009"
+    ],
+    "selectors": [
+      "a:9.6"
+    ],
+    "matched": "\\textbf{算法 A9.6",
+    "id": "p0177",
+    "line_without_marks": 1875,
+    "context": "时存储在方程 (9.71)-(9.76) 中计算的矩阵。\n\n% book-code: algorithm A9.6\n\\par\\medskip\\noindent\\textbf{算法 A9.6（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nWCLeastSquaresCurve(Q, r, Wq, D, s, I, Wd, n, p, U, P)\n{ /* Weighted & constrained least squares curve fit */"
+  },
+  {
+    "chapter": 9,
+    "offset": 79978,
+    "entries": [
+      "i240",
+      "i324"
+    ],
+    "selectors": [
+      "s:9:最小二乘曲面逼近"
+    ],
+    "matched": "最小二乘曲面逼近",
+    "id": "p0178",
+    "line_without_marks": 2027,
+    "context": "线标注；水平内部导数、端导数及箭头的$1/10$比例均与图 9.42 相同，其余数据权重为$1$。\n\\end{minipage}\n\\end{center}\n\n\\subsection{最小二乘曲面逼近}\n\n现在我们转向具有固定数量控制点的曲面逼近。设 \\(\\left\\{  {\\mathbf{Q}}_{k,\\ell }\\right\\}  ,k = 0,\\ldots ,r\\) 和 \\(\\ell  = 0,\\ldots ,s\\) 为要被逼近的 \\(\\left( {r + 1}\\right)  \\times  \\left( "
+  },
+  {
+    "chapter": 9,
+    "offset": 81238,
+    "entries": [
+      "i045"
+    ],
+    "selectors": [
+      "a:9.7"
+    ],
+    "matched": "\\textbf{算法 A9.7",
+    "id": "p0179",
+    "line_without_marks": 2044,
+    "context": "}\\) 存储在 Ru[n-1] 和 Rv[m-1] 中。\n\n% book-code: algorithm A9.7\n\\par\\medskip\\noindent\\textbf{算法 A9.7（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nGlobalSurfApproxFixednm(r, s, Q, p, q, n, m, U, V, P)\n{ /* Global surface approx with fixed num of ctrl pts *"
+  },
+  {
+    "chapter": 9,
+    "offset": 84855,
+    "entries": [
+      "i159",
+      "i228",
+      "i324"
+    ],
+    "selectors": [
+      "s:9:在指定精度内的逼近"
+    ],
+    "matched": "在指定精度内的逼近",
+    "id": "p0180",
+    "line_without_marks": 2127,
+    "context": "i\\right\\rbrack  \\left\\lbrack  {\\ell }_{0}\\right\\rbrack\\) 必须在 \\(v\\) 方向上受到约束。\n\n\n\\subsection{在指定精度内的逼近}\n\n我们现在回到将数据近似到某个用户指定的误差范围内的问题， \\(E\\) 。正如本节开始所述，迭代方法要么从少量控制点开始，拟合、检查偏差，并在必要时添加控制点(类型1)；要么从大量控制点开始，拟合、检查偏差，并在可能的情况下丢弃控制点(类型2)。前面提到的基于最小二乘法的方法适用于拟合步骤。偏差检查步骤通常测量最大距"
+  },
+  {
+    "chapter": 9,
+    "offset": 89019,
+    "entries": [
+      "i004"
+    ],
+    "selectors": [
+      "a:9.8"
+    ],
+    "matched": "\\textbf{算法 A9.8",
+    "id": "p0181",
+    "line_without_marks": 2202,
+    "context": " A5.8 的修改版，仅计算 \\({B}_{r}\\) 。\n\n% book-code: algorithm A9.8\n\\par\\medskip\\noindent\\textbf{算法 A9.8（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nGetRemovalBndCurve(n, p, U, P, u, r, s, Br)\n{ /* Get knot removal error bound (nonrational) */\n    /* Input: "
+  },
+  {
+    "chapter": 9,
+    "offset": 92340,
+    "entries": [
+      "i044"
+    ],
+    "selectors": [
+      "a:9.9"
+    ],
+    "matched": "\\textbf{算法 A9.9",
+    "id": "p0182",
+    "line_without_marks": 2284,
+    "context": "end{minipage}\n\\end{center}\n\n\n\n% book-code: algorithm A9.9\n\\par\\medskip\\noindent\\textbf{算法 A9.9（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nRemoveKnotsBoundCurve(n, p, U, P, ub, ek, E, nh, Uh, Ph)\n{ /* Remove knots from curve, bounded */\n    /* Inpu"
+  },
+  {
+    "chapter": 9,
+    "offset": 93696,
+    "entries": [
+      "i010"
+    ],
+    "selectors": [
+      "a:9.10"
+    ],
+    "matched": "\\textbf{算法 A9.10",
+    "id": "p0183",
+    "line_without_marks": 2324,
+    "context": "\n\n\n\n我们现在可以组合一个类型 2 曲线逼近方法。\n\n% book-code: algorithm A9.10\n\\par\\medskip\\noindent\\textbf{算法 A9.10（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nGlobalCurveApproxErrBnd(m,Q,P,E,n,U,P)\n{ /* 全局曲线逼近到界限 E 内 */\n    /* 输入:m, Q, p, E */\n    /* 输出:n, U, P */\n   "
+  },
+  {
+    "chapter": 9,
+    "offset": 100204,
+    "entries": [
+      "i058",
+      "i242"
+    ],
+    "selectors": [
+      "s:9:局部逼近"
+    ],
+    "matched": "局部逼近",
+    "id": "p0184",
+    "line_without_marks": 2493,
+    "context": "情况并非如此，最小二乘逼近步骤可能会失败，原因可能是度数提升需要的控制点超过数据点，或者因为多个结使得方程组奇异。一个简单的解决方法是用更高阶的曲线重新开始该过程。\n\n\n\n\\section{局部逼近}\n\n设定 \\({\\mathbf{Q}}_{0},\\ldots ,{\\mathbf{Q}}_{m}\\) 和 \\(E\\) 。在这里，我们给出两个局部曲线近似的例子；第一个生成一个有理二次 B-spline 曲线，第二个生成一个非有理三次 B-spline 曲线。在这两种情况下，曲线都是通过构造而连续的 \\({G}^{1}\\"
+  },
+  {
+    "chapter": 9,
+    "offset": 101732,
+    "entries": [
+      "i111",
+      "i159"
+    ],
+    "selectors": [
+      "s:9:局部有理二次曲线逼近"
+    ],
+    "matched": "局部有理二次曲线逼近",
+    "id": "p0185",
+    "line_without_marks": 2519,
+    "context": "{1}\\) 二次曲线和 \\({C}^{1}\\) 三次曲线。与段边界对应的累积弦长用于二次曲线的节点值；使用公式 (9.37) 计算三次曲线的节点。\n\n\n\n\\subsection{局部有理二次曲线逼近}\n\n现在我们开发例程 FitWithConic(   )。我们假设点 \\({\\mathbf{Q}}_{{k}_{s}},\\ldots ,{\\mathbf{Q}}_{{k}_{e}}\\) 位于唯一的平面中，并且给定了端切线 \\({\\mathbf{T}}_{s}\\) 和 \\({\\mathbf{T}}_{e}\\) 。\n\n考虑"
+  },
+  {
+    "chapter": 9,
+    "offset": 103772,
+    "entries": [
+      "i012"
+    ],
+    "selectors": [
+      "a:9.11"
+    ],
+    "matched": "\\textbf{算法 A9.11",
+    "id": "p0186",
+    "line_without_marks": 2580,
+    "context": "控制点 \\({\\mathbf{R}}^{w}\\) 。\n\n% book-code: algorithm A9.11\n\\par\\medskip\\noindent\\textbf{算法 A9.11（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nFitWithConic(ks, ke, Q, Ts, Te, E, Rw)\n{ /* Fit to tolerance E with conic segment */\n    /* Input: ks, ke, Q,"
+  },
+  {
+    "chapter": 9,
+    "offset": 106357,
+    "entries": [
+      "i159",
+      "i178"
+    ],
+    "selectors": [
+      "s:9:局部非有理三次曲线逼近"
+    ],
+    "matched": "局部非有理三次曲线逼近",
+    "id": "p0187",
+    "line_without_marks": 2661,
+    "context": "数$u=j/50$处的十字标记；五图保持同一坐标尺度、字号和线宽，(a)—(d) 统一边界。\n\\end{minipage}\n\\end{center}\n\n\\subsection{局部非有理三次曲线逼近}\n\n现在我们开发 FitWithCubic(   )。设 \\({\\mathbf{P}}_{0} = {\\mathbf{Q}}_{{k}_{s}}\\) 和 \\({\\mathbf{P}}_{3} = {\\mathbf{Q}}_{{k}_{e}}\\) 表示三次 Bézier 段的起点和终点， \\({\\mathbf{T}}_{"
+  },
+  {
+    "chapter": 9,
+    "offset": 117043,
+    "entries": [
+      "i011"
+    ],
+    "selectors": [
+      "a:9.12"
+    ],
+    "matched": "\\textbf{算法 A9.12",
+    "id": "p0188",
+    "line_without_marks": 2888,
+    "context": "{k}\\) 和 \\({\\beta }_{k}\\) 。\n\n% book-code: algorithm A9.12\n\\par\\medskip\\noindent\\textbf{算法 A9.12（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nFitWithCubic(ks, ke, Q, Ts, Te, E, P1, P2)\n{ /* Fit to tolerance E with cubic segment */\n    /* Input: ks, ke"
+  },
+  {
+    "chapter": 10,
+    "offset": 353,
+    "entries": [
+      "i262",
+      "i340"
+    ],
+    "selectors": [
+      "s:10:摆动表面"
+    ],
+    "matched": "摆动表面",
+    "id": "p0189",
+    "line_without_marks": 10,
+    "context": "散点和导数数据的插值在根本上是不同的。在某些构造中，读者可能不会明显意识到所创建的表面确实满足所需的约束。我们将其留作读者的练习，以通过数学证明或软件实现来使自己信服。\n\n\\section{摆动表面}\n摆动表面是旋转曲面的推广。设\n\n\\[\n\\mathbf{P}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{R}_{i,p}\\left( u\\right) {\\mathbf{P}}_{i} \\tag{10.1}\n\\]\n\n是定义在 \\({xz}\\) 平面上的轮"
+  },
+  {
+    "chapter": 10,
+    "offset": 3523,
+    "entries": [
+      "i244",
+      "i258",
+      "i305"
+    ],
+    "selectors": [
+      "s:10:皮肤表面"
+    ],
+    "matched": "皮肤表面",
+    "id": "p0190",
+    "line_without_marks": 85,
+    "context": "择 \\(\\alpha  = 1\\) 和 \\(\\mathbf{T}\\left( v\\right)\\) 为以原点为中心、半径为 1 的圆，得到第 8 章中给出的旋转曲面。\n\n\n\\section{皮肤表面}\n设 \\(\\left\\{  {{\\mathbf{C}}_{k}\\left( u\\right) }\\right\\}  ,k = 0,\\ldots ,K\\) 为一组曲线。我们称 \\({\\mathbf{C}}_{k}\\left( u\\right)\\) 为截面曲线。在实践中，它们通常是要构建的表面的 \\(u\\) 方向的平面截面"
+  },
+  {
+    "chapter": 10,
+    "offset": 16154,
+    "entries": [
+      "i357"
+    ],
+    "selectors": [
+      "t:10:负权值"
+    ],
+    "matched": "负权值",
+    "id": "p0191",
+    "line_without_marks": 395,
+    "context": "与切平面跳变。\\\\\n控制点记录于源码，上方矩阵由同一数据重算；虽有负控制权值，本例整个参数域的分母仍严格大于$1/2$。\n\\end{minipage}\n\\end{center}\n\n（本重绘例中的负权值为$w_{1,2}$和$w_{3,2}$。）图 \\({10.10}\\mathrm{\\;b}\\) 中显示的表面在 \\(u\\) 方向上仅表现出 \\({C}^{0}\\) 连续性。根据作者的知识，解决这一困境的唯一方案涉及使用更高阶的截面曲线。例如，一个完整的圆可以表示为一个具有正权重且没有内部节点的五阶 NURBS 曲线(示"
+  },
+  {
+    "chapter": 10,
+    "offset": 16239,
+    "entries": [
+      "i115"
+    ],
+    "selectors": [
+      "t:10:连续性"
+    ],
+    "matched": "连续性",
+    "id": "p0192",
+    "line_without_marks": 395,
+    "context": "er}\n\n（本重绘例中的负权值为$w_{1,2}$和$w_{3,2}$。）图 \\({10.10}\\mathrm{\\;b}\\) 中显示的表面在 \\(u\\) 方向上仅表现出 \\({C}^{0}\\) 连续性。根据作者的知识，解决这一困境的唯一方案涉及使用更高阶的截面曲线。例如，一个完整的圆可以表示为一个具有正权重且没有内部节点的五阶 NURBS 曲线(示例 E7.10)，从而消除了这个问题。关于这个问题的几种解决方案，所有这些方案都有效地提高了皮肤表面的阶数，在 \\cite{Hohm91} 中进行了讨论。一个通用的解决方"
+  },
+  {
+    "chapter": 10,
+    "offset": 16410,
+    "entries": [
+      "i306"
+    ],
+    "selectors": [
+      "t:10:平滑函数"
+    ],
+    "matched": "平滑函数",
+    "id": "p0193",
+    "line_without_marks": 395,
+    "context": "曲线(示例 E7.10)，从而消除了这个问题。关于这个问题的几种解决方案，所有这些方案都有效地提高了皮肤表面的阶数，在 \\cite{Hohm91} 中进行了讨论。一个通用的解决方案是使用所谓的平滑函数。假设 \\({\\mathbf{C}}_{k}^{w}\\left( u\\right)\\) 是一个在节点向量 \\(U\\) 上的 \\({C}^{r}\\) 连续截面曲线，其投影 \\({\\mathbf{C}}_{k}\\left( u\\right)\\) 是 \\({C}^{r + s}\\) 连续的， \\(s > 0\\) 。设 \\(f"
+  },
+  {
+    "chapter": 10,
+    "offset": 18051,
+    "entries": [
+      "i261",
+      "i265",
+      "i339"
+    ],
+    "selectors": [
+      "s:10:扫掠表面"
+    ],
+    "matched": "扫掠表面",
+    "id": "p0194",
+    "line_without_marks": 424,
+    "context": "段的乘法；\n\n3. 将 \\({\\widehat{\\mathbf{C}}}_{k}^{w}\\left( u\\right)\\) 重新组合为 NURBS 曲线(去除节点)。\n\n\n\\section{扫掠表面}\n接下来，我们讨论沿任意轨迹曲线扫掠截面曲线的主题。用 \\(\\mathbf{T}\\left( v\\right)\\) 表示轨迹，用 \\(\\mathbf{C}\\left( u\\right)\\) 表示截面曲线。扫掠曲面的通用形式为\n\n\\[\n\\mathbf{S}\\left( {u,v}\\right)  = \\mathbf{T}"
+  },
+  {
+    "chapter": 10,
+    "offset": 23497,
+    "entries": [
+      "i265"
+    ],
+    "selectors": [
+      "t:10:偏移"
+    ],
+    "matched": "偏移",
+    "id": "p0195",
+    "line_without_marks": 538,
+    "context": "\n\\item 另一种方法由 Bloomenthal 和 Riesenfeld \\cite{Blom91} 以及 Coquillart \\cite{Coqu87a} 提出；他们的方法涉及对轨迹的三维偏移曲线进行近似。如果 \\(\\mathbf{C}\\left( u\\right)\\) 经过原点，他们的算法将 \\(\\mathbf{T}\\left( v\\right)\\) 插值为等参数曲线；然而，除了在 \\(v = {v}_{0}\\) 和 \\(v = {v}_{s}\\) 处， \\(\\mathbf{C}\\left( u\\righ"
+  },
+  {
+    "chapter": 10,
+    "offset": 25079,
+    "entries": [
+      "i049"
+    ],
+    "selectors": [
+      "a:10.1"
+    ],
+    "matched": "\\textbf{算法 A10.1",
+    "id": "p0196",
+    "line_without_marks": 548,
+    "context": "ht)\\) 的节点数量，可能需要更多的截面曲线实例。\n\n% book-code: algorithm A10.1\n\\par\\medskip\\noindent\\textbf{算法 A10.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nSweepSurface1(T, C, Bv, Sv, K, V, Pw)\n{ /* Swept surface. Trajectory interpolated. */\n    /* Input: T, C, Bv,"
+  },
+  {
+    "chapter": 10,
+    "offset": 27987,
+    "entries": [
+      "i050"
+    ],
+    "selectors": [
+      "a:10.2"
+    ],
+    "matched": "\\textbf{算法 A10.2",
+    "id": "p0197",
+    "line_without_marks": 603,
+    "context": "w}.$@\n    }\n}\n\\end{minted}\n\n% book-code: algorithm A10.2\n\\par\\medskip\\noindent\\textbf{算法 A10.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nSweepSurface2(T, C, Bv, sv, q, K, V, Pw)\n{ /* Swept surface. Trajectory not interpolated. */\n    /* Input: T,"
+  },
+  {
+    "chapter": 10,
+    "offset": 32797,
+    "entries": [
+      "i202"
+    ],
+    "selectors": [
+      "t:10:Frenet"
+    ],
+    "matched": "Frenet",
+    "id": "p0198",
+    "line_without_marks": 720,
+    "context": " v\\right)\\) 为一个常量函数，其值是垂直于 \\(\\mathbf{T}\\left( v\\right)\\) 平面的向量。对于任意轨迹，情况则更为复杂。一个常见的解决方案是使用所谓的 Frenet 框架 \\cite{DoCa76,Klok86,Bron92,Silt92}。假设 \\(\\mathbf{T}\\left( v\\right)\\) 是二次可微的。通过以下方式定义 \\(\\mathbf{B}\\left( v\\right)\\) :\n\n\\[\n\\mathbf{B}\\left( v\\right)  = \\frac{{"
+  },
+  {
+    "chapter": 10,
+    "offset": 36864,
+    "entries": [
+      "i204",
+      "i254"
+    ],
+    "selectors": [
+      "s:10:双向曲线网络的插值"
+    ],
+    "matched": "双向曲线网络的插值",
+    "id": "p0199",
+    "line_without_marks": 807,
+    "context": "最小化旋转的 \\(\\mathbf{B}\\left( v\\right)\\) 。有关扫掠表面的更多阅读可以在 \\cite{Choi90,Akma92} 中找到。\n\n\n\\section{双向曲线网络的插值}\n设\n\n\\[\n{\\mathbf{C}}_{k}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,p}\\left( u\\right) {\\mathbf{P}}_{k,i}\\;k = 0,\\ldots ,r\\;u \\in  \\left\\lbrack  "
+  },
+  {
+    "chapter": 10,
+    "offset": 44331,
+    "entries": [
+      "i022"
+    ],
+    "selectors": [
+      "a:10.3"
+    ],
+    "matched": "\\textbf{算法 A10.3",
+    "id": "p0200",
+    "line_without_marks": 1013,
+    "context": "p, q, U, V, Pij 定义输出的戈登表面。\n\n% book-code: algorithm A10.3\n\\par\\medskip\\noindent\\textbf{算法 A10.3（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nGordonSurface(Ck, Cl, ul, vk, r, s, pl, ql, pt, qt, n, m, p, q, U, V, Pij)\n{ /* 创建戈登表面. */\n    /* 输入: Ck, Cl,"
+  },
+  {
+    "chapter": 10,
+    "offset": 45511,
+    "entries": [
+      "i145",
+      "i146",
+      "i249"
+    ],
+    "selectors": [
+      "s:10:库恩斯表面"
+    ],
+    "matched": "库恩斯表面",
+    "id": "p0201",
+    "line_without_marks": 1047,
+    "context": "\\\\\n圈点满足$P_{5,1}=P^{L_1}_{5,1}+P^{L_2}_{5,1}-P^T_{5,1}$。\n\\end{minipage}\n\\end{center}\n\n\\section{库恩斯表面}\n\n现在假设我们有四条曲线\n\n\\[\n{\\mathbf{C}}_{k}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{N}_{i,p}\\left( u\\right) {\\mathbf{P}}_{k,i}\\;k = 0,1\\;u \\in  \\left\\lbrac"
+  },
+  {
+    "chapter": 10,
+    "offset": 49181,
+    "entries": [
+      "i148"
+    ],
+    "selectors": [
+      "t:10:跨边界导数"
+    ],
+    "matched": "跨边界导数",
+    "id": "p0202",
+    "line_without_marks": 1129,
+    "context": "连续性；也就是说，组合表面将在公共边界上产生一个折痕。为了获得这些补丁的光滑、 \\({C}^{n}\\) 连续 \\(\\left( {n > 0}\\right)\\) 连接，Coons 开发了使用跨边界导数场的高阶补丁。为了说明这一点，我们展示了双立方混合的 Coons 补丁。设 \\({\\mathbf{C}}_{k}\\left( u\\right)\\) 和 \\({\\mathbf{C}}_{\\ell }\\left( v\\right)\\) 为四个边界曲线，如公式 (10.34) 所示，满足给定的两个兼容性条件。我们还假设有四个"
+  },
+  {
+    "chapter": 10,
+    "offset": 51172,
+    "entries": [
+      "i346"
+    ],
+    "selectors": [
+      "t:10:扭转向量"
+    ],
+    "matched": "扭转向量",
+    "id": "p0203",
+    "line_without_marks": 1185,
+    "context": "{D}}_{\\ell  = 1}\\left( {v = 1}\\right) }{dv} \\tag{10.38}\n\\]\n\n必须成立。 \\({\\mathbf{T}}_{k,\\ell }\\) 是四个扭转向量。\n\n\\begin{center}\n\\begin{minipage}{27cm}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch10/fig_10_36.tex}\n\\par\\smallskip\n图 10.26. 同一组边界的兼容跨边界导数场与角点扭矢量。\\\\\n实线箭头为式"
+  },
+  {
+    "chapter": 10,
+    "offset": 56200,
+    "entries": [
+      "i003",
+      "i145"
+    ],
+    "selectors": [
+      "a:10.4"
+    ],
+    "matched": "\\textbf{算法 A10.4",
+    "id": "p0204",
+    "line_without_marks": 1324,
+    "context": "，Pij 定义了输出的双三次混合 Coons 表面。\n\n% book-code: algorithm A10.4\n\\par\\medskip\\noindent\\textbf{算法 A10.4（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nBicubicBlendCoons(Ck, Cl, Dk, Dl, n, m, p, q, U, V, Pij)\n{ /* Create bicubically blended Coons surface. */\n  "
+  },
+  {
+    "chapter": 11,
+    "offset": 2106,
+    "entries": [
+      "i131"
+    ],
+    "selectors": [
+      "s:11:控制点重新定位"
+    ],
+    "matched": "控制点重新定位",
+    "id": "p0205",
+    "line_without_marks": 24,
+    "context": "个新曲面或修改现有曲面的某个区域。边界条件易于控制。几位作者已经使用这些技术进行交互式曲面设计(见 \\cite{Fors88,Mats92,Welc92})。\n\n\n\n\\section{控制点重新定位}\n\n设 \\(\\mathbf{C}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{R}_{i,p}\\left( u\\right) {\\mathbf{P}}_{i}\\) 为一个有理或非有理的 B-spline 曲线。我们想要重新定位一个任意控制点 \\({\\mat"
+  },
+  {
+    "chapter": 11,
+    "offset": 4166,
+    "entries": [
+      "i220"
+    ],
+    "selectors": [
+      "t:11:逆节点插入"
+    ],
+    "matched": "逆节点插入",
+    "id": "p0206",
+    "line_without_marks": 71,
+    "context": "择控制多边形还是曲线。在第一种情况下，用户可能会指定一个向量方向和距离，然后选择控制多边形上的一个点。如果选择的点是一个现有的控制点，系统会简单地平移它并重新绘制曲线。如果不是，那么系统通过逆节点插入将该点变为控制点(见第5章，方程[5.19]-[5.21])，然后平移新的控制点并重新绘制曲线。在第二种情况下，设计师选择一个曲线点 \\(\\mathbf{P}\\) (系统由此计算 \\(\\bar{u}\\) )，然后选择要移动到的点 \\(\\widehat{\\mathbf{P}}\\) (系统由此计算 \\(d\\) 和 \\(\\m"
+  },
+  {
+    "chapter": 11,
+    "offset": 4579,
+    "entries": [
+      "i247"
+    ],
+    "selectors": [
+      "t:11:被称为节点"
+    ],
+    "matched": "被称为节点",
+    "id": "p0207",
+    "line_without_marks": 71,
+    "context": "right)\\) 成为其最大值最接近 \\(\\bar{u}\\) 的基函数。一个通常相当接近(但不一定重合于)任意基函数最大值的参数值 \\({R}_{i,p}\\left( u\\right)\\) 被称为节点 \\({t}_{i}\\) ，其定义为(见\\cite{Ries73})。\n\n\\[\n{t}_{i} = \\frac{1}{p}\\mathop{\\sum }\\limits_{{j = 1}}^{p}{u}_{i + j}\\;i = 0,\\ldots ,n \\tag{11.4}\n\\]\n\n注意， \\({t}_{i}\\) 是位于 "
+  },
+  {
+    "chapter": 11,
+    "offset": 15059,
+    "entries": [
+      "i356"
+    ],
+    "selectors": [
+      "s:11:权重修改"
+    ],
+    "matched": "权重修改",
+    "id": "p0208",
+    "line_without_marks": 353,
+    "context": "w}_{k,\\ell  + 1}\\left| {{\\mathbf{P}}_{k,\\ell  + 1} - {\\mathbf{Q}}_{v}}\\right| }\n\\]\n\n\n\n\\section{权重修改}\n\n在本节中，我们研究修改权重的效果，特别是对曲线的一个或两个相邻权重，以及对表面的一个权重。\n\n\n\n\n\n\\subsection{单曲线权重的修改}\n让\n\n\\[\n\\mathbf{C}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{R}_{i,p}\\left("
+  },
+  {
+    "chapter": 11,
+    "offset": 15133,
+    "entries": [
+      "i187",
+      "i220",
+      "i355",
+      "i356"
+    ],
+    "selectors": [
+      "s:11:单曲线权重的修改"
+    ],
+    "matched": "单曲线权重的修改",
+    "id": "p0209",
+    "line_without_marks": 361,
+    "context": "ht| }\n\\]\n\n\n\n\\section{权重修改}\n\n在本节中，我们研究修改权重的效果，特别是对曲线的一个或两个相邻权重，以及对表面的一个权重。\n\n\n\n\n\n\\subsection{单曲线权重的修改}\n让\n\n\\[\n\\mathbf{C}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{R}_{i,p}\\left( u\\right) {\\mathbf{P}}_{i} \\tag{11.17}\n\\]\n\n设为 NURBS 曲线，且 \\(\\bar{u}\\) 为满足 \\"
+  },
+  {
+    "chapter": 11,
+    "offset": 29382,
+    "entries": [
+      "i356"
+    ],
+    "selectors": [
+      "s:11:两个相邻曲线权重的修改"
+    ],
+    "matched": "两个相邻曲线权重的修改",
+    "id": "p0210",
+    "line_without_marks": 667,
+    "context": "严格等距。\\\\\n下方线性权重轴显示所需权重增量迅速增大；数值由本组代表性数据重新计算。\n\\end{minipage}\n\\end{center}\n\n\n\n\n\\subsection{两个相邻曲线权重的修改}\n\n现在我们考虑同时修改两个邻近曲线的权重， \\({w}_{k}\\) 和 \\({w}_{k + 1}\\) 。这样的修改会将曲线拉向(或推离)控制多边形的边 \\({\\mathbf{P}}_{k}{\\mathbf{P}}_{k + 1}\\) 。固定 \\(\\bar{u} \\in  \\left\\lbrack  {{u}_{k "
+  },
+  {
+    "chapter": 11,
+    "offset": 30268,
+    "entries": [
+      "i059"
+    ],
+    "selectors": [
+      "t:11:重心"
+    ],
+    "matched": "重心",
+    "id": "p0211",
+    "line_without_marks": 694,
+    "context": "i = 0}}^{n}{N}_{i,p}\\left( \\bar{u}\\right) {w}_{i}} \\tag{11.28}\n\\]\n\n方程 (11.27) 表示 \\(\\mathbf{P}\\) 位于重心坐标系 \\(\\left( {{\\mathbf{{RP}}}_{k}{\\mathbf{P}}_{k + 1}}\\right)\\) 的平面上(不熟悉重心坐标的读者应参考 Boehm 和 Prautzsch \\cite{Boeh94} 或 Farin \\cite{Fari93})。现在假设 \\(\\mathbf{P}\\) 移动"
+  },
+  {
+    "chapter": 11,
+    "offset": 36647,
+    "entries": [
+      "i356"
+    ],
+    "selectors": [
+      "s:11:单表面权重的修改"
+    ],
+    "matched": "单表面权重的修改",
+    "id": "p0212",
+    "line_without_marks": 821,
+    "context": "ght)\\) ，以便重心坐标 \\({a}_{r}\\) 和 \\({a}_{s}\\) 不会消失。有关此情况的更多细节，请参见 \\cite{Pieg89c}。\n\n\n\\subsection{单表面权重的修改}\n\n修改单个表面权重 \\({w}_{k,\\ell }\\) 类似于曲线情况。假设 \\(\\bar{u} \\in  \\left\\lbrack  {{u}_{k},{u}_{k + p + 1}}\\right)\\) 和 \\(\\bar{v} \\in  \\left\\lbrack  {{v}_{\\ell },{v}_{\\ell  +"
+  },
+  {
+    "chapter": 11,
+    "offset": 38012,
+    "entries": [
+      "i147"
+    ],
+    "selectors": [
+      "t:11:交叉比"
+    ],
+    "matched": "交叉比",
+    "id": "p0213",
+    "line_without_marks": 857,
+    "context": "eans exclude the }\\left( {k,\\ell }\\right) \\text{ th term. }}\\right)\\) 使用方程 (11.36) 和 (11.37)，可以得到交叉比\n\n\\[\n{w}_{k,\\ell } = \\frac{1 - s}{\\mathrm{\\;s}}/\\frac{1 - t}{t} = \\frac{{\\mathbf{P}}_{k,\\ell }\\mathbf{M}}{\\mathbf{{RM}}}/\\frac{{\\mathbf{P}}_{k,\\ell }\\mathbf{P}}"
+  },
+  {
+    "chapter": 11,
+    "offset": 39657,
+    "entries": [
+      "i227",
+      "i228",
+      "i304"
+    ],
+    "selectors": [
+      "s:11:形状操作符"
+    ],
+    "matched": "形状操作符",
+    "id": "p0214",
+    "line_without_marks": 900,
+    "context": ")N_{3,2}(0.55)$，$w_{4,3}$由1减为$(1-N)/(2-N)>0$，四条边界保持不变。\n\\end{minipage}\n\\end{center}\n\n\n\\section{形状操作符}\n在此定义的形状操作符是用于粗略雕刻曲线和表面的工具。它们的操作如下:\n\n1. 指定一个局部曲线段或表面区域，在其中进行形状修改；然后使用节点细化在局部引入更多控制点；\n\n2. 根据各种参数和/或函数重新定位对指定段或区域影响局部的控制点；\n\n3. 对局部段或区域应用在指定容差内的节点移除，以减少定义控制点的数量。\n\n"
+  },
+  {
+    "chapter": 11,
+    "offset": 40791,
+    "entries": [
+      "i131",
+      "i354"
+    ],
+    "selectors": [
+      "s:11:变形"
+    ],
+    "matched": "变形",
+    "id": "p0215",
+    "line_without_marks": 929,
+    "context": "p + 1}{2},\\ldots ,e - \\frac{p + 1}{2}\\;\\text{ if }p\\text{ is odd } \\tag{11.41}\n\\]\n\n\n\n\\subsection{变形}\n\n扭曲是一种工具，可以用来相对任意地变形曲线的局部段或表面上的区域。首先考虑曲线扭曲，它是通过基于公式的控制点重新定位来实现的。\n\n\\[\n{\\widehat{\\mathbf{P}}}_{i} = {\\mathbf{P}}_{i} + {fd}\\mathbf{W} \\tag{11.42}\n\\]\n\n一般来说， \\(f\\)"
+  },
+  {
+    "chapter": 11,
+    "offset": 50825,
+    "entries": [
+      "i201",
+      "i354"
+    ],
+    "selectors": [
+      "s:11:扁平化"
+    ],
+    "matched": "扁平化",
+    "id": "p0216",
+    "line_without_marks": 1195,
+    "context": "\\\\\n最近线段投影、端点截断和4489个候选点的距离逐一核验；四条外边界保持不变，过渡范围由基函数支撑决定。\n\\end{minipage}\n\\end{center}\n\n\\subsection{扁平化}\n\n扁平化操作符允许设计师轻松地将直线段引入曲线和将平面区域引入表面。没有插入多个节点，因此曲线或表面的弯曲部分与平坦部分之间的过渡具有原始几何形状固有的平滑性。\n\n首先考虑曲线扁平化，如图 11.25 和 11.26 所示；给定一条曲线 \\(\\mathbf{C}\\left( u\\right)\\) 和一条线 \\(\\ma"
+  },
+  {
+    "chapter": 11,
+    "offset": 55742,
+    "entries": [
+      "i074",
+      "i147"
+    ],
+    "selectors": [
+      "s:11:弯曲"
+    ],
+    "matched": "弯曲",
+    "id": "p0217",
+    "line_without_marks": 1285,
+    "context": "内部存在整片严格平坦的参数矩形；每片的全部$4\\times3$活跃控制点均位于平面，过渡保留简单节点的光滑性。\n\\end{minipage}\n\\end{center}\n\n\\subsection{弯曲}\n\n几位作者研究了曲线的圆形弯曲和表面的圆柱形弯曲，例如，参见文献\\cite{Barr83,Four83,Cobb84}。这些作者基于三角学发展了将点映射到圆上的方程。在这些映射下，直线段映射到一个圆上，而一般曲线段则以圆形方式弯曲。Cobb \\cite{Cobb84}将这种技术与节点细化相结合，应用于控制点的映射，从"
+  },
+  {
+    "chapter": 11,
+    "offset": 55758,
+    "entries": [
+      "i075"
+    ],
+    "selectors": [
+      "t:11:曲线的圆形弯曲"
+    ],
+    "matched": "曲线的圆形弯曲",
+    "id": "p0218",
+    "line_without_marks": 1287,
+    "context": "每片的全部$4\\times3$活跃控制点均位于平面，过渡保留简单节点的光滑性。\n\\end{minipage}\n\\end{center}\n\n\\subsection{弯曲}\n\n几位作者研究了曲线的圆形弯曲和表面的圆柱形弯曲，例如，参见文献\\cite{Barr83,Four83,Cobb84}。这些作者基于三角学发展了将点映射到圆上的方程。在这些映射下，直线段映射到一个圆上，而一般曲线段则以圆形方式弯曲。Cobb \\cite{Cobb84}将这种技术与节点细化相结合，应用于控制点的映射，从而弯曲B样条曲线和表面。\n\n我们"
+  },
+  {
+    "chapter": 11,
+    "offset": 55764,
+    "entries": [
+      "i076"
+    ],
+    "selectors": [
+      "t:11:圆柱"
+    ],
+    "matched": "圆柱",
+    "id": "p0219",
+    "line_without_marks": 1287,
+    "context": "4\\times3$活跃控制点均位于平面，过渡保留简单节点的光滑性。\n\\end{minipage}\n\\end{center}\n\n\\subsection{弯曲}\n\n几位作者研究了曲线的圆形弯曲和表面的圆柱形弯曲，例如，参见文献\\cite{Barr83,Four83,Cobb84}。这些作者基于三角学发展了将点映射到圆上的方程。在这些映射下，直线段映射到一个圆上，而一般曲线段则以圆形方式弯曲。Cobb \\cite{Cobb84}将这种技术与节点细化相结合，应用于控制点的映射，从而弯曲B样条曲线和表面。\n\n我们采取一种更一"
+  },
+  {
+    "chapter": 11,
+    "offset": 59217,
+    "entries": [
+      "i077"
+    ],
+    "selectors": [
+      "t:11:抛物线"
+    ],
+    "matched": "抛物线",
+    "id": "p0220",
+    "line_without_marks": 1348,
+    "context": "right)\\) 的旋转定义)和平移必须应用于 \\({\\mathbf{P}}_{0},\\ldots ,{\\mathbf{P}}_{s - 1}\\) 。\n\n图 11.29-11.31 显示了圆形和抛物线弯曲的示例。在图 11.29 中，变化 \\(\\lambda\\) 的效果得到了说明。弯曲区域关于通过弯曲中心 \\(\\mathbf{O}\\) 的线 \\(\\mathbf{L}\\) 是对称的，并且与 \\(\\mathbf{C}\\left( u\\right)\\) 垂直。注意，当 \\(\\lambda\\) 接近 1 时，弯曲区域逐渐呈"
+  },
+  {
+    "chapter": 11,
+    "offset": 63416,
+    "entries": [
+      "i265"
+    ],
+    "selectors": [
+      "t:11:沿着表面法线"
+    ],
+    "matched": "沿着表面法线",
+    "id": "p0221",
+    "line_without_marks": 1414,
+    "context": "ight)\\) 上的等值线，位于 \\(u = {u}_{c}\\) (见图 11.32)。轴 \\(\\mathbf{O}\\left( w\\right)\\) 可以通过两种方式定义。它可以被定义为沿着表面法线的 \\({\\mathbf{C}}_{{u}_{c}}\\left( v\\right)\\) 的偏移，即。\n\n\\[\n\\mathbf{O}\\left( v\\right)  = {\\mathbf{C}}_{{u}_{c}}\\left( v\\right)  + d\\mathbf{N}\\left( {{u}_{c},v}\\right"
+  },
+  {
+    "chapter": 11,
+    "offset": 67286,
+    "entries": [
+      "i112",
+      "i114",
+      "i131",
+      "i194"
+    ],
+    "selectors": [
+      "s:11:基于约束的曲线修改"
+    ],
+    "matched": "基于约束的曲线修改",
+    "id": "p0222",
+    "line_without_marks": 1494,
+    "context": "完全或欠定的线性方程组。这个两步解决方案允许基于约束的修改以交互速度实现。关于这个主题的更多材料可以在 \\cite{Fowl92,Fowl93} 中找到。\n\\subsection{基于约束的曲线修改}\n设 \\(\\;\\mathbf{C}\\left( u\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}{R}_{i,p}\\left( u\\right) {\\mathbf{P}}_{i}\\;\\) 为一条 NURBS 曲线。假设我们给定参数值 \\(\\left\\{  {u}_{r}\\r"
+  },
+  {
+    "chapter": 11,
+    "offset": 71451,
+    "entries": [
+      "i132"
+    ],
+    "selectors": [
+      "t:11:最小长度"
+    ],
+    "matched": "最小长度",
+    "id": "p0223",
+    "line_without_marks": 1573,
+    "context": "\\Delta }\\mathbf{P} = \\Delta \\mathbf{D} \\tag{11.71}\n\\]\n\n目前，假设 \\(M < N\\) 。方程 (11.70) 存在无穷多解。我们希望找到最小长度解，即最小化所有控制点的组合移动的解(最小化 \\(N\\) 维向量 \\(\\Delta \\mathbf{P}\\) 的长度)。根据线性代数，我们可以将 \\(N\\) 向量 \\(\\Delta \\mathbf{P}\\) 表示为两个相互正交的分量，一个在 \\(B\\) 的行空间中，另一个在 \\(B\\) 的零空间中，即\n\n\\[\n\\Del"
+  },
+  {
+    "chapter": 11,
+    "offset": 76300,
+    "entries": [
+      "i342"
+    ],
+    "selectors": [
+      "t:11:张力"
+    ],
+    "matched": "张力",
+    "id": "p0224",
+    "line_without_marks": 1717,
+    "context": "{\\mathbf{P}}_{3},{\\mathbf{P}}_{4}\\) 和 \\({\\mathbf{P}}_{5}\\) 移动。在 \\(u = {0.556}\\) 处，第一导数向量的大小增加，导致局部张力效应。如果仅允许一个控制点移动，如图11.36b所示，观察结果非常有趣。曲线采用了新的导数，但由于缺乏位置约束，它遭受了位置位移。在图11.36c中，通过约束曲线在 \\(u = {0.556}\\) 处不移动，并假设通过减小旧导数的大小获得的新导数，解决了这个问题。允许两个控制点移动，以获得一个不被过度确定的方程组。\n\n"
+  },
+  {
+    "chapter": 11,
+    "offset": 77105,
+    "entries": [
+      "i113",
+      "i131"
+    ],
+    "selectors": [
+      "s:11:基于约束的表面修改"
+    ],
+    "matched": "基于约束的表面修改",
+    "id": "p0225",
+    "line_without_marks": 1744,
+    "context": "\n实线为原曲线，虚线为修改结果；三图采用相同坐标尺度，方框标出施加约束的曲线点。\n\\end{minipage}\n\\end{center}\n\n\n\n\n\n\n\n\n\n\\subsection{基于约束的表面修改}\n\n设 \\(\\;\\mathbf{S}\\left( {u,v}\\right)  = \\mathop{\\sum }\\limits_{{i = 0}}^{n}\\mathop{\\sum }\\limits_{{j = 0}}^{m}{R}_{i,p;j,q}\\left( {u,v}\\right) {\\mathbf{P}}_{i,"
+  },
+  {
+    "chapter": 11,
+    "offset": 80830,
+    "entries": [
+      "i005"
+    ],
+    "selectors": [
+      "a:11.1"
+    ],
+    "matched": "\\textbf{算法 A11.1",
+    "id": "p0226",
+    "line_without_marks": 1823,
+    "context": "( {k,\\ell }\\right)\\) 次偏导数。\n\n% book-code: algorithm A11.1\n\\par\\medskip\\noindent\\textbf{算法 A11.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nConstBasedSurfMod1(n, m, p, q, U, V, Pw, CList, R, M, N, A, CpInd)\n{ /* Build the A matrix for surface constr"
+  },
+  {
+    "chapter": 12,
+    "offset": 403,
+    "entries": [
+      "i099",
+      "i177",
+      "i228",
+      "i229",
+      "i230",
+      "i235",
+      "i237",
+      "i239",
+      "i276",
+      "i350"
+    ],
+    "selectors": [
+      "s:12:结点向量"
+    ],
+    "matched": "结点向量",
+    "id": "p0227",
+    "line_without_marks": 9,
+    "context": " 兼容(唯一的例外是 IGES 和 PHIGS 允许不连续的曲线和表面)。最后，第 12.4 节提供了一些关于在 NURBS 系统与其他系统之间交换几何数据的一般指导。\n\n\\section{结点向量}\n节点向量可以分为两组:固定和非固定；在每组中又有均匀和非均匀节点向量。以下是一些示例:\n\n固定，均匀:\n\n\\[\n\\{ 0,0,0,0,1,2,3,4,4,4,4\\}\n\\]\n\n\\[\n\\{  - {0.5}, - {0.5}, - {0.5},1,{2.5},4,4,4\\}\n\\]\n\n固定，非均匀:\n\n\\[\n\\{ 0,0,"
+  },
+  {
+    "chapter": 12,
+    "offset": 1279,
+    "entries": [
+      "i098",
+      "i154"
+    ],
+    "selectors": [
+      "t:12:夹紧曲线"
+    ],
+    "matched": "夹紧曲线",
+    "id": "p0228",
+    "line_without_marks": 59,
+    "context": "制点来定义一个 \\(p\\) 次曲线；也就是说，节点向量决定了曲线的度数、控制点的数量以及有效的参数范围；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 从几何上讲，夹紧曲线可以是开放的或闭合的；如果一条曲线是闭合的，那么它是否以 \\({C}^{k}\\) 连续性闭合取决于第一个 \\(k\\) 和最后一个 \\(k\\) 个内部节点跨度，以及第一个 \\(k + 1\\) 和最后一个 \\(k + 1\\) 个权重和控制点。\n\\end{itemize}\n\n现在考虑未夹紧的均匀节点向量 \\({U}_{1}\\"
+  },
+  {
+    "chapter": 12,
+    "offset": 1288,
+    "entries": [
+      "i119"
+    ],
+    "selectors": [
+      "t:12:闭合"
+    ],
+    "matched": "闭合",
+    "id": "p0229",
+    "line_without_marks": 59,
+    "context": "(p\\) 次曲线；也就是说，节点向量决定了曲线的度数、控制点的数量以及有效的参数范围；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 从几何上讲，夹紧曲线可以是开放的或闭合的；如果一条曲线是闭合的，那么它是否以 \\({C}^{k}\\) 连续性闭合取决于第一个 \\(k\\) 和最后一个 \\(k\\) 个内部节点跨度，以及第一个 \\(k + 1\\) 和最后一个 \\(k + 1\\) 个权重和控制点。\n\\end{itemize}\n\n现在考虑未夹紧的均匀节点向量 \\({U}_{1}\\) 。使用 Cox"
+  },
+  {
+    "chapter": 12,
+    "offset": 3029,
+    "entries": [
+      "i174",
+      "i349"
+    ],
+    "selectors": [
+      "t:12:未固定的均匀曲线"
+    ],
+    "matched": "未固定的均匀曲线",
+    "id": "p0230",
+    "line_without_marks": 87,
+    "context": "7=P_2$。\\\\\n方框标出整数节点处的曲线点；在$u=3$与$u=8$处，位置、一阶导数及二阶导数精确相同。\n\\end{minipage}\n\\end{center}\n\n之前所述的关于未固定的均匀曲线的所有内容同样适用于未固定的非均匀曲线，唯一的例外是闭合曲线的起始/结束处的 \\({C}^{p - 1}\\) 连续性。由于连续性依赖于节点值以及控制点位置，闭合的非均匀曲线的 \\({C}^{p - 1}\\) 连续性并不一定意味着控制点的精确包裹。图12.3a展示了在固定的均匀节点向量上定义的闭合立方曲线。\n\n\\[\nU "
+  },
+  {
+    "chapter": 12,
+    "offset": 5680,
+    "entries": [
+      "i051"
+    ],
+    "selectors": [
+      "a:12.1"
+    ],
+    "matched": "\\textbf{算法 A12.1",
+    "id": "p0231",
+    "line_without_marks": 150,
+    "context": "\\({C}^{p - 1}\\) 连续性闭合。算法为:\n\n% book-code: algorithm A12.1\n\\par\\medskip\\noindent\\textbf{算法 A12.1（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nUnclampCurve(n, p, U, Pw)\n{ /* Unclamp a clamped curve */\n    /* Input: n, p, U, Pw */\n    /* Output: U, Pw *"
+  },
+  {
+    "chapter": 12,
+    "offset": 7841,
+    "entries": [
+      "i097",
+      "i348"
+    ],
+    "selectors": [
+      "f:12:fig_12_08.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch12/fig_12_08.tex}",
+    "id": "p0232",
+    "line_without_marks": 218,
+    "context": "egin{center}\n\\begin{minipage}{37cm}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch12/fig_12_08.tex}\n\\par\\smallskip\n图 12.5. 标准九点二次NURBS圆的解夹；(a) 原夹紧表示；(b) 按算法A12.1得到的解夹表示。\\\\\n原偶数控制点权重为1，奇数点权重为$w=\\sqrt2/2$；解夹后仅首末齐次控制点改变，权重均为$2-w$。\\\\\n新端点为$P_0=(1,-w/(2-w))$和$P_8=(1"
+  },
+  {
+    "chapter": 12,
+    "offset": 9615,
+    "entries": [
+      "i177",
+      "i212",
+      "i213"
+    ],
+    "selectors": [
+      "s:12:IGES"
+    ],
+    "matched": "IGES",
+    "id": "p0233",
+    "line_without_marks": 275,
+    "context": "} 和 Howard 等 \\cite{Howa91b} 关于 PHIGS 的文献。任何设计新 NURBS 系统的人都应确保其符合与 NURBS 相关的这些标准。\n\n\n\\subsection{IGES}\n\nIGES(美国国家标准)是当今 CAD/CAM/CAE 系统中最广泛使用的产品数据交换格式。IGES 于 1980 年代初开发，规定了用于交换图形和几何数据的格式，支持各种应用，如制图、电路设计、有限元和管道设计。支持曲线、表面和三维固体。NURBS 曲线在 IGES 中的定义如下:\n\n\n\n\n\n\\begin{ite"
+  },
+  {
+    "chapter": 12,
+    "offset": 11335,
+    "entries": [
+      "i177",
+      "i317"
+    ],
+    "selectors": [
+      "s:12:STEP"
+    ],
+    "matched": "STEP",
+    "id": "p0234",
+    "line_without_marks": 311,
+    "context": ",j}\\) 相等)或非有理的。IGES NURBS 曲面可以标记为九种特殊类型之一:平面、圆柱、锥体、球体、环面、旋转曲面、一般柱面、规则曲面或一般二次曲面。\n\n\n\n\\subsection{STEP}\nSTEP 是一种新兴的国际标准，用于产品模型数据的交换。它代表了一项重大的国际努力，其复杂性、广度和深度远超 IGES。NURBS 曲线和曲面在所谓的第 42 部分中定义，该部分涉及产品模型的基本几何标准和数据交换及拓扑。实际上，由于 NURBS 表示法的通用性、数值稳定性和广泛的工业接受度，它被选为通过 STEP "
+  },
+  {
+    "chapter": 12,
+    "offset": 12780,
+    "entries": [
+      "i177",
+      "i278"
+    ],
+    "selectors": [
+      "s:12:PHIGS"
+    ],
+    "matched": "PHIGS",
+    "id": "p0235",
+    "line_without_marks": 337,
+    "context": "zier；否则它是非均匀的。存在自交标志，针对 \\(u\\) 和 \\(v\\) 方向的开放/封闭标志，以及(如适用)指示特殊类型的标签，如平面、圆柱、规则表面等。\n\n\n\\subsection{PHIGS}\n\n尽管 IGES 和 STEP 是数据交换标准，但 PHIGS 是一个国际标准，指定了一个与设备无关的交互式图形编程接口。PHIGS 于1980年代中期出现，NURBS 于1992年作为 PHIGS PLUS 扩展的一部分被纳入该标准 \\cite{Howa91b}。支持 NURBS 的 PHIGS 实现允许应用程序员"
+  },
+  {
+    "chapter": 12,
+    "offset": 13420,
+    "entries": [
+      "i089",
+      "i121",
+      "i122",
+      "i177",
+      "i265",
+      "i296"
+    ],
+    "selectors": [
+      "s:12:NURBS 系统的数据交换"
+    ],
+    "matched": "NURBS 系统的数据交换",
+    "id": "p0236",
+    "line_without_marks": 361,
+    "context": "结束。\n\\end{itemize}\n\nNURBS 曲面的定义类似，只是没有修剪参数。允许更一般的修剪循环，由曲面参数域中的 NURBS 曲线组成。\n\n\n\n\\section{NURBS 系统的数据交换}\n\n在本节中，我们假设两个曲线和曲面系统 A 和 B，并研究它们之间的数据交换。我们假设系统 A 是基于本书设计和实现的，即它使用任意阶数的夹紧 NURBS 曲线和曲面。为了实用性和与大多数现有系统的兼容性，我们还要求所有权重为正，并且内部节点的重数不超过阶数。目前，我们对系统 B 中几何体的表示方式没有任何假设。\n\n"
+  },
+  {
+    "chapter": 12,
+    "offset": 19469,
+    "entries": [
+      "i008"
+    ],
+    "selectors": [
+      "a:12.2"
+    ],
+    "matched": "\\textbf{算法 A12.2",
+    "id": "p0237",
+    "line_without_marks": 490,
+    "context": "q  k \\leq  {p}_{\\max }\\) 。\n\n% book-code: algorithm A12.2\n\\par\\medskip\\noindent\\textbf{算法 A12.2（伪代码）}\\par\n\\begin{minted}[escapeinside=@@,mathescape]{c}\nif (C is rational and System B only represents polynomials)\n{\n    Approximate C ;\n    return;\n}\nif @$\\left( {"
+  },
+  {
+    "chapter": 13,
+    "offset": 69,
+    "entries": [
+      "i092",
+      "i287",
+      "i307"
+    ],
+    "selectors": [
+      "s:13:引言"
+    ],
+    "matched": "引言",
+    "id": "p0238",
+    "line_without_marks": 5,
+    "context": "\\documentclass[../main.tex]{subfiles}\n\n\\begin{document}\n\n\\section{引言}\n\n在前面的十二章中，我们介绍了使用 NURBS 建模的不同方面。这些章节基本上涵盖了两件事:(1) 基础数学，和 (2) 说明如何将工具转化为计算机代码的算法。尽管每章中呈现的伪代码相当详细，包含了将其转化为可工作例程所需的所有信息，但从算法草图到有用系统的过程仍然很漫长。如何设计一个有用的系统是一个非常困难的问题("
+  },
+  {
+    "chapter": 13,
+    "offset": 1942,
+    "entries": [
+      "i310"
+    ],
+    "selectors": [
+      "s:13:数据类型与可移植性"
+    ],
+    "matched": "数据类型与可移植性",
+    "id": "p0239",
+    "line_without_marks": 72,
+    "context": "示例程序，(8) 一些额外的结构，以及 (9) 系统结构。这些问题往往比 NURBS 的数学更复杂。数学基本上是对或错；而软件则是一个没有边界的大灰色区域。\n\n\n\\section{数据类型与可移植性}\n在本节中，我们将处理以下可移植性问题:\n\n\\begin{itemize}\n\\item 数据类型可移植性，例如，一个系统将整数表示为 32 位数字，而另一个系统仅使用 16 位；\n\\end{itemize}\n\n\\begin{itemize}\n\\item 操作可移植性，例如，算术运算在不同机器上产生不同的结果；\n\\end"
+  },
+  {
+    "chapter": 13,
+    "offset": 3816,
+    "entries": [
+      "i127",
+      "i156",
+      "i309"
+    ],
+    "selectors": [
+      "s:13:数据结构"
+    ],
+    "matched": "数据结构",
+    "id": "p0240",
+    "line_without_marks": 131,
+    "context": ",294,967,295。使用这些常量可以确保计算的一致性，无论使用何种硬件平台。\n\n通过对对象进行特殊算术函数操作，确保了操作和域的可移植性。后续章节中给出了示例。\n\n\n\\section{数据结构}\n如第 13.1 节所述，我们打算使用基于对象的概念，并遵循前几章的数学符号和概念。作为一个例子，在曲线评估例程中，我们写道\n\n% book-code: curve-prototype\n\\begin{minted}{c}\nFLAG N_evncur( CURVE *cur, PARAMETER u, POINT *C "
+  },
+  {
+    "chapter": 13,
+    "offset": 6828,
+    "entries": [
+      "i136"
+    ],
+    "selectors": [
+      "f:13:fig_13_01.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch13/fig_13_01.tex}",
+    "id": "p0241",
+    "line_without_marks": 242,
+    "context": "egin{center}\n\\begin{minipage}{26cm}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch13/fig_13_01.tex}\n\\par\\smallskip\n图 13.2. 控制多边形数据结构。\\\\\n$n$为最高控制点索引，\\texttt{Pw}指向包含$n+1$个元素的齐次控制点数组；每项存储$(w_ix_i,w_iy_i,w_iz_i,w_i)$。\n\\end{minipage}\n\\end{center}\n\n\\begin{center}\n\\"
+  },
+  {
+    "chapter": 13,
+    "offset": 7074,
+    "entries": [
+      "i231"
+    ],
+    "selectors": [
+      "f:13:fig_13_02.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch13/fig_13_02.tex}",
+    "id": "p0242",
+    "line_without_marks": 252,
+    "context": "egin{center}\n\\begin{minipage}{26cm}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch13/fig_13_02.tex}\n\\par\\smallskip\n图 13.3. 节点向量数据结构。\\\\\n$m$为最高节点索引，\\texttt{U}指向包含$m+1$个实数的节点数组$u_0,\\ldots,u_m$。\n\\end{minipage}\n\\end{center}\n\n换句话说，控制多边形对象只是一个结构，包含最高索引和指向控制点数组的指针。节点"
+  },
+  {
+    "chapter": 13,
+    "offset": 7869,
+    "entries": [
+      "i156"
+    ],
+    "selectors": [
+      "f:13:fig_13_03.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch13/fig_13_03.tex}",
+    "id": "p0243",
+    "line_without_marks": 278,
+    "context": "egin{center}\n\\begin{minipage}{26cm}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch13/fig_13_03.tex}\n\\par\\smallskip\n图 13.4. 曲线数据结构。\\\\\n\\texttt{CURVE}包含控制多边形指针\\texttt{pol}、次数$p$和节点向量指针\\texttt{knt}；两个子对象分别管理齐次控制点数组和实数节点数组，$m=n+p+1$。\n\\end{minipage}\n\\end{center}\n\n%"
+  },
+  {
+    "chapter": 13,
+    "offset": 8715,
+    "entries": [
+      "i124"
+    ],
+    "selectors": [
+      "f:13:fig_13_04.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch13/fig_13_04.tex}",
+    "id": "p0244",
+    "line_without_marks": 314,
+    "context": "egin{center}\n\\begin{minipage}{26cm}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch13/fig_13_04.tex}\n\\par\\smallskip\n图 13.5. 控制网数据结构。\\\\\n\\texttt{CNET}包含两个最高索引$n,m$和指针\\texttt{Pw}；\\texttt{Pw}指向$n+1$个列指针，每个\\texttt{Pw[i]}指向包含$m+1$个齐次控制点的第$i$列。\\\\\n\\texttt{Pw[i][j]}访问该"
+  },
+  {
+    "chapter": 13,
+    "offset": 9264,
+    "entries": [
+      "i322"
+    ],
+    "selectors": [
+      "f:13:fig_13_05.tex"
+    ],
+    "matched": "\\BookFigure[max width=\\linewidth]{ch13/fig_13_05.tex}",
+    "id": "p0245",
+    "line_without_marks": 341,
+    "context": "egin{center}\n\\begin{minipage}{37cm}\n\\centering\n\\BookFigure[max width=\\linewidth]{ch13/fig_13_05.tex}\n\\par\\smallskip\n图 13.6. 曲面数据结构。\\\\\n\\texttt{SURFACE}包含控制网指针\\texttt{net}、次数$p,q$及两个节点向量指针\\texttt{knu,knv}；控制网和节点数组的索引分别为$n,m$与$r,s$。\\\\\n$r=n+p+1$，$s=m+q+1$；\\texttt{"
+  },
+  {
+    "chapter": 13,
+    "offset": 9606,
+    "entries": [
+      "i313"
+    ],
+    "selectors": [
+      "s:13:内存分配"
+    ],
+    "matched": "内存分配",
+    "id": "p0246",
+    "line_without_marks": 352,
+    "context": "enter}\n\n再次，控制网和节点向量被轻松提取以执行各种操作。如果需要对同一曲线或表面执行多个操作，这些定义变得相当自然且非常经济；只需传递指向不同结构的指针即可。\n\n\n\\section{内存分配}\n\n\\(\\mathrm{C}\\) 语言最强大的工具之一是其动态分配和释放内存的能力。然而，这种能力是有代价的:不当的内存分配、使用或释放可能导致致命错误。因此，Nlib V2.0 对内存分配和释放有非常严格的规则。最重要的一条是，任何例程都不允许分配和释放内存，除非是专门编写的内存处理程序。\n\n\n\n在例程中分配的所有内"
+  },
+  {
+    "chapter": 13,
+    "offset": 14405,
+    "entries": [
+      "i311"
+    ],
+    "selectors": [
+      "s:13:错误控制"
+    ],
+    "matched": "错误控制",
+    "id": "p0247",
+    "line_without_marks": 559,
+    "context": "就变成了一个五分钟(干净的)工作。Nlib V2.0 中的 NURBS 例程为动态内存分配和初始化“预先布线”，因此添加新功能变得简单，并且不需要改变程序的整体结构。\n\n\n\\section{错误控制}\n\n\n错误处理是设计系统中最关键的问题之一。每个例程都可能出现错误，而调用例程必须以合理的方式处理这些错误。基本上有两种类型的错误处理:\n\n\\begin{itemize}\n\\item 直接控制:在发生错误时打印消息；如果错误是致命的，则终止该过程；\n\\end{itemize}\n\n\\begin{itemize}\n\\ite"
+  },
+  {
+    "chapter": 13,
+    "offset": 20241,
+    "entries": [
+      "i315"
+    ],
+    "selectors": [
+      "s:13:实用程序"
+    ],
+    "matched": "实用程序",
+    "id": "p0248",
+    "line_without_marks": 786,
+    "context": "例程原则上可以单独处理错误检查。然而，使用错误例程使编程变得更加简洁。程序员可以专注于手头的任务，例如曲线细化，而诸如错误检查和内存分配等杂项任务则在概念层面上处理。\n\n\n\\section{实用程序}\n实用例程帮助程序员创建特殊结构或将一种类型的输入转换为另一种类型。这类实用程序的种类繁多，但必须在某处划定界限。在 Nlib V2.0 中，存在几十个支持特殊结构构造的例程。\n\n创建曲线结构可以通过多种不同方式完成，具体取决于在什么级别上可用什么类型的信息。一个简单的例子是:\n\n% book-code: U_makc"
+  },
+  {
+    "chapter": 13,
+    "offset": 23212,
+    "entries": [
+      "i308"
+    ],
+    "selectors": [
+      "s:13:算术例程"
+    ],
+    "matched": "算术例程",
+    "id": "p0249",
+    "line_without_marks": 910,
+    "context": "    sur->knu = knu;\n    sur->knv = knv;\n    /* 退出 */\n    return (0);\n}\n\\end{minted}\n\n\n\\section{算术例程}\n\n对 NURBS 曲线和曲面的操作，例如评估或节点插入，需要对控制点进行算术运算。由于控制点被视为对象，因此需要特殊的算术例程来执行诸如凸组合(角落切割)、求和或投影到欧几里得空间等任务。除了对对象进行算术运算外，这些例程还有助于理解程序，并使得将 NURBS 例程移植到不同环境成为可能。例如，假设一个基于有理曲线和"
+  },
+  {
+    "chapter": 13,
+    "offset": 24815,
+    "entries": [
+      "i312"
+    ],
+    "selectors": [
+      "s:13:示例程序"
+    ],
+    "matched": "示例程序",
+    "id": "p0250",
+    "line_without_marks": 980,
+    "context": "in the next section to illustrate two NURBS routines, curve and surface evaluations.\n\n\\section{示例程序}\n在本节中，我们展示两个完整的程序，一个用于曲线评估，另一个用于表面评估。这些例程展示了 NURBS 程序的结构，以及不同的实用例程如何与更高级别的 NURBS 例程集成。首先考虑曲线评估器。\n\n% book-code: N_evncur\n\\begin{minted}{c}\n#include \"nurbs.h\"\nsta"
+  },
+  {
+    "chapter": 13,
+    "offset": 33129,
+    "entries": [
+      "i314"
+    ],
+    "selectors": [
+      "s:13:系统结构"
+    ],
+    "matched": "系统结构",
+    "id": "p0251",
+    "line_without_marks": 1323,
+    "context": "向量和列向量分别被视为 \\((1 \\times\\)  \\(m)\\) 和 \\(\\left( {n \\times  1}\\right)\\) 矩阵。没有引入特殊的向量结构。\n\n\n\\section{系统结构}\nNlib V2.0 具有以下例程作为复杂结构的一部分:\n\n\\begin{itemize}\n\\item NURBS 例程 (N\\_*.c)；\n\\end{itemize}\n\n\\begin{itemize}\n\\item Bézier 例程 (B\\_*.c)；\n\\end{itemize}\n\n\\begin{itemize}\n\\"
+  }
+]

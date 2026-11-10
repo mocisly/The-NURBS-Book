@@ -1,0 +1,48 @@
+% Independent biquadratic representative; affine projection of all9 controls.
+% Every projected isocurve evaluated from projected control net, no trace.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\path[book figure bounds] (-4.1,-5.4) rectangle (8.2,11.5);
+\begin{scope}[x={(-.9cm,-.6cm)},y={(.95cm,-.35cm)},z={(0cm,1.4cm)}]
+\draw[book grid] (3,0,0)--(-3,0,0)--(-3,0,6)--(3,0,6)--cycle;
+\draw[book grid] (-2,3,0.5)--(-2,5,1.5)--(-2,7,0.5);
+\draw[book grid] (0,3,2.5)--(0,5,3.5)--(0,7,2.5);
+\draw[book grid] (2,3,0.5)--(2,5,1.5)--(2,7,0.5);
+\draw[book grid] (-2,3,0.5)--(0,3,2.5)--(2,3,0.5);
+\draw[book grid] (-2,5,1.5)--(0,5,3.5)--(2,5,1.5);
+\draw[book grid] (-2,7,0.5)--(0,7,2.5)--(2,7,0.5);
+\draw[book line] (-2,3,0.5) .. controls (-0.6666666667,3,1.8333333333) and (0.6666666667,3,1.8333333333) .. (2,3,0.5);
+\draw[book grid] (-2,4,0.875) .. controls (-0.6666666667,4,2.2083333333) and (0.6666666667,4,2.2083333333) .. (2,4,0.875);
+\draw[book grid] (-2,5,1) .. controls (-0.6666666667,5,2.3333333333) and (0.6666666667,5,2.3333333333) .. (2,5,1);
+\draw[book grid] (-2,6,0.875) .. controls (-0.6666666667,6,2.2083333333) and (0.6666666667,6,2.2083333333) .. (2,6,0.875);
+\draw[book line] (-2,7,0.5) .. controls (-0.6666666667,7,1.8333333333) and (0.6666666667,7,1.8333333333) .. (2,7,0.5);
+\draw[book line] (-2,3,0.5) .. controls (-2,4.3333333333,1.1666666667) and (-2,5.6666666667,1.1666666667) .. (-2,7,0.5);
+\draw[book grid] (-1,3,1.25) .. controls (-1,4.3333333333,1.9166666667) and (-1,5.6666666667,1.9166666667) .. (-1,7,1.25);
+\draw[book grid] (0,3,1.5) .. controls (0,4.3333333333,2.1666666667) and (0,5.6666666667,2.1666666667) .. (0,7,1.5);
+\draw[book grid] (1,3,1.25) .. controls (1,4.3333333333,1.9166666667) and (1,5.6666666667,1.9166666667) .. (1,7,1.25);
+\draw[book line] (2,3,0.5) .. controls (2,4.3333333333,1.1666666667) and (2,5.6666666667,1.1666666667) .. (2,7,0.5);
+\draw[book grid,dashed] (-1.7,0,1.4)--(-1.5,0,3)--(-1.3,0,2.6);
+\draw[book grid,dashed] (0.3,0,3.4)--(0.5,0,5)--(0.7,0,4.6);
+\draw[book grid,dashed] (2.3,0,1.4)--(2.5,0,3)--(2.7,0,2.6);
+\draw[book grid,dashed] (-1.7,0,1.4)--(0.3,0,3.4)--(2.3,0,1.4);
+\draw[book grid,dashed] (-1.5,0,3)--(0.5,0,5)--(2.5,0,3);
+\draw[book grid,dashed] (-1.3,0,2.6)--(0.7,0,4.6)--(2.7,0,2.6);
+\draw[book line,dashed] (-1.7,0,1.4) .. controls (-0.3666666667,0,2.7333333333) and (0.9666666667,0,2.7333333333) .. (2.3,0,1.4);
+\draw[book grid,dashed] (-1.6,0,2.075) .. controls (-0.2666666667,0,3.4083333333) and (1.0666666667,0,3.4083333333) .. (2.4,0,2.075);
+\draw[book grid,dashed] (-1.5,0,2.5) .. controls (-0.1666666667,0,3.8333333333) and (1.1666666667,0,3.8333333333) .. (2.5,0,2.5);
+\draw[book grid,dashed] (-1.4,0,2.675) .. controls (-0.0666666667,0,4.0083333333) and (1.2666666667,0,4.0083333333) .. (2.6,0,2.675);
+\draw[book line,dashed] (-1.3,0,2.6) .. controls (0.0333333333,0,3.9333333333) and (1.3666666667,0,3.9333333333) .. (2.7,0,2.6);
+\draw[book line,dashed] (-1.7,0,1.4) .. controls (-1.5666666667,0,2.4666666667) and (-1.4333333333,0,2.8666666667) .. (-1.3,0,2.6);
+\draw[book grid,dashed] (-0.7,0,2.15) .. controls (-0.5666666667,0,3.2166666667) and (-0.4333333333,0,3.6166666667) .. (-0.3,0,3.35);
+\draw[book grid,dashed] (0.3,0,2.4) .. controls (0.4333333333,0,3.4666666667) and (0.5666666667,0,3.8666666667) .. (0.7,0,3.6);
+\draw[book grid,dashed] (1.3,0,2.15) .. controls (1.4333333333,0,3.2166666667) and (1.5666666667,0,3.6166666667) .. (1.7,0,3.35);
+\draw[book line,dashed] (2.3,0,1.4) .. controls (2.4333333333,0,2.4666666667) and (2.5666666667,0,2.8666666667) .. (2.7,0,2.6);
+\draw[book axis] (2,7,0.5)--(2.7,0,2.6) node[pos=.68,above right=8pt] {$\mathbf W$};
+\draw (2,7,0.5) circle[radius=2pt] node[below right=5pt] {$\mathbf P_{2,2}$};
+\draw (2.7,0,2.6) circle[radius=2pt] node[left=12pt] {$\overline{\mathbf P}_{2,2}$};
+\draw (-3,0,6) circle[radius=2pt] node[above left=5pt] {$\mathbf Q$};
+\draw[book axis] (-3,0,6)--(-3,2.5,6) node[right=4pt] {$\mathbf N$};
+\draw[book axis] (0,0,0)--(4,0,0) node[below left=4pt] {$x$};
+\draw[book axis] (0,0,0)--(0,8,0) node[right=4pt] {$y$};
+\draw[book axis] (0,0,0)--(0,0,7.7) node[above=4pt] {$z$};
+\end{scope}
+\end{tikzpicture}

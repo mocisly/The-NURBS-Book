@@ -1,0 +1,36 @@
+% Fig. 1.22: exact data from Ex1.13--1.14, not representative geometry.
+% Pw0=(1,0,1), Pw1=(1,1,1), Pw2=(0,2,2).
+% Cw=(1-u^2,2u,1+u^2), C=(Cw.X/Cw.W,Cw.Y/Cw.W,1).
+% The extra construction points are the exact de Casteljau levels at u=1/2.
+\begin{tikzpicture}[x={(-3cm,-.5cm)},y={(2.6cm,-.8cm)},
+  z={(0cm,3cm)},book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \def\u{(\t/160)}
+  \coordinate (O) at (0,0,0);
+  \coordinate (P0) at (1,0,1); \coordinate (P1) at (1,1,1);
+  \coordinate (P2) at (0,1,1); \coordinate (Q2) at (0,2,2);
+  \coordinate (A) at (1,.5,1); \coordinate (B) at (.5,1.5,1.5);
+  \coordinate (D) at (.333333,1,1);
+  \coordinate (Rw) at (.75,1,1.25); \coordinate (R) at (.6,.8,1);
+  \draw[line width=.45pt] (-.1,-.1,1)--(1.7,-.1,1)--(1.7,1.7,1)--(-.1,1.7,1)--cycle;
+  \draw[book axis,line width=.45pt] (O)--(1.85,0,0) node[below left] {$X$};
+  \draw[book axis,line width=.45pt] (O)--(0,2.3,0) node[below right] {$Y$};
+  \draw[book axis,line width=.45pt] (O)--(0,0,2) node[above] {$W$};
+  \draw[book axis,line width=.45pt] (0,0,1)--(1.3,0,1);
+  \draw[book axis,line width=.45pt] (0,0,1)--(0,1.3,1);
+  % Nontrivial projection rays; the w=1 endpoints already lie on the plane.
+  \foreach \p in {Q2,B,Rw} \draw[line width=.35pt,dashed] (O)--(\p);
+  \draw[line width=.45pt] (P0)--(P1)--(Q2);
+  \draw[line width=.45pt] (P1)--(P2);
+  \draw[line width=.4pt] (A)--(B);
+  \draw[line width=.4pt] (A)--(D);
+  \draw plot[variable=\t,domain=0:160,samples=161] ({1-\u^2},{2*\u},{1+\u^2});
+  \draw plot[variable=\t,domain=0:160,samples=161]
+    ({(1-\u^2)/(1+\u^2)},{2*\u/(1+\u^2)},1);
+  \fill (P0) circle (1.4pt) node[above left] {$\mathbf P_0=\mathbf P^w_0$};
+  \fill (P1) circle (1.4pt) node[below left] {$\mathbf P_1=\mathbf P^w_1$};
+  \fill (P2) circle (1.4pt) node[below right,yshift=-3pt] {$\mathbf P_2$};
+  \fill (Q2) circle (1.4pt) node[above right] {$\mathbf P^w_2$};
+  \foreach \p in {A,B,D} \draw (\p) circle (1.1pt);
+  \fill (Rw) circle (1.4pt);
+  \fill (R) circle (1.4pt);
+\end{tikzpicture}

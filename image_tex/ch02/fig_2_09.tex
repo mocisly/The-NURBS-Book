@@ -1,0 +1,23 @@
+% Printed Fig2.7: exact pieces of N3,2 in Ex2.2.
+% Solid: [1,2]:(u-1)^2/2; [2,3]:-11/2+5u-u^2; [3,4]:(4-u)^2/2.
+% Thin dashed lines extend each polynomial beyond its active knot span.
+\begin{tikzpicture}[scale=\BookGeometryScale]
+\begin{scope}[scale=\BookAxisInverseScale]
+\begin{axis}[width={16cm*\BookGeometryScale},height={7.5cm*\BookGeometryScale},axis lines=middle,
+  xmin=0,xmax=5.3,ymin=-.85,ymax=1.65,
+  xtick={1,2,3,4},ytick={1},xlabel={$u$},
+  axis line style={-{Stealth}},tick align=outside,clip=true,clip mode=individual]
+  \addplot[book grid,dashed,no marks,domain=.15:3,samples=81] {((x-1)^2)/2};
+  \addplot[book grid,dashed,no marks,domain=2:4.85,samples=81] {((4-x)^2)/2};
+  \addplot[book grid,dashed,no marks,domain=1.2:3.8,samples=81] {-11/2+5*x-x^2};
+  \addplot[book line,no marks,domain=1:2,samples=41] {((x-1)^2)/2};
+  \addplot[book line,no marks,domain=2:3,samples=41] {-11/2+5*x-x^2};
+  \addplot[book line,no marks,domain=3:4,samples=41] {((4-x)^2)/2};
+  \node at (axis cs:.8,.58) {$\tfrac12(u-1)^2$};
+  \node at (axis cs:4.2,.58) {$\tfrac12(4-u)^2$};
+  \node at (axis cs:2.5,-.65) {$-\tfrac{11}{2}+5u-u^2$};
+  \node at (axis cs:2.5,.4) {$N_{3,2}$};
+  \node[below left] at (axis cs:0,0) {$0$};
+\end{axis}
+\end{scope}
+\end{tikzpicture}

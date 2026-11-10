@@ -1,0 +1,12 @@
+% Fig. 1.7(a): a1 and a2 have the same direction.
+% In local coordinates a1=(3,0), a2=(2,0); C(u)=3u+2u^2.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+  \begin{scope}[rotate=35]
+    \draw (0,0) -- (5,0);
+    \draw[book axis] (0,.7) -- (3,.7) node[midway,above] {$\mathbf a_1$};
+    \draw[book axis] (0,-.7) -- (2,-.7) node[midway,below] {$\mathbf a_2$};
+    \node[book point,label=left:{$\mathbf a_0$}] at (0,0) {};
+    \node[book point,label=right:{$\mathbf a_0+\mathbf a_1+\mathbf a_2$}] at (5,0) {};
+  \end{scope}
+  \node[book panel tag] at (2,-1.6) {(a)};
+\end{tikzpicture}

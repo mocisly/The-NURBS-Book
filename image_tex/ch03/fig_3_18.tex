@@ -1,0 +1,26 @@
+% Printed Fig3.17, source18: exact same controls and knots as reviewed Fig3.15.
+% Endpoint second derivatives=(25/3,-25) and(25/3,175/6).
+% Arrows at1/10 display scale, stated in caption. Native mathematical geometry, no tracing.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\coordinate (P0) at (1,1);
+\coordinate (P1) at (2,3);
+\coordinate (P2) at (4.5,3);
+\coordinate (P3) at (5,1);
+\coordinate (P4) at (6,2);
+\draw[book grid] (P0)--(P1)--(P2)--(P3)--(P4);
+\draw (1,1) .. controls (1.6666666667,2.3333333333) and (2.5555555556,3) .. (3.6666666667,3);
+\draw (3.6666666667,3) .. controls (4.2222222222,3) and (4.5555555556,2.7777777778) .. (4.6666666667,2.3333333333);
+\draw (4.6666666667,2.3333333333) .. controls (4.8888888889,1.4444444444) and (5.3333333333,1.3333333333) .. (6,2);
+\draw[book axis] (P0)--(1.8333333333,-1.5);
+\node[right=5pt] at (1.8333333333,-1.5) {$\mathbf C^{(2)}(0)$};
+\draw[book axis] (P4)--(6.8333333333,4.9166666667);
+\node[right=5pt] at (6.8333333333,4.9166666667) {$\mathbf C^{(2)}(1)$};
+\foreach \i in {0,...,4} \node[book point] at (P\i) {};
+\fill (3.6666666667,3) circle[radius=1.7pt];
+\fill (4.6666666667,2.3333333333) circle[radius=1.7pt];
+\node[left=4pt] at (P0) {$\mathbf P_{0}$};
+\node[above left=4pt] at (P1) {$\mathbf P_{1}$};
+\node[above=4pt] at (P2) {$\mathbf P_{2}$};
+\node[below=4pt] at (P3) {$\mathbf P_{3}$};
+\node[right=4pt] at (P4) {$\mathbf P_{4}$};
+\end{tikzpicture}

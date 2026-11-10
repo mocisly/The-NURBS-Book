@@ -1,0 +1,62 @@
+{
+  "status": "complete",
+  "date": "2026-11-10",
+  "archived_reports": [],
+  "removed": [
+    {
+      "path": "tmp/backmatter",
+      "files": 353,
+      "bytes": 65886400.0
+    },
+    {
+      "path": "_minted-catalogue",
+      "files": 0,
+      "bytes": null
+    },
+    {
+      "path": "_minted-final-label",
+      "files": 0,
+      "bytes": null
+    },
+    {
+      "path": "_minted-final-refinements",
+      "files": 0,
+      "bytes": null
+    },
+    {
+      "path": "_minted-labels",
+      "files": 0,
+      "bytes": null
+    },
+    {
+      "path": "_minted-revision",
+      "files": 0,
+      "bytes": null
+    },
+    {
+      "path": "_minted-sample",
+      "files": 0,
+      "bytes": null
+    },
+    {
+      "path": "_minted-spacing",
+      "files": 0,
+      "bytes": null
+    },
+    {
+      "path": "_minted-spacing2",
+      "files": 0,
+      "bytes": null
+    },
+    {
+      "path": "_minted-touchups",
+      "files": 0,
+      "bytes": null
+    }
+  ],
+  "removed_bytes": 65886400.0,
+  "protected_files_verified": 1633,
+  "protected_files_unchanged": true,
+  "published_pdf_sha256": "49d9ca48023ac5f3bce51b9906705843861a1fa6898c18e6a83890dbcd7ce173",
+  "note": "Historical manifest evidence paths refer to removed previews and frozen builds. Regenerate evidence before running those validation workflows."
+}

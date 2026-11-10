@@ -1,0 +1,28 @@
+% Fig3.4: strong convex hull, p=2, active P1,P2,P3 on [u3,u4).
+% Representative controls and clamped uniform knot spacing; no numerical data in caption.
+% Exact mathematical curve and hull, no raster outline coordinates.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (-0.4,4);
+\coordinate (P2) at (5,4);
+\coordinate (P3) at (2.3,-2);
+\coordinate (P4) at (10.5,-2);
+\coordinate (P5) at (8.5,2);
+\draw[book grid] (P0)--(P1)--(P2)--(P3)--(P4)--(P5);
+\draw[dashed,book grid] (P1)--(P3);
+\draw (0,0) .. controls (-0.2666666667,2.6666666667) and (0.5,4) .. (2.3,4);
+\draw[dashed] (2.3,4) .. controls (4.1,4) and (4.55,3) .. (3.65,1);
+\draw (3.65,1) .. controls (2.75,-1) and (3.6666666667,-2) .. (6.4,-2);
+\draw (6.4,-2) .. controls (9.1333333333,-2) and (9.8333333333,-0.6666666667) .. (8.5,2);
+\fill (2.3,4) circle[radius=1.7pt];
+\fill (3.65,1) circle[radius=1.7pt];
+\fill (6.4,-2) circle[radius=1.7pt];
+\foreach \i in {0,...,5} \node[book point] at (P\i) {};
+\node at (1.9,2.7) {$u\in[u_3,u_4)$};
+\node[below left=4pt] at (P0) {$\mathbf P_{0}$};
+\node[above left=4pt] at (P1) {$\mathbf P_{1}$};
+\node[above right=4pt] at (P2) {$\mathbf P_{2}$};
+\node[below left=4pt] at (P3) {$\mathbf P_{3}$};
+\node[below right=4pt] at (P4) {$\mathbf P_{4}$};
+\node[above=4pt] at (P5) {$\mathbf P_{5}$};
+\end{tikzpicture}

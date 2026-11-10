@@ -1,0 +1,21 @@
+% Exact representative composition f(s)=(s+s^2)/2 on[0,1].
+% Chosen s=1/2 maps to u=3/8; curve point evaluated exactly.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\path[book figure bounds] (-.7,-.7) rectangle (14.6,10.6);
+\draw (6,7) .. controls (8.6666666667,10) and (11.3333333333,5) .. (14,10);
+\draw[book grid] (0,3)--(9,3);
+\draw[book grid] (6,0)--(12,0);
+\foreach \x in {0,3,6,9} {\draw[book grid] (\x,2.91)--(\x,3.09);}
+\foreach \x in {6,8,10,12} {\draw[book grid] (\x,-.09)--(\x,.09);}
+\node[below=5pt] at (0,3) {$a$};
+\node[below=5pt] at (9,3) {$b$};
+\node[below=5pt] at (6,0) {$c$};
+\node[below=5pt] at (12,0) {$d$};
+\draw (3.375,3) circle[radius=2pt] node[above=5pt] {$u$};
+\draw (9,0) circle[radius=2pt] node[below=5pt] {$s$};
+\draw (9,7.94921875) circle[radius=2pt] node[above=6pt] {$\mathbf C(f(s))$};
+\draw[book axis] (8.7,.4)--(3.75,2.6);
+\node at (6.6,1.9) {$f$};
+\draw[book axis] (3.75,3.5)--(8.6,7.54921875);
+\node at (5.8,6.2) {$\mathbf C$};
+\end{tikzpicture}

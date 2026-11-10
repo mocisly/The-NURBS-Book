@@ -1,0 +1,36 @@
+% Printed Fig3.16(b), second original piece; source index17 is not Fig3.17.
+% Q controls computed from Fig3.16(a), Eq3.4, exact same underlying data.
+% Quadratic derivative with a corner at3/5, interpolating Q3.
+% Coordinates shown at1/3 scale as stated in text; native paths, no tracing.
+\begin{tikzpicture}[book line,x=.3333333333cm,y=.3333333333cm,scale=\BookGeometryScale]
+\draw[book axis] (0,0)--(20,0) node[right=4pt] {$x$};
+\draw[book axis] (0,0)--(0,12) node[above=4pt] {$y$};
+\coordinate (Q0) at (3.75,15);
+\coordinate (Q1) at (12.5,3.5);
+\coordinate (Q2) at (5,-3.5);
+\coordinate (Q3) at (6.25,-10);
+\coordinate (Q4) at (13.125,0);
+\coordinate (Q5) at (3.75,7.5);
+\draw[book grid] (Q0)--(Q1)--(Q2)--(Q3)--(Q4)--(Q5);
+\draw[book grid,-{Stealth[length=5pt]}] (0,0)--(Q0);
+\draw[book grid,-{Stealth[length=5pt]}] (0,0)--(Q1);
+\draw[book grid,-{Stealth[length=5pt]}] (0,0)--(Q2);
+\draw[book grid,-{Stealth[length=5pt]}] (0,0)--(Q3);
+\draw[book grid,-{Stealth[length=5pt]}] (0,0)--(Q4);
+\draw[book grid,-{Stealth[length=5pt]}] (0,0)--(Q5);
+\draw (3.75,15) .. controls (9.5833333333,7.3333333333) and (10.8333333333,1.9444444444) .. (7.5,-1.1666666667);
+\draw (7.5,-1.1666666667) .. controls (5.8333333333,-2.7222222222) and (5.4166666667,-5.6666666667) .. (6.25,-10);
+\draw (6.25,-10) .. controls (10.8333333333,-3.3333333333) and (10,2.5) .. (3.75,7.5);
+\draw[book axis,dashed] (0,0)--(9.0625,5.2083333333);
+\node at (4.5,5) {$\mathbf C'\!\left(\frac15\right)$};
+\foreach \i in {0,...,5} \node[book point] at (Q\i) {};
+\fill (7.5,-1.1666666667) circle[radius=1.7pt];
+\fill (6.25,-10) circle[radius=1.7pt];
+\node[above right=5pt] at (Q0) {$\mathbf Q_{0}$};
+\node[right=5pt] at (Q1) {$\mathbf Q_{1}$};
+\node[left=5pt] at (Q2) {$\mathbf Q_{2}$};
+\node[below right=5pt] at (Q3) {$\mathbf Q_{3}$};
+\node[below right=5pt] at (Q4) {$\mathbf Q_{4}$};
+\node[above right=5pt] at (Q5) {$\mathbf Q_{5}$};
+\node[book panel tag] at (10,-12) {(b)};
+\end{tikzpicture}

@@ -1,0 +1,37 @@
+{
+  "status": "complete",
+  "instruction": "Continue until every image is natively redrawn; never use contour tracing.",
+  "applied_drawings": 435,
+  "authored_sources": 436,
+  "remaining_active_original_images": 0,
+  "remaining_unused_sources": 0,
+  "remaining_inline_ocr_image_placeholders": 0,
+  "work_in_progress": "Complete: linked bibliography and regenerated index compiled, reviewed and published.",
+  "next_original": null,
+  "last_complete_book_compile": {
+    "exit_code": 0,
+    "pages": 152,
+    "sha256": "49d9ca48023ac5f3bce51b9906705843861a1fa6898c18e6a83890dbcd7ce173",
+    "paper_mm": [
+      594,
+      841
+    ],
+    "pdf": "main.pdf"
+  },
+  "note": "Counts are live. The root PDF is only replaced after a successful full-book compile and visual review.",
+  "final_validation": "image_tex/reports/backmatter-compile.json",
+  "intermediate_cleanup_report": "image_tex/reports/backmatter-cleanup.json",
+  "image_redraw_book_compile": {
+    "exit_code": 0,
+    "pages": 220,
+    "pdf": "main.pdf",
+    "sha256": "363115086c22a425f1dfc3b9bdaeeb0a71bf42f400f00a9f1231445cfd58a488"
+  },
+  "latest_code_listing_validation": "image_tex/reports/code-listings-compile.json",
+  "validation_note": "Current A1 PDF has 173 native bibliography items, linked author-year citations, and 359 curated index entries generated from 251 body locations. All bibliography targets and generated index page links were verified. Native figure sources and all 109 minted blocks are unchanged from the prior figure-layout publication.",
+  "latest_layout_validation": "image_tex/reports/backmatter-review.json",
+  "latest_backmatter_validation": "image_tex/reports/backmatter-analysis.json",
+  "bibliography_entries": 173,
+  "index_entries": 359,
+  "index_source_locations": 251
+}

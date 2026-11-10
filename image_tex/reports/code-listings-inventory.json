@@ -1,0 +1,1156 @@
+[
+  {
+    "chapter": 13,
+    "name": "scalar-types",
+    "original_lines": [
+      91,
+      107
+    ],
+    "language": "c",
+    "lines": 7
+  },
+  {
+    "chapter": 13,
+    "name": "index-type",
+    "original_lines": [
+      111,
+      115
+    ],
+    "language": "c",
+    "lines": 1
+  },
+  {
+    "chapter": 13,
+    "name": "numeric-limits",
+    "original_lines": [
+      123,
+      135
+    ],
+    "language": "c",
+    "lines": 5
+  },
+  {
+    "chapter": 13,
+    "name": "curve-prototype",
+    "original_lines": [
+      147,
+      151
+    ],
+    "language": "c",
+    "lines": 1
+  },
+  {
+    "chapter": 13,
+    "name": "point-records",
+    "original_lines": [
+      179,
+      207
+    ],
+    "language": "c",
+    "lines": 13
+  },
+  {
+    "chapter": 13,
+    "name": "sentinels",
+    "original_lines": [
+      240,
+      246
+    ],
+    "language": "c",
+    "lines": 2
+  },
+  {
+    "chapter": 13,
+    "name": "polygon-knot-records",
+    "original_lines": [
+      252,
+      274
+    ],
+    "language": "c",
+    "lines": 10
+  },
+  {
+    "chapter": 13,
+    "name": "curve-record",
+    "original_lines": [
+      300,
+      314
+    ],
+    "language": "c",
+    "lines": 6
+  },
+  {
+    "chapter": 13,
+    "name": "object-access",
+    "original_lines": [
+      330,
+      344
+    ],
+    "language": "c",
+    "lines": 6
+  },
+  {
+    "chapter": 13,
+    "name": "net-record",
+    "original_lines": [
+      350,
+      364
+    ],
+    "language": "c",
+    "lines": 6
+  },
+  {
+    "chapter": 13,
+    "name": "surface-record",
+    "original_lines": [
+      381,
+      399
+    ],
+    "language": "c",
+    "lines": 8
+  },
+  {
+    "chapter": 13,
+    "name": "malloc-example",
+    "original_lines": [
+      425,
+      457
+    ],
+    "language": "c",
+    "lines": 15
+  },
+  {
+    "chapter": 13,
+    "name": "session-sketch",
+    "original_lines": [
+      479,
+      519
+    ],
+    "language": "c",
+    "lines": 16
+  },
+  {
+    "chapter": 13,
+    "name": "stack-record",
+    "original_lines": [
+      523,
+      543
+    ],
+    "language": "c",
+    "lines": 9
+  },
+  {
+    "chapter": 13,
+    "name": "S_getc2d",
+    "original_lines": [
+      560,
+      680
+    ],
+    "language": "c",
+    "lines": 53
+  },
+  {
+    "chapter": 13,
+    "name": "allocation-node-records",
+    "original_lines": [
+      684,
+      706
+    ],
+    "language": "c",
+    "lines": 10
+  },
+  {
+    "chapter": 13,
+    "name": "N_enurbs",
+    "original_lines": [
+      712,
+      766
+    ],
+    "language": "c",
+    "lines": 24
+  },
+  {
+    "chapter": 13,
+    "name": "call-hierarchy",
+    "original_lines": [
+      790,
+      804
+    ],
+    "language": "text",
+    "lines": 6
+  },
+  {
+    "chapter": 13,
+    "name": "error-record",
+    "original_lines": [
+      823,
+      835
+    ],
+    "language": "c",
+    "lines": 5
+  },
+  {
+    "chapter": 13,
+    "name": "error-defines",
+    "original_lines": [
+      839,
+      857
+    ],
+    "language": "c",
+    "lines": 8
+  },
+  {
+    "chapter": 13,
+    "name": "error-global",
+    "original_lines": [
+      861,
+      865
+    ],
+    "language": "c",
+    "lines": 1
+  },
+  {
+    "chapter": 13,
+    "name": "E_seterr",
+    "original_lines": [
+      869,
+      885
+    ],
+    "language": "c",
+    "lines": 7
+  },
+  {
+    "chapter": 13,
+    "name": "E_kntdef",
+    "original_lines": [
+      889,
+      935
+    ],
+    "language": "c",
+    "lines": 22
+  },
+  {
+    "chapter": 13,
+    "name": "E_curdef",
+    "original_lines": [
+      941,
+      1033
+    ],
+    "language": "c",
+    "lines": 43
+  },
+  {
+    "chapter": 13,
+    "name": "E_curwei",
+    "original_lines": [
+      1039,
+      1085
+    ],
+    "language": "c",
+    "lines": 24
+  },
+  {
+    "chapter": 13,
+    "name": "E_curinp",
+    "original_lines": [
+      1097,
+      1137
+    ],
+    "language": "c",
+    "lines": 19
+  },
+  {
+    "chapter": 13,
+    "name": "U_makcu1",
+    "original_lines": [
+      1147,
+      1171
+    ],
+    "language": "c",
+    "lines": 8
+  },
+  {
+    "chapter": 13,
+    "name": "U_makp12",
+    "original_lines": [
+      1175,
+      1235
+    ],
+    "language": "c",
+    "lines": 29
+  },
+  {
+    "chapter": 13,
+    "name": "U_makcu3",
+    "original_lines": [
+      1239,
+      1293
+    ],
+    "language": "c",
+    "lines": 26
+  },
+  {
+    "chapter": 13,
+    "name": "U_maksu2",
+    "original_lines": [
+      1299,
+      1359
+    ],
+    "language": "c",
+    "lines": 31
+  },
+  {
+    "chapter": 13,
+    "name": "A_initcp",
+    "original_lines": [
+      1368,
+      1386
+    ],
+    "language": "c",
+    "lines": 8
+  },
+  {
+    "chapter": 13,
+    "name": "A_updcpt",
+    "original_lines": [
+      1392,
+      1422
+    ],
+    "language": "c",
+    "lines": 14
+  },
+  {
+    "chapter": 13,
+    "name": "A_euclid",
+    "original_lines": [
+      1426,
+      1470
+    ],
+    "language": "c",
+    "lines": 22
+  },
+  {
+    "chapter": 13,
+    "name": "N_evncur",
+    "original_lines": [
+      1481,
+      1559
+    ],
+    "language": "c",
+    "lines": 39
+  },
+  {
+    "chapter": 13,
+    "name": "curve-driver",
+    "original_lines": [
+      1587,
+      1653
+    ],
+    "language": "c",
+    "lines": 32
+  },
+  {
+    "chapter": 13,
+    "name": "N_evnsur",
+    "original_lines": [
+      1657,
+      1773
+    ],
+    "language": "c",
+    "lines": 59
+  },
+  {
+    "chapter": 13,
+    "name": "surface-driver",
+    "original_lines": [
+      1785,
+      1853
+    ],
+    "language": "c",
+    "lines": 32
+  },
+  {
+    "chapter": 13,
+    "name": "scalar-records",
+    "original_lines": [
+      1863,
+      1887
+    ],
+    "language": "c",
+    "lines": 11
+  },
+  {
+    "chapter": 13,
+    "name": "polynomial-records",
+    "original_lines": [
+      1893,
+      1921
+    ],
+    "language": "c",
+    "lines": 13
+  },
+  {
+    "chapter": 13,
+    "name": "domain-records",
+    "original_lines": [
+      1925,
+      1951
+    ],
+    "language": "c",
+    "lines": 12
+  },
+  {
+    "chapter": 13,
+    "name": "bezier-records",
+    "original_lines": [
+      1957,
+      1979
+    ],
+    "language": "c",
+    "lines": 10
+  },
+  {
+    "chapter": 13,
+    "name": "vector-line-records",
+    "original_lines": [
+      1985,
+      2011
+    ],
+    "language": "c",
+    "lines": 12
+  },
+  {
+    "chapter": 13,
+    "name": "plane-circle-records",
+    "original_lines": [
+      2015,
+      2039
+    ],
+    "language": "c",
+    "lines": 11
+  },
+  {
+    "chapter": 13,
+    "name": "matrix-record",
+    "original_lines": [
+      2043,
+      2061
+    ],
+    "language": "c",
+    "lines": 8
+  },
+  {
+    "chapter": 13,
+    "name": "matrix-enum",
+    "original_lines": [
+      2065,
+      2079
+    ],
+    "language": "c",
+    "lines": 6
+  },
+  {
+    "chapter": 1,
+    "name": "A1.1",
+    "original_lines": [
+      227,
+      247
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 8
+  },
+  {
+    "chapter": 1,
+    "name": "A1.2",
+    "original_lines": [
+      542,
+      572
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 13
+  },
+  {
+    "chapter": 1,
+    "name": "A1.3",
+    "original_lines": [
+      587,
+      627
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 18
+  },
+  {
+    "chapter": 1,
+    "name": "A1.4",
+    "original_lines": [
+      645,
+      663
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 8
+  },
+  {
+    "chapter": 1,
+    "name": "A1.5",
+    "original_lines": [
+      760,
+      788
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 12
+  },
+  {
+    "chapter": 1,
+    "name": "A1.6",
+    "original_lines": [
+      1259,
+      1279
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 8
+  },
+  {
+    "chapter": 1,
+    "name": "A1.7",
+    "original_lines": [
+      1392,
+      1432
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 18
+  },
+  {
+    "chapter": 2,
+    "name": "A2.1",
+    "original_lines": [
+      889,
+      923
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 15
+  },
+  {
+    "chapter": 2,
+    "name": "A2.2",
+    "original_lines": [
+      1022,
+      1064
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 19
+  },
+  {
+    "chapter": 2,
+    "name": "A2.3",
+    "original_lines": [
+      1176,
+      1312
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 66
+  },
+  {
+    "chapter": 2,
+    "name": "A2.4",
+    "original_lines": [
+      1370,
+      1448
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 38
+  },
+  {
+    "chapter": 2,
+    "name": "A2.5",
+    "original_lines": [
+      1537,
+      1661
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 60
+  },
+  {
+    "chapter": 3,
+    "name": "A3.1",
+    "original_lines": [
+      48,
+      72
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 10
+  },
+  {
+    "chapter": 3,
+    "name": "A3.2",
+    "original_lines": [
+      352,
+      386
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 15
+  },
+  {
+    "chapter": 3,
+    "name": "A3.3",
+    "original_lines": [
+      588,
+      622
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 15
+  },
+  {
+    "chapter": 3,
+    "name": "A3.4",
+    "original_lines": [
+      664,
+      706
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 16
+  },
+  {
+    "chapter": 3,
+    "name": "A3.5",
+    "original_lines": [
+      808,
+      848
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 18
+  },
+  {
+    "chapter": 3,
+    "name": "A3.6",
+    "original_lines": [
+      1028,
+      1100
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 31
+  },
+  {
+    "chapter": 3,
+    "name": "A3.7",
+    "original_lines": [
+      1230,
+      1284
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 23
+  },
+  {
+    "chapter": 3,
+    "name": "A3.8",
+    "original_lines": [
+      1288,
+      1356
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 32
+  },
+  {
+    "chapter": 4,
+    "name": "A4.1",
+    "original_lines": [
+      217,
+      243
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 11
+  },
+  {
+    "chapter": 4,
+    "name": "A4.2",
+    "original_lines": [
+      357,
+      385
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 12
+  },
+  {
+    "chapter": 4,
+    "name": "A4.3",
+    "original_lines": [
+      617,
+      659
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 19
+  },
+  {
+    "chapter": 4,
+    "name": "A4.4",
+    "original_lines": [
+      797,
+      847
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 22
+  },
+  {
+    "chapter": 5,
+    "name": "A5.1",
+    "original_lines": [
+      398,
+      458
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 28
+  },
+  {
+    "chapter": 5,
+    "name": "A5.2",
+    "original_lines": [
+      490,
+      542
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 23
+  },
+  {
+    "chapter": 5,
+    "name": "A5.3",
+    "original_lines": [
+      602,
+      691
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 40
+  },
+  {
+    "chapter": 5,
+    "name": "A5.4",
+    "original_lines": [
+      866,
+      948
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 38
+  },
+  {
+    "chapter": 5,
+    "name": "A5.5",
+    "original_lines": [
+      952,
+      1050
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 47
+  },
+  {
+    "chapter": 5,
+    "name": "A5.6",
+    "original_lines": [
+      1242,
+      1336
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 43
+  },
+  {
+    "chapter": 5,
+    "name": "A5.7",
+    "original_lines": [
+      1378,
+      1484
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 49
+  },
+  {
+    "chapter": 5,
+    "name": "A5.8",
+    "original_lines": [
+      1787,
+      1913
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 60
+  },
+  {
+    "chapter": 5,
+    "name": "A5.9",
+    "original_lines": [
+      2423,
+      2649
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 109
+  },
+  {
+    "chapter": 5,
+    "name": "A5.10",
+    "original_lines": [
+      2669,
+      2756
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 34
+  },
+  {
+    "chapter": 5,
+    "name": "A5.11",
+    "original_lines": [
+      3052,
+      3248
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 97
+  },
+  {
+    "chapter": 5,
+    "name": "degree-elevation-work-arrays",
+    "original_lines": [
+      2403,
+      2421
+    ],
+    "language": "c",
+    "kind": "pseudocode-fragment",
+    "lines": 9
+  },
+  {
+    "chapter": 5,
+    "name": "degree-reduction-sketch",
+    "original_lines": [
+      2828,
+      2842
+    ],
+    "language": "c",
+    "kind": "pseudocode-fragment",
+    "lines": 6
+  },
+  {
+    "chapter": 5,
+    "name": "degree-reduction-work-arrays",
+    "original_lines": [
+      3034,
+      3048
+    ],
+    "language": "c",
+    "kind": "pseudocode-fragment",
+    "lines": 6
+  },
+  {
+    "chapter": 6,
+    "name": "A6.1",
+    "original_lines": [
+      1862,
+      1922
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 30
+  },
+  {
+    "chapter": 6,
+    "name": "A6.2",
+    "original_lines": [
+      2134,
+      2190
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 26
+  },
+  {
+    "chapter": 7,
+    "name": "A7.1",
+    "original_lines": [
+      1046,
+      1146
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 48
+  },
+  {
+    "chapter": 7,
+    "name": "A7.2",
+    "original_lines": [
+      1259,
+      1321
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 29
+  },
+  {
+    "chapter": 7,
+    "name": "A7.3",
+    "original_lines": [
+      1421,
+      1523
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 49
+  },
+  {
+    "chapter": 8,
+    "name": "A8.1",
+    "original_lines": [
+      358,
+      486
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 57
+  },
+  {
+    "chapter": 8,
+    "name": "A8.2",
+    "original_lines": [
+      1044,
+      1070
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 11
+  },
+  {
+    "chapter": 9,
+    "name": "A9.1",
+    "original_lines": [
+      279,
+      325
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 21
+  },
+  {
+    "chapter": 9,
+    "name": "A9.2",
+    "original_lines": [
+      467,
+      513
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 21
+  },
+  {
+    "chapter": 9,
+    "name": "A9.3",
+    "original_lines": [
+      701,
+      769
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 32
+  },
+  {
+    "chapter": 9,
+    "name": "A9.4",
+    "original_lines": [
+      823,
+      863
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 18
+  },
+  {
+    "chapter": 9,
+    "name": "A9.5",
+    "original_lines": [
+      1527,
+      1649
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 59
+  },
+  {
+    "chapter": 9,
+    "name": "A9.6",
+    "original_lines": [
+      2030,
+      2178
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 72
+  },
+  {
+    "chapter": 9,
+    "name": "A9.7",
+    "original_lines": [
+      2272,
+      2328
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 26
+  },
+  {
+    "chapter": 9,
+    "name": "A9.8",
+    "original_lines": [
+      2457,
+      2523
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 31
+  },
+  {
+    "chapter": 9,
+    "name": "A9.9",
+    "original_lines": [
+      2571,
+      2639
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 31
+  },
+  {
+    "chapter": 9,
+    "name": "A9.10",
+    "original_lines": [
+      2645,
+      2699
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 25
+  },
+  {
+    "chapter": 9,
+    "name": "A9.11",
+    "original_lines": [
+      2927,
+      3015
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 42
+  },
+  {
+    "chapter": 9,
+    "name": "A9.12",
+    "original_lines": [
+      3278,
+      3424
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 71
+  },
+  {
+    "chapter": 10,
+    "name": "A10.1",
+    "original_lines": [
+      547,
+      649
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 50
+  },
+  {
+    "chapter": 10,
+    "name": "A10.2",
+    "original_lines": [
+      651,
+      711
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 29
+  },
+  {
+    "chapter": 10,
+    "name": "A10.3",
+    "original_lines": [
+      1089,
+      1127
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 15
+  },
+  {
+    "chapter": 10,
+    "name": "A10.4",
+    "original_lines": [
+      1420,
+      1484
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 21
+  },
+  {
+    "chapter": 11,
+    "name": "A11.1",
+    "original_lines": [
+      1822,
+      1940
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 57
+  },
+  {
+    "chapter": 12,
+    "name": "A12.1",
+    "original_lines": [
+      149,
+      213
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 27
+  },
+  {
+    "chapter": 12,
+    "name": "A12.2",
+    "original_lines": [
+      523,
+      583
+    ],
+    "language": "c",
+    "kind": "pseudocode",
+    "lines": 28
+  }
+]

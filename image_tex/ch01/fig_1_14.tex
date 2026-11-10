@@ -1,0 +1,13 @@
+% Fig. 1.11(b). The endpoint tangent is parallel to P3-P2.
+\begin{tikzpicture}[book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \path[book figure bounds] (-3.6,-.9) rectangle (3.6,5.3);
+  \coordinate (P0) at (-3,0); \coordinate (P1) at (-.6,4.6);
+  \coordinate (P2) at (3,1.15); \coordinate (P3) at (.6,1.15);
+      \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P0)--(P1);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P1)--(P2);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P2)--(P3);
+  \draw[shorten <=2pt,shorten >=2pt] (P0) .. controls (P1) and (P2) .. (P3);
+  \foreach \i/\pos in {0/below left,1/above,2/right,3/left}
+    \node[book point,label=\pos:{$\mathbf P_{\i}$}] at (P\i) {};
+  \node[book panel tag] at (0,-.8) {(b)};
+\end{tikzpicture}

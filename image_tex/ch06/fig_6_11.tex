@@ -1,0 +1,69 @@
+% Figure6.11 representative cubic controls documented in companion generator.
+% Given scalar mappings used exactly; inverse-knot rounding is globally certified <1e-24.
+% Native displayed control coordinates rounded to10decimal places (<1e-9cm display error).
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\path[book figure bounds] (-.6,-4.05) rectangle (24.5,7);
+\begin{scope}[xshift=0cm]
+\draw[book grid,dashed] (1,0)--(0,3)--(4,6)--(5,-2)--(10,0);
+\draw[book grid] (1,0)--(0.5603921946,1.3188234163)--(0.5604395655,2.478211439)--(0.9682834568,3.3878978756)--(1.6907919638,3.9298976833)--(3.2534899548,3.9673721042)--(4.2921879458,1.616846525)--(4.8406102313,0.3511698542)--(5.7273421899,-0.7271511678)--(7.2970585408,-1.0811765837)--(10,0);
+\draw (1,0) .. controls (0,3) and (2,4.5) .. (3.25,3.25);
+\draw (3.25,3.25) .. controls (4.5,2) and (5,-2) .. (10,0);
+\draw (1,0) circle[radius=1.5pt];
+\draw (0.5603921946,1.3188234163) circle[radius=1.5pt];
+\draw (0.5604395655,2.478211439) circle[radius=1.5pt];
+\draw (0.9682834568,3.3878978756) circle[radius=1.5pt];
+\draw (1.6907919638,3.9298976833) circle[radius=1.5pt];
+\draw (3.2534899548,3.9673721042) circle[radius=1.5pt];
+\draw (4.2921879458,1.616846525) circle[radius=1.5pt];
+\draw (4.8406102313,0.3511698542) circle[radius=1.5pt];
+\draw (5.7273421899,-0.7271511678) circle[radius=1.5pt];
+\draw (7.2970585408,-1.0811765837) circle[radius=1.5pt];
+\draw (10,0) circle[radius=1.5pt];
+\begin{scope}[xshift=7cm,yshift=3.1cm,x=3cm,y=2.6cm]
+\draw[book axis] (0,0)--(1.12,0) node[right=3pt] {$s$};
+\draw[book axis] (0,0)--(0,1.12) node[above=3pt] {$u$};
+\node[below left=3pt] at (0,0) {$0$};
+\draw[book grid] (1,-.025)--(1,.025) node[below=4pt] {$1$};
+\draw[book grid] (-.025,1)--(.025,1) node[left=4pt] {$1$};
+\draw (0,0) .. controls (0.3333333333,0.2666666667) and (0.6666666667,0.6) .. (1,1);
+\node[right=4pt] at (1,1) {$f(s)$};
+\end{scope}
+\node at (5,-2.7) {(a)};
+\node at (5,-3.5) {$F=\{0,\frac25,1\}$};
+\end{scope}
+\begin{scope}[xshift=13cm]
+\draw[book grid,dashed] (1,0)--(0,3)--(4,6)--(5,-2)--(10,0);
+\draw[book grid] (1,0)--(0.421587172,1.7352384841)--(0.6774868343,2.974907895)--(1.3141491307,3.7038899042)--(2.0501842099,3.9521557081)--(2.9807746706,3.7098765128)--(3.6323651312,2.7945973176)--(3.8019602139,2.5103257084)--(3.968589143,2.2116848978)--(4.1380189523,1.911314313)--(4.9505,0.5625)--(5.6754,-0.392)--(6.6772,-0.796)--(7.844,-0.728)--(9,-0.4)--(10,0);
+\draw (1,0) .. controls (0,3) and (2,4.5) .. (3.25,3.25);
+\draw (3.25,3.25) .. controls (4.5,2) and (5,-2) .. (10,0);
+\draw (1,0) circle[radius=1.5pt];
+\draw (0.421587172,1.7352384841) circle[radius=1.5pt];
+\draw (0.6774868343,2.974907895) circle[radius=1.5pt];
+\draw (1.3141491307,3.7038899042) circle[radius=1.5pt];
+\draw (2.0501842099,3.9521557081) circle[radius=1.5pt];
+\draw (2.9807746706,3.7098765128) circle[radius=1.5pt];
+\draw (3.6323651312,2.7945973176) circle[radius=1.5pt];
+\draw (3.8019602139,2.5103257084) circle[radius=1.5pt];
+\draw (3.968589143,2.2116848978) circle[radius=1.5pt];
+\draw (4.1380189523,1.911314313) circle[radius=1.5pt];
+\draw (4.9505,0.5625) circle[radius=1.5pt];
+\draw (5.6754,-0.392) circle[radius=1.5pt];
+\draw (6.6772,-0.796) circle[radius=1.5pt];
+\draw (7.844,-0.728) circle[radius=1.5pt];
+\draw (9,-0.4) circle[radius=1.5pt];
+\draw (10,0) circle[radius=1.5pt];
+\begin{scope}[xshift=7cm,yshift=3.1cm,x=3cm,y=2.6cm]
+\draw[book axis] (0,0)--(1.12,0) node[right=3pt] {$s$};
+\draw[book axis] (0,0)--(0,1.12) node[above=3pt] {$u$};
+\node[below left=3pt] at (0,0) {$0$};
+\draw[book grid] (1,-.025)--(1,.025) node[below=4pt] {$1$};
+\draw[book grid] (-.025,1)--(.025,1) node[left=4pt] {$1$};
+\draw[book grid] (.5,-.025)--(.5,.025) node[below=4pt] {$\frac12$};
+\draw (0,0) .. controls (0.1666666667,0.2666666667) and (0.3333333333,0.4833333333) .. (0.5,0.65);
+\draw (0.5,0.65) .. controls (0.6666666667,0.8166666667) and (0.8333333333,0.9333333333) .. (1,1);
+\node[right=4pt] at (1,1) {$f(s)$};
+\end{scope}
+\node at (5,-2.7) {(b)};
+\node at (5,-3.5) {$F=\{0,\frac25,\frac9{10},1\}$};
+\end{scope}
+\end{tikzpicture}

@@ -1,0 +1,16 @@
+% Fig. 1.7(b): a1=(6,0), a2=(-4,0); C(u)=6u-4u^2.
+% C'(u0)=0 at u0=3/4. C(u0)=2.25, C(1)=2; final part retraced.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+  \begin{scope}[rotate=48]
+    \draw (0,0) -- (2.25,0);
+    \draw[book axis] (.7,.7) -- (6.7,.7)
+      node[midway,above left=6pt] {$\mathbf a_1$};
+    \draw[book axis] (2,-.7) -- (-2,-.7)
+      node[midway,below right=6pt] {$\mathbf a_2$};
+    \node[book point,label=left:{$\mathbf a_0$}] at (0,0) {};
+    \node[book point,label=right:{$\mathbf a_0+\mathbf a_1+\mathbf a_2$}] at (2,0) {};
+    \fill (2.25,0) circle (.8pt);
+    \draw[book axis,thin,dashed] (3.5,-.6) node[right] {$\mathbf C(u_0)$} -- (2.25,0);
+  \end{scope}
+  \node[book panel tag] at (1,-2.4) {(b)};
+\end{tikzpicture}

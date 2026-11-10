@@ -1,0 +1,29 @@
+\begin{tikzpicture}[book line,font=\fontsize{10}{12}\selectfont,scale=\BookGeometryScale]
+\path[book figure bounds] (-1,-3.2) rectangle (19,12);
+\draw (2,11) rectangle (16,10);
+\node at (9,10.5) {NURBS\quad\texttt{N\_*.c}};
+\draw[book grid,book axis] (9,10)--(9,8.8);
+\draw (2,8.8) rectangle (16,7.8);
+\node at (9,8.3) {B\'{e}zier\quad\texttt{B\_*.c}};
+\draw[book grid,book axis] (9,7.8)--(9,6.6);
+\draw (2,6.6) rectangle (16,5.6);
+\node at (9,6.1) {Geometry\quad\texttt{G\_*.c}};
+\draw[book grid,book axis] (9,5.6)--(9,4.4);
+\draw (2,4.4) rectangle (16,3.4);
+\node at (9,3.9) {Mathematics\quad\texttt{M\_*.c}};
+\draw[book grid,book axis] (9,3.4)--(9,2.2);
+\draw (2,2.2) rectangle (16,1.2);
+\node at (9,1.7) {Utility\quad\texttt{U\_*.c}};
+\draw[book grid] (9,1.2)--(9,.5)--(2.6,.5) (9,.5)--(15.4,.5);
+\draw (0,-0.4) rectangle (5.2,-1.8);
+\node at (2.6,-1.1) {\shortstack{Memory\\\texttt{S\_*.c}}};
+\draw[book grid,book axis] (2.6,0.5)--(2.6,-0.4);
+\draw (6.4,-0.4) rectangle (11.6,-1.8);
+\node at (9,-1.1) {\shortstack{Arithmetic\\\texttt{A\_*.c}}};
+\draw[book grid,book axis] (9,0.5)--(9,-0.4);
+\draw (12.8,-0.4) rectangle (18,-1.8);
+\node at (15.4,-1.1) {\shortstack{Error\\\texttt{E\_*.c}}};
+\draw[book grid,book axis] (15.4,0.5)--(15.4,-0.4);
+\draw[book grid,dashed] (5.2,-1.1)--(6.4,-1.1) (11.6,-1.1)--(12.8,-1.1);
+\draw[book grid,dashed] (2.6,-1.8)--(2.6,-2.5)--(15.4,-2.5)--(15.4,-1.8);
+\end{tikzpicture}

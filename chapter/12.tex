@@ -1,12 +1,12 @@
 %12.数学分析利用级数收敛来构造连续函数, 距离空间的完备化
-\documentclass[main.tex]{subfiles}                                              
+\documentclass[../main.tex]{subfiles}
 \begin{document}
 
 \section{引言}
 
 本章的中心主题是本书中所实践的 NURBS 几何与其他表示曲线和表面的方法之间的关系，以及在两个系统之间交换几何数据的几个重要标准格式。我们在整本书中使用了一种特定形式的节点向量；第 12.2 节讨论了另一种类型的节点向量及两种类型之间的转换。第 12.3 节描述了 NURBS 曲线和表面在三个标准(IGES、STEP 和 PHIGS)中的定义。我们指出，我们的 NURBS 与这些标准的 NURBS 兼容(唯一的例外是 IGES 和 PHIGS 允许不连续的曲线和表面)。最后，第 12.4 节提供了一些关于在 NURBS 系统与其他系统之间交换几何数据的一般指导。
 
-\section{结点向量}
+\section{结点向量}\BookIndexMark{p0227}
 节点向量可以分为两组:固定和非固定；在每组中又有均匀和非均匀节点向量。以下是一些示例:
 
 固定，均匀:
@@ -56,26 +56,35 @@
 \end{itemize}
 
 \begin{itemize}
-\item 从几何上讲，夹紧曲线可以是开放的或闭合的；如果一条曲线是闭合的，那么它是否以 \({C}^{k}\) 连续性闭合取决于第一个 \(k\) 和最后一个 \(k\) 个内部节点跨度，以及第一个 \(k + 1\) 和最后一个 \(k + 1\) 个权重和控制点。
+\item 从几何上讲，夹紧曲线\BookIndexMark{p0228}可以是开放的或闭合\BookIndexMark{p0229}的；如果一条曲线是闭合的，那么它是否以 \({C}^{k}\) 连续性闭合取决于第一个 \(k\) 和最后一个 \(k\) 个内部节点跨度，以及第一个 \(k + 1\) 和最后一个 \(k + 1\) 个权重和控制点。
 \end{itemize}
 
 现在考虑未夹紧的均匀节点向量 \({U}_{1}\) 。使用 Cox-deBoor 算法，方程 (2.5)，我们可以计算 \(8 - p\) 度 \(p\) 基函数，适用于 \(p =\)  \(0,\ldots ,7\) 。度为 2 和 3 的基函数，以及一条二次曲线和一条三次曲线，分别显示在图 12.1a 和 12.1b 中。节点位置标记在曲线上。注意，这些曲线在端点处并未夹紧，即它们的起始点和终点与控制点不重合。此外，在 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) 处评估曲线需要函数 \({N}_{i - p,p}\left( u\right) ,\ldots ,{N}_{i,p}\left( u\right)\) ；因此，这些曲线仅在参数范围 \(u \in  \left\lbrack  {{u}_{p},{u}_{m - p}}\right\rbrack\) 上定义，这与夹紧曲线的情况相同。因此，图 12.1a 的二次曲线在 \(u \in  \left\lbrack  {-1,3}\right\rbrack\) 上定义，而图 12.1b 的三次曲线在 \(u \in  \left\lbrack  {0,2}\right\rbrack\) 上定义。图 12.2 显示了如何使用未夹紧的均匀节点向量 \({U}_{2}\) 定义一条闭合的三次曲线。由于 \(m = {11}\) 和 \(p = 3\) ，我们需要八个控制点 \(\left( {n = 7}\right)\) 。我们在末尾环绕 \(p\left( { = 3}\right)\) 控制点；即 \({\mathbf{P}}_{5} = {\mathbf{P}}_{0},{\mathbf{P}}_{6} = {\mathbf{P}}_{1}\) 和 \({\mathbf{P}}_{7} = {\mathbf{P}}_{2}\) 。有效的参数范围是 \(u \in  \left\lbrack  {3,8}\right\rbrack\) 。这导致曲线闭合，并具有 \({C}^{2}\) 连续性。
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_577_269_245_995_1837_0.jpg}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch12/fig_12_01.tex}
+\par\smallskip
+图 12.1. 未夹紧的均匀 B 样条，$U_1=\{-3,-2,-1,0,1,2,3,4,5\}$。\\
+(a) 六个控制点的二次曲线，有效参数区间$[-1,3]$；(b) 五个控制点的三次曲线，有效参数区间$[0,2]$。\\
+上方为代表性控制多边形及实际曲线，方框标出整数节点处的曲线点；下方显示各基函数的完整支撑及曲线的有效区间。\\
+两条曲线的首尾均不插值首末控制点；所有曲线和基函数均由正文节点向量精确生成。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 12.1. 未夹紧的 NURBS 曲线。 (a) 二次曲线；(b) 三次曲线。
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_578_350_250_830_752_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch12/fig_12_02.tex}
+\par\smallskip
+图 12.2. 闭合的$C^2$连续未夹紧三次曲线；$U_2=\{0,1,\ldots,11\}$，有效区间$[3,8]$。\\
+五边形为代表性控制多边形，将前三个控制点依次重复在末尾：$P_5=P_0,P_6=P_1,P_7=P_2$。\\
+方框标出整数节点处的曲线点；在$u=3$与$u=8$处，位置、一阶导数及二阶导数精确相同。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 12.2. 闭合的 \({C}^{2}\) 连续未夹紧三次曲线。
-
-之前所述的关于未固定的均匀曲线的所有内容同样适用于未固定的非均匀曲线，唯一的例外是闭合曲线的起始/结束处的 \({C}^{p - 1}\) 连续性。由于连续性依赖于节点值以及控制点位置，闭合的非均匀曲线的 \({C}^{p - 1}\) 连续性并不一定意味着控制点的精确包裹。图12.3a展示了在固定的均匀节点向量上定义的闭合立方曲线。
+之前所述的关于未固定的均匀曲线\BookIndexMark{p0230}的所有内容同样适用于未固定的非均匀曲线，唯一的例外是闭合曲线的起始/结束处的 \({C}^{p - 1}\) 连续性。由于连续性依赖于节点值以及控制点位置，闭合的非均匀曲线的 \({C}^{p - 1}\) 连续性并不一定意味着控制点的精确包裹。图12.3a展示了在固定的均匀节点向量上定义的闭合立方曲线。
 
 \[
 U = \{ 3,3,3,3,4,5,6,7,8,8,8,8\}
@@ -95,23 +104,33 @@ U = \{ 0,1,2,3,4,5,6,7,8,9,{10},{11}\}
 
 在这里重要的是指出，从算法的角度来看，固定曲线和未固定曲线之间几乎没有区别。只需稍作修改，本书前五章中给出的所有基本算法也可以用于未固定曲线。
 
-在 CAD/CAM 的早期阶段(1980 年代初之前)，使用非均匀节点向量、夹紧或不夹紧的工作非常少。尽管在这个领域的术语一直令人困惑，早期的 CAD/CAM 工作者通常将 B 样条称为非周期性或周期性；非周期性与夹紧同义(如本书所述)，这些用于定义开放曲线和曲面(最初是均匀的，后来是非均匀的)。周期性在数学上等同于不夹紧、均匀，这些用于构造 \({C}^{p - 1}\) 连续封闭曲线和曲面。参考图 12.1a 和 12.1b，可以看到不夹紧、均匀的基函数都是彼此的平移，因此它们常被称为周期性。对于周期性 B 样条，不需要存储节点向量，不需要 Cox-deBoor 算法，也不需要控制点的环绕来获得 \({C}^{p - 1}\) 连续封闭曲线。一个简单的矩阵形式的(单个)基函数，加上一个特殊的控制点索引方案，就足以评估周期性 B 样条曲线(详见 [Mort85] 的讨论)。尽管更高效，这种对周期性 B 样条的特殊处理几乎在实践中消失，可能是因为软件开发和维护所需的时间已经变得比 CPU 时间昂贵得多。夹紧和不夹紧是较新的术语，可能会逐渐增多使用，仅仅因为它们更直观和准确。尽管在文献中这些术语出现得相对不频繁，但它们在 CAD/CAM 社区似乎相当普遍。我们在本书中使用非周期性这个术语，仅仅是因为我们尚未打破这个习惯。
-
 \begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_579_398_254_748_823_0.jpg}
+\begin{minipage}{37cm}
+\centering
+\begin{minipage}{17cm}\centering
+\BookFigure[max width=\linewidth]{ch12/fig_12_03.tex}
+\end{minipage}\hspace{1cm}
+\begin{minipage}{17cm}\centering
+\BookFigure[max width=\linewidth]{ch12/fig_12_04.tex}
+\end{minipage}
+\par\medskip
+\begin{minipage}{17cm}\centering
+\BookFigure[max width=\linewidth]{ch12/fig_12_03c.tex}
+\end{minipage}
+\par\smallskip
+图 12.3. 同一条$C^2$闭合三次曲线的夹紧与解夹表示，有效参数区间均为$[3,8]$。\\
+(a) 正文的夹紧节点向量；(b) 采用正文的非均匀外部节点，控制点不精确环绕；(c) 均匀外部节点产生三点环绕。\\
+沿用图12.2的代表性曲线，分别精确求出三组控制点；五个节点区间的全部多项式系数逐项相同，曲线无近似误差。\\
+实线为实际曲线，虚线为对应控制多边形；三图采用相同坐标尺度和字号。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 12.3. 使用不同节点向量解锁闭合曲线的示例。(a) 闭合夹紧曲线；(b) 无环绕解锁；(c) 带环绕解锁。
+在 CAD/CAM 的早期阶段(1980 年代初之前)，使用非均匀节点向量、夹紧或不夹紧的工作非常少。尽管在这个领域的术语一直令人困惑，早期的 CAD/CAM 工作者通常将 B 样条称为非周期性或周期性；非周期性与夹紧同义(如本书所述)，这些用于定义开放曲线和曲面(最初是均匀的，后来是非均匀的)。周期性在数学上等同于不夹紧、均匀，这些用于构造 \({C}^{p - 1}\) 连续封闭曲线和曲面。参考图 12.1a 和 12.1b，可以看到不夹紧、均匀的基函数都是彼此的平移，因此它们常被称为周期性。对于周期性 B 样条，不需要存储节点向量，不需要 Cox-deBoor 算法，也不需要控制点的环绕来获得 \({C}^{p - 1}\) 连续封闭曲线。一个简单的矩阵形式的(单个)基函数，加上一个特殊的控制点索引方案，就足以评估周期性 B 样条曲线(详见 \cite{Mort85} 的讨论)。尽管更高效，这种对周期性 B 样条的特殊处理几乎在实践中消失，可能是因为软件开发和维护所需的时间已经变得比 CPU 时间昂贵得多。夹紧和不夹紧是较新的术语，可能会逐渐增多使用，仅仅因为它们更直观和准确。尽管在文献中这些术语出现得相对不频繁，但它们在 CAD/CAM 社区似乎相当普遍。我们在本书中使用非周期性这个术语，仅仅是因为我们尚未打破这个习惯。
+
 
 目前许多系统仅使用夹紧 B 样条。然而，IGES 和 STEP 都支持无夹紧 B 样条的交换。双向的精确转换都是可能的。夹紧曲线无非是将节点 \({u}_{p}\) 和 \({u}_{m - p}\) 插入，直到它们的重数达到 \(p\) ，然后丢弃位于夹紧区域之外的节点和控制点。节点插入公式(公式 (5.15))同样适用于无夹紧曲线，只要不对范围在 0 到 \(m\) 之外的节点进行索引(在 \({u}_{p}\) 和 \({u}_{m - p}\) 夹紧时不会发生这种情况)。我们建议(但留作练习)读者编写一个例程，以提取任意参数 \({u}_{1}\) 和 \({u}_{2}\) 之间的子曲线，其中 \({u}_{1} < {u}_{2}\) 。这样的例程不仅处理夹紧，还有许多其他用途，包括我们在下一节中提到的一个用途。
 
-\begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_580_405_255_732_822_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 12.3.(续)
 
 解锁本质上是节点移除。尽管解锁很少被要求(是的，确实有仅处理无夹紧 B 样条的系统)，我们在此呈现算法 A12.1，该算法计算每端的 \(p - 1\) 新控制点和每端的 \(p\) 新节点，所有操作均在原地进行。我们提醒读者，结果并不是唯一的(见图 12.3b 和 12.3c)。选择 \({2p}\) 新端节点是相对自由的，而新控制点的位置依赖于节点。我们选择新节点如下:
 
@@ -127,73 +146,59 @@ U = \{ 0,1,2,3,4,5,6,7,8,9,{10},{11}\}
 
 这种节点选择会导致控制点的环绕，如图 12.2 和 \({12.3}\mathrm{c}\) 所示，前提是夹紧曲线以 \({C}^{p - 1}\) 连续性闭合。算法为:
 
-\HRule
-
-\hspace*{21em} <img src="https://cdn.noedgeai.com/0193ba0d-ab19-7138-9798-cb281ce60de0\_581.jpg?x=354\&y=248\&w=827\&h=744"/>
-
-\hspace*{44em} (c)
-
-\hspace*{10em} Figure 12.3. (Continued.)
-
-\hspace*{13em} \#\# ALGORITHM A12.1
-
-\hspace*{15em} UnclampCurve(n, p, U, Pw)
-
-\hspace*{17em} \{ /* Unclamp a clamped curve */
-
-\hspace*{20em} /* Input: n, p, U, Pw */
-
-\hspace*{20em} /* Output: U, Pw */
-
-\hspace*{17em} for (i=0; i<=p-2; i++) /* Unclamp at left end */
-
-\hspace*{19em} \{
-
-\hspace*{19em} \(U\left\lbrack  {p - i - 1}\right\rbrack   = U\left\lbrack  {p - i}\right\rbrack   - \left( {U\left\lbrack  {n - i + 1}\right\rbrack   - U\left\lbrack  {n - i}\right\rbrack  }\right) ;\)
-
-\hspace*{19em} \(\mathrm{k} = \mathrm{p} - 1\) ;
-
-\hspace*{19em} for (j=i; j>=0; j--)
-
-\hspace*{21em} \{
-
-\hspace*{21em} alfa = (U[p]-U[k])/(U[p+j+1]-U[k]);
-
-\hspace*{21em} \(\operatorname{Pw}\left\lbrack  j\right\rbrack   = \left( {\operatorname{Pw}\left\lbrack  j\right\rbrack   - \operatorname{alfa} * \operatorname{Pw}\left\lbrack  {j + 1}\right\rbrack  }\right) /\left( {{1.0} - \operatorname{alfa}}\right) ;\)
-
-\hspace*{21em} \(\mathrm{k} = \mathrm{k} - 1\) ;
-
-\hspace*{21em} \}
-
-\hspace*{19em} \}
-
-\hspace*{17em} U[0] = U[1] - (U[n-p+2]-U[n-p+1]); /* Set first knot */
-
-\hspace*{17em} for (i=0; i<=p-2; i++) /* Unclamp at right end */
-
-\hspace*{19em} \{
-
-\hspace*{19em} \(U\left\lbrack  {n + i + 2}\right\rbrack   = U\left\lbrack  {n + i + 1}\right\rbrack   + \left( {U\left\lbrack  {p + i + 1}\right\rbrack   - U\left\lbrack  {p + i}\right\rbrack  }\right) ;\)
-
-\hspace*{19em} for (j=i; j>=0; j--)
-
-\hspace*{21em} \{
-
-\hspace*{3em} alfa = (U[n+1]-U[n-j])/(U[n-j+i+2]-U[n-j]);
-
-\hspace*{3em} \(\mathrm{{Pw}}\left\lbrack  {\mathrm{n} - \mathrm{j}}\right\rbrack   = \left( {\mathrm{{Pw}}\left\lbrack  {\mathrm{n} - \mathrm{j}}\right\rbrack   - \left( {{1.0} - \mathrm{{alfa}}}\right)  * \mathrm{{Pw}}\left\lbrack  {\mathrm{n} - \mathrm{j} - 1}\right\rbrack  }\right) /\mathrm{{alfa}};\)
-
-\hspace*{2em} \}
-
-\hspace*{1em} \}
-
-U[n+p+1] = U[n+p] + (U[2*p]-U[2*p-1]); /* Set last knot */
-
-\}
-
-\HRule
+% book-code: algorithm A12.1
+\par\medskip\noindent\textbf{算法 A12.1（伪代码）}\BookIndexMark{p0231}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+UnclampCurve(n, p, U, Pw)
+{ /* Unclamp a clamped curve */
+    /* Input: n, p, U, Pw */
+    /* Output: U, Pw */
+    for (i=0; i<=p-2; i++) /* Unclamp at left end */
+    {
+        U[p - i - 1]= U[p - i]- ( U[n - i + 1]- U[n - i]) ;
+        k = p - 1 ;
+        for (j=i; j>=0; j--)
+        {
+            alfa = (U[p]-U[k])/(U[p+j+1]-U[k]);
+            Pw[j]= ( Pw[j]- alfa * Pw[j + 1]) /( 1.0 - alfa) ;
+            k = k - 1 ;
+        }
+    }
+    U[0] = U[1] - (U[n-p+2]-U[n-p+1]); /* Set first knot */
+    for (i=0; i<=p-2; i++) /* Unclamp at right end */
+    {
+        U[n + i + 2]= U[n + i + 1]+ ( U[p + i + 1]- U[p + i]) ;
+        for (j=i; j>=0; j--)
+        {
+            alfa = (U[n+1]-U[n-j])/(U[n-j+i+2]-U[n-j]);
+            Pw[n - j]= ( Pw[n - j]- ( 1.0 - alfa)  * Pw[n - j - 1]) /alfa;
+        }
+    }
+    U[n+p+1] = U[n+p] + (U[2*p]-U[2*p-1]); /* Set last knot */
+}
+\end{minted}
 
 图 12.4a-12.4d 显示了对一个 4 次曲线的左端进行解夹的步骤。图 12.4b-12.4d 分别对应于 \(i\) 第 \(i = 0,1,2\) 步的完成。
+
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch12/fig_12_05.tex}
+\par\medskip
+\BookFigure[max width=\linewidth]{ch12/fig_12_06.tex}
+\par\medskip
+\BookFigure[max width=\linewidth]{ch12/fig_12_07.tex}
+\par\smallskip
+图 12.4. 按算法A12.1对四次曲线左端解夹的三步回代。\\
+(a) 原始控制点；(b) $i=0$后得到$P_0^0$；(c) $i=1$后得到$P_0^1,P_1^1$；(d) $i=2$后得到$P_0^2,P_1^2,P_2^2$。\\
+采用代表性八点曲线，原节点为$\{0,0,0,0,0,1/4,1/2,3/4,1,1,1,1,1\}$；四幅图的实线均为原区间$[0,1]$上的同一条曲线。\\
+虚线展示算法的原始、中间和最终控制点工作数组；中间数组尚非完整的解夹表示。全部六次回代恒等式及最终曲线的全部多项式系数均已精确核验。\\
+各图使用相同坐标尺度、字号和线宽；四次曲线的原生B\'{e}zier显示误差上界为$10^{-5}$厘米。
+\end{minipage}
+\end{center}
+
+
+图12.5a显示标准九点二次NURBS圆，其夹紧节点向量为：
 
 \[
 U = \left\{  {0,0,0,\frac{1}{4},\frac{1}{4},\frac{1}{2},\frac{1}{2},\frac{3}{4},\frac{3}{4},1,1,1}\right\}
@@ -205,30 +210,48 @@ U = \left\{  {0,0,0,\frac{1}{4},\frac{1}{4},\frac{1}{2},\frac{1}{2},\frac{3}{4},
 U = \left\{  {-\frac{1}{4}, - \frac{1}{4},0,\frac{1}{4},\frac{1}{4},\frac{1}{2},\frac{1}{2},\frac{3}{4},\frac{3}{4},1,\frac{5}{4},\frac{5}{4}}\right\}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_582_368_1311_796_707_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 12.4。对四次曲线左端进行解夹的过程。(a)原始夹紧曲线；(b)计算的 \(i = 0; \rightarrow  {\mathbf{P}}_{0}^{0}\) ；(c)计算的 \(i = 1; \rightarrow  {\mathbf{P}}_{0}^{1}\) 和 \({\mathbf{P}}_{1}^{1}\) ；(d)计算的 \(i = 2; \rightarrow  {\mathbf{P}}_{0}^{2},{\mathbf{P}}_{1}^{2}\) 和 \({\mathbf{P}}_{2}^{2}\) 。
+
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch12/fig_12_08.tex}\BookIndexMark{p0232}
+\par\smallskip
+图 12.5. 标准九点二次NURBS圆的解夹；(a) 原夹紧表示；(b) 按算法A12.1得到的解夹表示。\\
+原偶数控制点权重为1，奇数点权重为$w=\sqrt2/2$；解夹后仅首末齐次控制点改变，权重均为$2-w$。\\
+新端点为$P_0=(1,-w/(2-w))$和$P_8=(1,w/(2-w))$，不再重合；实线仍是完全相同的单位圆。\\
+已在精确代数域$w^2=1/2$中核验全部齐次多项式系数及圆方程；虚线为相应控制多边形，所有权重均为正。
+\end{minipage}
+\end{center}
 
 显然，将这些结果扩展到曲面是直接的。通过将算法 A12.1 的计算应用于控制点的 \(m + 1\) 行 \(\left( {n + 1\text{ columns }}\right)\) ，可以在 \(u\left( v\right)\) 方向上对曲面进行解锁。图 12.6a-12.6d 显示了曲面解锁的示例。图 12.6a 显示了原始的度数为(3,2)的曲面。在图 12.6b 中展示了在 \(u\) 方向上的解锁，而在图 12.6c 中则展示了在 \(v\) 方向上的解锁。图 12.6d 显示了在两个方向上的解锁。
 
+
+
+
+
+
+
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_583_348_638_827_1444_0.jpg}
+\begin{minipage}{37cm}
+\centering
+\begin{minipage}{16cm}\centering
+\BookFigure[max width=\linewidth]{ch12/fig_12_09.tex}
+\end{minipage}%
+\hspace{1cm}%
+\begin{minipage}{16cm}\centering
+\BookFigure[max width=\linewidth]{ch12/fig_12_10.tex}
+\end{minipage}%
+\par\medskip
+\BookFigure[max width=\linewidth]{ch12/fig_12_11.tex}
+\par\smallskip
+图 12.6. 同一张$3\times2$次曲面的解夹，原参数域始终为$[0,1]^2$。\\
+(a) 原曲面及控制网；(b) 只沿$u$方向解夹；(c) 只沿$v$方向解夹；(d) 两个方向均解夹。帽号表示解夹后的节点向量。\\
+采用代表性$6\times5$控制点曲面，逐行或逐列执行算法A12.1；三种结果在九个节点矩形上的全部B\'{e}zier系数均与原曲面相同。\\
+先处理$u$再处理$v$与相反顺序所得控制点完全一致；改变的是外部控制网，实线所示的实际曲面保持不变。\\
+圆点为控制点，虚线为控制网，实线为实际等参线；四图采用相同投影、尺度、字号和线宽。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 12.4.(续)
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_584_299_254_927_808_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 12.4.(续)
-
-
 
 \section{标准中的 NURBS }
 
@@ -246,26 +269,16 @@ NURBS 不仅是 CAD/CAM/CAE 行业的事实标准，而且还被纳入了多个�
 \item PHIGS:程序员的层次交互图形系统。
 \end{itemize}
 
-本节的主题是这些标准中 NURBS 的定义。目的是概念上传达每个标准中 NURBS 的定义。为此，我们采用非正式的风格，避免使用每个标准的具体术语。读者应查阅相关文件，以便对这些标准进行更严格的研究 [PHIG92; IGE93; STEP94]。有关进一步阅读，请参见 Bloor 和 Owen [Blor91] 以及 Vergeest [Verg91] 关于 STEP 的文献，以及 Howard [Howa91a] 和 Howard 等 [Howa91b] 关于 PHIGS 的文献。任何设计新 NURBS 系统的人都应确保其符合与 NURBS 相关的这些标准。
+本节的主题是这些标准中 NURBS 的定义。目的是概念上传达每个标准中 NURBS 的定义。为此，我们采用非正式的风格，避免使用每个标准的具体术语。读者应查阅相关文件，以便对这些标准进行更严格的研究 \cite{PHIG92,IGE93,STEP94}。有关进一步阅读，请参见 Bloor 和 Owen \cite{Blor91} 以及 Vergeest \cite{Verg91} 关于 STEP 的文献，以及 Howard \cite{Howa91a} 和 Howard 等 \cite{Howa91b} 关于 PHIGS 的文献。任何设计新 NURBS 系统的人都应确保其符合与 NURBS 相关的这些标准。
 
 
-\subsection{IGES}
+\subsection{IGES}\BookIndexMark{p0233}
 
 IGES(美国国家标准)是当今 CAD/CAM/CAE 系统中最广泛使用的产品数据交换格式。IGES 于 1980 年代初开发，规定了用于交换图形和几何数据的格式，支持各种应用，如制图、电路设计、有限元和管道设计。支持曲线、表面和三维固体。NURBS 曲线在 IGES 中的定义如下:
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_585_367_242_801_1592_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 12.5. 解锁九点 NURBS 圆。 (a) 原始曲线；(b) 解锁曲线。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_586_354_237_831_860_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 12.6. 解锁一个度数为 (3,2) 的表面。 (a) 原始表面；(b) 在 \(u\) 方向解锁；(c) 在 \(v\) 方向解锁；(d) 在两个方向解锁。
 
 \begin{itemize}
 \item 度数， \(p\) ，和控制点数量， \(n + 1\) ；
@@ -289,26 +302,16 @@ IGES(美国国家标准)是当今 CAD/CAM/CAE 系统中最广泛使用的产品�
 
 注意，控制点和权重在 IGES 中是分开的项目；没有均匀控制点的概念， \({\mathbf{P}}_{i}^{w}\) 。仅允许正权重。“周期性”和“非周期性”这两个术语在 IGES 手册中没有定义，因此它们是没有意义的。它们通常被解释为分别表示未夹紧和夹紧，如第 12.2 节所定义。对节点的唯一约束是 \(m = n + p + 1\) 和 \({u}_{i - 1} \leq  {u}_{i}\) 对于 \(i = 1,\ldots ,m\) 。因此，几乎任何情况都是允许的，包括重数大于 \(p\) 的内部节点。参数 \({s}_{0}\) 和 \({s}_{1}\) 是定义的一个重要部分，因为它们定义了曲线的起点和终点。唯一的限制是 \({u}_{0} \leq  {s}_{0} < {s}_{1} \leq  {u}_{m}\) 。也就是说，预期的曲线可以是由节点 \({u}_{0},\ldots ,{u}_{m}\) 定义的较大曲线的一个适当子曲线。一个仅允许夹紧曲线且没有 \({s}_{0}\) 和 \({s}_{1}\) 值的系统可以通过应用子曲线提取来适应 IGES NURBS 曲线(包括未夹紧曲线)，这只是通过在 \({s}_{0}\) 和 \({s}_{1}\) 处插入节点来实现，使用算法 A5.1。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_587_353_240_831_848_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 12.6.(续)
 
 IGES NURBS 曲面是类比定义的。控制点和权重是分开的；权重必须为正。对 \(u\) 和 \(v\) 节点的唯一限制是 \(r = n + p + 1,s = m + q + 1,{u}_{i - 1} \leq  {u}_{i}\) 对于 \(i = 1,\ldots ,r\) 和 \({v}_{j - 1} \leq  {v}_{j}\) 对于 \(j = 1,\ldots ,s\) ，其中 \(p\) 和 \(n + 1\) ，以及 \(q\) 和 \(m + 1\) 分别是 \(u\) 和 \(v\) 方向上的度数和控制点数量。参数 \({s}_{0},{s}_{1}\) 和 \({t}_{0},{t}_{1}\) 定义了预期的曲面，该曲面可以是由给定节点、权重和控制点定义的曲面的适当子曲面。如果需要，使用节点插入来提取和限制预期的曲面。有信息标志指示曲面在每个方向上是开放还是封闭，以及是周期性 (?) 还是非周期性 (?)，以及曲面是否真正是有理的(所有 \({w}_{i,j}\) 相等)或非有理的。IGES NURBS 曲面可以标记为九种特殊类型之一:平面、圆柱、锥体、球体、环面、旋转曲面、一般柱面、规则曲面或一般二次曲面。
 
 
 
-\subsection{STEP}
+\subsection{STEP}\BookIndexMark{p0234}
 STEP 是一种新兴的国际标准，用于产品模型数据的交换。它代表了一项重大的国际努力，其复杂性、广度和深度远超 IGES。NURBS 曲线和曲面在所谓的第 42 部分中定义，该部分涉及产品模型的基本几何标准和数据交换及拓扑。实际上，由于 NURBS 表示法的通用性、数值稳定性和广泛的工业接受度，它被选为通过 STEP 交换一般样条和单跨度多项式及有理曲线和曲面的唯一方法。第 42 部分包括曲线、曲面和三维实体。NURBS 曲线在 STEP 中的指定方式为:
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_588_405_232_892_1889_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 12.6. (续)
 
 \begin{itemize}
 \item 度数， \(p\) 和控制点的数量， \(n + 1\) ；
@@ -331,9 +334,9 @@ STEP 是一种新兴的国际标准，用于产品模型数据的交换。它代
 STEP NURBS 表面以类似方式定义。控制点和权重是分开的，权重必须为正。只有当其 \(u\) 和 \(v\) 节点均为各自类型时，表面才是均匀、准均匀或(分段)Bézier；否则它是非均匀的。存在自交标志，针对 \(u\) 和 \(v\) 方向的开放/封闭标志，以及(如适用)指示特殊类型的标签，如平面、圆柱、规则表面等。
 
 
-\subsection{PHIGS}
+\subsection{PHIGS}\BookIndexMark{p0235}
 
-尽管 IGES 和 STEP 是数据交换标准，但 PHIGS 是一个国际标准，指定了一个与设备无关的交互式图形编程接口。PHIGS 于1980年代中期出现，NURBS 于1992年作为 PHIGS PLUS 扩展的一部分被纳入该标准 [Howa91b]。支持 NURBS 的 PHIGS 实现允许应用程序员直接传递 NURBS 曲线和曲面以进行显示。NURBS 曲线在 PHIGS 中的定义如下:
+尽管 IGES 和 STEP 是数据交换标准，但 PHIGS 是一个国际标准，指定了一个与设备无关的交互式图形编程接口。PHIGS 于1980年代中期出现，NURBS 于1992年作为 PHIGS PLUS 扩展的一部分被纳入该标准 \cite{Howa91b}。支持 NURBS 的 PHIGS 实现允许应用程序员直接传递 NURBS 曲线和曲面以进行显示。NURBS 曲线在 PHIGS 中的定义如下:
 
 \begin{itemize}
 \item 阶数(= 度 + 1)、控制点数量和节点数量；
@@ -355,7 +358,7 @@ NURBS 曲面的定义类似，只是没有修剪参数。允许更一般的修�
 
 
 
-\section{NURBS 系统的数据交换}
+\section{NURBS 系统的数据交换}\BookIndexMark{p0236}
 
 在本节中，我们假设两个曲线和曲面系统 A 和 B，并研究它们之间的数据交换。我们假设系统 A 是基于本书设计和实现的，即它使用任意阶数的夹紧 NURBS 曲线和曲面。为了实用性和与大多数现有系统的兼容性，我们还要求所有权重为正，并且内部节点的重数不超过阶数。目前，我们对系统 B 中几何体的表示方式没有任何假设。
 
@@ -393,7 +396,7 @@ NURBS 曲面的定义类似，只是没有修剪参数。允许更一般的修�
 \item 多项式或有理样条的多种形式之一。
 \end{itemize}
 
-理论上，可以使用被称为隐式化的技术将 NURBS 精确转换为分段隐式形式(例如，参见 [deMo84; Sede84; Hoff89] 及其中的参考文献)。然而，这在计算上并不实用；从隐式形式精确转换为 NURBS 形式通常是不可能的，因此需要近似。在实践中，隐式方程很少用于表示复杂几何，因此我们不再深入探讨这一主题。
+理论上，可以使用被称为隐式化的技术将 NURBS 精确转换为分段隐式形式(例如，参见 \cite{deMo84,Sede84,Hoff89} 及其中的参考文献)。然而，这在计算上并不实用；从隐式形式精确转换为 NURBS 形式通常是不可能的，因此需要近似。在实践中，隐式方程很少用于表示复杂几何，因此我们不再深入探讨这一主题。
 
 如果一条曲线或表面不是通过显式系数或函数直接定义，而是通过其他基曲线或表面间接定义，并结合一个程序或公式从基几何上的点计算出目标几何上的点，则我们称其为程序定义。
 
@@ -403,7 +406,7 @@ NURBS 曲面的定义类似，只是没有修剪参数。允许更一般的修�
 \mathbf{O}\left( {u,v}\right)  = \mathbf{S}\left( {u,v}\right)  + d\mathbf{N}\left( {u,v}\right)  \tag{12.3}
 \]
 
-其中 \(\mathbf{S}\left( {u,v}\right)\) 是基表面， \(d \neq  0\) 是一个常数标量，而 \(\mathbf{N}\left( {u,v}\right)\) 是 \(\mathbf{S}\left( {u,v}\right)\) 在 (u, v) 处的单位长度法向量。偏移曲线和表面在数学上是复杂的，通常很难精确表示为 NURBS 形式(参见 [Till84; Faro86; Coqu87b; Hosc88])。混合和倒角表面有时是通过程序定义的 [Choi91]，而 Filip 和 Ball [Fili89] 描述了一种皮肤化的程序方法。这些表面很少能够在没有近似的情况下传递到 NURBS(或任何其他)系统中。
+其中 \(\mathbf{S}\left( {u,v}\right)\) 是基表面， \(d \neq  0\) 是一个常数标量，而 \(\mathbf{N}\left( {u,v}\right)\) 是 \(\mathbf{S}\left( {u,v}\right)\) 在 (u, v) 处的单位长度法向量。偏移曲线和表面在数学上是复杂的，通常很难精确表示为 NURBS 形式(参见 \cite{Till84,Faro86,Coqu87b,Hosc88})。混合和倒角表面有时是通过程序定义的 \cite{Choi91}，而 Filip 和 Ball \cite{Fili89} 描述了一种皮肤化的程序方法。这些表面很少能够在没有近似的情况下传递到 NURBS(或任何其他)系统中。
 
 大多数 CAD/CAM/CAE 系统使用分段多项式或有理曲线和曲面来表示复杂几何。我们统称这些为样条曲线。样条曲线有许多不同类型；但无论它有什么华丽的名称，样条曲线(曲面)仅由若干段(补丁)组成，这些段以某种形式的连续性拼接在一起。为了简洁起见，我们在本节的其余部分将讨论限制于曲线，但类似的陈述和算法也适用于曲面。为了确定特定类型的样条曲线是否具有等效的 NURBS 表示(反之亦然)，必须考虑三件事:
 
@@ -421,7 +424,7 @@ NURBS 曲面的定义类似，只是没有修剪参数。允许更一般的修�
 
 度数和有理性是简单的。度数可以精确提高，但不能降低；而多项式是有理函数，但反之则不成立。由于我们的系统 A 允许任意度数的有理曲线，因此在将几何从系统 B 引入系统 A 时在这方面没有问题。然而，如果系统 B 限制度数或仅允许非有理几何，那么在从系统 A 转到系统 B 时，必须对相应的曲线进行近似。
 
-连续性更为复杂。设 \(\mathbf{C}\left( u\right)\) 为由区间 \(\left\lbrack  {{u}_{i - 1},{u}_{i}}\right\rbrack\) 上的线段 \({\mathbf{C}}_{i}\left( u\right) ,i = 1,\ldots ,m.{\mathbf{C}}_{i}\left( u\right)\) 组成的样条曲线，其中 \({u}_{0} < {u}_{1} < \cdots  < {u}_{m - 1} < {u}_{m}\) 。我们称 \(\left\{  {u}_{i}\right\}\) 为断点；如果 \(\mathbf{C}\left( u\right)\) 处于 B-spline 形式，则 \(\left\{  {u}_{i}\right\}\) 为不同的节点值。每对线段 \({\mathbf{C}}_{i}\left( u\right)\) 和 \({\mathbf{C}}_{i + 1}\left( u\right)\) 以某种类型和顺序的连续性连接，而数据交换中的基本问题始终归结为接收系统是否能够表示与适当连续性连接的线段。我们所说的连续性类型是指参数连续性 (C) 与几何连续性 (G)；有关几何连续性和各种构造以具有 \(G\) 连续性的样条的更多细节，请参见第 9.3.1 节以及 [Bars89, 90; Hosc93] 和其中的参考文献。我们提醒读者:
+连续性更为复杂。设 \(\mathbf{C}\left( u\right)\) 为由区间 \(\left\lbrack  {{u}_{i - 1},{u}_{i}}\right\rbrack\) 上的线段 \({\mathbf{C}}_{i}\left( u\right) ,i = 1,\ldots ,m.{\mathbf{C}}_{i}\left( u\right)\) 组成的样条曲线，其中 \({u}_{0} < {u}_{1} < \cdots  < {u}_{m - 1} < {u}_{m}\) 。我们称 \(\left\{  {u}_{i}\right\}\) 为断点；如果 \(\mathbf{C}\left( u\right)\) 处于 B-spline 形式，则 \(\left\{  {u}_{i}\right\}\) 为不同的节点值。每对线段 \({\mathbf{C}}_{i}\left( u\right)\) 和 \({\mathbf{C}}_{i + 1}\left( u\right)\) 以某种类型和顺序的连续性连接，而数据交换中的基本问题始终归结为接收系统是否能够表示与适当连续性连接的线段。我们所说的连续性类型是指参数连续性 (C) 与几何连续性 (G)；有关几何连续性和各种构造以具有 \(G\) 连续性的样条的更多细节，请参见第 9.3.1 节以及 \cite{Bars89,Bars90,Hosc93} 和其中的参考文献。我们提醒读者:
 
 \begin{itemize}
 \item \({G}^{1}\) 在 \({u}_{i}\) 处的连续性意味着一阶导数向量 \({\mathbf{C}}_{i}^{\prime }\left( {u}_{i}\right)\) 和 \({\mathbf{C}}_{i + 1}^{\prime }\left( {u}_{i}\right)\) 指向相同的方向，但可以具有不同的大小；
@@ -483,67 +486,38 @@ U = \{ \underset{p + 1}{\underbrace{{u}_{0},\ldots ,{u}_{0}}},\underset{p}{\unde
 
 从系统 A 到系统 B 的转换可能更为复杂。算法 A12.2 给出了确定这种转换应如何进行的逻辑思维过程。将 \(p\) 次 NURBS 曲线表示为 \(\mathbf{C}\) ，并假设系统 B 可以表示 \(k\) 次的样条，其中 \({p}_{\min } \leq  k \leq  {p}_{\max }\) 。
 
-\HRule
-
-ALGORITHM A12.2
-
-\hspace*{1em} if (C is rational and System B only represents polynomials)
-
-\hspace*{2em} \{
-
-\hspace*{2em} Approximate \(\mathrm{C}\) ;
-
-\hspace*{2em} return;
-
-\hspace*{2em} \}
-
-\hspace*{1em} if \(\left( {p > {p}_{\max }}\right)\)
-
-\hspace*{2em} \{
-
-\hspace*{2em} Approximate \(\mathbf{C}\) ;
-
-\hspace*{2em} return;
-
-\hspace*{2em} \}
-
-\hspace*{1em} if \(\left( {p < {p}_{\min }}\right)\)
-
-\hspace*{2em} \{
-
-\hspace*{2em} DegreeElevateCurve \(\left( \mathbf{C}\right) ;\;\) /* to degree \({p}_{\min } *\) /
-
-\hspace*{2em} return;
-
-\hspace*{1em} \}
-
-Let \(m\) be the minimum order continuity allowed in System B
-
-\hspace*{1em} for a degree \(p\) curve.
-
-Determine the minimum order, \(k\) , of continuity at any
-
-\hspace*{1em} breakpoint of \(\mathbf{C}\) .
-
-if \(\left( {k < m}\right)\)
-
-\hspace*{1em} \{
-
-\hspace*{1em} Approximate \(\mathrm{C}\) ;
-
-\hspace*{1em} return;
-
-\hspace*{1em} \}
-
-Extract the segments of \(\mathbf{C}\) (knot insertion), and convert them
-
-\hspace*{1em} to the segment coefficients required by System B
-
-\hspace*{1em} (reparameterization may be necessary).
-
+% book-code: algorithm A12.2
+\par\medskip\noindent\textbf{算法 A12.2（伪代码）}\BookIndexMark{p0237}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+if (C is rational and System B only represents polynomials)
+{
+    Approximate C ;
+    return;
+}
+if @$\left( {p > {p}_{\max }}\right)$@
+{
+    Approximate @$\mathbf{C}$@ ;
+    return;
+}
+if @$\left( {p < {p}_{\min }}\right)$@
+{
+    DegreeElevateCurve @$\left( \mathbf{C}\right) ;\;$@ /* to degree ${p}_{\min }$ */
+    return;
+}
+Let m be the minimum order continuity allowed in System B
+for a degree p curve.
+Determine the minimum order, k , of continuity at any
+breakpoint of @$\mathbf{C}$@ .
+if ( k < m)
+{
+    Approximate C ;
+    return;
+}
+Extract the segments of @$\mathbf{C}$@ (knot insertion), and convert them
+to the segment coefficients required by System B
+(reparameterization may be necessary).
 If applicable, load the global breakpoints into System B.
-
-\HRule
+\end{minted}
 
 确定最小连续性值 \(m\) 和 \(k\) 需要详细说明。存在 \(C\) 连续性和 \(G\) 连续性，对于有理曲线，均匀空间中的连续性与欧几里得空间中的连续性是不同的。值 \(m\) 和 \(k\) 必须指代系统 B 的样条所基于的连续性类型。例如，假设系统 B 使用有理 \({G}^{2}\) 连续样条。该样条基于欧几里得空间中的切线和曲率连续性，因此值 \(k\) 必须基于系统 A 的 NURBS 曲线在欧几里得空间中的 \(G\) 连续性。注意，示例 Ex7.2 中的二次完整圆在系统 B 中可以精确表示为 \({G}^{2}\) 样条，尽管作为 NURBS 曲线，它在欧几里得空间中仅是 \({C}^{1}\) 连续的，并且在均匀空间中甚至存在尖点。
 

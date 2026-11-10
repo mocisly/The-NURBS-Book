@@ -1,0 +1,549 @@
+\begin{theindex}
+\BookIndexLetter{B}\nopagebreak
+
+  \item 摆动曲面, \hyperindexformat{\hyperpage}{111}
+  \item Bernstein 多项式, \hyperindexformat{\hyperpage}{6}, \hyperindexformat{\hyperpage}{15}, 
+		\hyperindexformat{\hyperpage}{28}
+  \item Bézier
+    \subitem 与幂基形式比较, \hyperindexformat{\hyperpage}{6}, \hyperindexformat{\hyperpage}{67}
+    \subitem 曲线, \hyperindexformat{\hyperpage}{6}, \hyperindexformat{\hyperpage}{96}
+      \subsubitem 定义, \hyperindexformat{\hyperpage}{6}
+      \subsubitem 次数提升, \hyperindexformat{\hyperpage}{50}
+      \subsubitem 次数降低, \hyperindexformat{\hyperpage}{53}
+      \subsubitem 导数, \hyperindexformat{\hyperpage}{8}
+      \subsubitem 性质, \hyperindexformat{\hyperpage}{7}
+    \subitem 曲面
+      \subsubitem 定义, \hyperindexformat{\hyperpage}{11}
+      \subsubitem 性质, \hyperindexformat{\hyperpage}{12}
+  \item 变差减小性质, \hyperindexformat{\hyperpage}{7}, \hyperindexformat{\hyperpage}{10}, 
+		\hyperindexformat{\hyperpage}{25}, \hyperindexformat{\hyperpage}{33}
+  \item 编程, \hyperindexformat{\see{软件}}{138}
+  \item 变换
+    \subitem 曲线与曲面, \hyperindexformat{\hyperpage}{59}
+  \item 逼近, \hyperindexformat{\hyperpage}{90}, \hyperindexformat{\hyperpage}{100}, 
+		\hyperindexformat{\hyperpage}{106}
+  \item B样条
+    \subitem 基函数, \hyperindexformat{\see{基函数}}{15}
+    \subitem 曲线, \hyperindexformat{\see{曲线}}{24}
+    \subitem 编程, \hyperindexformat{\see{软件}}{138}
+    \subitem 曲面, \hyperindexformat{\see{曲面}}{28}
+  \item B样条节点（Greville 横坐标）, \hyperindexformat{\hyperpage}{121}
+
+  \indexspace
+\BookIndexLetter{C}\nopagebreak
+
+  \item 参数误差, \hyperindexformat{\hyperpage}{55}
+  \item 参数形式, \hyperindexformat{\hyperpage}{5}
+    \subitem 与隐式形式比较, \hyperindexformat{\hyperpage}{5}
+    \subitem 导数, \hyperindexformat{\hyperpage}{5}
+    \subitem 曲线, \hyperindexformat{\hyperpage}{5}
+    \subitem 曲面, \hyperindexformat{\hyperpage}{5}
+    \subitem 曲面法向量, \hyperindexformat{\hyperpage}{5}
+  \item 插值, \hyperindexformat{\hyperpage}{90}, \hyperindexformat{\hyperpage}{95}
+  \item 重参数化, \hyperindexformat{\hyperpage}{13}, \hyperindexformat{\hyperpage}{60}, 
+		\hyperindexformat{\hyperpage}{67}, \hyperindexformat{\hyperpage}{136}
+    \subitem 线性函数, \hyperindexformat{\hyperpage}{63}
+    \subitem 线性有理函数, \hyperindexformat{\hyperpage}{61}
+    \subitem 分段多项式函数, \hyperindexformat{\hyperpage}{63}
+    \subitem 分段有理函数, \hyperindexformat{\hyperpage}{64}
+    \subitem 多项式函数, \hyperindexformat{\hyperpage}{61}
+  \item 次数
+    \subitem 提升, \hyperindexformat{\hyperpage}{50}, \hyperindexformat{\hyperpage}{81}
+    \subitem 降低, \hyperindexformat{\hyperpage}{53}
+  \item Coons 曲面
+    \subitem 双三次混合, \hyperindexformat{\hyperpage}{118}, \hyperindexformat{\hyperpage}{120}
+    \subitem 双线性混合, \hyperindexformat{\hyperpage}{118}
+
+  \indexspace
+\BookIndexLetter{D}\nopagebreak
+
+  \item 单位分解, \hyperindexformat{\hyperpage}{7}, \hyperindexformat{\hyperpage}{10}, 
+		\hyperindexformat{\hyperpage}{17}, \hyperindexformat{\hyperpage}{29}, 
+		\hyperindexformat{\hyperpage}{33}, \hyperindexformat{\hyperpage}{36}
+  \item 导数
+    \subitem Bernstein 多项式, \hyperindexformat{\hyperpage}{8}
+    \subitem Bézier 曲线, \hyperindexformat{\hyperpage}{8}
+    \subitem B样条基函数, \hyperindexformat{\hyperpage}{18}
+    \subitem B样条曲线, \hyperindexformat{\hyperpage}{26}, \hyperindexformat{\hyperpage}{28}
+    \subitem 对权重求导, \hyperindexformat{\hyperpage}{123}
+    \subitem B样条曲面, \hyperindexformat{\hyperpage}{30}
+    \subitem 复合函数, \hyperindexformat{\hyperpage}{60}
+    \subitem 参数形式
+      \subsubitem 曲线, \hyperindexformat{\hyperpage}{5}
+      \subsubitem 曲面, \hyperindexformat{\hyperpage}{5}
+    \subitem 幂基
+      \subsubitem 曲线, \hyperindexformat{\hyperpage}{5}
+      \subsubitem 曲面, \hyperindexformat{\hyperpage}{11}
+    \subitem 有理基函数, \hyperindexformat{\hyperpage}{130}
+    \subitem 有理B样条
+      \subsubitem 曲线, \hyperindexformat{\hyperpage}{34}
+      \subsubitem 曲面, \hyperindexformat{\hyperpage}{37}
+  \item de Casteljau 算法, \hyperindexformat{\hyperpage}{9}, \hyperindexformat{\hyperpage}{12}, 
+		\hyperindexformat{\hyperpage}{39}, \hyperindexformat{\hyperpage}{78}, 
+		\hyperindexformat{\hyperpage}{97}, \hyperindexformat{\hyperpage}{107}
+  \item 等参数曲线, \hyperindexformat{\hyperpage}{11}
+    \subitem 结点插入提取, \hyperindexformat{\hyperpage}{43}
+    \subitem Bézier 曲面, \hyperindexformat{\hyperpage}{11}
+    \subitem B样条曲面, \hyperindexformat{\hyperpage}{30}
+    \subitem 有理B样条曲面, \hyperindexformat{\hyperpage}{37}
+  \item 点
+    \subitem 反演, \hyperindexformat{\see{点，投影}}{57}
+    \subitem 投影
+      \subsubitem 曲线, \hyperindexformat{\hyperpage}{57}
+      \subsubitem 曲面, \hyperindexformat{\hyperpage}{57}
+  \item 断点, \hyperindexformat{\hyperpage}{15}, \hyperindexformat{\hyperpage}{136}
+  \item 多项式, \hyperindexformat{\hyperpage}{5}
+
+  \indexspace
+\BookIndexLetter{F}\nopagebreak
+
+  \item 仿射变换, \hyperindexformat{\hyperpage}{24}, \hyperindexformat{\hyperpage}{33}, 
+		\hyperindexformat{\hyperpage}{59}
+  \item 放样曲面, \hyperindexformat{\see{蒙皮曲面}}{111}
+  \item 非夹紧
+    \subitem 圆, \hyperindexformat{\hyperpage}{135}
+    \subitem 曲线, \hyperindexformat{\hyperpage}{134}
+    \subitem 结点向量, \hyperindexformat{\hyperpage}{134}
+  \item 分段多项式空间
+    \subitem 曲线, \hyperindexformat{\hyperpage}{15}
+    \subitem 函数, \hyperindexformat{\hyperpage}{19}
+  \item 分解
+    \subitem B样条到 Bézier 段与曲面片, \hyperindexformat{\hyperpage}{46}
+    \subitem B样条到分段多项式, \hyperindexformat{\hyperpage}{43}, \hyperindexformat{\hyperpage}{67}
+  \item Frenet 标架, \hyperindexformat{\hyperpage}{116}
+  \item 复合B样条曲线, \hyperindexformat{\hyperpage}{47}
+
+  \indexspace
+\BookIndexLetter{G}\nopagebreak
+
+  \item Gordon 曲面, \hyperindexformat{\hyperpage}{117}
+  \item 拐点, \hyperindexformat{\hyperpage}{6}
+
+  \indexspace
+\BookIndexLetter{H}\nopagebreak
+
+  \item Horner 法
+    \subitem 曲线, \hyperindexformat{\hyperpage}{5, 6}
+    \subitem 曲面, \hyperindexformat{\hyperpage}{12}
+  \item 环, \hyperindexformat{\hyperpage}{6}
+  \item 混合函数, \hyperindexformat{\see{基函数}}{5}
+
+  \indexspace
+\BookIndexLetter{I}\nopagebreak
+
+  \item IGES, \hyperindexformat{\hyperpage}{136}
+    \subitem 参数样条, \hyperindexformat{\hyperpage}{68}, \hyperindexformat{\hyperpage}{136}
+
+  \indexspace
+\BookIndexLetter{J}\nopagebreak
+
+  \item 夹紧
+    \subitem 曲线, \hyperindexformat{\hyperpage}{134}
+    \subitem 结点向量, \hyperindexformat{\hyperpage}{134}
+  \item 尖点, \hyperindexformat{\hyperpage}{6}
+  \item 交比, \hyperindexformat{\hyperpage}{126}, \hyperindexformat{\hyperpage}{129}
+  \item 阶, \hyperindexformat{\hyperpage}{15}
+  \item 结点
+    \subitem 插入, \hyperindexformat{\hyperpage}{39}, \hyperindexformat{\hyperpage}{75}, 
+		\hyperindexformat{\hyperpage}{81}
+    \subitem 细化, \hyperindexformat{\hyperpage}{43}, \hyperindexformat{\hyperpage}{67}, 
+		\hyperindexformat{\hyperpage}{126}
+    \subitem 移除, \hyperindexformat{\hyperpage}{47}, \hyperindexformat{\hyperpage}{67}, 
+		\hyperindexformat{\hyperpage}{104}, \hyperindexformat{\hyperpage}{126}, 
+		\hyperindexformat{\hyperpage}{134}
+    \subitem 夹紧开放与非周期, \hyperindexformat{\hyperpage}{19}, \hyperindexformat{\hyperpage}{134}
+    \subitem 夹紧与非夹紧, \hyperindexformat{\hyperpage}{134}
+    \subitem 数据结构, \hyperindexformat{\hyperpage}{139}
+    \subitem 定义, \hyperindexformat{\hyperpage}{15}
+    \subitem 合并, \hyperindexformat{\hyperpage}{43}
+    \subitem 重数, \hyperindexformat{\hyperpage}{18, 19}
+    \subitem 非周期向量, \hyperindexformat{\hyperpage}{19}, \hyperindexformat{\hyperpage}{134}
+    \subitem 控制多边形划分, \hyperindexformat{\hyperpage}{39}
+    \subitem 周期与非周期, \hyperindexformat{\hyperpage}{134}
+    \subitem 跨度, \hyperindexformat{\hyperpage}{15}, \hyperindexformat{\hyperpage}{20}
+    \subitem 均匀与非均匀, \hyperindexformat{\hyperpage}{19}, \hyperindexformat{\hyperpage}{134}
+  \item 基函数
+    \subitem B样条
+      \subsubitem 计算算法, \hyperindexformat{\hyperpage}{20--22}
+      \subsubitem 连续性, \hyperindexformat{\hyperpage}{18}
+      \subsubitem 定义与示例, \hyperindexformat{\hyperpage}{15}
+      \subsubitem 导数, \hyperindexformat{\hyperpage}{18}, \hyperindexformat{\hyperpage}{22}
+      \subsubitem 性质, \hyperindexformat{\hyperpage}{15}, \hyperindexformat{\hyperpage}{19}
+      \subsubitem 张量积, \hyperindexformat{\hyperpage}{28}
+    \subitem 曲线
+      \subsubitem Bézier, \hyperindexformat{\hyperpage}{6}
+      \subsubitem 幂基, \hyperindexformat{\hyperpage}{5}
+      \subsubitem 有理 Bézier, \hyperindexformat{\hyperpage}{9}
+      \subsubitem 有理B样条, \hyperindexformat{\hyperpage}{33}
+    \subitem 曲面
+      \subsubitem Bézier, \hyperindexformat{\hyperpage}{11}
+      \subsubitem 幂基, \hyperindexformat{\hyperpage}{11, 12}
+      \subsubitem 有理 Bézier, \hyperindexformat{\hyperpage}{12}
+      \subsubitem 有理B样条, \hyperindexformat{\hyperpage}{35}
+  \item 基于约束的修改
+    \subitem 曲线, \hyperindexformat{\hyperpage}{130}
+    \subitem 曲面, \hyperindexformat{\hyperpage}{132}
+  \item 局部拟合算法, \hyperindexformat{\hyperpage}{95}, \hyperindexformat{\hyperpage}{106}
+  \item 局部支撑, \hyperindexformat{\hyperpage}{15}, \hyperindexformat{\hyperpage}{33}
+  \item 均匀参数化, \hyperindexformat{\hyperpage}{5}, \hyperindexformat{\hyperpage}{90}
+
+  \indexspace
+\BookIndexLetter{K}\nopagebreak
+
+  \item 控制点
+    \subitem Bézier, \hyperindexformat{\hyperpage}{6}
+    \subitem B样条, \hyperindexformat{\hyperpage}{24}
+    \subitem 数据结构, \hyperindexformat{\hyperpage}{138}
+    \subitem 无穷远控制点, \hyperindexformat{\see{无穷远控制点}}{75}
+    \subitem 多重控制点, \hyperindexformat{\hyperpage}{26}
+    \subitem 有理B样条, \hyperindexformat{\hyperpage}{33}
+    \subitem 重新定位, \hyperindexformat{\hyperpage}{25}, \hyperindexformat{\hyperpage}{121}, 
+		\hyperindexformat{\hyperpage}{127}, \hyperindexformat{\hyperpage}{130}, 
+		\hyperindexformat{\hyperpage}{132}
+    \subitem 最小长度解, \hyperindexformat{\hyperpage}{131}
+    \subitem 加权控制点, \hyperindexformat{\hyperpage}{10}, \hyperindexformat{\hyperpage}{34}
+  \item 控制多边形
+    \subitem Bézier, \hyperindexformat{\hyperpage}{7}
+    \subitem B样条, \hyperindexformat{\hyperpage}{24}
+    \subitem 数据结构, \hyperindexformat{\hyperpage}{139}
+    \subitem 有理B样条, \hyperindexformat{\hyperpage}{33}
+  \item 控制网
+    \subitem Bézier, \hyperindexformat{\hyperpage}{11}
+    \subitem 数据结构, \hyperindexformat{\hyperpage}{139}
+  \item 跨边界导数, \hyperindexformat{\hyperpage}{119}
+
+  \indexspace
+\BookIndexLetter{L}\nopagebreak
+
+  \item 连续性
+    \subitem 蒙皮曲面, \hyperindexformat{\hyperpage}{114}
+    \subitem B样条基函数, \hyperindexformat{\hyperpage}{18}
+    \subitem B样条曲线, \hyperindexformat{\hyperpage}{26}
+    \subitem B样条曲面, \hyperindexformat{\hyperpage}{30}
+    \subitem 闭合B样条曲线, \hyperindexformat{\hyperpage}{134}
+    \subitem 分段多项式与有理曲线, \hyperindexformat{\hyperpage}{15}
+    \subitem 连续阶数, \hyperindexformat{\hyperpage}{15}, \hyperindexformat{\hyperpage}{136}
+    \subitem 参数连续性与几何连续性, \hyperindexformat{\hyperpage}{95}, \hyperindexformat{\hyperpage}{136}
+
+  \indexspace
+\BookIndexLetter{M}\nopagebreak
+
+  \item 蒙皮曲面, \hyperindexformat{\hyperpage}{111}
+  \item 幂基形式, \hyperindexformat{\hyperpage}{5}, \hyperindexformat{\hyperpage}{67}
+    \subitem 导数, \hyperindexformat{\hyperpage}{5}
+    \subitem 曲线, \hyperindexformat{\hyperpage}{5}
+    \subitem 曲面, \hyperindexformat{\hyperpage}{11, 12}
+
+  \indexspace
+\BookIndexLetter{N}\nopagebreak
+
+  \item Newton 迭代, \hyperindexformat{\hyperpage}{57}
+  \item 拟合
+    \subitem 结点选择, \hyperindexformat{\hyperpage}{90}, \hyperindexformat{\hyperpage}{92}, 
+		\hyperindexformat{\hyperpage}{98}, \hyperindexformat{\hyperpage}{100}
+    \subitem 参数选择, \hyperindexformat{\hyperpage}{90}, \hyperindexformat{\hyperpage}{94, 95}, 
+		\hyperindexformat{\hyperpage}{98}
+  \item 逆结点插入, \hyperindexformat{\hyperpage}{42}, \hyperindexformat{\hyperpage}{121}, 
+		\hyperindexformat{\hyperpage}{123}
+  \item 扭曲, \hyperindexformat{\hyperpage}{127, 128}
+  \item 扭转向量, \hyperindexformat{\hyperpage}{119}
+  \item NURBS 表示
+    \subitem 双线性曲面, \hyperindexformat{\hyperpage}{83}
+    \subitem Coons 曲面, \hyperindexformat{\hyperpage}{118}
+    \subitem 椭球面, \hyperindexformat{\hyperpage}{86}
+    \subitem 椭圆抛物面, \hyperindexformat{\hyperpage}{86}
+    \subitem 一般圆锥面, \hyperindexformat{\hyperpage}{84}
+    \subitem 一般圆柱面, \hyperindexformat{\hyperpage}{83}
+    \subitem Gordon 曲面, \hyperindexformat{\hyperpage}{117}
+    \subitem 双曲抛物面, \hyperindexformat{\hyperpage}{83}
+    \subitem 平面, \hyperindexformat{\hyperpage}{83}
+    \subitem 直纹曲面, \hyperindexformat{\hyperpage}{83}
+    \subitem 蒙皮曲面, \hyperindexformat{\hyperpage}{111}
+    \subitem 球面, \hyperindexformat{\hyperpage}{85}
+    \subitem 旋转曲面, \hyperindexformat{\hyperpage}{84}
+    \subitem 扫掠曲面, \hyperindexformat{\hyperpage}{114}
+    \subitem 摆动曲面, \hyperindexformat{\hyperpage}{111}
+    \subitem 三边球面片, \hyperindexformat{\hyperpage}{87}
+    \subitem 环面, \hyperindexformat{\hyperpage}{85}
+
+  \indexspace
+\BookIndexLetter{P}\nopagebreak
+
+  \item 抛物线, \hyperindexformat{\hyperpage}{5, 6}, \hyperindexformat{\hyperpage}{9}, 
+		\hyperindexformat{\hyperpage}{71}, \hyperindexformat{\hyperpage}{73}
+  \item PHIGS, \hyperindexformat{\hyperpage}{136}
+  \item 偏置, \hyperindexformat{\hyperpage}{114, 115}, \hyperindexformat{\hyperpage}{130}, 
+		\hyperindexformat{\hyperpage}{136}
+  \item 平滑函数, \hyperindexformat{\hyperpage}{114}
+
+  \indexspace
+\BookIndexLetter{Q}\nopagebreak
+
+  \item 齐次
+    \subitem 坐标, \hyperindexformat{\hyperpage}{10}
+    \subitem 表示
+      \subsubitem 圆弧, \hyperindexformat{\hyperpage}{11}
+      \subsubitem NURBS 曲线, \hyperindexformat{\hyperpage}{34}
+      \subsubitem NURBS 曲面, \hyperindexformat{\hyperpage}{37}
+  \item 切向量反演, \hyperindexformat{\hyperpage}{58}
+  \item 球面, \hyperindexformat{\hyperpage}{5}, \hyperindexformat{\hyperpage}{84}
+  \item 全局拟合算法, \hyperindexformat{\hyperpage}{90}, \hyperindexformat{\hyperpage}{100}
+  \item 权重
+    \subitem 对权重求导, \hyperindexformat{\hyperpage}{123}
+    \subitem 修改, \hyperindexformat{\hyperpage}{33}, \hyperindexformat{\hyperpage}{60}, 
+		\hyperindexformat{\hyperpage}{123}, \hyperindexformat{\hyperpage}{125, 126}
+    \subitem 负权重, \hyperindexformat{\hyperpage}{49}, \hyperindexformat{\hyperpage}{114}
+    \subitem 有理 Bézier, \hyperindexformat{\hyperpage}{9}
+    \subitem 有理B样条, \hyperindexformat{\hyperpage}{33}, \hyperindexformat{\hyperpage}{35}
+  \item 曲面
+    \subitem Bézier, \hyperindexformat{\hyperpage}{11}, \hyperindexformat{\hyperpage}{28}, 
+		\hyperindexformat{\hyperpage}{35}
+    \subitem B样条
+      \subsubitem 定义, \hyperindexformat{\hyperpage}{28}
+      \subsubitem 导数与连续性, \hyperindexformat{\hyperpage}{30}
+      \subsubitem 性质, \hyperindexformat{\hyperpage}{29}
+    \subitem 数据结构, \hyperindexformat{\hyperpage}{140}
+    \subitem 求值
+      \subsubitem 结点插入, \hyperindexformat{\hyperpage}{43}
+    \subitem 拟合
+      \subsubitem 逼近, \hyperindexformat{\hyperpage}{103, 104}
+      \subsubitem 插值, \hyperindexformat{\hyperpage}{94}, \hyperindexformat{\hyperpage}{98}
+    \subitem 隐式形式, \hyperindexformat{\hyperpage}{5}
+    \subitem 等参数曲线, \hyperindexformat{\hyperpage}{11}
+    \subitem 法向量, \hyperindexformat{\hyperpage}{5}, \hyperindexformat{\hyperpage}{11}
+    \subitem 反转, \hyperindexformat{\hyperpage}{66}
+    \subitem 参数形式, \hyperindexformat{\hyperpage}{5}
+    \subitem 偏导数, \hyperindexformat{\hyperpage}{5}, \hyperindexformat{\hyperpage}{30}, 
+		\hyperindexformat{\hyperpage}{37}
+    \subitem 幂基形式, \hyperindexformat{\hyperpage}{11, 12}
+    \subitem 有理 Bézier, \hyperindexformat{\hyperpage}{12}
+    \subitem 有理B样条
+      \subsubitem 定义, \hyperindexformat{\hyperpage}{35}
+      \subsubitem 导数, \hyperindexformat{\hyperpage}{37}
+      \subsubitem 性质, \hyperindexformat{\hyperpage}{36}
+    \subitem 分割与细分
+      \subsubitem 结点插入, \hyperindexformat{\hyperpage}{43}
+    \subitem 张量积定义, \hyperindexformat{\hyperpage}{11}, \hyperindexformat{\hyperpage}{15}
+  \item 曲线
+    \subitem Bézier
+      \subsubitem 定义, \hyperindexformat{\hyperpage}{6}, \hyperindexformat{\hyperpage}{24}, 
+		\hyperindexformat{\hyperpage}{33}
+      \subsubitem 次数提升, \hyperindexformat{\hyperpage}{50}
+      \subsubitem 次数降低, \hyperindexformat{\hyperpage}{53}
+    \subitem B样条
+      \subsubitem 定义与性质, \hyperindexformat{\hyperpage}{24}
+      \subsubitem 导数与连续性, \hyperindexformat{\hyperpage}{26}, \hyperindexformat{\hyperpage}{67}
+    \subitem 夹紧曲线, \hyperindexformat{\hyperpage}{134}
+    \subitem 三次曲线, \hyperindexformat{\hyperpage}{5, 6}
+    \subitem 数据结构, \hyperindexformat{\hyperpage}{138, 139}
+    \subitem 导数, \hyperindexformat{\hyperpage}{5}, \hyperindexformat{\hyperpage}{26}, 
+		\hyperindexformat{\hyperpage}{34}
+    \subitem 求值
+      \subsubitem 结点插入, \hyperindexformat{\hyperpage}{39}, \hyperindexformat{\hyperpage}{42}
+    \subitem 拟合
+      \subsubitem 逼近, \hyperindexformat{\hyperpage}{100, 101}, \hyperindexformat{\hyperpage}{104}, 
+		\hyperindexformat{\hyperpage}{106, 107}
+      \subsubitem 插值, \hyperindexformat{\hyperpage}{90}, \hyperindexformat{\hyperpage}{92}, 
+		\hyperindexformat{\hyperpage}{96--98}
+    \subitem 隐式形式, \hyperindexformat{\hyperpage}{5}
+    \subitem 参数形式, \hyperindexformat{\hyperpage}{5}
+    \subitem 分段形式
+      \subsubitem Bézier, \hyperindexformat{\hyperpage}{15}
+      \subsubitem 多项式, \hyperindexformat{\hyperpage}{15}, \hyperindexformat{\hyperpage}{24}
+      \subsubitem 有理曲线, \hyperindexformat{\hyperpage}{15}
+    \subitem 幂基形式, \hyperindexformat{\hyperpage}{5}
+    \subitem 有理 Bézier
+      \subsubitem 定义, \hyperindexformat{\hyperpage}{9}
+      \subsubitem 齐次形式, \hyperindexformat{\hyperpage}{10}
+      \subsubitem 性质, \hyperindexformat{\hyperpage}{9}
+    \subitem 有理B样条
+      \subsubitem 定义与性质, \hyperindexformat{\hyperpage}{33}
+      \subsubitem 导数, \hyperindexformat{\hyperpage}{34}
+    \subitem 反转, \hyperindexformat{\hyperpage}{66}
+    \subitem 分割与细分
+      \subsubitem 结点插入, \hyperindexformat{\hyperpage}{39}
+    \subitem 非夹紧曲线, \hyperindexformat{\hyperpage}{134}
+
+  \indexspace
+\BookIndexLetter{R}\nopagebreak
+
+  \item 软件, \hyperindexformat{\hyperpage}{138}
+    \subitem 算术例程, \hyperindexformat{\hyperpage}{143}
+    \subitem 数据结构, \hyperindexformat{\hyperpage}{138}
+    \subitem 数据类型, \hyperindexformat{\hyperpage}{138}
+    \subitem 错误控制, \hyperindexformat{\hyperpage}{141}
+    \subitem 示例程序, \hyperindexformat{\hyperpage}{143}
+    \subitem 内存分配, \hyperindexformat{\hyperpage}{140}
+    \subitem 系统结构, \hyperindexformat{\hyperpage}{145}
+    \subitem 实用例程, \hyperindexformat{\hyperpage}{142}
+
+  \indexspace
+\BookIndexLetter{S}\nopagebreak
+
+  \item 扫掠曲面, \hyperindexformat{\hyperpage}{114}
+  \item 双曲线, \hyperindexformat{\hyperpage}{9}, \hyperindexformat{\hyperpage}{71}, 
+		\hyperindexformat{\hyperpage}{73}
+  \item 数据交换, \hyperindexformat{\hyperpage}{134}, \hyperindexformat{\hyperpage}{136}
+  \item STEP, \hyperindexformat{\hyperpage}{80}, \hyperindexformat{\hyperpage}{136}
+  \item 算法
+    \subitem 形式转换
+      \subsubitem Bézier 到幂基矩阵, \hyperindexformat{\hyperpage}{68}
+      \subsubitem NURBS 到其他样条形式, \hyperindexformat{\hyperpage}{137}
+      \subsubitem 幂基到 Bézier 矩阵, \hyperindexformat{\hyperpage}{69}
+      \subsubitem B样条曲线去夹紧, \hyperindexformat{\hyperpage}{135}
+    \subitem 曲面构造
+      \subsubitem 双三次混合 Coons 曲面, \hyperindexformat{\hyperpage}{120}
+      \subsubitem Gordon 曲面, \hyperindexformat{\hyperpage}{118}
+    \subitem 结点移除
+      \subsubitem 曲线误差界限, \hyperindexformat{\hyperpage}{104}
+      \subsubitem 曲线结点移除, \hyperindexformat{\hyperpage}{48}
+      \subsubitem 误差有界的曲线结点移除, \hyperindexformat{\hyperpage}{105}
+    \subitem 形状修改
+      \subsubitem 基于约束的曲面修改, \hyperindexformat{\hyperpage}{132}
+    \subitem 导数控制点
+      \subsubitem B样条曲线, \hyperindexformat{\hyperpage}{28}
+      \subsubitem B样条曲面, \hyperindexformat{\hyperpage}{31}
+    \subitem 曲线逼近
+      \subsubitem 全局点与导数拟合, \hyperindexformat{\hyperpage}{102}
+      \subsubitem 全局误差有界逼近, \hyperindexformat{\hyperpage}{105}
+      \subsubitem 局部误差有界三次拟合, \hyperindexformat{\hyperpage}{109}
+      \subsubitem 局部误差有界二次拟合, \hyperindexformat{\hyperpage}{107}
+    \subitem 曲线插值
+      \subsubitem 三次样条插值, \hyperindexformat{\hyperpage}{92}
+      \subsubitem 全局点数据插值, \hyperindexformat{\hyperpage}{91}
+    \subitem 分解
+      \subsubitem B样条曲线分解为 Bézier 段, \hyperindexformat{\hyperpage}{46}
+      \subsubitem B样条曲面分解为 Bézier 曲面片, \hyperindexformat{\hyperpage}{46}
+    \subitem 次数提升
+      \subsubitem 曲线, \hyperindexformat{\hyperpage}{52}
+      \subsubitem 曲面, \hyperindexformat{\hyperpage}{53}
+    \subitem 有理B样条导数
+      \subsubitem 曲线, \hyperindexformat{\hyperpage}{35}
+      \subsubitem 曲面, \hyperindexformat{\hyperpage}{38}
+    \subitem 基函数计算
+      \subsubitem 查找结点跨度, \hyperindexformat{\hyperpage}{20}
+      \subsubitem 单个 Bernstein 多项式, \hyperindexformat{\hyperpage}{8}
+      \subsubitem 单个B样条基函数, \hyperindexformat{\hyperpage}{22}
+      \subsubitem 单个B样条基函数及其导数, \hyperindexformat{\hyperpage}{22}
+      \subsubitem 非零B样条基函数, \hyperindexformat{\hyperpage}{20}
+      \subsubitem 非零B样条基函数及其导数, \hyperindexformat{\hyperpage}{21}
+      \subsubitem 全部 Bernstein 多项式, \hyperindexformat{\hyperpage}{8}
+    \subitem 结点插入
+      \subsubitem 曲线, \hyperindexformat{\hyperpage}{41}
+      \subsubitem 曲面, \hyperindexformat{\hyperpage}{42}
+    \subitem 结点细化
+      \subsubitem 曲线, \hyperindexformat{\hyperpage}{44}
+      \subsubitem 曲面, \hyperindexformat{\hyperpage}{44}
+    \subitem NURBS 构造
+      \subsubitem 圆, \hyperindexformat{\hyperpage}{77}
+      \subsubitem 开放圆锥弧, \hyperindexformat{\hyperpage}{79}
+      \subsubitem 旋转曲面, \hyperindexformat{\hyperpage}{85}
+      \subsubitem 三边球面片, \hyperindexformat{\hyperpage}{89}
+      \subsubitem 二次有理 Bézier 弧, \hyperindexformat{\hyperpage}{78}
+    \subitem 点与导数求值
+      \subsubitem B样条曲线, \hyperindexformat{\hyperpage}{24}, \hyperindexformat{\hyperpage}{26}, 
+		\hyperindexformat{\hyperpage}{28}
+      \subsubitem B样条曲面, \hyperindexformat{\hyperpage}{29--31}
+      \subsubitem Bézier 曲线, \hyperindexformat{\hyperpage}{8, 9}
+      \subsubitem Bézier 曲面, \hyperindexformat{\hyperpage}{12}
+      \subsubitem B样条曲线上的点, \hyperindexformat{\hyperpage}{24}
+      \subsubitem B样条曲面上的点, \hyperindexformat{\hyperpage}{29}
+      \subsubitem 幂基曲线, \hyperindexformat{\hyperpage}{6}
+      \subsubitem 幂基曲面, \hyperindexformat{\hyperpage}{12}
+      \subsubitem 有理B样条曲线, \hyperindexformat{\hyperpage}{34}, \hyperindexformat{\hyperpage}{42}
+      \subsubitem 有理B样条曲面, \hyperindexformat{\hyperpage}{37}
+    \subitem 曲面拟合
+      \subsubitem 全局点数据逼近, \hyperindexformat{\hyperpage}{103}
+      \subsubitem 插值参数计算, \hyperindexformat{\hyperpage}{94}
+      \subsubitem 全局点数据插值, \hyperindexformat{\hyperpage}{94}
+      \subsubitem 局部点数据插值, \hyperindexformat{\hyperpage}{99}
+    \subitem 扫掠曲面
+      \subsubitem 插值轨迹, \hyperindexformat{\hyperpage}{115}
+      \subsubitem 不插值轨迹, \hyperindexformat{\hyperpage}{115}
+
+  \indexspace
+\BookIndexLetter{T}\nopagebreak
+
+  \item 透视映射, \hyperindexformat{\hyperpage}{10}, \hyperindexformat{\hyperpage}{34}
+  \item 投影
+    \subitem 平行投影, \hyperindexformat{\hyperpage}{59}
+    \subitem 透视投影, \hyperindexformat{\hyperpage}{59}
+  \item 凸包性质, \hyperindexformat{\hyperpage}{57}
+    \subitem Bézier, \hyperindexformat{\hyperpage}{7}
+    \subitem B样条, \hyperindexformat{\hyperpage}{24}
+    \subitem 有理B样条, \hyperindexformat{\hyperpage}{33}
+  \item 椭圆, \hyperindexformat{\hyperpage}{9}, \hyperindexformat{\hyperpage}{71}, \hyperindexformat{\hyperpage}{73}
+    \subitem 完整构造, \hyperindexformat{\hyperpage}{80}
+
+  \indexspace
+\BookIndexLetter{W}\nopagebreak
+
+  \item 弯曲, \hyperindexformat{\hyperpage}{129}
+    \subitem 圆形, \hyperindexformat{\hyperpage}{129}
+    \subitem 圆柱形, \hyperindexformat{\hyperpage}{129}
+    \subitem 抛物线, \hyperindexformat{\hyperpage}{129}
+  \item 无穷远控制点, \hyperindexformat{\hyperpage}{75}, \hyperindexformat{\hyperpage}{78}
+
+  \indexspace
+\BookIndexLetter{X}\nopagebreak
+
+  \item 形状不变, \hyperindexformat{\see{形状因子}}{66}
+  \item 形状算子, \hyperindexformat{\hyperpage}{126}
+  \item 形状因子, \hyperindexformat{\hyperpage}{66}, \hyperindexformat{\hyperpage}{73}
+
+  \indexspace
+\BookIndexLetter{Y}\nopagebreak
+
+  \item 隐式方程
+    \subitem 与参数形式比较, \hyperindexformat{\hyperpage}{5}
+    \subitem 曲线, \hyperindexformat{\hyperpage}{5}
+    \subitem 曲面, \hyperindexformat{\hyperpage}{5}
+  \item 有理 Bézier
+    \subitem 曲线定义, \hyperindexformat{\hyperpage}{9}
+    \subitem 曲面定义, \hyperindexformat{\hyperpage}{12}
+  \item 有理B样条
+    \subitem 基函数, \hyperindexformat{\see{基函数}}{33}
+    \subitem 曲线, \hyperindexformat{\see{曲线}}{33}
+    \subitem 曲面, \hyperindexformat{\see{曲面}}{35}
+  \item 有理函数, \hyperindexformat{\hyperpage}{9}
+  \item 圆, \hyperindexformat{\hyperpage}{5}, \hyperindexformat{\hyperpage}{9}, \hyperindexformat{\hyperpage}{71}, 
+		\hyperindexformat{\hyperpage}{75}
+    \subitem 构造, \hyperindexformat{\hyperpage}{75}, \hyperindexformat{\hyperpage}{77}
+    \subitem 高阶有理 Bézier 表示, \hyperindexformat{\hyperpage}{81}
+    \subitem 非夹紧表示, \hyperindexformat{\hyperpage}{135}
+  \item 圆锥曲线
+    \subitem 构造, \hyperindexformat{\hyperpage}{78}
+    \subitem 离心率, \hyperindexformat{\hyperpage}{71}
+    \subitem 形式
+      \subsubitem 分类与转换, \hyperindexformat{\hyperpage}{80}
+      \subsubitem 隐式方程, \hyperindexformat{\hyperpage}{71}, \hyperindexformat{\hyperpage}{80}
+      \subsubitem 标准位置, \hyperindexformat{\hyperpage}{71}
+      \subsubitem 最大内切面积, \hyperindexformat{\hyperpage}{73}, \hyperindexformat{\hyperpage}{80}
+      \subsubitem NURBS, \hyperindexformat{\hyperpage}{80}
+      \subsubitem 有理 Bézier, \hyperindexformat{\hyperpage}{73}, \hyperindexformat{\hyperpage}{80}
+      \subsubitem 有理幂基, \hyperindexformat{\hyperpage}{73}, \hyperindexformat{\hyperpage}{80}
+    \subitem 形状因子, \hyperindexformat{\see{形状因子}}{66}
+    \subitem 肩点, \hyperindexformat{\hyperpage}{74}, \hyperindexformat{\hyperpage}{97}, 
+		\hyperindexformat{\hyperpage}{106}
+  \item 圆柱面, \hyperindexformat{\hyperpage}{9}, \hyperindexformat{\hyperpage}{83}
+  \item 约束, \hyperindexformat{\hyperpage}{90}, \hyperindexformat{\hyperpage}{101}, 
+		\hyperindexformat{\hyperpage}{130}
+
+  \indexspace
+\BookIndexLetter{Z}\nopagebreak
+
+  \item 张力, \hyperindexformat{\hyperpage}{132}
+  \item 张量积
+    \subitem B样条基函数, \hyperindexformat{\hyperpage}{28}
+    \subitem 曲面, \hyperindexformat{\hyperpage}{11}
+  \item 展平, \hyperindexformat{\hyperpage}{128}
+  \item 直线, \hyperindexformat{\hyperpage}{5, 6}
+  \item 重心坐标, \hyperindexformat{\hyperpage}{125}
+  \item 周期曲线与非周期曲线, \hyperindexformat{\hyperpage}{134}
+  \item 转换
+    \subitem Bézier 与幂基, \hyperindexformat{\hyperpage}{67--69}
+    \subitem B样条与分段幂基, \hyperindexformat{\hyperpage}{67}
+    \subitem 圆锥曲线形式, \hyperindexformat{\hyperpage}{80}
+  \item 最小二乘逼近, \hyperindexformat{\hyperpage}{100, 101}, \hyperindexformat{\hyperpage}{103}
+
+\end{theindex}

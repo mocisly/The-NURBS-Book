@@ -1,0 +1,22 @@
+% Representative bounded approximation:C(u)=(8u,25u/2-12u^2),nine normal-offset data points.
+% Global closest-point proof:distance^2(u)-distance^2(a)=(u-a)^2[64+192lambda+(25/2-12a-12u)^2]>0.
+\begin{tikzpicture}[book line,x=2.2cm,y=2.2cm,scale=\BookGeometryScale]
+\path[book figure bounds] (-.8,-.8) rectangle (9,4.5);
+\draw (0,0) .. controls (2.6666666667,4.1666666667) and (5.3333333333,4.3333333333) .. (8,0.5);
+\draw[book grid] (5.78,2.305)--(6,2.625);
+\draw[book axis] (6.44,3.265)--(6,2.625);
+\draw[book axis] (5.34,1.665)--(5.78,2.305);
+\node[above right=6pt] at (6.44,3.265) {$e_i$};
+\draw (0,0) circle[radius=2.4pt];
+\draw (0.598,1.29) circle[radius=2.4pt];
+\draw (2.13,2.215) circle[radius=2.4pt];
+\draw (2.93,3.16) circle[radius=2.4pt];
+\draw (4.0125,3.05) circle[radius=2.4pt];
+\draw (5.0625,3.325) circle[radius=2.4pt];
+\draw (5.78,2.305) circle[radius=2.4pt];
+\draw (7.382,1.69) circle[radius=2.4pt];
+\draw (8,0.5) circle[radius=2.4pt];
+\node[below right=7pt] at (0,0) {$\mathbf Q_0$};
+\node[below left=7pt] at (8,0.5) {$\mathbf Q_m$};
+\node[below right=7pt] at (5.78,2.305) {$\mathbf Q_i$};
+\end{tikzpicture}

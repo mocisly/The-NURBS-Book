@@ -1,0 +1,38 @@
+% Five actual quadratic Bezier pieces(Q_i,R_i+1,Q_i+1);exact G1join directions.
+\begin{tikzpicture}[book line,x=2.5cm,y=2.5cm,scale=\BookGeometryScale]
+\path[book figure bounds] (-.9,-.7) rectangle (9.3,5.7);
+\draw[book grid,dashed] (0,0)--(0,1.5)--(0.7,2.7)--(1.4,3.9)--(2.68,4.34)--(4.6,5)--(6.28,4.28)--(7.4,3.8)--(7.9,2.65)--(8.4,1.5)--(8.2,0.6);
+\draw (0,0) .. controls (0,1) and (0.2333333333,1.9) .. (0.7,2.7);
+\draw (0.7,2.7) .. controls (1.1666666667,3.5) and (1.8266666667,4.0466666667) .. (2.68,4.34);
+\draw (2.68,4.34) .. controls (3.96,4.78) and (5.16,4.76) .. (6.28,4.28);
+\draw (6.28,4.28) .. controls (7.0266666667,3.96) and (7.5666666667,3.4166666667) .. (7.9,2.65);
+\draw (7.9,2.65) .. controls (8.2333333333,1.8833333333) and (8.3333333333,1.2) .. (8.2,0.6);
+\draw (0,0) circle[radius=2.4pt];
+\fill (0,0) circle[radius=1pt];
+\node[right=8pt] at (0,0) {$\mathbf Q_0$};
+\draw (0.7,2.7) circle[radius=2.4pt];
+\fill (0.7,2.7) circle[radius=1pt];
+\node[right=8pt] at (0.7,2.7) {$\mathbf Q_1$};
+\draw (2.68,4.34) circle[radius=2.4pt];
+\fill (2.68,4.34) circle[radius=1pt];
+\node[below right=8pt] at (2.68,4.34) {$\mathbf Q_2$};
+\draw (6.28,4.28) circle[radius=2.4pt];
+\fill (6.28,4.28) circle[radius=1pt];
+\node[below left=8pt] at (6.28,4.28) {$\mathbf Q_3$};
+\draw (7.9,2.65) circle[radius=2.4pt];
+\fill (7.9,2.65) circle[radius=1pt];
+\node[left=8pt] at (7.9,2.65) {$\mathbf Q_4$};
+\draw (8.2,0.6) circle[radius=2.4pt];
+\fill (8.2,0.6) circle[radius=1pt];
+\node[left=8pt] at (8.2,0.6) {$\mathbf Q_5$};
+\draw (0,1.5) circle[radius=2.4pt];
+\node[left=8pt] at (0,1.5) {$\mathbf R_1$};
+\draw (1.4,3.9) circle[radius=2.4pt];
+\node[above left=8pt] at (1.4,3.9) {$\mathbf R_2$};
+\draw (4.6,5) circle[radius=2.4pt];
+\node[above=8pt] at (4.6,5) {$\mathbf R_3$};
+\draw (7.4,3.8) circle[radius=2.4pt];
+\node[above right=8pt] at (7.4,3.8) {$\mathbf R_4$};
+\draw (8.4,1.5) circle[radius=2.4pt];
+\node[right=8pt] at (8.4,1.5) {$\mathbf R_5$};
+\end{tikzpicture}

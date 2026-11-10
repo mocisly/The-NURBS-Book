@@ -1,0 +1,12 @@
+% Exact equations6.24-6.27. Endpoint at u=s=1 is(1,0), not OCR(0,0).
+% Both derivative arrows drawn at true length in the same isotropic coordinates.
+\begin{tikzpicture}[book line,x=6cm,y=6cm,scale=\BookGeometryScale]
+\path[book figure bounds] (-.18,-.18) rectangle (1.68,2.2);
+\draw[book axis] (0,0)--(1.52,0) node[right=4pt] {$x$};
+\draw[book axis] (0,0)--(0,1.75) node[above=4pt] {$y$};
+\draw (0,0) .. controls (0.3333333333,0.6666666667) and (0.6666666667,0.6666666667) .. (1,0);
+\draw[book axis] (0,0)--(1,2) node[above right=6pt] {$\mathbf C^{\prime}(u=0)$};
+\draw[book axis] (0,0)--(0.5833333333,1.1666666667) node[right=7pt] {$\mathbf C^{\prime}(s=0)$};
+\draw (.5,.5) circle[radius=2pt] node[above right=7pt] {$\mathbf C(u=\tfrac12)=\mathbf C(s=\tfrac35)$};
+\draw[book grid] (1,-.015)--(1,.015) node[below=6pt] {$1$};
+\end{tikzpicture}

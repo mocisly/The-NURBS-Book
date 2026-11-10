@@ -1,0 +1,63 @@
+% Figure6.11 representative cubic controls documented in companion generator.
+% Given scalar mappings used exactly; inverse-knot rounding is globally certified <1e-24.
+% Native displayed control coordinates rounded to10decimal places (<1e-9cm display error).
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\path[book figure bounds] (-.6,-4.05) rectangle (24.5,7);
+\begin{scope}[xshift=0cm]
+\draw[book grid,dashed] (1,0)--(0,3)--(4,6)--(5,-2)--(10,0);
+\draw[book grid] (1,0)--(0.3874258867,1.8377223398)--(0.720474325,3.0900592906)--(1.4060894212,3.7662055174)--(2.1350889359,3.9446343745)--(3.1645622552,3.6012440621)--(3.8040355744,2.5278537498)--(4.0340698659,2.0903234169)--(4.2632877501,1.6767122499)--(4.4950941715,1.3076892271)--(4.726,0.99)--(5.322,0.17)--(6.0312,-0.472)--(6.9232,-0.748)--(7.944,-0.688)--(9,-0.4)--(10,0);
+\draw (1,0) .. controls (0,3) and (2,4.5) .. (3.25,3.25);
+\draw (3.25,3.25) .. controls (4.5,2) and (5,-2) .. (10,0);
+\draw (1,0) circle[radius=1.5pt];
+\draw (0.3874258867,1.8377223398) circle[radius=1.5pt];
+\draw (0.720474325,3.0900592906) circle[radius=1.5pt];
+\draw (1.4060894212,3.7662055174) circle[radius=1.5pt];
+\draw (2.1350889359,3.9446343745) circle[radius=1.5pt];
+\draw (3.1645622552,3.6012440621) circle[radius=1.5pt];
+\draw (3.8040355744,2.5278537498) circle[radius=1.5pt];
+\draw (4.0340698659,2.0903234169) circle[radius=1.5pt];
+\draw (4.2632877501,1.6767122499) circle[radius=1.5pt];
+\draw (4.4950941715,1.3076892271) circle[radius=1.5pt];
+\draw (4.726,0.99) circle[radius=1.5pt];
+\draw (5.322,0.17) circle[radius=1.5pt];
+\draw (6.0312,-0.472) circle[radius=1.5pt];
+\draw (6.9232,-0.748) circle[radius=1.5pt];
+\draw (7.944,-0.688) circle[radius=1.5pt];
+\draw (9,-0.4) circle[radius=1.5pt];
+\draw (10,0) circle[radius=1.5pt];
+\begin{scope}[xshift=7cm,yshift=3.1cm,x=3cm,y=2.6cm]
+\draw[book axis] (0,0)--(1.12,0) node[right=3pt] {$s$};
+\draw[book axis] (0,0)--(0,1.12) node[above=3pt] {$u$};
+\node[below left=3pt] at (0,0) {$0$};
+\draw[book grid] (1,-.025)--(1,.025) node[below=4pt] {$1$};
+\draw[book grid] (-.025,1)--(.025,1) node[left=4pt] {$1$};
+\draw[book grid] (.5,-.025)--(.5,.025) node[below=4pt] {$\frac12$};
+\draw (0,0) .. controls (0.1666666667,0.3333333333) and (0.3333333333,0.5666666667) .. (0.5,0.7);
+\draw (0.5,0.7) .. controls (0.6666666667,0.8333333333) and (0.8333333333,0.9333333333) .. (1,1);
+\node[right=4pt] at (1,1) {$f(s)$};
+\end{scope}
+\node at (5,-2.7) {(c)};
+\node at (5,-3.5) {$F=\{0,\frac12,\frac7{10},\frac9{10},1\}$};
+\end{scope}
+\begin{scope}[xshift=13cm]
+\draw[book grid] (1,0)--(0,3)--(4,6)--(5,-2)--(10,0);
+\draw (1,0) .. controls (0,3) and (2,4.5) .. (3.25,3.25);
+\draw (3.25,3.25) .. controls (4.5,2) and (5,-2) .. (10,0);
+\draw (1,0) circle[radius=1.5pt];
+\draw (0,3) circle[radius=1.5pt];
+\draw (4,6) circle[radius=1.5pt];
+\draw (5,-2) circle[radius=1.5pt];
+\draw (10,0) circle[radius=1.5pt];
+\begin{scope}[xshift=7cm,yshift=3.1cm,x=3cm,y=2.6cm]
+\draw[book axis] (0,0)--(1.12,0) node[right=3pt] {$s$};
+\draw[book axis] (0,0)--(0,1.12) node[above=3pt] {$u$};
+\node[below left=3pt] at (0,0) {$0$};
+\draw[book grid] (1,-.025)--(1,.025) node[below=4pt] {$1$};
+\draw[book grid] (-.025,1)--(.025,1) node[left=4pt] {$1$};
+\draw (0,0) .. controls (0.3333333333,0.3333333333) and (0.6666666667,0.6666666667) .. (1,1);
+\node[right=4pt] at (1,1) {$f(s)$};
+\end{scope}
+\node at (5,-2.7) {(d)};
+\node at (5,-3.5) {$F=\{0,1\}$};
+\end{scope}
+\end{tikzpicture}

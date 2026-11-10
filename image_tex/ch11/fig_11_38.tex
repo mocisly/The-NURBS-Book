@@ -1,0 +1,31 @@
+% Analytic circular cylinder and actual nearest-axis/radial projective mapping, no traces.
+\begin{tikzpicture}[book line,font=\fontsize{10}{12}\selectfont,scale=\BookGeometryScale]
+\path[book figure bounds] (-8,-6) rectangle (8,8);
+\draw[book grid] (0.9,3.78)--(-6.3,0.54)--(-0.9,-3.78)--(6.3,-0.54)--cycle;
+\begin{scope}[cm={-1.2,-0.54,0,1.2,(-2.25,4.2)}]
+\draw[book grid,dashed] (0,0) circle[radius=1cm];
+\end{scope}
+\begin{scope}[cm={-1.2,-0.54,0,1.2,(2.25,0.6)}]
+\draw[book grid,dashed] (0,0) circle[radius=1cm];
+\end{scope}
+\draw[book grid,dashed] (-3.45,3.66)--(1.05,0.06);
+\draw[book grid,dashed] (-1.05,4.74)--(3.45,1.14);
+\draw[book grid,dashed] (-2.25,3)--(2.25,-0.6);
+\draw[book grid,dashed] (-2.25,5.4)--(2.25,1.8);
+\draw[book grid,dashed] (-2.25,4.2)--(2.25,0.6);
+\draw (-2.7,2.16)--(2.7,-2.16);
+\draw[book grid] (0,2.4)--(-2.4,-1.08);
+\draw[book axis] (0.45,2.04)--(1.35,1.32) node[midway,above right=8pt] {$V$};
+\draw (-0.8485281374,1.1696342007) circle[radius=1.8pt] node[below right=18pt] {$R_{i,j}$};
+\draw (-1.2537785998,0.5820210303) circle[radius=1.8pt] node[below right=8pt] {$\widehat P_{i,j}$};
+\draw (-2.4,-1.08) circle[radius=1.8pt] node[below left=8pt] {$P_{i,j}$};
+\draw (-2.25,4.2) circle[radius=1.8pt] node[above left=8pt] {$Q$};
+\draw (0,2.4) circle[radius=1.8pt];
+\draw[book grid] (0,2.4)--(-.6,5.1) node[above=7pt] {$O(w_{i,j})$};
+\node[below right=7pt] at (2.7,-2.16) {$C_{u_c}(v)$};
+\node[left=7pt] at (-6.3,0.54) {$S(u,v)$};
+\node at (0,7.3) {$r=1,\quad\lambda=2$};
+\draw[book grid,book axis] (-6.5,-4.5)--(-7.7,-5.04) node[below left=4pt] {$x$};
+\draw[book grid,book axis] (-6.5,-4.5)--(-5.6,-5.22) node[below right=4pt] {$y$};
+\draw[book grid,book axis] (-6.5,-4.5)--(-6.5,-3.3) node[above=4pt] {$z$};
+\end{tikzpicture}

@@ -1,0 +1,32 @@
+[
+  {
+    "chapter": "1.tex",
+    "figure": "ch01/fig_1_03.tex",
+    "caption": "图 1.3. 半径为 1 的球体，位于原点。"
+  },
+  {
+    "chapter": "1.tex",
+    "figure": "ch01/fig_1_04.tex",
+    "caption": "图 1.4. \\(\\mathbf{S}\\left( {u,v}\\right)\\) 的偏导数和单位法向量。"
+  },
+  {
+    "chapter": "1.tex",
+    "figure": "ch01/fig_1_05.tex",
+    "caption": "图 1.5. 直线段， \\(\\mathbf{C}\\left( u\\right)  = {\\mathbf{a}}_{0} + {\\mathbf{a}}_{1}u\\)"
+  },
+  {
+    "chapter": "1.tex",
+    "figure": "ch01/fig_1_06.tex",
+    "caption": "图 1.6. 抛物线弧， \\(\\mathbf{C}\\left( u\\right)  = {\\mathbf{a}}_{0} + {\\mathbf{a}}_{1}u + {\\mathbf{a}}_{2}{u}^{2}\\) 。"
+  },
+  {
+    "chapter": "1.tex",
+    "figure": "ch01/fig_1_07.tex",
+    "caption": "图 1.7. \\({\\mathbf{a}}_{1}\\) 和 \\({\\mathbf{a}}_{2}\\) 平行。 (a) 同一方向；(b) 相反方向。"
+  },
+  {
+    "chapter": "1.tex",
+    "figure": "ch01/fig_1_08.tex",
+    "caption": "图 1.7. (续。)"
+  }
+]

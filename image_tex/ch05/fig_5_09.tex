@@ -1,0 +1,19 @@
+% Fig5.8: symbolic cubic inverse-knot-insertion leg; editable line/point/math nodes.
+% Knot ticks are schematic, not a numerical ruler for arbitrary unequal weights.
+% Equations5.19--5.21 independently verified with12 positive-weight insertion cases.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\path[book figure bounds] (-2.6,-1.1) rectangle (10.9,3.7);
+\draw (-2,-.65)--(0,2.5)--(8,2.5)--(10.2,-.65);
+\draw (0,2.5) circle[radius=2.2pt];
+\draw (8,2.5) circle[radius=2.2pt];
+\draw (4.4,2.5) circle[radius=1.7pt];
+\node[above=7pt] at (0,2.5) {$\mathbf P_{i-1}$};
+\node[above=7pt] at (8,2.5) {$\mathbf P_i$};
+\node[above=7pt] at (4.4,2.5) {$\mathbf Q$};
+\node[below right=6pt] at (0,2.5) {$u_i$};
+\node[below left=6pt] at (8,2.5) {$u_{i+3}$};
+\draw[book grid] (2,2.32)--(2,2.68);
+\draw[book grid] (6,2.32)--(6,2.68);
+\node[below=6pt] at (2,2.32) {$u_{i+1}$};
+\node[below=6pt] at (6,2.32) {$u_{i+2}$};
+\end{tikzpicture}

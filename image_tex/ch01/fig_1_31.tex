@@ -1,0 +1,33 @@
+% Fig. 1.21: one rational cubic and its homogeneous polynomial lift.
+% Representative P=[(2.4,.1),(1.1,.12),(.1,.95),(.1,1.8)], w=(1.8,3,3,1.8).
+% Pw=(w*x,w*y,w), C=H(Cw). The camera and all rays use the same coordinates.
+\begin{tikzpicture}[x={(-1cm,-.18cm)},y={(.85cm,-.45cm)},
+  z={(0cm,1.5cm)},book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \def\u{(\t/160)}
+  \def\Den{1.8*(1-\u)^3+9*\u*(1-\u)^2+9*\u^2*(1-\u)+1.8*\u^3}
+  \def\XX{4.32*(1-\u)^3+9.9*\u*(1-\u)^2+.9*\u^2*(1-\u)+.18*\u^3}
+  \def\YY{.18*(1-\u)^3+1.08*\u*(1-\u)^2+8.55*\u^2*(1-\u)+3.24*\u^3}
+  \coordinate (O) at (0,0,0);
+  \coordinate (P0) at (2.4,.1,1); \coordinate (Q0) at (4.32,.18,1.8);
+  \coordinate (P1) at (1.1,.12,1); \coordinate (Q1) at (3.3,.36,3);
+  \coordinate (P2) at (.1,.95,1); \coordinate (Q2) at (.3,2.85,3);
+  \coordinate (P3) at (.1,1.8,1); \coordinate (Q3) at (.18,3.24,1.8);
+  \draw[line width=.45pt] (-.5,-.6,1)--(4.3,-.6,1)--(4.3,4.2,1)--(-.5,4.2,1)--cycle;
+  \draw[book axis,line width=.45pt] (O)--(4.7,0,0) node[below left] {$X$};
+  \draw[book axis,line width=.45pt] (O)--(0,4.8,0) node[below right] {$Y$};
+  \draw[book axis,line width=.45pt] (O)--(0,0,2.6) node[above] {$W$};
+  \draw[book axis,line width=.45pt] (0,0,1)--(3,0,1) node[below left] {$x$};
+  \draw[book axis,line width=.45pt] (0,0,1)--(0,2.9,1);
+  \node[below,yshift=-7pt] at (0,2.7,1) {$y$};
+  \foreach \i in {0,1,2,3} \draw[line width=.35pt,dashed] (O)--(Q\i);
+  \draw[line width=.45pt] (Q0)--(Q1)--(Q2)--(Q3);
+  \draw[line width=.45pt] (P0)--(P1)--(P2)--(P3);
+  \draw (Q0) .. controls (Q1) and (Q2) .. (Q3);
+  \draw plot[variable=\t,domain=0:160,samples=161] ({(\XX)/(\Den)},{(\YY)/(\Den)},1);
+  \foreach \i/\pos in {0/left,1/above,2/above right,3/right}
+    \fill (Q\i) circle (1.4pt) node[\pos] {$\mathbf P^w_{\i}$};
+  \fill (P0) circle (1.4pt) node[below left] {$\mathbf P_0$};
+  \fill (P1) circle (1.4pt) node[below left,yshift=-4pt] {$\mathbf P_1$};
+  \fill (P2) circle (1.4pt) node[above,yshift=12pt] {$\mathbf P_2$};
+  \fill (P3) circle (1.4pt) node[below right,yshift=-3pt] {$\mathbf P_3$};
+\end{tikzpicture}

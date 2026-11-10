@@ -1,12 +1,12 @@
-\documentclass[main.tex]{subfiles}       
+\documentclass[../main.tex]{subfiles}
 
 \begin{document}
 
-\section{引言}
+\section{引言}\BookIndexMark{p0238}
 
 在前面的十二章中，我们介绍了使用 NURBS 建模的不同方面。这些章节基本上涵盖了两件事:(1) 基础数学，和 (2) 说明如何将工具转化为计算机代码的算法。尽管每章中呈现的伪代码相当详细，包含了将其转化为可工作例程所需的所有信息，但从算法草图到有用系统的过程仍然很漫长。如何设计一个有用的系统是一个非常困难的问题(与许多研究人员认为这是一个次要的“实现问题”相反)。一个 NURBS 系统必须满足许多要求，才能在复杂的表面或实体建模器中发挥作用。在本章中，我们介绍了一些编程概念，我们相信这些概念有助于良好的编程实践。我们充分意识到编程风格和约定的多样性。因此，我们并不试图呈现最佳或最终的解决方案，因为根本不存在这样的解决方案。
 
-在撰写本书的过程中，我们开发了一个全面的库 Nlib V2.0，采用 ANSI C 实现。该库包含实现书中讨论的每个工具所需的众多例程。在本章中，我们介绍该库的理念、架构和组织。在开发 Nlib V2.0 时，我们要求我们的例程遵循以下一般标准 [见 Stra92]:
+在撰写本书的过程中，我们开发了一个全面的库 Nlib V2.0，采用 ANSI C 实现。该库包含实现书中讨论的每个工具所需的众多例程。在本章中，我们介绍该库的理念、架构和组织。在开发 Nlib V2.0 时，我们要求我们的例程遵循以下一般标准 见 \cite{Stra92}:
 
 \begin{itemize}
 \item 工具性:应使用可用工具来构建新的例程；
@@ -49,7 +49,7 @@
 除了这些一般标准外，我们还遵循了一些具体标准:
 
 \begin{itemize}
-\item 编程风格:我们希望代码看起来与书中的数学非常相似，以便读者在跟随各个步骤时不会遇到太大困难；此外，我们遵循了[Baly94]中建议的“用户友好”编程风格；
+\item 编程风格:我们希望代码看起来与书中的数学非常相似，以便读者在跟随各个步骤时不会遇到太大困难；此外，我们遵循了\cite{Baly94}中建议的“用户友好”编程风格；
 \end{itemize}
 
 \begin{itemize}
@@ -69,7 +69,7 @@
 在接下来的章节中，我们将讨论以下问题:(1) 数据类型和可移植性，(2) 数据结构，(3) 内存分配，(4) 错误处理，(5) 工具例程，(6) 算术运算，(7) 示例程序，(8) 一些额外的结构，以及 (9) 系统结构。这些问题往往比 NURBS 的数学更复杂。数学基本上是对或错；而软件则是一个没有边界的大灰色区域。
 
 
-\section{数据类型与可移植性}
+\section{数据类型与可移植性}\BookIndexMark{p0239}
 在本节中，我们将处理以下可移植性问题:
 
 \begin{itemize}
@@ -88,31 +88,23 @@
 
 在 Nlib V2.0 中，我们使用了几种预定义的数据类型。一些示例包括:
 
-\HRule
-
+% book-code: scalar-types
+\begin{minted}{c}
 typedef int INDEX;
-
 typedef short FLAG;
-
 typedef int INTEGER;
-
 typedef double REAL;
-
 typedef char * STRING;
-
 typedef short DEGREE;
-
 typedef double PARAMETER;
-
-\HRule
+\end{minted}
 
 INDEX 数据类型用于声明作为不同维度数组的最高索引的变量。例如，如果最高索引从不超过 32,767(16 位)，那么当前定义是足够的。然而，如果需要更大维度的数组，则必须使用该定义。
 
-\HRule
-
+% book-code: index-type
+\begin{minted}{c}
 typedef long INDEX;
-
-\HRule
+\end{minted}
 
 对于 FLAG 数据类型(例如，用于在 switch 语句中“标记”或选择不同的情况)和 INTEGER 数据类型也适用类似的论点。如果系统仅使用 8 位整数，则唯一需要的更改是将 INTEGER 定义为 short 而不是 int。REAL 数据类型默认定义为 double，如果单精度满足要求或系统的其余部分使用单精度，则可以更改为 float。STRING 数据类型的引入是出于便利和概念原因。
 
@@ -120,19 +112,14 @@ DEGREE 和 PARAMETER 数据类型的解释与 INDEX 数据类型类似，即曲�
 
 浮点计算中最困难的任务之一是处理数值不精确性。几乎不可能不使用容差来处理点重合或测量两个浮点数的相等性。在 Nlib V2.0 中，我们使用编译器定义的以下常量:
 
-\HRule
-
-\hspace*{2em} \#define BIGD DBL\_MAX
-
-\hspace*{2em} \#define SMAD DBL\_MIN
-
-\hspace*{2em} \#define BIGI INT\_MAX
-
-\hspace*{2em} \#define SMAI INT\_MIN
-
-\#define DEPS DBL\_EPSILON
-
-\HRule
+% book-code: numeric-limits
+\begin{minted}{c}
+#define BIGD DBL_MAX
+#define SMAD DBL_MIN
+#define BIGI INT_MAX
+#define SMAI INT_MIN
+#define DEPS DBL_EPSILON
+\end{minted}
 
 BIGD 和 SMAD 分别是最大的和最小的双精度数。ANSI C 标准规定它们必须在 float.h 中定义。它还要求 BIGD 至少为 \({10}^{37}\) 或更大，SMAD 至少为 \({10}^{-{37}}\) 或更小。双精度 epsilon DEPS 的要求至少为 \({10}^{-9}\) 或更小。
 
@@ -141,14 +128,13 @@ BIGD 和 SMAD 分别是最大的和最小的双精度数。ANSI C 标准规定�
 通过对对象进行特殊算术函数操作，确保了操作和域的可移植性。后续章节中给出了示例。
 
 
-\section{数据结构}
+\section{数据结构}\BookIndexMark{p0240}
 如第 13.1 节所述，我们打算使用基于对象的概念，并遵循前几章的数学符号和概念。作为一个例子，在曲线评估例程中，我们写道
 
-\HRule
-
-FLAG N\_evncur( CURVE *cur, PARAMETER u, POINT *C )
-
-\HRule
+% book-code: curve-prototype
+\begin{minted}{c}
+FLAG N_evncur( CURVE *cur, PARAMETER u, POINT *C );
+\end{minted}
 
 或者，给定一个曲线和一个参数，计算在给定参数值下的曲线上的一个点。这种编程方式的好处在于用户无需了解不同实体(曲线、参数和点)在内部是如何表示的。它们被视为由更小的组件构建的对象。要定义一条曲线(或者我们可以说，定义一个曲线对象)，我们需要存储这些实体:
 
@@ -176,259 +162,219 @@ FLAG N\_evncur( CURVE *cur, PARAMETER u, POINT *C )
 
 在设计一个大型结构时，首先从基本数据类型创建简单的构建块。曲线对象的基本元素之一是控制点。它可以是有理的或非有理的，二维或三维，即它需要包含两个、三个或四个坐标。此外，它在 B 样条计算中作为控制点和在简单几何操作中使用的欧几里得点(例如计算距离、边界框等)发挥双重作用。第三个要求是能够将此实体称为 \(P\left\lbrack  i\right\rbrack\) ，就像书中提到的其数学抽象一样。为了简化问题并满足基于对象的概念，我们将控制点与“常规”欧几里得点分开，就像我们在书中所做的那样，用 \(\mathbf{P}\) 表示欧几里得点，用 \({\mathbf{P}}^{w}\) 表示可以加权的控制点。因此，点的定义为(见图 13.1):
 
-\HRule
-
+% book-code: point-records
+\begin{minted}{c}
 typedef struct point
-
-\{
-
-\hspace*{1em} REAL x,
-
-\hspace*{4em} \(y,\)
-
-\hspace*{4em} z;
-
-\} POINT;
-
+{
+    REAL x,
+        y,
+        z;
+} POINT;
 typedef struct cpoint
-
-\{
-
-\hspace*{1em} REAL x,
-
-\hspace*{4em} \(y,\)
-
-\hspace*{4em} z,
-
-\hspace*{4em} w;
-
-\} CPOINT;
-
-\HRule
-
-P :
+{
+    REAL x,
+        y,
+        z,
+        w;
+} CPOINT;
+\end{minted}
 
 \begin{center}
-\adjustbox{max width=\textwidth}{
-\begin{tabular}{|c|c|c|c|}
-\hline
-\phantom{X} & \phantom{X} & \phantom{X} & \phantom{X} \\
-\cline{1-4}
-\hline
-\end{tabular}
-}
+\begin{minipage}{14cm}
+\centering
+\begin{tikzpicture}[book line,font=\fontsize{10}{12}\selectfont,scale=.75]
+\path[use as bounding box] (-2,-1) rectangle (9.2,3.2);
+\node[left=7pt] at (0,2.05) {$P:$};
+\node[left=7pt] at (0,.05) {$P^w:$};
+\draw (0,2.5) rectangle (6.3,1.6);
+\node at (1.05,2.05) {$x$};
+\node at (3.15,2.05) {$y$};
+\node at (5.25,2.05) {$z$};
+\draw[book grid] (2.1,2.5)--(2.1,1.6);
+\draw[book grid] (4.2,2.5)--(4.2,1.6);
+\draw (0,0.5) rectangle (8.4,-0.4);
+\node at (1.05,0.05) {$wx$};
+\node at (3.15,0.05) {$wy$};
+\node at (5.25,0.05) {$wz$};
+\node at (7.35,0.05) {$w$};
+\draw[book grid] (2.1,0.5)--(2.1,-0.4);
+\draw[book grid] (4.2,0.5)--(4.2,-0.4);
+\draw[book grid] (6.3,0.5)--(6.3,-0.4);
+\end{tikzpicture}
+\par\smallskip
+图 13.1. 点和控制点数据结构。\\
+\texttt{POINT}存储欧几里得坐标$(x,y,z)$；\texttt{CPOINT}存储齐次坐标$(wx,wy,wz,w)$。
+\end{minipage}
 \end{center}
 
-\begin{center}
-\adjustbox{max width=\textwidth}{
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Pw: & \phantom{X} & y & \(\mathbf{Z}\) & \phantom{X} \\
-\cline{1-5}
-\hline
-\end{tabular}
-}
-\end{center}
-
-图 13.1. 点和控制点数据结构。
 
 这些定义的一个吸引人的特点是它们使编程相当简洁。为此付出的代价是内存的浪费，例如，如果曲线是一个二维非有理曲线，那么用于存储控制点的内存的一半是浪费的。虽然这在过去确实是一个问题，但代码的理解和维护已变得比速度和内存更为重要。然而，有一件事可以做，以限制算术操作仅限于二维或三维，以防曲线是非有理或平面的。第三个和/或第四个分量可以设置为一个特殊值。 \(\mathit{{NlibV2.0}}\) 使用如下:
 
-\HRule
-
-\#define \_NOZ +BIGD
-
-\#define NOW -BIGD
-
-\HRule
+% book-code: sentinels
+\begin{minted}{c}
+#define _NOZ +BIGD
+#define _NOW -BIGD
+\end{minted}
 
 如果第三个分量设置为 \({NOZ}\) (没有 \(z\) )，那么对 \(z\) 组件不执行任何操作，类似地，在 \(x\) NOW 的情况下，忽略 \(w\) 组件。
 
 在定义了点和控制点之后，现在让我们构建更复杂的对象。下一个抽象层次包含控制多边形和节点向量对象，定义如下(见图 13.2 和 13.3):
 
-\HRule
-
+% book-code: polygon-knot-records
+\begin{minted}{c}
 typedef struct cpolygon
-
-\{
-
-\hspace*{1em} INDEX n;
-
-\hspace*{1em} CPOINT *Pw;
-
-\} CPOLYGON;
-
+{
+    INDEX n;
+    CPOINT *Pw;
+} CPOLYGON;
 typedef struct knotvector
-
-\{
-
-\hspace*{1em} INDEX m;
-
-\hspace*{1em} REAL *U;
-
-\} KNOTVECTOR;
-
-\HRule
+{
+    INDEX m;
+    REAL *U;
+} KNOTVECTOR;
+\end{minted}
 
 pol:
 
 \begin{center}
-\includegraphics[max width=0.3\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_601_251_1479_429_673_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch13/fig_13_01.tex}\BookIndexMark{p0241}
+\par\smallskip
+图 13.2. 控制多边形数据结构。\\
+$n$为最高控制点索引，\texttt{Pw}指向包含$n+1$个元素的齐次控制点数组；每项存储$(w_ix_i,w_iy_i,w_iz_i,w_i)$。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 13.2. 控制多边形数据结构。
+\begin{center}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch13/fig_13_02.tex}\BookIndexMark{p0242}
+\par\smallskip
+图 13.3. 节点向量数据结构。\\
+$m$为最高节点索引，\texttt{U}指向包含$m+1$个实数的节点数组$u_0,\ldots,u_m$。
+\end{minipage}
+\end{center}
 
 换句话说，控制多边形对象只是一个结构，包含最高索引和指向控制点数组的指针。节点向量也有一个最高索引字段和指向节点数组的指针。这些结构包含了最低限度的数据。可以根据特殊需要扩展它们，例如，控制多边形结构可以存储关于边界框的信息，或者节点向量结构可以存储一个标志，以指示它是均匀的还是非均匀的。现在，给定一个控制多边形、一个节点向量和一个指定的度数，可以从这些组成部分构建一条曲线，如下所示(见图 13.4):
 
-\HRule
-
+% book-code: curve-record
+\begin{minted}{c}
 typedef struct curve
-
-\{
-
-\hspace*{1em} CPOLYGON *pol;
-
-\hspace*{1em} DEGREE p;
-
-\hspace*{1em} KNOTVECTOR *knt;
-
-\} CURVE;
-
-\HRule
+{
+    CPOLYGON *pol;
+    DEGREE p;
+    KNOTVECTOR *knt;
+} CURVE;
+\end{minted}
 
 也就是说，一个曲线对象由一个多边形指针、一个度数和一个节点向量指针组成。这个定义的美在于，各个组成部分可以很容易地提取以进行进一步处理。例如，如果需要计算曲线的包围盒，在该例程中会提取多边形子对象并传递给处理包围盒计算的另一个例程。同样，如果需要查找一个参数所在的节点区间，节点向量对象会从曲线中分离出来并传递给一个例程。假设当前例程接收到一个曲线指针，编程相对简单。... CPOLYGON *pol; KNOTVECTOR *knt;
 
-\begin{center}
-\includegraphics[max width=0.3\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_602_156_1479_368_673_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 13.3. 节点向量数据结构。
 
 \begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_603_408_248_732_721_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch13/fig_13_03.tex}\BookIndexMark{p0243}
+\par\smallskip
+图 13.4. 曲线数据结构。\\
+\texttt{CURVE}包含控制多边形指针\texttt{pol}、次数$p$和节点向量指针\texttt{knt}；两个子对象分别管理齐次控制点数组和实数节点数组，$m=n+p+1$。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 13.4. 曲线数据结构。
-
-\HRule
-
-\hspace*{1em} ...
-
+% book-code: object-access
+\begin{minted}{c}
+...
 pol = cur->pol;
-
 knt = cur->knt;
-
-\hspace*{1em} ...
-
-N\_polbox(pol, ...);
-
-N\_findsp(knt,...);
-
-\HRule
+...
+N_polbox(pol, ...);
+N_findsp(knt,...);
+\end{minted}
 
 换句话说，简单的指针赋值允许程序降到更低的抽象层次，执行必要的操作，并将结果返回到调用例程的层次。
 
 表面对象的定义非常相似。它需要一个控制网、两个度数和两个节点向量。控制网定义为(见图 13.5):
 
-\HRule
-
+% book-code: net-record
+\begin{minted}{c}
 typedef struct cnet
+{
+    INDEX n,
+        m;
+    CPOINT **Pw;
+} CNET;
+\end{minted}
 
-\{
-
-\hspace*{1em} INDEX n,
-
-\hspace*{4em} m;
-
-\hspace*{1em} CPOINT **Pw;
-
-\} CNET;
-
-\HRule
-
-它包含两个方向上的最高索引和一个指向指针的指针，即一个指向指针数组的指针，该数组指向每列控制点的第一个元素。当写作 \(P\left\lbrack  i\right\rbrack  \left\lbrack  j\right\rbrack\) 时， \(P\left\lbrack  i\right\rbrack\) 指的是指针数组中指向第 \(i\) 列开头的第 \(i\) 个指针。索引 [j]
+它包含两个方向上的最高索引和一个指向指针的指针，即一个指向指针数组的指针，该数组指向每列控制点的第一个元素。当写作 \(P\left\lbrack  i\right\rbrack  \left\lbrack  j\right\rbrack\) 时， \(P\left\lbrack  i\right\rbrack\) 指的是指针数组中指向第 \(i\) 列开头的第 \(i\) 个指针。索引[j]是该列中的第 \(j\) 个偏移量。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_604_326_252_890_750_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch13/fig_13_04.tex}\BookIndexMark{p0244}
+\par\smallskip
+图 13.5. 控制网数据结构。\\
+\texttt{CNET}包含两个最高索引$n,m$和指针\texttt{Pw}；\texttt{Pw}指向$n+1$个列指针，每个\texttt{Pw[i]}指向包含$m+1$个齐次控制点的第$i$列。\\
+\texttt{Pw[i][j]}访问该列第$j$项；图中展开第0列和第$n$列，其余列以省略号表示，每项均有四个齐次分量。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 13.5. 控制网数据结构。
+将控制网、度数和两个节点向量结合在一起，得到一个定义为(见图 13.6)的表面:
 
-是该列中的第 \(j\) 个偏移量。将控制网、度数和两个节点向量结合在一起，得到一个定义为(见图 13.6)的表面:
-
-\HRule
-
+% book-code: surface-record
+\begin{minted}{c}
 typedef struct surface
+{
+    CNET *net;
+    DEGREE p,
+        q;
+    KNOTVECTOR *knu,
+        *knv;
+} SURFACE;
+\end{minted}
 
-\{
 
-\hspace*{1em} CNET *net;
 
-\hspace*{1em} DEGREE p,
-
-\hspace*{5em} q；
-
-\hspace*{1em} KNOTVECTOR *knu,
-
-\hspace*{8em} *krv;
-
-\} SURFACE;
-
-\HRule
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch13/fig_13_05.tex}\BookIndexMark{p0245}
+\par\smallskip
+图 13.6. 曲面数据结构。\\
+\texttt{SURFACE}包含控制网指针\texttt{net}、次数$p,q$及两个节点向量指针\texttt{knu,knv}；控制网和节点数组的索引分别为$n,m$与$r,s$。\\
+$r=n+p+1$，$s=m+q+1$；\texttt{Pw[i][j]}为齐次控制点，两个节点数组分别存储$u_0,\ldots,u_r$和$v_0,\ldots,v_s$。
+\end{minipage}
+\end{center}
 
 再次，控制网和节点向量被轻松提取以执行各种操作。如果需要对同一曲线或表面执行多个操作，这些定义变得相当自然且非常经济；只需传递指向不同结构的指针即可。
 
 
-\section{内存分配}
+\section{内存分配}\BookIndexMark{p0246}
 
 \(\mathrm{C}\) 语言最强大的工具之一是其动态分配和释放内存的能力。然而，这种能力是有代价的:不当的内存分配、使用或释放可能导致致命错误。因此，Nlib V2.0 对内存分配和释放有非常严格的规则。最重要的一条是，任何例程都不允许分配和释放内存，除非是专门编写的内存处理程序。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_605_276_252_990_761_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 13.6. 表面数据结构。
 
 在例程中分配的所有内存且未返回给调用例程的内存必须在返回之前被释放。这个事实，加上适当的错误处理，可能导致相当混乱的代码，正如这个代码段所示。
 
-\HRule
-
+% book-code: malloc-example
+\begin{minted}{c}
 x = (double *) malloc ( n1*sizeof(double) );
-
 if ( x == NULL ) return ( error ) ;
-
 y = (double *) malloc ( n2*sizeof(double) );
-
 if ( y == NULL )
-
-\{
-
-\hspace*{1em} free( x );
-
-\hspace*{1em} return ( error ) ;
-
-\}
-
+{
+    free( x );
+    return ( error ) ;
+}
 z = (double *) malloc ( n3*sizeof(double) );
-
 if ( z == NULL )
-
-\{
-
-\hspace*{1em} free( x );
-
-\hspace*{1em} free( y );
-
-\hspace*{1em} return ( error ) ;
-
-\}
-
-\HRule
+{
+    free( x );
+    free( y );
+    return ( error ) ;
+}
+\end{minted}
 
 如果需要多个分配，这个过程可能会迅速变得相当复杂。可以很容易看出， \(n + 1\) 内存分配需要 \(n\left( {n + 1}\right) /2\) 行代码来处理释放，以应对可能的错误，例如，要求 21 个数组的代码包含 210 行释放语句，仅用于处理动态内存分配可能失败的情况。
 
@@ -450,293 +396,167 @@ if ( z == NULL )
 
 每个 NURBS 例程的结构使用这个简单的示例进行了概述:
 
+% book-code: session-sketch
+\begin{minted}{c}
 ...
-
-\HRule
-
 FLAG error = 0 ;
-
-\hspace*{1em} INDEX n, m;
-
-\hspace*{1em} CPOINT **Pw;
-
-\HRule
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_606_306_1345_924_729_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 13.7. 内存堆栈。
-
-\HRule
-
-\hspace*{5em} STACKS S;
-
-\hspace*{5em} ...
-
-\hspace*{4em} N\_inurbs(\&S);
-
-\hspace*{5em} ...
-
-\hspace*{3em} Pw = S\_getc2d(n, m,\&S);
-
-\hspace*{4em} if ( Pw == NULL ) \{ error = 1; goto EXIT; \}
-
-\hspace*{5em} ...
-
-\hspace*{2em} Pw[i][j] = ...;
-
-\hspace*{4em} ...
-
-\hspace*{2em} EXIT:
-
-N\_enurbs(\&S);
-
+INDEX n, m;
+CPOINT **Pw;
+STACKS S;
+...
+N_inurbs(&S);
+...
+Pw = S_getc2d(n, m,&S);
+if ( Pw == NULL ) { error = 1; goto EXIT; }
+...
+Pw[i][j] = ...;
+...
+EXIT:
+N_enurbs(&S);
 return ( error ) ;
-
-\HRule
+\end{minted}
 
 每个例程都有自己的内存堆栈，在 nurbs.h 中定义如下(见图 13.7):
 
-\HRule
-
+% book-code: stack-record
+\begin{minted}{c}
 typedef struct stacks
-
-\{
-
-\hspace*{1em} I1DNODE *i1d;
-
-\hspace*{1em} I2DNODE *i2d;
-
-\hspace*{1em} R1DNODE *r1d;
-
-\hspace*{1em} R2DNODE *r2d;
-
-\hspace*{1em} ...
-
-\hspace*{1em} KNTNODE *knt;
-
-\} STACKS;
-
-\HRule
-
-换句话说，它是一个指向链表节点的指针结构，这些节点存储不同类型的内存指针——一维或二维的 INTEGER 和 REAL 数组、POINT 数组等。当进入一个例程时，为该结构分配内存，并且指针由 N\_inurbs(   ) 例程设置为 NULL。为了分配内存，程序 (1) 声明适当的内存指针(在前面的示例中为 **Pw)，并 (2) 调用内存例程 (S\_getc2d(   ))。内存例程然后分配所需的内存并将指针保存在堆栈上。作为一个例子，让我们看看 S\_getc2d(   ) 如何为二维控制点数组分配内存(该例程中使用的错误处理在第 3.5 节中讨论)。
-
-\HRule
-
-\#include "nurbs.h"
-
-static STRING rname = "S\_GETC2D";
-
-CPOINT **S\_getc2d( INDEX n, INDEX m, STACKS *S )
-
-\{
-
-\hspace*{1em} INDEX k, l;
-
-\hspace*{1em} CPOINT **Pw, *Qw;
-
-\HRule
-
-内存分配 605
-
-\HRule
-
-C1DNODE *c1d;
-
-C2DNODE *c2d;
-
-/* Allocate memory */
-
-Pw = (CPOINT **) malloc ( (n+1)*sizeof(CPOINT *) );
-
-if ( Pw == NULL )
-
-\{
-
-\hspace*{2em} E\_seterr(MEM\_ERR, rname);
-
-\hspace*{2em} return NULL;
-
-\}
-
-Qw = (CPOINT *) malloc ( (n+1)*(m+1)*sizeof(CPOINT));
-
-if ( Qw == NULL )
-
-\{
-
-\hspace*{1em} E\_seterr(MEM\_ERR, rname);
-
-\hspace*{1em} free( \(\mathrm{{Pw}}\) );
-
-\hspace*{1em} return NULL;
-
-\}
-
-/* Make pointer assignments */
-
-1 = 0 ;
-
-for ( \(k = 0\) ; \(k <  = n\) ; \(k +  +\) )
-
-\{
-
-\hspace*{1em} \(\operatorname{Pw}\left\lbrack  k\right\rbrack   = \& \operatorname{Qw}\left\lbrack  l\right\rbrack\) ;
-
-\hspace*{1em} l = l+m+1;
-
-\}
-
-/* Put pointers on memory stacks \(*\) /
-
-c1d = (C1DNODE *) malloc ( sizeof(C1DNODE) );
-
-if ( c1d == NULL )
-
-\{
-
-\hspace*{1em} E\_seterr(MEM\_ERR, rname);
-
-\hspace*{1em} free( Pw ); free( Qw );
-
-\hspace*{1em} return NULL;
-
-\}
-
-c1d->ptr = Qw;
-
-c1d->next = S->c1d;
-
-S->c1d = c1d;
-
-c2d = (C2DNODE *) malloc ( sizeof(C2DNODE) );
-
-if ( c2d == NULL )
-
-\{
-
-\hspace*{1em} E\_seterr(MEM\_ERR, rname);
-
-\hspace*{1em} free( Pw );
-
-\HRule
-
-606 B-spline 编程概念
-
-\HRule
-
-\hspace*{1em} return NULL;
-
-\}
-
-c2d->ptr = Pw;
-
-c2d->next = S->c2d;
-
-\(\mathrm{S} -  > \mathrm{c}2\mathrm{\;d} = \mathrm{c}2\mathrm{\;d}\) ;
-
-/* Exit */
-
-return \(\mathrm{{Pw}}\) ;
-
-\HRule
-
-\}
+{
+    I1DNODE *i1d;
+    I2DNODE *i2d;
+    R1DNODE *r1d;
+    R2DNODE *r2d;
+    ...
+    KNTNODE *knt;
+} STACKS;
+\end{minted}
+
+换句话说，它是一个指向链表节点的指针结构，这些节点存储不同类型的内存指针——一维或二维的 INTEGER 和 REAL 数组、POINT 数组等。当进入一个例程时，为该结构分配内存，并且指针由 N\_inurbs(   ) 例程设置为 NULL。为了分配内存，程序 (1) 声明适当的内存指针(在前面的示例中为 **Pw)，并 (2) 调用内存例程 (S\_getc2d(   ))。内存例程然后分配所需的内存并将指针保存在堆栈上。
+
+\begin{center}
+\begin{minipage}{37cm}
+\centering
+\BookFigure[max width=\linewidth]{ch13/fig_13_06.tex}
+\par\smallskip
+图 13.7. 按内存类型分别维护的链式内存栈示例。\\
+\texttt{STACKS}保存各类链表的头指针；此例中\texttt{i1d,r2d,knt}非空，\texttt{i2d,r1d}为空，其余类型以省略号表示。\\
+每个节点保存已分配内存的\texttt{ptr}及链指针\texttt{next}；右侧小框$I_j,R_j,K_j$代表相应类型的内存块，空栈和链尾均为\texttt{NULL}。
+\end{minipage}
+\end{center}
+
+作为一个例子，让我们看看 S\_getc2d(   ) 如何为二维控制点数组分配内存(该例程中使用的错误处理在第 3.5 节中讨论)。
+
+% book-code: S_getc2d
+\begin{minted}{c}
+#include "nurbs.h"
+static STRING rname = "S_GETC2D";
+CPOINT **S_getc2d( INDEX n, INDEX m, STACKS *S )
+{
+    INDEX k, l;
+    CPOINT **Pw, *Qw;
+    C1DNODE *c1d;
+    C2DNODE *c2d;
+    /* Allocate memory */
+    Pw = (CPOINT **) malloc ( (n+1)*sizeof(CPOINT *) );
+    if ( Pw == NULL )
+    {
+        E_seterr(MEM_ERR, rname);
+        return NULL;
+    }
+    Qw = (CPOINT *) malloc ( (n+1)*(m+1)*sizeof(CPOINT));
+    if ( Qw == NULL )
+    {
+        E_seterr(MEM_ERR, rname);
+        free( Pw );
+        return NULL;
+    }
+    /* Make pointer assignments */
+    l = 0;
+    for ( k = 0 ; k <= n ; k ++ )
+    {
+        Pw[k]= & Qw[l] ;
+        l = l+m+1;
+    }
+    /* Put pointers on memory stacks */
+    c1d = (C1DNODE *) malloc ( sizeof(C1DNODE) );
+    if ( c1d == NULL )
+    {
+        E_seterr(MEM_ERR, rname);
+        free( Pw ); free( Qw );
+        return NULL;
+    }
+    c1d->ptr = Qw;
+    c1d->next = S->c1d;
+    S->c1d = c1d;
+    c2d = (C2DNODE *) malloc ( sizeof(C2DNODE) );
+    if ( c2d == NULL )
+    {
+        E_seterr(MEM_ERR, rname);
+        free( Pw );
+        return NULL;
+    }
+    c2d->ptr = Pw;
+    c2d->next = S->c2d;
+    S->c2d = c2d ;
+    /* Exit */
+    return Pw ;
+}
+\end{minted}
 
 节点 C1DNODE 和 C2DNODE 在 geometry.h 中定义为
 
-\HRule
-
+% book-code: allocation-node-records
+\begin{minted}{c}
 typedef struct c1dnode
-
-\{
-
-\hspace*{1em} CPOINT *ptr;
-
-\hspace*{1em} struct c1dnode *next;
-
-\} C1DNODE;
-
+{
+    CPOINT *ptr;
+    struct c1dnode *next;
+} C1DNODE;
 typedef struct c2dnode
-
-\{
-
-\hspace*{1em} CPOINT **ptr;
-
-\hspace*{1em} struct c2dnode *next;
-
-\} C2DNODE;
-
-\HRule
+{
+    CPOINT **ptr;
+    struct c2dnode *next;
+} C2DNODE;
+\end{minted}
 
 其他类型的内存指针也使用类似的节点。
 
 一旦内存被分配，它可以在程序中根据需要使用。最后，所有分配的内存由 N\_enurbs(   ) 例程释放，该例程遍历不同的内存堆栈，释放分配的内存，并销毁链表。其结构如下:
 
-\#include "nurbs.h"
-
-\HRule
-
-VOID N\_enurbs( STACKS *S )
-
-\{
-
-\hspace*{1em} I1DNODE *i1p;
-
-\hspace*{1em} ...
-
-\hspace*{1em} KNTNODE *krp;
-
-\hspace*{1em} /* Free integer arrays */
-
-\hspace*{1em} while ( S->i1d != NULL )
-
-\hspace*{1em} \{
-
-\hspace*{3em} i1p = S->i1d;
-
-\hspace*{3em} S->i1d = i1p->next;
-
-\hspace*{3em} free( i1p->ptr );
-
-\hspace*{3em} free( i1p );
-
-\hspace*{1em} \}
-
-\HRule
-
-...
-
-\HRule
-
-/* Free knot vectors */
-
-while ( S->knt ! = NULL )
-
-\{
-
-\hspace*{1em} \(\mathrm{{knp}} = \mathrm{S} -  > \mathrm{{knt}}\) ;
-
-\hspace*{1em} S->knt = knp->next;
-
-\hspace*{1em} free( knp->ptr );
-
-\hspace*{1em} free( knp );
-
-\}
-
-\HRule
-
-\}
+% book-code: N_enurbs
+\begin{minted}{c}
+#include "nurbs.h"
+VOID N_enurbs( STACKS *S )
+{
+    I1DNODE *i1p;
+    ...
+    KNTNODE *knp;
+    /* Free integer arrays */
+    while ( S->i1d != NULL )
+    {
+        i1p = S->i1d;
+        S->i1d = i1p->next;
+        free( i1p->ptr );
+        free( i1p );
+    }
+    ...
+    /* Free knot vectors */
+    while ( S->knt != NULL )
+    {
+        knp = S -> knt ;
+        S->knt = knp->next;
+        free( knp->ptr );
+        free( knp );
+    }
+}
+\end{minted}
 
 这种内存管理方式提供了一种相对简洁的方法来处理内存分配和释放这一困难任务。它使程序员免于处理令人分心的细节，并记住释放所有动态分配的内存。在目前的形式下，该方法不允许在运行程序的中间进行释放。如果这在特定应用中造成问题，可以编写简单的释放例程来释放内存并从内存栈中消除节点。
 
 关于 N\_inurbs(   ) 和 N\_enurbs(   ) 例程的说明:在之前的讨论中，这些例程初始化和终止内存栈。然而，这些例程也可以用于初始化和反初始化程序员希望在整个 NURBS 例程中使用的其他全局参数。这是每个 NURBS 例程都以 N\_inurbs(   ) 开始并以 N\_enurbs(   ) 结束的众多原因之一，即使不需要动态内存分配。这个概念类似于为车载电话预先布线的汽车。司机可能从来不想要电话，但如果他需要，安装就变成了一个五分钟(干净的)工作。Nlib V2.0 中的 NURBS 例程为动态内存分配和初始化“预先布线”，因此添加新功能变得简单，并且不需要改变程序的整体结构。
 
 
-\section{错误控制}
+\section{错误控制}\BookIndexMark{p0247}
 
 
 错误处理是设计系统中最关键的问题之一。每个例程都可能出现错误，而调用例程必须以合理的方式处理这些错误。基本上有两种类型的错误处理:
@@ -753,788 +573,457 @@ while ( S->knt ! = NULL )
 
 NURBS 例程需要在后台处理错误，通过将错误标志传回每个调用例程来实现。这可以通过多种不同的方式完成。一种复杂的方法是使用错误堆栈。如果一个例程发现了错误，它会被放入堆栈中，并将控制权返回给调用例程。该例程要么处理错误，要么将自己的错误放入堆栈中，并将控制权返回给更高层的例程。在每个更高层次上，调用例程会接收到一个错误堆栈(见图 13.8)，显示错误历史记录，在每个层次上，例程可以纠正错误(如果可能)，或者将堆栈(其自己的错误在顶部)传递到更高一层。最终，高于 NURBS 库的例程将处理该错误。让我们考虑一个简单的例子。第 9 章讨论的数据简化算法使用以下简单的调用层次结构:
 
-\HRule
-
+% book-code: call-hierarchy
+\begin{minted}{text}
 Data reduction;
-
-\hspace*{1em} Interpolate with given knot vector;
-
-\hspace*{1em} Remove knots;
-
-\hspace*{1em} Compute degree elevated knot vector;
-
-\hspace*{1em} Least-squares approximation with given knot vector;
-
-\hspace*{2em} LU decomposition;
-
-\HRule
+    Interpolate with given knot vector;
+    Remove knots;
+    Compute degree elevated knot vector;
+    Least-squares approximation with given knot vector;
+        LU decomposition;
+\end{minted}
 
 如果 LU 分解在最深层次失败，则无法执行最小二乘近似。数据简化例程可以选择重新启动整个过程，使用更高阶的插值曲线(这正是实际实现所做的)，而不是终止整个过程。
 
-尽管错误堆叠是一种复杂的技术，但它需要一些编程来响应每个级别的不同错误。在 Nlib V2.0 中没有采用这种技术，主要有两个原因:(1)每个 NURBS 例程只调用少数其他例程，即调用栈相对较小，和(2)调用例程
+
 
 \begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_611_398_1636_725_432_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch13/fig_13_07.tex}
+\par\smallskip
+图 13.8. 错误栈示例。\\
+底层\texttt{M\_ludcmp}的错误逐层返回，\texttt{N\_clqapr}与\texttt{N\_capreb}依次补充本层错误；上层调用者获得包含各层信息的错误栈。\\
+箭头表示错误向上返回的路径，错误码和例程名与原图一致；正文随后说明Nlib V2.0采用单一错误标志的选择。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 13.8. 错误堆栈。
+尽管错误堆叠是一种复杂的技术，但它需要一些编程来响应每个级别的不同错误。在 Nlib V2.0 中没有采用这种技术，主要有两个原因:(1)每个 NURBS 例程只调用少数其他例程，即调用栈相对较小，和(2)调用例程检查大多数错误，因此只有少数错误仍需在较低级别的例程中被检测到。因此，对于 Nlib V2.0 来说，传递一个错误标志似乎是合理的，并使每个例程负责处理此错误。错误标志是一个简单的结构，在 datastr.h 中定义如下:
 
-检查大多数错误，因此只有少数错误仍需在较低级别的例程中被检测到。因此，对于 Nlib V2.0 来说，传递一个错误标志似乎是合理的，并使每个例程负责处理此错误。错误标志是一个简单的结构，在 datastr.h 中定义如下:
-
-\HRule
-
+% book-code: error-record
+\begin{minted}{c}
 typedef struct enode
-
-\(\begin{cases}  & {u}_{0} = 0, \\   & {u}_{1} = 0, \\   & {u}_{2} = 0, \\   & {u}_{3} = 0, \\   & {u}_{4} = 0, \\   & {u}_{5} = 0, \\   & {u}_{6} = 0, \\   & {u}_{7} = 0, \\   & {u}_{8} = 0, \\   & {u}_{9} = 0, \\   & {u}_{10} = 0, \\   & {u}_{11} = 0, \\   & {u}_{12} = 0, \\   & {u}_{13} = 0, \\   & {u}_{14} = 0, \\   & {u}_{12} = 0, \\   & {u}_{13} = 0, \\   & {u}_{14} = 0, \\   & {u}_{12} = 0, \\   & {u}_{13} = 0, \\   & {u}_{24} = 0, \\   & {u}_{24} = 0, \\   & {u}_{24} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   & {u}_{34} = 0, \\   &  \end{cases}\)
-
-\hspace*{1em} INTEGER eno;
-
-\hspace*{1em} STRING fna;
-
-\} ENODE;
-
-\HRule
+{
+    INTEGER eno;
+    STRING fna;
+} ENODE;
+\end{minted}
 
 也就是说，该结构包含一个错误编号和检测到错误的例程名称。最常见的错误被编号并在 datastr.h 中定义。一些示例包括:
 
-\HRule
-
-\hspace*{2em} \#define CUR\_ERR 1
-
-\hspace*{3em} \#define SUR\_ERR 2
-
-\hspace*{2em} \#define DEG\_ERR 3
-
-\hspace*{2em} \#define KNT\_ERR 4
-
-\hspace*{3em} \#define WEI\_ERR 5
-
-\hspace*{5em} ...
-
-\section*{\#define MEM\_ERR 15}
-
-\hspace*{7em} ...
-
-\HRule
+% book-code: error-defines
+\begin{minted}{c}
+#define CUR_ERR 1
+#define SUR_ERR 2
+#define DEG_ERR 3
+#define KNT_ERR 4
+#define WEI_ERR 5
+...
+#define MEM_ERR 15
+...
+\end{minted}
 
 其中 CUR\_ERR 是曲线定义错误；KNT\_ERR 是节点向量错误，例如递减节点；MEM\_ERR 是内存分配错误，等等；为了方便，可以创建一个错误文件，其中详细解释所有这些错误。使用这些错误编号，需要一个全局错误变量。Nlib V2.0 在 globals.h 中定义并初始化错误变量 NERR，如下所示:
 
-\HRule
-
-extern volatile ENODE NERR \(= \{ 0,\) " " \(\}\) ;
-
-\HRule
+% book-code: error-global
+\begin{minted}{c}
+extern volatile ENODE NERR = { 0, " " } ;
+\end{minted}
 
 一旦检测到错误，NERR 通过错误例程 E\_seterr(   ) 接收一个新值:
 
-\HRule
-
-\#include "nurbs.h"
-
+% book-code: E_seterr
+\begin{minted}{c}
+#include "nurbs.h"
 extern volatile ENODE NERR;
-
-VOID E\_seterr( INTEGER err, STRING name )
-
-\{
-
-\hspace*{1em} NERR.eno = err;
-
-\hspace*{1em} NERR.fna = name;
-
-\}
-
-\HRule
+VOID E_seterr( INTEGER err, STRING name )
+{
+    NERR.eno = err;
+    NERR.fna = name;
+}
+\end{minted}
 
 Nlib V2.0 具有一套错误例程，用于检查所有可能的错误并将 NERR 设置为适当的值。我们在这里提供两个示例；第一个检查节点是否是非递减的，而第二个执行完整的曲线检查，即检查曲线定义的一致性、权重和节点向量。
 
-\HRule
-
-\#include "nurbs.h"
-
-FLAG E\_kntdef( KNOTVECTOR *knt, STRING rname )
-
-\{
-
-\hspace*{1em} FLAG error = 0 ;
-
-\hspace*{1em} INDEX i, m;
-
-\hspace*{1em} REAL *U;
-
-\hspace*{1em} /* Convert to local notation */
-
-\hspace*{1em} m = knt->m;
-
-\hspace*{1em} \(\mathrm{U} = \mathrm{{knt}} -  > \mathrm{U}\) ;
-
-\hspace*{1em} /* Check knots */
-
-\hspace*{1em} for ( i = 0; i < m; i++ )
-
-\hspace*{1em} \{
-
-\hspace*{3em} if ( U[i] > U[i+1] )
-
-\hspace*{3em} \{
-
-\hspace*{4em} E\_seterr(KNT\_ERR, rname);
-
-\hspace*{4em} error = 1 ;
-
-\hspace*{4em} break;
-
-\hspace*{2em} \}
-
-\hspace*{1em} \}
-
-\hspace*{1em} /* Exit */
-
-\hspace*{1em} return ( error ) ;
-
-\HRule
-
-\}
+% book-code: E_kntdef
+\begin{minted}{c}
+#include "nurbs.h"
+FLAG E_kntdef( KNOTVECTOR *knt, STRING rname )
+{
+    FLAG error = 0 ;
+    INDEX i, m;
+    REAL *U;
+    /* Convert to local notation */
+    m = knt->m;
+    U = knt -> U ;
+    /* Check knots */
+    for ( i = 0; i < m; i++ )
+    {
+        if ( U[i] > U[i+1] )
+        {
+            E_seterr(KNT_ERR, rname);
+            error = 1 ;
+            break;
+        }
+    }
+    /* Exit */
+    return ( error ) ;
+}
+\end{minted}
 
 换句话说，如果未发现错误，例程返回 0 ，否则返回 1 并将 NERR 设置为适当的值。
 
 在许多应用中，曲线数据是从文件中读取的，例如从 IGES 文件。在调用任何 NURBS 例程之前，确保文件包含正确的信息是明智的，即执行完整的曲线(表面)检查是有用的(也是必要的)。这个检查的一个额外积极特征是，当曲线和表面被传递给 NURBS 例程时，不再需要进一步的曲线(表面)错误检查。在考虑完整曲线检查例程之前，还讨论了两个错误例程:(1)检查曲线定义的一致性，以及(2)检查权重。首先考虑曲线定义检查例程。
 
-\HRule
+% book-code: E_curdef
+\begin{minted}{c}
+#include "nurbs.h"
+FLAG E_curdef ( CURVE *cur, STRING rname )
+{
+    FLAG olddim, oldrat, newdim, newrat, error = 0;
+    INDEX i, n, m;
+    DEGREE p;
+    CPOINT *Pw;
+    /* Convert to local notation */
+    n = cur->pol->n;
+    Pw = cur->pol->Pw;
+    p = cur->p;
+    m = cur->knt->m;
+    /* Check definition */
+    if ( ( n + p + 1) != m)
+    {
+        E_seterr(CUR_ERR, rname);
+        error = 1;
+        goto EXIT;
+    }
+    /* Check for consistency */
+    if ( Pw[0].z == _NOZ ) olddim = 2; else olddim = 3;
+    if ( Pw[0].w == _NOW ) oldrat = 0; else oldrat = 1;
+    for ( i=1; i<=n; i++ )
+    {
+        if ( Pw[i].z == _NOZ ) newdim = 2; else newdim = 3;
+        if ( newdim != olddim )
+        {
+            E_seterr(CUR_ERR, rname);
+            error = 1;
+            break;
+        }
+        if ( Pw[i].w == _NOW ) newrat = 0; else newrat = 1;
+        if ( newrat != oldrat )
+        {
+            E_seterr(CUR_ERR, rname);
+            error = 1;
+            break;
+        }
+    }
+    /* Exit */
+EXIT:
+    return ( error ) ;
+}
+\end{minted}
 
-\#include "nurbs.h"
-
-FLAG E\_curdef ( CURVE *cur, STRING rname )
-
-\{
-
-\hspace*{1em} FLAG olddim, oldrat, newdim, newrat, error = 0;
-
-\hspace*{1em} INDEX i, n, m;
-
-\HRule
-
-错误控制 611
-
-\HRule
-
-\hspace*{2em} DEGREE p;
-
-\hspace*{2em} CPOINT *Pw;
-
-\hspace*{2em} /* Convert to local notation */
-
-\hspace*{1em} n = cur->pol->n;
-
-\hspace*{1em} Pw = cur->pol->Pw;
-
-\hspace*{1em} p = cur->p;
-
-\hspace*{2em} m = cur->knt->m;
-
-\hspace*{1em} /* Check definition */
-
-\hspace*{2em} if \(\left( {\left( {n + p + 1}\right) ! = m}\right)\)
-
-\hspace*{2em} \{
-
-\hspace*{3em} E\_seterr(CUR\_ERR, rname);
-
-\hspace*{3em} error = 1;
-
-\hspace*{3em} goto EXIT;
-
-\hspace*{1em} \}
-
-\hspace*{1em} /* Check for consistency */
-
-\hspace*{2em} if ( Pw[0].z == NOZ ) olddim = 2; else olddim = 3;
-
-\hspace*{2em} if ( Pw[0].w == NOW ) oldrat = 0; else oldrat = 1;
-
-\hspace*{2em} for ( i=1; i<=n; i++ )
-
-\hspace*{2em} \{
-
-\hspace*{3em} if ( Pw[i].z == NOZ ) newdim = 2; else newdim = 3;
-
-\hspace*{3em} if ( newdim != olddim )
-
-\hspace*{3em} \{
-
-\hspace*{4em} E\_seterr(CUR\_ERR, rname);
-
-\hspace*{4em} error = 1;
-
-\hspace*{4em} break;
-
-\hspace*{3em} \}
-
-\hspace*{3em} if ( Pw[i].w == NOW ) newrat = 0; else newrat = 1;
-
-\hspace*{3em} if ( newrat != oldrat )
-
-\hspace*{3em} \{
-
-\hspace*{4em} E\_seterr(CUR\_ERR, rname);
-
-\hspace*{4em} error = 1;
-
-\hspace*{4em} break;
-
-\hspace*{3em} \}
-
-\hspace*{1em} \}
-
-\hspace*{1em} /* Exit */
-
-\hspace*{1em} EXIT:
-
-\hspace*{1em} return ( error ) ;
-
-\}
-
-\section*{612 B-spline Programming Concepts}
 
 The weight check routine is:
 
-\hspace*{2em} \#include "nurbs.h"
+% book-code: E_curwei
+\begin{minted}{c}
+#include "nurbs.h"
+FLAG E_curwei( CURVE *cur, STRING rname )
+{
+    FLAG error = 0 ;
+    INDEX i, n;
+    CPOINT *Pw;
+    /* Convert to local notation */
+    n = cur->pol->n;
+    Pw = cur->pol->Pw;
+    /* Check if curve is rational */
+    if ( Pw[0] . w == _NOW ) return ( 0 ) ;
+    /* Now check the weights */
+    for ( i = 0; i <=n; i++ )
+    {
+        if ( Pw[i].w <= 0.0 )
+        {
+            E_seterr(WEI_ERR, rname);
+            error = 1;
+            break;
+        }
+    }
+    /* Exit */
+    return ( error ) ;
+}
+\end{minted}
 
-\hspace*{2em} FLAG E\_curwei( CURVE *cur, STRING rname )
+As a practical matter, application programmers might want to set a limit to the largest permissible weight and check for it in this routine. Large weights create very bad parametrizations, which in turn can result in unacceptable surfaces constructed from curves.
 
-\hspace*{2em} \{
+The input checking routine is:
 
-\hspace*{3em} FLAG error = 0 ;
-
-\hspace*{3em} INDEX i, n;
-
-\hspace*{3em} CPOINT *Pw;
-
-\hspace*{3em} /* Convert to local notation */
-
-\hspace*{3em} n = cur->pol->n;
-
-\hspace*{3em} Pw = cur->pol->Pw;
-
-\hspace*{3em} /* Check if curve is rational */
-
-\hspace*{3em} if ( Pw[0] . w == \_NOW ) return ( 0 ) ;
-
-\hspace*{3em} /* Now check the weights */
-
-\hspace*{3em} for ( i = 0; i <=n; i++ )
-
-\hspace*{3em} \{
-
-\hspace*{4em} if ( Pw[i].w <= 0.0 )
-
-\hspace*{4em} \{
-
-\hspace*{6em} E\_seterr(WEI\_ERR, rname);
-
-\hspace*{6em} error = 1;
-
-\hspace*{6em} break;
-
-\hspace*{4em} \}
-
-\hspace*{3em} \}
-
-\hspace*{3em} /* Exit */
-
-\hspace*{3em} return ( error ) ;
-
-\hspace*{2em} \}
-
-As a practical matter, application programmers might want to set a limit to the
-
-largest permissible weight and check for it in this routine. Large weights create
-
-very bad parametrizations, which in turn can result in unacceptable surfaces
-
-constructed from curves.
-
-\hspace*{1em} The input checking routine is:
-
-\#include "nurbs.h"
-
-\hspace*{1em} FLAG E\_curinp( CURVE *cur, STRING rname )
-
-\{
-
-\HRule
-
-实用例程 613
-
-标记错误；
-
-KNOTVECTOR *knt;
-
-/* 转换为本地表示法 */
-
-knt = cur->knt;
-
-/* 检查曲线定义 */
-
-error = E\_curdef(cur, rname);
-
-if ( error > 0 ) return ( 1 ) ;
-
-/* 检查曲线权重 */
-
-error = E\_curwei(cur, rname);
-
-if ( error > 0 ) return ( 1 ) ;
-
-/* 检查节点向量 */
-
-error = E\_kntdef(knt, rname);
-
-if ( error > 0 ) return ( 1 ) ;
-
-/* 退出 */
-
-return(0);
-
-\}
+% book-code: E_curinp
+\begin{minted}{c}
+#include "nurbs.h"
+FLAG E_curinp( CURVE *cur, STRING rname )
+{
+    FLAG error;
+    KNOTVECTOR *knt;
+    /* 转换为本地表示法 */
+    knt = cur->knt;
+    /* 检查曲线定义 */
+    error = E_curdef(cur, rname);
+    if ( error > 0 ) return ( 1 ) ;
+    /* 检查曲线权重 */
+    error = E_curwei(cur, rname);
+    if ( error > 0 ) return ( 1 ) ;
+    /* 检查节点向量 */
+    error = E_kntdef(knt, rname);
+    if ( error > 0 ) return ( 1 ) ;
+    /* 退出 */
+    return(0);
+}
+\end{minted}
 
 每个 NURBS 例程原则上可以单独处理错误检查。然而，使用错误例程使编程变得更加简洁。程序员可以专注于手头的任务，例如曲线细化，而诸如错误检查和内存分配等杂项任务则在概念层面上处理。
 
 
-\section{实用程序}
+\section{实用程序}\BookIndexMark{p0248}
 实用例程帮助程序员创建特殊结构或将一种类型的输入转换为另一种类型。这类实用程序的种类繁多，但必须在某处划定界限。在 Nlib V2.0 中，存在几十个支持特殊结构构造的例程。
 
 创建曲线结构可以通过多种不同方式完成，具体取决于在什么级别上可用什么类型的信息。一个简单的例子是:
 
-\HRule
-
-\#include "nurbs.h"
-
-VOID U\_makcu1( CURVE *cur, CPOLYGON *pol, DEGREE p,
-
-\hspace*{1em} KNOTVECTOR *knt )
-
-\{
-
-\HRule
-
-614 B-spline 编程概念
-
-\HRule
-
-cur->pol = pol;
-
-cur->p = p;
-
-cur->knt = knt;
-
-\HRule
-
-\}
+% book-code: U_makcu1
+\begin{minted}{c}
+#include "nurbs.h"
+VOID U_makcu1( CURVE *cur, CPOLYGON *pol, DEGREE p,
+    KNOTVECTOR *knt )
+{
+    cur->pol = pol;
+    cur->p = p;
+    cur->knt = knt;
+}
+\end{minted}
 
 这可能是最简单的工具类型，负责将现有结构的指针分配给曲线结构的元素。多边形和节点向量也可以通过工具例程创建。一个简单的例子是:
 
-\HRule
-
-\#include "nurbs.h"
-
-FLAG U\_makp12( CPOLYGON *pol, REAL *wx, REAL *wy, REAL *wz,
-
-\hspace*{9em} REAL *w, INDEX n, STACKS *S )
-
-\{
-
-\hspace*{1em} INDEX i;
-
-\hspace*{1em} CPOINT *Pw;
-
-\hspace*{1em} /* Allocate memory for point array */
-
-\hspace*{1em} Pw = S\_getc1d(n, S);
-
-\hspace*{1em} if ( Pw == NULL ) return (1);
-
-\hspace*{1em} /* Fill in point array */
-
-\hspace*{1em} for ( i = 0; i <=n; i++ )
-
-\hspace*{1em} \{
-
-\hspace*{2em} Pw[i].x = wx[i];
-
-\hspace*{2em} Pw[i].y = wy[i];
-
-\hspace*{3em} if ( wz != NULL )
-
-\hspace*{4em} Pw[i].z = wz[i];
-
-\hspace*{3em} else
-
-\hspace*{4em} Pw[i].z = \_NOZ;
-
-\hspace*{3em} if ( w != NULL )
-
-\hspace*{4em} Pw[i].w = w[i];
-
-\hspace*{3em} else
-
-\hspace*{4em} Pw[i].w = \_NOW;
-
-\hspace*{1em} \}
-
-\hspace*{1em} /* Make pointer assignments */
-
-\hspace*{1em} pol \(-  > n = n\) ;
-
-\hspace*{1em} pol->Pw = Pw;
-
-\hspace*{1em} /* Exit */
-
-\hspace*{1em} return (0);
-
-\}
-
-\HRule
+% book-code: U_makp12
+\begin{minted}{c}
+#include "nurbs.h"
+FLAG U_makp12( CPOLYGON *pol, REAL *wx, REAL *wy, REAL *wz,
+    REAL *w, INDEX n, STACKS *S )
+{
+    INDEX i;
+    CPOINT *Pw;
+    /* Allocate memory for point array */
+    Pw = S_getc1d(n, S);
+    if ( Pw == NULL ) return (1);
+    /* Fill in point array */
+    for ( i = 0; i <=n; i++ )
+    {
+        Pw[i].x = wx[i];
+        Pw[i].y = wy[i];
+        if ( wz != NULL )
+            Pw[i].z = wz[i];
+        else
+            Pw[i].z = _NOZ;
+        if ( w != NULL )
+            Pw[i].w = w[i];
+        else
+            Pw[i].w = _NOW;
+    }
+    /* Make pointer assignments */
+    pol -> n = n ;
+    pol->Pw = Pw;
+    /* Exit */
+    return (0);
+}
+\end{minted}
 
 该例程不仅创建了一个多边形结构(在调用例程中分配内存以存储该结构)，还将传统的(wx, wy, wz, w)类型输入转换为基于对象的点输入。同时，它还负责为非有理或平面曲线正确设置 \(z\) 和 \(w\) 组件。我们展示了一个类似的例程，它从最小的片段创建曲线:
 
-\HRule
-
-\#include "nurbs.h"
-
-FLAG U\_makcu3( CURVE *cur, REAL *wx, REAL *wy, REAL *wz,
-
-\hspace*{8em} REAL *w, INDEX n, DEGREE p, REAL *U, INDEX m,
-
-\hspace*{8em} STACKS *S )
-
-\{
-
-\hspace*{1em} CPOINT *Pw;
-
-\hspace*{1em} CPOLYGON *pol;
-
-\hspace*{1em} KNOTVECTOR *knt;
-
-\hspace*{1em} /* Allocate memory */
-
-\hspace*{1em} \(\mathrm{{Pw}} = \mathrm{S} - \operatorname{getcpa}\left( {\mathrm{{wx}},\mathrm{{wy}},\mathrm{{wz}},\mathrm{w},\mathrm{n},\mathrm{S}}\right) ;\)
-
-\hspace*{1em} if ( Pw == NULL ) return (1);
-
-\hspace*{1em} pol = S\_getpol(S);
-
-\hspace*{1em} if ( pol == NULL ) return (1);
-
-\hspace*{1em} knt = S\_getknt(S);
-
-\hspace*{1em} if ( knt == NULL ) return (1);
-
-\hspace*{1em} /* Make pointer assignments */
-
-\hspace*{1em} pol \(-  > n = n\) ;
-
-\HRule
-
-pol->Pw = Pw;
-
-knt->m = m;
-
-knt->U = U;
-
-cur->pol = pol;
-
-cur->p = p;
-
-cur->knt = knt;
-
-/* 退出 */
-
-return (0);
-
-\}
+% book-code: U_makcu3
+\begin{minted}{c}
+#include "nurbs.h"
+FLAG U_makcu3( CURVE *cur, REAL *wx, REAL *wy, REAL *wz,
+    REAL *w, INDEX n, DEGREE p, REAL *U, INDEX m,
+    STACKS *S )
+{
+    CPOINT *Pw;
+    CPOLYGON *pol;
+    KNOTVECTOR *knt;
+    /* Allocate memory */
+    Pw = S_getcpa(wx, wy, wz, w, n, S) ;
+    if ( Pw == NULL ) return (1);
+    pol = S_getpol(S);
+    if ( pol == NULL ) return (1);
+    knt = S_getknt(S);
+    if ( knt == NULL ) return (1);
+    /* Make pointer assignments */
+    pol -> n = n ;
+    pol->Pw = Pw;
+    knt->m = m;
+    knt->U = U;
+    cur->pol = pol;
+    cur->p = p;
+    cur->knt = knt;
+    /* 退出 */
+    return (0);
+}
+\end{minted}
 
 注意内存例程 S\_getcpa(   )、S\_getpol(   ) 和 S\_getknt(   ) 是如何与这个工具集成得如此良好的。没有进行显式的分配和释放，但通过全局错误标志 NERR 进行了适当的错误处理。这个例程也是一个很好的示例，说明了如何在更高级的例程中处理错误。如果在之前的三个内存例程中的任何一个检测到错误，NERR 将被设置并返回控制。U\_makcu3 通过将控制返回到更高一级来处理错误。由于内存分配在内存例程和工具例程中都是问题，因此不需要对全局 NERR 进行新的设置。
 
 作为最后一个示例，让我们考虑一个表面工具例程，该例程根据控制点和节点向量信息创建一个表面。
 
-\#include "nurbs.h"
-
-FLAG U\_maksu2( SURFACE *sur, CPOINT **Pw, INDEX n, INDEX m,
-
-DEGREE P, DEGREE q, REAL *U, REAL *V, INDEX r,
-
-INDEX S, STACKS *S )
-
-\{
-
-CNET *net;
-
-KNOTVECTOR *knu, *knv;
-
-/* 为控制网分配内存 */
-
-/* 和节点向量结构 \(*\) */
-
-net = S\_getnet(S);
-
-if ( net == NULL ) return ( 1 ) ;
-
-knu = S\_getknt(S);
-
-if ( knu == NULL ) return ( 1 ) ;
-
-knv = S\_getknt(S);
-
-if ( knv == NULL ) return ( 1 ) ;
-
-/* 进行指针赋值 */
-
-net->n = n;
-
-net->m = m;
-
-net->Pw = Pw;
-
-knu->m = r;
-
-knu->U = U;
-
-knv->m = s;
-
-knv->U = V;
-
-sur->net = net;
-
-sur->p = p;
-
-sur->q = q;
-
-sur->knu = knu;
-
-sur->knv = knv;
-
-/* 退出 */
-
-return (0);
-
-\}
+% book-code: U_maksu2
+\begin{minted}{c}
+#include "nurbs.h"
+FLAG U_maksu2( SURFACE *sur, CPOINT **Pw, INDEX n, INDEX m,
+    DEGREE p, DEGREE q, REAL *U, REAL *V, INDEX r,
+    INDEX s, STACKS *S )
+{
+    CNET *net;
+    KNOTVECTOR *knu, *knv;
+    /* 为控制网分配内存 */
+    /* 和节点向量结构 * */
+    net = S_getnet(S);
+    if ( net == NULL ) return ( 1 ) ;
+    knu = S_getknt(S);
+    if ( knu == NULL ) return ( 1 ) ;
+    knv = S_getknt(S);
+    if ( knv == NULL ) return ( 1 ) ;
+    /* 进行指针赋值 */
+    net->n = n;
+    net->m = m;
+    net->Pw = Pw;
+    knu->m = r;
+    knu->U = U;
+    knv->m = s;
+    knv->U = V;
+    sur->net = net;
+    sur->p = p;
+    sur->q = q;
+    sur->knu = knu;
+    sur->knv = knv;
+    /* 退出 */
+    return (0);
+}
+\end{minted}
 
 
-\section{算术例程}
+\section{算术例程}\BookIndexMark{p0249}
 
 对 NURBS 曲线和曲面的操作，例如评估或节点插入，需要对控制点进行算术运算。由于控制点被视为对象，因此需要特殊的算术例程来执行诸如凸组合(角落切割)、求和或投影到欧几里得空间等任务。除了对对象进行算术运算外，这些例程还有助于理解程序，并使得将 NURBS 例程移植到不同环境成为可能。例如，假设一个基于有理曲线和曲面的三维设计系统将被用作仅采用非有理曲线的二维制图系统。由于控制点对象是无维的，因此只需更改其定义，并修改少量算术例程。系统的其余部分，可能包含数百万行代码，保持不变。
 
 我们展示了在 Nlib V2.0 中使用的一些算术例程的示例。第一个示例是初始化例程。计算曲线或表面上的一个点需要求和，这要求将和初始化为零。
 
-\#include "nurbs.h"
-
-VOID A\_initcp( CPOINT Aw, CPOINT *Bw )
-
-\{
-
-\HRule
-
-\hspace*{2em} Bw->x = Aw.x;
-
-Bw->y = Aw.y;
-
-\hspace*{2em} Bw->z = Aw.z;
-
-\hspace*{2em} Bw->w = Aw.w;
-
-\HRule
-
-\}
+% book-code: A_initcp
+\begin{minted}{c}
+#include "nurbs.h"
+VOID A_initcp( CPOINT Aw, CPOINT *Bw )
+{
+    Bw->x = Aw.x;
+    Bw->y = Aw.y;
+    Bw->z = Aw.z;
+    Bw->w = Aw.w;
+}
+\end{minted}
 
 该例程妥善处理不同类型的控制点，无论是有理的还是非有理的，二维的还是三维的，通过 Aw 的第三和第四坐标。
 
 下一个示例是一个更新给定控制点的例程，该控制点再次用于计算混合控制点的和。
 
-\#include "nurbs.h"
-
-\HRule
-
-VOID A\_updcpt( REAL alpha, CPOINT Aw, CPOINT *Bw )
-
-\{
-
-\hspace*{1em} Bw->x = Bw->x + alpha*Aw.x;
-
-\hspace*{1em} Bw->y = Bw->y + alpha*Aw.y;
-
-\hspace*{1em} if ( Aw.z != \_NOZ )
-
-\hspace*{2em} Bw->z = Bw->z + alpha*Aw.z;
-
-\hspace*{1em} else
-
-\hspace*{2em} Bw->z = \_NOZ;
-
-\hspace*{1em} if ( Aw.w != \_NOW )
-
-\hspace*{2em} Bw->w = Bw->w + alpha*Aw.w;
-
-\hspace*{1em} else
-
-\hspace*{2em} Bw->w = \_NOW;
-
-\}
-
-\HRule
+% book-code: A_updcpt
+\begin{minted}{c}
+#include "nurbs.h"
+VOID A_updcpt( REAL alpha, CPOINT Aw, CPOINT *Bw )
+{
+    Bw->x = Bw->x + alpha*Aw.x;
+    Bw->y = Bw->y + alpha*Aw.y;
+    if ( Aw.z != _NOZ )
+        Bw->z = Bw->z + alpha*Aw.z;
+    else
+        Bw->z = _NOZ;
+    if ( Aw.w != _NOW )
+        Bw->w = Bw->w + alpha*Aw.w;
+    else
+        Bw->w = _NOW;
+}
+\end{minted}
 
 作为最后一个示例，我们考虑投影例程，该例程将有理点映射到欧几里得空间。
 
-\HRule
+% book-code: A_euclid
+\begin{minted}{c}
+#include "nurbs.h"
+VOID A_euclid( CPOINT Pw, POINT *P )
+{
+    if ( Pw.w != _NOW )
+    {
+        P->x = Pw.x/Pw.w;
+        P->y = Pw.y/Pw.w;
+        if ( Pw.z != _NOZ )
+            P->z = Pw.z/Pw.w;
+        else
+            P -> z = 0.0 ;
+    }
+    else
+    {
+        P -> x = Pw.x ;
+        P -> y = Pw.y ;
+        if ( Pw.z != _NOZ )
+            P -> z = Pw .z ;
+        else
+            P -> z = 0.0 ;
+    }
+}
+\end{minted}
 
-\hspace*{2em} \#include "nurbs.h"
+These routines are used in the next section to illustrate two NURBS routines, curve and surface evaluations.
 
-\hspace*{2em} VOID A\_euclid( CPOINT Pw, POINT *P )
-
-\hspace*{2em} \{
-
-\hspace*{3em} if ( Pw.w !== \_NOW )
-
-\hspace*{3em} \{
-
-\hspace*{4em} P->x = Pw.x/Pw.w;
-
-\hspace*{4em} P->y = Pw.y/Pw.w;
-
-\hspace*{4em} if ( Pw.z != \_NOZ )
-
-\hspace*{5em} P->z = Pw.z/Pw.w;
-
-\hspace*{4em} else
-
-\hspace*{5em} \(\mathrm{P} -  > \mathrm{z} = {0.0}\) ;
-
-\hspace*{3em} \}
-
-\hspace*{3em} else
-
-\hspace*{3em} \{
-
-\hspace*{4em} \(\mathrm{P} -  > \mathrm{x} = \mathrm{{Pw}}.\mathrm{x}\) ;
-
-\hspace*{4em} \(\mathrm{P} -  > \mathrm{y} = \mathrm{{Pw}}.\mathrm{y}\) ;
-
-\hspace*{4em} if ( Pw.z != \_NOZ )
-
-\hspace*{5em} \(\mathrm{P} -  > \mathrm{z} = \mathrm{{Pw}} \cdot  \mathrm{z}\) ;
-
-\hspace*{3em} else
-
-\hspace*{5em} \(\mathrm{P} -  > \mathrm{z} = {0.0}\) ;
-
-\hspace*{3em} \}
-
-\hspace*{1em} \}
-
-\hspace*{1em} These routines are used in the next section to illustrate two NURBS routines,
-
-curve and surface evaluations.
-
-\HRule
-
-\section{示例程序}
+\section{示例程序}\BookIndexMark{p0250}
 在本节中，我们展示两个完整的程序，一个用于曲线评估，另一个用于表面评估。这些例程展示了 NURBS 程序的结构，以及不同的实用例程如何与更高级别的 NURBS 例程集成。首先考虑曲线评估器。
 
-\HRule
-
-\#include "nurbs.h"
-
-static STRING rname = "N\_EVNCUR";
-
+% book-code: N_evncur
+\begin{minted}{c}
+#include "nurbs.h"
+static STRING rname = "N_EVNCUR";
 extern CPOINT CZERO;
+FLAG N_evncur( CURVE *cur, PARAMETER u, POINT *C )
+{
+    FLAG error = 0 ;
+    INDEX i, j, k;
+    DEGREE p;
+    REAL *N;
+    KNOTVECTOR *knt;
+    CPOINT *Pw, Cw;
+    STACKS S;
+    /* Start NURBS environment */
+    N_inurbs(&S);
+    /* Get local notation */
+    Pw = cur->pol->Pw;
+    p = cur->p;
+    knt = cur->knt;
+    /* Check parameter */
+    error = E_parval(knt, u, rname);
+    if ( error == 1 ) goto EXIT;
+    /* Compute non-vanishing B-splines */
+    N = S_getr1d( p,& S) ;
+    if ( N == NULL ) { error = 1; goto EXIT; }
+    error = N_allbas(knt, p, u, LEFT, N,&j);
+    if( error == 1 ) goto EXIT;
+    /* Compute the point on the curve */
+    A_initcp(CZERO, &Cw);
+    for ( i = 0; i <= p; i++ )
+    {
+        k = j - p + i ;
+        A_updcpt(N[i], Pw[k],&Cw);
+    }
+    A_euclid(Cw, C);
+    /* End NURBS and exit */
+EXIT:
+    N_enurbs(&S);
+    return(error);
+}
+\end{minted}
 
-FLAG N\_evncur( CURVE *cur, PARAMETER u, POINT *C )
-
-\{
-
-\hspace*{1em} FLAG error = 0 ;
-
-\hspace*{1em} INDEX i, j, k;
-
-\hspace*{1em} DEGREE p;
-
-\hspace*{1em} REAL *N;
-
-\hspace*{1em} KNOTVECTOR *knt;
-
-\hspace*{1em} CPOINT *Pw, Cw;
-
-\hspace*{3em} STACKS S;
-
-\hspace*{3em} /* Start NURBS environment */
-
-\hspace*{3em} N\_inurbs(\&S);
-
-\hspace*{3em} /* Get local notation */
-
-\hspace*{3em} Pw = cur->pol->Pw;
-
-\hspace*{3em} p = cur->p;
-
-\hspace*{3em} knt = cur->knt;
-
-\hspace*{3em} /* Check parameter */
-
-\hspace*{3em} error = E\_parval(knt, u, rname);
-
-\hspace*{3em} if ( error == 1 ) goto EXIT;
-
-\hspace*{3em} /* Compute non-vanishing B-splines */
-
-\hspace*{3em} \(\mathrm{N} = {\mathrm{S}}_{ - }\) getr1d \(\left( {\mathrm{p},\& \mathrm{\;S}}\right)\) ;
-
-\hspace*{3em} if ( N == NULL ) \{ error = 1; goto EXIT; \}
-
-\hspace*{3em} error = N\_allbas(knt, p, u, LEFT, N,\&j);
-
-\hspace*{3em} if( error == 1 ) goto EXIT;
-
-\hspace*{3em} /* Compute the point on the curve \(* /\)
-
-\hspace*{3em} A\_initcp(CZERO, \&Cw);
-
-\hspace*{3em} for ( i = 0; i <= p; i++ )
-
-\hspace*{3em} \{
-
-\hspace*{4em} \(\mathrm{k} = \mathrm{j} - \mathrm{p} + \mathrm{i}\) ;
-
-\hspace*{4em} A\_updcpt(N[i], Pw[k],\&Cw);
-
-\hspace*{3em} \}
-
-\hspace*{3em} A\_euclid(Cw, C);
-
-\hspace*{3em} /* End NURBS and exit */
-
-\hspace*{3em} EXIT:
-
-\hspace*{3em} N\_enurbs(\&S);
-
-\hspace*{3em} return(error);
-
-\hspace*{1em} \}
-
-\hspace*{1em} As mentioned earlier, each NURBS routine starts with N\_inurbs(   ), which
-
-initializes the memory stacks to NULL. After initialization, local notations are
-
-normally introduced to help follow the computational details. The notation
-
-\(\mathrm{{Pw}}\left\lbrack  \mathrm{k}\right\rbrack\) is visually more pleasing than \(\mathrm{{cur}} -  > \mathrm{{pol}} -  > \mathrm{{Pw}}\left\lbrack  \mathrm{k}\right\rbrack\) and much closer to the
-
-customary notation, \({\mathbf{P}}_{k}^{w}\) . The next step in almost every NURBS routine is to
-
-check the incoming parameters for possible error. E\_parval(   ) checks if the given
-
-parameter \(u\) is outside of the range \(\left\lbrack  {{u}_{0},{u}_{m}}\right\rbrack\) . The rest of the code deals with the
-
-\HRule
+As mentioned earlier, each NURBS routine starts with N\_inurbs(   ), which initializes the memory stacks to NULL. After initialization, local notations are normally introduced to help follow the computational details. The notation \(\mathrm{{Pw}}\left\lbrack  \mathrm{k}\right\rbrack\) is visually more pleasing than \(\mathrm{{cur}} -  > \mathrm{{pol}} -  > \mathrm{{Pw}}\left\lbrack  \mathrm{k}\right\rbrack\) and much closer to the customary notation, \({\mathbf{P}}_{k}^{w}\) . The next step in almost every NURBS routine is to check the incoming parameters for possible error. E\_parval(   ) checks if the given parameter \(u\) is outside of the range \(\left\lbrack  {{u}_{0},{u}_{m}}\right\rbrack\) . The rest of the code deals with the
 
 曲线点的实际计算。为此，首先计算非消失基函数，然后分配适量的内存以存储它们(由于没有度的限制，内存必须动态分配)。然后使用前一节讨论的算术例程来计算和
 
@@ -1546,273 +1035,146 @@ parameter \(u\) is outside of the range \(\left\lbrack  {{u}_{0},{u}_{m}}\right\
 
 这个下一个测试程序展示了计算曲线上的一个点是多么简单。
 
-\HRule
-
-\#include "nurbs.h"
-
-\#include "globals.h"
-
-REAL wx \(\left\lbrack  6\right\rbrack   = \{ {0.2},{0.8},{0.4},{1.2},{1.2},{0.8}\}\) ;
-
-REAL wy[6] \(= \{ {0.2},{0.4},{0.4},{0.8},{0.4},{0.2}\}\) ;
-
-REAL wz \(\left\lbrack  6\right\rbrack   = \{ {0.2},{0.4},{0.2},{0.4},{0.4},{0.2}\}\) ;
-
-REAL w[6] = \{ 1.0,2.0,1.0,2.0,2.0,1.0 \};
-
-REAL U[10] \(= \{ {0.0},{0.0},{0.0},{0.0},{0.3},{0.7},{1.0},{1.0},{1.0},\)
-
-\hspace*{9em} 1.0 \};
-
+% book-code: curve-driver
+\begin{minted}{c}
+#include "nurbs.h"
+#include "globals.h"
+REAL wx [6]= { 0.2,0.8,0.4,1.2,1.2,0.8} ;
+REAL wy[6] = { 0.2,0.4,0.4,0.8,0.4,0.2} ;
+REAL wz [6]= { 0.2,0.4,0.2,0.4,0.4,0.2} ;
+REAL w[6] = { 1.0,2.0,1.0,2.0,2.0,1.0 };
+REAL U[10] = { 0.0,0.0,0.0,0.0,0.3,0.7,1.0,1.0,1.0,
+    1.0 };
 main(   )
-
-\{
-
-\hspace*{1em} FLAG error;
-
-\hspace*{1em} CURVE CUR;
-
-\hspace*{1em} PARAMETER u;
-
-\hspace*{1em} POINT C;
-
-\hspace*{1em} STACKS S;
-
-\hspace*{1em} /* Start processing */
-
-\hspace*{1em} N\_inurbs(\&S);
-
-\hspace*{1em} /* Create the curve \(* /\)
-
-\hspace*{1em} U\_makcu3(\&cur, wx, wy, wz, w,5,3, U,9,\&S);
-
-\hspace*{1em} /* Compute a point on the curve \(* /\)
-
-\hspace*{1em} printf( "Enter parameter u = " ); scanf( "\%lf", \&u );
-
-\hspace*{1em} error = N\_evncur(\&cur, u, \&C);
-
-\hspace*{1em} if ( error > 0 )
-
-\hspace*{1em} \{
-
-\hspace*{2em} printf( "error = \%d \%s", NERR.eno, NERR.fna );
-
-\hspace*{2em} goto EXIT;
-
-\hspace*{1em} \}
-
-\hspace*{1em} printf( "C = \%lf \%lf \%lf", C.x, C.y, C.z );
-
-\hspace*{1em} /* End NURBS session */
-
-\hspace*{1em} EXIT:
-
-\hspace*{1em} N\_enurbs(\&S);
-
-\}
-
-\HRule
+{
+    FLAG error;
+    CURVE cur;
+    PARAMETER u;
+    POINT C;
+    STACKS S;
+    /* Start processing */
+    N_inurbs(&S);
+    /* Create the curve */
+    U_makcu3(&cur, wx, wy, wz, w,5,3, U,9,&S);
+    /* Compute a point on the curve */
+    printf( "Enter parameter u = " ); scanf( "%lf", &u );
+    error = N_evncur(&cur, u, &C);
+    if ( error > 0 )
+    {
+        printf( "error = %d %s", NERR.eno, NERR.fna );
+        goto EXIT;
+    }
+    printf( "C = %lf %lf %lf", C.x, C.y, C.z );
+    /* End NURBS session */
+EXIT:
+    N_enurbs(&S);
+}
+\end{minted}
 
 许多实用程序例程允许程序员以多种不同方式定义曲线，例如，读取曲线文件，从曲线草图接口接收(wx, wy, wz, w)坐标，等等。
 
-表面程序的结构与曲线程序非常相似。这个下一个表面评估器展示了一个例子。 \#include "nurbs.h" static STRING rname = "N\_EVNSUR";
+表面程序的结构与曲线程序非常相似。这个下一个表面评估器展示了一个例子。
 
+% book-code: N_evnsur
+\begin{minted}{c}
+#include "nurbs.h"
+static STRING rname = "N_EVNSUR";
 extern CPOINT CZERO;
-
-FLAG N\_evnsur( SURFACE *sur, PARAMETER u, PARAMETER v,
-
-POINT *S )
-
-\{
-
-FLAG error \(= 0\) ;
-
-INDEX i, j, k, l, ju, jv;
-
-DEGREE \(\mathrm{p},\mathrm{q}\) ;
-
-REAL *NU, *NV;
-
-KNOTVECTOR *knu, *knv;
-
-CPOINT **Pw, *Tw, Sw;
-
-STACKS ST;
-
-/* 开始 NURBS 环境 */
-
-N\_inurbs(\&ST);
-
-/* 获取局部符号 */
-
-Pw = sur->net->Pw;
-
-p = sur->p;
-
-\(\mathrm{q} = \operatorname{sur} -  > \mathrm{q}\) ;
-
-knu = sur->knu;
-
-\(\mathrm{{knv}} = \mathrm{{sur}} -  > \mathrm{{knv}}\) ;
-
-/* 检查参数 */
-
-error = E\_parval(knu, u, rname);
-
-if ( error == 1 ) goto EXIT;
-
-error \(=\) E\_parval (knv, v, rname);
-
-\HRule
-
-\hspace*{3em} if ( error == 1 ) goto EXIT;
-
-\hspace*{3em} /* Compute nonvanishing B-splines */
-
-\hspace*{3em} NU = S\_getr1d(p,\&ST);
-
-\hspace*{3em} if ( NU == NULL ) \{ error = 1; goto EXIT; \}
-
-\hspace*{3em} NV = S\_getr1d(q,\&ST);
-
-\hspace*{3em} if ( NV == NULL ) \{ error = 1; goto EXIT; \}
-
-\hspace*{3em} error = N\_allbas(knu, p, u, LEFT, NU,\&ju);
-
-\hspace*{3em} if ( error == 1 ) goto EXIT;
-
-\hspace*{3em} error = N\_allbas(knv, q, v, LEFT, NV,\&jv);
-
-\hspace*{3em} if ( error == 1 ) goto EXIT;
-
-\hspace*{3em} /* Compute the point on the surface \(*\) /
-
-\hspace*{3em} Tw = S\_getc1d(p,\&ST);
-
-\hspace*{3em} if ( Tw == NULL ) \{ error = 1; goto EXIT; \}
-
-\hspace*{3em} for ( i=0; i<=p; i++ )
-
-\hspace*{3em} \{
-
-\hspace*{4em} A\_initcp(CZERO,\&Tw[i]);
-
-\hspace*{4em} k = ju-p+i;
-
-\hspace*{4em} for ( j=0; j<=q; j++ )
-
-\hspace*{4em} \{
-
-\hspace*{6em} l = jv-q+j;
-
-\hspace*{6em} A\_updcpt(NV[j], Pw[k][l],\&Tw[i]);
-
-\hspace*{4em} \}
-
-\hspace*{3em} \}
-
-\hspace*{3em} A\_initcp(CZERO, \&Sw);
-
-\hspace*{3em} for ( i=0; i<=p; i++ )
-
-\hspace*{3em} \{
-
-\hspace*{4em} A\_updcpt(NU[i], Tw[i],\&Sw);
-
-\hspace*{3em} \}
-
-\hspace*{3em} A\_euclid(Sw, S);
-
-\hspace*{3em} /* End NURBS and exit */
-
-\hspace*{3em} EXIT:
-
-\hspace*{3em} N\_enurbs(\&ST);
-
-\hspace*{3em} return(error);
-
-\hspace*{2em} \}
-
-\hspace*{1em} The next test program shows another way to create a surface and to evaluate
-
-a point on it. The routine U\_inpsur(   ) reads in a data file, named SURFACE.DAT,
-
-containing the control polygon and knot vector information. U\_inisur(   ) is a
-
-routine that initializes the surface object to the NULL object to let U\_inpsur(   )
-
-know that memory allocation is required.
-
-\HRule
-
-\#include "nurbs.h"
-
-\HRule
-
-\#include "globals.h"
-
+FLAG N_evnsur( SURFACE *sur, PARAMETER u, PARAMETER v,
+    POINT *S )
+{
+    FLAG error = 0 ;
+    INDEX i, j, k, l, ju, jv;
+    DEGREE p,q ;
+    REAL *NU, *NV;
+    KNOTVECTOR *knu, *knv;
+    CPOINT **Pw, *Tw, Sw;
+    STACKS ST;
+    /* 开始 NURBS 环境 */
+    N_inurbs(&ST);
+    /* 获取局部符号 */
+    Pw = sur->net->Pw;
+    p = sur->p;
+    q = sur -> q ;
+    knu = sur->knu;
+    knv = sur -> knv ;
+    /* 检查参数 */
+    error = E_parval(knu, u, rname);
+    if ( error == 1 ) goto EXIT;
+    error = E_parval (knv, v, rname);
+    if ( error == 1 ) goto EXIT;
+    /* Compute nonvanishing B-splines */
+    NU = S_getr1d(p,&ST);
+    if ( NU == NULL ) { error = 1; goto EXIT; }
+    NV = S_getr1d(q,&ST);
+    if ( NV == NULL ) { error = 1; goto EXIT; }
+    error = N_allbas(knu, p, u, LEFT, NU,&ju);
+    if ( error == 1 ) goto EXIT;
+    error = N_allbas(knv, q, v, LEFT, NV,&jv);
+    if ( error == 1 ) goto EXIT;
+    /* Compute the point on the surface */
+    Tw = S_getc1d(p,&ST);
+    if ( Tw == NULL ) { error = 1; goto EXIT; }
+    for ( i=0; i<=p; i++ )
+    {
+        A_initcp(CZERO,&Tw[i]);
+        k = ju-p+i;
+        for ( j=0; j<=q; j++ )
+        {
+            l = jv-q+j;
+            A_updcpt(NV[j], Pw[k][l],&Tw[i]);
+        }
+    }
+    A_initcp(CZERO, &Sw);
+    for ( i=0; i<=p; i++ )
+    {
+        A_updcpt(NU[i], Tw[i],&Sw);
+    }
+    A_euclid(Sw, S);
+    /* End NURBS and exit */
+EXIT:
+    N_enurbs(&ST);
+    return(error);
+}
+\end{minted}
+
+The next test program shows another way to create a surface and to evaluate a point on it. The routine U\_inpsur(   ) reads in a data file, named SURFACE.DAT, containing the control polygon and knot vector information. U\_inisur(   ) is a routine that initializes the surface object to the NULL object to let U\_inpsur(   ) know that memory allocation is required.
+
+% book-code: surface-driver
+\begin{minted}{c}
+#include "nurbs.h"
+#include "globals.h"
 main(   )
-
-\{
-
-\hspace*{1em} FLAG error;
-
-\hspace*{1em} SURFACE SUR;
-
-\hspace*{1em} PARAMETER u, v;
-
-\hspace*{1em} POINT S;
-
-\hspace*{1em} STACKS ST;
-
-\hspace*{1em} /* Start processing */
-
-\hspace*{1em} N\_inurbs(\&ST);
-
-\hspace*{1em} /* Read in surface data */
-
-\hspace*{1em} U\_inisur(\&sur);
-
-\hspace*{1em} error = U\_inpsur(\&sur,"SURFACE.DAT",\&ST);
-
-\hspace*{1em} if ( error > 0 )
-
-\hspace*{1em} \{
-
-\hspace*{3em} printf( "error = \%d \%s", NERR.eno, NERR.fna );
-
-\hspace*{3em} goto EXIT;
-
-\hspace*{1em} \}
-
-\hspace*{1em} /* Compute surface point */
-
-\hspace*{1em} printf("Enter parameters \(\langle u,v\rangle  = "\) ); scanf("\%lf\%lf",\&u,\&v);
-
-\hspace*{1em} error = N\_evnsur(\&sur, u, v,\&S);
-
-\hspace*{1em} if ( error > 0 )
-
-\hspace*{1em} \{
-
-\hspace*{3em} printf( "error = \%d \%s", NERR.eno, NERR.fna );
-
-\hspace*{2em} goto EXIT;
-
-\hspace*{1em} \}
-
-\hspace*{1em} printf( "S = \%lf \%lf \%lf", S.x, S.y, S.z );
-
-\hspace*{1em} /* End NURBS session */
-
-\hspace*{1em} EXIT:
-
-\hspace*{1em} N\_enurbs(\&ST);
-
-\}
-
-\HRule
+{
+    FLAG error;
+    SURFACE sur;
+    PARAMETER u, v;
+    POINT S;
+    STACKS ST;
+    /* Start processing */
+    N_inurbs(&ST);
+    /* Read in surface data */
+    U_inisur(&sur);
+    error = U_inpsur(&sur,"SURFACE.DAT",&ST);
+    if ( error > 0 )
+    {
+        printf( "error = %d %s", NERR.eno, NERR.fna );
+        goto EXIT;
+    }
+    /* Compute surface point */
+    printf("Enter parameters <u,v>= " ); scanf("%lf%lf",&u,&v);
+    error = N_evnsur(&sur, u, v,&S);
+    if ( error > 0 )
+    {
+        printf( "error = %d %s", NERR.eno, NERR.fna );
+        goto EXIT;
+    }
+    printf( "S = %lf %lf %lf", S.x, S.y, S.z );
+    /* End NURBS session */
+EXIT:
+    N_enurbs(&ST);
+}
+\end{minted}
 
 
 
@@ -1822,228 +1184,143 @@ main(   )
 
 对 NURBS 曲线和曲面对象的简单修改会产生标量值的一元和二元 B 样条函数。唯一需要更改的是用定义为曲线值和曲面值的控制多边形和控制网对象进行替换:
 
-\HRule
-
+% book-code: scalar-records
+\begin{minted}{c}
 typedef struct cvalue
-
-\{
-
-\hspace*{1em} INDEX n;
-
-\hspace*{1em} REAL *fu;
-
-\} CVALUE;
-
+{
+    INDEX n;
+    REAL *fu;
+} CVALUE;
 typedef struct svalue
-
-\{
-
-\hspace*{1em} INDEX n,
-
-\hspace*{4em} m;
-
-\hspace*{1em} REAL **fuv;
-
-\} SVALUE;
-
-\HRule
+{
+    INDEX n,
+        m;
+    REAL **fuv;
+} SVALUE;
+\end{minted}
 
 可以编写特殊例程，例如函数评估和节点插入，处理主要用于函数组合的函数(见第 6.4 节)。
 
 向量值多项式在数据交换和形式转换中发挥着重要作用。Nlib V2.0 具有曲线和曲面多项式实体，以能够从 NURBS 形式转换为分段多项式形式，并反向转换。这些定义为:
 
-\HRule
-
+% book-code: polynomial-records
+\begin{minted}{c}
 typedef struct cpoly
-
-\{
-
-\hspace*{1em} CVECTOR *CVE ;
-
-\hspace*{1em} DEGREE p;
-
-\hspace*{1em} INTERVAL I;
-
-\} CPOLY;
-
+{
+    CVECTOR *CVE ;
+    DEGREE p;
+    INTERVAL I;
+} CPOLY;
 typedef struct spoly
-
-\{
-
-\hspace*{1em} SVECTOR *SVE ;
-
-\hspace*{1em} DEGREE p,
-
-\hspace*{5em} q；
-
-\hspace*{1em} RECTANGLE R;
-
-\} SPOLY;
-
-\HRule
+{
+    SVECTOR *SVE ;
+    DEGREE p,
+        q;
+    RECTANGLE R;
+} SPOLY;
+\end{minted}
 
 其中曲线向量 CVECTOR 和曲面向量 SVECTOR 实体的定义与控制多边形和控制网对象相同。区间和矩形对象则简单地
 
-\HRule
-
+% book-code: domain-records
+\begin{minted}{c}
 typedef struct interval
-
-\{
-
-\hspace*{1em} PARAMETER ul,
-
-\hspace*{6em} ur;
-
-\} INTERVAL;
-
+{
+    PARAMETER ul,
+        ur;
+} INTERVAL;
 typedef struct rectangle
-
-\{
-
-\hspace*{1em} PARAMETER ul,
-
-\hspace*{5em} ur,
-
-\hspace*{5em} vb,
-
-\hspace*{5em} vt,
-
-\} RECTANGLE;
-
-\HRule
+{
+    PARAMETER ul,
+        ur,
+        vb,
+        vt,
+        } RECTANGLE;
+\end{minted}
 
 也就是说，多项式由其向量系数以及多项式所限制的一维和二维区间/矩形定义。
 
 Bézier 曲线和曲面在任何基于 NURBS 的系统中发挥着重要作用，并不是因为它们是 NURBS 的特例，而是因为许多操作可以在单个 Bézier 组件上非常高效地执行。因此，引入了两个特殊结构，一个用于曲线，一个用于曲面。
 
-\HRule
-
+% book-code: bezier-records
+\begin{minted}{c}
 typedef struct bcurve
-
-\{
-
-\hspace*{1em} CPOLYGON *pol;
-
-\hspace*{1em} INTERVAL I;
-
-\} BCURVE;
-
+{
+    CPOLYGON *pol;
+    INTERVAL I;
+} BCURVE;
 typedef struct bsurface
-
-\{
-
-\hspace*{1em} CNET *net;
-
-\hspace*{1em} RECTANGLE R;
-
-\} BSURFACE;
-
-\HRule
+{
+    CNET *net;
+    RECTANGLE R;
+} BSURFACE;
+\end{minted}
 
 因此，控制多边形/网和参数区间/矩形唯一地定义了 Bézier 曲线/曲面。
 
 最后，我们介绍一些主要用于简单几何计算和某些数学例程的附加对象。Nlib V2.0 拥有广泛的几何和数学库，用于支持各种 NURBS 操作。首先，我们考虑一些几何对象。
 
-\HRule
-
+% book-code: vector-line-records
+\begin{minted}{c}
 typedef struct vector
-
-\{
-
-\hspace*{1em} REAL x,
-
-\hspace*{3em} \(y,\)
-
-\hspace*{3em} z；
-
-\} VECTOR;
-
+{
+    REAL x,
+        y,
+        z;
+} VECTOR;
 typedef struct line
+{
+    POINT P;
+    VECTOR V;
+    FLAG bounded;
+} LINE;
+\end{minted}
 
-\{
-
-\hspace*{1em} POINT P;
-
-\hspace*{1em} VECTOR V;
-
-\hspace*{1em} FLAG bounded;
-
-\} LINE;
-
-\HRule
-
-626 B-spline 编程概念
-
-\HRule
-
+% book-code: plane-circle-records
+\begin{minted}{c}
 typedef struct plane
-
-\{
-
-\hspace*{1em} POINT P;
-
-\hspace*{1em} VECTOR N;
-
-\} PLANE;
-
+{
+    POINT P;
+    VECTOR N;
+} PLANE;
 typedef struct circle
-
-\{
-
-\hspace*{1em} POINT C;
-
-\hspace*{1em} REAL r;
-
-\hspace*{1em} VECTOR N;
-
-\} CIRCLE;
-
-\HRule
+{
+    POINT C;
+    REAL r;
+    VECTOR N;
+} CIRCLE;
+\end{minted}
 
 尽管 POINT 和 VECTOR 结构包含相同的结构元素，但它们在概念上是不同的，因此需要分别引入。最后一个例子是表示实矩阵的矩阵对象。
 
-\HRule
-
+% book-code: matrix-record
+\begin{minted}{c}
 typedef struct rmatrix
-
-\{
-
-\hspace*{1em} INDEX n,
-
-\hspace*{4em} m；
-
-\hspace*{1em} REAL **RM;
-
-\hspace*{1em} MATRIXTYPE mtp;
-
-\hspace*{1em} INDEX bandwidth;
-
-\} RMATRIX;
-
-\HRule
+{
+    INDEX n,
+        m;
+    REAL **RM;
+    MATRIXTYPE mtp;
+    INDEX bandwidth;
+} RMATRIX;
+\end{minted}
 
 其中 MATRIXTYPE 定义如下:
 
-\HRule
-
+% book-code: matrix-enum
+\begin{minted}{c}
 typedef enum
-
-\{
-
-\hspace*{1em} full,
-
-\hspace*{1em} lowerleft,
-
-\hspace*{1em} banded
-
-\} MATRIXTYPE;
-
-\HRule
+{
+    full,
+        lowerleft,
+        banded
+} MATRIXTYPE;
+\end{minted}
 
 对于整数(IMATRIX)、点(PMATRIX)和控制点(CMATRIX)矩阵，提供了类似的结构。行向量和列向量分别被视为 \((1 \times\)  \(m)\) 和 \(\left( {n \times  1}\right)\) 矩阵。没有引入特殊的向量结构。
 
 
-\section{系统结构}
+\section{系统结构}\BookIndexMark{p0251}
 Nlib V2.0 具有以下例程作为复杂结构的一部分:
 
 \begin{itemize}
@@ -2081,13 +1358,17 @@ Nlib V2.0 具有以下例程作为复杂结构的一部分:
 这些例程必须集成到一个复杂系统中，以满足前面提到的所有要求。各模块之间的依赖关系如图 13.9 所示。不同的层代表各个模块，箭头表示它们对下层例程的依赖关系，即它们调用这些例程。在中心有三个模块:内存分配、错误处理和算术例程。虽然这些模块在某种程度上是相互依赖的，例如，错误例程可能需要一些内存，而内存例程必须报告错误，但它们之间的依赖关系并不像上层模块那样显著。随着层级的提升，例程变得依赖于所有下层程序。例如，数学例程需要实用程序来创建矩阵；它们需要内存、错误检查和特殊算术来执行矩阵运算，其中矩阵的元素是控制点。在顶部是 NURBS 程序，它们调用系统中的其他所有程序。例如，几何例程很少需要调用现有的 NURBS 程序。如果确实发生这种情况，可以编写一个特殊的低层例程，以保持各层之间的单向对应关系。如果系统的某些部分要用于除 NURBS 几何以外的其他目的，这种不同层次的隔离变得十分重要。例如，数学和几何库应该是独立的库，以便它们可以用于简单的几何和数学计算，而不必担心更大的 Bézier 和 NURBS 库。
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_630_337_1207_858_858_0.jpg}
+\begin{minipage}{26cm}
+\centering
+\BookFigure[max width=\linewidth]{ch13/fig_13_08.tex}
+\par\smallskip
+图 13.9. Nlib V2.0的系统结构。\\
+上层依次为NURBS、B\'{e}zier、几何、数学和实用程序；底层核心包括内存分配、算术与错误处理，文件名前缀与正文一致。\\
+每一层可以调用所有更低层的例程；图中用代表性的向下箭头概括这一层次关系，虚线表示三个核心模块间的协作。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 13.9. Nlib V2.0 的系统结构。
-
-我们通过重申对系统设计的看法来结束这一部分:这非常困难，它不是唯一的，并且随着计算机技术的进步而不断变化。然而，设计和实现一个系统是启发性的，并且在获取广泛而深入的 NURBS 技术知识方面至关重要。正如 Herbert B. Voelcker 所说 [Pieg93]
+我们通过重申对系统设计的看法来结束这一部分:这非常困难，它不是唯一的，并且随着计算机技术的进步而不断变化。然而，设计和实现一个系统是启发性的，并且在获取广泛而深入的 NURBS 技术知识方面至关重要。正如 Herbert B. Voelcker 所说 \cite{Pieg93}
 
 “进行理论研究和实验系统构建都很重要。它们是协同的，单纯追求其中任何一个都可能导致无效的理论或古怪、不透明的系统。”
 

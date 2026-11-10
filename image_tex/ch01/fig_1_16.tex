@@ -1,0 +1,42 @@
+% Fig. 1.11(e,f): representative cubic control data, no contour conversion.
+% Circles = curve intersections, squares = control-polygon intersections.
+\begin{tikzpicture}[book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \begin{scope}
+    \path[book figure bounds] (-3.6,-.9) rectangle (3.6,5.3);
+    \coordinate (P0) at (-3,0); \coordinate (P1) at (1.4,4.6);
+    \coordinate (P2) at (-1.4,4.6); \coordinate (P3) at (3,0);
+        \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P0)--(P1);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P1)--(P2);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P2)--(P3);
+    \draw[shorten <=2pt,shorten >=2pt] (P0) .. controls (P1) and (P2) .. (P3);
+    \foreach \i/\pos in {0/below left,1/above right,2/above left,3/below right}
+      \node[book point,label=\pos:{$\mathbf P_{\i}$}] at (P\i) {};
+    \node[book panel tag] at (0,-.8) {(e)};
+  \end{scope}
+  \begin{scope}[xshift=8cm]
+    \path[book figure bounds] (-3.6,-.9) rectangle (3.6,5.3);
+    \coordinate (Q0) at (-1.2,0); \coordinate (Q1) at (2.4,4.6);
+    \coordinate (Q2) at (-2.4,4.6); \coordinate (Q3) at (1.2,0);
+        \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (Q0)--(Q1);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (Q1)--(Q2);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (Q2)--(Q3);
+    \draw[shorten <=2pt,shorten >=2pt] (Q0) .. controls (Q1) and (Q2) .. (Q3);
+    \foreach \i/\pos in {0/below left,1/above right,2/above left,3/below right}
+      \node[book point,label=\pos:{$\mathbf P_{\i}$}] at (Q\i) {};
+    \draw[line width=.45pt] (.2,-.5)--(.2,5);
+    \draw[line width=.45pt] (-2.7,3.81)--(2.7,2.19);
+    % Test line: 3 curve intersections, 3 polygon intersections.
+    \draw (0.200000,2.656583) circle (2.1pt);
+    \draw (0.200000,3.205389) circle (2.1pt);
+    \draw (0.200000,1.530885) circle (2.1pt);
+    \draw (0.200000,1.788889) ++(-2.1pt,-2.1pt) rectangle ++(4.2pt,4.2pt);
+    \draw (0.200000,4.600000) ++(-2.1pt,-2.1pt) rectangle ++(4.2pt,4.2pt);
+    \draw (0.200000,1.277778) ++(-2.1pt,-2.1pt) rectangle ++(4.2pt,4.2pt);
+    % Test line: 2 curve intersections, 2 polygon intersections.
+    \draw (0.226562,2.932032) circle (2.1pt);
+    \draw (-0.222222,3.066667) circle (2.1pt);
+    \draw (0.929577,2.721127) ++(-2.1pt,-2.1pt) rectangle ++(4.2pt,4.2pt);
+    \draw (-1.500000,3.450000) ++(-2.1pt,-2.1pt) rectangle ++(4.2pt,4.2pt);
+    \node[book panel tag] at (0,-.8) {(f)};
+  \end{scope}
+\end{tikzpicture}

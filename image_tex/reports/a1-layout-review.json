@@ -1,0 +1,96 @@
+{
+  "status": "passed",
+  "date": "2026-11-09",
+  "final_pdf_sha256": "fc6e8c7c55420208bff1dd58fa7da03ce8c8c077a7cc253211832b662d8abf0a",
+  "physical_pages_visually_reviewed": [
+    5,
+    7,
+    8,
+    153,
+    154,
+    194,
+    195,
+    199,
+    200,
+    201,
+    203,
+    205
+  ],
+  "renders": [
+    {
+      "file": "page-005.png",
+      "sha256": "2625a428d58be96004c42e5a4595500eaf27525a905049383efc39f07a7fb2c3"
+    },
+    {
+      "file": "page-007.png",
+      "sha256": "74f97cfdbf08deb7695150720ba27aeef2aa63ec881813d16477ff321ad75dc2"
+    },
+    {
+      "file": "page-008.png",
+      "sha256": "4f58509cf7eb26c180aeac739478c82e6ea23b4dbb2561524844b34e2df73edf"
+    },
+    {
+      "file": "page-153.png",
+      "sha256": "4766a6115c9fd3ba865aea9e75085b595c1fa3fafabef9351d29fabb2247c9d0"
+    },
+    {
+      "file": "page-154.png",
+      "sha256": "9276bc0c57b276603a6302c07ac168a1790d454c042ad217cf7b6231cf66c92c"
+    },
+    {
+      "file": "page-194.png",
+      "sha256": "f423d61af6fdec82d373079c9f47091784eef32fd4626c811ac64afe06f33757"
+    },
+    {
+      "file": "page-195.png",
+      "sha256": "68857d727182b4023d04a154eb44ba9b3d4706889872da5b10c101281c770b76"
+    },
+    {
+      "file": "page-199.png",
+      "sha256": "1fd60ffdc899d5dd15d82fd2782273ce2626831f27f53bcb01ddf5d78294228d"
+    },
+    {
+      "file": "page-200.png",
+      "sha256": "38a4a4988dcc186641ad58c8ab9756d7209e3b23f46cf3bf78705d7a65a9e182"
+    },
+    {
+      "file": "page-201.png",
+      "sha256": "9d26ed2bb7245554d02d4cfcdc6932bc25d295bf17ac73c7bb2daa83b228d022"
+    },
+    {
+      "file": "page-203.png",
+      "sha256": "709878cbe9bb2f76659d4d77b0f5aa65d8dbbef7285f0e847ba15b19467893ea"
+    },
+    {
+      "file": "page-205.png",
+      "sha256": "c535cccf8683736ea3030aa72f35293cf527b238f39d6597a78b6344f7339152"
+    },
+    {
+      "file": "header-detail.png",
+      "sha256": "7d9077f48a533cb959d624e6e563fafdf156a5c7adc1473d936494e822954efa"
+    },
+    {
+      "file": "footer-detail.png",
+      "sha256": "889e956c171096dcbd9482e8ef90dd7810e4298e5dd2d64d3929cb8197f06695"
+    }
+  ],
+  "checks": [
+    "A1 portrait dimensions verified on all 210 pages",
+    "Running chapter and book title align with the text area",
+    "Section headings are clearly separated from the header rule",
+    "Chapter openings omit the running header and keep the shared footer",
+    "Footers retain section navigation and green page numbers",
+    "C listing continuation across physical pages 200 and 201 keeps header and footer clearance",
+    "Curves, surfaces and data structure diagrams remain clear of running furniture"
+  ],
+  "inherited_layout_notes": [
+    "Chapter 10 explicitly begins with clearpage in the unchanged chapter source; its chapter title therefore remains on a separate page."
+  ],
+  "automatic_check": {
+    "ordinary_pages": 191,
+    "minimum_header_text_to_body_text_gap_mm": 11.9,
+    "minimum_body_text_to_footer_text_gap_mm": 8.6,
+    "header_intrusions": []
+  },
+  "evidence_note": "Full-page temporary renders are removed after publication; their hashes are retained. Header and footer detail previews are retained in reports/a1-header-preview.png and reports/a1-footer-preview.png."
+}

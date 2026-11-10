@@ -1,0 +1,23 @@
+% Traditional tridiagonal spline compared to ordinary averaged-knot interpolation.
+\begin{tikzpicture}[book line,x=2.5cm,y=2.5cm,scale=\BookGeometryScale]
+\path[book figure bounds] (-.7,-1.1) rectangle (9,4.5);
+\draw (0,0) .. controls (0,0.4853406593) and (0.0812302501,0.988276176) .. (0.4,1.4);
+\draw (0.4,1.4) .. controls (0.9894923514,2.1613898282) and (2.3913249733,2.610852877) .. (3,2.1);
+\draw (3,2.1) .. controls (3.3538339677,1.8030318439) and (3.4396353687,1.1815431335) .. (3.7,0.7);
+\draw (3.7,0.7) .. controls (3.8646690514,0.3954453813) and (4.099163395,0.1468689934) .. (4.4,0);
+\draw (4.4,0) .. controls (5.5690914888,-0.5707526519) and (7.7400865171,0.3944839206) .. (7.8,1.8);
+\draw (7.8,1.8) .. controls (7.8333293196,2.5818756709) and (7.2133644853,3.5) .. (6.5,3.5);
+\draw[dashed] (0,0) .. controls (-0.5931904679,1.1654168503) and (1.8236422253,2.7669840168) .. (2.7595428717,2.2965937469);
+\draw[dashed] (2.7595428717,2.2965937469) .. controls (3.1934704782,2.0784986695) and (3.3090441672,1.4149977626) .. (3.5985991246,0.8734601808);
+\draw[dashed] (3.5985991246,0.8734601808) .. controls (3.9518552303,0.2127860932) and (4.5640636744,-0.2663587496) .. (5.2960676406,-0.2278524508);
+\draw[dashed] (5.2960676406,-0.2278524508) .. controls (7.0230272816,-0.1370075551) and (9.4167600567,2.8350458195) .. (6.5,3.5);
+\draw[book axis] (0,0)--(0,2.5381943455);
+\draw[book axis] (6.5,3.5)--(3.9618056545,3.5);
+\draw (0,0) circle[radius=2.4pt];
+\draw (0.4,1.4) circle[radius=2.4pt];
+\draw (3,2.1) circle[radius=2.4pt];
+\draw (3.7,0.7) circle[radius=2.4pt];
+\draw (4.4,0) circle[radius=2.4pt];
+\draw (7.8,1.8) circle[radius=2.4pt];
+\draw (6.5,3.5) circle[radius=2.4pt];
+\end{tikzpicture}

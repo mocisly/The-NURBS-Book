@@ -1,12 +1,12 @@
-\documentclass[main.tex]{subfiles}                                              
+\documentclass[../main.tex]{subfiles}
 
 \begin{document}
 
 \section{引言}
 
-在本章中，我们结合了第 1 章第 1.4 节和 1.5 节的概念以及第 3 章的内容，以获得非均匀有理 B-样条(NURBS)曲线和曲面。我们给出定义和一般性质，并推导出 NURBS 曲线和曲面的导数的公式和算法，这些导数以其非有理对应物为基础。关于 NURBS 的最早出版作品是 [Vers75; Till83]。更近期的综述可以在 [Pieg91a] 中找到。
+在本章中，我们结合了第 1 章第 1.4 节和 1.5 节的概念以及第 3 章的内容，以获得非均匀有理 B-样条(NURBS)曲线和曲面。我们给出定义和一般性质，并推导出 NURBS 曲线和曲面的导数的公式和算法，这些导数以其非有理对应物为基础。关于 NURBS 的最早出版作品是 \cite{Vers75,Till83}。更近期的综述可以在 \cite{Pieg91a} 中找到。
 
-\section{NURBS曲线的定义与性质}
+\section{NURBS曲线的定义与性质}\BookIndexMark{p0074}
 
 一个 \(p\) 次 NURBS 曲线定义为
 
@@ -38,13 +38,13 @@ U = \left\{  {\underset{p + 1}{\underbrace{a,\ldots ,a}},{u}_{p + 1},\ldots ,{u}
 
 P4.1 非负性:对于所有 \(i,p\) 和 \(u \in  \left\lbrack  {0,1}\right\rbrack\) ，有 \({R}_{i,p}\left( u\right)  \geq  0\) ；
 
-P4.2 单位分割:对于所有 \(u \in  \left\lbrack  {0,1}\right\rbrack\) ，有 \(\mathop{\sum }\limits_{{i = 0}}^{n}{R}_{i,p}\left( u\right)  = 1\) ；
+P4.2\BookIndexMark{p0075} 单位分割:对于所有 \(u \in  \left\lbrack  {0,1}\right\rbrack\) ，有 \(\mathop{\sum }\limits_{{i = 0}}^{n}{R}_{i,p}\left( u\right)  = 1\) ；
 
 P4. \(3{R}_{0,p}\left( 0\right)  = {R}_{n,p}\left( 1\right)  = 1\) ;
 
 P4.4 对于 \(p > 0\) ，所有 \({R}_{i,p}\left( u\right)\) 在区间 \(u \in  \left\lbrack  {0,1}\right\rbrack\) 上恰好达到一个最大值。
 
-P4.5 局部支持:对于 \(u \notin  \left\lbrack  {{u}_{i},{u}_{i + p + 1}}\right)\) ，有 \({R}_{i,p}\left( u\right)  = 0\) 。此外，在任何给定的节点区间内，最多有 \(p + 1\) 个 \({R}_{i,p}\left( u\right)\) 是非零的(一般情况下， \(\left. {{R}_{i - p,p}\left( u\right) ,\ldots ,{R}_{i,p}\left( u\right) \text{ are nonzero in }\left\lbrack  {{u}_{i},{u}_{i + 1}}\right) }\right)\) ；
+P4.5 局部支持\BookIndexMark{p0076}:对于 \(u \notin  \left\lbrack  {{u}_{i},{u}_{i + p + 1}}\right)\) ，有 \({R}_{i,p}\left( u\right)  = 0\) 。此外，在任何给定的节点区间内，最多有 \(p + 1\) 个 \({R}_{i,p}\left( u\right)\) 是非零的(一般情况下， \(\left. {{R}_{i - p,p}\left( u\right) ,\ldots ,{R}_{i,p}\left( u\right) \text{ are nonzero in }\left\lbrack  {{u}_{i},{u}_{i + 1}}\right) }\right)\) ；
 
 P4.6 所有 \({R}_{i,p}\left( u\right)\) 的导数在节点区间的内部存在，在那里它是一个具有非零分母的有理函数。在节点处， \({R}_{i,p}\left( u\right)\) 是 \(p - k\) 次连续可微的，其中 \(k\) 是节点的重数；
 
@@ -54,22 +54,26 @@ P4.7 如果对于所有 \(i\) 有 \({w}_{i} = 1\) ，那么对于所有 \(i\) �
 
 P4.8 \(\mathbf{C}\left( 0\right)  = {\mathbf{P}}_{0}\) 和 \(\mathbf{C}\left( 1\right)  = {\mathbf{P}}_{n}\) ；这由 P4.3 推导而来；
 
-P4.9 仿射不变性:通过对控制点应用仿射变换来对曲线施加仿射变换(见 P3.4，第 3.1 节)；NURBS 曲线在透视投影下也是不变的([Lee87; Pieg91a])，这一事实在计算机图形学中非常重要；
+P4.9 仿射不变性\BookIndexMark{p0077}:通过对控制点应用仿射变换来对曲线施加仿射变换(见 P3.4，第 3.1 节)；NURBS 曲线在透视投影下也是不变的(\cite{Lee87,Pieg91a})，这一事实在计算机图形学中非常重要；
 
-P4.10 强凸包性质:如果 \(u \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) ，则 \(\mathbf{C}\left( u\right)\) 位于控制点 \({\mathbf{P}}_{i - p},\ldots ,{\mathbf{P}}_{i}\) 的凸包内(见图 4.1，其中 \(\mathbf{C}\left( u\right)\) 对于 \(u \in  \left\lbrack  {1/4,1/2}\right)\) (虚线段)包含在凸包内)；
+P4.10 强凸包\BookIndexMark{p0078}性质：如果 \(u\in[u_i,u_{i+1})\)，则 \(\mathbf C(u)\) 位于控制点 \(\mathbf P_{i-p},\ldots,\mathbf P_i\) 的凸包内。见图4.1，当 \(u\in[1/4,1/2)\) 时，曲线的虚线段位于 \(\{\mathbf P_1,\mathbf P_2,\mathbf P_3,\mathbf P_4\}\) 的凸包内；这由P4.1、P4.2和P4.5得出。
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_129_260_246_1009_1154_0.jpg}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_01.tex}
+\par\smallskip
+图 4.1. 三次NURBS曲线及其有理基函数。\\ \(U=(0,0,0,0,1/4,1/2,3/4,1,1,1,1)\)，\(w=(1,1,1,3,1,1,1)\)。\\ (a) 代表性曲线与局部凸包；(b) 相应基函数。两图的虚线均对应 \(u\in[1/4,1/2)\)。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 4.1. \(U = \{ 0,0,0,0,1/4,1/2,3/4,1,1,1,1\}\) 和 \(\left\{  {{w}_{0},\ldots ,{w}_{6}}\right\}   = \{ 1,1,1,3,1,1,1\}\) 。(a) 一条三次 NURBS 曲线；(b) 相关的基函数。
 
-\(\left\{  {{\mathbf{P}}_{1},{\mathbf{P}}_{2},{\mathbf{P}}_{3},{\mathbf{P}}_{4}}\right\}\) 的虚线区域)；这由 P4.1、P4.2 和 P4.5 推导而来；
+
 
 P4.11 \(\mathbf{C}\left( u\right)\) 在节点跨度的内部是无限可微的，并且在重数为 \(k\) 的节点处是 \(p - k\) 次可微的；
 
-P4.12 变化减小性质:没有平面与曲线的交点比与控制多边形的交点更多(对于二维曲线，将“平面”一词替换为“直线”)；
+P4.12 变化减小性质\BookIndexMark{p0079}:没有平面与曲线的交点比与控制多边形的交点更多(对于二维曲线，将“平面”一词替换为“直线”)；
 
 P4.13 没有内部节点的 NURBS 曲线是有理 Bézier 曲线，因为 \({N}_{i,p}\left( u\right)\) 简化为 \({B}_{i,n}\left( u\right)\) ；将方程 (4.2) 和 (4.3) 与方程 (1.15) 进行比较。这与 P4.7 一起，意味着 NURBS 曲线包含非有理 B-样条和有理及非有理 Bézier 曲线作为特例；
 
@@ -87,7 +91,57 @@ P4.14 局部近似:如果控制点 \({\mathbf{P}}_{i}\) 被移动，或者权重
 
 然后由 \(\mathbf{B}\) 和 \(\mathbf{N}\) 定义的直线通过 \({\mathbf{P}}_{3}\) ，对于任意的 \(0 < {w}_{3} < \infty ,{\mathbf{B}}_{3} = \mathbf{C}\left( {u;{w}_{3}}\right)\) ，它位于 \(\mathbf{B}\) 和 \({\mathbf{P}}_{3}\) 之间的这条线段上。我们将在后面的章节中回到这个主题。
 
-与有理 Bézier 曲线一样，同质坐标提供了一种有效的方法来表示 NURBS 曲线。设 \(H\) 为由方程 (1.16) 给出的透视映射。对于给定的一组控制点 \(\left\{  {\mathbf{P}}_{i}\right\}\) 和权重 \(\left\{  {w}_{i}\right\}\) ，构造加权控制点 \({\mathbf{P}}_{i}^{w} = \left( {{w}_{i}{x}_{i},{w}_{i}{y}_{i},{w}_{i}{z}_{i},{w}_{i}}\right)\) 。然后在四维空间中定义非有理(分段多项式)B-spline 曲线为
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_02.tex}
+\par\smallskip
+图 4.2. 仅改变 \(w_3\) 的三次NURBS曲线族，沿用图4.1的控制点与节点。\\ 曲线旁的数字表示 \(w_3=0,3/10,1,3\)；其他权重均为1，实心点对应内部节点。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_03.tex}
+\par\smallskip
+图 4.3. 图4.2曲线族对应的三次有理基函数，三图的坐标尺度相同。\\ (a) \(w_3=1\)；(b) \(w_3=3/10\)；(c) \(w_3=0\)。其他权重均为1，(c)中 \(R_{3,3}\equiv0\)。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_04.tex}
+\par\smallskip
+图 4.4. 仅改变 \(w_1\) 的二次NURBS示意曲线族。\\ 取 \(U=(0,0,0,1/3,2/3,1,1,1)\)，其他权重为1，数字表示 \(w_1\)。\\ 共同的最后一段对应 \(u\in[2/3,1]\)；实心点对应内部节点。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_05.tex}
+\par\smallskip
+图 4.5. 图4.4曲线族的二次有理基函数，节点向量见图4.4与练习4.1。\\ (a) \(w_1=4\)；(b) \(w_1=3/10\)；(c) \(w_1=0\)。其他权重均为1，三图坐标尺度相同。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_06.tex}
+\par\smallskip
+图 4.6. 固定参数下的权重修改，采用代表性六点三次控制网。\\ 取 \(U=(0,0,0,0,1/3,2/3,1,1,1,1)\)、\(u=5/8\)，其他权重为1。\\ \(\mathbf B,\mathbf N,\mathbf B_3\) 分别对应 \(w_3=0,1,3\)，三点均与 \(\mathbf P_3\) 共线。
+\end{minipage}
+\end{center}
+
+与有理 Bézier 曲线一样，同质坐标\BookIndexMark{p0080}提供了一种有效的方法来表示 NURBS 曲线。设 \(H\) 为由方程 (1.16) 给出的透视映射\BookIndexMark{p0081}。对于给定的一组控制点 \(\left\{  {\mathbf{P}}_{i}\right\}\) 和权重 \(\left\{  {w}_{i}\right\}\) ，构造加权控制点\BookIndexMark{p0082} \({\mathbf{P}}_{i}^{w} = \left( {{w}_{i}{x}_{i},{w}_{i}{y}_{i},{w}_{i}{z}_{i},{w}_{i}}\right)\) 。然后在四维空间中定义非有理(分段多项式)B-spline 曲线为
 
 空间为
 
@@ -95,19 +149,9 @@ P4.14 局部近似:如果控制点 \({\mathbf{P}}_{i}\) 被移动，或者权重
 {\mathbf{C}}^{w}\left( u\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {\mathbf{P}}_{i}^{w} \tag{4.5}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_130_313_1513_911_549_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 4.2. 有理三次 B-spline 曲线，随着 \({w}_{3}\) 的变化。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_131_251_295_1024_1482_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 4.3. 图 4.2 曲线的立方基函数。(a) \({w}_{3} = 1\) ; (b) \({w}_{3} = 3/{10};\left( \mathrm{c}\right) {w}_{3} = 0.\)
 
 应用透视映射 \(H\) 到 \({\mathbf{C}}^{w}\left( u\right)\) 产生相应的有理 B 样条曲线(在三维空间中分段有理)
 
@@ -119,12 +163,7 @@ P4.14 局部近似:如果控制点 \({\mathbf{P}}_{i}\) 被移动，或者权重
 = \frac{\mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {w}_{i}{\mathbf{P}}_{i}}{\mathop{\sum }\limits_{{i = 0}}^{n}{N}_{i,p}\left( u\right) {w}_{i}} = \mathop{\sum }\limits_{{i = 0}}^{n}{R}_{i,p}\left( u\right) {\mathbf{P}}_{i}
 \]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_132_256_271_1029_610_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 4.4. 有理二次曲线，具有变化的 \({w}_{1}\) 。
 
 我们可以交替地将 \({\mathbf{C}}^{w}\left( u\right)\) 或 \(\mathbf{C}\left( u\right)\) 称为 NURBS 曲线，尽管严格来说， \({\mathbf{C}}^{w}\left( u\right)\) 不是一条有理曲线。
 
@@ -156,12 +195,7 @@ Ex4.1 设 \(U = \{ 0,0,0,1,2,3,3,3\} ,\left\{  {{w}_{0},\ldots ,{w}_{4}}\right\}
 {N}_{3,2}\left( 1\right)  = 0
 \]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_133_256_263_1020_1469_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 4.5. 图 4.4 曲线的二次基函数。(a) \({w}_{1} = 4\) ; (b) \({w}_{1} = 3/{10}\) ; (c) \({w}_{1} = 0\) 。
 
 因此
 
@@ -169,14 +203,8 @@ Ex4.1 设 \(U = \{ 0,0,0,1,2,3,3,3\} ,\left\{  {{w}_{0},\ldots ,{w}_{4}}\right\}
 {\mathbf{C}}^{w}\left( 1\right)  = \frac{1}{2}{\mathbf{P}}_{1}^{w} + \frac{1}{2}{\mathbf{P}}_{2}^{w} = \frac{1}{2}\left( {4,4,4}\right)  + \frac{1}{2}\left( {3,2,1}\right)  = \left( {\frac{7}{2},3,\frac{5}{2}}\right)
 \]
 
-124 有理 B 样条曲线和曲面
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_134_329_259_870_689_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 4.6. 权重 \({w}_{3}\) 的修改。
 
 投影产生
 
@@ -186,37 +214,25 @@ Ex4.1 设 \(U = \{ 0,0,0,1,2,3,3,3\} ,\left\{  {{w}_{0},\ldots ,{w}_{4}}\right\}
 
 算法 A4.1 计算在固定 \(u\) 值下的有理 B-样条曲线上的点。它基于公式 (4.5)，即假设数组 \(\mathrm{{Pw}}\) 中的加权控制点(本书其余部分的所有算法均如此，除非另有说明)。因此，Pw[i] 包含 \({\mathbf{P}}_{i} = \left( {{w}_{i}{x}_{i},{w}_{i}{y}_{i},{w}_{i}{z}_{i},{w}_{i}}\right)\) 。Cw 表示 \({\mathbf{C}}^{w}\left( u\right)\) 上的四维点，而 \(\mathbf{C}\) 表示 \(\mathbf{C}\left( u\right)\) 上的三维点(输出)。在本书的其余部分，我们使用符号 \(C = {Cw}/w\) 来表示投影。
 
-\HRule
-
-ALGORITHM A4.1
-
-\hspace*{1em} CurvePoint(n, p, U, Pw, u, C)
-
-\hspace*{2em} \{ /* Compute point on rational B-spline curve */
-
-\hspace*{3em} /* Input: n, p, U, Pw, u */
-
-\hspace*{3em} /* Output: C */
-
-\hspace*{2em} span \(= \operatorname{FindSpan}\left( {\mathrm{n},\mathrm{p},\mathrm{u},\mathrm{U}}\right)\) ;
-
-\hspace*{2em} BasisFuns(span, u, p, U, N);
-
-\hspace*{2em} Cw = 0.0 ;
-
-\hspace*{2em} for (j=0; j<=p; j++)
-
-\hspace*{3em} \(\mathrm{{Cw}} = \mathrm{{Cw}} + \mathrm{N}\left\lbrack  \mathrm{j}\right\rbrack   * \mathrm{{Pw}}\left\lbrack  {\mathrm{{span}} - \mathrm{p} + \mathrm{j}}\right\rbrack  ;\)
-
-\hspace*{2em} \(\mathrm{C} = \mathrm{{Cw}}/\mathrm{w};\;/ *\) Divide by weight */
-
-\hspace*{2em} \}
-
-\HRule
+% book-code: algorithm A4.1
+\par\medskip\noindent\textbf{算法 A4.1（伪代码）}\BookIndexMark{p0083}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+CurvePoint(n, p, U, Pw, u, C)
+{ /* Compute point on rational B-spline curve */
+    /* Input: n, p, U, Pw, u */
+    /* Output: C */
+    span = FindSpan( n,p,u,U) ;
+    BasisFuns(span, u, p, U, N);
+    Cw = 0.0 ;
+    for (j=0; j<=p; j++)
+        Cw = Cw + N[j]* Pw[span - p + j];
+    C = Cw/w; /* Divide by weight */
+}
+\end{minted}
 
 
 
-\section{NURBS曲线的导数}
+\section{NURBS曲线的导数}\BookIndexMark{p0084}
 
 有理函数的导数是复杂的，涉及高次幂的分母。在第 3.3 节中，我们开发了计算非有理 B-样条曲线导数的公式和算法。这些公式和算法当然适用于 \({\mathbf{C}}^{w}\left( u\right)\) ，因为它是四维空间中的非有理曲线。在本节中，我们开发了公式，以导数 \(\mathbf{C}\left( u\right)\) 表达为 \({\mathbf{C}}^{w}\left( u\right)\) 的导数。
 
@@ -326,48 +342,40 @@ Ex4.2 考虑在第 1.4 节中给出的二次有理贝塞尔圆弧(图 1.19b)。�
 
 现在假设 \(u\) 是固定的，并且 \(\mathbf{A}\left( u\right)\) 和 \(w\left( u\right)\) 的零阶到 \(d\) 阶导数已经计算并分别加载到数组 Aders 和 wders 中，即 \({\mathbf{C}}^{w}\left( u\right)\) 已经被求导，其坐标分离到 Aders 和 wders 中。算法 A4.2 计算点 \(\mathbf{C}\left( u\right)\) 和导数 \({\mathbf{C}}^{\left( k\right) }\left( u\right) ,1 \leq  k \leq  d\) 。曲线点返回在 \(\mathrm{{CK}}\left\lbrack  0\right\rbrack\) 中，第 \(k\) 阶导数返回在 CK[k] 中。数组 Bin[][] 包含预计算的二项式系数(Bin \(\left\lbrack  \mathrm{k}\right\rbrack  \left\lbrack  \mathrm{i}\right\rbrack\) 是 \(\left( \begin{array}{l} k \\  i \end{array}\right)\) )。
 
-\HRule
-
-ALGORITHM A4.2
-
-\hspace*{1em} RatCurveDerivs (Aders, wders, d, CK)
-
-\hspace*{3em} \{ /* Compute C(u) derivatives from Cw(u) derivatives */
-
-\hspace*{4em} /* Input: Aders, wders, d */
-
-\hspace*{4em} /* Output: CK */
-
-\hspace*{2em} for (k=0; k<=d; k++)
-
-\hspace*{4em} \{
-
-\hspace*{4em} v = Aders[k];
-
-\hspace*{4em} for (i=1; i<=k; i++)
-
-\hspace*{5em} v = v - Bin[k][i]*wders[i]*CK[k-i];
-
-\hspace*{4em} CK[k] = v/wders[0];
-
-\hspace*{4em} \}
-
-\hspace*{2em} \}
-
-\HRule
+% book-code: algorithm A4.2
+\par\medskip\noindent\textbf{算法 A4.2（伪代码）}\BookIndexMark{p0085}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+RatCurveDerivs (Aders, wders, d, CK)
+{ /* Compute C(u) derivatives from Cw(u) derivatives */
+    /* Input: Aders, wders, d */
+    /* Output: CK */
+    for (k=0; k<=d; k++)
+    {
+        v = Aders[k];
+        for (i=1; i<=k; i++)
+            v = v - Bin[k][i]*wders[i]*CK[k-i];
+        CK[k] = v/wders[0];
+    }
+}
+\end{minted}
 
 图 4.7 显示了三次 NURBS 曲线的一阶、二阶和三阶导数。导数向量分别缩放为 0.4、0.08 和 0.03。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_137_287_1340_947_693_0.jpg}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_07.tex}
+\par\smallskip
+图 4.7. 图4.6的代表性三次曲线在 \(u=1/2\) 处的前三阶导数。\\ 取 \(w_3=1/2\)，其他权重为1；一至三阶导数向量分别按0.4、0.08、0.03缩放。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 4.7. 在 \(u = 1/2\) 处计算的三次 NURBS 曲线的一阶、二阶和三阶导数，使用 \({w}_{3} = 1/2\) 和 \({w}_{i} = 1,i \neq  3\) 。
 
 
 
-\section{NURBS曲面的定义与性质}
+
+
+\section{NURBS曲面的定义与性质}\BookIndexMark{p0086}
 
 在 \(u\) 方向上为 \(p\) 阶，在 \(v\) 方向上为 \(q\) 阶的 NURBS 曲面是一个双变量向量值分段有理函数，形式为
 
@@ -401,11 +409,31 @@ V = \{ \underset{q + 1}{\underbrace{0,\ldots ,0}},{v}_{q + 1},\ldots ,{v}_{s - q
 
 图 4.8 和 4.9 显示了 NURBS 曲面的示例。
 
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_08.tex}
+\par\smallskip
+图 4.8. 代表性 \(5\times5\) 控制网与双二次NURBS曲面。\\ \(U=V=(0,0,0,1/3,2/3,1,1,1)\)，\(w_{1,1}=w_{1,2}=w_{2,1}=w_{2,2}=10\)。\\ (a) 控制网，圈出四个权重为10的控制点，其余权重为1；(b) 相应曲面。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_09.tex}
+\par\smallskip
+图 4.9. 由图4.8同一组控制点与权重构造的双三次示意曲面。\\ 取 \(U=V=(0,0,0,0,1/2,1,1,1,1)\)，视角与图幅保持一致。
+\end{minipage}
+\end{center}
+
 函数的主要属性 \({R}_{i,j}\left( {u,v}\right)\) 大致与第 3.4 节中给出的非理性基函数的属性相同 \({N}_{i,p}\left( u\right) {N}_{j,q}\left( v\right)\) 。我们在此总结它们。
 
-P4.15 非负性: \({R}_{i,j}\left( {u,v}\right)  \geq  0\) 对所有 \(i,j,u\) 和 \(v\) 成立；
+P4.15\BookIndexMark{p0087} 非负性: \({R}_{i,j}\left( {u,v}\right)  \geq  0\) 对所有 \(i,j,u\) 和 \(v\) 成立；
 
-P4.16 单位划分: \(\mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{R}_{i,j}\left( {u,v}\right)  = 1\) 对所有 \(\left( {u,v}\right)  \in  \left\lbrack  {0,1}\right\rbrack   \times  \left\lbrack  {0,1}\right\rbrack\) 成立；
+P4.16\BookIndexMark{p0088} 单位划分: \(\mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{R}_{i,j}\left( {u,v}\right)  = 1\) 对所有 \(\left( {u,v}\right)  \in  \left\lbrack  {0,1}\right\rbrack   \times  \left\lbrack  {0,1}\right\rbrack\) 成立；
 
 P4.17 局部支持: \({R}_{i,j}\left( {u,v}\right)  = 0\) 如果 (u, v) 在由 \(\left\lbrack  {{u}_{i},{u}_{i + p + 1}}\right)  \times  \left\lbrack  {{v}_{j},{v}_{j + q + 1}}\right)\) 给出的矩形之外；
 
@@ -413,19 +441,9 @@ P4.18 在任何给定的形式为 \(\left\lbrack  {{u}_{{i}_{0}},{u}_{{i}_{0} + 
 
 P4.19 极值:如果 \(p > 0\) 和 \(q > 0\) ，则 \({R}_{i,j}\left( {u,v}\right)\) 恰好达到一个最大值；
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_139_318_257_890_1758_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 4.8. 控制网和二次 NURBS 曲面， \({w}_{1,1} = {w}_{1,2} = {w}_{2,1} = {w}_{2,2} =\) 10，其他权重为 \(1.U = V = \{ 0,0,0,1/3,2/3,1,1,1\}\) 。(a) 控制网；(b) 二次 NURBS 曲面。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_140_374_266_783_724_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 4.9. 由图 4.8a 中的控制网定义的三次 NURBS 曲面，权重与图 4.8 中相同。
 
 P4. \({20}{R}_{0,0}\left( {0,0}\right)  = {R}_{n,0}\left( {1,0}\right)  = {R}_{0,m}\left( {0,1}\right)  = {R}_{n,m}\left( {1,1}\right)  = 1\) ;
 
@@ -447,7 +465,7 @@ P4.27 非理性 B-spline 和 Bézier 以及理性 Bézier 曲面是 NURBS 曲面
 
 P4.28 可微性: \(\mathbf{S}\left( {u,v}\right)\) 在一个重数为 \(k\) 的 \(u\) 节点 (vknot) 处对 \(u\left( v\right)\) 是 \(p - k\left( {q - k}\right)\) 次可微的。
 
-我们注意到，目前尚无已知的 NURBS 曲面的变差减小性质(见 [Prau92])。
+我们注意到，目前尚无已知的 NURBS 曲面的变差减小性质(见 \cite{Prau92})。
 
 我们可以使用控制点移动和权重修改来局部改变 NURBS 曲面的形状。图 4.10 和 4.11 显示了当单个权重 \({w}_{i,j}\) 被修改时，对基函数 \({R}_{i,j}\left( {u,v}\right)\) 和曲面形状的影响。将这些图与图 3.19b 和 3.20a, b 进行比较。从定性上看，对曲面的影响是:假设 \(\left( {u,v}\right)  \in  \left\lbrack  {{u}_{i},{u}_{i + p + 1}}\right)  \times  \left\lbrack  {{v}_{j},{v}_{j + q + 1}}\right)\) ；那么如果 \({w}_{i,j}\) 增加(减少)，点 \(\mathbf{S}\left( {u,v}\right)\) 将更靠近(远离) \({\mathbf{P}}_{i,j}\) ，因此曲面被拉向(推离) \({\mathbf{P}}_{i,j}\) 。与曲线的情况一样， \(\mathbf{S}\left( {u,v}\right)\) 的移动是沿着一条直线。在图 \({4.12}\left( {u,v}\right)\) 中， \({w}_{2,2}\) 是变化的。
 
@@ -461,21 +479,45 @@ P4.28 可微性: \(\mathbf{S}\left( {u,v}\right)\) 在一个重数为 \(k\) 的 
 
 然后由 \(\mathbf{S}\) 和 \(\mathbf{M}\) 定义的直线通过 \({\mathbf{P}}_{2,2}\) ，对于任意的 \({w}_{2,2},0 < {w}_{2,2} < \infty ,{\mathbf{S}}_{2,2} = \mathbf{S}\left( {u,v;{w}_{2,2}}\right)\) ，它位于这条线段 \(\mathbf{S}\) 和 \({\mathbf{P}}_{2,2}\) 之间。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_141_280_1216_968_799_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 4.10. 基函数 \({R}_{4,2,\left( {u,v}\right) }\) ，对于所有 \(\left( {i,j}\right)  \neq  \left( {4,2}\right) .\left( a\right) {w}_{4,2} = 2/5;\) 的 \(U = \{ 0,0,0,0,1/4,1/2,3/4,1,1,1\}\) 和 \(V = \{ 0,0,0,1/5,2/5,3/5,3/5,4/5,1,1/1\} .{w}_{i,j} = 1\) (b) \({w}_{4,2} = 6\) 。
+
+
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_142_281_262_971_794_0.jpg}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_10.tex}
+\par\medskip
+\BookFigure[max width=\linewidth]{ch04/fig_4_11.tex}
+\par\smallskip
+图 4.10. \(R_{4,2}(u,v)=w_{4,2}f/[1+(w_{4,2}-1)f]\)，\(f=N_{4,3}(u)N_{2,2}(v)\)。\\ \(U=(0,0,0,0,1/4,1/2,3/4,1,1,1,1)\)，\\ \(V=(0,0,0,1/5,2/5,3/5,3/5,4/5,1,1,1)\)。\\ (a) \(w_{4,2}=2/5\)；(b) \(w_{4,2}=6\)。其他权重均为1，两侧曲线为未加权基函数。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 4.10. (续)
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_12.tex}
+\par\medskip
+\BookFigure[max width=\linewidth]{ch04/fig_4_13.tex}
+\par\smallskip
+图 4.11. 三次 \(\times\) 二次NURBS示意曲面，节点向量同图4.10。\\ (a) \(w_{4,2}=2/5\)；(b) \(w_{4,2}=6\)。其他权重均为1。\\ 两图共用代表性 \(7\times8\) 控制网，整体上移显示以便观察；圈出的是 \(\mathbf P_{4,2}\)。
+\end{minipage}
+\end{center}
 
-使用齐次坐标表示 NURBS 曲面是方便的，
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_14.tex}
+\par\smallskip
+图 4.12. 固定参数下修改 \(w_{2,2}\)，采用代表性双三次曲面。\\ \(U=V=(0,0,0,0,1/2,1,1,1,1)\)，\((u,v)=(3/5,1/2)\)。\\ \(\mathbf S,\mathbf M,\mathbf S_{2,2}\) 分别对应 \(w_{2,2}=0,1,6\)，其他权重为1。\\ 各曲面绘出过该参数点的两条等参数线及共同边界；三点均与 \(\mathbf P_{2,2}\) 共线。
+\end{minipage}
+\end{center}
+
+使用齐次坐标表示 NURBS 曲面\BookIndexMark{p0089}是方便的，
 
 即
 
@@ -505,12 +547,7 @@ V = \{ 0,0,0,1,2,3,3,3\}
 {N}_{2,2}\left( \frac{5}{2}\right)  = \frac{1}{8}\;{N}_{3,2}\left( \frac{5}{2}\right)  = \frac{6}{8}\;{N}_{4,2}\left( \frac{5}{2}\right)  = \frac{1}{8}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_143_313_250_910_763_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 4.11。与图 4.10 对应的立方 \(\times\) 二次曲面，控制网格偏移以便更好地可视化。(a) \({w}_{4,2} = 2/5\) ；(b) \({w}_{4,2} = 6\) 。
 
 和
 
@@ -548,67 +585,37 @@ i = 2,3,4;\;j = 1,2,3
 \mathbf{S}\left( {\frac{5}{2},1}\right)  = \left( {2,\frac{98}{27},\frac{68}{27}}\right)
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_144_308_250_915_757_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 4.11。(续)
 
 算法 A3.5 可以通过简单地允许数组 \(P\) 包含加权控制点(使用 Pw)，累积四维表面点在 \({Sw}\) 中，并在算法末尾插入行 \(S = {Sw}/w\) 来计算有理 B 样条曲面上的一个点。
 
-\HRule
+% book-code: algorithm A4.3
+\par\medskip\noindent\textbf{算法 A4.3（伪代码）}\BookIndexMark{p0090}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+SurfacePoint(n, p, U, m, q, V, Pw, u, v, S)
+{ /* Compute point on rational B-spline surface */
+    /* Input: n, p, U, m, q, V, Pw, u, v */
+    /* Output: S */
+    uspan = FindSpan(n, p, u, U);
+    BasisFuns(uspan, u, p, U, Nu);
+    vspan = FindSpan(m, q, v, V);
+    BasisFuns(vspan, v, q, V, Nv);
+    for (l=0; l<=q; l++)
+    {
+        temp[1] = 0.0 ;
+        for ( k = 0;k <= p;k ++ )
+            temp[1] = temp[1] + Nu[k]*Pw[uspan-p+k][vspan-q+1];
+    }
+    Sw = 0.0 ;
+    for (l=0; l<=q; l++)
+        Sw = Sw + Nv[1]*temp[1];
+    S = Sw/w
+}
+\end{minted}
 
-ALGORITHM A4.3
 
-\hspace*{1em} SurfacePoint(n, p, U, m, q, V, Pw, u, v, S)
 
-\hspace*{3em} \{ /* Compute point on rational B-spline surface */
-
-\hspace*{4em} /* Input: n, p, U, m, q, V, Pw, u, v */
-
-\hspace*{4em} /* Output: S */
-
-\hspace*{3em} uspan = FindSpan(n, p, u, U);
-
-\hspace*{3em} BasisFuns(uspan, u, p, U, Nu);
-
-\hspace*{3em} vspan = FindSpan(m, q, v, V);
-
-\hspace*{3em} BasisFuns(vspan, v, q, V, Nv);
-
-\hspace*{3em} for (l=0; l<=q; l++)
-
-\hspace*{4em} \{
-
-\hspace*{4em} temp[1] = 0.0 ;
-
-\hspace*{4em} for \(\left( {k = 0;k <  = p;k +  + }\right)\)
-
-\hspace*{5em} temp[1] = temp[1] + Nu[k]*Pw[uspan-p+k][vspan-q+1];
-
-\hspace*{4em} \}
-
-\hspace*{3em} Sw = 0.0 ;
-
-\hspace*{3em} for (l=0; l<=q; l++)
-
-\hspace*{4em} Sw = Sw + Nv[1]*temp[1];
-
-\hspace*{3em} \(S = {Sw}/w\)
-
-\hspace*{3em} \}
-
-\HRule
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_145_330_249_880_852_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 4.12。权重 \({w}_{2,2}\) 的修改。
-
-通过应用方程 (3.14) 和 (3.15)，我们在 NURBS 表面上获得等参数曲线。首先，固定 \(u = {u}_{0}\)
+通过应用方程 (3.14) 和 (3.15)，我们在 NURBS 表面上获得等参数曲线\BookIndexMark{p0091}。首先，固定 \(u = {u}_{0}\)
 
 \[
 {\mathbf{C}}_{{u}_{0}}^{w}\left( v\right)  = {\mathbf{S}}^{w}\left( {{u}_{0},v}\right)  = \mathop{\sum }\limits_{{i = 0}}^{n}\mathop{\sum }\limits_{{j = 0}}^{m}{N}_{i,p}\left( {u}_{0}\right) {N}_{j,q}\left( v\right) {\mathbf{P}}_{i,j}^{w} \tag{4.16}
@@ -652,7 +659,7 @@ ALGORITHM A4.3
 
 
 
-\section{NURBS曲面的导数}
+\section{NURBS曲面的导数}\BookIndexMark{p0092}
 
 \({\mathbf{S}}^{w}\left( {u,v}\right)\) 的导数通过公式 (3.17)-(3.24) 计算。我们现在推导 \(\mathbf{S}\left( {u,v}\right)\) 的导数公式，基于 \({\mathbf{S}}^{w}\left( {u,v}\right)\) 的导数。设
 
@@ -730,70 +737,44 @@ ALGORITHM A4.3
 
 图 4.13 显示了 NURBS 曲面的一级和二级偏导数。一级偏导数缩小了 \(1/2\) ，而二级偏导数缩小了 \(1/3\) 。
 
+\begin{center}
+\begin{minipage}{18cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch04/fig_4_15.tex}
+\par\smallskip
+图 4.13. 双三次 NURBS 曲面在 \((u,v)=(3/4,1/4)\) 处的一阶和二阶偏导数。虚线为经过该点的参数线；一阶向量按 \(1/2\)、二阶按 \(1/3\) 显示，细引线连接箭头端点与外置标注。示意采用内部节点为 \(1/2\) 的夹持节点向量、\(5\times5\) 控制网，\(w_{2,2}=4\)，其余权重为 \(1\)。
+\end{minipage}
+\end{center}
+
 现在假设 (u, v) 是固定的，并且所有导数 \({\mathbf{A}}^{\left( k,l\right) },{w}^{\left( k,l\right) }\) 对于 \(k,l \geq  0\) 和 \(0 \leq  k + l \leq  d\) 已经计算并加载到数组 Aders 和 wders 中。算法 A4.4 计算点 \(\mathbf{S}\left( {u,v}\right)\) 和导数 \({\mathbf{S}}^{\left( k,l\right) }\left( {u,v}\right) ,0 \leq  k + l \leq  d\) 。Bin \(\left\lbrack  \right\rbrack  \left\lbrack  \right\rbrack\) 包含预计算的二项式系数。
 
-\HRule
-
-ALGORITHM A4.4
-
-\hspace*{2em} RatSurfaceDerivs (Aders, wders, d, SKL)
-
-\hspace*{4em} \{ /* Compute \(S\left( {u,v}\right)\) derivatives */
-
-\hspace*{7em} /* from \({Sw}\left( {u,v}\right)\) derivatives */
-
-\hspace*{7em} /* Input: Aders, wders, d */
-
-\hspace*{7em} /* Output: SKL */
-
-\hspace*{4em} for (k=0; k<=d; k++)
-
-\hspace*{6em} for \(\left( {l = 0;l <  = d - k;l +  + }\right)\)
-
-\hspace*{8em} \{
-
-\hspace*{8em} v = Aders[k][l];
-
-\hspace*{8em} for (j=1; j<=1; j++)
-
-\hspace*{10em} v = v - Bin[l][j]*wders[0][j]*SKL[k][l-j];
-
-\HRule
-
-138 有理 B 样条曲线和曲面
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_148_308_260_919_845_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 4.13. 在 \(u = 3/4\) 和 \(v = 1/4\) 处计算的双三次 NURBS 曲面的一级和二级偏导数。
-
-\HRule
-
-\hspace*{2em} for (i = 1; i<=k; i++)
-
-\hspace*{4em} \{
-
-\hspace*{4em} v = v - Bin[k][i]*wders[i][0]*SKL[k-i][l];
-
-\hspace*{4em} v2 = 0.0 ;
-
-\hspace*{4em} for (j=1; j<=1; j++)
-
-\hspace*{5em} v2 = v2 + Bin[l][j]*wders[i][j]*SKL[k-i][l-j];
-
-\hspace*{3em} v = v - Bin[k][i]*v2;
-
-\hspace*{3em} \}
-
-\hspace*{2em} SKL[k][l] = v/wders[0][0];
-
-\hspace*{2em} \}
-
-\}
-
-\HRule
+% book-code: algorithm A4.4
+\par\medskip\noindent\textbf{算法 A4.4（伪代码）}\BookIndexMark{p0093}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+RatSurfaceDerivs (Aders, wders, d, SKL)
+{ /* Compute S( u,v) derivatives */
+    /* from Sw( u,v) derivatives */
+    /* Input: Aders, wders, d */
+    /* Output: SKL */
+    for (k=0; k<=d; k++)
+        for ( l = 0;l <= d - k;l ++ )
+        {
+            v = Aders[k][l];
+            for (j=1; j<=1; j++)
+                v = v - Bin[l][j]*wders[0][j]*SKL[k][l-j];
+            for (i = 1; i<=k; i++)
+            {
+                v = v - Bin[k][i]*wders[i][0]*SKL[k-i][l];
+                v2 = 0.0 ;
+                for (j=1; j<=1; j++)
+                    v2 = v2 + Bin[l][j]*wders[i][j]*SKL[k-i][l-j];
+                v = v - Bin[k][i]*v2;
+            }
+            SKL[k][l] = v/wders[0][0];
+        }
+}
+\end{minted}
 
 \section*{练习}
 

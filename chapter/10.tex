@@ -1,13 +1,13 @@
 %11. 紧性与开覆盖, 一致连续性与函数列的收敛.tex
-\documentclass[main.tex]{subfiles}                                              
+\documentclass[../main.tex]{subfiles}
 \begin{document}              
 
-\clearpage
+
 \section{引言}
 
 在本章中，我们将讨论几种高级表面构造技术，即摆动表面、皮肤表面、扫掠表面、戈登表面和库恩斯表面。粗略来说，本章的思路是取一条或两条曲线，或一组曲线，创建一个插值这些曲线的 NURBS 表面；即，给定的曲线是在 NURBS 表面上的等参数曲线。请注意，这与第 9 章中介绍的对离散点和导数数据的插值在根本上是不同的。在某些构造中，读者可能不会明显意识到所创建的表面确实满足所需的约束。我们将其留作读者的练习，以通过数学证明或软件实现来使自己信服。
 
-\section{摆动表面}
+\section{摆动表面}\BookIndexMark{p0189}
 摆动表面是旋转曲面的推广。设
 
 \[
@@ -20,18 +20,23 @@
 \mathbf{T}\left( v\right)  = \mathop{\sum }\limits_{{j = 0}}^{m}{R}_{j,q}\left( v\right) {\mathbf{T}}_{j} \tag{10.2}
 \]
 
-是定义在 \({xy}\) 平面上的轨迹曲线(见图 10.1)。将 \(\mathbf{P}\left( u\right)\) 和 \(\mathbf{T}\left( v\right)\) 的非零坐标函数分别记为 \({P}_{x}\left( u\right) ,{P}_{z}\left( u\right) ,{T}_{x}\left( v\right)\) 和 \({T}_{y}\left( v\right)\) ，我们通过 [Wood87] 定义摆动表面
+是定义在 \({xy}\) 平面上的轨迹曲线(见图 10.1)。将 \(\mathbf{P}\left( u\right)\) 和 \(\mathbf{T}\left( v\right)\) 的非零坐标函数分别记为 \({P}_{x}\left( u\right) ,{P}_{z}\left( u\right) ,{T}_{x}\left( v\right)\) 和 \({T}_{y}\left( v\right)\) ，我们通过 \cite{Wood87} 定义摆动表面
 
 \[
 \mathbf{S}\left( {u,v}\right)  = \left( {\alpha {P}_{x}\left( u\right) {T}_{x}\left( v\right) ,\alpha {P}_{x}\left( u\right) {T}_{y}\left( v\right) ,{P}_{z}\left( u\right) }\right)  \tag{10.3}
 \]
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_462_334_252_861_839_0.jpg}
+\begin{minipage}{24cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_01.tex}
+\par\smallskip
+图 10.1. 摆动曲面的代表性轮廓曲线$P(u)$与轨迹曲线$T(v)$，分别位于$xz$、$xy$平面。\\
+两条曲线均为三次夹持 B 样条，分别由六个、十一个控制点定义；实心点为控制点，虚线为控制多边形。\\
+所选控制点及节点记录于源码，图 10.2 将原样使用它们，以比较等权与指定权值下的曲面。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 10.1. 用于定义摆动表面的轮廓曲线和轨迹曲线。
 
 从几何上讲， \(\mathbf{S}\left( {u,v}\right)\) 是通过围绕 \(z\) 轴摆动 \(\mathbf{P}\left( u\right)\) 并根据 \(\mathbf{T}\left( v\right) .\alpha\) (一个任意缩放因子)同时进行缩放而获得的。固定 \(u\) 会产生形状为 \(\mathbf{T}\left( v\right)\) 的曲线，但在 \(x\) 和 \(y\) 方向上进行了缩放。固定 \(v = {v}_{0}\) ，等参曲线 \({\mathbf{C}}_{{v}_{0}}\left( u\right)\) 是通过将 \(\mathbf{P}\left( u\right)\) 旋转到包含向量 \(\left( {{T}_{x}\left( {v}_{0}\right) ,{T}_{y}\left( {v}_{0}\right) ,0}\right)\) 的平面中，并用因子 \(\alpha \left| {\mathbf{T}\left( {v}_{0}\right) }\right|\) 缩放旋转曲线的 \(x\) 和 \(y\) 坐标而获得的。 \(z\) 坐标保持不变。根据 NURBS 的变换不变性特性(P4.24)，可以得到 \(\mathbf{S}\left( {u,v}\right)\) 的 NURBS 表示如下:
 
@@ -51,7 +56,7 @@
 {w}_{i,j} = {w}_{i}{w}_{j} \tag{10.6}
 \]
 
-\(U\) 和 \(V\) 的节点向量用于 \(\mathbf{S}\left( {u,v}\right)\) ，它们定义了 \(\mathbf{P}\left( u\right)\) 和 \(\mathbf{T}\left( v\right)\) 。图 \({10.2}\mathrm{a} - {10.2}\mathrm{c}\) 显示了摆动的示例。图 10.2a 显示了由图 10.1 中的曲线定义的摆动表面的控制点，使用了 \(\alpha  = {0.12}\) 。图 10.2b 中的表面是非理性的，而图 10.2c 中的表面是通过应用权重获得的。
+\(U\) 和 \(V\) 的节点向量用于 \(\mathbf{S}\left( {u,v}\right)\) ，它们定义了 \(\mathbf{P}\left( u\right)\) 和 \(\mathbf{T}\left( v\right)\) 。图 \({10.2}\mathrm{a} - {10.2}\mathrm{c}\) 显示了摆动的示例。图 10.2a 显示了由图 10.1 中的曲线定义的摆动表面的控制点，使用了 \(\alpha  = {0.12}\) 。图 10.2b 中的表面是非有理的，而图 10.2c 中的表面是通过应用权重获得的。
 
 \[
 {w}_{1}^{P} = {w}_{4}^{P} = 5\;{w}_{1}^{T} = {w}_{4}^{T} = {w}_{6}^{T} = {w}_{9}^{T} = 5
@@ -59,29 +64,32 @@
 
 其中上标 \(P\) 和 \(T\) 分别指代轮廓曲线和轨迹曲线。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_463_372_254_785_837_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.2. 摆动表面。(a) 控制网；(b) 未应用权重的摆动表面；(c) 应用了一些权重的摆动表面。
+
+\begin{center}
+\begin{minipage}{35cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_02.tex}\hspace{.7cm}\BookFigure[max width=\linewidth]{ch10/fig_10_03.tex}
+\par\smallskip
+图 10.2. 由图 10.1 的同一组曲线按公式 (10.3)—(10.6) 生成的$(3,3)$次摆动曲面，取$\alpha=0.12$。\\
+(a) $6\times11$控制网；(b) 全部权值为$1$的非有理曲面；(c) 指定权值后的有理曲面。\\
+取$w_1^P=w_4^P=5$、$w_1^T=w_4^T=w_6^T=w_9^T=5$，其余为$1$，曲面权值为$w_{ij}=w_i^P w_j^T$。\\
+加权前后共用同一欧氏控制网；三个子图统一视角、坐标尺度、字号与线宽，曲面网格为真实等参数曲线。
+\end{minipage}
+\end{center}
 
 注意， \(\mathbf{P}\left( u\right)\) 和 \(\mathbf{T}\left( v\right)\) 可以是开放或封闭的；相应地， \(\mathbf{S}\left( {u,v}\right)\) 在 \(u\) 和 \(v\) 方向上也可以是开放或封闭的。选择 \(\alpha  = 1\) 和 \(\mathbf{T}\left( v\right)\) 为以原点为中心、半径为 1 的圆，得到第 8 章中给出的旋转曲面。
 
 
-\section{皮肤表面}
+\section{皮肤表面}\BookIndexMark{p0190}
 设 \(\left\{  {{\mathbf{C}}_{k}\left( u\right) }\right\}  ,k = 0,\ldots ,K\) 为一组曲线。我们称 \({\mathbf{C}}_{k}\left( u\right)\) 为截面曲线。在实践中，它们通常是要构建的表面的 \(u\) 方向的平面截面。然而，它们也可以是三维的。此外，我们在本节中不假设平面性。表皮化是将截面曲线融合在一起以形成表面的过程。融合方向是 \(v\) 方向，有时称为纵向方向。尽管可以在截面曲线之间使用近似，但表皮化方法通常通过 \({\mathbf{C}}_{k}\left( u\right)\) 进行插值，结果是 \({\mathbf{C}}_{k}\left( u\right)\) 在生成的表皮曲面上是等参数曲线。
 
-表皮化实际上是一个较新的术语，指的是早在计算机出现之前就存在的放样技术。它在造船、汽车和航空工业中被广泛使用。最早的计算机化系统之一是 CONSURF，由 A. Ball 在英国航空公司开发 [Ball74, 75, 77]。该系统基于有理三次曲线。
+表皮化实际上是一个较新的术语，指的是早在计算机出现之前就存在的放样技术。它在造船、汽车和航空工业中被广泛使用。最早的计算机化系统之一是 CONSURF，由 A. Ball 在英国航空公司开发 \cite{Ball74,Ball75,Ball77}。该系统基于有理三次曲线。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_464_378_246_765_1531_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.2.(续)
 
-曲线。Filip 和 T. Ball [Fili89] 描述了一种基于任意参数截面曲线的放样程序方法。关于使用 B 样条进行表皮化的详细描述见参考文献 [Till83; Wood87, 88; Hohm91]。
+Filip 和 T. Ball \cite{Fili89} 描述了一种基于任意参数截面曲线的放样程序方法。关于使用 B 样条进行表皮化的详细描述见参考文献 \cite{Till83,Wood87,Wood88,Hohm91}。
 
 基于 B-splines，我们定义皮肤化如下。设
 
@@ -105,14 +113,9 @@
 {\mathbf{C}}_{2}\left( u\right)  : \left\{  {0,0,\frac{1}{5},\frac{2}{5},\frac{3}{5},\frac{4}{5},1,1}\right\}  \;\left( {p = 1}\right)
 \]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_465_266_1135_993_916_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.3. 表面皮肤化的过程。(a) 截面曲线；(b) 兼容的截面曲线；(c) 控制点；(d) 皮肤化曲面。
 
-460 高级表面构造技术
+
 
 \[
 {\mathbf{C}}_{3}\left( u\right)  : \left\{  {0,0,0,\frac{3}{10},\frac{1}{2},\frac{7}{10},1,1,1}\right\}  \;\left( {p = 2}\right)
@@ -122,19 +125,9 @@
 {\mathbf{C}}_{4}\left( u\right)  : \;\left\{  {0,0,0,0,\frac{3}{10},\frac{7}{10},1,1,1,1}\right\}  \;\left( {p = 3}\right)
 \]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_466_307_241_1029_1880_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.3.(续。)
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_467_273_263_985_887_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.3.(续。)
 
 在提升度数和节点细化后，公共节点向量为
 
@@ -162,6 +155,23 @@
 
 其中 \({d}_{i}\) 表示 \({\mathbf{P}}_{i,0},\ldots ,{\mathbf{P}}_{i,K}\) 的总弦长。然后使用公式 (9.8) 计算节点 \(\left\{  {v}_{i}\right\}\) 。图 10.3d 的皮肤表面是使用这种插值方法构建的。
 
+\begin{center}
+\begin{minipage}{30cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_04.tex}\par\vspace{.5cm}
+\BookFigure[max width=\linewidth]{ch10/fig_10_05.tex}\par\vspace{.5cm}
+\BookFigure[max width=\linewidth]{ch10/fig_10_06.tex}
+\par\smallskip
+图 10.3. 蒙皮构造的四个步骤，使用正文给出的五组次数与节点。\\
+(a) 原始截面；(b) 精确升阶、节点细化后的相同曲线，每条有$22$个控制点；\\
+(c) 沿$v$向三次插值得到的$22\times5$控制网；(d) 插值全部五条截面的曲面。\\
+重绘选取平行截面$x=4,2,0,-2,-4$，令$y(u)=-3+6u$，代表性控制高度记录于源码；\\
+$\bar v_k$按式(10.8)取控制列弦长参数的均值，节点$V$由参数平均法确定。\\
+实心点与虚线表示实际控制点及控制多边形；(d)细线为等参数曲线，粗线为给定截面。
+\end{minipage}
+\end{center}
+
 另一种常见的方法是使用所谓的脊曲线(也称为路径曲线)，即
 
 \[
@@ -174,12 +184,7 @@
 {\widehat{v}}_{k} = \{ 0,{0.25},{0.5},{0.78},1\}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_468_334_1362_864_706_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.4. 基于脊的皮肤的脊曲线和横截面曲线。
 
 并在截面曲线参数处
 
@@ -187,14 +192,32 @@
 {\widehat{u}}_{k} = \left\{  {\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2}}\right\}
 \]
 
+\begin{center}
+\begin{minipage}{24cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_07.tex}
+\par\smallskip
+图 10.4. 用于基于脊曲线蒙皮的一组代表性数据：脊曲线$C_s(v)$和五条局部截面$C_k(u)$。\\
+方框标出脊参数$\widehat v_k=0,0.25,0.5,0.78,1$以及截面参数$\widehat u_k=1/2$。\\
+脊曲线取五次多项式、截面取共同节点上的三次B样条；各局部截面以中点为原点。\\
+所选数据记录于源码，后续定位与蒙皮对比图沿用此组数据。
+\end{minipage}
+\end{center}
+
 每条截面曲线的方向使其平面与脊曲线与截面平面交点处的切向量垂直。脊曲线还可以通过提供额外的约束来帮助 \(v\) 方向的形状控制，以用于 \(v\) 方向的插值。例如，可以使用脊切向方向:设 \(\left\{  {\widehat{v}}_{k}\right\}  ,k = 0,\ldots ,K\) 为截面曲线定位时 \({\mathbf{C}}_{s}\left( v\right)\) 上点的 \(v\) 值；对于平面截面，这些是与脊与截面平面交点对应的 \(v\) 值。这些值通常是已知的，可以输入到皮肤处理程序中。请注意，通常情况下，如果使用公式 (10.8) 计算 \({\bar{v}}_{k}\) ，则 \({\widehat{v}}_{k} \neq  {\bar{v}}_{k}\) 。
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_469_332_1255_870_830_0.jpg}
+\begin{minipage}{22cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_08.tex}
+\par\smallskip
+图 10.5. 将图 10.4 的同一组截面刚体定位到脊曲线的五个指定参数处。\\
+每条截面均满足$C_k(1/2)=C_s(\widehat v_k)$，实心点标出这五个交点。\\
+各截面平面与相应脊切向量严格垂直；定位保持截面原有形状和尺寸。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 10.5. 沿脊曲线定位的截面曲线。
 
 当然，可以设置 \({\bar{v}}_{k} = {\widehat{v}}_{k}\) ，但如果 \({\mathbf{C}}_{s}\left( v\right)\) 参数化不良，这可能不是一个好主意。现在让
 
@@ -225,11 +248,17 @@
 \]
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_470_353_1238_825_833_0.jpg}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_09.tex}
+\par\smallskip
+图 10.6. 沿用图 10.4、10.5 的数据计算蒙皮导数。\\
+(a) 脊交点$P_k$、脊切向量$D_k$及相邻交点弦长$d_k$；细线为定位后的截面。\\
+(b) 截面$k=1$的实际控制多边形与七个导数$D_{i,1}$，选标其中三个。\\
+所有导数均按式(10.10)、(10.11)由正距离比缩放对应脊切向量，箭头共用$1/12$显示比例。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 10.6. 脊椎蒙皮的导数计算。
 
 因此， \({\mathbf{D}}_{i,k}\) 与 \({\mathbf{D}}_{k}\) 平行，但其大小调整以反映相对距离。方程 (10.10) 和 (10.11) 确保
 
@@ -245,7 +274,35 @@
 
 节点向量 \(V\) 必须包含 \(m + q + 2\) 个节点；方程 (9.22) 和 (9.23) 为情况 \(q = 2\) 和 \(q = 3\) 提供了合适的选择。
 
-图 10.7a 显示了由图 10.5 中的数据定义的蒙皮表面的控制点，使用了如图 10.6 所示的指定切线的三次插值；该表面在图 10.7b 中描绘。相同的数据在图 10.8a 和 10.8b 中进行了插值，没有指定导数。注意表面形状的显著差异(图 10.7b 和 10.8b)。截面曲线的位置对表面形状有明确的影响，就像曲线和表面插值中数据点的位置一样；图 10.9a 和 \({10.9}\mathrm{\;b}\) 显示了两个例子。在图 10.9a 中，脊和截面曲线参数是
+图 10.7a 显示了由图 10.5 中的数据定义的蒙皮表面的控制点，使用了如图 10.6 所示的指定切线的三次插值；该表面在图 10.7b 中描绘。相同的数据在图 10.8a 和 10.8b 中进行了插值，没有指定导数。注意表面形状的显著差异(图 10.7b 和 10.8b)。
+
+\begin{center}
+\begin{minipage}{34cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_10.tex}
+\par\smallskip
+图 10.7. 用图 10.4～10.6 的同一组数据进行带脊导数约束的三次蒙皮。\\
+(a) 实际$7\times10$控制网与给定截面；(b) 插值曲面的真实等参数网格，粗线标出五条给定截面。\\
+$\bar v_k$按式(10.8)计算，$V$按式(9.23)设置；各控制列同时插值位置与式(10.10)、(10.11)的导数。\\
+曲面对整条截面满足$S(u,\bar v_k)=C_k(u)$、$S_v(u,\bar v_k)\parallel D_k$；两面板共用视角、尺度和字号。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{34cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_11.tex}
+\par\smallskip
+图 10.8. 对图 10.7 的相同截面和相同$\bar v_k$进行不带导数约束的三次蒙皮。\\
+(a) 实际$7\times5$控制网与给定截面；(b) 曲面的真实等参数网格，粗线为五条给定截面。\\
+节点$V$由参数平均法确定；仍精确插值整条截面，截面上的$v$向导数则通常不再平行于脊切向量。\\
+与图 10.7 共用投影、坐标尺度及字号，以便直接比较两种构造的形状变化。
+\end{minipage}
+\end{center}
+
+截面曲线的位置对表面形状有明确的影响，就像曲线和表面插值中数据点的位置一样；图 10.9a 和 \({10.9}\mathrm{\;b}\) 显示了两个例子。在图 10.9a 中，脊和截面曲线参数是
 
 \[
 {\widehat{v}}_{k} = \{ 0,{0.35},{0.5},{0.62},1\} \;{\widehat{u}}_{k} = \left\{  {\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2}}\right\}
@@ -257,6 +314,20 @@
 {\widehat{v}}_{k} = \{ 0,{0.25},{0.5},{0.78},1\} \;{\widehat{u}}_{k} = \left\{  {\frac{1}{2},\frac{3}{10},\frac{1}{2},\frac{9}{10},\frac{1}{2}}\right\}
 \]
 
+\begin{center}
+\begin{minipage}{34cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_12.tex}
+\par\smallskip
+图 10.9. 改变截面定位参数后的蒙皮曲面，脊曲线及五条截面的形状与图 10.7 相同。\\
+(a) $\widehat v=(0,0.35,0.5,0.62,1)$，$\widehat u=(0.5,0.5,0.5,0.5,0.5)$；\\
+(b) $\widehat v=(0,0.25,0.5,0.78,1)$，$\widehat u=(0.5,0.3,0.5,0.9,0.5)$。\\
+两例均按图 10.7 的带导数约束步骤重新计算插值参数、节点及控制网；粗线为实际给定截面。\\
+定位保持截面形状，满足$C_k(\widehat u_k)=C_s(\widehat v_k)$；两图共用视角、坐标尺度、字号和线宽。
+\end{minipage}
+\end{center}
+
 现在我们考虑一些截面曲线为有理的情况(方程 [10.7])。现在必须在齐次空间中进行 \(v\) 插值。类似于方程 (10.8)， \({\bar{v}}_{k}\) 通过平均四维距离计算，即
 
 \[
@@ -267,32 +338,9 @@
 {\bar{v}}_{k} = {\bar{v}}_{k - 1} + \frac{1}{n + 1}\mathop{\sum }\limits_{{i = 0}}^{n}\frac{\left| {\mathbf{P}}_{i,k}^{w} - {\mathbf{P}}_{i,k - 1}^{w}\right| }{{d}_{i}^{w}}\;k = 1,\ldots ,K - 1 \tag{10.14}
 \]
 
-其中 \({d}_{i}^{w}\) 表示 \({\mathbf{P}}_{i,0}^{w},\ldots ,{\mathbf{P}}_{i,K}^{w}\) 的总弦长。节点 \(\left\{  {v}_{i}\right\}\) 再次使用方程 (9.8) 计算。通过 \({\mathbf{P}}_{i,k}^{w}\) 的插值得到蒙皮表面的控制点 \({\mathbf{Q}}_{i,j}^{w},i = 0,\ldots ,n,j = 0,\ldots ,K\) 。等参数曲线 \({\mathbf{C}}_{{\bar{v}}_{k}}^{w}\left( u\right)  = {\mathbf{S}}^{w}\left( {u,{\bar{v}}_{k}}\right)\) 是原始截面曲线 \({\mathbf{C}}_{k}^{w}\left( u\right)\) 。尽管设计师仍然可以使用脊曲线来定位和定向
+其中 \({d}_{i}^{w}\) 表示 \({\mathbf{P}}_{i,0}^{w},\ldots ,{\mathbf{P}}_{i,K}^{w}\) 的总弦长。节点 \(\left\{  {v}_{i}\right\}\) 再次使用方程 (9.8) 计算。通过 \({\mathbf{P}}_{i,k}^{w}\) 的插值得到蒙皮表面的控制点 \({\mathbf{Q}}_{i,j}^{w},i = 0,\ldots ,n,j = 0,\ldots ,K\) 。等参数曲线 \({\mathbf{C}}_{{\bar{v}}_{k}}^{w}\left( u\right)  = {\mathbf{S}}^{w}\left( {u,{\bar{v}}_{k}}\right)\) 是原始截面曲线 \({\mathbf{C}}_{k}^{w}\left( u\right)\) 。尽管设计师仍然可以使用脊曲线来定位和定向截面曲线，但没有明显的方法可以施加(线性)导数约束，以确保 Eq. (10.12) 对所有 \(u\) 和 \(k\) 都满足。
 
-466 高级表面构造技术
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_472_323_253_901_1807_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 10.7. 脊蒙皮与脊控制插值。 (a) 控制网；(b) 蒙皮表面。
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_473_323_248_892_1834_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 10.8. 脊蒙皮没有脊插值约束。 (a) 控制网；(b) 蒙皮表面。
-
-在 468 高级表面构造技术部分的曲线中，没有明显的方法可以施加(线性)导数约束，以确保 Eq. (10.12) 对所有 \(u\) 和 \(k\) 都满足。
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_474_326_257_883_1817_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 10.9. 脊椎皮肤处理。 (a) 在不同的脊椎参数下定位的截面曲线；(b) 在不同的截面曲线参数下定位的截面曲线。
 
 通常，通过有理截面曲线进行的皮肤处理能够产生令人满意的结果，但读者应当意识到存在几个潜在的危险，其中一些似乎没有令人满意的实际解决方案。这些问题的产生都源于表面构造发生在均匀空间中，而相应的三维和四维几何形状可能截然不同。例如，两个三维曲线可以是光滑的、形状相似且彼此接近，而它们的四维对应物可能有尖点、形状完全不同且相距甚远。更具体地说，可能出现的一些问题包括:
 
@@ -324,20 +372,27 @@
 {\mathbf{C}}_{3} : \{ 1,4,1,2,1\}
 \]
 
-\({\mathbf{C}}_{0},{\mathbf{C}}_{1}\) ，并且 \({\mathbf{C}}_{3}\) 在四维空间中仅是 \({C}^{0}\) 连续的。在 \(v\) 方向的插值后，表面权重为:
+\({\mathbf{C}}_{0},{\mathbf{C}}_{1}\) ，并且 \({\mathbf{C}}_{3}\) 在四维空间中仅是 \({C}^{0}\) 连续的。为重绘选取的代表性控制点记录于源码。按式(10.14)进行四维弦长参数平均并在 \(v\) 方向三次插值后，曲面权值约为（矩阵的行对应 \(j\)，列对应 \(i\)）:
 
 \[
-{w}_{i,j} = \left\lbrack  \begin{matrix} 1 & 2 & 1 & 1 & 1 \\  1 & {0.94} & 1 & {4.43} & 1 \\  1 & {0.71} & 1 &  - {0.75} & 1 \\  1 & 4 & 1 & 2 & 1 \end{matrix}\right\rbrack
+{w}_{i,j}\simeq\left[\begin{matrix}1 & 2.0000 & 1 & 1 & 1 \\ 1 & 0.4838 & 1 & 7.7229 & 1 \\ 1 & -0.1478 & 1 & -4.4389 & 1 \\ 1 & 4.0000 & 1 & 2.0000 & 1\end{matrix}\right]
 \]
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_476_430_266_817_1852_0.jpg}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_13.tex}
+\par\smallskip
+图 10.10. 正权有理截面的三维光滑性不一定由齐次空间蒙皮保留。\\
+(a) 采用正文四组权值和共同二次节点$U=\{0,0,0,1/2,1/2,1,1,1\}$的代表性截面，均为$C^1$；\\
+(b) 按式(10.14)求参数后进行齐次三次插值的曲面，粗线为$u=1/2$接缝。\\
+四条截面在接点的左右导数均为$(0,4,0)$，曲面在接缝的中间位置却出现导数与切平面跳变。\\
+控制点记录于源码，上方矩阵由同一数据重算；虽有负控制权值，本例整个参数域的分母仍严格大于$1/2$。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图10.10。有理皮肤处理。(a) \({C}^{1}\) 连续的截面曲线；(b) 皮肤表面。
-
-(注意 \({\mathbf{P}}_{3,2}\) 处的负权重)。图 \({10.10}\mathrm{\;b}\) 中显示的表面在 \(u\) 方向上仅表现出 \({C}^{0}\) 连续性。根据作者的知识，解决这一困境的唯一方案涉及使用更高阶的截面曲线。例如，一个完整的圆可以表示为一个具有正权重且没有内部节点的五阶 NURBS 曲线(示例 E7.10)，从而消除了这个问题。关于这个问题的几种解决方案，所有这些方案都有效地提高了皮肤表面的阶数，在 [Hohm91] 中进行了讨论。一个通用的解决方案是使用所谓的平滑函数。假设 \({\mathbf{C}}_{k}^{w}\left( u\right)\) 是一个在节点向量 \(U\) 上的 \({C}^{r}\) 连续截面曲线，其投影 \({\mathbf{C}}_{k}\left( u\right)\) 是 \({C}^{r + s}\) 连续的， \(s > 0\) 。设 \(f\left( u\right)\) 是在 \(U\) 上的 B-spline 标量值函数，使得
+（本重绘例中的负权值\BookIndexMark{p0191}为$w_{1,2}$和$w_{3,2}$。）图 \({10.10}\mathrm{\;b}\) 中显示的表面在 \(u\) 方向上仅表现出 \({C}^{0}\) 连续性\BookIndexMark{p0192}。根据作者的知识，解决这一困境的唯一方案涉及使用更高阶的截面曲线。例如，一个完整的圆可以表示为一个具有正权重且没有内部节点的五阶 NURBS 曲线(示例 E7.10)，从而消除了这个问题。关于这个问题的几种解决方案，所有这些方案都有效地提高了皮肤表面的阶数，在 \cite{Hohm91} 中进行了讨论。一个通用的解决方案是使用所谓的平滑函数\BookIndexMark{p0193}。假设 \({\mathbf{C}}_{k}^{w}\left( u\right)\) 是一个在节点向量 \(U\) 上的 \({C}^{r}\) 连续截面曲线，其投影 \({\mathbf{C}}_{k}\left( u\right)\) 是 \({C}^{r + s}\) 连续的， \(s > 0\) 。设 \(f\left( u\right)\) 是在 \(U\) 上的 B-spline 标量值函数，使得
 
 \[
 {\widehat{\mathbf{C}}}_{k}^{w}\left( u\right)  = f\left( u\right) {\mathbf{C}}_{k}^{w}\left( u\right)  \tag{10.15}
@@ -366,7 +421,7 @@
 3. 将 \({\widehat{\mathbf{C}}}_{k}^{w}\left( u\right)\) 重新组合为 NURBS 曲线(去除节点)。
 
 
-\section{扫掠表面}
+\section{扫掠表面}\BookIndexMark{p0194}
 接下来，我们讨论沿任意轨迹曲线扫掠截面曲线的主题。用 \(\mathbf{T}\left( v\right)\) 表示轨迹，用 \(\mathbf{C}\left( u\right)\) 表示截面曲线。扫掠曲面的通用形式为
 
 \[
@@ -419,6 +474,20 @@
 
 图 10.11a 和 10.11b 显示了平移扫掠的一个例子。
 
+\begin{center}
+\begin{minipage}{35cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_14.tex}\hspace{1cm}\BookFigure[max width=\linewidth]{ch10/fig_10_15.tex}
+\par\smallskip
+图 10.11. 按式(10.17)—(10.19)构造的平移扫掠曲面。\\
+(a) 代表性闭合B形截面$C(u)$、空间轨迹$T(v)$及其实际控制多边形；本例均采用三次、单位权值。\\
+(b) 同一数据生成的精确张量积曲面，控制点为$P_{i,j}=Q_i+T_j$，细线为真实等参数曲线。\\
+各截面只作平移，形状、尺寸与方向保持不变；因$C(1/3)=0$，粗线轨迹满足$S(1/3,v)=T(v)$。\\
+两个子图使用相同投影、坐标尺度、字号与线宽；控制点和节点记录于源码。
+\end{minipage}
+\end{center}
+
 现在考虑情况 2。设 \(\{ \mathbf{O},\mathbf{X},\mathbf{Y},\mathbf{Z}\}\) 表示我们的全局坐标系统。为简化问题，我们引入一个局部正交坐标系统 \(\{ \mathbf{o}\left( v\right) ,\mathbf{x}\left( v\right) ,\mathbf{y}\left( v\right) ,\mathbf{z}\left( v\right) \}\) ，它沿着 \(\mathbf{T}\left( v\right)\) 移动。对于每个 \(v,{v}_{0} \leq  v \leq  {v}_{s}\) ，设
 
 \[
@@ -433,23 +502,13 @@
 
 确定该函数是扫掠过程中的一个关键且非平凡的部分。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_479_325_1220_883_861_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.11. 平移扫掠。(a) 轨迹和截面曲线；(b) 扫掠表面。
 
-474 高级表面构造技术
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_480_364_245_809_801_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.11. (续)
 
-过程。我们将在本节末尾回到如何确定 \(\mathbf{B}\left( v\right)\) 的问题；现在，我们简单地假设它是给定的。 \(\mathbf{y}\left( v\right)\) 随后被定义为
+
+我们将在本节末尾回到如何确定 \(\mathbf{B}\left( v\right)\) 的问题；现在，我们简单地假设它是给定的。 \(\mathbf{y}\left( v\right)\) 随后被定义为
 
 \[
 \mathbf{y}\left( v\right)  = \mathbf{z}\left( v\right)  \times  \mathbf{x}\left( v\right)  \tag{10.22}
@@ -476,7 +535,7 @@
 \end{itemize}
 
 \begin{itemize}
-\item 另一种方法由 Bloomenthal 和 Riesenfeld [Blom91] 以及 Coquillart [Coqu87a] 提出；他们的方法涉及对轨迹的三维偏移曲线进行近似。如果 \(\mathbf{C}\left( u\right)\) 经过原点，他们的算法将 \(\mathbf{T}\left( v\right)\) 插值为等参数曲线；然而，除了在 \(v = {v}_{0}\) 和 \(v = {v}_{s}\) 处， \(\mathbf{C}\left( u\right)\) 的实例并未被插值。Bloomenthal 和 Riesenfeld 为他们的方法提供了基于偏移过程误差界限的误差界限；
+\item 另一种方法由 Bloomenthal 和 Riesenfeld \cite{Blom91} 以及 Coquillart \cite{Coqu87a} 提出；他们的方法涉及对轨迹的三维偏移\BookIndexMark{p0195}曲线进行近似。如果 \(\mathbf{C}\left( u\right)\) 经过原点，他们的算法将 \(\mathbf{T}\left( v\right)\) 插值为等参数曲线；然而，除了在 \(v = {v}_{0}\) 和 \(v = {v}_{s}\) 处， \(\mathbf{C}\left( u\right)\) 的实例并未被插值。Bloomenthal 和 Riesenfeld 为他们的方法提供了基于偏移过程误差界限的误差界限；
 \end{itemize}
 
 \begin{itemize}
@@ -485,191 +544,123 @@
 
 对应于 \(v\) 的两种方法，存在两种扫掠算法。在这两种情况下，扫掠表面 \(\widehat{\mathbf{S}}\left( {u,v}\right)\) 继承了其 \(u\) 次 \(p\) 和节点向量 \(U\) 来自 \(\mathbf{C}\left( u\right)\) 。T 和 \(\mathbf{C}\) 分别是轨迹和截面曲线，Bv 和 sv 是由方程 (10.21) 和 (10.23) 给出的输入函数。在算法 A10.1 中，不要求 \(v\) 次 \(\mathrm{q}\) ；数字 \(\mathrm{K}\) 应视为最小值，因为根据定义 \(\mathbf{T}\left( v\right)\) 的节点数量，可能需要更多的截面曲线实例。
 
-\HRule
-
-ALGORITHM A10.1
-
-\hspace*{1em} SweepSurface1(T, C, Bv, Sv, K, V, Pw)
-
-\hspace*{2em} \{ /* Swept surface. Trajectory interpolated. */
-
-\hspace*{3em} /* Input: T, C, Bv, sv, K */
-
-\hspace*{4em} /* Output: V, Pw */
-
-\hspace*{2em} \(\mathrm{q} =\) degree of \(\mathbf{T}\left( v\right)\) .
-
-ktv = number of knots of \(\mathbf{T}\left( v\right)\) .
-
-nsect \(= \mathrm{K} + 1\) ;
-
-if (ktv <= nsect+q)
-
-\hspace*{2em} \{ /* Must refine \(\mathbf{T}\left( v\right)\) ’s knot vector \(*\) /
-
-\hspace*{2em} m = nsect+q-ktv+1;
-
-\hspace*{2em} Insert m more knots into \(\mathbf{T}\left( v\right)\) ’s knot vector. Locations
-
-\hspace*{3em} are not critical, recursively insert at the midpoint of
-
-\hspace*{3em} the longest span will do. New control points do not
-
-\hspace*{3em} have to be computed, as we only require a refined
-
-\hspace*{3em} set of knots.
-
-\hspace*{2em} The resulting knot vector \(\mathrm{V}\) is inherited by \(\widehat{\mathrm{S}}\left( {u,v}\right)\) .
-
-\hspace*{1em} \}
-
-\hspace*{2em} else
-
-\hspace*{2em} \{ /* T(v)'s knot vector will do */
-
-\hspace*{2em} \(\mathbf{V} = \mathbf{T}\left( v\right)\) ’s knot vector.
-
-\hspace*{2em} if (ktv > nsect+q+1) /* Must increase number of */
-
-\hspace*{3em} nsect \(=\) ktv-q-1; /* instances of \(\mathbf{C}\left( u\right)  *\) /
-
-\hspace*{1em} \}
-
-\({\bar{v}}_{0} = \mathbf{T}\left( v\right)\) ’s minimum parameter value.
-
-\({\bar{v}}_{\text{ nsect } - 1} = \mathbf{T}{\left( v\right) }^{\prime }\mathbf{s}\) maximum parameter value.
-
-for \(\left( {k = 1;k < \text{ nsect } - 1;k +  + }\right) \;/ *\) Compute parameters by \(*\) /
-
-\hspace*{2em} \({\bar{v}}_{k} = \left( {{v}_{k + 1} + \cdots  + {v}_{k + q}}\right) /q;\;/ *\) averaging knots \(* /\)
-
-for \(\left( {k = 0;k < \text{ nsect; }k +  + }\right)\)
-
-\hspace*{2em} \{ /* Transform and position section control points */
-
-\hspace*{2em} Let \({\mathbf{Q}}_{i}\) and \({w}_{i}\) be the control points and weights
-
-\hspace*{3em} of \(\mathbf{C}\left( u\right) ,i = 0,\ldots ,n\) .
-
-\hspace*{2em} Scale the control points \({\mathbf{Q}}_{i}\) by sv.
-
-\hspace*{2em} Compute \(\{ \mathbf{o},\mathbf{x},\mathbf{y},\mathbf{z}\} \left( {\bar{v}}_{k}\right)\) from Eqs. (10.20)-(10.22).
-
-\hspace*{2em} Compute the transformation matrix \(A\left( {\bar{v}}_{k}\right)\) transforming the
-
-\hspace*{3em} global system into \(\{ \mathbf{o},\mathbf{x},\mathbf{y},\mathbf{z}\} \left( {\bar{v}}_{k}\right)\) .
-
-\hspace*{2em} Apply \(A\left( {\bar{v}}_{k}\right)\) to the scaled \({\mathbf{Q}}_{i}\) .
-
-\hspace*{2em} Reapply the weights \({w}_{i}\) , and denote the resulting
-
-\hspace*{3em} weighted control points by \({\mathbf{Q}}_{k,i}^{w}\) .
-
-\hspace*{2em} if \(\left( {\mathbf{T}\left( v\right) \text{ is rational }}\right)\)
-
-\hspace*{3em} \(\left\{  {\;/ * w\left( v\right) }\right.\) is the weight function of \(\mathbf{T}\left( v\right)  * /\)
-
-\hspace*{6em} /* (4th coordinate) */
-
-\hspace*{3em} \({\mathbf{Q}}_{k,i}^{w} = w\left( {\bar{v}}_{k}\right) {\mathbf{Q}}_{k,i}^{w};\)
-
-\hspace*{3em} \}
-
-\hspace*{1em} \}
-
-for (i = 0; i<=n; i++)
-
-\hspace*{2em} \{
-
-\hspace*{2em} Interpolate across \({\mathbf{Q}}_{0,i}^{w},\ldots ,{\mathbf{Q}}_{\text{ nsect } - 1,i}^{w}\) to obtain
-
-\hspace*{3em} \({\mathbf{P}}_{0,i}^{w},\ldots ,{\mathbf{P}}_{\mathrm{{nsect}} - 1,i}^{w}.\)
-
-\hspace*{1em} \}
-
-\}
-
-ALGORITHM A10.2
-
-\hspace*{2em} SweepSurface2(T, C, Bv, sv, q, K, V, Pw)
-
-\hspace*{4em} \{ /* Swept surface. Trajectory not interpolated. */
-
-\hspace*{8em} /* Input: T, C, Bv, sv, q, K */
-
-\hspace*{8em} /* Output: V, Pw */
-
-\hspace*{4em} Determine values \({v}_{0},\ldots ,{v}_{K}\) at which to place the
-
-\hspace*{7em} instances of \(\mathbf{C}\left( u\right)\) . A reasonable choice is to select the
-
-\hspace*{7em} \({v}_{k}\) so that the \(\mathbf{T}\left( {v}_{k}\right)\) are approximately evenly
-
-\hspace*{7em} spaced.
-
-\hspace*{4em} for \(\left( {\mathrm{k} = 0;\mathrm{k} <  = \mathrm{K};\mathrm{k} +  + }\right)\)
-
-\hspace*{7em} \{ /* Transform and position section control points */
-
-\hspace*{6em} Let \({\mathbf{Q}}_{i}\) and \({w}_{i}\) be the control points and weights
-
-\hspace*{9em} of \(\mathbf{C}\left( u\right) ,i = 0,\ldots ,n\) .
-
-\hspace*{7em} Scale the control points \({\mathbf{Q}}_{i}\) by sv.
-
-\hspace*{7em} Compute \(\{ \mathbf{o},\mathbf{x},\mathbf{y},\mathbf{z}\} \left( {v}_{k}\right)\) from Eqs. (10.20)-(10.22).
-
-\hspace*{7em} Compute the transformation matrix \(A\left( {v}_{k}\right)\) transforming the
-
-\hspace*{9em} global system into \(\{ \mathbf{o},\mathbf{x},\mathbf{y},\mathbf{z}\} \left( {v}_{k}\right)\) .
-
-\hspace*{7em} Apply \(A\left( {v}_{k}\right)\) to the scaled \({\mathbf{Q}}_{i}\) .
-
-\hspace*{6em} Reapply the weights \({w}_{i}\) , and denote the resulting
-
-\hspace*{9em} weighted control points by \({\mathbf{Q}}_{k,i}^{w}\) .
-
-\hspace*{6em} \}
-
-\hspace*{4em} Determine \({\bar{v}}_{0},\ldots ,{\bar{v}}_{K}\) , the v-parameters for the
-
-\hspace*{7em} v-directional interpolations (Eqs.[10.8] or [10.14]).
-
-\hspace*{5em} Given \(q\) and the \({\bar{v}}_{k}\) , compute the knot vector \(V\) by averaging
-
-\hspace*{7em} (Eq. [9.8]).
-
-\hspace*{4em} for (i=0; i<=n; i++)
-
-\hspace*{7em} \{
-
-\hspace*{6em} Interpolate across \({\mathbf{Q}}_{0,i}^{w},\ldots ,{\mathbf{Q}}_{K,i}^{w}\) to obtain \({\mathbf{P}}_{0,i}^{w},\ldots ,{\mathbf{P}}_{K,i}^{w}\) .
-
-\hspace*{6em} \}
-
-\hspace*{4em} \}
-
-\HRule
-
-图 10.12a 显示了轨迹和截面曲线，以及一个起始向量 \(\mathbf{B}\left( {v}_{0}\right)\) 。截面曲线并未通过全局原点。图 10.12b 和 10.12c 分别展示了算法 A10.2 和 A10.1 的扫掠结果。由于截面曲线未通过原点，因此轨迹不包含在表面内，即使在图 10.12c 中也是如此。还注意到图 10.12c 中截面曲线放置的数量更多。图 10.13a-10.13c 显示了截面曲线通过原点的扫掠示例(图 10.13a)。未使用轨迹控制(算法 A10.2)。图 10.13b 未使用缩放，而图 10.13c 使用了由控制点定义的分段线性 B 样条缩放函数。
+% book-code: algorithm A10.1
+\par\medskip\noindent\textbf{算法 A10.1（伪代码）}\BookIndexMark{p0196}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+SweepSurface1(T, C, Bv, Sv, K, V, Pw)
+{ /* Swept surface. Trajectory interpolated. */
+    /* Input: T, C, Bv, sv, K */
+    /* Output: V, Pw */
+    q = degree of @$\mathbf{T}\left( v\right)$@ .
+    ktv = number of knots of @$\mathbf{T}\left( v\right)$@ .
+    nsect = K + 1 ;
+    if (ktv <= nsect+q)
+    { /* Must refine $\mathbf{T}\left( v\right)$ 's knot vector  */
+        m = nsect+q-ktv+1;
+        Insert m more knots into @$\mathbf{T}\left( v\right)$@ @'s@ knot vector. Locations
+        are not critical, recursively insert at the midpoint of
+        the longest span will do. New control points do not
+        have to be computed, as we only require a refined
+        set of knots.
+        The resulting knot vector V is inherited by @$\widehat{\mathrm{S}}\left( {u,v}\right)$@ .
+    }
+    else
+    { /* T(v)'s knot vector will do */
+        @$\mathbf{V} = \mathbf{T}\left( v\right)$@ @'s@ knot vector.
+        if (ktv > nsect+q+1) /* Must increase number of */
+            nsect = ktv-q-1; /* instances of $\mathbf{C}\left( u\right)$ */
+    }
+    Set @$\bar v_0$@ to the minimum parameter value of @$\mathbf{T}(v)$@.
+    Set @$\bar v_{\mathrm{nsect}-1}$@ to the maximum parameter value of @$\mathbf{T}(v)$@.
+    for ( k = 1;k <  nsect  - 1;k ++ )  /* Compute parameters by  */
+        @${\bar{v}}_{k} = \left( {{v}_{k + 1} + \cdots + {v}_{k + q}}\right) /q;\;$@ /* averaging knots  */
+    for ( k = 0;k <  nsect; k ++ )
+    { /* Transform and position section control points */
+        Let @${\mathbf{Q}}_{i}$@ and @${w}_{i}$@ be the control points and weights
+        of @$\mathbf{C}\left( u\right) ,i = 0,\ldots ,n$@ .
+        Scale the control points @${\mathbf{Q}}_{i}$@ by sv.
+        Compute @$\{ \mathbf{o},\mathbf{x},\mathbf{y},\mathbf{z}\} \left( {\bar{v}}_{k}\right)$@ from Eqs. (10.20)-(10.22).
+        Compute the transformation matrix @$A\left( {\bar{v}}_{k}\right)$@ transforming the
+        global system into @$\{ \mathbf{o},\mathbf{x},\mathbf{y},\mathbf{z}\} \left( {\bar{v}}_{k}\right)$@ .
+        Apply @$A\left( {\bar{v}}_{k}\right)$@ to the scaled @${\mathbf{Q}}_{i}$@ .
+        Reapply the weights @${w}_{i}$@ , and denote the resulting
+        weighted control points by @${\mathbf{Q}}_{k,i}^{w}$@ .
+        if @$\left( {\mathbf{T}\left( v\right) \text{ is rational }}\right)$@
+        {  /* w( v) . is the weight function of $\mathbf{T}\left( v\right)$ */
+            /* (4th coordinate) */
+            @${\mathbf{Q}}_{k,i}^{w} = w\left( {\bar{v}}_{k}\right) {\mathbf{Q}}_{k,i}^{w};$@
+        }
+    }
+    for (i = 0; i<=n; i++)
+    {
+        Interpolate across @${\mathbf{Q}}_{0,i}^{w},\ldots ,{\mathbf{Q}}_{\text{ nsect } - 1,i}^{w}$@ to obtain
+        @${\mathbf{P}}_{0,i}^{w},\ldots ,{\mathbf{P}}_{\mathrm{{nsect}} - 1,i}^{w}.$@
+    }
+}
+\end{minted}
+
+% book-code: algorithm A10.2
+\par\medskip\noindent\textbf{算法 A10.2（伪代码）}\BookIndexMark{p0197}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+SweepSurface2(T, C, Bv, sv, q, K, V, Pw)
+{ /* Swept surface. Trajectory not interpolated. */
+    /* Input: T, C, Bv, sv, q, K */
+    /* Output: V, Pw */
+    Determine values @${v}_{0},\ldots ,{v}_{K}$@ at which to place the
+    instances of @$\mathbf{C}\left( u\right)$@ . A reasonable choice is to select the
+    @${v}_{k}$@ so that the @$\mathbf{T}\left( {v}_{k}\right)$@ are approximately evenly
+    spaced.
+    for ( k = 0;k <= K;k ++ )
+    { /* Transform and position section control points */
+        Let @${\mathbf{Q}}_{i}$@ and @${w}_{i}$@ be the control points and weights
+        of @$\mathbf{C}\left( u\right) ,i = 0,\ldots ,n$@ .
+        Scale the control points @${\mathbf{Q}}_{i}$@ by sv.
+        Compute @$\{ \mathbf{o},\mathbf{x},\mathbf{y},\mathbf{z}\} \left( {v}_{k}\right)$@ from Eqs. (10.20)-(10.22).
+        Compute the transformation matrix @$A\left( {v}_{k}\right)$@ transforming the
+        global system into @$\{ \mathbf{o},\mathbf{x},\mathbf{y},\mathbf{z}\} \left( {v}_{k}\right)$@ .
+        Apply @$A\left( {v}_{k}\right)$@ to the scaled @${\mathbf{Q}}_{i}$@ .
+        Reapply the weights @${w}_{i}$@ , and denote the resulting
+        weighted control points by @${\mathbf{Q}}_{k,i}^{w}$@ .
+    }
+    Determine @${\bar{v}}_{0},\ldots ,{\bar{v}}_{K}$@ , the v-parameters for the
+    v-directional interpolations (Eqs.[10.8] or [10.14]).
+    Given q and the @${\bar{v}}_{k}$@ , compute the knot vector V by averaging
+    (Eq. [9.8]).
+    for (i=0; i<=n; i++)
+    {
+        Interpolate across @${\mathbf{Q}}_{0,i}^{w},\ldots ,{\mathbf{Q}}_{K,i}^{w}$@ to obtain @${\mathbf{P}}_{0,i}^{w},\ldots ,{\mathbf{P}}_{K,i}^{w}$@ .
+    }
+}
+\end{minted}
+
+图 10.12a 显示了轨迹和截面曲线，以及一个起始向量 \(\mathbf{B}\left( {v}_{0}\right)\) 。截面曲线并未通过全局原点。图 10.12b 和 10.12c 分别展示了算法 A10.2 和 A10.1 的扫掠结果。由于截面曲线未通过原点，因此轨迹不包含在表面内，即使在图 10.12c 中也是如此。还注意到图 10.12c 中截面曲线放置的数量更多。
+
+\begin{center}
+\begin{minipage}{35cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_16.tex}\par\vspace{.5cm}
+\BookFigure[max width=\linewidth]{ch10/fig_10_17.tex}
+\par\smallskip
+图 10.12. 同一条平面轨迹与同一截面的两种移动标架扫掠。\\
+(a) 代表性五次PH轨迹、七点三次截面和起始方向$B_0=(0,0,1)$；截面不经过原点。\\
+(b) A10.2：放置七个近似等弧长截面，以$q=3$及式(10.8)的参数进行蒙皮；\\
+(c) A10.1：继承轨迹的五次节点向量，在十个节点平均参数处放置截面并插值。\\
+两例以$K=6$为输入下限；(c)由轨迹的十个控制点要求增加截面数。粗线为实际插值的截面，虚线为参考轨迹。\\
+所选截面及两个近似曲面均满足$z\geq0.3$，轨迹位于$z=0$，因此轨迹不属于任何一个曲面。\\
+三图共用视角、坐标尺度、字号与线宽；代表性控制点、精确标架和插值参数均记录于源码。
+\end{minipage}
+\end{center}
+
+图 10.13a-10.13c 显示了截面曲线通过原点的扫掠示例(图 10.13a)。未使用轨迹控制(算法 A10.2)。图 10.13b 未使用缩放，而图 10.13c 使用了由控制点定义的分段线性 B 样条缩放函数。
 
 \[
 \left\{  {\left( {\frac{3}{10},\frac{3}{10},1}\right) ,\left( {\frac{3}{2},\frac{3}{2},\frac{1}{2}}\right) ,\left( {\frac{3}{10},\frac{3}{10},1}\right) ,\left( {1,1,2}\right) }\right\}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_484_267_269_963_1754_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.12. 扫掠示例。 (a) 二维轨迹和未通过全局原点的截面曲线；(b) 无轨迹控制插值的扫掠表面；(c) 通过轨迹控制插值得到的扫掠表面。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_485_334_260_906_868_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.12. (续)
 
 和节点
 
@@ -677,29 +668,64 @@ ALGORITHM A10.2
 V = \left\{  {0,0,\frac{3}{10},\frac{7}{10},1,1}\right\}
 \]
 
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_18.tex}\par\vspace{.5cm}
+\BookFigure[max width=\linewidth]{ch10/fig_10_19.tex}
+\par\smallskip
+图 10.13. 截面通过原点时，不缩放与分段线性缩放的扫掠比较。\\
+(a) 沿用图 10.12 的轨迹和截面形状，将截面平移到$C(1/2)=0$，空心点标出原点；\\
+(b) 单位缩放；(c) 使用正文给出的四个缩放控制向量和节点$0,0,0.3,0.7,1,1$。\\
+两例均按A10.2，在相同的七个近似等弧长位置放置截面，再分别计算插值参数与三次蒙皮。\\
+粗线为实际插值的截面，虚线为参考轨迹；截面与轨迹在七个放置点相交，整条轨迹未作精确插值约束。\\
+三个子图共用视角、坐标尺度、字号与线宽，以显示缩放带来的实际形状变化。
+\end{minipage}
+\end{center}
+
 前两个例子使用了平面轨迹曲线。图 10.14a 显示了一个三维(扭曲的)轨迹。图 10.14b 中未保持轨迹(算法 A10.2)，而图 10.14c 中的轨迹是该表面的等曲线(算法 A10.1)。在这两个例子中，所有截面实例都与常量向量 \(\left( {3/5,3/5,1}\right)\) 进行了缩放。
+
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_20.tex}\par\vspace{.5cm}
+\BookFigure[max width=\linewidth]{ch10/fig_10_21.tex}
+\par\smallskip
+图 10.14. 三维轨迹下的移动标架扫掠，两个结果使用相同截面和常量缩放$(3/5,3/5,1)$。\\
+(a) 代表性空间三次轨迹、过原点的截面和起始正交方向；所选连续正交标架记录于源码；\\
+(b) A10.2，以七个截面进行三次蒙皮，虚线为未施加精确约束的参考轨迹；\\
+(c) A10.1，继承轨迹节点向量并插值十一个截面，实线轨迹严格满足$S(1/2,v)=T(v)$。\\
+细线为真实等参数曲线，较粗的横向曲线为给定截面；三图统一投影、尺度、字号和线宽。
+\end{minipage}
+\end{center}
 
 截面曲线的位置和大小，以及轨迹的形状(曲率)对表面形状有显著影响。图 \({10.15}\mathrm{a}\) 和 \({10.15}\mathrm{\;b}\) 显示了两个例子。图 10.15a 中的轨迹没有插值，而在图 10.15b 中则进行了插值。两个表面都表现出所谓的偏移现象，即它们具有自交和不必要的振荡。
 
-现在我们回到确定合适的方向函数 \(\mathbf{B}\left( v\right)\) 的问题。如果 \(\mathbf{T}\left( v\right)\) 是平面曲线，解决方案很简单:令 \(\mathbf{B}\left( v\right)\) 为一个常量函数，其值是垂直于 \(\mathbf{T}\left( v\right)\) 平面的向量。对于任意轨迹，情况则更为复杂。一个常见的解决方案是使用所谓的 Frenet 框架 [DoCa76; Klok86; Bron92; Silt92]。假设 \(\mathbf{T}\left( v\right)\) 是二次可微的。通过以下方式定义 \(\mathbf{B}\left( v\right)\) :
+\begin{center}
+\begin{minipage}{35cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_22.tex}
+\par\smallskip
+图 10.15. 截面过大引发的偏移折返和自交，两图使用相同平面轨迹、截面及常量方向$B=(0,0,1)$。\\
+(a) A10.2，插值七个放置截面；(b) A10.1，插值十一个截面并保持整条轨迹。\\
+粗线为$u=151/192$的偏移等参数线，圆点$I$为轨迹参数$1/4$、$3/4$处两个截面共有的空间点。\\
+两组不同曲面参数精确得到同一点$I$，两处切平面不同；控制点、参数和核验数据记录于源码。\\
+细线为真实等参数网格，横向较粗曲线为给定截面，两图统一视角、尺度、字号与线宽。
+\end{minipage}
+\end{center}
+
+现在我们回到确定合适的方向函数 \(\mathbf{B}\left( v\right)\) 的问题。如果 \(\mathbf{T}\left( v\right)\) 是平面曲线，解决方案很简单:令 \(\mathbf{B}\left( v\right)\) 为一个常量函数，其值是垂直于 \(\mathbf{T}\left( v\right)\) 平面的向量。对于任意轨迹，情况则更为复杂。一个常见的解决方案是使用所谓的 Frenet\BookIndexMark{p0198} 框架 \cite{DoCa76,Klok86,Bron92,Silt92}。假设 \(\mathbf{T}\left( v\right)\) 是二次可微的。通过以下方式定义 \(\mathbf{B}\left( v\right)\) :
 
 \[
 \mathbf{B}\left( v\right)  = \frac{{\mathbf{T}}^{\prime }\left( v\right)  \times  {\mathbf{T}}^{\prime \prime }\left( v\right) }{\left| {\mathbf{T}}^{\prime }\left( v\right)  \times  {\mathbf{T}}^{\prime \prime }\left( v\right) \right| } \tag{10.25}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_486_347_264_855_1756_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.13. 扫描示例。(a)通过全局原点的二维轨迹和截面曲线；(b)无缩放的扫掠表面；(c)具有缩放截面曲线的扫掠表面。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_487_376_262_788_877_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.13. (续)
 
 和 \(\mathbf{N}\left( v\right)\) 通过
 
@@ -721,25 +747,23 @@ V = \left\{  {0,0,\frac{3}{10},\frac{7}{10},1,1}\right\}
 \item 对于三维轨迹，由 \(\mathbf{B}\left( v\right)\) 给出的向量可能会围绕 \(\mathbf{T}\left( v\right)\) 过度旋转，从而导致生成的扫掠表面出现不必要的扭曲。图 10.16 显示了这一现象；注意 Frenet 框架在拐点处的翻转。
 \end{itemize}
 
-前两个问题可以相对容易地解决 [Klok86; Bron92; Silt92]，但 \(\mathbf{B}\left( v\right)\) 的旋转完全依赖于 \(\mathbf{T}\left( v\right)\) 的形状，因此在不改变 \(\mathbf{T}\left( v\right)\) 的形状的情况下无法避免。
-
-Siltanen 和 Woodward [Silt92] 提出了一个优雅的方法，称为投影法线方法，能够避免这三个问题。设 \({v}_{0},\ldots ,{v}_{m}\) 为参数值的递增序列，其中 \({v}_{0}\) 和 \({v}_{m}\) 分别为 \(\mathbf{T}\left( v\right)\) 域中的最小值和最大值。在每个 \({v}_{i}\) 上，我们计算一个向量 \({\mathbf{B}}_{i}\) ，482 高级表面构造技术
-
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_488_284_266_966_1763_0.jpg}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_23.tex}
+\par\smallskip
+图 10.16. Frenet标架在曲率零点两侧翻转所产生的扫掠退化。\\
+选取正则空间五次轨迹，$v=1/2$处曲率为零，$B$的左右极限方向相反。\\
+在该点两侧对称放置八个相同截面，并按A10.2进行三次蒙皮。\\
+本对称重绘例精确满足$\widehat S(u,1/2)=0$，中间整条截面收缩为原点。\\
+粗线为给定截面，细线为真实曲面网格，虚线为参考轨迹；控制数据与标架核验记录于源码。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 10.14. 带有缩放截面曲线的扫掠示例。(a) 三维轨迹和截面曲线；(b) 轨迹未插值；(c) 轨迹已插值。
+前两个问题可以相对容易地解决 \cite{Klok86,Bron92,Silt92}，但 \(\mathbf{B}\left( v\right)\) 的旋转完全依赖于 \(\mathbf{T}\left( v\right)\) 的形状，因此在不改变 \(\mathbf{T}\left( v\right)\) 的形状的情况下无法避免。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_489_305_261_925_817_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 10.14.(续)
-
-然后使用插值或近似来获得函数 \(\mathbf{B}\left( v\right)\) 。我们使用 Siltanen 和 Woodward 的方法来计算 \({\mathbf{B}}_{i}\) 。将 \({\mathbf{B}}_{0}\) 设置为与 \({\mathbf{T}}^{\prime }\left( {v}_{0}\right)\) 正交的任意单位长度向量。然后对于 \(i = 1,\ldots ,m\) ，计算
+Siltanen 和 Woodward \cite{Silt92} 提出了一个优雅的方法，称为投影法线方法，能够避免这三个问题。设 \({v}_{0},\ldots ,{v}_{m}\) 为参数值的递增序列，其中 \({v}_{0}\) 和 \({v}_{m}\) 分别为 \(\mathbf{T}\left( v\right)\) 域中的最小值和最大值。在每个 \({v}_{i}\) 上，我们计算一个向量 \({\mathbf{B}}_{i}\) ，然后使用插值或近似来获得函数 \(\mathbf{B}\left( v\right)\) 。我们使用 Siltanen 和 Woodward 的方法来计算 \({\mathbf{B}}_{i}\) 。将 \({\mathbf{B}}_{0}\) 设置为与 \({\mathbf{T}}^{\prime }\left( {v}_{0}\right)\) 正交的任意单位长度向量。然后对于 \(i = 1,\ldots ,m\) ，计算
 
 \[
 {\mathbf{T}}_{i} = \frac{{\mathbf{T}}^{\prime }\left( {v}_{i}\right) }{\left| {\mathbf{T}}^{\prime }\left( {v}_{i}\right) \right| }
@@ -761,30 +785,26 @@ Siltanen 和 Woodward [Silt92] 提出了一个优雅的方法，称为投影法�
 {\mathbf{B}}_{i} = \frac{1}{2}\left( {{\mathbf{B}}_{i} + {\overline{\mathbf{B}}}_{i}}\right) \;i = 1,\ldots ,m - 1
 \]
 
-图 10.12 到 10.15 的扫掠表面使用投影法线方法来计算 \({\mathbf{B}}_{i}\) 向量。图 \({10.17}\mathrm{a}\) 和 \({10.17}\mathrm{\;b}\) 显示了如何
-
-484 高级表面构造技术
+图 10.12、10.13 和 10.15 的平面轨迹使用常量法向，这也是投影法线法的结果；重绘图 10.14 使用源码中给出的连续正交方向函数。图 \({10.17}\mathrm{a}\) 和 \({10.17}\mathrm{\;b}\) 显示了如何 \(\mathbf{B}\left( v\right)\) 向量(投影法线方法)与 Frenet 框架相比发生变化。在图 10.17a 中，轨迹是平面的，而在图 10.17b 中则是扭曲的。在这两种情况下，移动的 \(\mathbf{B}\left( v\right)\) 用实心箭头表示，Frenet 框架轴用虚线绘制。
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_490_264_241_1018_1799_0.jpg}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_24.tex}
+\par\smallskip
+图 10.17. 沿代表性轨迹的投影法线方向与Frenet标架比较。\\
+(a) 平面五次轨迹；(b) 三维三次轨迹，两例均在七个给定参数处计算方向。\\
+实线箭头为按式(10.27)逐点投影得到的$B_i$，虚线箭头为真实Frenet标架的三个单位轴。\\
+两种方法采用相同初始副法线；(a)曲率零点处Frenet标架未定义，投影法线仍有效且保持方向。\\
+所有方向箭头使用同一三维单位长度和投影尺度，曲线、参数和归一化核验数据记录于源码。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 10.15。扫掠示例。(a)轨迹未插值；(b)轨迹已插值。
-
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_491_351_265_866_834_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 10.16。扫掠示例；截面曲线由 Frenet 框架放置。
-
-\(\mathbf{B}\left( v\right)\) 向量(投影法线方法)与 Frenet 框架相比发生变化。在图 10.17a 中，轨迹是平面的，而在图 10.17b 中则是扭曲的。在这两种情况下，移动的 \(\mathbf{B}\left( v\right)\) 用实心箭头表示，Frenet 框架轴用虚线绘制。
-
-最后，Klok [Klok86] 和 Guggenheimer [Gugg89] 提出了另一种方法，通过初始条件的微分方程的解来获得最小化旋转的 \(\mathbf{B}\left( v\right)\) 。有关扫掠表面的更多阅读可以在 [Choi90; Akma92] 中找到。
+最后，Klok \cite{Klok86} 和 Guggenheimer \cite{Gugg89} 提出了另一种方法，通过初始条件的微分方程的解来获得最小化旋转的 \(\mathbf{B}\left( v\right)\) 。有关扫掠表面的更多阅读可以在 \cite{Choi90,Akma92} 中找到。
 
 
-\section{双向曲线网络的插值}
+\section{双向曲线网络的插值}\BookIndexMark{p0199}
 设
 
 \[
@@ -797,21 +817,11 @@ Siltanen 和 Woodward [Silt92] 提出了一个优雅的方法，称为投影法�
 
 为满足兼容性条件的两组非有理B样条曲线(见图10.18):
 
-486 高级表面构造技术
 
-\begin{center}
-\includegraphics[max width=1.0\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_492_194_250_1126_1805_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图10.17. 沿轨迹的 \(\mathbf{B}\left( v\right)\) 和 Frenet 框架的变化。(a) 平面轨迹；(b) 三维轨迹。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_493_316_247_890_829_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图10.18. 兼容的曲线网络。
+
 
 \begin{itemize}
 \item 作为独立集合，它们在B样条意义上是兼容的，即所有的 \({\mathbf{C}}_{k}\left( u\right)\) 都在一个公共节点向量 \({U}^{C}\) 上定义，所有的 \({\mathbf{C}}_{\ell }\left( v\right)\) 都在一个公共节点向量 \({V}^{C}\) 上定义；
@@ -825,6 +835,17 @@ Siltanen 和 Woodward [Silt92] 提出了一个优雅的方法，称为投影法�
 {\mathbf{Q}}_{\ell ,k} = {\mathbf{C}}_{k}\left( {u}_{\ell }\right)  = {\mathbf{C}}_{\ell }\left( {v}_{k}\right) \;k = 0,\ldots ,r\;\ell  = 0,\ldots ,s \tag{10.29}
 \]
 
+\begin{center}
+\begin{minipage}{24cm}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_25.tex}
+\par\smallskip
+图 10.18. 兼容的双向B样条曲线网络。\\
+五条三次$C_k(u)$与四条二次$C_\ell(v)$在二十个实心点处满足式(10.29)，其中圈点$Q_{3,1}=C_1(u_3)=C_3(v_1)$。\\
+采用示例10.1的次数与输入节点；代表性控制点、交点参数记录于源码，后续图沿用同一数据。
+\end{minipage}
+\end{center}
+
 我们希望构造一个NURBS曲面 \(\mathbf{S}\left( {u,v}\right)\) ，它插值这两组曲线，即
 
 \[
@@ -835,9 +856,9 @@ Siltanen 和 Woodward [Silt92] 提出了一个优雅的方法，称为投影法�
 \mathbf{S}\left( {u,{v}_{k}}\right)  = {\mathbf{C}}_{k}\left( u\right) \;k = 0,\ldots ,r \tag{10.30}
 \]
 
-请注意，我们已将曲线限制为非有理的。从理论上讲，后面给出的构造可以在有理曲线的齐次空间中进行；但通常这样做并不实用，三维结果可能会不可预测。如果涉及有理曲线，我们建议使用第9章的约束近似技术，以在必要的公差范围内获得有理曲线的非有理近似。有关有理曲线的更多细节，请参见Lin和Hewitt [Lin94]。
+请注意，我们已将曲线限制为非有理的。从理论上讲，后面给出的构造可以在有理曲线的齐次空间中进行；但通常这样做并不实用，三维结果可能会不可预测。如果涉及有理曲线，我们建议使用第9章的约束近似技术，以在必要的公差范围内获得有理曲线的非有理近似。有关有理曲线的更多细节，请参见Lin和Hewitt \cite{Lin94}。
 
-戈登在1960年代末于通用汽车公司开发了满足方程(10.30)的表面技术；因此这些技术以他的名字命名，称为戈登曲面 [Gord69,71,93]。特别是，他展示了如果 \({\left\{  {\phi }_{\ell }\left( u\right) \right\}  }_{\ell  = 0}^{s}\) 和 \({\left\{  {\psi }_{k}\left( v\right) \right\}  }_{k = 0}^{r}\) 是满足
+戈登在1960年代末于通用汽车公司开发了满足方程(10.30)的表面技术；因此这些技术以他的名字命名，称为戈登曲面 \cite{Gord69,Gord71,Gord93}。特别是，他展示了如果 \({\left\{  {\phi }_{\ell }\left( u\right) \right\}  }_{\ell  = 0}^{s}\) 和 \({\left\{  {\psi }_{k}\left( v\right) \right\}  }_{k = 0}^{r}\) 是满足
 
 \[
 {\phi }_{\ell }\left( {u}_{i}\right)  = \left\{  \begin{array}{ll} 0 & \text{ if }\ell  \neq  i \\  1 & \text{ if }\ell  = i \end{array}\right.
@@ -879,6 +900,8 @@ Ex10. 1 定义图 10.18 中曲线网络的数据是
 {\mathbf{C}}_{\ell }\left( v\right)  : m = 4,q = 2,{V}^{C} = \left\{  {0,0,0,\frac{2}{5},\frac{3}{5},1,1,1}\right\}
 \]
 
+（重绘说明：本组图采用相同的代表性控制点及交点参数；为严格满足式(10.31)—(10.32)，$L_2$与$T$复用同一插值基$V^*=\{0,0,0,.321,.647,1,1,1\}$，采用下文建议的近邻节点复用。正文所列独立计算的节点数值仍属原例。）
+
 图 \({10.19}\mathrm{a}\) 和 \({10.19}\mathrm{\;b}\) 显示了 \(u\) 方向升高操作的控制点和生成的表面。节点向量为
 
 \[
@@ -888,6 +911,18 @@ Ex10. 1 定义图 10.18 中曲线网络的数据是
 \[
 {V}^{{L}_{1}} = \left\{  {0,0,0,\frac{2}{5},\frac{3}{5},1,1,1}\right\}
 \]
+
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_26.tex}
+\par\smallskip
+图 10.19. 同一兼容网络的$u$向放样曲面$L_1(u,v)$。\\
+(a) $4\times5$实际控制网；(b) 精确插值四条$C_\ell(v)$的曲面，粗实线为输入$v$曲线，虚线为另一组参考曲线。\\
+使用三次Bezier的$u$基与原二次$V^C$基；两图使用相同投影、尺度和字号。
+\end{minipage}
+\end{center}
 
 \(v\) 方向的升高在图 10.20a 和 10.20b 中进行了说明。节点向量为
 
@@ -899,6 +934,18 @@ Ex10. 1 定义图 10.18 中曲线网络的数据是
 {V}^{{L}_{2}} = \{ 0,0,0,{0.321},{0.647},1,1,1\}
 \]
 
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_27.tex}
+\par\smallskip
+图 10.20. 同一兼容网络的$v$向放样曲面$L_2(u,v)$。\\
+(a) $6\times5$实际控制网；(b) 精确插值五条$C_k(u)$的曲面，粗实线为输入$u$曲线，虚线为另一组参考曲线。\\
+代表性数据采用$V^* =\{0,0,0,.321,.647,1,1,1\}$，后续交点插值复用此基。
+\end{minipage}
+\end{center}
+
 张量积曲面如图 10.21a 和 10.21b 所示。节点是
 
 \[
@@ -908,6 +955,18 @@ Ex10. 1 定义图 10.18 中曲线网络的数据是
 \[
 {V}^{T} = \{ 0,0,0,{0.32},{0.648},1,1,1\}
 \]
+
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_28.tex}
+\par\smallskip
+图 10.21. 二十个网络交点的张量积插值曲面$T(u,v)$。\\
+(a) $4\times5$实际控制网；(b) 曲面通过全部圈点，曲面网格为真实等参数曲线。\\
+重绘复用$L_1$的三次$u$基和$L_2$的二次$V^*$基，以保证式(10.32)的精确抵消。
+\end{minipage}
+\end{center}
 
 注意节点向量 \({V}^{{L}_{2}}\) 和 \({V}^{T}\) 之间的细微差别。这是因为表面蒙皮和表面插值以不同的方式计算节点向量(但对各自的操作有重要意义)。前者使用曲线控制点，而后者利用曲线网络的交点。然而，彼此非常接近的节点是多余且不受欢迎的。一个解决方案是将所有先前计算的节点向量传递给蒙皮和插值例程，允许它们使用各自的算法计算新节点，将这些新节点与现有节点进行比较，并在差异较小的情况下用现有节点替换新节点。在这个例子中，不需要提升度，因为放样和插值使用曲线的度。然而，需要进行节点细化，如图 10.22a-10.22c 所示。戈登曲面构造如图 10.23a 所示，曲面在图 10.23b 中进行了说明。最终节点是
 
@@ -919,97 +978,73 @@ U = \left\{  {0,0,0,0,\frac{3}{10},\frac{7}{10},1,1,1,1}\right\}
 V = \{ 0,0,0,{0.32},{0.321},{0.4},{0.6},{0.647},{0.648},1,1,1\}
 \]
 
-如前所述，输入曲线的度、用于放样的度以及用于构造 \(\mathbf{T}\left( {u,v}\right)\) 的度都可以不同。最终的度 (p, q) 为 \(\mathbf{S}\left( {u,v}\right)\) 仅是这些度的最大值。在进行节点细化之前， \({\mathbf{L}}_{1}\left( {u,v}\right)\) 、 \({\mathbf{L}}_{2}\left( {u,v}\right)\) 和 \(\mathbf{T}\left( {u,v}\right)\) 的度必须提升到 (p, q)。以下是完整算法的草图。 \(\mathrm{{Ck}}\left\lbrack  \right\rbrack\) 和 \(\mathrm{{Cl}}\left\lbrack  \right\rbrack\) 是输入曲线的数组，ul[] 和 vk[] 是曲线交点的参数。要进行双向曲线网络的插值 491
-
-490 高级表面构造技术
-
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_496_298_243_942_1828_0.jpg}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_29.tex}\par\vspace{.5cm}
+\BookFigure[max width=\linewidth]{ch10/fig_10_30.tex}
+\par\smallskip
+图 10.22. 在公共B样条基中表示三个曲面，几何形状保持不变。\\
+(a) $L_1$，(b) $L_2$，(c) $T$细化后的实际控制网，均为$6\times7$控制点。\\
+本重绘共用$U^C$与$V=\{0,0,0,.321,.4,.6,.647,1,1,1\}$；三图投影、尺度和字号一致。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 10.19. \(u\) -方向放样曲面。(a) 控制网；(b) 表面插值 \(v\) 曲线。
+如前所述，输入曲线的度、用于放样的度以及用于构造 \(\mathbf{T}\left( {u,v}\right)\) 的度都可以不同。最终的度 (p, q) 为 \(\mathbf{S}\left( {u,v}\right)\) 仅是这些度的最大值。在进行节点细化之前， \({\mathbf{L}}_{1}\left( {u,v}\right)\) 、 \({\mathbf{L}}_{2}\left( {u,v}\right)\) 和 \(\mathbf{T}\left( {u,v}\right)\) 的度必须提升到 (p, q)。以下是完整算法的草图。 \(\mathrm{{Ck}}\left\lbrack  \right\rbrack\) 和 \(\mathrm{{Cl}}\left\lbrack  \right\rbrack\) 是输入曲线的数组，ul[] 和 vk[] 是曲线交点的参数。要进行
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_497_294_245_944_1823_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.20. \(v\) -双向抬升表面。 (a) 控制网；(b) 表面插值 \(u\) 曲线。
 
-492 高级表面构造技术 双向曲线网络的插值 493
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_498_304_245_930_1826_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.21. 张量积表面。 (a) 控制网；(b) 表面插值交点。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_499_287_246_957_1825_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.22. 节点细化以构造戈登表面。 (a) 在 \(u\) 方向上细化的规则表面；(b) 在 \(v\) 方向上细化的规则表面。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_500_308_252_918_874_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.22. (续)(c) 在两个方向上细化的张量积。
+
+
+
+
+
 
 完全一般，抬升和插值所用的度数 \(\mathrm{p}1,\mathrm{q}1,\mathrm{{pt}}\) , qt 也作为输入。n, m, p, q, U, V, Pij 定义输出的戈登表面。
 
-算法 A10.3
-
+% book-code: algorithm A10.3
+\par\medskip\noindent\textbf{算法 A10.3（伪代码）}\BookIndexMark{p0200}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
 GordonSurface(Ck, Cl, ul, vk, r, s, pl, ql, pt, qt, n, m, p, q, U, V, Pij)
+{ /* 创建戈登表面. */
+    /* 输入: Ck, Cl, ul, vk, r, s, pl, ql, pt, qt */
+    /* 输出: n, m, p, q, U, V, Pij */
+    pc = Ck @曲线的度数@.
+    qc = Cl @曲线的度数@.
+    @选择合适的@ U1 @和@ loft @以获得@ L1( u,v) (@度数@ (pl, qc)).@选择合适的@ V2 @和@ loft @以获得@ L2( u,v) (@度数@ (pc, ql)).@选择合适的@ UT @和@ VT,@并插值以获得@ T(u, v) (@度数@ (pt, qt)). @$p = \max \left( {{pc},{pl},{pt}}\right)$@ .q = max(qc, ql, qt).@根据需要将度数提升@ L1( u,v) ,L2( u,v) @和@ T( u,v) @到@ (p, q).
+    U = Merge( U1,U2,UT) .
+    V = @合并@(V1, V2, VT).
+    Refine knot vectors of L1( u,v) ,L2( u,v) and T( u,v)
+    as necessary.
+    n = (number of u-knots)-p-2.
+    m = (number of v-knots)-q-2.
+    Compute surface control points Pij by Eq. (10.33).
+}
+\end{minted}
 
-\{ /* 创建戈登表面。 */
 
-/* 输入: Ck, Cl, ul, vk, r, s, pl, ql, pt, qt */
-
-/* 输出: n, m, p, q, U, V, Pij */
-
-pc = Ck 曲线的度数。
-
-qc = Cl 曲线的度数。
-
-选择合适的 U1 和 loft 以获得 \({L1}\left( {u,v}\right)\) (度数 (pl, qc))。选择合适的 \({V2}\) 和 loft 以获得 \({L2}\left( {u,v}\right)\) (度数 (pc, ql))。选择合适的 UT 和 VT，并插值以获得 T(u, v) (度数 (pt, qt))。 \(p = \max \left( {{pc},{pl},{pt}}\right)\) 。q = max(qc, ql, qt)。根据需要将度数提升 \({L1}\left( {u,v}\right) ,{L2}\left( {u,v}\right)\) 和 \(T\left( {u,v}\right)\) 到 (p, q)。
-
-\(\mathrm{U} = \operatorname{Merge}\left( {\mathrm{U}1,\mathrm{U}2,\mathrm{{UT}}}\right)\) .
-
-V = 合并(V1, V2, VT)。
-
-双向曲线网络的插值 495
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_501_298_243_939_1822_0.jpg}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_31.tex}
+\par\smallskip
+图 10.23. 同一网络的Gordon曲面$S=L_1+L_2-T$。\\
+(a) 在公共基中逐控制点相加减所得的$6\times7$控制网；(b) 最终曲面。\\
+粗实线为全部九条输入曲线；整条曲线的控制系数恒等式验证了双向精确插值。\\
+圈点满足$P_{5,1}=P^{L_1}_{5,1}+P^{L_2}_{5,1}-P^T_{5,1}$。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 10.23. 一个戈登曲面。(a) 控制网；(b) 插值 \(u\) - 和 \(v\) - 方向曲面的表面。
-
-\HRule
-
-Refine knot vectors of \({L1}\left( {u,v}\right) ,{L2}\left( {u,v}\right)\) and \(T\left( {u,v}\right)\)
-
-\hspace*{1em} as necessary.
-
-n = (number of u-knots)-p-2.
-
-m = (number of v-knots)-q-2.
-
-Compute surface control points Pij by Eq. (10.33).
-
-\}
-
-\HRule
-
-
-
-\section{库恩斯表面}
+\section{库恩斯表面}\BookIndexMark{p0201}
 
 现在假设我们有四条曲线
 
@@ -1047,48 +1082,57 @@ Compute surface control points Pij by Eq. (10.33).
 
 (见图 10.24)。在本节中，我们不限制曲线为非有理的。这里给出的构造通常能产生令人满意的曲面，即使在齐次空间中进行。然而，这会使算法变得复杂。例如，方程 (10.35) 必须在齐次空间中成立。这要求角点权重兼容，这可能需要对曲线进行有理重新参数化(第 6.4 节)。
 
+\begin{center}
+\begin{minipage}{24cm}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_32.tex}
+\par\smallskip
+图 10.24. 定义Coons补片的四条兼容边界曲线。\\
+采用代表性的三次$u$曲线与二次$v$曲线，四个端点完全一致；圈点满足$S_{1,0}=C_0(1)=C_1(0)$。\\
+曲线数据记录于源码，后续图使用相同边界；所有权值为1。
+\end{minipage}
+\end{center}
+
 双线性混合的 Coons 补丁定义为
 
 \[
 \mathbf{S}\left( {u,v}\right)  = {\mathbf{R}}_{1}\left( {u,v}\right)  + {\mathbf{R}}_{2}\left( {u,v}\right)  - \mathbf{T}\left( {u,v}\right)  \tag{10.36}
 \]
 
-其中 \({\mathbf{R}}_{1}\left( {u,v}\right)\) 和 \({\mathbf{R}}_{2}\left( {u,v}\right)\) 是 \({\mathbf{C}}_{k = 0}\left( u\right)\) 和 \({\mathbf{C}}_{k = 1}\left( u\right)\) 之间的规则曲面，以及 \({\mathbf{C}}_{\ell  = 0}\left( v\right)\) 和 \({\mathbf{C}}_{\ell  = 1}\left( v\right)\) 之间的规则曲面，而 \(\mathbf{T}\left( {u,v}\right)\) 是双线性张量积-
-
-uct 表面
+其中 \({\mathbf{R}}_{1}\left( {u,v}\right)\) 和 \({\mathbf{R}}_{2}\left( {u,v}\right)\) 是 \({\mathbf{C}}_{k = 0}\left( u\right)\) 和 \({\mathbf{C}}_{k = 1}\left( u\right)\) 之间的规则曲面，以及 \({\mathbf{C}}_{\ell  = 0}\left( v\right)\) 和 \({\mathbf{C}}_{\ell  = 1}\left( v\right)\) 之间的规则曲面，而 \(\mathbf{T}\left( {u,v}\right)\) 是双线性张量积表面
 
 \[
-\mathbf{T}\left( {u,v}\right)  = \left\lbrack  \begin{array}{ll} 1 & u \end{array}\right\rbrack  \left\lbrack  \begin{array}{ll} {\mathbf{S}}_{0,0} & {\mathbf{S}}_{0,1} \\  {\mathbf{S}}_{1,0} & {\mathbf{S}}_{1,1} \end{array}\right\rbrack  \left\lbrack  \begin{array}{l} 1 \\  v \end{array}\right\rbrack
+\mathbf{T}\left( {u,v}\right)  = \left\lbrack  \begin{array}{ll} 1-u & u \end{array}\right\rbrack  \left\lbrack  \begin{array}{ll} {\mathbf{S}}_{0,0} & {\mathbf{S}}_{0,1} \\  {\mathbf{S}}_{1,0} & {\mathbf{S}}_{1,1} \end{array}\right\rbrack  \left\lbrack  \begin{array}{l} 1-v \\  v \end{array}\right\rbrack
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_503_348_250_832_768_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.24. 定义双线性混合 Coons 补丁的兼容边界曲线。
 
 显然，这是戈登曲面的一个特例，因此可以使用公式 (10.33) 和算法 A10.3(经过简化并修改以处理有理曲线)来获得由公式 (10.36) 给出的 Coons 曲面的 NURBS 表示。在这种情况下，输入参数 \(\mathrm{p}1,\mathrm{q}1,\mathrm{{pt}}\) 和 qt 设置为 1。图 \({10.25}\mathrm{a} - {10.25}\mathrm{\;d}\) 显示了由图 10.24 中的曲线定义的双线性混合 Coons 补丁的构造。图 10.25a 显示了在 \(u\) 方向上的一条规则曲面，图 \({10.25}\mathrm{\;b}\) 则说明了 \(v\) 方向的规则曲面。图 \({10.25}\mathrm{c}\) 显示了由四个角点定义的双线性曲面。双线性混合 Coons 补丁在图 10.25d 中描绘。重要的是要注意，双线性混合 Coons 补丁通常不是双线性曲面。
 
-Coons 在 1960 年代中期开发了他的补丁 [Coon67]。尽管我们将双线性混合 Coons 补丁呈现为戈登曲面的一个特例，但我们指出 Coons 的工作早于并影响了戈登曲面的发展。Coons 对在双向曲线网络中插值位置和切线信息感兴趣，戈登后来也有类似的兴趣。Coons 在每组四条曲线内构造了一个补丁，因此他的插值方法是局部的。戈登的方法则表示对曲线网络的全局插值。
-
-如果两个双线性混合的 Coons 补丁共享一个公共边界曲线，它们通常只在该边界上具有 \({C}^{0}\) 连续性；也就是说，组合表面将在公共边界上产生一个折痕。为了获得这些补丁的光滑、 \({C}^{n}\) 连续 \(\left( {n > 0}\right)\) 连接，Coons 开发了使用跨边界导数场的高阶补丁。为了说明这一点，我们展示了双立方混合的 Coons 补丁。设 \({\mathbf{C}}_{k}\left( u\right)\) 和 \({\mathbf{C}}_{\ell }\left( v\right)\) 为四个边界曲线，如公式 (10.34) 所示，满足给定的两个兼容性条件。我们还假设有四个跨边界导数场(见图 10.26)。
-
-498 高级表面构造技术
-
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_504_344_250_862_1783_0.jpg}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_33.tex}\par\vspace{.5cm}
+\BookFigure[max width=\linewidth]{ch10/fig_10_34.tex}\hspace{1cm}\BookFigure[max width=\linewidth]{ch10/fig_10_35.tex}
+\par\smallskip
+图 10.25. 用图10.24的同一组边界构造双线性混合Coons补片。\\
+(a) $R_1=(1-v)C_0(u)+vC_1(u)$；(b) $R_2=(1-u)C_0(v)+uC_1(v)$。\\
+(c) 四角点的双线性插值$T$，仅通过角点，虚线为参考边界；(d) $S=R_1+R_2-T$精确通过全部四条边界。\\
+粗实线为各阶段已插值的原边界，细线为真实曲面等参数线；四图同投影、同尺度、同字号。\\
+双线性混合不要求最终曲面为双线性曲面；本例的$u$、$v$方向次数分别为3和2。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 10.25. 双线性混合的 Coons 补丁。 (a) 在 \(u\) 方向的规则曲面； (b) 在 \(v\) 方向的规则曲面； (c) 一个双线性表面； (d) 一个双线性混合的 Coons 补丁。
+Coons 在 1960 年代中期开发了他的补丁 \cite{Coon67}。尽管我们将双线性混合 Coons 补丁呈现为戈登曲面的一个特例，但我们指出 Coons 的工作早于并影响了戈登曲面的发展。Coons 对在双向曲线网络中插值位置和切线信息感兴趣，戈登后来也有类似的兴趣。Coons 在每组四条曲线内构造了一个补丁，因此他的插值方法是局部的。戈登的方法则表示对曲线网络的全局插值。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_505_353_243_832_855_0.jpg}
-\end{center}
-\hspace*{3em} 
+如果两个双线性混合的 Coons 补丁共享一个公共边界曲线，它们通常只在该边界上具有 \({C}^{0}\) 连续性；也就是说，组合表面将在公共边界上产生一个折痕。为了获得这些补丁的光滑、 \({C}^{n}\) 连续 \(\left( {n > 0}\right)\) 连接，Coons 开发了使用跨边界导数\BookIndexMark{p0202}场的高阶补丁。为了说明这一点，我们展示了双立方混合的 Coons 补丁。设 \({\mathbf{C}}_{k}\left( u\right)\) 和 \({\mathbf{C}}_{\ell }\left( v\right)\) 为四个边界曲线，如公式 (10.34) 所示，满足给定的两个兼容性条件。我们还假设有四个跨边界导数场(见图 10.26)。
 
-图 10.25. (续)
+
+
+
+
+
 
 曲线如公式 (10.34) 所示，满足给定的两个兼容性条件。我们还假设有四个跨边界导数场(见图 10.26)。
 
@@ -1124,12 +1168,7 @@ Coons 在 1960 年代中期开发了他的补丁 [Coon67]。尽管我们将双�
 {\mathbf{T}}_{0,0} = \frac{d{\mathbf{D}}_{k = 0}\left( {u = 0}\right) }{du} = \frac{d{\mathbf{D}}_{\ell  = 0}\left( {v = 0}\right) }{dv}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_506_360_245_828_848_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 10.25. (续)
 
 \[
 {\mathbf{T}}_{1,0} = \frac{d{\mathbf{D}}_{k = 0}\left( {u = 1}\right) }{du} = \frac{d{\mathbf{D}}_{\ell  = 1}\left( {v = 0}\right) }{dv}
@@ -1143,7 +1182,21 @@ Coons 在 1960 年代中期开发了他的补丁 [Coon67]。尽管我们将双�
 {\mathbf{T}}_{1,1} = \frac{d{\mathbf{D}}_{k = 1}\left( {u = 1}\right) }{du} = \frac{d{\mathbf{D}}_{\ell  = 1}\left( {v = 1}\right) }{dv} \tag{10.38}
 \]
 
-必须成立。 \({\mathbf{T}}_{k,\ell }\) 是四个扭转向量。
+必须成立。 \({\mathbf{T}}_{k,\ell }\) 是四个扭转向量\BookIndexMark{p0203}。
+
+\begin{center}
+\begin{minipage}{27cm}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_36.tex}
+\par\smallskip
+图 10.26. 同一组边界的兼容跨边界导数场与角点扭矢量。\\
+实线箭头为式(10.37)的实际$D_k(u)$、$D_\ell(v)$，虚线箭头为式(10.38)的真实混合导数$T_{a,b}$。\\
+导数箭头按$3/25$、扭矢量按$3/50$的统一因子绘制，保留各自的方向和相对长度；不作单位化。\\
+四个角点的两种混合求导结果完全一致；代表性字段与后续高阶Coons曲面的数据记录于源码。
+\end{minipage}
+\end{center}
+
+
 
 双立方混合的 Coons 补丁定义为
 
@@ -1187,16 +1240,7 @@ Coons 在 1960 年代中期开发了他的补丁 [Coon67]。尽管我们将双�
 {\mathbf{P}}_{3,j}^{{S}_{2}} = {\mathbf{P}}_{\ell  = 1,j} \tag{10.41}
 \]
 
-\(\mathbf{T}\left( {u,v}\right)\) 是一个双立方 Bézier 表面。方程 (1.10) 和 (3.24) 用于推导 16 个控制点， \({\mathbf{P}}_{i,j}^{T},i,j = 0,1,2,3\) 。作为一个例子，我们展示如何
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_507_288_1200_945_818_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 10.26. 兼容的边界曲线以及跨边界的切向量函数和扭曲。
-
-计算与角落 \({\mathbf{S}}_{0,0}\) 相邻的四个控制点 \({\mathbf{P}}_{i,j}^{T},i,j = 0,1\) 。其他十二个控制点是类似的。
+\(\mathbf{T}\left( {u,v}\right)\) 是一个双立方 Bézier 表面。方程 (1.10) 和 (3.24) 用于推导 16 个控制点， \({\mathbf{P}}_{i,j}^{T},i,j = 0,1,2,3\) 。作为一个例子，我们展示如何计算与角落 \({\mathbf{S}}_{0,0}\) 相邻的四个控制点 \({\mathbf{P}}_{i,j}^{T},i,j = 0,1\) 。其他十二个控制点是类似的。
 
 \[
 {\mathbf{P}}_{0,0}^{T} = {\mathbf{S}}_{0,0} = {\mathbf{C}}_{k = 0}\left( {u = 0}\right)  = {\mathbf{C}}_{\ell  = 0}\left( {v = 0}\right)
@@ -1222,93 +1266,85 @@ Coons 在 1960 年代中期开发了他的补丁 [Coon67]。尽管我们将双�
 
 图 10.27-10.30 显示了构建双三次混合 Coons 补丁的过程。图 10.27a 和 10.27b 显示了一个 \(u\) 方向的三次混合表面， \({\mathbf{S}}_{2}\left( {u,v}\right)\) ，以及定义控制网。 \(v\) 方向的三次混合在图 10.28a 和 \({10.28}\mathrm{\;b}\left( {{\mathbf{S}}_{1}\left( {u,v}\right) }\right)\) 中进行了说明。图 10.29a 和 \({10.29}\mathrm{\;b}\) 描绘了一个双三次张量积表面。最后，在进行适当的次数提升和节点细化后，图 10.30a 和 10.30b 展示了 Coons 补丁。
 
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_37.tex}
+\par\smallskip
+图 10.27. 按式(10.41)构造的$u$向三次混合曲面$S_2(u,v)$。\\
+(a) $4\times5$实际控制网；(b) 曲面在$u$方向为三次Bezier、在$v$方向为二次B样条。\\
+粗线为精确插值的两条$C_\ell(v)$；对应$u$偏导数整条满足给定$D_\ell(v)$，虚线为另一组参考边界。\\
+各图使用图10.24～10.26的同一组兼容数据；投影、尺度、字号与线宽保持一致，控制数据与恒等式核验记录于源码。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_38.tex}
+\par\smallskip
+图 10.28. 按式(10.40)构造的$v$向三次混合曲面$S_1(u,v)$。\\
+(a) $6\times4$实际控制网；(b) 曲面在$u$方向为三次B样条、在$v$方向为三次Bezier。\\
+粗线为精确插值的两条$C_k(u)$；对应$v$偏导数整条满足给定$D_k(u)$，虚线为另一组参考边界。\\
+各图使用图10.24～10.26的同一组兼容数据；投影、尺度、字号与线宽保持一致，控制数据与恒等式核验记录于源码。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_39.tex}
+\par\smallskip
+图 10.29. 由角点、端点偏导数与扭矢量构成的双三次张量积曲面$T(u,v)$。\\
+(a) $4\times4$Bezier控制网；(b) 角点Hermite插值曲面，虚线为四条原参考边界。\\
+四角处的位置、两个一阶偏导数及混合偏导数分别与给定数据完全一致。\\
+各图使用图10.24～10.26的同一组兼容数据；投影、尺度、字号与线宽保持一致，控制数据与恒等式核验记录于源码。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch10/fig_10_40.tex}
+\par\smallskip
+图 10.30. 双三次混合Coons补片$S=S_1+S_2-T$。\\
+(a) 统一次数、节点后相加减得到的$6\times8$控制网；(b) 最终曲面精确满足四条边界及四个跨边界导数场。\\
+采用公共三次基$U=\{0,0,0,0,.3,.7,1,1,1,1\}$、$V=\{0,0,0,0,.4,.4,.6,.6,1,1,1,1\}$。\\
+各图使用图10.24～10.26的同一组兼容数据；投影、尺度、字号与线宽保持一致，控制数据与恒等式核验记录于源码。
+\end{minipage}
+\end{center}
+
 在算法 A10.4 中，Ck[]、Cl[] 和 Dk[]、Dl[] 分别是边界曲线和跨边界导数的数组。 \(n,m,p,q,U,V\) ，Pij 定义了输出的双三次混合 Coons 表面。
 
-\HRule
-
-ALGORITHM A10.4
-
-\hspace*{2em} BicubicBlendCoons(Ck, Cl, Dk, Dl, n, m, p, q, U, V, Pij)
-
-\hspace*{3em} \{ /* Create bicubically blended Coons surface. *
-
-\hspace*{5em} /* Input: Ck, Cl, Dk, Dl */
-
-\hspace*{5em} /* Output: n, m, p, q, U, V, Pij */
-
-\hspace*{3em} Compute the ctrl pts of \({S}_{1}\left( {u,v}\right)\) (Eq.10.40).
-
-\hspace*{3em} Compute the ctrl pts of \({\mathrm{S}}_{2}\left( {u,v}\right)\) (Eq.10.41).
-
-\hspace*{3em} Compute the ctrl pts of \(\mathbf{T}\left( {u,v}\right)\) (Eq.10.42).
-
-\hspace*{3em} pcd = degree of the \({Ck}\) curves and \({Dk}\) derivatives.
-
-\hspace*{3em} qcd = degree of the \(\mathrm{{Cl}}\) curves and \(\mathrm{{Dl}}\) derivatives.
-
-\hspace*{3em} p = max(3, pcd);
-
-\hspace*{3em} q = max(3, qcd);
-
-\hspace*{3em} Degree elevate \({\mathbf{S}}_{1}\left( {u,v}\right) ,{\mathbf{S}}_{2}\left( {u,v}\right)\) and \(\mathbf{T}\left( {u,v}\right)\) to(p, q)
-
-\hspace*{6em} if necessary.
-
-\hspace*{3em} \(U = u -\) knot vector of \({S}_{1}\left( {u,v}\right)\) .
-
-\hspace*{3em} \(V = v -\) knot vector of \({S}_{2}\left( {u,v}\right)\) .
-
-\HRule
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_509_326_172_929_1900_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 10.27. \(u\) 方向的三次混合表面。(a) 控制网；(b) 表面(在 \(u\) 方向的 Bézier 和在 \(v\) 方向的 B-spline)。
-
-Coons 表面 503
-
-504 高级表面构造技术 Coons 表面 505
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_510_350_242_897_1827_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 10.28. \(v\) 方向的三次混合表面。(a) 控制网；(b) 表面(在 \(u\) 方向的 B-spline 和在 \(v\) 方向的 Bézier)。
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_511_311_134_918_1948_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 10.29. 双三次张量积表面。(a) 控制网；(b) 双三次 Bézier 表面。
-
-506 高级表面构造技术
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_512_318_232_909_1839_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 10.30. 双三次混合 Coons 表面。(a) 次数提升和节点细化后的控制网；(b) Coons 表面。
-
-\HRule
-
-Knot refine \({\mathbf{S}}_{1}\left( {u,v}\right) ,{\mathbf{S}}_{2}\left( {u,v}\right)\) and \(\mathbf{T}\left( {u,v}\right)\) to
-
-\hspace*{1em} \(U\) and \(V\) if necessary.
-
-n = (number of u-knots)-p-2.
-
-m = (number of v-knots)-q-2.
-
-Compute surface control points \({\mathbf{P}}_{i,j}\) by Eq. (10.43).
-
-\}
-
-\HRule
+% book-code: algorithm A10.4
+\par\medskip\noindent\textbf{算法 A10.4（伪代码）}\BookIndexMark{p0204}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+BicubicBlendCoons(Ck, Cl, Dk, Dl, n, m, p, q, U, V, Pij)
+{ /* Create bicubically blended Coons surface. */
+    /* Input: Ck, Cl, Dk, Dl */
+    /* Output: n, m, p, q, U, V, Pij */
+    Compute the ctrl pts of @${S}_{1}\left( {u,v}\right)$@ (Eq.10.40).
+    Compute the ctrl pts of @${\mathrm{S}}_{2}\left( {u,v}\right)$@ (Eq.10.41).
+    Compute the ctrl pts of @$\mathbf{T}\left( {u,v}\right)$@ (Eq.10.42).
+    pcd = degree of the Ck curves and Dk derivatives.
+    qcd = degree of the Cl curves and Dl derivatives.
+    p = max(3, pcd);
+    q = max(3, qcd);
+    Degree elevate @${\mathbf{S}}_{1}\left( {u,v}\right) ,{\mathbf{S}}_{2}\left( {u,v}\right)$@ and @$\mathbf{T}\left( {u,v}\right)$@ to(p, q)
+    if necessary.
+    U = u - knot vector of @${S}_{1}\left( {u,v}\right)$@ .
+    V = v - knot vector of @${S}_{2}\left( {u,v}\right)$@ .
+    Knot refine @${\mathbf{S}}_{1}\left( {u,v}\right) ,{\mathbf{S}}_{2}\left( {u,v}\right)$@ and @$\mathbf{T}\left( {u,v}\right)$@ to
+    U and V if necessary.
+    n = (number of u-knots)-p-2.
+    m = (number of v-knots)-q-2.
+    Compute surface control points @${\mathbf{P}}_{i,j}$@ by Eq. (10.43).
+}
+\end{minted}
 
 在实践中，构建一个双立方混合的 Coons 补丁并不容易。首先，跨边界的导数场很少可用；即使可用，导数的大小也可能不合适。此外，人们几乎无法期望扭转向量兼容性(方程 [10.38])成立，也就是说，通常情况下
 
@@ -1338,7 +1374,7 @@ Compute surface control points \({\mathbf{P}}_{i,j}\) by Eq. (10.43).
 
 在保持 \({\mathbf{Q}}_{k = 0,0}\) 和 \({\mathbf{Q}}_{\ell  = 0,0}\) 不变的情况下，可以修改 \({\mathbf{Q}}_{k = 0,1}\) 和 \({\mathbf{Q}}_{\ell  = 0,1}\) 以产生共同的扭曲 \({\mathbf{T}}_{0,0}\) 。在修改 \({\mathbf{Q}}_{k = 0,1}\) 和 \({\mathbf{Q}}_{\ell  = 0,1}\) 之前应用的结插入可以用来限制角度误差并限制其影响范围。如果任何曲线或导数场是有理的，过程会更加复杂。
 
-对于对 Coons 补丁的更深入和更广泛的研究，读者应参考 Barnhill 的文章 [Barn93] 及其中引用的文献。
+对于对 Coons 补丁的更深入和更广泛的研究，读者应参考 Barnhill 的文章 \cite{Barn93} 及其中引用的文献。
 
 
 

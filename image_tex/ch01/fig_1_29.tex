@@ -1,0 +1,32 @@
+% Fig. 1.19: exact quarter circle, C(u)=((1-u^2)/(1+u^2),2u/(1+u^2)).
+% The rational quadratic controls (1,0),(1,1),(0,1), weights (1,1,2)
+% reproduce this SAME parameterization, not just the same circular locus.
+\begin{tikzpicture}[x=3.5cm,y=3.5cm,book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \def\u{(\t/200)}
+  \begin{scope}
+    \path[book figure bounds] (-.3,-.33) rectangle (1.7,1.6);
+    \draw[book axis,line width=.45pt] (0,0)--(1.4,0) node[right] {$x$};
+    \draw[book axis,line width=.45pt] (0,0)--(0,1.4) node[above] {$y$};
+    \draw plot[variable=\t,domain=0:200,samples=201]
+      ({(1-\u^2)/(1+\u^2)},{2*\u/(1+\u^2)});
+    \node[above right] at (0,1) {$(0,1)$};
+    \node[below] at (1,0) {$(1,0)$};
+    \node[book panel tag] at (.7,-.27) {(a)};
+  \end{scope}
+  \begin{scope}[xshift=8cm]
+    \path[book figure bounds] (-.3,-.33) rectangle (1.7,1.6);
+    \draw[book axis,line width=.45pt] (0,0)--(1.4,0) node[right] {$x$};
+    \draw[book axis,line width=.45pt] (0,0)--(0,1.4) node[above] {$y$};
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (1,0)--(1,1);
+    \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (1,1)--(0,1);
+    \draw plot[variable=\t,domain=0:200,samples=201]
+      ({(1-\u^2)/(1+\u^2)},{2*\u/(1+\u^2)});
+    \node[book point,label=below:{$\mathbf P_0$}] at (1,0) {};
+    \node[book point,label=above:{$\mathbf P_1$}] at (1,1) {};
+    \node[book point,label=left:{$\mathbf P_2$}] at (0,1) {};
+    \node[right] at (1.05,.13) {$w_0=1$};
+    \node[right] at (1.05,.85) {$w_1=1$};
+    \node[above right] at (0,1.02) {$w_2=2$};
+    \node[book panel tag] at (.7,-.27) {(b)};
+  \end{scope}
+\end{tikzpicture}

@@ -1,0 +1,39 @@
+% Fig. 1.8(a,b), semantic redraw. All labels are editable LaTeX nodes.
+% (a) C(t)=(-t+.4t^2, t+.4t^2, .6t^3-t-.8), -1.2<=t<=1.2.
+% Projection: (X,Y,Z) -> (-.9X+.9Y, -.35X-.35Y+.9Z).
+% The three coefficient directions are independent: a genuinely spatial cubic.
+% (b) C(t)=(1.45t, .576t^3-1.44t). C''(0)=0 is an inflection.
+% Numeric coefficients illustrate the original geometry; no original data given.
+\begin{tikzpicture}[book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \begin{scope}
+    \path[book figure bounds] (-3.35,-2.1) rectangle (3.35,2.55);
+    \draw[book axis,line width=.45pt] (0,0) -- (-2.7,-1.05) node[below left] {$x$};
+    \draw[book axis,line width=.45pt] (0,0) -- (2.7,-1.05) node[below right] {$y$};
+    \draw[book axis,line width=.45pt] (0,0) -- (0,2.15) node[above] {$z$};
+    \draw plot[variable=\t,domain=-1.2:1.2,samples=101]
+      ({1.8*\t},{.54*(\t)^3-.28*(\t)^2-.9*\t-.72});
+    \draw[book axis,line width=.45pt] (-2.16,-.97632) -- (-.630,.81276);
+    \draw[book axis,line width=.45pt] (2.16,-1.27008) -- (3.15,-.85164);
+    \foreach \p in {(-2.16,-.97632),(2.16,-1.27008)}
+      \fill \p circle (1.4pt);
+    \node[align=center] at (1.55,1.2) {Twisted cubic};
+    \node[book panel tag] at (0,-1.98) {(a)};
+  \end{scope}
+  \begin{scope}[xshift=7.5cm]
+    \path[book figure bounds] (-3.35,-2.1) rectangle (3.35,2.55);
+    \draw[book axis,line width=.45pt] (-2.8,0) -- (2.85,0) node[right] {$x$};
+    \draw[book axis,line width=.45pt] (0,-1.25) -- (0,2.15) node[above] {$y$};
+    \draw plot[variable=\t,domain=-1.4:1.4,samples=121]
+      ({1.45*\t},{.576*(\t)^3-1.44*\t});
+    \draw[book axis,line width=.45pt] (-2.03,.435456) -- (-.723,2.190);
+    \draw[book axis,line width=.45pt] (2.03,-.435456) -- (3.00,.86752);
+    \node[book point] at (-2.03,.435456) {};
+    \node[book point] at (2.03,-.435456) {};
+    \draw[-{Stealth[length=4pt]},line width=.45pt] (.52,.65)
+      node[above right,align=left] {Inflection point} -- (.035,.035);
+    \node[align=center] at (1.78,1.78)
+      {$\mathbf C'(u)\parallel\mathbf C''(u)$\\[2pt]
+       or $\mathbf C''(u)=\mathbf0$};
+    \node[book panel tag] at (0,-1.98) {(b)};
+  \end{scope}
+\end{tikzpicture}

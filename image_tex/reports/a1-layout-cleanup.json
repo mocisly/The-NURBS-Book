@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "date": "2026-11-09",
+  "archived_reports": [],
+  "removed": [
+    {
+      "path": "image_tex/build",
+      "files": 16,
+      "bytes": 742234.0
+    },
+    {
+      "path": "scripts/.mypy_cache",
+      "files": 151,
+      "bytes": 8700220.0
+    },
+    {
+      "path": "tmp/a1-review",
+      "files": 143,
+      "bytes": 50241948.0
+    }
+  ],
+  "removed_bytes": 59684402.0,
+  "protected_files_verified": 1603,
+  "protected_files_unchanged": true,
+  "published_pdf_sha256": "fc6e8c7c55420208bff1dd58fa7da03ce8c8c077a7cc253211832b662d8abf0a",
+  "note": "Historical manifest evidence paths refer to removed previews and frozen builds. Regenerate evidence before running those validation workflows."
+}

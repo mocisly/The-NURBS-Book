@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "native_sources_with_identical_geometric_data": 436,
+  "minted_blocks_unchanged": 109,
+  "figure_1_2_before_surface_introduction": true,
+  "redundant_opening_breaks_removed": [
+    8,
+    10
+  ]
+}

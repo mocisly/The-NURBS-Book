@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "total_listings": 109,
+  "numbered_algorithms": 61,
+  "chapter13_listings": 45,
+  "supplementary_algorithm_fragments": 3,
+  "chapter_counts": {
+    "1": 7,
+    "2": 5,
+    "3": 8,
+    "4": 4,
+    "5": 14,
+    "6": 2,
+    "7": 3,
+    "8": 2,
+    "9": 12,
+    "10": 4,
+    "11": 1,
+    "12": 2,
+    "13": 45
+  },
+  "figure_calls_unchanged": 430,
+  "c_syntax_checks": [
+    {
+      "name": "S_getc2d",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "E_seterr",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "E_kntdef",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "E_curdef",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "E_curwei",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "E_curinp",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "U_makcu1",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "U_makp12",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "U_makcu3",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "U_maksu2",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "A_initcp",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "A_updcpt",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "A_euclid",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "N_evncur",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "N_evnsur",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "curve-driver",
+      "exit_code": 0,
+      "diagnostic": ""
+    },
+    {
+      "name": "surface-driver",
+      "exit_code": 0,
+      "diagnostic": ""
+    }
+  ],
+  "c_syntax_scope": "17 complete routines/drivers with lightweight type declarations. Partial sketches and numbered pseudocode are not asserted to be standalone C programs; no Nlib linking or runtime tests.",
+  "formatting": "minted 2.9 / monokai; language c, except text call hierarchy; Consolas and Microsoft YaHei; mathematical pseudocode retained via escapeinside/mathescape",
+  "ocr_repairs": [
+    "C tokens and escapes, pointer arrows, comments, full-width punctuation",
+    "Rejoined whole routines across printed running headers",
+    "Restored C declarations mistyped as prose and macro mistyped as a section",
+    "Restored missing/misread braces, including two spurious zero-knot cases formulas in A2.5/A3.4",
+    "A2.5 zeroth-degree support test restored from its indicator interval",
+    "Locally consistent NOZ/NOW sentinel spelling and case of p/s/cur/sur variables"
+  ]
+}

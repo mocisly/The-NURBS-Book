@@ -1,0 +1,28 @@
+% Migrated from chapter/1.tex; native drawing retained.
+\begin{tikzpicture}[scale=\BookGeometryScale]
+
+        % 画坐标轴
+
+        \draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$x$};
+
+        \draw[->] (0, -1.5) -- (0, 1.5) node[above] {$y$};
+
+
+
+        % 画圆
+
+        \draw[] (0,0) circle(1);
+
+
+
+        % 画半径线
+
+        \draw[->] (0,0) -- (0.707, 0.707) node[right] {};
+
+
+
+        % 标记半径长度
+
+        \node at (1.0,1.0) {R = 1};
+
+    \end{tikzpicture}

@@ -1,0 +1,12 @@
+[
+  {
+    "chapter": 8,
+    "removed": "initial clearpage immediately after subfile begin document",
+    "purpose": "Keep chapter heading with introduction and initial figure."
+  },
+  {
+    "chapter": 10,
+    "removed": "initial clearpage immediately after subfile begin document",
+    "purpose": "Keep chapter heading with introduction and initial figure."
+  }
+]

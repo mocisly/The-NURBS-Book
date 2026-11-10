@@ -1,0 +1,65 @@
+% Printed Fig3.20(a), source21:5x4 representative control net.
+% No numerical data/degree/knots in original; chosen bicubic example recorded in surface320_data.py.
+% Same controls, camera and knot vectors will generate panel(b). No tracing.
+\begin{tikzpicture}[x={(-.9cm,-.6cm)},y={(1cm,-.35cm)},z={(0cm,1cm)},book line,scale=\BookGeometryScale]
+\path[book figure bounds] (canvas cs:x=-5cm,y=-4.8cm) rectangle (canvas cs:x=6.1cm,y=5.2cm);
+\draw[book axis] (0,0,0)--(4.5,0,0) node[below left=4pt] {$x$};
+\draw[book axis] (0,0,0)--(0,5.2,0) node[right=4pt] {$y$};
+\draw[book axis] (0,0,0)--(0,0,4.5) node[above=4pt] {$z$};
+\coordinate (P00) at (3,-1,1.5);
+\coordinate (P01) at (1,-1,1);
+\coordinate (P02) at (0,-1,2);
+\coordinate (P03) at (-2,-1,1.5);
+\coordinate (P10) at (3,0,1.5);
+\coordinate (P11) at (1,0,1);
+\coordinate (P12) at (0,0,2);
+\coordinate (P13) at (-2,0,1.5);
+\coordinate (P20) at (3,1,0);
+\coordinate (P21) at (1,1,-0.5);
+\coordinate (P22) at (0,1,0.5);
+\coordinate (P23) at (-2,1,0);
+\coordinate (P30) at (3,2,-0.25);
+\coordinate (P31) at (1,2,-0.75);
+\coordinate (P32) at (0,2,0.25);
+\coordinate (P33) at (-2,2,-0.25);
+\coordinate (P40) at (3,3,-0.5);
+\coordinate (P41) at (1,3,-1);
+\coordinate (P42) at (0,3,0);
+\coordinate (P43) at (-2,3,-0.5);
+\draw[book grid,dashed] (P00)--(P01)--(P02)--(P03);
+\draw[book grid,dashed] (P10)--(P11)--(P12)--(P13);
+\draw[book grid,dashed] (P20)--(P21)--(P22)--(P23);
+\draw[book grid,dashed] (P30)--(P31)--(P32)--(P33);
+\draw[book grid,dashed] (P40)--(P41)--(P42)--(P43);
+\draw[book grid,dashed] (P00)--(P10)--(P20)--(P30)--(P40);
+\draw[book grid,dashed] (P01)--(P11)--(P21)--(P31)--(P41);
+\draw[book grid,dashed] (P02)--(P12)--(P22)--(P32)--(P42);
+\draw[book grid,dashed] (P03)--(P13)--(P23)--(P33)--(P43);
+\fill (P00) circle[radius=1.3pt];
+\fill (P01) circle[radius=1.3pt];
+\fill (P02) circle[radius=1.3pt];
+\fill (P03) circle[radius=1.3pt];
+\fill (P10) circle[radius=1.3pt];
+\fill (P11) circle[radius=1.3pt];
+\fill (P12) circle[radius=1.3pt];
+\fill (P13) circle[radius=1.3pt];
+\fill (P20) circle[radius=1.3pt];
+\fill (P21) circle[radius=1.3pt];
+\fill (P22) circle[radius=1.3pt];
+\fill (P23) circle[radius=1.3pt];
+\fill (P30) circle[radius=1.3pt];
+\fill (P31) circle[radius=1.3pt];
+\fill (P32) circle[radius=1.3pt];
+\fill (P33) circle[radius=1.3pt];
+\fill (P40) circle[radius=1.3pt];
+\fill (P41) circle[radius=1.3pt];
+\fill (P42) circle[radius=1.3pt];
+\fill (P43) circle[radius=1.3pt];
+\node[left=5pt] at (P00) {$\mathbf P_{0,0}$};
+\node[below left=5pt] at (P10) {$\mathbf P_{1,0}$};
+\node[above left=5pt] at (P01) {$\mathbf P_{0,1}$};
+\node[above=5pt] at (P03) {$\mathbf P_{0,3}$};
+\node[below right=5pt] at (P40) {$\mathbf P_{4,0}$};
+\node[right=5pt] at (P43) {$\mathbf P_{4,3}$};
+\node[book panel tag] at (canvas cs:x=.5cm,y=-4.45cm) {(a)};
+\end{tikzpicture}

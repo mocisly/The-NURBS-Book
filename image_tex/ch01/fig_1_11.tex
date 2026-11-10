@@ -1,0 +1,9 @@
+% Fig. 1.9: degree-one Bezier, C(u)=(1-u)P0+uP1.
+% Representative endpoints; the scan specifies no numeric coordinates.
+\begin{tikzpicture}[book line,line cap=round,scale=\BookGeometryScale]
+  \coordinate (P0) at (0,0);
+  \coordinate (P1) at (4.8,2.8);
+  \draw[shorten <=2pt,shorten >=2pt] (P0) -- (P1);
+  \node[book point,label=below:{$\mathbf P_0=\mathbf C(0)$}] at (P0) {};
+  \node[book point,label=above:{$\mathbf P_1=\mathbf C(1)$}] at (P1) {};
+\end{tikzpicture}

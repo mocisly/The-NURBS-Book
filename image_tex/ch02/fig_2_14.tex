@@ -1,0 +1,39 @@
+% Printed Fig2.12. U=(0,0,0,0,1,5,6,8,8,8,8), from caption.
+% Right endpoint follows P2.8/FindSpan: N6,3(8)=1.
+% Exact rational polynomial pieces from Cox-de Boor; no tracing.
+% Each piece uses a local parameter t in [0,1] to avoid cancellation.
+\begin{tikzpicture}[scale=\BookGeometryScale]
+\begin{scope}[scale=\BookAxisInverseScale]
+\begin{axis}[scale only axis,width={14cm*\BookGeometryScale},height={5.2cm*\BookGeometryScale},axis lines=left,
+xmin=-.3,xmax=9.2,ymin=0,ymax=1.45,xtick={0,1,5,6,8},ytick={1},
+xlabel={$u$},tick align=outside,axis line style={-{Stealth}},clip=false]
+\addplot[book line,no marks,samples=41,domain=0:1] ({0+1*x},{((((-1/1)*x+(3/1))*x+(-3/1))*x+(1/1))});
+\addplot[book line,no marks,samples=41,domain=0:1] ({0+1*x},{((((31/25)*x+(-18/5))*x+(3/1))*x+(0/1))});
+\addplot[book line,no marks,samples=41,domain=0:1] ({1+4*x},{((((-16/25)*x+(48/25))*x+(-48/25))*x+(16/25))});
+\node[above=5pt] at (axis cs:0.61000,0.77189644) {$N_{1,3}$};
+\addplot[book line,no marks,samples=41,domain=0:1] ({0+1*x},{((((-41/150)*x+(3/5))*x+(0/1))*x+(0/1))});
+\addplot[book line,no marks,samples=41,domain=0:1] ({1+4*x},{((((128/75)*x+(-88/25))*x+(38/25))*x+(49/150))});
+\addplot[book line,no marks,samples=41,domain=0:1] ({5+1*x},{((((-1/30)*x+(1/10))*x+(-1/10))*x+(1/30))});
+\node[above=5pt] at (axis cs:2.07000,0.51405648) {$N_{2,3}$};
+\addplot[book line,no marks,samples=41,domain=0:1] ({0+1*x},{((((1/30)*x+(0/1))*x+(0/1))*x+(0/1))});
+\addplot[book line,no marks,samples=41,domain=0:1] ({1+4*x},{((((-32/21)*x+(8/5))*x+(2/5))*x+(1/30))});
+\addplot[book line,no marks,samples=41,domain=0:1] ({5+1*x},{((((23/210)*x+(-13/70))*x+(-17/70))*x+(107/210))});
+\addplot[book line,no marks,samples=41,domain=0:1] ({6+2*x},{((((-4/21)*x+(4/7))*x+(-4/7))*x+(4/21))});
+\node[above=5pt] at (axis cs:4.23000,0.59728364) {$N_{3,3}$};
+\addplot[book line,no marks,samples=41,domain=0:1] ({1+4*x},{((((16/35)*x+(0/1))*x+(0/1))*x+(0/1))});
+\addplot[book line,no marks,samples=41,domain=0:1] ({5+1*x},{((((-59/315)*x+(3/35))*x+(12/35))*x+(16/35))});
+\addplot[book line,no marks,samples=41,domain=0:1] ({6+2*x},{((((82/63)*x+(-40/21))*x+(-2/21))*x+(44/63))});
+\node[above=5pt] at (axis cs:5.95000,0.69962659) {$N_{4,3}$};
+\addplot[book line,no marks,samples=41,domain=0:1] ({5+1*x},{((((1/9)*x+(0/1))*x+(0/1))*x+(0/1))});
+\addplot[book line,no marks,samples=41,domain=0:1] ({6+2*x},{((((-19/9)*x+(4/3))*x+(2/3))*x+(1/9))});
+\node[above=5pt] at (axis cs:7.19000,0.53511637) {$N_{5,3}$};
+\addplot[book line,no marks,samples=41,domain=0:1] ({6+2*x},{((((1/1)*x+(0/1))*x+(0/1))*x+(0/1))});
+\node (n0) at (axis cs:.25,1.28) {$N_{0,3}$};
+\draw[book grid,-{Stealth[length=4pt]}] (n0)--(axis cs:.08,.778688);
+\fill (axis cs:8,1) circle[radius=1.5pt];
+\node[above=5pt] at (axis cs:8,1) {$N_{6,3}$};
+\pgfplotsinvokeforeach{-.09,-.03,.03,7.91,7.97,8.03}{
+\draw[book grid] (axis cs:#1,-.025)--(axis cs:#1,.025);}
+\end{axis}
+\end{scope}
+\end{tikzpicture}

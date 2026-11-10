@@ -1,0 +1,11 @@
+% Fig. 1.6: C(u)=(0,0)+(4,3)u+(0,-3)u^2.
+% Exact quadratic, with exact endpoint tangent directions; representative data.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+  \draw plot[domain=0:1,samples=81] ({4*\x},{3*\x-3*\x*\x});
+  \draw[book axis] (0,0) -- (4.8,3.6)
+    node[pos=.58,above left] {$\mathbf a_1$};
+  \draw[book axis] (4,0) -- (6.4,-1.8)
+    node[pos=.65,right=4pt] {$\mathbf a_1+2\mathbf a_2$};
+  \node[book point,label=below left:{$\mathbf a_0$}] at (0,0) {};
+  \node[book point,label=above right:{$\mathbf a_0+\mathbf a_1+\mathbf a_2$}] at (4,0) {};
+\end{tikzpicture}

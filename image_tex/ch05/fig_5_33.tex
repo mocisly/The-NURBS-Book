@@ -1,0 +1,46 @@
+% Fig5.26: one representative cubic Bezier with knot1 inserted three times, then removed exactly.
+% Every P_i^t and label equality computed in exact rational arithmetic.
+% All four stages are the SAME global polynomial and parameterization on[0,2].
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\path[book figure bounds] (-3.4,-3.7) rectangle (14,7.2);
+\draw[book grid] (1,0)--(0.5,2.75)--(2.75,4.325)--(5,4.425)--(7.25,4.525)--(9.5,3.15)--(9,0);
+\draw[book grid] (1,0)--(0.5,2.75)--(2.75,4.325)--(7.25,4.525)--(9.5,3.15)--(9,0);
+\draw[book grid,dashed] (1,0)--(0.5,2.75)--(5,5.9)--(9.5,3.15)--(9,0);
+\draw[book grid,dash dot] (1,0)--(0,5.5)--(10,6.3)--(9,0);
+\draw (1,0) .. controls (0,5.5) and (10,6.3) .. (9,0);
+\fill (1,0) circle[radius=1.7pt];
+\fill (0.5,2.75) circle[radius=1.7pt];
+\fill (2.75,4.325) circle[radius=1.7pt];
+\fill (5,4.425) circle[radius=1.7pt];
+\fill (7.25,4.525) circle[radius=1.7pt];
+\fill (9.5,3.15) circle[radius=1.7pt];
+\fill (9,0) circle[radius=1.7pt];
+\draw (5,5.9) circle[radius=1.8pt];
+\draw (0,5.5) circle[radius=1.8pt];
+\draw (10,6.3) circle[radius=1.8pt];
+\node[below left=6pt] at (1,0) {$\mathbf P_0^0=\mathbf P_0^3$};
+\node[below right=6pt] at (9,0) {$\mathbf P_6^0=\mathbf P_3^3$};
+\node[left=6pt] at (0.5,2.75) {$\mathbf P_1^2=\mathbf P_1^1=\mathbf P_1^0$};
+\node[above left=6pt] at (2.75,4.325) {$\mathbf P_2^1=\mathbf P_2^0$};
+\node[below=7pt] at (5,4.425) {$\mathbf P_3^0$};
+\node[above right=6pt] at (7.25,4.525) {$\mathbf P_4^0=\mathbf P_3^1$};
+\node[right=6pt] at (9.5,3.15) {$\mathbf P_5^0=\mathbf P_4^1=\mathbf P_3^2$};
+\node[above=7pt] at (5,5.9) {$\mathbf P_2^2$};
+\node[above left=7pt] at (0,5.5) {$\mathbf P_1^3$};
+\node[above right=7pt] at (10,6.3) {$\mathbf P_2^3$};
+\draw[book grid] (1,-2.35)--(10,-2.35);
+\draw[book grid] (0.85,-2.45)--(0.85,-2.25);
+\draw[book grid] (0.95,-2.45)--(0.95,-2.25);
+\draw[book grid] (1.05,-2.45)--(1.05,-2.25);
+\draw[book grid] (1.15,-2.45)--(1.15,-2.25);
+\node[below=7pt] at (1,-2.35) {$u_0=u_1=u_2=u_3$};
+\draw[book grid] (5.4,-2.45)--(5.4,-2.25);
+\draw[book grid] (5.5,-2.45)--(5.5,-2.25);
+\draw[book grid] (5.6,-2.45)--(5.6,-2.25);
+\node[below=7pt] at (5.5,-2.35) {$u_4=u_5=u_6$};
+\draw[book grid] (9.85,-2.45)--(9.85,-2.25);
+\draw[book grid] (9.95,-2.45)--(9.95,-2.25);
+\draw[book grid] (10.05,-2.45)--(10.05,-2.25);
+\draw[book grid] (10.15,-2.45)--(10.15,-2.25);
+\node[below=7pt] at (10,-2.35) {$u_7=u_8=u_9=u_{10}$};
+\end{tikzpicture}

@@ -1,0 +1,30 @@
+% Fig3.12: cubic caption knots with double3/4.
+% Representative controls; simple knots C2, double knot C1 but not C2.
+% Exact native cubic Bezier segments, no tracing.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (0.4,3);
+\coordinate (P2) at (4,5);
+\coordinate (P3) at (6,3);
+\coordinate (P4) at (6,0);
+\coordinate (P5) at (10.5,0);
+\coordinate (P6) at (12,2);
+\coordinate (P7) at (10,4);
+\draw[book grid] (P0)--(P1)--(P2)--(P3)--(P4)--(P5)--(P6)--(P7);
+\draw (0,0) .. controls (0.4,3) and (2.2,4) .. (3.4333333333,4.1666666667);
+\draw (3.4333333333,4.1666666667) .. controls (4.6666666667,4.3333333333) and (5.3333333333,3.6666666667) .. (5.6666666667,2.5833333333);
+\draw (5.6666666667,2.5833333333) .. controls (6,1.5) and (6,0) .. (8.25,0);
+\draw (8.25,0) .. controls (10.5,0) and (12,2) .. (10,4);
+\foreach \i in {0,...,7} \node[book point] at (P\i) {};
+\fill (3.4333333333,4.1666666667) circle[radius=1.7pt];
+\fill (5.6666666667,2.5833333333) circle[radius=1.7pt];
+\fill (8.25,0) circle[radius=1.7pt];
+\node[below=4pt] at (P0) {$\mathbf P_{0}$};
+\node[above left=4pt] at (P1) {$\mathbf P_{1}$};
+\node[above=4pt] at (P2) {$\mathbf P_{2}$};
+\node[right=4pt] at (P3) {$\mathbf P_{3}$};
+\node[below=4pt] at (P4) {$\mathbf P_{4}$};
+\node[below=4pt] at (P5) {$\mathbf P_{5}$};
+\node[right=4pt] at (P6) {$\mathbf P_{6}$};
+\node[above=4pt] at (P7) {$\mathbf P_{7}$};
+\end{tikzpicture}

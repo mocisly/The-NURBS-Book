@@ -1,0 +1,1412 @@
+[
+  {
+    "path": "chapter/1.tex",
+    "before": "[Faux81; Mort85; Hoff89; Beac91]",
+    "after": "\\cite{Faux81,Mort85,Hoff89,Beac91}",
+    "keys": [
+      "Faux81",
+      "Mort85",
+      "Hoff89",
+      "Beac91"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Ferg66, 67, 69, 93; Forr70, 80; Wang81; Ston89; Su89]",
+    "after": "\\cite{Ferg66,Ferg67,Ferg69,Ferg93,Forr70,Forr80,Wang81,Ston89,Su89}",
+    "keys": [
+      "Ferg66",
+      "Ferg67",
+      "Ferg69",
+      "Ferg93",
+      "Forr70",
+      "Forr80",
+      "Wang81",
+      "Ston89",
+      "Su89"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Forr72; Bezi72, 86; Gord74a; Chan81; Fari93; Yama88; Hosc93; Roge90]",
+    "after": "\\cite{Forr72,Bezi72,Bezi86,Gord74a,Chan81,Fari93,Yama88,Hosc93,Roge90}",
+    "keys": [
+      "Forr72",
+      "Bezi72",
+      "Bezi86",
+      "Gord74a",
+      "Chan81",
+      "Fari93",
+      "Yama88",
+      "Hosc93",
+      "Roge90"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Faro87, 88; Dani89]",
+    "after": "\\cite{Faro87,Faro88,Dani89}",
+    "keys": [
+      "Faro87",
+      "Faro88",
+      "Dani89"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Bern12; Lore86]",
+    "after": "\\cite{Bern12,Lore86}",
+    "keys": [
+      "Bern12",
+      "Lore86"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Boeh84; deCa86, 93]",
+    "after": "\\cite{Boeh84,deCa86,deCa93}",
+    "keys": [
+      "Boeh84",
+      "deCa86",
+      "deCa93"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Forr68; Pieg86; Fari83,89]",
+    "after": "\\cite{Forr68,Pieg86,Fari83,Fari89}",
+    "keys": [
+      "Forr68",
+      "Pieg86",
+      "Fari83",
+      "Fari89"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Robe65; Ries81; Patt85]",
+    "after": "\\cite{Robe65,Ries81,Patt85}",
+    "keys": [
+      "Robe65",
+      "Ries81",
+      "Patt85"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Hosc93; Pieg89a, 93]",
+    "after": "\\cite{Hosc93,Pieg89a,Pieg93}",
+    "keys": [
+      "Hosc93",
+      "Pieg89a",
+      "Pieg93"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Pieg89a]",
+    "after": "\\cite{Pieg89a}",
+    "keys": [
+      "Pieg89a"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Prau92]",
+    "after": "\\cite{Prau92}",
+    "keys": [
+      "Prau92"
+    ]
+  },
+  {
+    "path": "chapter/1.tex",
+    "before": "[Pieg86; Fari89]",
+    "after": "\\cite{Pieg86,Fari89}",
+    "keys": [
+      "Pieg86",
+      "Fari89"
+    ]
+  },
+  {
+    "path": "chapter/2.tex",
+    "before": "[Curr47; Scho46]",
+    "after": "\\cite{Curr47,Scho46}",
+    "keys": [
+      "Curr47",
+      "Scho46"
+    ]
+  },
+  {
+    "path": "chapter/2.tex",
+    "before": "[Rams87]",
+    "after": "\\cite{Rams87}",
+    "keys": [
+      "Rams87"
+    ]
+  },
+  {
+    "path": "chapter/2.tex",
+    "before": "[Cox72; DeBo72, 78]",
+    "after": "\\cite{Cox72,DeBo72,DeBo78}",
+    "keys": [
+      "Cox72",
+      "DeBo72",
+      "DeBo78"
+    ]
+  },
+  {
+    "path": "chapter/2.tex",
+    "before": "[Butt76]",
+    "after": "\\cite{Butt76}",
+    "keys": [
+      "Butt76"
+    ]
+  },
+  {
+    "path": "chapter/3.tex",
+    "before": "[Gord74b; Ries73]",
+    "after": "\\cite{Gord74b,Ries73}",
+    "keys": [
+      "Gord74b",
+      "Ries73"
+    ]
+  },
+  {
+    "path": "chapter/3.tex",
+    "before": "[DeBo78; Mort85; Bart87; Fari93; Yama88; Hosc93; Su89; Roge90; Beac91]",
+    "after": "\\cite{DeBo78,Mort85,Bart87,Fari93,Yama88,Hosc93,Su89,Roge90,Beac91}",
+    "keys": [
+      "DeBo78",
+      "Mort85",
+      "Bart87",
+      "Fari93",
+      "Yama88",
+      "Hosc93",
+      "Su89",
+      "Roge90",
+      "Beac91"
+    ]
+  },
+  {
+    "path": "chapter/3.tex",
+    "before": "[Lane83]",
+    "after": "\\cite{Lane83}",
+    "keys": [
+      "Lane83"
+    ]
+  },
+  {
+    "path": "chapter/3.tex",
+    "before": "[Prau92]",
+    "after": "\\cite{Prau92}",
+    "keys": [
+      "Prau92"
+    ]
+  },
+  {
+    "path": "chapter/4.tex",
+    "before": "[Vers75; Till83]",
+    "after": "\\cite{Vers75,Till83}",
+    "keys": [
+      "Vers75",
+      "Till83"
+    ]
+  },
+  {
+    "path": "chapter/4.tex",
+    "before": "[Pieg91a]",
+    "after": "\\cite{Pieg91a}",
+    "keys": [
+      "Pieg91a"
+    ]
+  },
+  {
+    "path": "chapter/4.tex",
+    "before": "[Lee87; Pieg91a]",
+    "after": "\\cite{Lee87,Pieg91a}",
+    "keys": [
+      "Lee87",
+      "Pieg91a"
+    ]
+  },
+  {
+    "path": "chapter/4.tex",
+    "before": "[Prau92]",
+    "after": "\\cite{Prau92}",
+    "keys": [
+      "Prau92"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[DeBo78; Boeh80; Lee83]",
+    "after": "\\cite{DeBo78,Boeh80,Lee83}",
+    "keys": [
+      "DeBo78",
+      "Boeh80",
+      "Lee83"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Pieg89c]",
+    "after": "\\cite{Pieg89c}",
+    "keys": [
+      "Pieg89c"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Cohe80; Boeh85a, 85b; Lych85]",
+    "after": "\\cite{Cohe80,Boeh85a,Boeh85b,Lych85}",
+    "keys": [
+      "Cohe80",
+      "Boeh85a",
+      "Boeh85b",
+      "Lych85"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Lane80; DeBo87]",
+    "after": "\\cite{Lane80,DeBo87}",
+    "keys": [
+      "Lane80",
+      "DeBo87"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Boeh85a]",
+    "after": "\\cite{Boeh85a}",
+    "keys": [
+      "Boeh85a"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[IGE93]",
+    "after": "\\cite{IGE93}",
+    "keys": [
+      "IGE93"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Pieg91b]",
+    "after": "\\cite{Pieg91b}",
+    "keys": [
+      "Pieg91b"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Till92]",
+    "after": "\\cite{Till92}",
+    "keys": [
+      "Till92"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Till92]",
+    "after": "\\cite{Till92}",
+    "keys": [
+      "Till92"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Till92]",
+    "after": "\\cite{Till92}",
+    "keys": [
+      "Till92"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Prau84]",
+    "after": "\\cite{Prau84}",
+    "keys": [
+      "Prau84"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Cohe85]",
+    "after": "\\cite{Cohe85}",
+    "keys": [
+      "Cohe85"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Prau91]",
+    "after": "\\cite{Prau91}",
+    "keys": [
+      "Prau91"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Prau91]",
+    "after": "\\cite{Prau91}",
+    "keys": [
+      "Prau91"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Pieg94]",
+    "after": "\\cite{Pieg94}",
+    "keys": [
+      "Pieg94"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Forr72]",
+    "after": "\\cite{Forr72}",
+    "keys": [
+      "Forr72"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Pieg95]",
+    "after": "\\cite{Pieg95}",
+    "keys": [
+      "Pieg95"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Pieg95]",
+    "after": "\\cite{Pieg95}",
+    "keys": [
+      "Pieg95"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Pieg95]",
+    "after": "\\cite{Pieg95}",
+    "keys": [
+      "Pieg95"
+    ]
+  },
+  {
+    "path": "chapter/5.tex",
+    "before": "[Pieg95]",
+    "after": "\\cite{Pieg95}",
+    "keys": [
+      "Pieg95"
+    ]
+  },
+  {
+    "path": "chapter/6.tex",
+    "before": "[Faux81; Fole90; Roge90]",
+    "after": "\\cite{Faux81,Fole90,Roge90}",
+    "keys": [
+      "Faux81",
+      "Fole90",
+      "Roge90"
+    ]
+  },
+  {
+    "path": "chapter/6.tex",
+    "before": "[Knut73]",
+    "after": "\\cite{Knut73}",
+    "keys": [
+      "Knut73"
+    ]
+  },
+  {
+    "path": "chapter/6.tex",
+    "before": "[Lee91]",
+    "after": "\\cite{Lee91}",
+    "keys": [
+      "Lee91"
+    ]
+  },
+  {
+    "path": "chapter/6.tex",
+    "before": "[Lee91]",
+    "after": "\\cite{Lee91}",
+    "keys": [
+      "Lee91"
+    ]
+  },
+  {
+    "path": "chapter/6.tex",
+    "before": "[Forr68; Vers75; Patt85; Lee87; Pieg91a]",
+    "after": "\\cite{Forr68,Vers75,Patt85,Lee87,Pieg91a}",
+    "keys": [
+      "Forr68",
+      "Vers75",
+      "Patt85",
+      "Lee87",
+      "Pieg91a"
+    ]
+  },
+  {
+    "path": "chapter/6.tex",
+    "before": "[Fuhr92]",
+    "after": "\\cite{Fuhr92}",
+    "keys": [
+      "Fuhr92"
+    ]
+  },
+  {
+    "path": "chapter/6.tex",
+    "before": "[IGE93]",
+    "after": "\\cite{IGE93}",
+    "keys": [
+      "IGE93"
+    ]
+  },
+  {
+    "path": "chapter/6.tex",
+    "before": "[Till92]",
+    "after": "\\cite{Till92}",
+    "keys": [
+      "Till92"
+    ]
+  },
+  {
+    "path": "chapter/6.tex",
+    "before": "[IGE93]",
+    "after": "\\cite{IGE93}",
+    "keys": [
+      "IGE93"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Lawr72]",
+    "after": "\\cite{Lawr72}",
+    "keys": [
+      "Lawr72"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[STEP94]",
+    "after": "\\cite{STEP94}",
+    "keys": [
+      "STEP94"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Salm79; Coxe80; Ilyi84]",
+    "after": "\\cite{Salm79,Coxe80,Ilyi84}",
+    "keys": [
+      "Salm79",
+      "Coxe80",
+      "Ilyi84"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Roge90]",
+    "after": "\\cite{Roge90}",
+    "keys": [
+      "Roge90"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Beac91]",
+    "after": "\\cite{Beac91}",
+    "keys": [
+      "Beac91"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Smit71]",
+    "after": "\\cite{Smit71}",
+    "keys": [
+      "Smit71"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Limi44, 79]",
+    "after": "\\cite{Limi44,Limi79}",
+    "keys": [
+      "Limi44",
+      "Limi79"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Lee87]",
+    "after": "\\cite{Lee87}",
+    "keys": [
+      "Lee87"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Coon67; Ahuj68; Forr68]",
+    "after": "\\cite{Coon67,Ahuj68,Forr68}",
+    "keys": [
+      "Coon67",
+      "Ahuj68",
+      "Forr68"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Lee87; Pieg87a]",
+    "after": "\\cite{Lee87,Pieg87a}",
+    "keys": [
+      "Lee87",
+      "Pieg87a"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Vers75]",
+    "after": "\\cite{Vers75}",
+    "keys": [
+      "Vers75"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Pieg87c, 88a, 88b]",
+    "after": "\\cite{Pieg87c,Pieg88a,Pieg88b}",
+    "keys": [
+      "Pieg87c",
+      "Pieg88a",
+      "Pieg88b"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Ahuj68; Coxe74; Ries81]",
+    "after": "\\cite{Ahuj68,Coxe74,Ries81}",
+    "keys": [
+      "Ahuj68",
+      "Coxe74",
+      "Ries81"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Pieg89b]",
+    "after": "\\cite{Pieg89b}",
+    "keys": [
+      "Pieg89b"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Pieg89b]",
+    "after": "\\cite{Pieg89b}",
+    "keys": [
+      "Pieg89b"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Pieg89b]",
+    "after": "\\cite{Pieg89b}",
+    "keys": [
+      "Pieg89b"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Pieg87b]",
+    "after": "\\cite{Pieg87b}",
+    "keys": [
+      "Pieg87b"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Pieg87b]",
+    "after": "\\cite{Pieg87b}",
+    "keys": [
+      "Pieg87b"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Pieg90]",
+    "after": "\\cite{Pieg90}",
+    "keys": [
+      "Pieg90"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Beac91]",
+    "after": "\\cite{Beac91}",
+    "keys": [
+      "Beac91"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Lee87]",
+    "after": "\\cite{Lee87}",
+    "keys": [
+      "Lee87"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Chou95]",
+    "after": "\\cite{Chou95}",
+    "keys": [
+      "Chou95"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Stro91]",
+    "after": "\\cite{Stro91}",
+    "keys": [
+      "Stro91"
+    ]
+  },
+  {
+    "path": "chapter/7.tex",
+    "before": "[Chou95]",
+    "after": "\\cite{Chou95}",
+    "keys": [
+      "Chou95"
+    ]
+  },
+  {
+    "path": "chapter/8.tex",
+    "before": "[Pieg87a]",
+    "after": "\\cite{Pieg87a}",
+    "keys": [
+      "Pieg87a"
+    ]
+  },
+  {
+    "path": "chapter/8.tex",
+    "before": "[IGE93]",
+    "after": "\\cite{IGE93}",
+    "keys": [
+      "IGE93"
+    ]
+  },
+  {
+    "path": "chapter/8.tex",
+    "before": "[Geis90; Boeh91; Hosc92a]",
+    "after": "\\cite{Geis90,Boeh91,Hosc92a}",
+    "keys": [
+      "Geis90",
+      "Boeh91",
+      "Hosc92a"
+    ]
+  },
+  {
+    "path": "chapter/8.tex",
+    "before": "[Coxe67; DoCa76]",
+    "after": "\\cite{Coxe67,DoCa76}",
+    "keys": [
+      "Coxe67",
+      "DoCa76"
+    ]
+  },
+  {
+    "path": "chapter/8.tex",
+    "before": "[Coxe67]",
+    "after": "\\cite{Coxe67}",
+    "keys": [
+      "Coxe67"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Hosc92b]",
+    "after": "\\cite{Hosc92b}",
+    "keys": [
+      "Hosc92b"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Lee89]",
+    "after": "\\cite{Lee89}",
+    "keys": [
+      "Lee89"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[DeBo78]",
+    "after": "\\cite{DeBo78}",
+    "keys": [
+      "DeBo78"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Pres88]",
+    "after": "\\cite{Pres88}",
+    "keys": [
+      "Pres88"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Bars89,90]",
+    "after": "\\cite{Bars89,Bars90}",
+    "keys": [
+      "Bars89",
+      "Bars90"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Boeh84]",
+    "after": "\\cite{Boeh84}",
+    "keys": [
+      "Boeh84"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[DeBo78]",
+    "after": "\\cite{DeBo78}",
+    "keys": [
+      "DeBo78"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Akim70; Renn82; Pieg87d]",
+    "after": "\\cite{Akim70,Renn82,Pieg87d}",
+    "keys": [
+      "Akim70",
+      "Renn82",
+      "Pieg87d"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[DeBo78]",
+    "after": "\\cite{DeBo78}",
+    "keys": [
+      "DeBo78"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Akim70]",
+    "after": "\\cite{Akim70}",
+    "keys": [
+      "Akim70"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Renn82]",
+    "after": "\\cite{Renn82}",
+    "keys": [
+      "Renn82"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Laur93]",
+    "after": "\\cite{Laur93}",
+    "keys": [
+      "Laur93"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[DeBo78; Vand83; Lanc86]",
+    "after": "\\cite{DeBo78,Vand83,Lanc86}",
+    "keys": [
+      "DeBo78",
+      "Vand83",
+      "Lanc86"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[DeBo78]",
+    "after": "\\cite{DeBo78}",
+    "keys": [
+      "DeBo78"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Smit74]",
+    "after": "\\cite{Smit74}",
+    "keys": [
+      "Smit74"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Kapl52]",
+    "after": "\\cite{Kapl52}",
+    "keys": [
+      "Kapl52"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Till92]",
+    "after": "\\cite{Till92}",
+    "keys": [
+      "Till92"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Lych87,88]",
+    "after": "\\cite{Lych87,Lych88}",
+    "keys": [
+      "Lych87",
+      "Lych88"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Till92]",
+    "after": "\\cite{Till92}",
+    "keys": [
+      "Till92"
+    ]
+  },
+  {
+    "path": "chapter/9.tex",
+    "before": "[Pieg87b; Chou92]",
+    "after": "\\cite{Pieg87b,Chou92}",
+    "keys": [
+      "Pieg87b",
+      "Chou92"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Wood87]",
+    "after": "\\cite{Wood87}",
+    "keys": [
+      "Wood87"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Ball74, 75, 77]",
+    "after": "\\cite{Ball74,Ball75,Ball77}",
+    "keys": [
+      "Ball74",
+      "Ball75",
+      "Ball77"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Fili89]",
+    "after": "\\cite{Fili89}",
+    "keys": [
+      "Fili89"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Till83; Wood87, 88; Hohm91]",
+    "after": "\\cite{Till83,Wood87,Wood88,Hohm91}",
+    "keys": [
+      "Till83",
+      "Wood87",
+      "Wood88",
+      "Hohm91"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Hohm91]",
+    "after": "\\cite{Hohm91}",
+    "keys": [
+      "Hohm91"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Blom91]",
+    "after": "\\cite{Blom91}",
+    "keys": [
+      "Blom91"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Coqu87a]",
+    "after": "\\cite{Coqu87a}",
+    "keys": [
+      "Coqu87a"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[DoCa76; Klok86; Bron92; Silt92]",
+    "after": "\\cite{DoCa76,Klok86,Bron92,Silt92}",
+    "keys": [
+      "DoCa76",
+      "Klok86",
+      "Bron92",
+      "Silt92"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Klok86; Bron92; Silt92]",
+    "after": "\\cite{Klok86,Bron92,Silt92}",
+    "keys": [
+      "Klok86",
+      "Bron92",
+      "Silt92"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Silt92]",
+    "after": "\\cite{Silt92}",
+    "keys": [
+      "Silt92"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Klok86]",
+    "after": "\\cite{Klok86}",
+    "keys": [
+      "Klok86"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Gugg89]",
+    "after": "\\cite{Gugg89}",
+    "keys": [
+      "Gugg89"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Choi90; Akma92]",
+    "after": "\\cite{Choi90,Akma92}",
+    "keys": [
+      "Choi90",
+      "Akma92"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Lin94]",
+    "after": "\\cite{Lin94}",
+    "keys": [
+      "Lin94"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Gord69,71,93]",
+    "after": "\\cite{Gord69,Gord71,Gord93}",
+    "keys": [
+      "Gord69",
+      "Gord71",
+      "Gord93"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Coon67]",
+    "after": "\\cite{Coon67}",
+    "keys": [
+      "Coon67"
+    ]
+  },
+  {
+    "path": "chapter/10.tex",
+    "before": "[Barn93]",
+    "after": "\\cite{Barn93}",
+    "keys": [
+      "Barn93"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Su89]",
+    "after": "\\cite{Su89}",
+    "keys": [
+      "Su89"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Hosc93]",
+    "after": "\\cite{Hosc93}",
+    "keys": [
+      "Hosc93"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Welc92]",
+    "after": "\\cite{Welc92}",
+    "keys": [
+      "Welc92"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[DoCa76]",
+    "after": "\\cite{DoCa76}",
+    "keys": [
+      "DoCa76"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Sede86; Coqu90, 91; Hsu92]",
+    "after": "\\cite{Sede86,Coqu90,Coqu91,Hsu92}",
+    "keys": [
+      "Sede86",
+      "Coqu90",
+      "Coqu91",
+      "Hsu92"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Fors88; Mats92; Welc92]",
+    "after": "\\cite{Fors88,Mats92,Welc92}",
+    "keys": [
+      "Fors88",
+      "Mats92",
+      "Welc92"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Ries73]",
+    "after": "\\cite{Ries73}",
+    "keys": [
+      "Ries73"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Pieg89d]",
+    "after": "\\cite{Pieg89d}",
+    "keys": [
+      "Pieg89d"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Coxe74; Boeh94]",
+    "after": "\\cite{Coxe74,Boeh94}",
+    "keys": [
+      "Coxe74",
+      "Boeh94"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Pieg89c]",
+    "after": "\\cite{Pieg89c}",
+    "keys": [
+      "Pieg89c"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Boeh94]",
+    "after": "\\cite{Boeh94}",
+    "keys": [
+      "Boeh94"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Fari93]",
+    "after": "\\cite{Fari93}",
+    "keys": [
+      "Fari93"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Pieg89c]",
+    "after": "\\cite{Pieg89c}",
+    "keys": [
+      "Pieg89c"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Pieg89d]",
+    "after": "\\cite{Pieg89d}",
+    "keys": [
+      "Pieg89d"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Barr83; Cobb84]",
+    "after": "\\cite{Barr83,Cobb84}",
+    "keys": [
+      "Barr83",
+      "Cobb84"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Cobb84]",
+    "after": "\\cite{Cobb84}",
+    "keys": [
+      "Cobb84"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Barr83; Four83; Cobb84]",
+    "after": "\\cite{Barr83,Four83,Cobb84}",
+    "keys": [
+      "Barr83",
+      "Four83",
+      "Cobb84"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Cobb84]",
+    "after": "\\cite{Cobb84}",
+    "keys": [
+      "Cobb84"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Till84; Coqu87b; Hosc88]",
+    "after": "\\cite{Till84,Coqu87b,Hosc88}",
+    "keys": [
+      "Till84",
+      "Coqu87b",
+      "Hosc88"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Fowl92, 93]",
+    "after": "\\cite{Fowl92,Fowl93}",
+    "keys": [
+      "Fowl92",
+      "Fowl93"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Scho66; Good81; Fowl93]",
+    "after": "\\cite{Scho66,Good81,Fowl93}",
+    "keys": [
+      "Scho66",
+      "Good81",
+      "Fowl93"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Fowl93]",
+    "after": "\\cite{Fowl93}",
+    "keys": [
+      "Fowl93"
+    ]
+  },
+  {
+    "path": "chapter/11.tex",
+    "before": "[Fowl92]",
+    "after": "\\cite{Fowl92}",
+    "keys": [
+      "Fowl92"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[Mort85]",
+    "after": "\\cite{Mort85}",
+    "keys": [
+      "Mort85"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[PHIG92; IGE93; STEP94]",
+    "after": "\\cite{PHIG92,IGE93,STEP94}",
+    "keys": [
+      "PHIG92",
+      "IGE93",
+      "STEP94"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[Blor91]",
+    "after": "\\cite{Blor91}",
+    "keys": [
+      "Blor91"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[Verg91]",
+    "after": "\\cite{Verg91}",
+    "keys": [
+      "Verg91"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[Howa91a]",
+    "after": "\\cite{Howa91a}",
+    "keys": [
+      "Howa91a"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[Howa91b]",
+    "after": "\\cite{Howa91b}",
+    "keys": [
+      "Howa91b"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[Howa91b]",
+    "after": "\\cite{Howa91b}",
+    "keys": [
+      "Howa91b"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[deMo84; Sede84; Hoff89]",
+    "after": "\\cite{deMo84,Sede84,Hoff89}",
+    "keys": [
+      "deMo84",
+      "Sede84",
+      "Hoff89"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[Till84; Faro86; Coqu87b; Hosc88]",
+    "after": "\\cite{Till84,Faro86,Coqu87b,Hosc88}",
+    "keys": [
+      "Till84",
+      "Faro86",
+      "Coqu87b",
+      "Hosc88"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[Choi91]",
+    "after": "\\cite{Choi91}",
+    "keys": [
+      "Choi91"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[Fili89]",
+    "after": "\\cite{Fili89}",
+    "keys": [
+      "Fili89"
+    ]
+  },
+  {
+    "path": "chapter/12.tex",
+    "before": "[Bars89, 90; Hosc93]",
+    "after": "\\cite{Bars89,Bars90,Hosc93}",
+    "keys": [
+      "Bars89",
+      "Bars90",
+      "Hosc93"
+    ]
+  },
+  {
+    "path": "chapter/13.tex",
+    "before": "[见 Stra92]",
+    "after": "见 \\cite{Stra92}",
+    "keys": [
+      "Stra92"
+    ]
+  },
+  {
+    "path": "chapter/13.tex",
+    "before": "[Baly94]",
+    "after": "\\cite{Baly94}",
+    "keys": [
+      "Baly94"
+    ]
+  },
+  {
+    "path": "chapter/13.tex",
+    "before": "[Pieg93]",
+    "after": "\\cite{Pieg93}",
+    "keys": [
+      "Pieg93"
+    ]
+  },
+  {
+    "path": "chapter/14.tex",
+    "before": "[Pieg93]",
+    "after": "\\cite{Pieg93}",
+    "keys": [
+      "Pieg93"
+    ]
+  },
+  {
+    "path": "chapter/14.tex",
+    "before": "[Pieg93]",
+    "after": "\\cite{Pieg93}",
+    "keys": [
+      "Pieg93"
+    ]
+  },
+  {
+    "path": "chapter/14.tex",
+    "before": "[Pieg93]",
+    "after": "\\cite{Pieg93}",
+    "keys": [
+      "Pieg93"
+    ]
+  },
+  {
+    "path": "chapter/14.tex",
+    "before": "[Pieg93]",
+    "after": "\\cite{Pieg93}",
+    "keys": [
+      "Pieg93"
+    ]
+  },
+  {
+    "path": "chapter/14.tex",
+    "before": "[Pieg93]",
+    "after": "\\cite{Pieg93}",
+    "keys": [
+      "Pieg93"
+    ]
+  }
+]

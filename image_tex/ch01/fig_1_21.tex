@@ -1,0 +1,26 @@
+% Fig. 1.13(d): exact degree-9 Bernstein basis.
+\begin{tikzpicture}[x=6cm,y=3.7cm,book line,line cap=round,scale=\BookGeometryScale]
+\path[book figure bounds] (-.11,-.35) rectangle (1.16,1.18);
+\draw[book axis,line width=.45pt] (0,0)--(1.09,0) node[right] {$u$};
+\draw[book axis,line width=.45pt] (0,0)--(0,1.12);
+\node[below left] at (0,0) {$0$};
+\foreach \x/\label in {.5/{\frac12},1/1}
+  \draw[line width=.45pt] (\x,0)--++(0,-2pt) node[below] {$\label$};
+\draw[line width=.45pt] (0,1)--++(-2pt,0) node[left] {$1$};
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{1*(1-\u)^9});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{9*\u*(1-\u)^8});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{36*\u^2*(1-\u)^7});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{84*\u^3*(1-\u)^6});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{126*\u^4*(1-\u)^5});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{126*\u^5*(1-\u)^4});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{84*\u^6*(1-\u)^3});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{36*\u^7*(1-\u)^2});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{9*\u^8*(1-\u)});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{1*\u^9});
+\node at (0.09,0.78) {$B_{0,9}$};
+\node at (0.16,0.5) {$B_{1,9}$};
+\node at (0.84,0.5) {$B_{8,9}$};
+\node at (0.91,0.78) {$B_{9,9}$};
+\node at (.5,.5) {$\cdots$};
+\node[book panel tag] at (.5,-.27) {(d) $n=9$};
+\end{tikzpicture}

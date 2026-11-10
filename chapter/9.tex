@@ -1,19 +1,39 @@
 %连续映射, 介值定理, 初等函数的构造
-\documentclass[main.tex]{subfiles}                                              
+\documentclass[../main.tex]{subfiles}
 \begin{document}
 
-\section{引言}
+\section{引言}\BookIndexMark{p0158}
 
-在第七章和第八章中，我们展示了如何构建常见且相对简单的曲线和曲面的 NURBS 表示，例如圆、圆锥曲线、圆柱体、旋转曲面等。这些实体只需少量数据项即可指定，例如中心点、高度、半径、旋转轴等。此外，这些少量数据项唯一地指定了几何实体。在本章中，我们进入自由形状(或雕刻)曲线和曲面的领域。我们研究拟合，即构建适合相当任意几何数据集(如点和导数向量)的 NURBS 曲线和曲面。我们区分两种类型的拟合:插值和近似。在插值中，我们构建一条精确满足给定数据的曲线或曲面，例如，曲线通过给定的点，并在规定的点处具有给定的导数。图 9.1 显示了一条插值五个点及其端点的第一导数向量的曲线。在近似中，我们构建的曲线和曲面不一定精确满足给定数据，而只是大致满足。在某些应用中——例如通过使用坐标测量设备或数字化平板生成点数据，或通过行进方法计算表面/表面交点——可以生成大量点，这些点可能包含测量或计算噪声。在这种情况下，曲线或曲面捕捉数据的“形状”是重要的，但不需要“摇摆”通过每一个点。在近似中，通常希望对曲线或曲面与给定数据的偏差指定一个最大界限，并指定某些约束条件，即需要精确满足的数据。图 9.2 显示了一条近似一组 \(m + 1\) 点的曲线。指定了最大偏差界限 \(E\) ，而垂直距离 \({e}_{i}\) 是通过将 \({\mathbf{Q}}_{i}\) 投影到曲线上获得的近似误差。每个点 \({\mathbf{Q}}_{i}\) 的 \({e}_{i}\) 小于 \(E\) 。端点 \({\mathbf{Q}}_{0}\) 和 \({\mathbf{Q}}_{m}\) 被指定为约束，结果是 \({e}_{0} = {e}_{m} = 0\) 。
-
-362 曲线和曲面拟合
+在第七章和第八章中，我们展示了如何构建常见且相对简单的曲线和曲面的 NURBS 表示，例如圆、圆锥曲线、圆柱体、旋转曲面等。这些实体只需少量数据项即可指定，例如中心点、高度、半径、旋转轴等。此外，这些少量数据项唯一地指定了几何实体。在本章中，我们进入自由形状(或雕刻)曲线和曲面的领域。我们研究拟合，即构建适合相当任意几何数据集(如点和导数向量)的 NURBS 曲线和曲面。我们区分两种类型的拟合:插值和近似。在插值中，我们构建一条精确满足给定数据的曲线或曲面，例如，曲线通过给定的点，并在规定的点处具有给定的导数。图 9.1 显示了一条插值五个点及其端点的第一导数向量的曲线。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_369_282_256_958_551_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_01.tex}
+\par\smallskip
+图 9.1. 插值五个点及两个端点一阶导数的三次B样条，采用一组代表性数据。\\
+曲线满足$\mathbf C(i/4)=\mathbf Q_i$、$\mathbf C^{\prime}(0)=\mathbf D_0=(4,9)$、$\mathbf C^{\prime}(1)=\mathbf D_4=(6,-9)$，内部为$C^2$连续。\\
+两个箭头统一按导数向量的$1/4$绘制。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.1. 一条插值五个点和两个端导数的曲线。
+在近似中，我们构建的曲线和曲面不一定精确满足给定数据，而只是大致满足。在某些应用中——例如通过使用坐标测量设备或数字化平板生成点数据，或通过行进方法计算表面/表面交点——可以生成大量点，这些点可能包含测量或计算噪声。在这种情况下，曲线或曲面捕捉数据的“形状”是重要的，但不需要“摇摆”通过每一个点。在近似中，通常希望对曲线或曲面与给定数据的偏差指定一个最大界限，并指定某些约束条件，即需要精确满足的数据。图 9.2 显示了一条近似一组 \(m + 1\) 点的曲线。指定了最大偏差界限 \(E\) ，而垂直距离 \({e}_{i}\) 是通过将 \({\mathbf{Q}}_{i}\) 投影到曲线上获得的近似误差。每个点 \({\mathbf{Q}}_{i}\) 的 \({e}_{i}\) 小于 \(E\) 。端点 \({\mathbf{Q}}_{0}\) 和 \({\mathbf{Q}}_{m}\) 被指定为约束，结果是 \({e}_{0} = {e}_{m} = 0\) 。
+
+
+
+
+
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_02.tex}
+\par\smallskip
+图 9.2. 满足误差界和端点约束的近似曲线，采用代表性示例$\mathbf C(t)=(8t,25t/2-12t^2)$，$m=8$。\\
+每个数据点到曲线的最短距离均小于$E=1/2$，两端点满足$e_0=e_m=0$；图中取$i=6$，$e_i$为$\mathbf Q_i$沿法线投影到曲线的距离。
+\end{minipage}
+\end{center}
 
 拟合中有许多微妙之处，实际上已有数百篇论文讨论这一主题。许多技术是启发式的，通常没有唯一或明确的“正确”答案。一个根本问题是，给定的数据从未指定唯一解。存在无限多条 NURBS 曲线可以插值图 9.1 中的七个数据项，或近似图 9.2 中的 \(m + 1\) 项。实施拟合算法的开发者常常被使用软件的设计师告知:“但这不是我想要的曲线！”而回复通常是:“好吧，这在数学上是正确的；它满足你给我的数据！”
 
@@ -23,14 +43,9 @@
 p \geq  r + 1 \tag{9.1}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_369_319_1606_889_431_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.2. 一条近似 \(m + 1\) 点的曲线；该曲线被约束通过端点 \({\mathbf{Q}}_{0}\) 和 \({\mathbf{Q}}_{m}\) 。
 
-(假设没有重数为 \(> 1\) 的内部节点)。假设没有其他要求，选择 \(p = r + 1\) 通常足以进行插值。对于逼近，选择 \(p > r + 1\) 可能会产生更好的结果。例如，假设我们想要一个 \({C}^{1}\) 连续曲线来逼近表示三维空间中扭曲曲线的点数据。使用三次曲线可能会产生比二次曲线更少的控制点，尽管二次曲线能提供所需的连续性。关于在拟合过程中设置权重的文献非常少。通常，所有权重都简单地设置为 1。实际上，对于插值，可能没有理由去做其他选择(一个例外是使用分段圆弧拟合时 [Hosc92b])。对于逼近，允许权重为任意值应该会产生具有更少控制点的曲线和曲面；我们提出了一种这样的算法。最后，有许多选择节点的方法，其中大多数是启发式的。
+(假设没有重数为 \(> 1\) 的内部节点)。假设没有其他要求，选择 \(p = r + 1\) 通常足以进行插值。对于逼近，选择 \(p > r + 1\) 可能会产生更好的结果。例如，假设我们想要一个 \({C}^{1}\) 连续曲线来逼近表示三维空间中扭曲曲线的点数据。使用三次曲线可能会产生比二次曲线更少的控制点，尽管二次曲线能提供所需的连续性。关于在拟合过程中设置权重的文献非常少。通常，所有权重都简单地设置为 1。实际上，对于插值，可能没有理由去做其他选择(一个例外是使用分段圆弧拟合时 \cite{Hosc92b})。对于逼近，允许权重为任意值应该会产生具有更少控制点的曲线和曲面；我们提出了一种这样的算法。最后，有许多选择节点的方法，其中大多数是启发式的。
 
 大多数拟合算法可以分为两类:全局算法或局部算法。全局算法通过建立和求解方程组或优化问题来进行。如果给定的数据仅包含点和导数，并且控制点是唯一的未知数(度数、节点和权重已被预先选择)，那么系统是线性的，因此容易求解。如果给定了更复杂的数据，例如曲率，或者节点和/或权重也是系统未知数，那么得到的系统就是非线性的。从理论上讲，任何一个输入数据项的扰动都可以改变整个曲线或表面的形状；然而，变化的幅度随着与受影响数据项的距离增加而减小。局部算法在本质上更具几何特征，逐段构建曲线或表面，仅使用每一步的局部数据。数据项的扰动仅在局部改变曲线或表面。这些算法通常比全局方法计算成本更低。它们也能更好地处理尖点、直线段和其他局部数据异常。然而，在段边界实现期望的连续性水平更为棘手，局部方法通常导致多个内部节点。
 
@@ -45,10 +60,10 @@ p \geq  r + 1 \tag{9.1}
 \end{itemize}
 
 
-\section{全局插值}
+\section{全局插值}\BookIndexMark{p0159}
 在本节中，我们提出了将曲线插值到点和导数数据的方法，以及将曲面插值到点数据的方法。
 
-\subsection{针对点数据的全局曲线插值}%TODO::将曲线插值到点数据
+\subsection{针对点数据的全局曲线插值}\BookIndexMark{p0160}%TODO::将曲线插值到点数据
 假设我们给定一组点 \(\left\{  {\mathbf{Q}}_{k}\right\}  ,k = 0,\ldots ,n\) ，并希望用一个 \(p\) 次非有理 B 样条曲线来插值这些点。如果我们为每个 \({\mathbf{Q}}_{k}\) 分配一个参数值 \({\bar{u}}_{k}\) ，并选择一个合适的节点向量 \(U = \left\{  {{u}_{0},\ldots ,{u}_{m}}\right\}\) ，我们可以建立 \(\left( {n + 1}\right)  \times  \left( {n + 1}\right)\) 个线性方程组。
 
 \[
@@ -107,7 +122,7 @@ d = \mathop{\sum }\limits_{{k = 1}}^{n}\sqrt{\left| {\mathbf{Q}}_{k} - {\mathbf{
 {\bar{u}}_{k} = {\bar{u}}_{k - 1} + \frac{\sqrt{\left| {\mathbf{Q}}_{k} - {\mathbf{Q}}_{k - 1}\right| }}{d}\;k = 1,\ldots ,n - 1 \tag{9.6}
 \]
 
-这是一种较新的方法(见 [Lee89])，在数据发生急剧转弯时，它比弦长法提供更好的结果。
+这是一种较新的方法(见 \cite{Lee89})，在数据发生急剧转弯时，它比弦长法提供更好的结果。
 
 节点可以均匀分布，即，
 
@@ -129,34 +144,81 @@ d = \mathop{\sum }\limits_{{k = 1}}^{n}\sqrt{\left| {\mathbf{Q}}_{k} - {\mathbf{
 {u}_{j + p} = \frac{1}{p}\mathop{\sum }\limits_{{i = j}}^{{j + p - 1}}{\bar{u}}_{i}\;j = 1,\ldots ,n - p \tag{9.8}
 \]
 
-使用这种方法，节点反映了 \({\bar{u}}_{k}\) 的分布。此外，使用方程 (9.8) 结合方程 (9.5) 或 (9.6) 来计算 \({\bar{u}}_{k}\) 会导致一个系统(方程 [9.2])，该系统是完全正的并且带状，半带宽小于 \(p\) (见 [DeBo78])，即，如果 \(\left| {i - k}\right|  \geq  p\) 。因此，可以通过高斯消元法无需主元进行求解。
+使用这种方法，节点反映了 \({\bar{u}}_{k}\) 的分布。此外，使用方程 (9.8) 结合方程 (9.5) 或 (9.6) 来计算 \({\bar{u}}_{k}\) 会导致一个系统(方程 [9.2])，该系统是完全正的并且带状，半带宽小于 \(p\) (见 \cite{DeBo78})，即，如果 \(\left| {i - k}\right|  \geq  p\) 。因此，可以通过高斯消元法无需主元进行求解。
 
-图 9.3 显示了控制点、参数和插值七个点的三次曲线的节点向量。参数通过弦长法选择，节点通过平均参数获得(公式 [9.8])。在图 9.4 中，展示了不同参数化的比较。图 9.5 显示了使用更“分散”的数据点进行的相同比较。在这两种情况下，三次曲线都通过七个点，使用均匀参数和均匀节点(实线曲线和顶部节点向量 - 参见公式 [9.3] 和 [9.7])；弦长参数和通过平均获得的节点(虚线曲线和中间节点向量 - 参见公式 [9.5] 和 [9.8])；以及通过平均获得的向心参数和节点(点划线曲线和底部节点向量 - 参见公式 [9.6] 和 [9.8])。在图 9.5 中，请注意弦长和向心参数化曲线如何适应点间距的变化。
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_373_287_255_949_605_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 9.3. 使用弦长参数化和通过平均参数获得的节点向量的曲线插值示例。
-
-节点向量 - 参见公式 [9.5] 和 [9.8])；以及通过平均获得的向心参数和节点(点划线曲线和底部节点向量 - 参见公式 [9.6] 和 [9.8])。在图 9.5 中，请注意弦长和向心参数化曲线如何适应点间距的变化。
+图 9.3 显示了控制点、参数和插值七个点的三次曲线的节点向量。参数通过弦长法选择，节点通过平均参数获得(公式 [9.8])。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_373_315_1292_908_765_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_03.tex}
+\par\smallskip
+图 9.3. 七点三次插值的代表性示例；虚线为求解所得的控制多边形。\\
+弦长参数为$\bar u=(0,10/101,30/101,55/101,75/101,88/101,1)$，\\
+平均节点向量为$U=(0,0,0,0,95/303,160/303,218/303,1,1,1,1)$。\\
+下方圆圈表示数据参数，短刻线表示节点；四重端节点略微错开显示。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.4. 使用不同参数化和节点向量的曲线插值示例。
+在图 9.4 中，展示了不同参数化的比较。图 9.5 显示了使用更“分散”的数据点进行的相同比较。在这两种情况下，三次曲线都通过七个点，使用均匀参数和均匀节点(实线曲线和顶部节点向量 - 参见公式 [9.3] 和 [9.7])；弦长参数和通过平均获得的节点(虚线曲线和中间节点向量 - 参见公式 [9.5] 和 [9.8])；以及通过平均获得的向心参数和节点(点划线曲线和底部节点向量 - 参见公式 [9.6] 和 [9.8])。在图 9.5 中，请注意弦长和向心参数化曲线如何适应点间距的变化。
+
+
+
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_374_276_250_996_742_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_04.tex}
+\par\smallskip
+图 9.4. 使用图 9.3 的同一组代表性数据比较三种三次插值。\\
+实线：均匀参数与均匀节点；虚线：弦长参数与平均节点；点划线：向心参数与平均节点。\\
+三组标尺依次对应上述方法，圆圈表示数据参数，短刻线表示节点；所有曲线均通过七个数据点。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.5. 使用不同参数化和节点向量的曲线插值示例。
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_05.tex}
+\par\smallskip
+图 9.5. 七个分布不均匀的代表性数据点的三次插值比较。\\
+实线：均匀参数与均匀节点；虚线：弦长参数与平均节点；点划线：向心参数与平均节点。\\
+三组标尺依次表示各方法的数据参数和节点；全部曲线均由同一组七点插值方程求解。
+\end{minipage}
+\end{center}
 
-图 9.6 说明了不同阶数的插值；实线、虚线和点划线曲线的阶数分别为 2、3 和 4。图 9.7 显示了全局插值器无法处理共线点集的情况。
+图 9.6 说明了不同阶数的插值；实线、虚线和点划线曲线的阶数分别为 2、3 和 4。
+
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_06.tex}
+\par\smallskip
+图 9.6. 同一组七点在不同次数下的全局插值，代表性数据与图 9.5 相同。\\
+实线、虚线和点划线分别为二次、三次和四次曲线；均使用同一弦长参数，并按各次数平均计算节点。\\
+下方三组标尺依次对应$p=2,3,4$；圆圈表示数据参数，短刻线表示节点。
+\end{minipage}
+\end{center}
+
+图 9.7 显示了全局插值器无法处理共线点集的情况。
+
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_07.tex}
+\par\smallskip
+图 9.7. 包含连续共线数据点的全局三次插值，采用十三个代表性数据点。\\
+实线为弦长参数与平均节点下求解的插值曲线；虚线为连接数据点的折线参考。\\
+曲线通过全部数据点，但在共线数据段之间仍出现偏离，说明全局插值不自动保持局部直线性。
+\end{minipage}
+\end{center}
+
+
 
 一旦计算出 \({\bar{u}}_{k}\) 和节点，系统的 \(\left( {n + 1}\right)  \times  \left( {n + 1}\right)\) 系数矩阵(公式 [9.2])通过在每个 \({\bar{u}}_{k},k = 0,\ldots ,n\) 处评估非零基函数来建立；使用算法 A2.1 和 A2.2。
 
@@ -180,14 +242,9 @@ Ex9.1 设 \(\left\{  {\mathbf{Q}}_{k}\right\}   = \{ \left( {0,0}\right) ,\left(
 {u}_{4} = \frac{1}{3}\left( {\frac{5}{17} + \frac{9}{17} + \frac{14}{17}}\right)  = \frac{28}{51}
 \]
 
-368 曲线与曲面拟合
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_375_330_255_879_782_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.6. 使用弦长参数化和通过平均获得的节点进行不同度数的曲线插值。
+
 
 因此
 
@@ -198,19 +255,14 @@ U = \left\{  {0,0,0,0,\frac{28}{51},1,1,1,1}\right\}
 线性方程组为
 
 \[
-\left\lbrack  \begin{matrix} 1 & 0 & 0 & 0 & 0 \\  {N}_{0,3}\left( \frac{5}{17}\right) & {N}_{1,3}\left( \frac{5}{17}\right) & {N}_{2,3}\left( \frac{5}{17}\right) & {N}_{3,3}\left( \frac{5}{17}\right) & 0 \\  {N}_{0,3}\left( \frac{9}{17}\right) & {N}_{1,3}\left( \frac{9}{17}\right) & {N}_{2,3}\left( \frac{9}{17}\right) & {N}_{3,3}\left( \frac{9}{17}\right) & 0 \\  0 & {N}_{1,3}\left( \frac{14}{17}\right) & {N}_{2,3}\left( \frac{14}{17}\right) & {N}_{3,3}\left( \frac{14}{17}\right) & {N}_{4,3}\left( \frac{14}{17}\right) \\  0 & 0 & 0 & 0 & 0 \end{matrix}\right\rbrack  \left\lbrack  \begin{matrix} {\mathbf{P}}_{0} \\  {\mathbf{P}}_{1} \\  {\mathbf{P}}_{2} \\  {\mathbf{P}}_{3} \\  {\mathbf{P}}_{4} \end{matrix}\right\rbrack
+\left\lbrack  \begin{matrix} 1 & 0 & 0 & 0 & 0 \\  {N}_{0,3}\left( \frac{5}{17}\right) & {N}_{1,3}\left( \frac{5}{17}\right) & {N}_{2,3}\left( \frac{5}{17}\right) & {N}_{3,3}\left( \frac{5}{17}\right) & 0 \\  {N}_{0,3}\left( \frac{9}{17}\right) & {N}_{1,3}\left( \frac{9}{17}\right) & {N}_{2,3}\left( \frac{9}{17}\right) & {N}_{3,3}\left( \frac{9}{17}\right) & 0 \\  0 & {N}_{1,3}\left( \frac{14}{17}\right) & {N}_{2,3}\left( \frac{14}{17}\right) & {N}_{3,3}\left( \frac{14}{17}\right) & {N}_{4,3}\left( \frac{14}{17}\right) \\  0 & 0 & 0 & 0 & 1 \end{matrix}\right\rbrack  \left\lbrack  \begin{matrix} {\mathbf{P}}_{0} \\  {\mathbf{P}}_{1} \\  {\mathbf{P}}_{2} \\  {\mathbf{P}}_{3} \\  {\mathbf{P}}_{4} \end{matrix}\right\rbrack
 \]
 
 \[
 = \left\lbrack  \begin{array}{l} {\mathbf{Q}}_{0} \\  {\mathbf{Q}}_{1} \\  {\mathbf{Q}}_{2} \\  {\mathbf{Q}}_{3} \\  {\mathbf{Q}}_{4} \end{array}\right\rbrack
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_376_313_250_914_637_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.7. 对包含共线点的数据进行全局三次曲线插值(见虚线)。
 
 现在我们总结全局插值算法。我们假设有两个实用程序来解决线性方程组:
 
@@ -219,58 +271,36 @@ U = \left\{  {0,0,0,0,\frac{28}{51},1,1,1,1}\right\}
 \end{itemize}
 
 \begin{itemize}
-\item ForwardBackward(A, q, sbw, rhs, sol) 用于执行前向/后向替代(见 [Pres88])； rhs [] 是系统的右侧( \({\mathbf{Q}}_{k}\) 的坐标)，而 sol [] 是解向量( \({\mathbf{P}}_{i}\) 的坐标)。
+\item ForwardBackward(A, q, sbw, rhs, sol) 用于执行前向/后向替代(见 \cite{Pres88})； rhs [] 是系统的右侧( \({\mathbf{Q}}_{k}\) 的坐标)，而 sol [] 是解向量( \({\mathbf{P}}_{i}\) 的坐标)。
 \end{itemize}
 
 该算法还利用了第2章中的 FindSpan( ) 和 BasisFuns( )。
 
-\HRule
-
-ALGORITHM A9.1
-
-\hspace*{1em} \(\texttt{GlobalCurveInterp}\left( {n,Q,r,p,m,U,P}\right)\)
-
-\hspace*{3em} \{ /* Global interpolation through \(n + 1\) points */
-
-\hspace*{4em} /* Input: n, Q, r, p */
-
-\hspace*{4em} /* Output: m, U, P */
-
-\hspace*{2em} m = n+p+1;
-
-\hspace*{3em} Compute the uk; /* Eq. (9.5) or (9.6) */
-
-\hspace*{3em} Compute the knot vector \(U\) ; \(\;/ *\) Eq. (9.8) \(*\) /
-
-\hspace*{3em} Initialize array A to zero;
-
-\hspace*{2em} for (i = 0; i<=n; i++)
-
-\hspace*{4em} \{ /* Set up coefficient matrix */
-
-\hspace*{4em} span = FindSpan(n, p, uk[i], U);
-
-\hspace*{4em} BasisFuns(span, uk[i], p, U, A[i][span-p]); /* Get ith row */
-
-\hspace*{4em} \}
-
-LUDecomposition \(\left( {A,n + 1,p - 1}\right)\) ;
-
-for (i=0; i<r; i++) /*r is the number of coordinates */
-
-\hspace*{1em} \{
-
-\hspace*{1em} for \(\left( {j = 0;j <  = n;j +  + }\right) \;\) rhs \(\left\lbrack  j\right\rbrack   =\) ith coordinate of \(Q\left\lbrack  j\right\rbrack\) ;
-
-\hspace*{1em} ForwardBackward(A, n+1, p-1, rhs, sol);
-
-\hspace*{1em} for \(\left( {j = 0;j <  = n;j +  + }\right) \;\) ith coordinate of \(P\left\lbrack  j\right\rbrack   = \operatorname{sol}\left\lbrack  j\right\rbrack\) ;
-
-\hspace*{1em} \}
-
-\}
-
-\HRule
+% book-code: algorithm A9.1
+\par\medskip\noindent\textbf{算法 A9.1（伪代码）}\BookIndexMark{p0161}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+GlobalCurveInterp( n,Q,r,p,m,U,P)
+{ /* Global interpolation through n + 1 points */
+    /* Input: n, Q, r, p */
+    /* Output: m, U, P */
+    m = n+p+1;
+    Compute the uk; /* Eq. (9.5) or (9.6) */
+    Compute the knot vector U ;  /* Eq. (9.8)  */
+    Initialize array A to zero;
+    for (i = 0; i<=n; i++)
+    { /* Set up coefficient matrix */
+        span = FindSpan(n, p, uk[i], U);
+        BasisFuns(span, uk[i], p, U, A[i][span-p]); /* Get ith row */
+    }
+    LUDecomposition ( A,n + 1,p - 1) ;
+    for (i=0; i<r; i++) /*r is the number of coordinates */
+    {
+        for ( j = 0;j <= n;j ++ )  rhs [j]= ith coordinate of Q[j] ;
+        ForwardBackward(A, n+1, p-1, rhs, sol);
+        for ( j = 0;j <= n;j ++ )  ith coordinate of P[j]= sol[j] ;
+    }
+}
+\end{minted}
 
 
 
@@ -320,10 +350,37 @@ for (i=0; i<r; i++) /*r is the number of coordinates */
 - {\mathbf{P}}_{n + 1} + {\mathbf{P}}_{n + 2} = \frac{1 - {u}_{m - p - 1}}{p}{\mathbf{D}}_{n} \tag{9.12}
 \]
 
-将方程 (9.11) 和 (9.12) 作为第二个和倒数第二个方程插入方程 (9.10)，得到一个 \(\left( {n + 3}\right)  \times  \left( {n + 3}\right)\) 带状线性系统。图 9.8 显示了具有指定端切线的三次曲线插值。导数的小、中、大幅度分别产生实线、虚线和点线。图 9.9 说明了对相同数据点的插值，但具有不同的端切线方向和导数幅度。
+将方程 (9.11) 和 (9.12) 作为第二个和倒数第二个方程插入方程 (9.10)，得到一个 \(\left( {n + 3}\right)  \times  \left( {n + 3}\right)\) 带状线性系统。图 9.8 显示了具有指定端切线的三次曲线插值。导数的小、中、大幅度分别产生实线、虚线和点线。
+
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_08.tex}
+\par\smallskip
+图 9.8. 对同一组七个代表性数据点进行端导数约束的全局三次插值。\\
+固定$\mathbf D_0=(0,\alpha)$、$\mathbf D_6=(-\alpha,0)$；实线、虚线及点线分别取$\alpha=8,16,24$。\\
+参数采用弦长法，节点按公式 (9.9) 平均计算；两端箭头统一按导数向量的$1/8$绘制。
+\end{minipage}
+\end{center}
+
+图 9.9 说明了对相同数据点的插值，但具有不同的端切线方向和导数幅度。
 
 
-\subsection{三次样条曲线插值}
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_09.tex}
+\par\smallskip
+图 9.9. 与图 9.8 相同的数据、弦长参数及节点，改变端导数方向。\\
+A（实线）：$\mathbf D_0=(-12,12)$、$\mathbf D_6=(-12,-12)$；B（虚线）：$\mathbf D_0=(0,16)$、$\mathbf D_6=(-16,0)$；\\
+C（点线）：$\mathbf D_0=(12,12)$、$\mathbf D_6=(-12,12)$。曲线均通过七个代表性数据点。\\
+各箭头与对应曲线使用相同线型，并统一按实际导数向量的$1/8$绘制。
+\end{minipage}
+\end{center}
+
+\subsection{三次样条曲线插值}\BookIndexMark{p0162}
 
 之前的方法(方程 [9.9]-[9.12])适用于任何阶数 \(p > 1\) 。如果 \(p = 3\) ，则存在一种更高效的算法，产生传统的 \({C}^{2}\) 三次样条。 \({\bar{u}}_{k}\) 的计算与之前相同。节点是
 
@@ -345,21 +402,11 @@ for (i=0; i<r; i++) /*r is the number of coordinates */
 - {\mathbf{P}}_{0} + {\mathbf{P}}_{1} = \frac{{u}_{4}}{3}{\mathbf{D}}_{0} \tag{9.14}
 \]
 
-372 曲线与曲面拟合
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_378_284_1578_961_521_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.8. 具有不同端导数幅度的全局三次曲线插值。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_379_244_251_1029_608_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.9. 具有不同端导数方向的全局三次曲线插值。
+
 
 和
 
@@ -395,53 +442,31 @@ for (i=0; i<r; i++) /*r is the number of coordinates */
 
 该系统可以通过一个简单的算法来解决，该算法实时计算方程 (9.17) 中矩阵的行。它需要两个长度为 \(n + 1\) 的局部数组 R[] 和 dd[]，以及一个长度为 4 的数组 abc[]，该数组存储 \({a}_{k},{b}_{k},{c}_{k},0\) 。它假设 \({\mathbf{P}}_{0},{\mathbf{P}}_{1},{\mathbf{P}}_{n + 1},{\mathbf{P}}_{n + 2}\) 已经计算并加载到数组 \(\mathbf{P}\) 中。该算法可以适应处理具有任意数量坐标的点。
 
-算法 A9.2
-
-\HRule
-
+% book-code: algorithm A9.2
+\par\medskip\noindent\textbf{算法 A9.2（伪代码）}\BookIndexMark{p0163}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
 SolveTridiagonal(n, Q, U, P)
-
-\hspace*{2em} \{ /* Solve tridiagonal system for C2 cubic spline */
-
-\hspace*{6em} /* Input: n, Q, U, P[0], P[1], P[n+1], P[n+2] */
-
-\hspace*{6em} /* Output: P */
-
-\hspace*{2em} for (i=3; i<n; i++) R[i] = Q[i-1];
-
-\hspace*{2em} BasisFuns(4, U[4],3, U, abc);
-
-\hspace*{2em} den = abc[1];
-
-\hspace*{2em} P[2] = (Q[1]-abc[0]*P[1])/den;
-
-\hspace*{2em} for (i=3; i<n; i++)
-
-\hspace*{5em} \{
-
-\hspace*{5em} dd[i] = abc[2]/den;
-
-\hspace*{5em} BasisFuns(i+2, U[i+2],3, U, abc);
-
-\hspace*{5em} den = abc[1]-abc[0]*dd[i];
-
-\hspace*{5em} \(P\left\lbrack  i\right\rbrack   = \left( {R\left\lbrack  i\right\rbrack   - {abc}\left\lbrack  0\right\rbrack   * P\left\lbrack  {i - 1}\right\rbrack  }\right) /{den};\)
-
-\hspace*{4em} \}
-
-\hspace*{2em} dd[n] = abc[2]/den;
-
-\hspace*{2em} BasisFuns(n+2, U[n+2],3, U, abc);
-
-\hspace*{2em} den \(= {abc}\left\lbrack  1\right\rbrack   - {abc}\left\lbrack  0\right\rbrack   * {dd}\left\lbrack  n\right\rbrack\) ;
-
-\hspace*{2em} \(P\left\lbrack  n\right\rbrack   = \left( {Q\left\lbrack  {n - 1}\right\rbrack   - {abc}\left\lbrack  2\right\rbrack   * P\left\lbrack  {n + 1}\right\rbrack   - {abc}\left\lbrack  0\right\rbrack   * P\left\lbrack  {n - 1}\right\rbrack  }\right) /{den};\)
-
-\hspace*{2em} for (i=n-1; i>=2; i--) P[i] = P[i]-dd[i+1]*P[i+1];
-
-\hspace*{2em} \}
-
-\HRule
+{ /* Solve tridiagonal system for C2 cubic spline */
+    /* Input: n, Q, U, P[0], P[1], P[n+1], P[n+2] */
+    /* Output: P */
+    for (i=3; i<n; i++) R[i] = Q[i-1];
+    BasisFuns(4, U[4],3, U, abc);
+    den = abc[1];
+    P[2] = (Q[1]-abc[0]*P[1])/den;
+    for (i=3; i<n; i++)
+    {
+        dd[i] = abc[2]/den;
+        BasisFuns(i+2, U[i+2],3, U, abc);
+        den = abc[1]-abc[0]*dd[i];
+        P[i]= ( R[i]- abc[0]* P[i - 1]) /den;
+    }
+    dd[n] = abc[2]/den;
+    BasisFuns(n+2, U[n+2],3, U, abc);
+    den = abc[1]- abc[0]* dd[n] ;
+    P[n]= ( Q[n - 1]- abc[2]* P[n + 1]- abc[0]* P[n - 1]) /den;
+    for (i=n-1; i>=2; i--) P[i] = P[i]-dd[i+1]*P[i+1];
+}
+\end{minted}
 
 图 9.10 显示了使用该三次样条算法插值的数据。
 
@@ -455,16 +480,23 @@ SolveTridiagonal(n, Q, U, P)
 
 
 
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_10.tex}
+\par\smallskip
+图 9.10. 对同一组七个代表性数据点，比较传统三次样条与常规全局三次插值。\\
+实线：数据参数作为内部节点，并满足端导数约束；虚线：由弦长参数平均得到内部节点。\\
+两者使用相同的弦长参数；实线取$\mathbf D_0=(0,d)$、$\mathbf D_6=(-d,0)$，$d$为总弦长，箭头统一按$1/5$绘制。
+\end{minipage}
+\end{center}
+
 \subsection{指定一阶导数的全局曲线插值}
 
 现在假设在每个点上给定一阶导数 \({\mathbf{D}}_{k}\) ， \({\mathbf{Q}}_{k},k =\)  \(0,\ldots ,n\) 。有 \(2\left( {n + 1}\right)\) 个数据项和同样数量的未知控制点。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_381_285_251_951_511_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.10。三次样条插值(实线)与通过使用弦长参数化和通过平均计算的节点获得的常规三次插值(虚线)进行比较。
 
 表达 \({\mathbf{Q}}_{k}\) 的 \(n + 1\) 方程为
 
@@ -556,27 +588,57 @@ U = \left\{  {0,0,0,\frac{{\bar{u}}_{1}}{2},{\bar{u}}_{1},\frac{{\bar{u}}_{1} + 
 
 使用算法 A2.3 (DersBasisFuns (   )) 来计算 \({N}_{i,3}\left( {\bar{u}}_{k}\right)\) 和 \({N}_{i,3}^{\prime }\left( {\bar{u}}_{k}\right)\) 。
 
-如果给定单位长度切向量 \({\mathbf{T}}_{k}\) 而不是 \({\mathbf{D}}_{k}\) ，则必须估计幅度 \({\alpha }_{k}\) 。设置所有 \({\alpha }_{k} = d\) ，其中 \(d\) 是总弦长，是一个合理的选择。图 9.11 显示了对点和导数的二次(实线)和三次(虚线)曲线插值。图 9.12 说明了通过在数据点使用不同导数幅度获得的不同曲线插值之间的比较。实线曲线应用 \({\alpha }_{k} = d\) (中间切线)；
+如果给定单位长度切向量 \({\mathbf{T}}_{k}\) 而不是 \({\mathbf{D}}_{k}\) ，则必须估计幅度 \({\alpha }_{k}\) 。设置所有 \({\alpha }_{k} = d\) ，其中 \(d\) 是总弦长，是一个合理的选择。图 9.11 显示了对点和导数的二次(实线)和三次(虚线)曲线插值。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_382_280_1347_963_696_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_11.tex}
+\par\smallskip
+图 9.11. 在五个代表性数据点指定一阶导数的全局插值：二次曲线（实线）与三次曲线（虚线）。\\
+参数采用弦长法，节点分别按公式 (9.22)、(9.23) 构造；每条曲线同时满足五个位置和五个导数约束。\\
+取$\mathbf D_k=d\mathbf T_k$，$d$为总弦长，所有箭头统一按实际导数的$1/5$绘制。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.11. 在每个数据点指定导数的二次(实线)和三次(虚线)曲线插值。
+图 9.12 说明了通过在数据点使用不同导数幅度获得的不同曲线插值之间的比较。实线曲线应用 \({\alpha }_{k} = d\) (中间切线)；
 
-376 曲线和曲面拟合，虚线曲线具有 \({\alpha }_{k} = 3/{2d}\) (大切线)；点线曲线是通过 \({\alpha }_{k} = 1/{2d}\) (小切线)获得的。图 9.13 显示了对指定点和一阶导数的二次曲线插值的控制点。
+
+
+虚线曲线具有 \({\alpha }_{k} = 3d/2\) (大切线)；点线曲线是通过 \({\alpha }_{k} = d/2\) (小切线)获得的。
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_383_257_266_1015_701_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_12.tex}
+\par\smallskip
+图 9.12. 对图 9.11 的同一组五点、单位切向及三次节点，改变各点的导数幅度。\\
+实线、虚线和点线分别取$\alpha_k=d,3d/2,d/2$，其中$d$为总弦长，$\mathbf D_k=\alpha_k\mathbf T_k$。\\
+全部位置和导数约束均由方程组求解满足；所有箭头统一按实际导数向量的$1/5$绘制。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.12. 在每个点具有不同切向导数的三次曲线插值。
-
+图 9.13 显示了对指定点和一阶导数的二次曲线插值的控制点。
 
 
-\subsection{全局曲面插值}
+
+
+
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_13.tex}
+\par\smallskip
+图 9.13. 图 9.11 的二次插值曲线及其十个求解所得的控制点。\\
+实心圆为五个代表性数据点，空心圆为其余控制点，虚线为控制多边形；两端数据点与端控制点重合。\\
+曲线满足全部五个位置和五个导数约束，箭头与图 9.11 一样按实际导数的$1/5$绘制。
+\end{minipage}
+\end{center}
+
+\subsection{全局曲面插值}\BookIndexMark{p0164}
 
 我们现在转向曲面的全局插值。我们给定一组 \((n +\) 1) \(\times  \left( {m + 1}\right)\) 数据点 \(\left\{  {\mathbf{Q}}_{k,\ell }\right\}  ,k = 0,\ldots ,n\) 和 \(\ell  = 0,\ldots ,m\) ，我们希望构造一个非有理的 (p, q) 次 B 样条曲面来插值这些点，即
 
@@ -590,86 +652,44 @@ U = \left\{  {0,0,0,\frac{{\bar{u}}_{1}}{2},{\bar{u}}_{1},\frac{{\bar{u}}_{1} + 
 {\bar{u}}_{k} = \frac{1}{m + 1}\mathop{\sum }\limits_{{\ell  = 0}}^{m}{\bar{u}}_{k}^{\ell }\;k = 0,\ldots ,n
 \]
 
-其中对于每个固定的 \(\ell ,{\bar{u}}_{k}^{\ell },k = 0,\ldots ,n\) ，是通过公式 (9.5) 或公式 (9.6) 计算的。以下是使用公式 (9.5) 的高效算法。它同时计算 \({\bar{u}}_{k}\) 和 \({\bar{v}}_{\ell }\) 。它需要一个长度为 \(\max \left( {n + 1,m + 1}\right)\) 的局部数组 cds [] 来存储弦长
+其中对于每个固定的 \(\ell ,{\bar{u}}_{k}^{\ell },k = 0,\ldots ,n\) ，是通过公式 (9.5) 或公式 (9.6) 计算的。以下是使用公式 (9.5) 的高效算法。它同时计算 \({\bar{u}}_{k}\) 和 \({\bar{v}}_{\ell }\) 。它需要一个长度为 \(\max \left( {n + 1,m + 1}\right)\) 的局部数组 cds [] 来存储弦长距离 \(\left| {{\mathbf{Q}}_{k,\ell } - {\mathbf{Q}}_{k - 1,\ell }}\right| ,k = 1,\ldots ,n\) (在 \(v\) 方向上也是如此)。函数 Distance3D( ) 计算两个三维点之间的距离。该算法处理当一行的总弦长等于零的情况，这是构造三面体表面的必要条件。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_384_256_271_1010_701_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 9.13. 二次 B 样条曲线插值器的控制点，插值于具有指定导数的数据。
-
-距离 \(\left| {{\mathbf{Q}}_{k,\ell } - {\mathbf{Q}}_{k - 1,\ell }}\right| ,k = 1,\ldots ,n\) (在 \(v\) 方向上也是如此)。函数 Distance3D( ) 计算两个三维点之间的距离。该算法处理当一行的总弦长等于零的情况，这是构造三面体表面的必要条件。
-
-算法 A9.3
-
-\HRule
-
+% book-code: algorithm A9.3
+\par\medskip\noindent\textbf{算法 A9.3（伪代码）}\BookIndexMark{p0165}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
 SurfMeshParams(n, m, Q, uk, vl)
-
-\hspace*{3em} \{ /* Compute parameters for */
-
-\hspace*{6em} /* global surface interpolation */
-
-\hspace*{6em} /* Input: n, m, Q */
-
-\hspace*{6em} /* Output: uk, vl */
-
-\hspace*{4em} /* First get the uk */
-
-\hspace*{2em} num = m+1; /* number of nondegenerate rows */
-
-\hspace*{2em} uk[0] = 0.0 ; ux[n] = 1.0 ;
-
-\hspace*{2em} for \(\left( {\mathrm{k} = 1;\mathrm{k} < \mathrm{n};\mathrm{k} +  + }\right) \;\mathrm{{uk}}\left\lbrack  \mathrm{k}\right\rbrack   = {0.0}\) ;
-
-\hspace*{2em} for (l=0; l<=m; l++)
-
-\hspace*{5em} \{
-
-\hspace*{5em} total \(= {0.0};\;/ *\) total chord length of row \(*\) /
-
-\hspace*{5em} for (k=1; k<=n; k++)
-
-\hspace*{7em} \{
-
-\hspace*{7em} cds[k] = Distance3D(Q[k][l], Q[k-1][l]);
-
-\hspace*{7em} total = total + cds[k];
-
-\hspace*{7em} \}
-
-\hspace*{5em} if (total == 0.0) num = num-1;
-
-\hspace*{4em} else
-
-\hspace*{5em} \{
-
-\hspace*{5em} d = 0.0 ;
-
-\hspace*{5em} for (k=1; k<n; k++)
-
-\hspace*{7em} \{
-
-\hspace*{7em} d = d + cds[k];
-
-\hspace*{7em} \({uk}\left\lbrack  k\right\rbrack   = {uk}\left\lbrack  k\right\rbrack   + d/\) total;
-
-\hspace*{6em} \}
-
-\hspace*{5em} \}
-
-\hspace*{2em} \}
-
-if (num == 0) return(error);
-
-for \(\left( {k = 1;k < n;k +  + }\right) \;{uk}\left\lbrack  k\right\rbrack   = {uk}\left\lbrack  k\right\rbrack  /{num}\) ;
-
-\hspace*{3em} /* Now do the same for vl */
-
-\}
-
-\HRule
+{ /* Compute parameters for */
+    /* global surface interpolation */
+    /* Input: n, m, Q */
+    /* Output: uk, vl */
+    /* First get the uk */
+    num = m+1; /* number of nondegenerate rows */
+    uk[0] = 0.0 ; ux[n] = 1.0 ;
+    for ( k = 1;k < n;k ++ ) uk[k]= 0.0 ;
+    for (l=0; l<=m; l++)
+    {
+        total = 0.0; /* total chord length of row  */
+        for (k=1; k<=n; k++)
+        {
+            cds[k] = Distance3D(Q[k][l], Q[k-1][l]);
+            total = total + cds[k];
+        }
+        if (total == 0.0) num = num-1;
+        else
+        {
+            d = 0.0 ;
+            for (k=1; k<n; k++)
+            {
+                d = d + cds[k];
+                uk[k]= uk[k]+ d/ total;
+            }
+        }
+    }
+    if (num == 0) return(error);
+    for ( k = 1;k < n;k ++ ) uk[k]= uk[k]/num ;
+    /* Now do the same for vl */
+}
+\end{minted}
 
 一旦计算出 \(\left( {{\bar{u}}_{k},{\bar{v}}_{\ell }}\right)\) ，节点向量 \(U\) 和 \(V\) 可以通过公式 (9.8) 获得。
 
@@ -695,111 +715,143 @@ for \(\left( {k = 1;k < n;k +  + }\right) \;{uk}\left\lbrack  k\right\rbrack   =
 
 1. 通过 \({\mathbf{Q}}_{k,0},\ldots ,{\mathbf{Q}}_{k,m}\) 进行 \(n + 1\) 曲线插值以获得 \({\mathbf{R}}_{k,j}\) (等参数曲线的控制点 \(\mathbf{S}\left( {{\bar{u}}_{k},v}\right)\) )；
 
-2. 然后通过 \({\mathbf{R}}_{0,j},\ldots ,{\mathbf{R}}_{n,j}\) 进行 \(m + 1\) 曲线插值，以获得 \({\mathbf{P}}_{i,j}\) 。 \(u\) -方向插值；(d) 显示控制点的表面插值。
+2. 然后通过 \({\mathbf{R}}_{0,j},\ldots ,{\mathbf{R}}_{n,j}\) 进行 \(m + 1\) 曲线插值，以获得 \({\mathbf{P}}_{i,j}\) 。 
+
+
+
+
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_386_264_246_1007_1766_0.jpg}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_14.tex}
+\par\smallskip
+\begin{minipage}{18cm}\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_15.tex}
+\end{minipage}\hfill
+\begin{minipage}{18cm}\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_16.tex}
+\end{minipage}
+\par\smallskip
+图 9.14. 全局曲面插值的两个方向求解过程，采用同一组$4\times4$代表性数据，$p=q=3$、$\bar u_i=\bar v_i=i/3$。\\
+(a) 数据网格$\mathbf Q_{k,\ell}$；(b) 对固定$\ell$沿$u$插值，得到控制点$\mathbf R_{i,\ell}$及四条插值曲线。\\
+(c) 对固定$i$沿$v$插值$\mathbf R_{i,\ell}$，得到最终控制点$\mathbf P_{i,j}$；空心点标出内部的$\mathbf R_{i,\ell}$。\\
+(d) 通过全部十六个数据点的双三次曲面及其控制网格；四幅图使用相同视角、尺度和字号。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 9.14. 全局表面插值。 (a) 数据点；(b) 插值 \(u\) -方向数据点；(c) 通过控制点在 \(v\) 方向进行插值。
-
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_387_262_264_1000_844_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 9.14. (续)。
 
 总结来说，表面插值的过程如下:
 
-\HRule
+% book-code: algorithm A9.4
+\par\medskip\noindent\textbf{算法 A9.4（伪代码）}\BookIndexMark{p0166}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+GlobalSurfInterp(n, m, Q, p, q, U, V, P)
+{ /* Global surface interpolation */
+    /* Input: n, m, Q, p, q */
+    /* Output: U, V, P */
+    SurfMeshParams ( n,m,Q,uk,vl) ; /* get parameters  */
+    Compute U using Eq. (9.8);
+    Compute V using Eq. (9.8);
+    for (l=0; l<=m; l++)
+    {
+        Do curve interpolation through @$Q\left\lbrack 0\right\rbrack \left\lbrack 1\right\rbrack ,\ldots ,Q\left\lbrack n\right\rbrack \left\lbrack 1\right\rbrack$@ ;
+        This yields @$R\left\lbrack 0\right\rbrack \left\lbrack 1\right\rbrack ,\ldots ,R\left\lbrack n\right\rbrack \left\lbrack 1\right\rbrack$@ ;
+    }
+    for (i = 0; i<=n; i++)
+    {
+        Do curve interpolation through @$R\left\lbrack i\right\rbrack \left\lbrack 0\right\rbrack ,\ldots ,R\left\lbrack i\right\rbrack \left\lbrack m\right\rbrack$@ ;
+        This yields @$P\left\lbrack i\right\rbrack \left\lbrack 0\right\rbrack ,\ldots ,P\left\lbrack i\right\rbrack \left\lbrack m\right\rbrack$@ ;
+    }
+}
+\end{minted}
 
-ALGORITHM A9.4
-
-\hspace*{2em} GlobalSurfInterp(n, m, Q, p, q, U, V, P)
-
-\hspace*{5em} \{ /* Global surface interpolation */
-
-\hspace*{8em} /* Input: n, m, Q, p, q */
-
-\hspace*{8em} /* Output: U, V, P */
-
-\hspace*{5em} SurfMeshParams \(\left( {n,m,Q,{uk},{vl}}\right) ;\;/ *\) get parameters \(*\) /
-
-\hspace*{5em} Compute U using Eq. (9.8);
-
-\hspace*{5em} Compute V using Eq. (9.8);
-
-\hspace*{5em} for (l=0; l<=m; l++)
-
-\hspace*{7em} \{
-
-\hspace*{7em} Do curve interpolation through \(Q\left\lbrack  0\right\rbrack  \left\lbrack  1\right\rbrack  ,\ldots ,Q\left\lbrack  n\right\rbrack  \left\lbrack  1\right\rbrack\) ;
-
-\hspace*{7em} This yields \(R\left\lbrack  0\right\rbrack  \left\lbrack  1\right\rbrack  ,\ldots ,R\left\lbrack  n\right\rbrack  \left\lbrack  1\right\rbrack\) ;
-
-\hspace*{7em} \}
-
-\hspace*{5em} for (i = 0; i<=n; i++)
-
-\hspace*{7em} \{
-
-\hspace*{7em} Do curve interpolation through \(R\left\lbrack  i\right\rbrack  \left\lbrack  0\right\rbrack  ,\ldots ,R\left\lbrack  i\right\rbrack  \left\lbrack  m\right\rbrack\) ;
-
-\hspace*{7em} This yields \(P\left\lbrack  i\right\rbrack  \left\lbrack  0\right\rbrack  ,\ldots ,P\left\lbrack  i\right\rbrack  \left\lbrack  m\right\rbrack\) ;
-
-\hspace*{7em} \}
-
-\hspace*{4em} \}
-
-\HRule
-
-图 9.15-9.18 显示了几个表面插值的例子。数据集在图 9.15 中展示。图 \({9.16}\mathrm{a} - {9.16}\mathrm{c}\) 中展示了具有不同参数化和节点向量的表面。度数为 (2,3)，参数化和节点向量是均匀的(图 9.16a)；弦长，通过平均获得的节点(图 9.16b)；以及向心，通过平均获得的节点(图 9.16c)。在图 9.17 中描绘了具有不同度数的表面插值。每个图的度数为:图 9.17a，度数 (2,3)；图 9.17b，度数 (3,2)；以及图 \({9.17}\mathrm{c}\) ，度数 (3,3)。在图 9.18 中演示了无法处理共面的数据。
+图 9.15-9.18 显示了几个表面插值的例子。数据集在图 9.15 中展示。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_388_339_244_876_821_0.jpg}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_17.tex}
+\par\smallskip
+图 9.15. 用于后续曲面插值比较的$4\times4$代表性数据；虚线仅连接相邻数据点。\\
+取$x_i=(-2,-3/4,3/4,2)$、$y_j=(-2,-1/2,3/4,2)$，高度$z_{i,j}=h_i+a_i g_j$，\\
+其中$h=(3,3,0,0)$、$a=(1,3/2,1/2,0)$、$g=(0,1/5,1/10,0)$，保留小幅横向起伏。\\
+后续参数化与次数比较均使用这一组数据，并在各比较图中统一三维视角和尺度。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.14. (续)。
+图 \({9.16}\mathrm{a} - {9.16}\mathrm{c}\) 中展示了具有不同参数化和节点向量的表面。度数为 (2,3)，参数化和节点向量是均匀的(图 9.16a)；弦长，通过平均获得的节点(图 9.16b)；以及向心，通过平均获得的节点(图 9.16c)。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_388_330_1235_873_830_0.jpg}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_18.tex}
+\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_19.tex}
+\par\smallskip
+图 9.16. 使用图 9.15 的同一组代表性数据，比较次数为$(2,3)$的三种全局曲面插值。\\
+(a) 均匀参数与均匀节点；(b) 弦长参数与平均节点；(c) 向心参数与平均节点。\\
+弦长及向心参数由各行（列）归一化后取平均，节点按公式 (9.8) 计算；三个曲面均通过全部十六点，并使用相同视角和尺度。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.15. 用于测试表面插值的数据点。
+在图 9.17 中描绘了具有不同度数的表面插值。每个图的度数为:图 9.17a，度数 (2,3)；图 9.17b，度数 (3,2)；以及图 \({9.17}\mathrm{c}\) ，度数 (3,3)。
+
+\begin{center}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_20.tex}
+\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_21.tex}
+\par\smallskip
+图 9.17. 图 9.15 的同一组代表性数据在不同次数下的全局曲面插值。\\
+(a) 次数$(2,3)$；(b) 次数$(3,2)$；(c) 次数$(3,3)$。三者采用完全相同的弦长网格参数，节点按各次数平均计算。\\
+三个曲面均通过全部十六个数据点，并沿用图 9.16 的相同视角、尺度和字号。
+\end{minipage}
+\end{center}
+
+图 9.18 表明，含有局部共面数据的网格经过全局插值后，相应区域不一定保持平坦；若全部数据都在同一平面上，线性插值系统仍会保持该平面。
+
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_22.tex}
+\par\smallskip
+图 9.18. 局部共面数据的全局双三次插值，采用$5\times5$代表性数据。\\
+(a) 二十四点位于$z=0$，中心点抬高至$z=6/5$；(b) 曲面通过全部二十五点，但在共面数据之间出现波动。\\
+参数为$\bar u_i=\bar v_i=i/4$，节点向量$U=V=(0,0,0,0,1/2,1,1,1,1)$；两幅图使用相同的视角和尺度。
+\end{minipage}
+\end{center}
+
+
+
+
+
+
 
 导数约束也可以纳入全局表面插值。从概念上讲，第2章和第3章的导数公式可以用来为每个指定的导数约束定义一个额外的线性方程。不幸的是，如果每一行或每一列的数据约束数量不相同，使用两方向的曲线插值来求解未知的表面控制点将变得更加困难，如前所述。然而，通过巧妙地使用曲线节点插入和表面节点移除，可以调整算法A9.4以处理个别数据点的偏导数约束。最后，局部表面插值方法(见第9.3节)非常适合处理导数约束，因为它们在每个点上都需要导数。
 
 
 
-\section{局部插值}
+\section{局部插值}\BookIndexMark{p0167}
 
 在本节中，我们介绍曲线和表面对点和切线数据的局部插值。我们从一些初步概念开始。
 
-\subsection{局部曲线插值初步}
+\subsection{局部曲线插值初步}\BookIndexMark{p0168}
 
 设定 \(\left\{  {\mathbf{Q}}_{k}\right\}  ,k = 0,\ldots ,n\) 。局部曲线插值是指构造 \(n\) 多项式或有理曲线段 \({\mathbf{C}}_{i}\left( u\right) ,i =\)  \(0,\ldots ,n - 1\) 的一种方法，使得 \({\mathbf{Q}}_{i}\) 和 \({\mathbf{Q}}_{i + 1}\) 是 \({\mathbf{C}}_{i}\left( u\right)\) 的端点。相邻的段以某种规定的连续性水平连接，构造过程通常从左到右逐段进行。任何产生的方程仅与少数相邻段局部相关。在NURBS框架下，我们使用多项式或有理Bézier曲线构造这些段，然后通过选择合适的节点向量获得NURBS曲线。
 
-现在让 \({\bar{u}}_{i}\) 表示 \({\mathbf{C}}_{i}\left( u\right)\) 的起始参数和 \({\mathbf{C}}_{i - 1}\left( u\right)\) 的结束参数。如果它们的切线方向在 \({\bar{u}}_{i}\) 处重合，即 \({\mathbf{C}}_{i}^{\prime }\left( {\bar{u}}_{i}\right)\) 和 \({\mathbf{C}}_{i - 1}^{\prime }\left( {\bar{u}}_{i}\right)\) 指向相同方向，则 \({\mathbf{C}}_{i}\left( u\right)\) 和 \({\mathbf{C}}_{i - 1}\left( u\right)\) 在 \({\bar{u}}_{i}\) 处具有 \({G}^{1}\) 连续性(对于几何而言为 \(G\) )。然而，它们的大小可能不同。 \({G}^{1}\) 连续性意味着曲线在视觉上是连续的(光滑的)，但在参数化上可能存在不连续性。关于 \({G}^{n}\) 连续性的更深入研究，读者可以参考 Barsky 和 DeRose [Bars89,90]。局部拟合算法旨在提供某种程度的 \(G\) 或 \(C\) 连续性；在本章中，我们仅介绍提供 \({G}^{1}\) 或 \({C}^{1}\) 连续性的算法。产生更高连续性的局部方法并不广泛使用。尽管 \({G}^{2}\) 和 \({C}^{2}\) 在三次曲线中是可能的，但如果要保持合理的灵活性，则必须使用更高的次数。
+现在让 \({\bar{u}}_{i}\) 表示 \({\mathbf{C}}_{i}\left( u\right)\) 的起始参数和 \({\mathbf{C}}_{i - 1}\left( u\right)\) 的结束参数。如果它们的切线方向在 \({\bar{u}}_{i}\) 处重合，即 \({\mathbf{C}}_{i}^{\prime }\left( {\bar{u}}_{i}\right)\) 和 \({\mathbf{C}}_{i - 1}^{\prime }\left( {\bar{u}}_{i}\right)\) 指向相同方向，则 \({\mathbf{C}}_{i}\left( u\right)\) 和 \({\mathbf{C}}_{i - 1}\left( u\right)\) 在 \({\bar{u}}_{i}\) 处具有 \({G}^{1}\) 连续性(对于几何而言为 \(G\) )。然而，它们的大小可能不同。 \({G}^{1}\) 连续性意味着曲线在视觉上是连续的(光滑的)，但在参数化上可能存在不连续性。关于 \({G}^{n}\) 连续性的更深入研究，读者可以参考 Barsky 和 DeRose \cite{Bars89,Bars90}。局部拟合算法旨在提供某种程度的 \(G\) 或 \(C\) 连续性；在本章中，我们仅介绍提供 \({G}^{1}\) 或 \({C}^{1}\) 连续性的算法。产生更高连续性的局部方法并不广泛使用。尽管 \({G}^{2}\) 和 \({C}^{2}\) 在三次曲线中是可能的，但如果要保持合理的灵活性，则必须使用更高的次数。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_390_327_243_883_1808_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.16. 通过使用不同的参数化和节点向量获得的度数为(2,3)的曲面插值。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_391_344_255_858_875_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.16.(续。)
 
-获取 Bézier 段 \({\mathbf{C}}_{i}\left( u\right)\) 需要计算内部 Bézier 控制点，对于二次曲线需要一个点，对于三次曲线需要两个点。这些控制点位于与曲线在 \({\mathbf{Q}}_{k}\) 处相切的直线上；因此，我们需要在每个 \({\mathbf{Q}}_{k}\) 处的切向量 \({\mathbf{T}}_{k}\) 。在某些情况下，它们可以与 \({\mathbf{Q}}_{k}\) 一起输入；例如，当计算两个表面之间的交点时，它们很容易获得。然而，如果没有输入，则必须作为拟合算法的一部分进行计算。有多种方法可供选择；Boehm 等人 [Boeh84] 对各种方法进行了综述。让
+获取 Bézier 段 \({\mathbf{C}}_{i}\left( u\right)\) 需要计算内部 Bézier 控制点，对于二次曲线需要一个点，对于三次曲线需要两个点。这些控制点位于与曲线在 \({\mathbf{Q}}_{k}\) 处相切的直线上；因此，我们需要在每个 \({\mathbf{Q}}_{k}\) 处的切向量 \({\mathbf{T}}_{k}\) 。在某些情况下，它们可以与 \({\mathbf{Q}}_{k}\) 一起输入；例如，当计算两个表面之间的交点时，它们很容易获得。然而，如果没有输入，则必须作为拟合算法的一部分进行计算。有多种方法可供选择；Boehm 等人 \cite{Boeh84} 对各种方法进行了综述。让
 
 \[
 \Delta {\bar{u}}_{k} = {\bar{u}}_{k} - {\bar{u}}_{k - 1}\;{\mathbf{q}}_{k} = {\mathbf{Q}}_{k} - {\mathbf{Q}}_{k - 1}\;{\mathbf{d}}_{k} = \frac{{\mathbf{q}}_{k}}{\Delta {\bar{u}}_{k}}
@@ -819,21 +871,23 @@ ALGORITHM A9.4
 
 (见图 9.19)。注意，方程 (9.28) 假设 \({\bar{u}}_{k}\) 的值已经被指定。向量 \({\mathbf{D}}_{k}\) 可以被视为导数的估计值。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_392_332_242_881_1802_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.17. 使用不同次数的表面插值；参数化是弦长，节点向量通过平均获得。
+
+
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_393_340_255_861_852_0.jpg}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_23.tex}
+\par\smallskip
+图 9.19. 局部插值的弦向量、切向混合向量及导数估计，采用五个代表性数据点。\\
+取公式 (9.31) 的$\alpha_k=21/47$，并令$\Delta\bar u_k=2/5$、$\Delta\bar u_{k+1}=7/10$，\\
+公式 (9.29)、(9.28) 分别给出$\mathbf V_k=(732/235,6/47)$、$\mathbf D_k=(276/47,42/47)$，所有箭头按同一坐标尺度绘制。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.17. (续)
-
-方程 (9.29) 不使用参数 \({\bar{u}}_{k}\) ，因此得到的向量应仅视为切向方向。幅度和参数的分配必须相互结合进行；它们不是独立的。还要注意，我们严格使用符号 \(\mathbf{T}\) 来表示单位长度的切向量。方程 (9.28) 和 (9.29) 是线性插值。各种方案在计算插值参数 \({\alpha }_{k}\) 的方式上有所不同；它通常依赖于三个或五个邻近点。例如，贝塞尔方法 [DeBo78] 是一种三点法，使用
+方程 (9.29) 不使用参数 \({\bar{u}}_{k}\) ，因此得到的向量应仅视为切向方向。幅度和参数的分配必须相互结合进行；它们不是独立的。还要注意，我们严格使用符号 \(\mathbf{T}\) 来表示单位长度的切向量。方程 (9.28) 和 (9.29) 是线性插值。各种方案在计算插值参数 \({\alpha }_{k}\) 的方式上有所不同；它通常依赖于三个或五个邻近点。例如，贝塞尔方法 \cite{DeBo78} 是一种三点法，使用
 
 \[
 {\alpha }_{k} = \frac{\Delta {\bar{u}}_{k}}{\Delta {\bar{u}}_{k} + \Delta {\bar{u}}_{k + 1}}\;k = 1,\ldots ,n - 1 \tag{9.30}
@@ -845,21 +899,11 @@ ALGORITHM A9.4
 {\alpha }_{k} = \frac{\left| {\mathbf{q}}_{k - 1} \times  {\mathbf{q}}_{k}\right| }{\left| {{\mathbf{q}}_{k - 1} \times  {\mathbf{q}}_{k}}\right|  + \left| {{\mathbf{q}}_{k + 1} \times  {\mathbf{q}}_{k + 2}}\right| }\;k = 2,\ldots ,n - 2 \tag{9.31}
 \]
 
-与方程 (9.29) 一起得出一种五点法来获得 \({\mathbf{T}}_{k}\) [Akim70; Renn82; Pieg87d]。它的优点在于三个共线点 \({\mathbf{Q}}_{k - 1},{\mathbf{Q}}_{k}\) 、 \({\mathbf{Q}}_{k + 1}\) 产生一个与线段平行的 \({\mathbf{T}}_{k}\) 。如果 \({\mathbf{Q}}_{k - 2},{\mathbf{Q}}_{k - 1},{\mathbf{Q}}_{k}\) 共线且 \({\mathbf{Q}}_{k},{\mathbf{Q}}_{k + 1},{\mathbf{Q}}_{k + 2}\) 共线，则方程 (9.31) 的分母消失。这意味着在 \({\mathbf{Q}}_{k}\) 处要么是一个拐角，要么是从 \({\mathbf{Q}}_{k - 2}\) 到 \({\mathbf{Q}}_{k + 2}\) 的一条直线段。在这些情况下， \({\alpha }_{k}\) 可以通过多种方式定义；我们选择
+与方程 (9.29) 一起得出一种五点法来获得 \({\mathbf{T}}_{k}\) \cite{Akim70,Renn82,Pieg87d}。它的优点在于三个共线点 \({\mathbf{Q}}_{k - 1},{\mathbf{Q}}_{k}\) 、 \({\mathbf{Q}}_{k + 1}\) 产生一个与线段平行的 \({\mathbf{T}}_{k}\) 。如果 \({\mathbf{Q}}_{k - 2},{\mathbf{Q}}_{k - 1},{\mathbf{Q}}_{k}\) 共线且 \({\mathbf{Q}}_{k},{\mathbf{Q}}_{k + 1},{\mathbf{Q}}_{k + 2}\) 共线，则方程 (9.31) 的分母消失。这意味着在 \({\mathbf{Q}}_{k}\) 处要么是一个拐角，要么是从 \({\mathbf{Q}}_{k - 2}\) 到 \({\mathbf{Q}}_{k + 2}\) 的一条直线段。在这些情况下， \({\alpha }_{k}\) 可以通过多种方式定义；我们选择
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_394_273_246_975_1816_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.18. 全局表面插值示例。(a) 包含共面的数据点；(b) 插值表面。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_395_344_270_851_638_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.19. 局部曲线插值的切线 \(\left( {\mathbf{V}}_{k}\right)\) 和导数 \(\left( {\mathbf{D}}_{k}\right)\) 向量的计算。
 
 \begin{itemize}
 \item \({\alpha }_{k} = 1\) ，这意味着 \({\mathbf{V}}_{k} = {\mathbf{q}}_{k + 1}\) ；如果数据暗示，则在 \({\mathbf{Q}}_{k}\) 处产生一个拐角；
@@ -889,7 +933,7 @@ ALGORITHM A9.4
 
 
 
-\subsection{局部抛物线曲线插值}
+\subsection{局部抛物线曲线插值}\BookIndexMark{p0169}
 
 我们从一个简单的二维非理性二次方案开始。设 \(\left\{  {\mathbf{Q}}_{k}\right\}  ,k = 0,\ldots ,n\) 为 \({xy}\) 平面中的点。使用某种切线估计方案来计算相应的 \(\left\{  {\mathbf{T}}_{k}\right\}\) ，例如，方程 (9.29)、(9.31) 和 (9.33)。设 \({L}_{k}\) 表示由 \(\left( {{\mathbf{Q}}_{k},{\mathbf{T}}_{k}}\right)\) 定义的有向线， \({\mathbf{R}}_{k}\) 为 \({L}_{k - 1}\) 和 \({L}_{k}\) 的交点。暂时假设交点存在，
 
@@ -917,7 +961,21 @@ ALGORITHM A9.4
 U = \left\{  {0,0,0,{\bar{u}}_{1},{\bar{u}}_{1},{\bar{u}}_{2},{\bar{u}}_{2},\ldots ,{\bar{u}}_{n - 1},{\bar{u}}_{n - 1},1,1,1}\right\}   \tag{9.36}
 \]
 
-定义了一个非理性、 \({G}^{1}\) 连续的二次 B 样条曲线，插值 \(\left\{  {\mathbf{Q}}_{k}\right\}\) (见图 9.20)。内部节点的选择不会影响曲线的形状，仅影响参数化。可以选择节点，使得得到的曲线是 \({C}^{1}\) 连续的；在这样做时，我们可以去掉控制点 \({\mathbf{Q}}_{1},\ldots ,{\mathbf{Q}}_{n - 1}\) 和每个内部节点的一个出现。我们简单地在 \({\mathbf{Q}}_{k - 1}\) 处使起始和结束导数相等(使用方程 [3.7] 转换到区间 \(\left\lbrack  {{\bar{u}}_{k - 2},{\bar{u}}_{k - 1}}\right\rbrack\) 和 \(\left. \left\lbrack  {{\bar{u}}_{k - 1},{\bar{u}}_{k}}\right\rbrack  \right)\) )，并得到公式
+定义了一个非理性、 \({G}^{1}\) 连续的二次 B 样条曲线，插值 \(\left\{  {\mathbf{Q}}_{k}\right\}\) (见图 9.20)。
+
+\begin{center}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_24.tex}
+\par\smallskip
+图 9.20. 六个代表性数据点的$G^1$连续二次插值；$\mathbf R_1,\ldots,\mathbf R_5$为相邻有向切线的交点。\\
+第$k$段由二次Bézier控制点$(\mathbf Q_{k-1},\mathbf R_k,\mathbf Q_k)$定义，各连接处切线方向一致。\\
+数据点以带中心点的圆圈标记，空心圆为切线交点；取$\bar u_k=k/5$，内部节点均为双重。
+\end{minipage}
+\end{center}
+
+内部节点的选择不会影响曲线的形状，仅影响参数化。可以选择节点，使得得到的曲线是 \({C}^{1}\) 连续的；在这样做时，我们可以去掉控制点 \({\mathbf{Q}}_{1},\ldots ,{\mathbf{Q}}_{n - 1}\) 和每个内部节点的一个出现。我们简单地在 \({\mathbf{Q}}_{k - 1}\) 处使起始和结束导数相等(使用方程 [3.7] 转换到区间 \(\left\lbrack  {{\bar{u}}_{k - 2},{\bar{u}}_{k - 1}}\right\rbrack\) 和 \(\left. \left\lbrack  {{\bar{u}}_{k - 1},{\bar{u}}_{k}}\right\rbrack  \right)\) )，并得到公式
 
 \[
 {\bar{u}}_{0} = 0\;{\bar{u}}_{1} = 1
@@ -933,12 +991,7 @@ U = \left\{  {0,0,0,{\bar{u}}_{1},{\bar{u}}_{1},{\bar{u}}_{2},{\bar{u}}_{2},\ldo
 {\mathbf{Q}}_{0},{\mathbf{R}}_{1},{\mathbf{R}}_{2},\ldots ,{\mathbf{R}}_{n - 1},{\mathbf{R}}_{n},{\mathbf{Q}}_{n} \tag{9.38}
 \]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_396_263_1474_1001_611_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.20. \({G}^{1}\) 连续二次曲线插值。
 
 和节点
 
@@ -947,6 +1000,20 @@ U = \left\{  {0,0,0,\frac{{\bar{u}}_{1}}{{\bar{u}}_{n}},\frac{{\bar{u}}_{2}}{{\b
 \]
 
 为了实现 \({C}^{1}\) 的连续性和控制点数量的减少，必须付出代价，即在参数化方面；图 9.21a 和 9.21b 显示了这一点。这些图中的曲线在等间距的参数值处标记。在图 9.21a 中，节点是使用公式 (9.37) 计算的，而在图 9.21b 中则使用了弦长参数化 (公式 [9.5])。请注意 \({\mathbf{Q}}_{k}\) 的间距。
+
+\begin{center}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_25.tex}
+\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_26.tex}
+\par\smallskip
+图 9.21. 图 9.20 的同一组二次曲线段在不同参数化下的均匀参数采样。\\
+(a) 按公式 (9.37)、(9.39) 构造$C^1$参数，数据参数为$(0,2/11,4/11,7/11,9/11,1)$；(b) 弦长参数下的$G^1$曲线。\\
+每幅图均在$u=j/40$处取值；三十九个内部样本以“$+$”标记，端点以数据点符号标记。几何曲线相同，采样点的间距随参数化改变。
+\end{minipage}
+\end{center}
 
 现在我们去掉公式 (9.34) 中给出的限制，并详细说明在计算 \({\mathbf{R}}_{k}\) 时出现的两个特殊情况:
 
@@ -960,19 +1027,9 @@ U = \left\{  {0,0,0,\frac{{\bar{u}}_{1}}{{\bar{u}}_{n}},\frac{{\bar{u}}_{2}}{{\b
 
 如果 \({\mathbf{T}}_{k - 1}\) 和 \({\mathbf{T}}_{k}\) 都平行于弦 \({\mathbf{Q}}_{\mathbf{k} - \mathbf{1}}{\mathbf{Q}}_{\mathbf{k}}\) ，则适用共线段情况。我们通过设置简单地处理此情况
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_397_252_1317_1033_745_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.21. 图 9.20 中曲线插值的参数化。(a) \({C}^{1}\) 参数化 (公式 [9.39]-[9.41])；(b) 使用弦长参数的 \({G}^{1}\) 参数化。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_398_248_250_1039_744_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.21. (续)
 
 \[
 {\mathbf{R}}_{k} = \frac{1}{2}\left( {{\mathbf{Q}}_{k - 1} + {\mathbf{Q}}_{k}}\right)  \tag{9.40}
@@ -1008,12 +1065,7 @@ U = \left\{  {0,0,0,\frac{{\bar{u}}_{1}}{{\bar{u}}_{n}},\frac{{\bar{u}}_{2}}{{\b
 {\gamma }_{k} = \frac{1}{4}\frac{\left| {\mathbf{Q}}_{k - 1}{\mathbf{Q}}_{k}\right| }{\alpha \cos {\theta }_{k} + \left( {1 - \alpha }\right) \cos {\theta }_{k - 1}}
 \]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_399_280_253_984_836_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.22. 计算在邻近数据点处切线的分段抛物线弧。(a) 平行的端切线；(b) 切线 \({\mathbf{T}}_{k - 1}\) 和 \({\mathbf{T}}_{k}\) 所暗示的转折点；(c) 由等腰控制三角形定义的抛物线。
 
 \[
 {\gamma }_{k + 1} = \frac{1}{4}\frac{\left| {\mathbf{Q}}_{k - 1}{\mathbf{Q}}_{k}\right| }{\alpha \cos {\theta }_{k - 1} + \left( {1 - \alpha }\right) \cos {\theta }_{k}} \tag{9.44}
@@ -1021,32 +1073,68 @@ U = \left\{  {0,0,0,\frac{{\bar{u}}_{1}}{{\bar{u}}_{n}},\frac{{\bar{u}}_{2}}{{\b
 
 其中 \(\alpha\) 是介于 0 和 1 之间的某个常数。基于实验观察，我们选择 \(\alpha  = 2/3\) 。图 \({9.22}\mathrm{\;b}\) 的两个曲线段是使用方程 (9.41)、(9.42) 和 (9.44) 得到的。
 
-图 9.23-9.25 显示了几个示例。在图 9.23a 中，切线是通过贝塞尔方法 [DeBo78] 计算的，而在图 9.23b 中使用了 Akima 方法 [Akim70]。注意图 9.23b 中如何保持共线性。在图 9.24a 中选择了“无拐角”选项，导致每个段之间产生了(可能不希望的)平滑连接。图 9.24b 显示了保持拐角的情况，使用相同的算法，仅更改了标志设置。图 9.25 显示了使用该插值方法获得的鞋底轮廓。
+\begin{center}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_27.tex}
+\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_28.tex}
+\par\smallskip
+图 9.22. 公式 (9.41)—(9.44) 的三个代表性分段二次构造，采用统一的坐标尺度。\\
+(a) 平行且反向的端切向，按半弦长取$\gamma_k=\gamma_{k+1}=3$；(b) 原切线交点不满足条件 (9.34)，取$\alpha=2/3$，得$\gamma_k=195/103$、$\gamma_{k+1}=195/89$。\\
+(c) 等腰控制三角形，$\cos\theta=3/5$、$\gamma=5/2$；新控制点和连接点恰为原抛物线在中点细分的结果。\\
+两段曲线分别由$(\mathbf Q_{k-1},\mathbf R_k^{\prime},\mathbf Q_k^{\prime})$与$(\mathbf Q_k^{\prime},\mathbf R_{k+1}^{\prime},\mathbf Q_k)$定义；箭头段表示真实单位切向，前接细线为延长引导线。
+\end{minipage}
+\end{center}
 
+图 9.23-9.25 显示了几个示例。在图 9.23a 中，切线是通过贝塞尔方法 \cite{DeBo78} 计算的，而在图 9.23b 中使用了 Akima 方法 \cite{Akim70}。注意图 9.23b 中如何保持共线性。在图 9.24a 中选择了“无拐角”选项，导致每个段之间产生了(可能不希望的)平滑连接。图 9.24b 显示了保持拐角的情况，使用相同的算法，仅更改了标志设置。图 9.25 显示了使用该插值方法获得的鞋底轮廓。
 
-\subsection{局部有理二次曲线插值}
-
-前述方法可以修改为生成有理二次曲线。所有在 \({\mathbf{Q}}_{k}\) 的权重设置为 1；在 \({\mathbf{R}}_{k}\) 的权重可以自由选择。例如，一些应用可能希望段更“圆形”而不是抛物线形。更具体地，对于 \(k = 1,\ldots ,n\) ，定义了一个圆锥弧
 
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_400_353_236_825_1622_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_29.tex}
+\par\smallskip
+图 9.23. 同一组七个代表性数据点的局部二次插值；(a) 贝塞尔三点切向估计，(b) Akima 五点切向估计。\\
+两图使用相同数据$(0,0),(1,0),(5/2,0),(4,2),(11/2,0),(7,0),(8,0)$；曲线按公式 (9.34)—(9.44) 构造，空心圆为数据点。\\
+(b) 两侧共线数据段被精确再现；(a) 相邻上升、下降弦会改变共线段端部的切向，产生轻微下凹。所有二次段在连接处均满足$G^1$连续。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.22. (续。)
+\begin{center}
+\begin{minipage}{23cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_30.tex}
+\par\smallskip
+图 9.24. 同一组十个代表性数据点的 Akima 局部二次插值，仅改变拐角标志。\\
+(a) 不保留拐角，各二次段均$G^1$连接；(b) 保留拐角，$(2,0)$、$(6,0)$处的水平与竖直数据段精确相交，其余连接仍为$G^1$。\\
+两图使用相同的坐标尺度；空心圆为数据点，顶部的两段抛物线在同一切向下平滑连接。
+\end{minipage}
+\end{center}
 
-由 \({\mathbf{Q}}_{k - 1},{\mathbf{R}}_{k},{\mathbf{Q}}_{k}\) 定义，权重 \({w}_{k}\) 在 \({\mathbf{R}}_{k}\) 处。可以按如下方式设置 \({w}_{k}\) :
+\begin{center}
+\begin{minipage}{30cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_31.tex}
+\par\smallskip
+图 9.25. 二十一个代表性鞋底数据点的闭合分段抛物线插值；空心圆为数据点。\\
+用周期延拓的弦向量计算 Akima 切向，再按公式 (9.34)—(9.44) 构造二次曲线段；每个数据点均被插值，首尾位置与切向精确满足$G^1$闭合条件。
+\end{minipage}
+\end{center}
+
+\subsection{局部有理二次曲线插值}\BookIndexMark{p0170}
+
+前述方法可以修改为生成有理二次曲线。所有在 \({\mathbf{Q}}_{k}\) 的权重设置为 1；在 \({\mathbf{R}}_{k}\) 的权重可以自由选择。例如，一些应用可能希望段更“圆形”而不是抛物线形。更具体地，对于 \(k = 1,\ldots ,n\) ，定义了一个圆锥弧，由 \({\mathbf{Q}}_{k - 1},{\mathbf{R}}_{k},{\mathbf{Q}}_{k}\) 定义，权重 \({w}_{k}\) 在 \({\mathbf{R}}_{k}\) 处。可以按如下方式设置 \({w}_{k}\) :
 
 1. 如果 \({\mathbf{Q}}_{k - 1},{\mathbf{R}}_{k}\) 和 \({\mathbf{Q}}_{k}\) 共线，则设置 \({w}_{k} = 1\) ；
 
 2. 如果三角形是等腰三角形 \(\left( {\left| {{\mathbf{Q}}_{k - 1}{\mathbf{R}}_{k}}\right|  = \left| {{\mathbf{Q}}_{k}{\mathbf{R}}_{k}}\right| }\right)\) ，则根据方程 (7.33) 设置 \({w}_{k}\) (一个精确的圆弧)；
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_401_254_254_1032_763_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.23. 局部二次曲线插值。 (a) 通过贝塞尔方法计算的切线；(b) 通过 Akima 方法计算的切线。
 
 3. 如果三角形不是等腰的，则按如下方式设置 \({w}_{k}\) (见图 9.26):
 
@@ -1059,6 +1147,18 @@ c. 设定 \({\mathbf{S}}_{2}\) 为 \({\mathbf{{MR}}}_{k}\) 的交点，与角的
 d. 设定 \(\mathbf{S} = 1/2\left( {{\mathbf{S}}_{1} + {\mathbf{S}}_{2}}\right)\) ;
 
 e. 以 \(\mathbf{S}\) 作为肩点，使用方程 (7.30) 和 (7.31) 计算 \({w}_{k}\) 。
+
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_32.tex}
+\par\smallskip
+图 9.26. 非等腰控制三角形的角平分线与肩点权重构造；两端权重为$1$。\\
+选取边长$13/2,15/2,7$的代表性三角形；$\mathbf S_1,\mathbf S_2$分别位于$\mathbf M\mathbf R_k$的$7/20,7/22$处。\\
+其平均点$\mathbf S$位于$147/440$处，故$w_k=147/293$；实际有理二次曲线满足$\mathbf C(1/2)=\mathbf S$。实心小点为肩点，引线用于区分三个邻近标注。
+\end{minipage}
+\end{center}
 
 在计算 \({\mathbf{R}}_{k}\) 的特殊情况下的识别正如所详细描述的；然而，计算 \({\mathbf{R}}_{k}^{\prime }\) 和 \({\mathbf{R}}_{k + 1}^{\prime }\) 略有不同。再次参考图 \({9.22}\mathrm{c}\) ，但假设等腰三角形定义了一个圆弧，由方程 (7.31)-(7.33) 可得
 
@@ -1078,29 +1178,31 @@ e. 以 \(\mathbf{S}\) 作为肩点，使用方程 (7.30) 和 (7.31) 计算 \({w}
 
 其中 \(\alpha\) 是与方程 (9.44) 中相同的常数。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_402_305_264_911_1072_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.24. 局部二次曲线插值。 (a) 不允许有角；(b) 保持角。
 
 图 9.27 显示了有理二次曲线插值的一个例子。注意，从四个点精确重现了圆形，并且通过设置角标志保留了两个角。
 
 
-\subsection{局部三次曲线插值}
+\begin{center}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_33.tex}
+\par\smallskip
+图 9.27. 代表性机械轮廓的局部有理二次插值；空心圆为输入数据点。\\
+外边界由十三点构造，保留底部两个直角及共线段；每个圆孔仅用四个圆周点和周期 Akima 切向构造。\\
+曲线段的端权重为$1$，各四分之一圆段取中间权重$\sqrt2/2$，因此圆弧和两个圆孔在数学上被精确再现。
+\end{minipage}
+\end{center}
+
+\subsection{局部三次曲线插值}\BookIndexMark{p0171}
 三次曲线能够轻松处理三维数据和拐点，而无需特殊处理。我们首先推导出关于三次贝塞尔曲线的一般事实，这本身就是一个有趣的主题。设 \({\mathbf{P}}_{0}\) 和 \({\mathbf{P}}_{3}\) 为两个端点， \({\mathbf{T}}_{0}\) 和 \({\mathbf{T}}_{3}\) 为对应的单位长度切线方向。可以构造一条三次贝塞尔曲线 \(\mathbf{C}\left( u\right) ,u \in  \left\lbrack  {0,1}\right\rbrack\) ，其端点和切线方向满足
 
 \[
 \alpha  = \left| {{\mathbf{C}}^{\prime }\left( 0\right) }\right|  = \left| {{\mathbf{C}}^{\prime }\left( \frac{1}{2}\right) }\right|  = \left| {{\mathbf{C}}^{\prime }\left( 1\right) }\right|  \tag{9.46}
 \]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_403_249_252_1026_420_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.25. 一段分段 \({G}^{1}\) 抛物线曲线插值。
 
 (见图 9.28)，即速度在曲线的起点、中点和终点处是相等的。方程 (9.46) 和 (1.10) 暗示
 
@@ -1114,23 +1216,11 @@ e. 以 \(\mathbf{S}\) 作为肩点，使用方程 (7.30) 和 (7.31) 计算 \({w}
 {\mathbf{P}}_{1}^{2} - {\mathbf{P}}_{0}^{3} = \frac{1}{8}\left( {{\mathbf{P}}_{3} + {\mathbf{P}}_{2} - {\mathbf{P}}_{1} - {\mathbf{P}}_{0}}\right)  \tag{9.48}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_403_313_1318_903_751_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.26. 为有理二次插值选择权重(肩点)。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_404_252_274_1033_597_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.27. 有理二次曲线插值；圆形被精确再现，角落保持不变。
 
-应用方程 (1.10) 并考虑参数范围的二分法，它
-
-得出
+应用方程 (1.10)，并考虑二分后的参数范围，得出
 
 \[
 {\mathbf{C}}^{\prime }\left( \frac{1}{2}\right)  = 6\left( {{\mathbf{P}}_{1}^{2} - {\mathbf{P}}_{0}^{3}}\right)  \tag{9.49}
@@ -1166,22 +1256,25 @@ a = {16} - {\left| {\mathbf{T}}_{0} + {\mathbf{T}}_{3}\right| }^{2}\;b = {12}\le
 
 方程 (9.50) 有两个实数解 \(\alpha\) ，一个是正数，一个是负数。将正数解代入方程 (9.47) 得到所需的 \({\mathbf{P}}_{1}\) 和 \({\mathbf{P}}_{2}\) 。
 
-现在我们回到立方插值问题。设 \(\left\{  {\mathbf{Q}}_{k}\right\}  ,k = 0,\ldots ,n\) 为一组三维数据点。如果没有给出切向量，则计算它们(方程 [9.29]、[9.31] 和 [9.33])。我们必须构造一个立方 Bézier 曲线。
-
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_405_330_256_872_757_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_34.tex}
+\par\smallskip
+图 9.28. 在$u=0,1/2,1$处速度均为$\alpha=6$的代表性三次 Bézier 曲线。\\
+取$\mathbf P_0=(0,0)$、$\mathbf P_3=(26/5,0)$，单位端切向为$(3/5,4/5)$、$(3/5,-4/5)$；公式 (9.50) 的正根为$6$。\\
+三个导数分别为$(18/5,24/5)$、$(6,0)$、$(18/5,-24/5)$，箭头统一按真实导数的$1/2$绘制，故长度相等。虚线为控制多边形。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.28。一个在参数 \(0,1/2\) 和 1 处具有相等切向量大小的立方 Bézier 曲线。
-
-曲线段 \({\mathbf{C}}_{k}\left( u\right)\) 在每对 \({\mathbf{Q}}_{k},{\mathbf{Q}}_{k + 1}\) 之间。用 Bézier 控制点表示为
+现在我们回到立方插值问题。设 \(\left\{  {\mathbf{Q}}_{k}\right\}  ,k = 0,\ldots ,n\) 为一组三维数据点。如果没有给出切向量，则计算它们(方程 [9.29]、[9.31] 和 [9.33])。我们必须构造三次 Bézier 曲线段 \({\mathbf{C}}_{k}\left( u\right)\) 在每对 \({\mathbf{Q}}_{k},{\mathbf{Q}}_{k + 1}\) 之间。用 Bézier 控制点表示为
 
 \[
 {\mathbf{P}}_{k,0} = {\mathbf{Q}}_{k}\;{\mathbf{P}}_{k,1}\;{\mathbf{P}}_{k,2}\;{\mathbf{P}}_{k,3} = {\mathbf{Q}}_{k + 1} \tag{9.51}
 \]
 
-我们必须确定 \({\mathbf{P}}_{k,1}\) 和 \({\mathbf{P}}_{k,2}\) 在 \({\mathbf{T}}_{k}\) 和 \({\mathbf{T}}_{k + 1}\) 上的合适位置。可以获得一个 \({C}^{1}\) 连续立方体，并实现对均匀参数化的良好近似。该方法源于 Renner [Renn82]。真正的均匀参数化意味着在整个参数范围内的恒定速度。我们构造一条在每个 \({\mathbf{Q}}_{k}\) 及每个 Bézier 段的中点处速度相等的曲线。设定 \({\bar{u}}_{0} = 0\) 。现在，对于 \(k = 0,\ldots ,n - 1\) ， \({\bar{u}}_{k + 1}\) 和两个内控制点 \({\mathbf{C}}_{k}\left( u\right)\) 的计算如下:
+我们必须确定 \({\mathbf{P}}_{k,1}\) 和 \({\mathbf{P}}_{k,2}\) 在 \({\mathbf{T}}_{k}\) 和 \({\mathbf{T}}_{k + 1}\) 上的合适位置。可以获得一个 \({C}^{1}\) 连续立方体，并实现对均匀参数化的良好近似。该方法源于 Renner \cite{Renn82}。真正的均匀参数化意味着在整个参数范围内的恒定速度。我们构造一条在每个 \({\mathbf{Q}}_{k}\) 及每个 Bézier 段的中点处速度相等的曲线。设定 \({\bar{u}}_{0} = 0\) 。现在，对于 \(k = 0,\ldots ,n - 1\) ， \({\bar{u}}_{k + 1}\) 和两个内控制点 \({\mathbf{C}}_{k}\left( u\right)\) 的计算如下:
 
 1. 使用公式 (9.50) 计算 \(\alpha\) ，使用公式 (9.47) 计算 \({\mathbf{P}}_{k,1}\) 和 \({\mathbf{P}}_{k,2}\) ；
 
@@ -1194,7 +1287,7 @@ a = {16} - {\left| {\mathbf{T}}_{0} + {\mathbf{T}}_{3}\right| }^{2}\;b = {12}\le
 该算法产生 \(n\) Bézier 段，每个段在其参数范围的端点和中点处的速度均为 1， \(\left\lbrack  {{\bar{u}}_{k},{\bar{u}}_{k + 1}}\right\rbrack\) 。因此，一个 \({C}^{1}\) 连续的三次 B 样条曲线通过控制点定义，以插值 \({\mathbf{Q}}_{k}\) (见图 9.29)。
 
 \[
-{\mathbf{Q}}_{0},{\mathbf{P}}_{0,1},{\mathbf{P}}_{0,2},{\mathbf{P}}_{1,1},{\mathbf{P}}_{1,2},\ldots ,{\mathbf{P}}_{n - 2,2,,}{\mathbf{P}}_{n - 1,1},{\mathbf{P}}_{n - 1,2,,}{\mathbf{Q}}_{n} \tag{9.53}
+{\mathbf{Q}}_{0},{\mathbf{P}}_{0,1},{\mathbf{P}}_{0,2},{\mathbf{P}}_{1,1},{\mathbf{P}}_{1,2},\ldots ,{\mathbf{P}}_{n - 2,2},{\mathbf{P}}_{n - 1,1},{\mathbf{P}}_{n - 1,2},{\mathbf{Q}}_{n} \tag{9.53}
 \]
 
 和节点
@@ -1204,16 +1297,44 @@ U = \left\{  {0,0,0,0,\frac{{\bar{u}}_{1}}{{\bar{u}}_{n}},\frac{{\bar{u}}_{1}}{{
 \]
 
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_406_271_250_994_702_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_35.tex}
+\par\smallskip
+图 9.29. 四个代表性数据点的$C^1$局部三次插值；三段分别满足公式 (9.46)，取$\alpha_0,\alpha_1,\alpha_2=3,4,3$。\\
+原始参数区间长度为$3,4,3$；归一化后数据参数为$(0,3/10,7/10,1)$。去掉两个内部数据控制点及各一个节点后，留下图示八个控制点，曲线完全不变。\\
+带中心点的圆圈为数据点，空心圆为内部 Bézier 控制点；下方参数尺按实际节点位置绘制，两端四重、内部双重。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 9.29. \({C}^{1}\) 局部三次曲线插值。
 
 图 9.30 显示了使用该方法进行三次曲线插值的一个示例。曲线在对应于等间隔参数值的点上标记。图 9.31 是另一个使用与图 9.7 相同数据集的插值示例。注意共线点是如何通过直线三次段拟合的。
 
 
-\subsection{局部双三次曲面插值}
+\begin{center}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_36.tex}
+\par\smallskip
+图 9.30. 给定七个代表性数据点及单位切向的局部$C^1$三次插值，展示近似弧长参数化的效果。\\
+六段的$\alpha$依次为$2,3,2,3/2,4,2$，归一化数据参数为$(0,4/29,10/29,14/29,17/29,25/29,1)$。\\
+“$+$”是在$u=j/58$处计算的五十九个实际样本，七个数据点加画圆圈；数据点及各段参数中点的速度精确为$29/2$，其他位置的速度仍可变化，因此样本并非严格等弧长。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_37.tex}
+\par\smallskip
+图 9.31. 与图 9.7 完全相同的十三个数据点，改用 Akima 切向与公式 (9.47)、(9.50)—(9.54) 的局部三次插值。\\
+左侧与中间的竖直共线段、右侧的水平共线段均由直线三次段精确表示；全部数据点被插值，内部连接满足$C^1$连续。图形采用与图 9.7 相同的坐标尺度。
+\end{minipage}
+\end{center}
+
+\subsection{局部双三次曲面插值}\BookIndexMark{p0172}
 
 也可以实现一个 \({C}^{\left( 1,1\right) }\) 连续的双三次局部曲面插值方案( \({C}^{1}\) 在 \(u\) 和 \(v\) 方向上均连续)。设 \(\left\{  {\mathbf{Q}}_{k,\ell }\right\}  ,k = 0,\ldots ,n\) 和 \(\ell  = 0,\ldots ,m\) 为一组数据点，设 \(\left\{  \left( {{\bar{u}}_{k},{\bar{v}}_{\ell }}\right) \right\}\) 为通过弦长平均计算的对应参数对(如算法 A9.3 所示)。以下方法生成满足条件的双三次曲面 \(\mathbf{S}\left( {u,v}\right)\) 。
 
@@ -1221,19 +1342,9 @@ U = \left\{  {0,0,0,0,\frac{{\bar{u}}_{1}}{{\bar{u}}_{n}},\frac{{\bar{u}}_{1}}{{
 \mathbf{S}\left( {{\bar{u}}_{k},{\bar{v}}_{\ell }}\right)  = \mathop{\sum }\limits_{{i = 0}}^{{{2n} + 1}}\mathop{\sum }\limits_{{j = 0}}^{{{2m} + 1}}{N}_{i,3}\left( {\bar{u}}_{k}\right) {N}_{j,3}\left( {\bar{v}}_{\ell }\right) {\mathbf{P}}_{i,j} \tag{9.55}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_406_281_1597_966_432_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.30. 局部三次曲线插值的参数化；这些点是在等间隔参数值下计算的。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_407_343_250_849_596_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.31. 对图 9.7 中数据的三次曲线插值；注意共线性是如何被保持的。
 
 我们通过构造 \({nm}\) 双三次 Bézier 补丁来获得表面， \(\left\{  {{\mathbf{B}}_{k,\ell }\left( {u,v}\right) }\right\}\) ， \(k = 0,\ldots ,n - 1,\ell  = 0,\ldots ,m - 1\) ，其中 \({\mathbf{Q}}_{k,\ell },{\mathbf{Q}}_{k + 1,\ell },{\mathbf{Q}}_{k,\ell  + 1},{\mathbf{Q}}_{k + 1,\ell  + 1}\) 是补丁的角点，补丁在其边界处以 \({C}^{\left( 1,1\right) }\) 连续性连接。除了表面边界外，所有包含原始 \(\left\{  {\mathbf{Q}}_{k,\ell }\right\}\) 的控制点的行和列都被移除(见图 9.32b 和 9.32c)，最终的 B-spline 表面留下 \(\left( {{2n} + 2}\right) \left( {{2m} + 2}\right)\) 个控制点。节点向量为
 
@@ -1245,27 +1356,13 @@ U = \left\{  {0,0,0,0,{\bar{u}}_{1},{\bar{u}}_{1},{\bar{u}}_{2},{\bar{u}}_{2},\l
 V = \left\{  {0,0,0,0,{\bar{v}}_{1},{\bar{v}}_{1},{\bar{v}}_{2},{\bar{v}}_{2},\ldots ,{\bar{v}}_{m - 1},{\bar{v}}_{m - 1},1,1,1,1}\right\}   \tag{9.56}
 \]
 
-一个双三次 Bézier 补丁有 16 个控制点。12 个边界控制点是通过最初遍历 \(m + 1\) 行和 \(n + 1\) 列的数据并使用三次曲线插值方案获得的。该方案与之前详细描述的方案略有不同，因为我们已经有了参数 \(\left\{  \left( {{\bar{u}}_{k},{\bar{v}}_{\ell }}\right) \right\}\) 。请注意，这些参数必须提前计算，因为在张量积表面中，所有行(列)必须具有相同的参数化。因此，我们仍然可以在段的端点强制 \({C}^{1}\) 连续性，但无法在 Bézier 曲线段的中点强制相等的速度。更具体地说，设 \(\ell  = {\ell }_{0}\) 为固定，并考虑插值这些点的三次曲线
-
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_408_340_235_861_1841_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 9.32. \({C}^{\left( 1,1\right) }\) 局部双三次表面插值。(a) 数据集；(b) 插值的 Bézier 网格。
-
-402 曲线和表面拟合 \({\mathbf{Q}}_{0,{\ell }_{0}},\ldots ,{\mathbf{Q}}_{n,{\ell }_{0}}\) 。设 \({r}_{{\ell }_{0}}\) 表示第 \({\ell }_{0}\) 行的总弦长。在每个点 \({\mathbf{Q}}_{k,{\ell }_{0}}\) 处，计算 \({\mathbf{T}}_{k,{\ell }_{0}}^{u}\) (在 \(u\) 方向上的单位切线)，如前所述(方程 [9.29]、[9.31] 和 [9.33])。然后，通过以下方式计算该行的内部 Bézier 点
+一个双三次 Bézier 补丁有 16 个控制点。12 个边界控制点是通过最初遍历 \(m + 1\) 行和 \(n + 1\) 列的数据并使用三次曲线插值方案获得的。该方案与之前详细描述的方案略有不同，因为我们已经有了参数 \(\left\{  \left( {{\bar{u}}_{k},{\bar{v}}_{\ell }}\right) \right\}\) 。请注意，这些参数必须提前计算，因为在张量积表面中，所有行(列)必须具有相同的参数化。因此，我们仍然可以在段的端点强制 \({C}^{1}\) 连续性，但无法在 Bézier 曲线段的中点强制相等的速度。更具体地说，设 \(\ell  = {\ell }_{0}\) 为固定，并考虑插值这些点的三次曲线 \({\mathbf{Q}}_{0,{\ell }_{0}},\ldots ,{\mathbf{Q}}_{n,{\ell }_{0}}\) 。设 \({r}_{{\ell }_{0}}\) 表示第 \({\ell }_{0}\) 行的总弦长。在每个点 \({\mathbf{Q}}_{k,{\ell }_{0}}\) 处，计算 \({\mathbf{T}}_{k,{\ell }_{0}}^{u}\) (在 \(u\) 方向上的单位切线)，如前所述(方程 [9.29]、[9.31] 和 [9.33])。然后，通过以下方式计算该行的内部 Bézier 点
 
 \[
 {\mathbf{P}}_{1,0}^{k,{\ell }_{0}} = {\mathbf{Q}}_{k,{\ell }_{0}} + a{\mathbf{T}}_{k,{\ell }_{0}}^{u}\;{\mathbf{P}}_{2,0}^{k,{\ell }_{0}} = {\mathbf{Q}}_{k + 1,{\ell }_{0}} - a{\mathbf{T}}_{k + 1,{\ell }_{0}}^{u} \tag{9.57}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_409_340_248_861_1824_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.32.(续)(c) 一个 B-spline 网(大立方体标记数据点，小立方体是 B-spline 控制点)；(d) 表面插值函数。
 
 在哪里
 
@@ -1331,177 +1428,156 @@ a = \frac{{r}_{{\ell }_{0}}\left( {{\bar{u}}_{k + 1} - {\bar{u}}_{k}}\right) }{3
 
 现在我们用一个算法进行总结。为了提高效率，事件的顺序与此处详细描述的略有不同。该算法需要局部数组: \({td}\left\lbrack  {n + 1}\right\rbrack  \left\lbrack  {m + 1}\right\rbrack  \left\lbrack  3\right\rbrack\) ，包含 \({\mathbf{T}}_{k,\ell }^{u},{\mathbf{T}}_{k,\ell }^{v}\) 和 \({\mathbf{D}}_{k,\ell }^{uv}\) ；ub \(\left\lbrack  {n + 1}\right\rbrack\) 和 \({vb}\left\lbrack  {m + 1}\right\rbrack\) ，包含参数值；以及 \(r\left\lbrack  {m + 1}\right\rbrack\) 和 \(s\left\lbrack  {n + 1}\right\rbrack\) ，分别存储行和列的总弦长。
 
-\HRule
+% book-code: algorithm A9.5
+\par\medskip\noindent\textbf{算法 A9.5（伪代码）}\BookIndexMark{p0173}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+LocalSurfInterp(n, m, Q, U, V, P)
+{ /* Local surface interpolation */
+    /* through ( n + 1) ( m + 1) points */
+    /* Input: n, m, Q */
+    /* Output: U, V, P */
+    total = 0.0 ; /* get ub[], r [] and u direction tangents  */
+    for (k=0; k<=n; k++) ub[k] = 0.0;
+    for (l=0; l<=m; l++)
+    {
+        Compute and load @${\mathbf{T}}_{0,\ell }^{u}$@ into td[0][1][0];
+        r[1] = 0.0 ;
+        for (k=1; k<=n; k++)
+        {
+            Compute and load @${\mathbf{T}}_{k,\ell }^{u}$@ into td[k][1][0]
+            /* Eqs. (9.31) and (9.33) */
+            @$\mathrm{d} = \left| {{\mathbf{Q}}_{k,\ell } - {\mathbf{Q}}_{k - 1,\ell }}\right| ;$@
+            ub[k]= ub[k]+ d ;
+            r[l] = r[l]+d;
+        }
+        total = total + r[l];
+    }
+    for ( k = 1;k < n;k ++ ) ub[k]= ub[k - 1]+ ub[k]/ total;
+    ub[n] = 1.0;
+    total = 0.0 ; /* get vb[], s [] and v direction tangents  */
+    for (l=0; l<=m; l++) vb[l] = 0.0;
+    for (k=0; k<=n; k++)
+    {
+        Compute and load @${\mathbf{T}}_{k,0}^{v}$@ into td[k][0][1] ;
+        s[k] = 0.0 ;
+        for (l=1; l<=m; l++)
+        {
+            Compute and load @${\mathbf{T}}_{k,\ell }^{v}$@ into td[k][1][1]
+            /* Eqs. (9.31) and (9.33) */
+            @$\mathrm{d} = \left| {{\mathbf{Q}}_{k,\ell } - {\mathbf{Q}}_{k,\ell - 1}}\right| ;$@
+            vb[l] = vb[l]+d;
+            s[k]= s[k]+ d;
+        }
+        total = total + s[k];
+    }
+    for ( l = 1;l < m;l ++ ) vb[l]= vb[l - 1]+ vb[l]/ total;
+    vb[m] = 1.0;
+    Load the U knot vector;
+    Load the V knot vector;
+    Compute all Bézier control points along each row and
+    column of data points.
+    for ( k = 0;k <= n;k ++ )
+        for (l=0; l<=m; l++)
+        {
+            Compute the @${\mathbf{D}}_{k,\ell }^{uv}$@ by Eq. (9.59) and load into td[k][1][2] .
+        }
+    for ( k = 0;k < n;k ++ )
+        for (l=0; l<m; l++)
+        {
+            Compute the four inner control points of the(k, l)th
+            Bezier patch and load them into P .
+        }
+    Load the NURBS control points by discarding Bézier points
+    along inner rows and columns. /* Figure 9.32c */
+}
+\end{minted}
 
-ALGORITHM A9.5
+图 9.32 显示了表面构造过程。在图 9.32a 中，数据点用空心方框标记。图 9.32b 说明了 Bézier 补丁的控制点。沿内行和内列消除 Bézier 点会产生图 9.32c 所示的 NURBS 表面控制网。表面在图 9.32d 中显示。
 
-\hspace*{2em} LocalSurfInterp(n, m, Q, U, V, P)
-
-\hspace*{4em} \{ /* Local surface interpolation */
-
-\hspace*{4em} \{ /* through \(\left( {n + 1}\right) \left( {m + 1}\right)\) points */
-
-\hspace*{7em} /* Input: n, m, Q */
-
-\hspace*{7em} /* Output: U, V, P */
-
-\hspace*{4em} total \(= {0.0}\) ; /* get ub[], \(r\) [] and u direction tangents \(*\) /
-
-\hspace*{4em} for (k=0; k<=n; k++) ub[k] = 0.0;
-
-\hspace*{4em} for (l=0; l<=m; l++)
-
-\hspace*{6em} \{
-
-\hspace*{6em} Compute and load \({\mathbf{T}}_{0,\ell }^{u}\) into td[0][1][0];
-
-\hspace*{6em} r[1] = 0.0 ;
-
-\hspace*{6em} for (k=1; k<=n; k++)
-
-\hspace*{8em} \{
-
-\hspace*{8em} Compute and load \({\mathbf{T}}_{k,\ell }^{u}\) into \({td}\left\lbrack  k\right\rbrack  \left\lbrack  1\right\rbrack  \left\lbrack  0\right\rbrack\)
-
-\hspace*{13em} /* Eqs. (9.31) and (9.33) */
-
-\hspace*{8em} \(\mathrm{d} = \left| {{\mathbf{Q}}_{k,\ell } - {\mathbf{Q}}_{k - 1,\ell }}\right| ;\)
-
-\hspace*{8em} \({ub}\left\lbrack  k\right\rbrack   = {ub}\left\lbrack  k\right\rbrack   + d\) ;
-
-\hspace*{8em} r[l] = r[l]+d;
-
-\hspace*{8em} \}
-
-\hspace*{6em} total = total + r[l];
-
-\hspace*{6em} \}
-
-\hspace*{4em} for \(\left( {k = 1;k < n;k +  + }\right) \;{ub}\left\lbrack  k\right\rbrack   = {ub}\left\lbrack  {k - 1}\right\rbrack   + {ub}\left\lbrack  k\right\rbrack  /\) total;
-
-\hspace*{4em} ub[n] = 1.0;
-
-\hspace*{4em} total \(= {0.0}\) ; /* get vb[], \(s\) [] and \(v\) direction tangents \(*\) /
-
-\hspace*{4em} for (l=0; l<=m; l++) vb[l] = 0.0;
-
-\hspace*{4em} for (k=0; k<=n; k++)
-
-\hspace*{6em} \{
-
-\hspace*{6em} Compute and load \({\mathbf{T}}_{k,0}^{v}\) into \(\operatorname{td}\left\lbrack  \mathrm{k}\right\rbrack  \left\lbrack  0\right\rbrack  \left\lbrack  1\right\rbrack\) ;
-
-\hspace*{6em} s[k] = 0.0 ;
-
-\hspace*{6em} for (l=1; l<=m; l++)
-
-\hspace*{8em} \{
-
-\hspace*{8em} Compute and load \({\mathbf{T}}_{k,\ell }^{v}\) into \({td}\left\lbrack  k\right\rbrack  \left\lbrack  1\right\rbrack  \left\lbrack  1\right\rbrack\)
-
-\hspace*{13em} /* Eqs. (9.31) and (9.33) */
-
-\hspace*{8em} \(\mathrm{d} = \left| {{\mathbf{Q}}_{k,\ell } - {\mathbf{Q}}_{k,\ell  - 1}}\right| ;\)
-
-\hspace*{8em} vb[l] = vb[l]+d;
-
-\hspace*{8em} \(s\left\lbrack  k\right\rbrack   = s\left\lbrack  k\right\rbrack   + d;\)
-
-\hspace*{8em} \}
-
-\hspace*{6em} total = total + s[k];
-
-\hspace*{6em} \}
-
-for \(\left( {l = 1;l < m;l +  + }\right) \;{vb}\left\lbrack  l\right\rbrack   = {vb}\left\lbrack  {l - 1}\right\rbrack   + {vb}\left\lbrack  l\right\rbrack  /\) total;
-
-vb[m] = 1.0;
-
-Load the U knot vector;
-
-Load the V knot vector;
-
-Compute all Bézier control points along each row and
-
-\hspace*{3em} column of data points.
-
-for \(\left( {k = 0;k <  = n;k +  + }\right)\)
-
-\hspace*{2em} for (l=0; l<=m; l++)
-
-\hspace*{3em} \{
-
-\hspace*{3em} Compute the \({\mathbf{D}}_{k,\ell }^{uv}\) by Eq. (9.59) and load into \({td}\left\lbrack  k\right\rbrack  \left\lbrack  1\right\rbrack  \left\lbrack  2\right\rbrack\) .
-
-\hspace*{3em} \}
-
-for \(\left( {k = 0;k < n;k +  + }\right)\)
-
-\hspace*{1em} for (l=0; l<m; l++)
-
-\hspace*{3em} \{
-
-\hspace*{3em} Compute the four inner control points of the(k, l)th
-
-\hspace*{5em} Bezier patch and load them into \(P\) .
-
-\hspace*{3em} \}
-
-Load the NURBS control points by discarding Bézier points
-
-\hspace*{3em} along inner rows and columns. /* Figure 9.32c */
-
-\}
-
-\HRule
-
-图 9.32 显示了表面构造过程。在图 9.32a 中，数据点用小立方体标记。图 9.32b 说明了 Bézier 补丁的控制点。沿内行和内列消除 Bézier 点会产生图 9.32c 所示的 NURBS 表面控制网。表面在图 9.32d 中显示。
+\begin{center}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_38.tex}
+\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_39.tex}
+\par\smallskip
+图 9.32. 公式 (9.55)—(9.59) 的局部双三次曲面构造，沿用图 9.15—9.17 的同一组十六个代表性数据点。\\
+(a) $4\times4$数据网格；(b) 九个双三次 Bézier 片的$10\times10$复合控制网；(c) 两方向各移除两个节点，得到$8\times8$的 B 样条控制网；(d) 实际曲面的四十一条等参数曲线。\\
+空心方框为输入数据，小实心点为控制点；四图采用相同视角、尺度与字体。全部数据均被精确插值，节点移除不改变任何 Bézier 片，片间沿整条边满足$C^1$连接。\\
+公共参数按算法 A9.5 累加各行、列弦长得到；边界混合导数采用公式 (9.32) 的单侧估计。(d) 的曲线族包含四条数据参数线。
+\end{minipage}
+\end{center}
 
 该插值方案可以轻松生成闭合的 \({C}^{\left( 1,1\right) }\) 连续表面。图 9.33a 和 \({9.33}\mathrm{\;b}\) 显示了一个表面插值的示例，其中数据指示在一个方向上是闭合的表面。在图 9.34a 和 \({9.34}\mathrm{\;b}\) 中，表面在两个方向上都是闭合的(类似于环形插值)。该方法的一个优良特性是，当数据点指示平面性时，会生成平坦(平面)补丁。图 9.35a 和 9.35b 显示了这一点的一个示例。
+
+\begin{center}
+\begin{minipage}{35cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_40.tex}
+\par\smallskip
+图 9.33. 在一个参数方向闭合的代表性局部双三次曲面；(a) 十六个不同的数据点，(b) 插值曲面。\\
+四个轴向位置各给出四个截面数据点，截面按周期 Akima 切向构造；三次边界曲线按公式 (9.57) 确定，混合导数在本平移曲面例中为零。\\
+全部数据被精确插值，闭合接缝两侧的位置及一阶导数一致；绘出三十一条闭合截线与十六条较细的纵向等参数线，两图采用同一视角和尺度。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{35cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_41.tex}
+\par\smallskip
+图 9.34. 两个参数方向均闭合的局部双三次插值；(a) 十六个不同的环形数据点，(b) 实际插值曲面。\\
+取大、小半径$2,3/5$的环形采样数据，两方向公共参数均为$0,1/4,1/2,3/4,1$；按算法 A9.5 计算周期切向及非零混合导数，构造十六个双三次片。\\
+所得多项式曲面精确插值数据，片间及两个闭合接缝的位置、一阶导数一致；两图视角、尺度相同，空心方框为数据点。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{33cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_42.tex}
+\par\smallskip
+图 9.35. 具有平面子区域的局部双三次插值；(a) 二十五个代表性数据点，(b) 实际插值曲面。\\
+取$\mathbf Q_{i,j}=(i-2,j-2,z_{i,j})$，仅末列的三个高度为$1/2,3/4,1/2$，其余二十二点位于$z=0$。\\
+左侧两列共八个完整曲面片精确位于$z=0$；边界抬高处由局部$C^1$曲面平滑连接。两图视角、尺度相同，空心方框为数据点，曲面由四十一条等参数曲线表示。
+\end{minipage}
+\end{center}
 
 当数据不均匀分布时，获得令人满意的表面比获得曲线更为困难。图 \({9.36}\mathrm{a}\) 和 \({9.36}\mathrm{\;b}\) 显示了对非常不均匀分布数据的插值。尽管表面并不特别令人满意，但使用前一节的全局方法得到的结果并没有太大不同。
 
 
 
-\section{全局逼近}
-
-逼近比插值更为困难。在插值中，控制点的数量由所选的次数和数据项的数量自动确定，节点放置也很简单，并且没有需要检查的曲线或表面误差。在逼近中，曲线/表面误差界限 \(E\) 与要拟合的数据一起输入。通常事先并不知道需要多少个控制点才能获得所需的精度 \(E\) ，并且 406 曲线和表面拟合
-
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_413_358_241_824_1589_0.jpg}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_43.tex}
+\par\smallskip
+图 9.36. 分布不均匀的代表性局部双三次插值；(a) 十六个数据点，(b) 实际插值曲面。\\
+数据沿用图 9.32 的阶梯高度分布，但改变各行的横向间距，局部相邻弦长的最大、最小值之比约为$11.6$；仍按算法 A9.5 计算参数、切向和混合导数。\\
+全部数据被精确插值，片间保持$C^1$连续；四十一条等参数线显示不均匀数据引起的局部弯曲和间距变化。两图及图 9.32 采用相同视角与坐标尺度。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.33. 使用局部双三次曲面插值的表面插值示例。 (a) 数据点; (b) 插值表面。
+\section{全局逼近}\BookIndexMark{p0174}
 
-因此，近似方法通常是迭代的。粗略来说，全局方法有两种进行方式:
+逼近比插值更为困难。在插值中，控制点的数量由所选的次数和数据项的数量自动确定，节点放置也很简单，并且没有需要检查的曲线或表面误差。在逼近中，曲线/表面误差界限 \(E\) 与要拟合的数据一起输入。通常事先并不知道需要多少个控制点才能获得所需的精度 \(E\) 。因此，近似方法通常是迭代的。粗略来说，全局方法有两种进行方式:
 
 1a. 从最小或少量控制点开始；
 
 b. 使用全局拟合方法将近似曲线或表面拟合到数据上；
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_414_341_238_858_1822_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.34. 使用局部双三次曲面插值的表面插值示例。 (a) 数据点; (b) 插值表面。
 
-408 曲线和表面拟合
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_415_301_242_932_1813_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.35. 使用局部双三次曲面插值的表面插值示例。 (a) 数据点; (b) 插值表面。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_416_336_243_867_1798_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.36. 使用局部双三次曲面插值的表面插值示例。 (a) 数据点; (b) 插值表面。
+
 
 c. 检查曲线/表面与数据的偏差；
 
@@ -1517,11 +1593,11 @@ d. 如果 \(E\) 不再满足，返回之前的曲线或表面，否则减少控�
 
 我们在第 9.4.4 节中回到这两种方法，特别是我们给出第二种类型的示例。显然，近似的成本也高于插值。需要多次拟合，并且偏差检查可能会很昂贵。
 
-这两种方法的一个核心要素是，给定固定数量的控制点，例如 \(n\) ，我们将一个近似曲线(表面)拟合到数据上。有很多方法可以做到这一点。例如，可以建立一个非线性优化问题，其中控制点、参数 \(\left( {\bar{u}}_{k}\right)\) 、节点，甚至权重都是未知数。需要最小化的目标函数必须以某种方式衡量误差，例如，最小二乘法或最大偏差(例如，见 [Laur93])。在第 9.4.1-9.4.3 节中，我们介绍了曲线和表面拟合方法，其中固定数量的控制点是唯一的未知数，并使用线性最小二乘技术进行求解。
+这两种方法的一个核心要素是，给定固定数量的控制点，例如 \(n\) ，我们将一个近似曲线(表面)拟合到数据上。有很多方法可以做到这一点。例如，可以建立一个非线性优化问题，其中控制点、参数 \(\left( {\bar{u}}_{k}\right)\) 、节点，甚至权重都是未知数。需要最小化的目标函数必须以某种方式衡量误差，例如，最小二乘法或最大偏差(例如，见 \cite{Laur93})。在第 9.4.1-9.4.3 节中，我们介绍了曲线和表面拟合方法，其中固定数量的控制点是唯一的未知数，并使用线性最小二乘技术进行求解。
 
 
 
-\subsection{最小二乘曲线逼近}
+\subsection{最小二乘曲线逼近}\BookIndexMark{p0175}
 
 为了避免非线性问题，我们将权重设置为 1，并预计算参数和节点的值。然后我们建立并求解未知控制点的(唯一)线性最小二乘问题。我们从对点数据的简单曲线拟合开始。假设 \(p \geq  1,n \geq  p\) 和 \({\mathbf{Q}}_{0},\ldots ,{\mathbf{Q}}_{m}\left( {m > n}\right)\) 已知。我们寻求一个 \(p\) 次非有理曲线
 
@@ -1569,7 +1645,7 @@ f = \mathop{\sum }\limits_{{k = 1}}^{{m - 1}}{\left| {\mathbf{Q}}_{k} - \mathbf{
 \left. {+\left( {\mathop{\sum }\limits_{{i = 1}}^{{n - 1}}{N}_{i,p}\left( {\bar{u}}_{k}\right) {\mathbf{P}}_{i}}\right)  \cdot  \left( {\mathop{\sum }\limits_{{i = 1}}^{{n - 1}}{N}_{i,p}\left( {\bar{u}}_{k}\right) {\mathbf{P}}_{i}}\right) }\right\rbrack
 \]
 
-\(f\) 是 \(n - 1\) 变量的标量值函数， \({\mathbf{P}}_{1},\ldots ,{\mathbf{P}}_{n - 1}\) 。现在我们应用线性最小二乘拟合的标准技术 [DeBo78; Vand83; Lanc86]；为了最小化 \(f\) ，我们将 \(f\) 关于 \(n - 1\) 点的导数， \({\mathbf{P}}_{\ell }\) ，设为零。 \(\ell\) 阶导数是
+\(f\) 是 \(n - 1\) 变量的标量值函数， \({\mathbf{P}}_{1},\ldots ,{\mathbf{P}}_{n - 1}\) 。现在我们应用线性最小二乘拟合的标准技术 \cite{DeBo78,Vand83,Lanc86}；为了最小化 \(f\) ，我们将 \(f\) 关于 \(n - 1\) 点的导数， \({\mathbf{P}}_{\ell }\) ，设为零。 \(\ell\) 阶导数是
 
 \[
 \frac{\partial f}{\partial {\mathbf{P}}_{\ell }} = \mathop{\sum }\limits_{{k = 1}}^{{m - 1}}\left( {-2{N}_{\ell ,p}\left( {\bar{u}}_{k}\right) {\mathbf{R}}_{k} + 2{N}_{\ell ,p}\left( {\bar{u}}_{k}\right) \mathop{\sum }\limits_{{i = 1}}^{{n - 1}}{N}_{i,p}\left( {\bar{u}}_{k}\right) {\mathbf{P}}_{i}}\right)
@@ -1627,36 +1703,39 @@ i = \operatorname{int}\left( {jd}\right) \;\alpha  = {jd} - i
 {u}_{p + j} = \left( {1 - \alpha }\right) {\bar{u}}_{i - 1} + \alpha {\bar{u}}_{i}\;j = 1,\ldots ,n - p \tag{9.69}
 \]
 
-方程 (9.69) 保证每个节点区间至少包含一个 \({\bar{u}}_{k}\) ，在此条件下，deBoor [DeBo78] 表明方程 (9.65) 中的矩阵 \(\left( {{N}^{T}N}\right)\) 是正定且良好条件的。它可以通过高斯消元法解决，无需主元选择。此外， \(\left( {{N}^{T}N}\right)\) 的半带宽小于 \(p + 1\) (如果 \({N}_{i,j}\) 是第 \(i\) 行、第 \(j\) 列的元素，则 \({N}_{i,j} = 0\) 如果 \(\left| {i - j}\right|  > p\) )。最后，关于实现，注意矩阵 \(N\) (方程 [9.66])可能非常大，并且大多数元素为零；在某些应用中， \(m = {1000}\) 和 \(n = {100}\) 并不少见。因此，实现者可能希望开发一种存储方案，仅存储 \(N\) 的非零元素。一旦计算出 \(\left( {{N}^{T}N}\right)\) 和 \(\mathbf{R}\) (方程 [9.67])，可以释放 \(N\) 。类似地，仅应存储 \(\left( {{N}^{T}N}\right)\) 的非零带。
+方程 (9.69) 保证每个节点区间至少包含一个 \({\bar{u}}_{k}\) ，在此条件下，deBoor \cite{DeBo78} 表明方程 (9.65) 中的矩阵 \(\left( {{N}^{T}N}\right)\) 是正定且良好条件的。它可以通过高斯消元法解决，无需主元选择。此外， \(\left( {{N}^{T}N}\right)\) 的半带宽小于 \(p + 1\) (如果 \({N}_{i,j}\) 是第 \(i\) 行、第 \(j\) 列的元素，则 \({N}_{i,j} = 0\) 如果 \(\left| {i - j}\right|  > p\) )。最后，关于实现，注意矩阵 \(N\) (方程 [9.66])可能非常大，并且大多数元素为零；在某些应用中， \(m = {1000}\) 和 \(n = {100}\) 并不少见。因此，实现者可能希望开发一种存储方案，仅存储 \(N\) 的非零元素。一旦计算出 \(\left( {{N}^{T}N}\right)\) 和 \(\mathbf{R}\) (方程 [9.67])，可以释放 \(N\) 。类似地，仅应存储 \(\left( {{N}^{T}N}\right)\) 的非零带。
 
 图 \({9.37}\mathrm{a} - {9.37}\mathrm{c}\) 显示了简单最小二乘曲线拟合的示例。在图 9.37a 中指定了七个控制点。图 9.37b 显示了九个控制点的拟合，而图 9.37c 描绘了十一个控制点的拟合。注意，从距离的角度来看，随着控制点数量的增加，近似效果有所改善。然而，当控制点的数量接近数据点的数量时，如果数据存在噪声或不必要的波动，可能会出现不理想的形状。
 
+
+
+
 \begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_420_374_267_789_775_0.jpg}
+\begin{minipage}{37cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_44.tex}
+\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_45.tex}
+\par\smallskip
+图 9.37. 相同十八个代表性数据点的全局三次最小二乘拟合；(a) 七个、(b) 九个、(c) 十一个控制点。\\
+两端均精确插值，其余数据按公式 (9.62) 最小化同参数点的平方距离和；采用公共弦长参数，节点分别按公式 (9.68)、(9.69) 计算。\\
+三组平方误差和依次约为$0.5388,0.1732,0.0965$。实线为实际求解的曲线，虚线为控制多边形；空心圆为数据点。\\
+各参数尺中的小圆和短刻线分别表示实际数据参数与节点位置；两端四重节点稍微错开。三图采用相同坐标尺度和字体。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.37. 全局曲线拟合。(a) 七个控制点；(b) 九个控制点；(c) 十一个控制点。
+\subsection{加权和约束最小二乘曲线拟合}\BookIndexMark{p0176}
 
+现在我们提出一种非常通用的加权约束最小二乘曲线拟合方法。这是对Smith等人算法的NURBS适应 \cite{Smit74}。设 \(\left\{  {\mathbf{Q}}_{i}\right\}  ,i = 0,\ldots ,r\) 为要近似的点。可选地，可以指定任意 \({\mathbf{Q}}_{i}\) 处的第一导数 \({\mathbf{D}}_{i}\) 。设 \(\left\{  {\mathbf{D}}_{i\left( j\right) }\right\}  ,j = 0,\ldots ,s\) 为导数集合； \(- 1 \leq  s \leq  r\) ，其中 \(s =  - 1\) 表示未指定导数。此外，任何 \({\mathbf{Q}}_{i}\) 或 \({\mathbf{D}}_{i\left( j\right) }\) 都可以被约束(精确插值)。我们将 \(\left\{  {\mathbf{Q}}_{i}\right\}\) 和 \(\left\{  {\mathbf{D}}_{i\left( j\right) }\right\}\) 分为无约束和有约束集合。用 \({\mathbf{Q}}_{i\left( 0\right) }^{u},\ldots ,{\mathbf{Q}}_{i\left( {r}_{u}\right) }^{u}\) 和 \({\mathbf{D}}_{i\left( 0\right) }^{u},\ldots ,{\mathbf{D}}_{i\left( {s}_{u}\right) }^{u}\) 表示无约束项，用 \({\mathbf{Q}}_{i\left( 0\right) }^{c},\ldots ,{\mathbf{Q}}_{i\left( {r}_{c}\right) }^{c}\) 和 \({\mathbf{D}}_{i\left( 0\right) }^{c},\ldots ,{\mathbf{D}}_{i\left( {s}_{c}\right) }^{c}\) 表示有约束项 \(\left( {{s}_{u},{s}_{c}}\right.\) ，或 \({r}_{c}\) 等于-1表示没有与此索引对应的数据。注意 \(r = {r}_{u} + {r}_{c} + 1\) 和 \(s = {s}_{u} + {s}_{c} + 1\) 。我们还允许为每个无约束项分配一个正权重，因此我们有 \({w}_{i\left( 0\right) }^{q},\ldots ,{w}_{i\left( {r}_{u}\right) }^{q}\) 和 \({w}_{i\left( 0\right) }^{d},\ldots ,{w}_{i\left( {s}_{u}\right) }^{d}\)  \(\left( {{w}_{i}^{q},{w}_{i}^{d} > 0}\right) .\) 。这些权重允许对每个数据项相对于其邻居的“紧密度”施加额外影响。 \({w}_{i}^{q},{w}_{i}^{d} = 1\) 是默认值。增加权重会增加对该项的近似紧密度，而减少权重则会放松对该项的近似。请注意，这些权重与NURBS意义上的权重无关。
 
-\subsection{加权和约束最小二乘曲线拟合}
-
-现在我们提出一种非常通用的加权约束最小二乘曲线拟合方法。这是对Smith等人算法的NURBS适应 [Smit74]。设 \(\left\{  {\mathbf{Q}}_{i}\right\}  ,i = 0,\ldots ,r\) 为要近似的点。可选地，可以指定任意 \({\mathbf{Q}}_{i}\) 处的第一导数 \({\mathbf{D}}_{i}\) 。设 \(\left\{  {\mathbf{D}}_{i\left( j\right) }\right\}  ,j = 0,\ldots ,s\) 为导数集合； \(- 1 \leq  s \leq  r\) ，其中 \(s =  - 1\) 表示未指定导数。此外，任何 \({\mathbf{Q}}_{i}\) 或 \({\mathbf{D}}_{i\left( j\right) }\) 都可以被约束(精确插值)。我们将 \(\left\{  {\mathbf{Q}}_{i}\right\}\) 和 \(\left\{  {\mathbf{D}}_{i\left( j\right) }\right\}\) 分为无约束和有约束集合。用 \({\mathbf{Q}}_{i\left( 0\right) }^{u},\ldots ,{\mathbf{Q}}_{i\left( {r}_{u}\right) }^{u}\) 和 \({\mathbf{D}}_{i\left( 0\right) }^{u},\ldots ,{\mathbf{D}}_{i\left( {s}_{u}\right) }^{u}\) 表示无约束项，用 \({\mathbf{Q}}_{i\left( 0\right) }^{c},\ldots ,{\mathbf{Q}}_{i\left( {r}_{c}\right) }^{c}\) 和 \({\mathbf{D}}_{i\left( 0\right) }^{c},\ldots ,{\mathbf{D}}_{i\left( {s}_{c}\right) }^{c}\) 表示有约束项 \(\left( {{s}_{u},{s}_{c}}\right.\) ，或 \({r}_{c}\) 等于-1表示没有与此索引对应的数据。注意 \(r = {r}_{u} + {r}_{c} + 1\) 和 \(s = {s}_{u} + {s}_{c} + 1\) 。我们还允许为每个无约束项分配一个正权重，因此我们有 \({w}_{i\left( 0\right) }^{q},\ldots ,{w}_{i\left( {r}_{u}\right) }^{q}\) 和 \({w}_{i\left( 0\right) }^{d},\ldots ,{w}_{i\left( {s}_{u}\right) }^{d}\)  \(\left( {{w}_{i}^{q},{w}_{i}^{d} > 0}\right) .\) 。这些权重允许对每个数据项相对于其邻居的“紧密度”施加额外影响。 \({w}_{i}^{q},{w}_{i}^{d} = 1\) 是默认值。增加权重会增加对该项的近似紧密度，而减少权重则会放松对该项的近似。请注意，这些权重与NURBS意义上的权重无关。
-
-现在设 \({m}_{u} = {r}_{u} + {s}_{u} + 1\) 和 \({m}_{c} = {r}_{c} + {s}_{c} + 1\) 。我们希望在最小二乘意义上近似无约束数据，并插值有约束数据
-
-414 曲线和曲面拟合数据与一个 \(p\) 次非理性曲线 \(\mathbf{C}\left( u\right)\) ，具有 \(n + 1\) 个控制点。下一个算法要求
+现在设 \({m}_{u} = {r}_{u} + {s}_{u} + 1\) 和 \({m}_{c} = {r}_{c} + {s}_{c} + 1\) 。我们希望在最小二乘意义上近似无约束数据，并精确插值有约束数据，使用一个 \(p\) 次非理性曲线 \(\mathbf{C}\left( u\right)\) ，具有 \(n + 1\) 个控制点。下一个算法要求
 
 \[
 {m}_{c} < n\;{m}_{c} + n < {m}_{u} + 1 \tag{9.70}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_421_313_248_906_1505_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图9.37。(续。)
 
 现在设:
 
@@ -1682,7 +1761,7 @@ i = \operatorname{int}\left( {jd}\right) \;\alpha  = {jd} - i
 
 \({\bar{u}}_{k}\) 可以使用公式 (9.5) 计算，节点 \({u}_{j}\) 根据公式 (9.68) 和公式 (9.69) 计算(在公式 [9.68] 中将 \(m\) 替换为 \(r\) ).
 
-确定曲线基本上是一个约束最小化问题，涉及 \(n + 1\) 个未知数( \({\mathbf{P}}_{i}\) )和 \({m}_{c} + 1\) 个约束。标准的解决方法是使用拉格朗日乘数(见 [Kapl52])。其思想是引入 \({m}_{c} + 1\) 个额外的未知数 \({\lambda }_{k}\) (拉格朗日乘数)，从而获得一个分区 \(\left( {n + {m}_{c} + 2}\right)  \times  \left( {n + {m}_{c} + 2}\right)\) 方程组。从这个方程组中，首先为 \({m}_{c} + 1{\lambda }_{k}\) 得到一个解，随后为 \(n + 1{\mathbf{P}}_{i}\) 得到解。设
+确定曲线基本上是一个约束最小化问题，涉及 \(n + 1\) 个未知数( \({\mathbf{P}}_{i}\) )和 \({m}_{c} + 1\) 个约束。标准的解决方法是使用拉格朗日乘数(见 \cite{Kapl52})。其思想是引入 \({m}_{c} + 1\) 个额外的未知数 \({\lambda }_{k}\) (拉格朗日乘数)，从而获得一个分区 \(\left( {n + {m}_{c} + 2}\right)  \times  \left( {n + {m}_{c} + 2}\right)\) 方程组。从这个方程组中，首先为 \({m}_{c} + 1{\lambda }_{k}\) 得到一个解，随后为 \(n + 1{\mathbf{P}}_{i}\) 得到解。设
 
 \[
 \mathbf{A} = \left\lbrack  {\lambda }_{k}\right\rbrack
@@ -1792,294 +1871,260 @@ funs [2] [p+1]: 包含基函数及其指定的导数(见算法 A2.2 和 A2.3)。
 
 此外，还需要几个局部数组用于临时存储在方程 (9.71)-(9.76) 中计算的矩阵。
 
-\HRule
-
-ALGORITHM A9.6
-
-\hspace*{2em} WCLeastSquaresCurve(Q, r, Wq, D, s, I, Wd, n, p, U, P)
-
-\hspace*{5em} \{ /* Weighted \& constrained least squares curve fit */
-
-\hspace*{8em} /* Input: Q, r, Wq, D, s, I, Wd, n, p */
-
-\hspace*{8em} /* Output: U, P */
-
-\hspace*{5em} ru = -1; rc = -1;
-
-\hspace*{5em} for (i=0; i<=r; i++)
-
-\hspace*{7em} if (Wq[i] > 0.0) ru = ru+1 ;
-
-\hspace*{9em} else \(\;\mathrm{{rc}} = \mathrm{{rc}} + 1\) ;
-
-\hspace*{5em} su = -1; sc = -1;
-
-\hspace*{5em} for (j=0; j<=s; j++)
-
-\hspace*{7em} if (Wd[j] > 0.0) su = su+1 ;
-
-\hspace*{9em} else sc = sc+1;
-
-\hspace*{5em} \(\mathrm{{mu}} = \mathrm{{ru}} + \mathrm{{su}} + 1;\;\mathrm{{mc}} = \mathrm{{rc}} + \mathrm{{sc}} + 1\) ;
-
-\hspace*{5em} if (mc >= n || mc+n >= mu+1) return(error);
-
-\hspace*{5em} Compute and load parameters \({\bar{u}}_{k}\) into ub[] (Eq.[9.5]);
-
-\hspace*{5em} Compute and load the knots into U[] (Eqs.[9.68],[9.69]);
-
-\hspace*{12em} /* Now set up arrays \(N,W,\mathbf{S},\mathbf{T},M *\) /
-
-\hspace*{5em} j = 0; /* current index into I[] */
-
-\hspace*{5em} mu2 = 0; mc2 = 0; /* counters up to mu and mc */
-
-\hspace*{5em} for (i = 0; i<=r; i++)
-
-\hspace*{7em} \{
-
-\hspace*{7em} span = FindSpan(n, p, ub[i], U);
-
-\hspace*{7em} dflag = 0 ;
-
-\hspace*{7em} if (j <= s)
-
-\hspace*{9em} if (i == I[j]) dflag = 1 ;
-
-\hspace*{2em} if \(\left( {\text{ dflag } =  = 0}\right) \;\) BasisFuns \(\left( {\text{ span },{ub}\left\lbrack  i\right\rbrack  ,p,U,\text{ funs }}\right)\) ;
-
-\hspace*{3em} else DersBasisFuns(span, ub[i], p,1, U, funs);
-
-\hspace*{2em} if (Wq[i] > 0.0 )
-
-\hspace*{3em} \{ /* Unconstrained point */
-
-\hspace*{3em} W[mu2] = Wq[i];
-
-\hspace*{3em} Load the mu2th row of N[][] from funs[0][];
-
-\hspace*{3em} S[mu2] = W[mu2]*Q[i];
-
-\hspace*{3em} mu2 = mu2+1;
-
-\hspace*{3em} \}
-
-\hspace*{3em} else
-
-\hspace*{3em} \{ /* Constrained point */
-
-\hspace*{3em} Load the mc2th row of M[][] from funs[0][];
-
-\hspace*{3em} T[mc2] = Q[i];
-
-\hspace*{3em} mc2 = mc2+1;
-
-\hspace*{3em} \}
-
-\hspace*{2em} if (dflag == 1)
-
-\hspace*{3em} \{ /* Derivative at this point */
-
-\hspace*{3em} if (Wd[j] > 0.0 )
-
-\hspace*{4em} \{ /* Unconstrained derivative */
-
-\hspace*{4em} W[mu2] = Wd[j];
-
-\hspace*{4em} Load the mu2th row of N[][] from funs[1][];
-
-\hspace*{4em} \(S\left\lbrack  {mu2}\right\rbrack   = W\left\lbrack  {mu2}\right\rbrack   * D\left\lbrack  j\right\rbrack  ;\)
-
-\hspace*{4em} mu2 = mu2+1;
-
-\hspace*{4em} \}
-
-\hspace*{4em} else
-
-\hspace*{4em} \{ /* Constrained derivative */
-
-\hspace*{4em} Load the mc2th row of M[][] from funs[1][];
-
-\hspace*{4em} T[mc2] = D[j];
-
-\hspace*{4em} mc2 = mc2+1;
-
-\hspace*{4em} \}
-
-\hspace*{3em} j = j+1;
-
-\hspace*{3em} \}
-
-\hspace*{1em} \} /* End of for-loop i=0,..., r */
-
-Compute the matrices \({N}^{T}{WN}\) and \({N}^{T}W\mathbf{S}\) ;
-
-LUDecomposition \(\left( {{N}^{T}{WN},\mathrm{n} + 1,\mathrm{p}}\right)\) ;
-
-if (mc < 0 )
-
-\hspace*{1em} \{ /* No constraints */
-
-\hspace*{1em} Use ForwardBackward(   ) to solve for the control points \(P\left\lbrack  \right\rbrack\) .
-
-\hspace*{4em} Eq. (9.71) reduces to \(\left( {{N}^{T}{WN}}\right) \mathbf{P} = {N}^{T}W\mathbf{S}\) .
-
-\hspace*{1em} return;
-
-\hspace*{1em} \}
-
-Compute the inverse \({\left( {N}^{T}WN\right) }^{-1}\) , using ForwardBackward(   ).
-
-Do matrix operations to get: \(M{\left( {N}^{T}WN\right) }^{-1}{M}^{T}\) and
-
-\hspace*{3em} \(M{\left( {N}^{T}WN\right) }^{-1}\left( {{N}^{T}W\mathbf{S}}\right)  - \mathbf{T};\)
-
-Solve Eq.(9.75) for the Lagrange multipliers, load into A[];
-
-\HRule
-
-然后 \(\mathbf{P} = {\left( {N}^{T}WN\right) }^{-1}\left( {\left( {{N}^{T}W\mathbf{S}}\right)  - {M}^{T}\mathbf{A}}\right)\) ，方程 (9.74)；
-
-\}
+% book-code: algorithm A9.6
+\par\medskip\noindent\textbf{算法 A9.6（伪代码）}\BookIndexMark{p0177}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+WCLeastSquaresCurve(Q, r, Wq, D, s, I, Wd, n, p, U, P)
+{ /* Weighted & constrained least squares curve fit */
+    /* Input: Q, r, Wq, D, s, I, Wd, n, p */
+    /* Output: U, P */
+    ru = -1; rc = -1;
+    for (i=0; i<=r; i++)
+        if (Wq[i] > 0.0) ru = ru+1 ;
+        else rc = rc + 1 ;
+    su = -1; sc = -1;
+    for (j=0; j<=s; j++)
+        if (Wd[j] > 0.0) su = su+1 ;
+        else sc = sc+1;
+    mu = ru + su + 1;mc = rc + sc + 1 ;
+    if (mc >= n || mc+n >= mu+1) return(error);
+    Compute and load parameters @${\bar{u}}_{k}$@ into ub[] (Eq.[9.5]);
+    Compute and load the knots into U[] (Eqs.[9.68],[9.69]);
+    /* Now set up arrays $N,W,\mathbf{S},\mathbf{T},M$ */
+    j = 0; /* current index into I[] */
+    mu2 = 0; mc2 = 0; /* counters up to mu and mc */
+    for (i = 0; i<=r; i++)
+    {
+        span = FindSpan(n, p, ub[i], U);
+        dflag = 0 ;
+        if (j <= s)
+            if (i == I[j]) dflag = 1 ;
+        if (  dflag  == 0)  BasisFuns (  span ,ub[i],p,U, funs ) ;
+        else DersBasisFuns(span, ub[i], p,1, U, funs);
+        if (Wq[i] > 0.0 )
+        { /* Unconstrained point */
+            W[mu2] = Wq[i];
+            Load the mu2th row of N[][] from funs[0][];
+            S[mu2] = W[mu2]*Q[i];
+            mu2 = mu2+1;
+        }
+        else
+        { /* Constrained point */
+            Load the mc2th row of M[][] from funs[0][];
+            T[mc2] = Q[i];
+            mc2 = mc2+1;
+        }
+        if (dflag == 1)
+        { /* Derivative at this point */
+            if (Wd[j] > 0.0 )
+            { /* Unconstrained derivative */
+                W[mu2] = Wd[j];
+                Load the mu2th row of N[][] from funs[1][];
+                S[mu2]= W[mu2]* D[j];
+                mu2 = mu2+1;
+            }
+            else
+            { /* Constrained derivative */
+                Load the mc2th row of M[][] from funs[1][];
+                T[mc2] = D[j];
+                mc2 = mc2+1;
+            }
+            j = j+1;
+        }
+    } /* End of for-loop i=0,..., r */
+    Compute the matrices @${N}^{T}{WN}$@ and @${N}^{T}W\mathbf{S}$@ ;
+    LUDecomposition @$\left( {{N}^{T}{WN},\mathrm{n} + 1,\mathrm{p}}\right)$@ ;
+    if (mc < 0 )
+    { /* No constraints */
+        Use ForwardBackward(   ) to solve for the control points P[] .
+        Eq. (9.71) reduces to @$\left( {{N}^{T}{WN}}\right) \mathbf{P} = {N}^{T}W\mathbf{S}$@ .
+        return;
+    }
+    Compute the inverse @${\left( {N}^{T}WN\right) }^{-1}$@ , using ForwardBackward(   ).
+    Do matrix operations to get: @$M{\left( {N}^{T}WN\right) }^{-1}{M}^{T}$@ and
+    @$M{\left( {N}^{T}WN\right) }^{-1}\left( {{N}^{T}W\mathbf{S}}\right) - \mathbf{T};$@
+    Solve Eq.(9.75) for the Lagrange multipliers, load into A[];
+    @然后@ @$\mathbf{P} = {\left( {N}^{T}WN\right) }^{-1}\left( {\left( {{N}^{T}W\mathbf{S}}\right) - {M}^{T}\mathbf{A}}\right)$@ ,@方程@ (9.74);
+}
+\end{minted}
 
 图 9.38-9.43 显示了加权和约束曲线拟合的几个示例。图 9.38 显示了一个无约束的拟合，所有权重均设置为 1。在图 9.39 中，权重 \({w}_{4}^{q},{w}_{5}^{q},{w}_{6}^{q}\) 和 \({w}_{7}^{q}\) 各增加到 100，从而导致曲线向数据点 \({\mathbf{Q}}_{4},\ldots ,{\mathbf{Q}}_{7}\) 拉动。请注意，尽管图形具有误导性，但曲线并未通过端点。图 9.40 显示了一个约束拟合，其中点(用方块标记)以及导数(箭头向量)作为约束。曲线通过方块标记的点，并在这些点上与指定的向量相切。在图 9.41 中引入了两个额外的权重 \({w}_{5}^{q} = {100}\) 和 \({w}_{15}^{q} = {100}\) 。图 9.42 显示了与图 9.40 相同的曲线，只是使用了两个新的内部导数。类似地，图 9.43 与图 9.42 相同，只是添加了权重 \({w}_{4}^{q} = {50}\) 和 \({w}_{16}^{q} = {20}\) 。
 
 
 
-\subsection{最小二乘曲面逼近}
-
-现在我们转向具有固定数量控制点的曲面逼近。设 \(\left\{  {\mathbf{Q}}_{k,\ell }\right\}  ,k = 0,\ldots ,r\) 和 \(\ell  = 0,\ldots ,s\) 为要被逼近的 \(\left( {r + 1}\right)  \times  \left( {s + 1}\right)\) 点集，采用 a(p, q) 次非理性曲面，具有 \(\left( {n + 1}\right)  \times  \left( {m + 1}\right)\) 个控制点。尽管可以建立并解决一般的最小二乘曲面拟合问题，无论是线性还是非线性，且有无权重和约束，但这项任务比曲线的情况复杂得多。我们在这里提出了一种曲面逼近方案，该方案基于我们的最小二乘曲线方案。
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_46.tex}
+\par\smallskip
+图 9.38. 二十一个代表性数据点的无约束三次最小二乘拟合，所有数据权重均为$1$。\\
+十个控制点全部作为未知数求解，采用弦长参数及公式 (9.68)、(9.69) 的节点；虚线为求得的控制多边形，空心圆为数据点。\\
+两端没有插值约束；在对应端参数处，曲线与首、末数据点的距离分别约为$0.00327$和$0.01636$，均不为零。
+\end{minipage}
+\end{center}
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_426_297_1414_926_606_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_47.tex}
+\par\smallskip
+图 9.39. 与图 9.38 使用相同的数据、参数、节点和十个控制点，仅将$w_4^q,\ldots,w_7^q$由$1$改为$100$。\\
+四个被加权点的同参数平方误差和从约$0.09771$减至$0.002868$，曲线被明显拉向顶部数据；这些数据仍是加权逼近项。\\
+两端保持无约束，端参数处的距离分别约为$0.03516$、$0.01865$，均不为零；实线、虚线及空心圆的含义与图 9.38 相同。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 9.38。所有权重均等于一的无约束拟合；注意曲线并未通过端点。
-
-420 曲线和曲面拟合
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_427_294_262_942_595_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_48.tex}
+\par\smallskip
+图 9.40. 相同二十一个数据点的受约束三次拟合，方框点$\mathbf Q_0,\mathbf Q_7,\mathbf Q_{13},\mathbf Q_{20}$及其一阶导数均作为精确约束。\\
+取$\mathbf D_0=\mathbf D_{20}=(0,14)$、$\mathbf D_7=\mathbf D_{13}=(10,-10)$；所有箭头统一按真实导数的$1/10$绘制。\\
+其余点的权重均为$1$；十八阶 KKT 方程组同时满足四个位置、四个导数约束，并最小化其余数据的平方误差。虚线为实际控制多边形。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 9.39. 不受约束的加权拟合 \({w}_{4}^{q} = {w}_{5}^{q} = {w}_{6}^{q} = {w}_{7}^{q} = {100}\) ；曲线不通过端点。
-
-非常简单，并且对于大多数应用来说相当足够。与全局表面插值相同，我们只需在一个方向上拟合数据中的曲线，然后在另一个方向上通过得到的控制点拟合曲线。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_427_306_1268_909_779_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_49.tex}
+\par\smallskip
+图 9.41. 沿用图 9.40 的数据、节点、四个位置及四个导数约束，仅将$w_5^q,w_{15}^q$改为$100$。\\
+这两个被加权点的同参数平方误差和由约$0.2780$减至$0.02482$；全部精确约束保持成立，其他点的权重仍为$1$。\\
+权重标注以细引线指向对应数据点；方框、导数箭头与控制多边形的含义及尺度均与图 9.40 相同。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 9.40. 受约束的曲线拟合；点约束用方框标记，切线约束用箭头表示，所有权重均为一。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_428_315_252_905_831_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_50.tex}
+\par\smallskip
+图 9.42. 与图 9.40 使用相同的数据、节点、位置约束和端导数，仅将两个内部导数改为$\mathbf D_7=\mathbf D_{13}=(14,0)$。\\
+所有未约束点的权重恢复为$1$；四个方框点及其导数仍被精确满足，内部两处切向现为水平方向。\\
+箭头统一按导数的$1/10$绘制；曲线、控制多边形和数据标记的坐标尺度与前图一致。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.41. 来自图 9.40 的曲线，权重为 \({w}_{5}^{q} = {w}_{15}^{q} = {100}\) 。
+\begin{center}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_51.tex}
+\par\smallskip
+图 9.43. 沿用图 9.42 的全部精确约束，仅将$w_4^q$、$w_{16}^q$分别改为$50$、$20$。\\
+这两点的同参数平方误差分别由约$0.3155,0.1345$降至$0.006941,0.005468$；四个位置及四个导数约束仍被精确满足。\\
+权重以细引线标注；水平内部导数、端导数及箭头的$1/10$比例均与图 9.42 相同，其余数据权重为$1$。
+\end{minipage}
+\end{center}
+
+\subsection{最小二乘曲面逼近}\BookIndexMark{p0178}
+
+现在我们转向具有固定数量控制点的曲面逼近。设 \(\left\{  {\mathbf{Q}}_{k,\ell }\right\}  ,k = 0,\ldots ,r\) 和 \(\ell  = 0,\ldots ,s\) 为要被逼近的 \(\left( {r + 1}\right)  \times  \left( {s + 1}\right)\) 点集，采用 a(p, q) 次非理性曲面，具有 \(\left( {n + 1}\right)  \times  \left( {m + 1}\right)\) 个控制点。尽管可以建立并解决一般的最小二乘曲面拟合问题，无论是线性还是非线性，且有无权重和约束，但这项任务比曲线的情况复杂得多。我们在这里提出了一种曲面逼近方案，该方案基于我们的最小二乘曲线方案。该方案非常简单，并且对于大多数应用来说相当足够。与全局表面插值相同，我们只需在一个方向上拟合数据中的曲线，然后在另一个方向上通过得到的控制点拟合曲线。
+
+
+
+
 
 算法 A9.7 精确插值角点 \({\mathbf{Q}}_{0,0},{\mathbf{Q}}_{r,0},{\mathbf{Q}}_{0,s}\) 和 \({\mathbf{Q}}_{r,s}\) ，并近似剩余的 \(\left\{  {\mathbf{Q}}_{k,l}\right\}\) 。它使用由方程 (9.63) 和 (9.65)-(9.67) 给出的重复最小二乘曲线拟合。它拟合 \(s + 1\) 行数据。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_428_329_1460_869_605_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.42. 来自图 9.40 的曲线，但使用两个新的切线约束。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_429_334_268_868_624_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.43. 来自图 9.42 的曲线，但权重为 \({w}_{4}^{q} = {50}\) 和 \({w}_{16}^{q} = {20}\) 。
 
 首先，将得到的控制点存储在局部数组 Temp[n+1][s+1] 中。然后，它在这些控制点上拟合，以生成 \(\left( {n + 1}\right)  \times  \left( {m + 1}\right)\) 表面控制点。注意，矩阵 \(N\) 和 \({N}^{T}N\) 只需在每个方向上计算一次，而 \({N}^{T}N\) 的 LU 分解也只需在每个方向上进行一次。我们需要局部数组 Nu[r-1][n-1] 和 NTNu[n-1][n-1] 用于 \(u\) 方向的拟合，以及 \(\mathrm{{Nv}}\left\lbrack  {\mathrm{s} - 1}\right\rbrack  \left\lbrack  {\mathrm{m} - 1}\right\rbrack\) 和 \(\mathrm{{NTNv}}\left\lbrack  {\mathrm{m} - 1}\right\rbrack  \left\lbrack  {\mathrm{m} - 1}\right\rbrack\) 用于 \(v\) 方向的拟合。方程 (9.68) 的向量 \(\mathbf{R}\) 存储在 Ru[n-1] 和 Rv[m-1] 中。
 
-\HRule
-
-ALGORITHM A9.7
-
-\hspace*{1em} GlobalSurfApproxFixednm(r, s, Q, p, q, n, m, U, V, P)
-
-\hspace*{3em} \{ /* Global surface approx with fixed num of ctrl pts */
-
-\hspace*{5em} /* Input: r, s, Q, p, q, n, m */
-
-\hspace*{5em} /* Output: U, V, P */
-
-\hspace*{3em} SurfMeshParams(r, s, Q, ub, vb);
-
-\hspace*{3em} Compute knots U by Eqs. (9.68), (9.69);
-
-\hspace*{3em} Compute knots V by Eqs. (9.68), (9.69);
-
-\hspace*{3em} Compute Nu[][] and NTNu[][] using Eq.(9.66);
-
-\hspace*{3em} LUDecomposition(NTNu, n-1, p);
-
-\hspace*{3em} for (j=0; j<=s; j++)
-
-\hspace*{4em} \{ /* u direction fits */
-
-\hspace*{4em} \(\operatorname{Temp}\left\lbrack  0\right\rbrack  \left\lbrack  j\right\rbrack   = {\mathbf{Q}}_{0,j};\;\operatorname{Temp}\left\lbrack  n\right\rbrack  \left\lbrack  j\right\rbrack   = {\mathbf{Q}}_{r,j};\)
-
-\hspace*{4em} Compute and load Ru[] (Eqs.[9.63],[9.67]);
-
-\hspace*{4em} Call ForwardBackward(   ) to get the control points
-
-\hspace*{7em} Temp[1][j],..., Temp[n-1][j];
-
-\hspace*{4em} \}
-
-\hspace*{3em} Compute Nv[][] and NTNv[][] using Eq.(9.66);
-
-\hspace*{3em} LUDecomposition(NTNv, m-1, q);
-
-for (i = 0 ; i<=n ; i++)
-
-\hspace*{1em} \{ /* v direction fits */
-
-\hspace*{1em} \(P\left\lbrack  i\right\rbrack  \left\lbrack  0\right\rbrack   = \operatorname{Temp}\left\lbrack  i\right\rbrack  \left\lbrack  0\right\rbrack  ;\;P\left\lbrack  i\right\rbrack  \left\lbrack  m\right\rbrack   = \operatorname{Temp}\left\lbrack  i\right\rbrack  \left\lbrack  s\right\rbrack  ;\)
-
-\hspace*{1em} Compute and load Rv[] (Eqs.[9.63],[9.67]);
-
-\hspace*{1em} Call ForwardBackward(   ) to get the control points
-
-\hspace*{4em} \(P\left\lbrack  i\right\rbrack  \left\lbrack  1\right\rbrack  ,\ldots ,P\left\lbrack  i\right\rbrack  \left\lbrack  {m - 1}\right\rbrack\) ;
-
-\hspace*{1em} \}
-
-\}
-
-\HRule
+% book-code: algorithm A9.7
+\par\medskip\noindent\textbf{算法 A9.7（伪代码）}\BookIndexMark{p0179}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+GlobalSurfApproxFixednm(r, s, Q, p, q, n, m, U, V, P)
+{ /* Global surface approx with fixed num of ctrl pts */
+    /* Input: r, s, Q, p, q, n, m */
+    /* Output: U, V, P */
+    SurfMeshParams(r, s, Q, ub, vb);
+    Compute knots U by Eqs. (9.68), (9.69);
+    Compute knots V by Eqs. (9.68), (9.69);
+    Compute Nu[][] and NTNu[][] using Eq.(9.66);
+    LUDecomposition(NTNu, n-1, p);
+    for (j=0; j<=s; j++)
+    { /* u direction fits */
+        @$\operatorname{Temp}\left\lbrack 0\right\rbrack \left\lbrack j\right\rbrack = {\mathbf{Q}}_{0,j};\;\operatorname{Temp}\left\lbrack n\right\rbrack \left\lbrack j\right\rbrack = {\mathbf{Q}}_{r,j};$@
+        Compute and load Ru[] (Eqs.[9.63],[9.67]);
+        Call ForwardBackward(   ) to get the control points
+        Temp[1][j],..., Temp[n-1][j];
+    }
+    Compute Nv[][] and NTNv[][] using Eq.(9.66);
+    LUDecomposition(NTNv, m-1, q);
+    for (i = 0 ; i<=n ; i++)
+    { /* v direction fits */
+        P[i][0]= Temp[i][0];P[i][m]= Temp[i][s];
+        Compute and load Rv[] (Eqs.[9.63],[9.67]);
+        Call ForwardBackward(   ) to get the control points
+        @$P\left\lbrack i\right\rbrack \left\lbrack 1\right\rbrack ,\ldots ,P\left\lbrack i\right\rbrack \left\lbrack {m - 1}\right\rbrack$@ ;
+    }
+}
+\end{minted}
 
 图 9.44-9.47 说明了表面拟合。图 9.44 显示了通过直线连接的原始数据。图 9.45a 描绘了使用 \(\left( {5 \times  6}\right)\) 控制网的度数(2,3)最小二乘表面拟合。近似误差显示在图 9.45b 中。图 9.46a 显示了使用 \(\left( {8 \times  8}\right)\) 网的近似。其近似质量要好得多，如图 9.46b 所示。为了比较，图 9.47 显示了对图 9.44 中数据的度数(2,3)全局插值(使用弦长参数)。
 
-当然，可以先拟合 \(r + 1\) 列，然后再拟合结果 \(m + 1\) 控制点的行。一般来说，结果并不相同。我们不知道有什么标准可以提前决定哪种方法会为特定数据集提供“最佳”拟合。显然，这种技术可以很容易地扩展以适应边界上的点和导数约束以及加权。内部约束则更为复杂。假设 \({\mathbf{Q}}_{{k}_{0},{\ell }_{0}},0 < {k}_{0} < r\) 和 \(0 <\)  \({\ell }_{0} < s\) 需要被约束。该点在 \(u\) 方向上受到约束。
+\begin{center}
+\begin{minipage}{25cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_52.tex}
+\par\smallskip
+图 9.44. 曲面逼近的代表性阶梯数据，$9\times9$网格包含八十一个不同的点。\\
+取$X_i=Y_i=-2+i/2$，$z_{i,j}=H_i+H_j+B_iB_j/10$，$i,j=0,\ldots,8$；\\
+$H=(1,1,1,1/2,1/2,1/2,0,0,0)$，$B=(0,0,0,1,1,1,0,0,0)$。\\
+实心点与邻接虚线直接由这些坐标构造；后续图 9.45—9.47 统一使用同一数据集。
+\end{minipage}
+\end{center}
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_430_292_1269_938_816_0.jpg}
+\begin{minipage}{34cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_53.tex}
+\par\smallskip
+图 9.45. 同一组八十一个数据点的$(2,3)$次最小二乘拟合，使用$5\times6$控制网。\\
+(a) 按算法 A9.7 计算的拟合面，实心点为原始数据；(b) 数据参数处三维误差$e_{ij}=\|S(\bar u_i,\bar v_j)-Q_{ij}\|$的折线网格。\\
+两图视角与平面尺度相同，误差高度统一放大四倍；均方根误差约$0.1415$，最大误差约$0.3494$。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 9.44. 表面近似的数据集。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_431_304_253_944_877_0.jpg}
+\begin{minipage}{34cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_54.tex}\hspace{1.3cm}\BookFigure[max width=\linewidth]{ch09/fig_9_55.tex}
+\par\smallskip
+图 9.46. 将控制网增加到$8\times8$的$(2,3)$次最小二乘拟合；数据、参数与图 9.45 完全相同。\\
+(a) 拟合面与原始数据点；(b) 相同参数处三维误差的折线网格，误差高度仍放大四倍，视角和尺度均与图 9.45 相同。\\
+均方根误差约$0.05993$，最大误差约$0.1684$；网格起伏明显减小，但逼近面仍可能在数据之间出现过冲。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.45. 使用 \(\left( {5 \times  6}\right)\) 控制网的度数(2,3)表面的最小二乘拟合。(a) 表面近似；(b) 误差表面(在数据点处测量的误差)。
+\begin{center}
+\begin{minipage}{22cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_56.tex}
+\par\smallskip
+图 9.47. 同一数据集的$(2,3)$次全局插值面，使用弦长公共参数与平均节点。\\
+全部八十一个数据点均被精确插值；视角、坐标尺度、线宽和字号与图 9.45、9.46 的拟合面一致。
+\end{minipage}
+\end{center}
 
-曲线拟合，如算法 A9.6 所示。然后，如果 \({\bar{u}}_{{k}_{0}} \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) ，则点 \(\operatorname{Temp}\lbrack i -\)  \(p\rbrack \left\lbrack  {\ell }_{0}\right\rbrack  ,\ldots ,\operatorname{Temp}\left\lbrack  i\right\rbrack  \left\lbrack  {\ell }_{0}\right\rbrack\) 必须在 \(v\) 方向上受到约束。
+也可以交换两个方向的拟合顺序。当两方向的公共参数、节点向量及线性端点约束预先固定时，算法 A9.7 的两次线性拟合可写为$P=F_uQF_v^{\mathsf T}$，因此交换顺序所得控制网相同。若在第一轮拟合之后重新计算参数、节点或约束，则一般不能保证结果相同。显然，这种技术可以很容易地扩展以适应边界上的点和导数约束以及加权。内部约束则更为复杂。假设 \({\mathbf{Q}}_{{k}_{0},{\ell }_{0}},0 < {k}_{0} < r\) 和 \(0 <\)  \({\ell }_{0} < s\) 需要被约束。该点先在\(u\)方向上按算法 A9.6 进行受约束曲线拟合。然后，如果 \({\bar{u}}_{{k}_{0}} \in  \left\lbrack  {{u}_{i},{u}_{i + 1}}\right)\) ，则点 \(\operatorname{Temp}\lbrack i -\)  \(p\rbrack \left\lbrack  {\ell }_{0}\right\rbrack  ,\ldots ,\operatorname{Temp}\left\lbrack  i\right\rbrack  \left\lbrack  {\ell }_{0}\right\rbrack\) 必须在 \(v\) 方向上受到约束。
 
 
-\subsection{在指定精度内的逼近}
+\subsection{在指定精度内的逼近}\BookIndexMark{p0180}
 
 我们现在回到将数据近似到某个用户指定的误差范围内的问题， \(E\) 。正如本节开始所述，迭代方法要么从少量控制点开始，拟合、检查偏差，并在必要时添加控制点(类型1)；要么从大量控制点开始，拟合、检查偏差，并在可能的情况下丢弃控制点(类型2)。前面提到的基于最小二乘法的方法适用于拟合步骤。偏差检查步骤通常测量最大距离，既可以表示为
 
@@ -2093,32 +2138,17 @@ for (i = 0 ; i<=n ; i++)
 \mathop{\max }\limits_{{0 \leq  k \leq  m}}\left( {\mathop{\min }\limits_{{0 \leq  u \leq  1}}\left| {{\mathbf{Q}}_{k} - \mathbf{C}\left( u\right) }\right| }\right) \;\text{ or }\;\mathop{\max }\limits_{\substack{{0 \leq  k \leq  r} \\  {0 \leq  \ell  \leq  s} }}\left( {\mathop{\min }\limits_{\substack{{0 \leq  u \leq  1} \\  {0 \leq  v \leq  1} }}\left| {{\mathbf{Q}}_{k,\ell } - \mathbf{S}\left( {u,v}\right) }\right| }\right)  \tag{9.78}
 \]
 
-426 曲线和曲面拟合 我们将方程(9.78)称为最大范数偏差。它使用方程(6.4)-(6.9)来计算每个 \({\mathbf{Q}}_{k}\left( {\mathbf{Q}}_{k,\ell }\right)\) 到 \(\mathbf{C}\left( u\right) \left( {\mathbf{S}\left( {u,v}\right) }\right)\) 的最小距离。 \({\bar{u}}_{k}\left( {{\bar{u}}_{k},{\bar{v}}_{\ell }}\right)\) 作为牛顿迭代的良好起始点。显然，应用方程(9.78)的成本高于方程(9.77)。然而，这通常是用户希望测量的内容，并且通常会导致具有更少控制点的曲线和曲面，因为
+我们将方程(9.78)称为最大范数偏差。它使用方程(6.4)-(6.9)来计算每个 \({\mathbf{Q}}_{k}\left( {\mathbf{Q}}_{k,\ell }\right)\) 到 \(\mathbf{C}\left( u\right) \left( {\mathbf{S}\left( {u,v}\right) }\right)\) 的最小距离。 \({\bar{u}}_{k}\left( {{\bar{u}}_{k},{\bar{v}}_{\ell }}\right)\) 作为牛顿迭代的良好起始点。显然，应用方程(9.78)的成本高于方程(9.77)。然而，这通常是用户希望测量的内容，并且通常会导致具有更少控制点的曲线和曲面，因为
 
 \[
 \mathop{\min }\limits_{{0 \leq  u \leq  1}}\left| {{\mathbf{Q}}_{k} - \mathbf{C}\left( u\right) }\right|  \leq  \left| {{\mathbf{Q}}_{k} - \mathbf{C}\left( {\bar{u}}_{k}\right) }\right|  \tag{9.79}
 \]
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_432_170_266_1085_1796_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图9.46. 使用 \(\left( {8 \times  8}\right)\) 控制网的二次(2,3)曲面拟合的最小二乘曲面。 (a) 曲面近似；(b) 误差曲面(在数据点处测量的误差)。
 
-\begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_433_344_266_995_813_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图9.46. (续。)
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_433_350_1254_949_808_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图9.47. 显示在图9.44中的表面插值点。
 
 我们强调，类型1和类型2的方法都可能无法收敛，这种情况必须在软件实现中处理。
 
@@ -2126,7 +2156,7 @@ for (i = 0 ; i<=n ; i++)
 
 一种类型 1 表面逼近方法可以以类似的方式实现，并提高效率。在偏差检查期间，确定具有最大偏差点数的行 \({\ell }_{0}\) 和列 \({k}_{0}\) ，这些偏差大于 \(E\) 。然后提取等参数曲线 \({\mathbf{C}}_{{\bar{u}}_{{k}_{0}}}\left( v\right)\) 和 \({\mathbf{C}}_{{\bar{v}}_{{\ell }_{0}}}\left( u\right)\) ，并独立地将它们逼近到 \(E\) 之内。这将产生新的(增加的)节点向量 \(U\) 和 \(V\) ，用于下一个表面拟合。使用这种方法，通常只需要进行几次表面拟合和随后的偏差检查。
 
-我们现在开发一种类型 2 曲线近似方法，该方法结合了最小二乘拟合与第 5 章的节点移除技术。首先，我们需要更多的节点移除工具。设 \({u}_{r}\) 为一个 \(p\) 次非理性曲线的内部节点 \(\mathbf{C}\left( u\right) ,{u}_{r} \neq  {u}_{r + 1}\) ，并用 \(s\) 表示 \({u}_{r}\) 的重数，即对于 \(j = 1,\ldots ,s\) 有 \({u}_{r - s + j} = {u}_{r}\) 。设 \(\widehat{\mathbf{C}}\left( u\right)\) 为通过移除一个 \({u}_{r}\) 的出现而得到的曲线。回想一下，新控制点 \({\mathbf{P}}_{i}^{1}\) 和 \({\mathbf{P}}_{j}^{1}\) 分别通过公式 (5.28) 从左侧和右侧计算得出。移除后， \(\widehat{\mathbf{C}}\left( u\right)\) 与 \(\mathbf{C}\left( u\right)\) 不同；Tiller [Till92] 推导了两种情况的误差界限:
+我们现在开发一种类型 2 曲线近似方法，该方法结合了最小二乘拟合与第 5 章的节点移除技术。首先，我们需要更多的节点移除工具。设 \({u}_{r}\) 为一个 \(p\) 次非理性曲线的内部节点 \(\mathbf{C}\left( u\right) ,{u}_{r} \neq  {u}_{r + 1}\) ，并用 \(s\) 表示 \({u}_{r}\) 的重数，即对于 \(j = 1,\ldots ,s\) 有 \({u}_{r - s + j} = {u}_{r}\) 。设 \(\widehat{\mathbf{C}}\left( u\right)\) 为通过移除一个 \({u}_{r}\) 的出现而得到的曲线。回想一下，新控制点 \({\mathbf{P}}_{i}^{1}\) 和 \({\mathbf{P}}_{j}^{1}\) 分别通过公式 (5.28) 从左侧和右侧计算得出。移除后， \(\widehat{\mathbf{C}}\left( u\right)\) 与 \(\mathbf{C}\left( u\right)\) 不同；Tiller \cite{Till92} 推导了两种情况的误差界限:
 
 \begin{itemize}
 \item 假设 \(\left( {p + s}\right) {\;\operatorname{mod}\;2} = 0\) ; 设定 \(k = \left( {p + s}\right) /2\) 和
@@ -2168,73 +2198,41 @@ for (i = 0 ; i<=n ; i++)
 
 \({B}_{r}\) 只是节点移除算法 A5.8 中计算的距离。算法 A9.8 是算法 A5.8 的修改版，仅计算 \({B}_{r}\) 。
 
-\HRule
-
-\section*{ALGORITHM A9.8}
-
+% book-code: algorithm A9.8
+\par\medskip\noindent\textbf{算法 A9.8（伪代码）}\BookIndexMark{p0181}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
 GetRemovalBndCurve(n, p, U, P, u, r, s, Br)
-
-\hspace*{2em} \{ /* Get knot removal error bound (nonrational) */
-
-\hspace*{6em} /* Input: n, p, U, P, u, r, s */
-
-\hspace*{6em} /* Output: Br */
-
-\hspace*{2em} ord = p+1;
-
-\hspace*{2em} last = r-s;
-
-\hspace*{2em} first = r-p;
-
-\hspace*{2em} off = first-1; /* difference in index between temp and P */
-
-\hspace*{2em} temp[0] = P[off]; temp[last+1-off] = P[last+1];
-
-\hspace*{2em} i = first; j=last;
-
-\hspace*{2em} ii = 1; j j = last-off;
-
-\hspace*{2em} while \(\left( {j - i > 0}\right)\)
-
-\hspace*{5em} \{ /* Compute new control points for one removal step */
-
-\hspace*{5em} alfi = (u-U[i])/(U[i+ord]-U[i]);
-
-\hspace*{5em} alfj = (u-U[j])/(U[j+ord]-U[j]);
-
-\hspace*{5em} temp[ii] = (P[i]-(1.0-alfi)*temp[ii-1])/alfi;
-
-\hspace*{5em} temp[jj] = (P[j]-alfj*temp[jj+1])/(1.0-alfj);
-
-\hspace*{5em} i = i+1; ii = ii+1;
-
-\hspace*{5em} j = j-1; j j = jj-1;
-
-\hspace*{5em} \} /* End of while-loop */
-
-\hspace*{2em} if \(\left( {j - i < 0}\right) / *\) now get bound \(* /\)
-
-\hspace*{5em} \{ /* Eq. (9.82) */
-
-\hspace*{5em} Br = Distance3D(temp[ii-1], temp[jj+1]);
-
-\hspace*{4em} \}
-
-\hspace*{5em} else
-
-\hspace*{5em} \{ /* Eq. (9.80) */
-
-\hspace*{5em} alfi = (u-U[i])/(U[i+ord]-U[i]);
-
-\hspace*{4em} Br = Distance3D(P[i], alfi*temp[ii+1]+(1.0-alfi)
-
-\hspace*{55em} *temp[ii-1]);
-
-\hspace*{4em} \}
-
-\hspace*{2em} \}
-
-\HRule
+{ /* Get knot removal error bound (nonrational) */
+    /* Input: n, p, U, P, u, r, s */
+    /* Output: Br */
+    ord = p+1;
+    last = r-s;
+    first = r-p;
+    off = first-1; /* difference in index between temp and P */
+    temp[0] = P[off]; temp[last+1-off] = P[last+1];
+    i = first; j=last;
+    ii = 1; j j = last-off;
+    while ( j - i > 0)
+    { /* Compute new control points for one removal step */
+        alfi = (u-U[i])/(U[i+ord]-U[i]);
+        alfj = (u-U[j])/(U[j+ord]-U[j]);
+        temp[ii] = (P[i]-(1.0-alfi)*temp[ii-1])/alfi;
+        temp[jj] = (P[j]-alfj*temp[jj+1])/(1.0-alfj);
+        i = i+1; ii = ii+1;
+        j = j-1; j j = jj-1;
+    } /* End of while-loop */
+    if ( j - i < 0) /* now get bound  */
+    { /* Eq. (9.82) */
+        Br = Distance3D(temp[ii-1], temp[jj+1]);
+    }
+    else
+    { /* Eq. (9.80) */
+        alfi = (u-U[i])/(U[i+ord]-U[i]);
+        Br = Distance3D(P[i], alfi*temp[ii+1]+(1.0-alfi)
+        *temp[ii-1]);
+    }
+}
+\end{minted}
 
 现在设 \(\left\{  {\mathbf{Q}}_{k}\right\}\) 为一组点， \(\left\{  {\bar{u}}_{k}\right\}\) 为相关的参数集。用 \(\left\{  {e}_{k}\right\}\) 表示与这些点相关的一组误差，并设 \(E\) 为最大误差界限。给定一条曲线 \(\mathbf{C}\left( u\right)\) ，其性质是每个 \({\mathbf{Q}}_{k}\) 相对于 \(\mathbf{C}\left( u\right)\) 的最大范数偏差小于或等于 \({e}_{k}\) ，算法 A9.9 在保持所有 \(k\) 的 \({e}_{k} \leq  E\) 的同时，尽可能多地从 \(\mathbf{C}\left( u\right)\) 中移除(大致上)节点。它还更新 \(\left\{  {e}_{k}\right\}\) ，即，它累积误差。输出是新曲线，由 \(\widehat{n},\widehat{U}\) 和 \({\widehat{\mathbf{P}}}_{i}\) 表示。该算法维护两个列表，节点移除误差 \({B}_{r}\) ，针对每个不同的内部节点；以及对于每个基函数 \({N}_{i,p}\left( u\right)\) ，表示在该函数域内的参数 \({\bar{u}}_{k}\) 的索引范围。显然，当移除一个节点时，这些列表必须更新；然而，影响是局部的。只有少数相邻节点的界限 \({B}_{r}\) 发生变化，只有少数相邻基函数(及其域)发生变化。假设我们移除 \({u}_{r}\) ，在移除之前其重数为 \(s\) 。移除后，基函数减少一个，在新的编号方案中，只有基函数的 \({\bar{u}}_{k}\) 索引范围需要重新计算。
 
@@ -2250,146 +2248,107 @@ GetRemovalBndCurve(n, p, U, P, u, r, s, Br)
 
 \section*{示例}
 
-Ex9.3 见图 9.48:让立方曲线由 \({\mathbf{P}}_{0},\ldots ,{\mathbf{P}}_{11}\) 和 \(\begin{matrix} U = \{ 0,0,0,0,1,2,3,4,4,5,6,7,8,8,8,8\} . \end{matrix}{Supposeweremoveoneoremoveor}\) 定义，结点 \({u}_{8} = 4\left( {r = 8,s = 2}\right)\) 的发生。根据公式 (9.85)，必须为结点 2,3,4,5,6 计算新的 \({B}_{r}\) 值。根据公式 (9.84)，必须为 \({N}_{4,3},{N}_{5,3}\) 和 \({N}_{6,3}\) 计算新的 \({\bar{u}}_{k}\) 索引范围。
-
-Ex9.4 见图 9.49:让立方曲线由 \({\mathbf{P}}_{0},\ldots ,{\mathbf{P}}_{10}\) 和 \(U =\)  \(\{ 0,0,0,0,1,2,3,4,5,6,7,8,8,8,8\}\) 定义。假设我们移除结点 \({u}_{7} = 4\)  \(\left( {r = 7,s = 1}\right)\) 。根据公式 (9.85)，必须为结点 1,2,3,5,6,7(所有剩余的内部结点)计算新的 \({B}_{r}\) 值。根据公式 (9.84)，必须为 \({\bar{u}}_{k}\) 和 \({N}_{3,3},{N}_{4,3},{N}_{5,3}\) 计算新的 \({N}_{6,3}\) 索引范围。
-
-\section*{算法 A9.9}
-
-\HRule
-
-RemoveKnotsBoundCurve(n, p, U, P, ub, ek, E, nh, Uh, Ph)
-
-\hspace*{3em} \{ /* Remove knots from curve, bounded */
-
-\hspace*{6em} /* Input: n, p, U, P, ub, ek, E */
-
-\hspace*{6em} /* Output: ek, nh, Uh, Ph */
-
-\hspace*{3em} Inf = 0; /* Big number */
-
-\hspace*{3em} Get the values Br for all distinct interior knots (A9.8).
-
-\hspace*{2em} For each basis function, get range of parameter indices.
-
-\hspace*{2em} while (1)
-
-\hspace*{5em} \{
-
-\hspace*{5em} Find knot with the smallest Br bound. Set \(r\) and \(s\) .
-
-\hspace*{10em} if (Br == Inf) break; /* Finished */
-
-\hspace*{10em} Using Eqs. (9.81), (9.83), and Algorithm A2.4 to compute
-
-\hspace*{13em} NewError \(\left\lbrack  k\right\rbrack\) , form temp \(\left\lbrack  k\right\rbrack   = {ek}\left\lbrack  k\right\rbrack   +\) NewError \(\left\lbrack  k\right\rbrack\) at
-
-\hspace*{13em} all ub[k] values falling within the relevant domain.
-
-\hspace*{10em} If knot is removable /* All temp[k] <= E */
-
-\hspace*{11em} \{
-
-\hspace*{11em} Update ek[] : ek[k] = temp[k] for relevant range.
-
-\hspace*{11em} Call routine similar to A5.8 to remove knot
-
-\hspace*{14em} (remove without tolerance check).
-
-\hspace*{11em} If no more internal knots, break. /* Finished */
-
-\hspace*{11em} Using Eq. (9.84), compute new index ranges for
-
-\hspace*{14em} affected basis functions.
-
-\hspace*{11em} Using Eq. (9.85), compute new error bounds for the
-
-\hspace*{14em} relevant knots.
-
-\hspace*{11em} \}
-
-\hspace*{11em} else
-
-\hspace*{11em} \{
-
-\hspace*{11em} Set this Br to Inf.
-
-\hspace*{11em} \}
-
-\hspace*{10em} \}
-
-\hspace*{9em} \}
-
-\hspace*{9em} <img src="https://cdn.noedgeai.com/0193ba0d-ab19-7138-9798-cb281ce60de0\_437.jpg?x=294\&y=1248\&w=979\&h=833"/>
-
-\hspace*{5em} Figure 9.48. Removal of the knot \({u}_{8} = 4\) one time.
-
-\HRule
+Ex9.3 见图 9.48。设三次曲线由$\mathbf P_0,\ldots,\mathbf P_{11}$和节点向量$U=\{0,0,0,0,1,2,3,4,4,5,6,7,8,8,8,8\}$定义。移除一次节点$u_8=4$，此时$r=8,s=2$。根据公式 (9.85)，必须为节点$2,3,4,5,6$重新计算$B_r$；根据公式 (9.84)，必须重新计算新基函数$N_{4,3},N_{5,3},N_{6,3}$所对应的参数$\bar u_k$索引范围。
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_438_285_268_953_880_0.jpg}
+\begin{minipage}{23cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_48_html.tex}
+\par\smallskip
+图 9.48. 将二重节点$u_8=4$移除一次；上图为按给定节点构造的代表性三次曲线。\\
+左右逆递推候选点$\mathbf P^{\prime}_5,\mathbf P^{\prime}_6$精确重合，本例曲线在移除后完全不变。\\
+下图为移除前的基函数，虚线$N_{6,3}$的支撑域$[3,6]$给出局部误差可能影响的参数区间。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.49. 移除结点 \({u}_{7} = 4\) 一次。
+
+
+Ex9.4 见图 9.49。设三次曲线由$\mathbf P_0,\ldots,\mathbf P_{10}$和节点向量$U=\{0,0,0,0,1,2,3,4,5,6,7,8,8,8,8\}$定义。移除单节点$u_7=4$，此时$r=7,s=1$。根据公式 (9.85)，必须为剩余内部节点$1,2,3,5,6,7$重新计算$B_r$；根据公式 (9.84)，必须重新计算新基函数$N_{3,3},N_{4,3},N_{5,3},N_{6,3}$所对应的参数$\bar u_k$索引范围。
+
+\begin{center}
+\begin{minipage}{23cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_57.tex}
+\par\smallskip
+图 9.49. 将单节点$u_7=4$移除一次；图形尺度、线宽和字号与图 9.48 一致。\\
+代表性曲线的中间控制点$\mathbf P_5$恰为左右逆递推候选点$\mathbf P^{\prime}_4,\mathbf P^{\prime}_6$的中点，故移除误差为零。\\
+下图为移除前的基函数；虚线$N_{5,3}$的支撑域为$[2,6]$，较图 9.48 的区间更宽。
+\end{minipage}
+\end{center}
+
+
+
+% book-code: algorithm A9.9
+\par\medskip\noindent\textbf{算法 A9.9（伪代码）}\BookIndexMark{p0182}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+RemoveKnotsBoundCurve(n, p, U, P, ub, ek, E, nh, Uh, Ph)
+{ /* Remove knots from curve, bounded */
+    /* Input: n, p, U, P, ub, ek, E */
+    /* Output: ek, nh, Uh, Ph */
+    Inf = 0; /* Big number */
+    Get the values Br for all distinct interior knots (A9.8).
+    For each basis function, get range of parameter indices.
+    while (1)
+    {
+        Find knot with the smallest Br bound. Set r and s .
+        if (Br == Inf) break; /* Finished */
+        Using Eqs. (9.81), (9.83), and Algorithm A2.4 to compute
+        NewError [k] , form temp [k]= ek[k]+ NewError [k] at
+        all ub[k] values falling within the relevant domain.
+        If knot is removable /* All temp[k] <= E */
+        {
+            Update ek[] : ek[k] = temp[k] for relevant range.
+            Call routine similar to A5.8 to remove knot
+            (remove without tolerance check).
+            If no more internal knots, break. /* Finished */
+            Using Eq. (9.84), compute new index ranges for
+            affected basis functions.
+            Using Eq. (9.85), compute new error bounds for the
+            relevant knots.
+        }
+        else
+        {
+            Set this Br to Inf.
+        }
+    }
+}
+\end{minted}
+
+
 
 我们现在可以组合一个类型 2 曲线逼近方法。
 
-算法 A9.10
-
-\(\texttt{GlobalCurveApproxErrBnd(m,Q,P,E,n,U,P)}\)
-
-\{ /* 全局曲线逼近到界限 E 内 */
-
-/* 输入:m, Q, p, E */
-
-/* 输出:n, U, P */
-
-计算 \({\bar{u}}_{k}\) 并加载到 \(\mathrm{{ub}}\left\lbrack  \right\rbrack\) 中(公式 [9.5])。
-
-将 \(U\) 和 \(P\) 设置为插值 \({Q}_{k}\) 的 1 次曲线: \(U = \left\{  {0,0,{\bar{u}}_{1},\ldots ,{\bar{u}}_{m - 1},1,1}\right\}\) 和 \({\mathbf{P}}_{k} = {\mathbf{Q}}_{k}\) 。
-
-初始化 \({e}_{k} : \mathrm{{ek}}\left\lbrack  0\right\rbrack  ,\ldots ,\mathrm{{ek}}\left\lbrack  \mathrm{m}\right\rbrack   = 0\) 。
-
-n = m;
-
-for (deg=1; deg<=p; deg++)
-
-\{
-
-RemoveKnotsBoundCurve(n, p, U, P, ub, ek, E, nh, Uh, Ph);
-
-if (deg == p) break;
-
-设 \(U\) 为通过将 Uh 的度从 deg 提升到 deg+1(将所有重数增加 1)而获得的节点向量。重置 n(方程 [5.32])。
-
-使用 \(\mathbf{n}\) 、ub、度 deg+1 和节点向量 U 对 \({\mathbf{Q}}_{k}\) 进行最小二乘曲线拟合；这将产生新的控制点 P。
-
-\HRule
-
-\hspace*{1em} Using Eqs. (6.4),(6.5), project all \({\mathbf{Q}}_{k}\) to current curve
-
-\hspace*{4em} to get \({\mathbf{R}}_{k} = \mathbf{C}\left( {u}_{k}\right)\) . Then update ek[] and ub[]:
-
-\hspace*{4em} \({e}_{k} = \left| {{\mathbf{Q}}_{k},{\mathbf{R}}_{k}}\right|\) and \({\bar{u}}_{k} = {u}_{k}.\)
-
-\hspace*{1em} \} /* End of for-loop */
-
-if \(\left( {n =  = {nh}}\right) \;\operatorname{return}\left( {n,U,P}\right)\) ;
-
-Set \(U = {Uh}\) and \(n = {nh}\) , and fit one final time with degree \(p\)
-
-\hspace*{3em} and knots U.
-
-Project the \({\mathbf{Q}}_{k}\) and update ek[] and ub[].
-
-RemoveKnotsBoundCurve(n, p, U, P, ub, ek, E, nh, Uh, Ph);
-
-return(nh, Uh, Ph);
-
-\}
-
-\HRule
+% book-code: algorithm A9.10
+\par\medskip\noindent\textbf{算法 A9.10（伪代码）}\BookIndexMark{p0183}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+GlobalCurveApproxErrBnd(m,Q,P,E,n,U,P)
+{ /* 全局曲线逼近到界限 E 内 */
+    /* 输入:m, Q, p, E */
+    /* 输出:n, U, P */
+    @计算@ @${\bar{u}}_{k}$@ @并加载到@ ub[] @中@(@公式@ [9.5]).
+    @将@ U @和@ P @设置为插值@ @${Q}_{k}$@ @的@ 1 @次曲线@: @$U = \left\{ {0,0,{\bar{u}}_{1},\ldots ,{\bar{u}}_{m - 1},1,1}\right\}$@ @和@ @${\mathbf{P}}_{k} = {\mathbf{Q}}_{k}$@ .
+    @初始化@ @${e}_{k} : \mathrm{{ek}}\left\lbrack 0\right\rbrack ,\ldots ,\mathrm{{ek}}\left\lbrack \mathrm{m}\right\rbrack = 0$@ .
+    n = m;
+    for (deg=1; deg<=p; deg++)
+    {
+        RemoveKnotsBoundCurve(n, p, U, P, ub, ek, E, nh, Uh, Ph);
+        if (deg == p) break;
+        @设@ U @为通过将@ Uh @的度从@ deg @提升到@ deg+1(@将所有重数增加@ 1)@而获得的节点向量@.@重置@ n(@方程@ [5.32]).
+        @使用@ @$\mathbf{n}$@ ,ub,@度@ deg+1 @和节点向量@ U @对@ @${\mathbf{Q}}_{k}$@ @进行最小二乘曲线拟合@;@这将产生新的控制点@ P.
+        Using Eqs. (6.4),(6.5), project all @${\mathbf{Q}}_{k}$@ to current curve
+        to get @${\mathbf{R}}_{k} = \mathbf{C}\left( {u}_{k}\right)$@ . Then update ek[] and ub[]:
+        @${e}_{k} = \left| {{\mathbf{Q}}_{k},{\mathbf{R}}_{k}}\right|$@ and @${\bar{u}}_{k} = {u}_{k}.$@
+    } /* End of for-loop */
+    if ( n == nh) return( n,U,P) ;
+    Set U = Uh and n = nh , and fit one final time with degree p
+    and knots U.
+    Project the @${\mathbf{Q}}_{k}$@ and update ek[] and ub[].
+    RemoveKnotsBoundCurve(n, p, U, P, ub, ek, E, nh, Uh, Ph);
+    return(nh, Uh, Ph);
+}
+\end{minted}
 
 从线性曲线开始并逐步提升到度 \(p\) 的优势有三:
 
@@ -2407,9 +2366,34 @@ return(nh, Uh, Ph);
 
 图 9.50a 显示了使用算法 A9.10 的立方曲线拟合示例。容差为 \(E = 7/{100}\) 。图 \({9.50}\mathrm{\;b}\) 显示了该曲线的参数化，以及控制多边形。注意双节点和单节点的混合，正如交替接触和不接触的多边形边所显示的那样。图 9.51 显示了另一个立方曲线逼近的示例，具有 \(E = 8/{100}\) 。
 
+\begin{center}
+\begin{minipage}{25cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_58.tex}
+\par\smallskip
+图 9.50. 81个代表性数据点在容差$E=7/100$内的三次逼近，共22个控制点。\\
+(a) 空心数据点与拟合曲线；(b) 同一曲线的控制多边形，十字对应$u=j/40$，下方标尺标出实际节点及其重数。\\
+采用算法 A9.10 的逐次升次、受控移除和重新拟合流程；移除时使用逐点累计的$L^1$误差界，作为欧氏误差的保守上界。\\
+本例数据点到所取曲线参数点的最大欧氏误差约$0.05414<E$；所有曲线段、控制点与参数标记均由计算结果绘制。
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{31cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_59.tex}
+\par\smallskip
+图 9.51. 八十五个代表性轮廓数据点的三次逼近，采用与图 9.50 相同的受控移除和重新拟合流程，容差$E=8/100$。\\
+空心圆为数据点；方框顶点$\mathbf Q_{56}$作为插值约束，其参数处保留三重节点，精确保留尖角。\\
+本例共13个控制点，最大数据点欧氏误差约$0.05373<E$；字号、线宽与图 9.50 一致。
+\end{minipage}
+\end{center}
+
 在算法 A9.10 的节点移除步骤中，最大范数误差界限 \(E\) 是有保证的。最小二乘拟合所产生的误差保证小于或等于之前(移除节点曲线)的误差，从最小二乘的意义上讲。在实践中，它似乎在最大范数意义上总是更好。无论如何，最大范数误差可以在点投影步骤中轻松监控，当 \({e}_{k}\) 和 \({\bar{u}}_{k}\) 被更新时。
 
-通过使用算法 A9.6 进行拟合，并将相关的 \({e}_{k}\) 初始化为 \(\infty\) 而不更新它(或其 \({\bar{u}}_{k}\) )，可以轻松地将约束纳入算法中。Lyche [Lych87,88] 使用了类似的节点移除技术用于曲线和曲面逼近以及数据减少。
+通过使用算法 A9.6 进行拟合，并将相关的 \({e}_{k}\) 初始化为 \(\infty\) 而不更新它(或其 \({\bar{u}}_{k}\) )，可以轻松地将约束纳入算法中。Lyche \cite{Lych87,Lych88} 使用了类似的节点移除技术用于曲线和曲面逼近以及数据减少。
 
 可以开发一种类似的类型 2 曲面逼近方法。设
 
@@ -2419,14 +2403,9 @@ return(nh, Uh, Ph);
 
 为一个 (p, q) 次 B 样条曲面。假设 \({u}_{r}\) 是一个重数为 \(s\) 的 \(u\) 节点，
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_440_305_250_912_1358_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.50. 使用算法 A9.10 的立方曲线拟合。
 
-并且让 \(\widehat{\mathbf{S}}\left( {u,v}\right)\) 表示通过移除一个 \({u}_{r}\) 的出现而获得的曲面。考虑到 \(\mathbf{S}\left( {u,v}\right)\) 的张量积结构，并使用 Tiller [Till92] 的技术，可以证明:
+并且让 \(\widehat{\mathbf{S}}\left( {u,v}\right)\) 表示通过移除一个 \({u}_{r}\) 的出现而获得的曲面。考虑到 \(\mathbf{S}\left( {u,v}\right)\) 的张量积结构，并使用 Tiller \cite{Till92} 的技术，可以证明:
 
 \[
 \text{ - if }\left( {p + s}\right) {\;\operatorname{mod}\;2} = 0\text{ , set }k = \left( {p + s}\right) /2\text{ and }
@@ -2446,7 +2425,7 @@ j = 0,\ldots ,m \tag{9.86}
 {\alpha }_{r - k} = \frac{{u}_{r} - {u}_{r - k}}{{u}_{r - k + p + 1} - {u}_{r - k}}
 \]
 
-434 曲线与曲面拟合
+
 
 \[
 \text{ Then }\;\left| {\mathbf{S}\left( {u,v}\right)  - \widehat{\mathbf{S}}\left( {u,v}\right) }\right|  \leq  {N}_{r - k,p}\left( u\right) \mathop{\sum }\limits_{{j = 0}}^{m}{N}_{j,q}\left( v\right) {B}_{r}^{j}
@@ -2456,12 +2435,7 @@ j = 0,\ldots ,m \tag{9.86}
 \text{ for }\left( {u,v}\right)  \in  \left\lbrack  {0,1}\right\rbrack   \times  \left\lbrack  {0,1}\right\rbrack   \tag{9.87}
 \]
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_441_276_250_974_588_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.51. 使用算法 A9.10 和 \(E = 8/{100}\) 的立方曲线拟合。
 
 \begin{itemize}
 \item 如果 \(\left( {p + s}\right) {\;\operatorname{mod}\;2} = 1\) ，设置 \(k = \left( {p + s + 1}\right) /2\) 和
@@ -2487,36 +2461,38 @@ j = 0,\ldots ,m \tag{9.86}
 
 类似的方程适用于 \(v\) 方向的结去除。利用这些方程，可以为类似于算法 A9.8 和 A9.9 的表面开发结去除策略。结合基于最小二乘的表面拟合算法 A9.7，提供了一种将一组点 \(\left\{  {\mathbf{Q}}_{k,\ell }\right\}\) 逼近到 \(E\) 容差内的方法。
 
-图 \({9.52}\mathrm{a} - {9.52}\mathrm{e}\) 显示了几个表面逼近的例子。待逼近的数据集显示在图 9.52a 中。图 9.52b 显示了一个度数为 (2,2) 的表面，这是通过使用 \(E = 0\) 获得的插值面。将 \(E\) 增加到 \(1/2\) 会产生图 \({9.52}\mathrm{c}\) 中的表面。进一步将 \(E\) 增加到 1 会产生图 \({9.52}\mathrm{\;d}\) 中的表面。最后，使用 \(E = 1\) 的度数为 (3,3) 的逼近显示在图 9.52e 中。436 曲线和表面拟合
+图 \({9.52}\mathrm{a} - {9.52}\mathrm{e}\) 显示了几个表面逼近的例子。待逼近的数据集显示在图 9.52a 中。图 9.52b 显示了一个度数为 (2,2) 的表面，这是通过使用 \(E = 0\) 获得的插值面。将 \(E\) 增加到 \(1/2\) 会产生图 \({9.52}\mathrm{c}\) 中的表面。进一步将 \(E\) 增加到 1 会产生图 \({9.52}\mathrm{\;d}\) 中的表面。最后，使用 \(E = 1\) 的度数为 (3,3) 的逼近显示在图 9.52e 中。
+
+
+
+
+
+
 
 \begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_442_323_260_892_1805_0.jpg}
+\begin{minipage}{34cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_60.tex}\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_61.tex}\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_62.tex}
+\par\smallskip
+图 9.52. 同一组$13\times13$代表性数据的插值与误差受控逼近；所有子图统一视角、坐标尺度、线宽和字号。\\
+(a) 数据点$Q_{ij}=(X_i,Y_j,z(X_i,Y_j))$，$X_i=Y_i=-2+i/3$，$i,j=0,\ldots,12$，其中\\
+$z(x,y)=3(2-x)^4/[(2-x)^4+(2+x)^4]+(1-x^2/4)^2(1-y^2/4)/10$。\\
+(b) $(2,2)$次零误差插值；(c)、(d) 同次曲面的$E=1/2,1$逼近；(e) $(3,3)$次、$E=1$逼近。控制网分别为(b) $13\times13$；(c) $4\times3$；(d) $3\times3$；(e) $4\times4$。\\
+从二次插值面开始，按 A9.10 的曲面扩展流程受控移除、重新拟合并在 (e) 中升次；移除采用逐点累计$L^1$保守误差界。\\
+公共弦长参数处的最大欧氏误差为(c) $0.1541$，(d) $0.6654$，(e) $0.1055$，均不超过相应容差；(b) 的全部一百六十九个插值误差精确为零。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
-
-图 9.52. 使用算法 A9.10 扩展到表面的各种表面拟合示例。
-
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_443_398_241_896_1841_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 9.52. (续。)
-
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_444_343_255_866_891_0.jpg}
-\end{center}
-\hspace*{3em} 
-
-图 9.52. (续。)
 
 算法 A9.10 和相应的表面算法实际上是数据简化算法，即它们在大数据集上效果最佳。它们假设在结去除阶段(算法 A9.9)可以去除大量结。如果情况并非如此，最小二乘逼近步骤可能会失败，原因可能是度数提升需要的控制点超过数据点，或者因为多个结使得方程组奇异。一个简单的解决方法是用更高阶的曲线重新开始该过程。
 
 
 
-\section{局部逼近}
+\section{局部逼近}\BookIndexMark{p0184}
 
-设定 \({\mathbf{Q}}_{0},\ldots ,{\mathbf{Q}}_{m}\) 和 \(E\) 。在这里，我们给出两个局部曲线近似的例子；第一个生成一个有理二次 B-spline 曲线，第二个生成一个非有理三次 B-spline 曲线。在这两种情况下，曲线都是通过构造而连续的 \({G}^{1}\) ；它们可以被设定为 \({C}^{1}\) 连续，但对于二次情况并不推荐这样做，因为这可能导致非常糟糕的参数化。二次曲线拟合平面数据，而三次曲线拟合任意三维数据。这些算法是对 [Pieg87b; Chou92] 中提出的方法的变体。
+设定 \({\mathbf{Q}}_{0},\ldots ,{\mathbf{Q}}_{m}\) 和 \(E\) 。在这里，我们给出两个局部曲线近似的例子；第一个生成一个有理二次 B-spline 曲线，第二个生成一个非有理三次 B-spline 曲线。在这两种情况下，曲线都是通过构造而连续的 \({G}^{1}\) ；它们可以被设定为 \({C}^{1}\) 连续，但对于二次情况并不推荐这样做，因为这可能导致非常糟糕的参数化。二次曲线拟合平面数据，而三次曲线拟合任意三维数据。这些算法是对 \cite{Pieg87b,Chou92} 中提出的方法的变体。
 
 一个好的近似算法试图生成尽可能少的段。实现这一目标的一种方法是设定 \({k}_{s} = 0\) ，然后找到最大的 \({k}_{e} \leq  m\) ，使得 \({\mathbf{Q}}_{{k}_{s}},\ldots ,{\mathbf{Q}}_{{k}_{e}}\) 可以在 \(E\) 容差内通过一个 \(p\) 次段进行拟合。一旦找到，设定 \({k}_{s} = {k}_{e}\) 并重复该过程以找到最大的 \({k}_{e} \leq  m\) ，使得 \({\mathbf{Q}}_{{k}_{s}},\ldots ,{\mathbf{Q}}_{{k}_{e}}\) 可以通过一个 \(p\) 次段进行拟合。这一过程持续进行，直到 \({k}_{s} = m\) 。由于在近似中 \(m\) 通常相当大，因此二分搜索比线性搜索快得多。在实际操作中，可能希望限制可以通过一个段进行近似的数据点数量。我们用 \({K}_{\max }\) 表示这个界限，即，二分搜索算法被修改以保证
 
@@ -2540,7 +2516,7 @@ j = 0,\ldots ,m \tag{9.86}
 
 
 
-\subsection{局部有理二次曲线逼近}
+\subsection{局部有理二次曲线逼近}\BookIndexMark{p0185}
 
 现在我们开发例程 FitWithConic(   )。我们假设点 \({\mathbf{Q}}_{{k}_{s}},\ldots ,{\mathbf{Q}}_{{k}_{e}}\) 位于唯一的平面中，并且给定了端切线 \({\mathbf{T}}_{s}\) 和 \({\mathbf{T}}_{e}\) 。
 
@@ -2558,12 +2534,7 @@ j = 0,\ldots ,m \tag{9.86}
 
 然后确定一个近似的圆锥，分三步进行:
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_446_344_243_869_775_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.53. 圆锥曲线拟合的曲线拟合和散点检查。
 
 1. 使用 \({\mathbf{Q}}_{{k}_{s}}\) 、 \(\mathbf{R}\) 和 \({\mathbf{Q}}_{{k}_{e}}\) 作为控制多边形，按照算法 A7.2 对每个点 \({\mathbf{Q}}_{i},i = {k}_{s} + 1,\ldots ,{k}_{e} - 1\) 进行插值。这将产生中间权重 \({w}_{i}\) 和相应的肩点坐标 \({s}_{i} = {w}_{i}/\left( {1 + {w}_{i}}\right)\) 。
 
@@ -2576,6 +2547,18 @@ s = \frac{1}{{k}_{e} - {k}_{s} - 1}\mathop{\sum }\limits_{{i = {k}_{s} + 1}}^{{{
 根据公式 (7.30)，近似圆锥的肩点为 \(\mathbf{S} =\)  \(\left( {1 - s}\right) \mathbf{M} + s\mathbf{R}\) ，根据公式 (7.31)，中间权重为 \(w = s/\left( {1 - s}\right)\) ；
 
 3. 将每个 \({\mathbf{Q}}_{i}\) 投影到近似圆锥上，以检查它们是否都在容差范围内。
+
+\begin{center}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_63.tex}
+\par\smallskip
+图 9.53. 局部圆锥拟合的代表性构造，取端点$(0,0),(6,0)$与切线交点$R=(3,4)$，箭头表示单位端切向。\\
+三条虚线分别插值三个内部数据点；按公式 (9.92) 平均肩点参数得到$s=1/2,w=1$，实线为$C(u)=(6u,8u(1-u))$。\\
+$M$为弦中点，$S=C(1/2)$；显示的$Q_i^{\prime}=C(3/5)$为$Q_i$的唯一最近点，误差线段与曲线切向精确正交。
+\end{minipage}
+\end{center}
 
 有三种特殊情况需要不同处理:
 
@@ -2593,95 +2576,52 @@ s = \frac{1}{{k}_{e} - {k}_{s} - 1}\mathop{\sum }\limits_{{i = {k}_{s} + 1}}^{{{
 
 FitWithConic( ) 返回值 1 表示拟合成功，返回值 0 表示未进行拟合。在成功拟合的情况下，还返回加权中间控制点 \({\mathbf{R}}^{w}\) 。
 
-\HRule
-
-ALGORITHM A9.11
-
-\hspace*{2em} FitWithConic(ks, ke, Q, Ts, Te, E, Rw)
-
-\hspace*{4em} \{ /* Fit to tolerance E with conic segment */
-
-\hspace*{6em} /* Input: ks, ke, Q, Ts, Te, E */
-
-\hspace*{6em} /* Output: Rw */
-
-\hspace*{4em} if (ke-ks == 1)
-
-\hspace*{5em} \{ /* No interior points to interpolate */
-
-\hspace*{5em} Fit an interpolating segment as in Section 9.3.3.
-
-\hspace*{5em} return(1);
-
-\hspace*{5em} \}
-
-\hspace*{4em} i = Intersect3DLines(Q[ks], Ts, Q[ke], Te, alf1, alf2, R);
-
-\hspace*{4em} if (i != 0 )
-
-\hspace*{5em} \{ /* No intersection */
-
-\hspace*{5em} if \(\left( {{\mathbf{Q}}_{{k}_{s}},\ldots ,{\mathbf{Q}}_{{k}_{e}}}\right.\) not collinear) return (0);
-
-\hspace*{7em} else
-
-\hspace*{9em} \{
-
-\hspace*{9em} \(\mathrm{{Rw}} = \left( {\mathrm{Q}\left\lbrack  \mathrm{{ks}}\right\rbrack   + \mathrm{Q}\left\lbrack  \mathrm{{ke}}\right\rbrack  }\right) /{2.0};\)
-
-\hspace*{9em} return(1);
-
-\hspace*{9em} \}
-
-\hspace*{5em} \}
-
-\hspace*{4em} if (alf1 <= 0.0 || alf2 >= 0.0) return(0);
-
-\hspace*{4em} s = 0.0; v = Q[ke]-Q[ks];
-
-\hspace*{4em} for (i=ks+1; i<=ke-1; i++)
-
-\hspace*{6em} \{ /* Get conic interpolating each interior point */
-
-\hspace*{5em} V1 = Q[i] - R;
-
-\hspace*{5em} j = Intersect3DLines(Q[ks], V, R, V1, alf1, alf2, dummy);
-
-\hspace*{5em} if (j != 0 || alf1 <= 0.0 || alf1 >= 1.0 || alf2 <= 0.0)
-
-\hspace*{7em} return(0);
-
-\hspace*{5em} Compute the weight wi. /* Algorithm A7.2 */
-
-\hspace*{5em} s = s + wi/(1.0+wi);
-
-\hspace*{5em} \}
-
-\hspace*{4em} \(\mathrm{s} = \mathrm{s}/\left( {\mathrm{{ke}} - \mathrm{{ks}} - 1}\right) ;\;\mathrm{w} = \mathrm{s}/\left( {{1.0} - \mathrm{s}}\right)\) ;
-
-\hspace*{4em} if (w < WMIN || w > WMAX) /* system bounds on weights */
-
-\hspace*{5em} return(0);
-
-\hspace*{4em} Create Bezier segment with \(Q\left\lbrack  {ks}\right\rbrack  ,R,Q\left\lbrack  {ke}\right\rbrack\) and \(w\) .
-
-\hspace*{4em} for (i=ks+1; i<=ke-1; i++)
-
-\hspace*{5em} \{
-
-\hspace*{5em} Project Q[i] onto the Bezier segment.
-
-\hspace*{5em} if (distance > E) return(0);
-
-\hspace*{5em} \}
-
-\hspace*{4em} \({\mathrm{R}}_{\mathrm{W}} = \mathrm{w} * \mathrm{R}\) ;
-
-\hspace*{4em} return(1);
-
-\hspace*{3em} \}
-
-\HRule
+% book-code: algorithm A9.11
+\par\medskip\noindent\textbf{算法 A9.11（伪代码）}\BookIndexMark{p0186}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+FitWithConic(ks, ke, Q, Ts, Te, E, Rw)
+{ /* Fit to tolerance E with conic segment */
+    /* Input: ks, ke, Q, Ts, Te, E */
+    /* Output: Rw */
+    if (ke-ks == 1)
+    { /* No interior points to interpolate */
+        Fit an interpolating segment as in Section 9.3.3.
+        return(1);
+    }
+    i = Intersect3DLines(Q[ks], Ts, Q[ke], Te, alf1, alf2, R);
+    if (i != 0 )
+    { /* No intersection */
+        if @$\left( {{\mathbf{Q}}_{{k}_{s}},\ldots ,{\mathbf{Q}}_{{k}_{e}}}\right.$@ not collinear) return (0);
+        else
+        {
+            Rw = ( Q[ks]+ Q[ke]) /2.0;
+            return(1);
+        }
+    }
+    if (alf1 <= 0.0 || alf2 >= 0.0) return(0);
+    s = 0.0; v = Q[ke]-Q[ks];
+    for (i=ks+1; i<=ke-1; i++)
+    { /* Get conic interpolating each interior point */
+        V1 = Q[i] - R;
+        j = Intersect3DLines(Q[ks], V, R, V1, alf1, alf2, dummy);
+        if (j != 0 || alf1 <= 0.0 || alf1 >= 1.0 || alf2 <= 0.0)
+            return(0);
+        Compute the weight wi. /* Algorithm A7.2 */
+        s = s + wi/(1.0+wi);
+    }
+    s = s/( ke - ks - 1) ;w = s/( 1.0 - s) ;
+    if (w < WMIN || w > WMAX) /* system bounds on weights */
+        return(0);
+    Create Bezier segment with Q[ks],R,Q[ke] and w .
+    for (i=ks+1; i<=ke-1; i++)
+    {
+        Project Q[i] onto the Bezier segment.
+        if (distance > E) return(0);
+    }
+    @${\mathrm{R}}_{\mathrm{W}} = \mathrm{w} * \mathrm{R}$@ ;
+    return(1);
+}
+\end{minted}
 
 图 9.54a-9.54e 显示了局部二次曲线拟合的示例。对数螺旋
 
@@ -2703,7 +2643,22 @@ r = \frac{1}{2}{e}^{\theta /5}
 
 
 
-\subsection{局部非有理三次曲线逼近}
+\begin{center}
+\begin{minipage}{34cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_64.tex}\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_65.tex}\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_66.tex}
+\par\smallskip
+图 9.54. 对数螺旋$r=\tfrac12 e^{\theta/5}$的局部有理二次逼近；统一取$\theta_j=3\pi j/50$，$j=0,\ldots,50$的五十一个数据点。\\
+(a)—(d) 使用上文列出的容差与$K_{\max}$，实线为拟合圆锥，虚线为实际控制多边形，空心圆为同一组数据点；四图分别使用4、7、9、5个圆锥段。\\
+按算法 A9.11 平均肩点参数，每段通过两个端点并共享端切向，所有连接精确满足$G^1$；所取曲线参数点的最大数据距离分别为0.009357、0.000893、0.000319、0.005242，均小于相应容差。\\
+(e) 为 (b) 所得二次 NURBS 曲线在公共弦长节点参数$u=j/50$处的十字标记；五图保持同一坐标尺度、字号和线宽，(a)—(d) 统一边界。
+\end{minipage}
+\end{center}
+
+\subsection{局部非有理三次曲线逼近}\BookIndexMark{p0187}
 
 现在我们开发 FitWithCubic(   )。设 \({\mathbf{P}}_{0} = {\mathbf{Q}}_{{k}_{s}}\) 和 \({\mathbf{P}}_{3} = {\mathbf{Q}}_{{k}_{e}}\) 表示三次 Bézier 段的起点和终点， \({\mathbf{T}}_{s}\) 和 \({\mathbf{T}}_{e}\) 表示起始和结束单位切线(见图 9.55)。我们必须确定两个内部控制点 \({\mathbf{P}}_{1}\) 和 \({\mathbf{P}}_{2}\) 。设定
 
@@ -2735,25 +2690,15 @@ r = \frac{1}{2}{e}^{\theta /5}
 
 1. 对于每个 \(k,{k}_{s} < k < {k}_{e}\) ，插值一个三次 Bézier 段到数据 \({\mathbf{P}}_{0},{\mathbf{T}}_{s},{\mathbf{Q}}_{k},{\mathbf{P}}_{3},{\mathbf{T}}_{e}\) ，从而获得一个 \({\alpha }_{k}\) 和一个 \({\beta }_{k}\) ；Bézier 段 \({\mathbf{C}}_{\mathbf{k}}\left( u\right)\) 定义在归一化区间 \(u \in  \left\lbrack  {0,1}\right\rbrack\) 上；
 
-442 曲线和曲面拟合
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_449_323_246_878_1634_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.54. 局部二次曲线拟合示例。
+
 
 2. 对 \({\alpha }_{k}\mathrm{\;s}\) 和 \({\beta }_{k}\mathrm{\;s}\) 进行平均以获得 \(\alpha\) 和 \(\beta\) ；这些定义了候选的 Bézier 段， \(\mathbf{C}\left( u\right)\) ；
 
 3. 检查所有 \({\mathbf{Q}}_{k},{k}_{s} < k < {k}_{e}\) 是否在 \(E\) 距离 \(\mathbf{C}\left( u\right)\) 之内。
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_450_330_255_866_1639_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.54. (续。)
 
 设 \(\mathbf{P} = {\mathbf{Q}}_{k}\) 为要插值的点，并用 \({B}_{i,3}\) 表示 \(u \in  \left\lbrack  {0,1}\right\rbrack\) 上的三次 Bernstein 多项式。我们写 \(\mathbf{P}\) 为
 
@@ -2761,18 +2706,13 @@ r = \frac{1}{2}{e}^{\theta /5}
 \mathbf{P} = {B}_{0,3}{\mathbf{P}}_{0} + {B}_{1,3}{\mathbf{P}}_{1} + {B}_{2,3}{\mathbf{P}}_{2} + {B}_{3,3}{\mathbf{P}}_{3}
 \]
 
-444 曲线和曲面拟合
+
 
 \[
 = {\mathbf{P}}_{0}\left( {{B}_{0,3} + {B}_{1,3}}\right)  + \alpha {\mathbf{T}}_{s}{B}_{1,3} + \beta {\mathbf{T}}_{e}{B}_{2,3} + {\mathbf{P}}_{3}\left( {{B}_{2,3} + {B}_{3,3}}\right)  \tag{9.95}
 \]
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_451_364_242_809_664_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.54. (续。)
 
 最后
 
@@ -2806,20 +2746,27 @@ a = \left| {{\mathbf{P}}_{c}{\mathbf{P}}_{d}}\right| \;b =  - \left| {{\mathbf{P
 
 因此，我们必须从方程 (9.100) 计算 \({\mathbf{P}}_{c}\) 和 \({\mathbf{P}}_{d}\) ，然后从方程 (9.100) 计算 \(a\) 和 \(b\) ，最后从方程 (9.99) 计算 \(\alpha\) 和 \(\beta\) 。
 
-有两种情况需要考虑，平面内和不平面内。首先假设向量 \({\mathbf{T}}_{s},{\mathbf{T}}_{e}\) 和 \({\mathbf{P}}_{0}{\mathbf{P}}_{3}\) 不共面。事实证明，存在一条唯一的三次贝塞尔曲线通过 \(\mathbf{P}\) 、 \({\mathbf{P}}_{c}\) ，并且 \({\mathbf{P}}_{d}\) 可以按如下方式构造(见图 9.55):
+有两种情况需要考虑，平面内和不平面内。首先假设向量 \({\mathbf{T}}_{s},{\mathbf{T}}_{e}\) 和 \({\mathbf{P}}_{0}{\mathbf{P}}_{3}\) 不共面。在满足后述拟合条件时，可唯一确定插值点\(\mathbf P\)的三次 Bézier 曲线；\(\mathbf P_c\)与\(\mathbf P_d\)是辅助构造点，可按如下方式得到(见图 9.55):
 
-\begin{center}
-\includegraphics[max width=0.6\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_452_396_252_751_808_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.55。由端点、端切线和曲线上的一点指定的唯一三次三维(扭曲)贝塞尔曲线。
 
 1. 设 \(\pi\) 为由 \({\mathbf{P}}_{0},{\mathbf{P}}_{3}\) 和 \({\mathbf{T}}_{s}\) 定义的平面；
 
 2. 将 \(\pi\) 与通过 \(\mathbf{P}\) 并平行于 \({\mathbf{T}}_{e}\) 的直线相交 - 这将产生 \({\mathbf{P}}_{d}\) ；
 
 3. 通过将直线 \({\mathbf{P}}_{0}{\mathbf{P}}_{3}\) 与通过 \({\mathbf{P}}_{d}\) 并平行于 \({\mathbf{T}}_{s}\) 的直线相交来获得 \({\mathbf{P}}_{c}\) 。
+
+\begin{center}
+\begin{minipage}{26cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_67.tex}
+\par\smallskip
+图 9.55. 非共面三次 Bézier 曲线的代表性构造，取$P_0=(4,0,0)$、$P_1=(4,4,0)$、$P_2=(0,3,0)$、$P_3=(0,0,4)$。\\
+平面$\pi:x+z=4$；$P_c=(2,0,2)$、$P_d=(2,3/2,2)$为辅助点，$P=C(1/2)=(2,21/8,1/2)$为曲线插值点。\\
+按单位端切向$T_s=(0,1,0)$、$T_e=(0,-3/5,4/5)$计算，$a=3/2$、$b=-15/8$精确恢复$\alpha=4$、$\beta=-5$。
+\end{minipage}
+\end{center}
 
 方程 (9.100) 现在得出 \(a\) 和 \(b\) 。为了通过方程 (9.99) 计算 \(\alpha\) 和 \(\beta\) ，我们需要唯一的参数值 \(\widehat{u}\) ，该值使得曲线通过点 P。从方程 (9.97) 和 \({B}_{i,3}\) 的和为 1 的事实，我们得到
 
@@ -2889,18 +2836,25 @@ s = 1 - \widehat{u}\;t = \widehat{u}
 s\left( {s - {2t}}\right) \left( {{\mathbf{T}}_{p} \times  {\mathbf{T}}_{s}}\right) \alpha  + t\left( {{2s} - t}\right) \left( {{\mathbf{T}}_{p} \times  {\mathbf{T}}_{e}}\right) \beta  = {2st}\left( {{\mathbf{T}}_{p} \times  \left( {{\mathbf{P}}_{0} - {\mathbf{P}}_{3}}\right) }\right)  \tag{9.108}
 \]
 
+\begin{center}
+\begin{minipage}{29cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_68.tex}
+\par\smallskip
+图 9.56. 平面三次 Bézier 曲线的点与切向约束，取控制点$(0,0),(3,4),(6,4),(9,0)$。\\
+在$u=1/2$处，de Casteljau 二级点$P_0^2=(3,3)$、$P_1^2=(6,3)$与$P=(9/2,3)$共线，严格确定中间切向$T_p=(1,0)$。\\
+单位端切向为$T_s=(3/5,4/5)$、$T_e=(3/5,-4/5)$；公式 (9.107)、(9.108) 的兼容最小二乘系统精确给出$\alpha=5,\beta=-5$。
+\end{minipage}
+\end{center}
+
 方程 (9.107) 涉及点约束 \(\mathbf{P}\) ，而方程 (9.108) 涉及切线约束 \({\mathbf{T}}_{p}\) 。它们各自对两个未知数贡献三个方程，总共六个方程(或者在数据为 \({xy}\) 平面时为四个)。一些特殊情况是:
 
 \begin{itemize}
 \item 如果 \({\mathbf{T}}_{s}\parallel {\mathbf{T}}_{e}\) ，则方程 (9.107) 仅产生一个方程；方程 (9.108) 提供必要的附加方程；
 \end{itemize}
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_454_297_247_923_680_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.56. 由端点、端切线、曲线上的一点及该点的切线方向指定的平面立方 Bézier 曲线。
 
 \begin{itemize}
 \item 如果 \(\mathbf{P} = \left( {{s}^{3} + 3{s}^{2}t}\right) {\mathbf{P}}_{0} + \left( {{t}^{3} + {3s}{t}^{2}}\right) {\mathbf{P}}_{3}\) ，则方程 (9.107) 是一个齐次系统；在这种情况下， \(\alpha  = \beta  = 0\) 可能是唯一的解，或者可能存在无限多个非平凡解。假设我们已经排除了直线情况，我们有 \({\mathbf{T}}_{p} \times  \left( {{\mathbf{P}}_{0} - {\mathbf{P}}_{3}}\right)  \neq  0\) ，因此方程 (9.108) 提供了必要的非齐次方程。
@@ -2916,167 +2870,95 @@ s\left( {s - {2t}}\right) \left( {{\mathbf{T}}_{p} \times  {\mathbf{T}}_{s}}\rig
 
 候选立方 Bézier 曲线 \(\mathbf{C}\left( u\right)\) 由 \({\mathbf{P}}_{0},{\mathbf{P}}_{1} = {\mathbf{P}}_{0} + \alpha {\mathbf{T}}_{s}\) 、 \({\mathbf{P}}_{2} = {\mathbf{P}}_{3} + \beta {\mathbf{T}}_{e}\) 和 \({\mathbf{P}}_{3}\) 定义。
 
-现在我们必须检查每个 \({\mathbf{Q}}_{k}\) 是否在曲线 \(\mathbf{C}\left( u\right)\)  \(\left( {{k}_{s} < k < {k}_{e}}\right)\) 的 \(E\) 距离内。这需要牛顿迭代，之前计算的 \(\widehat{u}\) 是良好的起始值。回想一下 \({\mathbf{Q}}_{k} = {\mathbf{C}}_{k}\left( {\widehat{u}}_{k}\right)\) 。设 \(\Delta {\alpha }_{k} = {\alpha }_{k} - \alpha\) 和 \(\Delta {\beta }_{k} = {\beta }_{k} - \beta\) 。然后从方程 (9.95) 我们得到
+现在我们必须检查每个 \({\mathbf{Q}}_{k}\) 是否在曲线 \(\mathbf{C}\left( u\right)\)  \(\left( {{k}_{s} < k < {k}_{e}}\right)\) 的 \(E\) 距离内。这需要牛顿迭代，之前计算的 \(\widehat{u}\) 是良好的起始值。若逐点构造精确满足\({\mathbf{Q}}_k={\mathbf C}_k(\widehat u_k)\)，则有如下误差关系。设 \(\Delta {\alpha }_{k} = {\alpha }_{k} - \alpha\) 和 \(\Delta {\beta }_{k} = {\beta }_{k} - \beta\) 。然后从方程 (9.95) 我们得到
 
 \[
 \left| {{\mathbf{Q}}_{k} - \mathbf{C}\left( {\widehat{u}}_{k}\right) }\right|  = \left| {{\mathbf{C}}_{k}\left( {\widehat{u}}_{k}\right)  - \mathbf{C}\left( {\widehat{u}}_{k}\right) }\right|
 \]
 
 \[
-= \left| {\Delta {\alpha }_{k}{B}_{1,3}\left( {\widehat{u}}_{k}\right) {\mathbf{T}}_{s} - \Delta {\beta }_{k}{B}_{2,3}\left( {\widehat{u}}_{k}\right) {\mathbf{T}}_{e}}\right|  \tag{9.110}
+= \left| {\Delta {\alpha }_{k}{B}_{1,3}\left( {\widehat{u}}_{k}\right) {\mathbf{T}}_{s} + \Delta {\beta }_{k}{B}_{2,3}\left( {\widehat{u}}_{k}\right) {\mathbf{T}}_{e}}\right|  \tag{9.110}
 \]
 
-方程 (9.110) 可以用作快速接受测试:如果它小于或等于 \(E\) ，则不需要牛顿迭代。如果需要迭代，则第 6.1 节中给出的技术是合适的。
+当逐点构造精确插值数据点时，方程 (9.110) 可用作快速接受测试：若其小于或等于\(E\)，则不需要牛顿迭代。若平面最小二乘系统存在非零的点约束残差，则必须将该残差计入误差界，或直接检查实际距离。如果需要迭代，则第 6.1 节中给出的技术是合适的。
 
 FitWithCubic(   ) 的例程如下。它返回值 1 表示拟合成功，返回值 0 表示没有拟合。我们注意到，在非共面的情况下，当 \({\mathbf{T}}_{s},{\mathbf{T}}_{e}\) 和 \({\mathbf{P}}_{0}{\mathbf{P}}_{3}\) 接近共面时， \({\mathbf{P}}_{c}\) 和 \({\mathbf{P}}_{d}\) 的构造是不稳定的。因此，这个测试应该在相对宽松的容差下进行。该算法使用局部数组 uh[]、alfak[]、betak[] 来存储 \({\widehat{u}}_{k},{\alpha }_{k}\) 和 \({\beta }_{k}\) 。
 
-\HRule
-
-\section*{ALGORITHM A9.12}
-
-\hspace*{1em} FitWithCubic(ks, ke, Q, Ts, Te, E, P1, P2)
-
-\hspace*{3em} \{ /* Fit to tolerance E with cubic segment */
-
-\hspace*{4em} /* Input: ks, ke, Q, Ts, Te, E */
-
-\hspace*{4em} /* Output: P1, P2 */
-
-\hspace*{2em} if (ke-ks == 1)
-
-\hspace*{4em} \{ /* No interior points to interpolate */
-
-\hspace*{4em} Compute \(\alpha\) and \(\beta\) by Eqs. (9.93),(9.94).
-
-\hspace*{4em} Set \({\mathbf{P}}_{1} = {\mathbf{Q}}_{{k}_{s}} + \alpha {\mathbf{T}}_{s}\)
-
-\hspace*{4em} and \({\mathbf{P}}_{2} = {\mathbf{Q}}_{{k}_{e}} + \beta {\mathbf{T}}_{e}\)
-
-\hspace*{4em} return(1);
-
-\hspace*{4em} \}
-
-\hspace*{2em} dk = ke-ks;
-
-\hspace*{2em} line = Collinear(dk+1, Q[ks]);
-
-\hspace*{2em} if (line == 1)
-
-\hspace*{4em} \{ /* Collinear points case; create straight line */
-
-\hspace*{4em} P1 = (2.0*Q[ks]+Q[ke])/3.0;
-
-\hspace*{4em} P2 = (Q[ks]+2.0*Q[ke])/3.0;
-
-\hspace*{4em} return(1);
-
-\hspace*{4em} \}
-
-\hspace*{2em} for (k=1; k<dk; k++)
-
-\hspace*{4em} \{
-
-\hspace*{4em} Get plane \(\pi\) defined by \(Q\left\lbrack  {ks}\right\rbrack  ,Q\left\lbrack  {ke}\right\rbrack\) , Ts.
-
-\hspace*{4em} if (Line(Q[k+ks], Te) lies in \(\pi\) )
-
-\hspace*{5em} \{ /* Coplanar case */
-
-\hspace*{5em} Compute \({\widehat{u}}_{k}\) by Eq. (9.103) and load into uh[k].
-
-\hspace*{5em} Set up Eqs. (9.107) and (9.108) and solve for \({\alpha }_{k}\) and \({\beta }_{k}\)
-
-\hspace*{7em} (by least squares).
-
-\hspace*{5em} if \(\left( {{\alpha }_{k} > 0\text{ \&\& }{\beta }_{k} < 0}\right)\)
-
-\hspace*{6em} \{
-
-\hspace*{6em} \(\operatorname{alfak}\left\lbrack  \mathrm{k}\right\rbrack   = {\alpha }_{k};\;\) beta \(\mathrm{k}\left\lbrack  \mathrm{k}\right\rbrack   = {\beta }_{k};\)
-
-\hspace*{6em} \}
-
-\hspace*{6em} else
-
-\hspace*{7em} return(0);
-
-\hspace*{5em} \}
-
-\hspace*{5em} else
-
-\hspace*{5em} \{ /* Noncoplanar case */
-
-\hspace*{5em} \(\mathrm{{Pd}} =\) Intersection of \(\pi\) with Line \(\left( {\mathrm{Q}\left\lbrack  {\mathrm{k} + \mathrm{{ks}}}\right\rbrack  ,\mathrm{{Te}}}\right)\) ;
-
-\hspace*{5em} Pc = Intersection of Line(Q[ks], Q[ke]-Q[ks]) with
-
-\hspace*{9em} Line(Pd, Ts);
-
-\hspace*{5em} gamma = Distance3D(Pc, Q[ke])/Distance3D(Q[ks], Q[ke]);
-
-\hspace*{5em} if \(\left( {\text{ gamma } < {0.0} \mid   \mid  \text{ gamma } > {1.0}}\right) \;\) return(0);
-
-\hspace*{5em} Use Newton iteration to solve Eq. (9.102) for uh[k].
-
-\hspace*{5em} if \(\left( {{uh}\left\lbrack  k\right\rbrack   < {0.0} \mid  {uh}\left\lbrack  k\right\rbrack   > {1.0}}\right)\) return(0);
-
-\hspace*{7em} else
-
-\hspace*{7em} \{
-
-\hspace*{7em} \(a = \operatorname{Distance3D}\left( {{Pc},{Pd}}\right) ;\;b =  - \operatorname{Distance3D}\left( {{Pd},Q\left\lbrack  {k + {ks}}\right\rbrack  }\right) ;\)
-
-\hspace*{7em} Evaluate Bernstein polynomials and use Eq. (9.99)
-
-\hspace*{9em} to get alfak \(\left\lbrack  k\right\rbrack\) and beta \(k\left\lbrack  k\right\rbrack\) .
-
-\hspace*{6em} \}
-
-\hspace*{4em} \}
-
-\hspace*{2em} \} /* End of for-loop: \(k = 1,\ldots ,{dk} - 1 * /\)
-
-\hspace*{4em} /* Step 2: average the \({\alpha }_{k}\mathrm{\;s}\) and \({\beta }_{k}\mathrm{\;s} *\) /
-
-alpha = beta = 0.0 ;
-
-for ( \(k = 1\) ; \(k < {dk}\) ; \(k +  +\) )
-
-\hspace*{3em} \{ alpha = alpha+alfak[k]; beta = beta+betak[k]; \}
-
-alpha = alpha/(dk-1); beta = beta/(dk-1);
-
-P1 = Q[ks]+alpha*Ts; P2 = Q[ke]+beta*Te;
-
-\hspace*{4em} /* Step 3: check deviations */
-
-for (k=1; k<dk; k++)
-
-\hspace*{2em} \{
-
-\hspace*{2em} \(\mathrm{u} = \operatorname{uh}\left\lbrack  \mathrm{k}\right\rbrack\) ;
-
-\hspace*{2em} if (Eq. [9.110] less than E) continue;
-
-\hspace*{5em} else
-
-\hspace*{5em} \{ /* Must do Newton iterations. u is start value */
-
-\hspace*{5em} Project \(Q\left\lbrack  {k + {ks}}\right\rbrack\) to curve to get error ek.
-
-\hspace*{5em} if (ek > E) break;
-
-\hspace*{4em} \}
-
-\hspace*{2em} \}
-
-if \(\left( {k =  = {dk}}\right) \;\) return \(\left( 1\right) ;\;\) /* segment within tolerance \(*\) /
-
-\hspace*{3em} else return(0); /* not within tolerance */
-
-\}
-
-\HRule
+% book-code: algorithm A9.12
+\par\medskip\noindent\textbf{算法 A9.12（伪代码）}\BookIndexMark{p0188}\par
+\begin{minted}[escapeinside=@@,mathescape]{c}
+FitWithCubic(ks, ke, Q, Ts, Te, E, P1, P2)
+{ /* Fit to tolerance E with cubic segment */
+    /* Input: ks, ke, Q, Ts, Te, E */
+    /* Output: P1, P2 */
+    if (ke-ks == 1)
+    { /* No interior points to interpolate */
+        Compute @$\alpha$@ and @$\beta$@ by Eqs. (9.93),(9.94).
+        Set @${\mathbf{P}}_{1} = {\mathbf{Q}}_{{k}_{s}} + \alpha {\mathbf{T}}_{s}$@
+        and @${\mathbf{P}}_{2} = {\mathbf{Q}}_{{k}_{e}} + \beta {\mathbf{T}}_{e}$@
+        return(1);
+    }
+    dk = ke-ks;
+    line = Collinear(dk+1, Q[ks]);
+    if (line == 1)
+    { /* Collinear points case; create straight line */
+        P1 = (2.0*Q[ks]+Q[ke])/3.0;
+        P2 = (Q[ks]+2.0*Q[ke])/3.0;
+        return(1);
+    }
+    for (k=1; k<dk; k++)
+    {
+        Get plane @$\pi$@ defined by Q[ks],Q[ke] , Ts.
+        if (Line(Q[k+ks], Te) lies in @$\pi$@ )
+        { /* Coplanar case */
+            Compute @${\widehat{u}}_{k}$@ by Eq. (9.103) and load into uh[k].
+            Set up Eqs. (9.107) and (9.108) and solve for @${\alpha }_{k}$@ and @${\beta }_{k}$@
+            (by least squares).
+            if @$\left( {{\alpha }_{k} > 0\text{ \&\& }{\beta }_{k} < 0}\right)$@
+            {
+                @$\operatorname{alfak}\left\lbrack \mathrm{k}\right\rbrack = {\alpha }_{k};\;$@ beta @$\mathrm{k}\left\lbrack \mathrm{k}\right\rbrack = {\beta }_{k};$@
+            }
+            else
+                return(0);
+        }
+        else
+        { /* Noncoplanar case */
+            Pd = Intersection of @$\pi$@ with Line ( Q[k + ks],Te) ;
+            Pc = Intersection of Line(Q[ks], Q[ke]-Q[ks]) with
+            Line(Pd, Ts);
+            gamma = Distance3D(Pc, Q[ke])/Distance3D(Q[ks], Q[ke]);
+            if @$\left( {\text{ gamma } < {0.0} \mid \mid \text{ gamma } > {1.0}}\right) \;$@ return(0);
+            Use Newton iteration to solve Eq. (9.102) for uh[k].
+            if @$\left( {{uh}\left\lbrack k\right\rbrack < {0.0} \mid {uh}\left\lbrack k\right\rbrack > {1.0}}\right)$@ return(0);
+            else
+            {
+                a = Distance3D( Pc,Pd) ;b =  - Distance3D( Pd,Q[k + ks]) ;
+                Evaluate Bernstein polynomials and use Eq. (9.99)
+                to get alfak [k] and beta k[k] .
+            }
+        }
+    } /* End of for-loop: $k = 1,\ldots ,{dk} - 1$ */
+    /* Step 2: average the ${\alpha }_{k}\mathrm{\;s}$ and ${\beta }_{k}\mathrm{\;s}$ */
+    alpha = beta = 0.0 ;
+    for ( k = 1 ; k < dk ; k ++ )
+    { alpha = alpha+alfak[k]; beta = beta+betak[k]; }
+    alpha = alpha/(dk-1); beta = beta/(dk-1);
+    P1 = Q[ks]+alpha*Ts; P2 = Q[ke]+beta*Te;
+    /* Step 3: check deviations */
+    for (k=1; k<dk; k++)
+    {
+        u = uh[k] ;
+        if (Eq. [9.110] less than E) continue;
+        else
+        { /* Must do Newton iterations. u is start value */
+            Project Q[k + ks] to curve to get error ek.
+            if (ek > E) break;
+        }
+    }
+    if ( k == dk)  return ( 1) ; /* segment within tolerance  */
+    else return(0); /* not within tolerance */
+}
+\end{minted}
 
 图 9.57 和 9.58 分别展示了平面和非平面拟合的示例。图 9.57 的输入数据为
 
@@ -3086,30 +2968,28 @@ if \(\left( {k =  = {dk}}\right) \;\) return \(\left( 1\right) ;\;\) /* segment 
 
 图 \({9.57}\mathrm{c}\;E = 1/{100},\;{K}_{\max } = {11}\)
 
-注意从图 9.57a 到图 9.57b 近似质量的变化。在相同的容差下，允许每个段最多八个点而不是十一点显著改善了近似效果。图 [latex0] 的输入数据为
-
 \begin{center}
-\includegraphics[max width=0.9\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_457_294_186_1034_1930_0.jpg}
+\begin{minipage}{27cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_69.tex}
+\par\smallskip
+图 9.57. 同一组五十一个代表性平面数据点的局部三次逼近，三个子图保持相同坐标尺度、边界和字号。\\
+按算法 A9.12 的点与切向最小二乘方程计算、平均控制柄，并逐点检查实际距离；(a)—(c) 分别使用5、7、7个曲线段。\\
+虚线为拼接后双内部节点 B 样条的实际控制多边形，空心圆为数据点；通过节点参数调整，各连接处精确满足$C^1$。\\
+最大数据距离分别为0.09141、0.06074、0.00964，均低于各自容差；数据由源码记录的四段多项式曲线采样，采用其已知切向，未从扫描图提取坐标。
+\end{minipage}
 \end{center}
-\hspace*{3em} 
 
-图 9.57. 对平面数据的局部三次近似。
+注意从图 9.57a 到图 9.57b 近似质量的变化。在相同的容差下，允许每个段最多八个点而不是十一点显著改善了近似效果。
 
-\begin{center}
-\includegraphics[max width=0.8\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_458_333_248_875_1823_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.58. 对包含平面段的三维数据的局部三次近似。
 
-452 曲线和曲面拟合
 
-\begin{center}
-\includegraphics[max width=0.7\textwidth]{images/0193ba0d-ab19-7138-9798-cb281ce60de0_459_351_252_850_849_0.jpg}
-\end{center}
-\hspace*{3em} 
 
-图 9.58. (续。)
+
+
+
 
 图 \({9.58}\mathrm{a} - {9.58}\mathrm{c}\) 的输入数据为
 
@@ -3119,7 +2999,21 @@ if \(\left( {k =  = {dk}}\right) \;\) return \(\left( 1\right) ;\;\) /* segment 
 
 图 \({9.58}\mathrm{c}\;E = 0,\;{K}_{\max } = {20}\)
 
-零容忍导致了一个插值曲线。给定51个点，人们可能期望有50个线段。然而，由于可以始终构造一个立方体通过一个内部点，因此只需要25个线段。
+\begin{center}
+\begin{minipage}{35cm}
+\vspace*{.6\baselineskip}
+\centering
+\BookFigure[max width=\linewidth]{ch09/fig_9_70.tex}\par\smallskip
+\BookFigure[max width=\linewidth]{ch09/fig_9_71.tex}
+\par\smallskip
+图 9.58. 同一组五十一个代表性三维数据点的局部三次逼近；首尾各十七个点分别位于$z=0$、$z=3$平面，中间为非平面连接段。\\
+(a)、(b) 按算法 A9.12 分别计算非共面构造或平面点与切向最小二乘拟合，使用四段、五段曲线；最大三维数据距离约$0.09279$、$0.00763$。\\
+(c) 为二十五段精确局部插值，全部五十一个点的误差为零；各图通过节点参数调整精确满足$C^1$，统一视角、尺度和字号。\\
+实心点为数据，方框为各拟合段端点，虚线为双内部节点 B 样条的实际控制多边形；代表性数据与已知切向均在源码中给出。
+\end{minipage}
+\end{center}
+
+零容差子图采用精确局部插值。本图的代表性数据由两段水平平面曲线和一段空间三次连接段采样得到；每相邻两个采样区间构成一个三次段，共二十五段，五十一个数据点均被精确插值。该构造满足$K_{\max}=20$的跨度限制，不要求其分段数最少。
 
 \section*{练习}
 

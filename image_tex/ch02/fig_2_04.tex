@@ -1,0 +1,23 @@
+% Fig.2.4: exact nonzero degree-zero B-splines for Ex2.2.
+% U={0,0,0,1,2,3,4,4,5,5,5}; N_i0=1 on [u_i,u_{i+1}).
+% Zero portions are omitted, as in the original. Closed/open endpoints show
+% the half-open support; clustered ticks retain knot multiplicities.
+\begin{tikzpicture}[x=.85cm,y=1.05cm,book line,scale=\BookGeometryScale]
+\foreach \dx/\dy/\i/\a/\b in {0/0/2/0/1,8.5/0/3/1/2,0/-3.2/4/2/3,8.5/-3.2/5/3/4,4.25/-6.4/7/4/5} {
+  \begin{scope}[shift={(\dx,\dy)}]
+    \draw[book axis] (-.25,0)--(6.7,0) node[right] {$u$};
+    \draw[book axis] (0,-.12)--(0,1.8);
+    \draw (-.08,1)--(.08,1) node[left=5pt] {$1$};
+    \foreach \k in {0,...,5} {
+      \draw (\k,-.065)--(\k,.065);
+      \node[below=4pt] at (\k,0) {$\k$};
+    }
+    \foreach \k in {-.07,.07,4.07,4.93,5.07}
+      \draw[book grid] (\k,-.065)--(\k,.065);
+    \draw[shorten >=1.5pt] (\a,1)--(\b,1);
+    \fill (\a,1) circle[radius=1.5pt];
+    \draw (\b,1) circle[radius=1.5pt];
+    \node[above=5pt] at ({(\a+\b)/2},1) {$N_{\i,0}$};
+  \end{scope}
+}
+\end{tikzpicture}

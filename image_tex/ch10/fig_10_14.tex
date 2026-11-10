@@ -1,0 +1,37 @@
+% Exact translational sweep from explicit closed B-section and spatial cubic trajectory;allweights1.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\path[book figure bounds] (-7.5,-4.5) rectangle (8.5,9.5);
+\draw[book grid,dashed] (0,-1.536)--(1.344,-0.4608)--(1.344,1.0752)--(0,0)--(1.344,1.0752)--(1.344,2.6112)--(0,1.536)--(-0.336,1.2672)--(-0.336,-1.8048)--(0,-1.536);
+\draw (0,-1.536) .. controls (1.344,-0.4608) and (1.344,1.0752) .. (0,0);
+\draw (0,0) .. controls (1.344,1.0752) and (1.344,2.6112) .. (0,1.536);
+\draw (0,1.536) .. controls (-0.336,1.2672) and (-0.336,-1.8048) .. (0,-1.536);
+\fill (0,-1.536) circle[radius=1pt];
+\fill (1.344,-0.4608) circle[radius=1pt];
+\fill (1.344,1.0752) circle[radius=1pt];
+\fill (0,0) circle[radius=1pt];
+\fill (1.344,1.0752) circle[radius=1pt];
+\fill (1.344,2.6112) circle[radius=1pt];
+\fill (0,1.536) circle[radius=1pt];
+\fill (-0.336,1.2672) circle[radius=1pt];
+\fill (-0.336,-1.8048) circle[radius=1pt];
+\fill (0,-1.536) circle[radius=1pt];
+\draw[book grid,dashed] (-6.08,1.536)--(-3.52,1.664)--(-1.6,0.64)--(3.2,-0.32)--(5.76,-0.192)--(5.76,4.928)--(3.2,6.08);
+\draw (-6.08,1.536) .. controls (-3.52,1.664) and (-2.56,1.152) .. (-1.28,0.736);
+\draw (-1.28,0.736) .. controls (0,0.32) and (1.6,0) .. (2.8266666667,-0.1386666667);
+\draw (2.8266666667,-0.1386666667) .. controls (4.0533333333,-0.2773333333) and (4.9066666667,-0.2346666667) .. (5.3333333333,1.0666666667);
+\draw (5.3333333333,1.0666666667) .. controls (5.76,2.368) and (5.76,4.928) .. (3.2,6.08);
+\fill (-6.08,1.536) circle[radius=1pt];
+\fill (-3.52,1.664) circle[radius=1pt];
+\fill (-1.6,0.64) circle[radius=1pt];
+\fill (3.2,-0.32) circle[radius=1pt];
+\fill (5.76,-0.192) circle[radius=1pt];
+\fill (5.76,4.928) circle[radius=1pt];
+\fill (3.2,6.08) circle[radius=1pt];
+\node[above=6pt] at (-6.08,1.536) {$T(v)$};
+\draw[book grid] (0.91728,1.837056) -- (3,2.8) node[above=3pt] {$C(u)$};
+\draw[book grid,book axis] (0,0)--(5.12,-2.304) node[below=5pt] {$x$};
+\draw[book grid,book axis] (0,0)--(3.84,3.072) node[right=5pt] {$y$};
+\draw[book grid,book axis] (0,0)--(0,6.4) node[above=5pt] {$z$};
+\node at (.5,9) {$C(u),\quad T(v)$};
+\node[book panel tag] at (.5,-4.1) {(a)};
+\end{tikzpicture}

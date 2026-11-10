@@ -1,0 +1,21 @@
+% Exact representative9.1 Hermite interpolation:five given points andtwo actual endpoint derivatives.
+% Uniform point parametersi/4,p3,7controls;arrow vectors both scaled1/4,not independently normalized.
+\begin{tikzpicture}[book line,x=2.2cm,y=2.2cm,scale=\BookGeometryScale]
+\path[book figure bounds] (-.8,-2.4) rectangle (10,3.8);
+\draw (0,0) .. controls (0.3333333333,0.75) and (0.8821428571,1.4642857143) .. (1.5,2);
+\draw (1.5,2) .. controls (2.1178571429,2.5357142857) and (2.8047619048,2.8928571429) .. (3.5,3);
+\draw (3.5,3) .. controls (4.1952380952,3.1071428571) and (4.8988095238,2.9642857143) .. (5.6,2.5);
+\draw (5.6,2.5) .. controls (6.3011904762,2.0357142857) and (7,1.25) .. (7.5,0.5);
+\draw[book axis] (0,0)--(1,2.25) node[above left=7pt] {$\mathbf D_0$};
+\draw[book axis] (7.5,0.5)--(9,-1.75) node[below left=7pt] {$\mathbf D_4$};
+\draw (0,0) circle[radius=2.4pt];
+\node[below right=7pt] at (0,0) {$\mathbf Q_0$};
+\draw (1.5,2) circle[radius=2.4pt];
+\node[below right=7pt] at (1.5,2) {$\mathbf Q_1$};
+\draw (3.5,3) circle[radius=2.4pt];
+\node[below right=7pt] at (3.5,3) {$\mathbf Q_2$};
+\draw (5.6,2.5) circle[radius=2.4pt];
+\node[below left=7pt] at (5.6,2.5) {$\mathbf Q_3$};
+\draw (7.5,0.5) circle[radius=2.4pt];
+\node[below left=7pt] at (7.5,0.5) {$\mathbf Q_4$};
+\end{tikzpicture}

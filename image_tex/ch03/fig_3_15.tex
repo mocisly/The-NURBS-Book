@@ -1,0 +1,60 @@
+% Fig3.15: exact caption U=(0,0,0,2/5,3/5,1,1,1), derivative Uprime.
+% Representative controls P=(1,1),(2,3),(9/2,3),(5,1),(6,2).
+% Panel(a) tangent arrows uniformly displayed at1/2 length, stated in caption.
+% Panel(b) controls computed by Eq3.4; actual derivative curve. No tracing.
+\begin{tikzpicture}[book line,scale=\BookGeometryScale]
+\begin{scope}[yshift=12cm,x=1cm,y=1cm]
+\draw[book axis] (0,0)--(8.8,0) node[right=4pt] {$x$};
+\draw[book axis] (0,0)--(0,4.7) node[above=4pt] {$y$};
+\coordinate (P0) at (1,1);
+\coordinate (P1) at (2,3);
+\coordinate (P2) at (4.5,3);
+\coordinate (P3) at (5,1);
+\coordinate (P4) at (6,2);
+\draw[book grid] (P0)--(P1)--(P2)--(P3)--(P4);
+\draw (1,1) .. controls (1.6666666667,2.3333333333) and (2.5555555556,3) .. (3.6666666667,3);
+\draw (3.6666666667,3) .. controls (4.2222222222,3) and (4.5555555556,2.7777777778) .. (4.6666666667,2.3333333333);
+\draw (4.6666666667,2.3333333333) .. controls (4.8888888889,1.4444444444) and (5.3333333333,1.3333333333) .. (6,2);
+\draw[book axis] (1,1)--(3.5,6);
+\node[above right=5pt] at (3.5,6) {$\mathbf C'\!\left(0\right)$};
+\draw[book axis,dashed] (2.1666666667,2.5)--(5.5,5);
+\node[above right=5pt] at (5.5,5) {$\mathbf C'\!\left(\frac15\right)$};
+\draw[book axis] (3.6666666667,3)--(7.8333333333,3);
+\node[right=5pt] at (7.8333333333,3) {$\mathbf C'\!\left(\frac25\right)$};
+\draw[book axis] (4.6666666667,2.3333333333)--(5.5,-1);
+\node[right=5pt] at (5.5,-1) {$\mathbf C'\!\left(\frac35\right)$};
+\draw[book axis] (6,2)--(8.5,4.5);
+\node[above right=5pt] at (8.5,4.5) {$\mathbf C'\!\left(1\right)$};
+\foreach \i in {0,...,4} \node[book point] at (P\i) {};
+\fill (3.6666666667,3) circle[radius=1.7pt];
+\fill (4.6666666667,2.3333333333) circle[radius=1.7pt];
+\node[book point] at (2.1666666667,2.5) {};
+\node[below left=4pt] at (P0) {$\mathbf P_{0}$};
+\node[above left=4pt] at (P1) {$\mathbf P_{1}$};
+\node[above=4pt] at (P2) {$\mathbf P_{2}$};
+\node[below left=4pt] at (P3) {$\mathbf P_{3}$};
+\node[below right=4pt] at (P4) {$\mathbf P_{4}$};
+\end{scope}
+\node[book panel tag] at (5cm,10.2cm) {(a)};
+\begin{scope}[xshift=1cm,yshift=4cm,x=.5cm,y=.5cm]
+\draw[book axis] (0,0)--(14,0) node[right=4pt] {$x$};
+\draw[book axis] (0,0)--(0,8) node[above=4pt] {$y$};
+\coordinate (Q0) at (5,10);
+\coordinate (Q1) at (8.3333333333,0);
+\coordinate (Q2) at (1.6666666667,-6.6666666667);
+\coordinate (Q3) at (5,5);
+\draw[book grid,-{Stealth[length=5pt]}] (0,0)--(Q0);
+\draw[book grid,-{Stealth[length=5pt]}] (0,0)--(Q1);
+\draw[book grid,-{Stealth[length=5pt]}] (0,0)--(Q2);
+\draw[book grid,-{Stealth[length=5pt]}] (0,0)--(Q3);
+\draw (Q0)--(Q1)--(Q2)--(Q3);
+\draw[book axis,dashed] (0,0)--(6.6666666667,5);
+\node[right=7pt] at (6.6666666667,5) {$\mathbf C'\!\left(\frac15\right)$};
+\foreach \i in {0,...,3} \node[book point] at (Q\i) {};
+\node[above right=4pt] at (Q0) {$\mathbf Q_{0}$};
+\node[below right=4pt] at (Q1) {$\mathbf Q_{1}$};
+\node[below left=4pt] at (Q2) {$\mathbf Q_{2}$};
+\node[above left=4pt] at (Q3) {$\mathbf Q_{3}$};
+\end{scope}
+\node[book panel tag] at (5cm,0cm) {(b)};
+\end{tikzpicture}

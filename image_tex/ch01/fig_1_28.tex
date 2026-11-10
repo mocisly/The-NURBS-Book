@@ -1,0 +1,39 @@
+% Fig. 1.18: exact rational cubic bases and curve, weights from the scan.
+% w=(1,3,7,1). Representative controls: (0,0),(1.2,3.5),(5.2,3.5),(6.5,0).
+% Original control coordinates are not specified; both panels use identical weights.
+\begin{tikzpicture}[book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \def\RDen{(1-\u)^3+9*\u*(1-\u)^2+21*\u^2*(1-\u)+\u^3}
+  % Integer sampling avoids accumulated PGF decimal-step error at u=1.
+  \def\u{(\t/200)}
+  \begin{scope}[x=6cm,y=3.7cm]
+    \path[book figure bounds] (-.9cm,-1.2cm) rectangle (7cm,4.7cm);
+    \draw[book axis,line width=.45pt] (0,0)--(1.09,0) node[right] {$u$};
+    \draw[book axis,line width=.45pt] (0,0)--(0,1.12);
+    \node[below left] at (0,0) {$0$};
+    \draw[line width=.45pt] (1,0)--++(0,-2pt) node[below] {$1$};
+    \draw[line width=.45pt] (0,1)--++(-2pt,0) node[left] {$1$};
+    \foreach \expr in {(1-\u)^3,9*\u*(1-\u)^2,21*\u^2*(1-\u),\u^3}
+      \draw plot[variable=\t,domain=0:200,samples=201] ({\u},{(\expr)/(\RDen)});
+    \node at (.105,1.04) {$R_{0,3}$};
+    \node at (.2,.6) {$R_{1,3}$};
+    \node at (.6,.9) {$R_{2,3}$};
+    \node at (.9,1.04) {$R_{3,3}$};
+    \node[book panel tag] at (3cm,-1cm) {(a)};
+  \end{scope}
+  \begin{scope}[xshift=8.5cm]
+    \path[book figure bounds] (-.9,-1.2) rectangle (7,4.7);
+    \coordinate (P0) at (0,0); \coordinate (P1) at (1.2,3.5);
+    \coordinate (P2) at (5.2,3.5); \coordinate (P3) at (6.5,0);
+    \foreach \i/\j in {0/1,1/2,2/3}
+      \draw[line width=.45pt,shorten <=2pt,shorten >=2pt] (P\i)--(P\j);
+    \draw[shorten <=2pt,shorten >=2pt] plot[variable=\t,domain=0:200,samples=201]
+      ({(10.8*\u*(1-\u)^2+109.2*\u^2*(1-\u)+6.5*\u^3)/(\RDen)},
+       {(31.5*\u*(1-\u)^2+73.5*\u^2*(1-\u))/(\RDen)});
+    \foreach \i in {0,1,2,3} \node[book point] at (P\i) {};
+    \node[above,align=center] at (P1) {$\mathbf P_1$\\$w_1=3$};
+    \node[above,align=center] at (P2) {$\mathbf P_2$\\$w_2=7$};
+    \node[below,align=center] at (P0) {$\mathbf P_0$\\$w_0=1$};
+    \node[below,align=center] at (P3) {$\mathbf P_3$\\$w_3=1$};
+    \node[book panel tag] at (3.25,-1) {(b)};
+  \end{scope}
+\end{tikzpicture}

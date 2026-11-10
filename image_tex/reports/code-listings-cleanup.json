@@ -1,0 +1,47 @@
+{
+  "status": "complete",
+  "date": "2026-11-09",
+  "archived_reports": [],
+  "removed": [
+    {
+      "path": "image_tex/build",
+      "files": 226,
+      "bytes": 10172387.0
+    },
+    {
+      "path": "tmp/minted-review",
+      "files": 461,
+      "bytes": 86419799.0
+    },
+    {
+      "path": "main.aux",
+      "files": 1,
+      "bytes": 18668.0
+    },
+    {
+      "path": "main.log",
+      "files": 1,
+      "bytes": 83971.0
+    },
+    {
+      "path": "main.out",
+      "files": 1,
+      "bytes": 12986.0
+    },
+    {
+      "path": "main.toc",
+      "files": 1,
+      "bytes": 10050.0
+    },
+    {
+      "path": "main.synctex.gz",
+      "files": 1,
+      "bytes": 3689915.0
+    }
+  ],
+  "removed_bytes": 100407776.0,
+  "protected_files_verified": 1602,
+  "protected_files_unchanged": true,
+  "published_pdf_sha256": "22dcf203cc320ac1551ce23fb0cfa70e6cc780f1711cb450aab16e876bc2f12a",
+  "note": "Historical manifest evidence paths refer to removed previews and frozen builds. Regenerate evidence before running those validation workflows."
+}

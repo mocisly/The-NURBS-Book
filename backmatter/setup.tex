@@ -1,0 +1,38 @@
+% Native author-year bibliography and generated, page-aware Chinese index.
+\newenvironment{BookBibliography}{%
+  \setstretch{1.2}%
+  \begin{list}{}{%
+    \setlength{\labelwidth}{6em}%
+    \setlength{\labelsep}{1em}%
+    \setlength{\leftmargin}{7em}%
+    \setlength{\itemsep}{0.3\baselineskip}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\itemindent}{0pt}%
+  }\sloppy
+}{\end{list}}
+
+\makeindex
+\input{\subfix{backmatter/index-marks.tex}}
+\newcommand{\BookIndexMark}[1]{%
+  \label{bookindex:#1}%
+  \csname BookIndexPoint@#1\endcsname
+}
+\newcommand{\BookIndexLetter}[1]{%
+  \par\addvspace{0.8\baselineskip}%
+  {\sffamily\bfseries\color{chatgpt-green}#1}\par\nopagebreak
+}
+\providecommand{\seename}{见}
+\renewcommand{\seename}{见}
+\providecommand{\alsoname}{另见}
+\renewcommand{\alsoname}{另见}
+\makeatletter
+% The numbered chapter heading is supplied by main.tex, as for every chapter.
+\renewenvironment{theindex}{%
+  \begingroup\setstretch{1.15}\small
+  \setlength{\columnsep}{14mm}%
+  \begin{multicols}{4}%
+  \setlength{\parindent}{0pt}%
+  \setlength{\parskip}{0pt plus 0.3pt}%
+  \let\item\@idxitem
+}{\end{multicols}\endgroup}
+\makeatother

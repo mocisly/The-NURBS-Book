@@ -1,0 +1,26 @@
+% Fig3.5: cubic strong convex hull, active P1..P4 on [u4,u5).
+% Representative controls match Fig3.4; clamped uniform thirds.
+% Exact Cox-de Boor geometry; no tracing.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (-0.4,4);
+\coordinate (P2) at (5,4);
+\coordinate (P3) at (2.3,-2);
+\coordinate (P4) at (10.5,-2);
+\coordinate (P5) at (8.5,2);
+\draw[book grid] (P0)--(P1)--(P2)--(P3)--(P4)--(P5);
+\draw[dashed,book grid] (P1)--(P3) (P2)--(P4);
+\draw (0,0) .. controls (-0.4,4) and (2.3,4) .. (3.2,3);
+\draw[dashed] (3.2,3) .. controls (4.1,2) and (3.2,0) .. (4.8,-1);
+\draw (4.8,-1) .. controls (6.4,-2) and (10.5,-2) .. (8.5,2);
+\fill (3.2,3) circle[radius=1.7pt];
+\fill (4.8,-1) circle[radius=1.7pt];
+\foreach \i in {0,...,5} \node[book point] at (P\i) {};
+\node at (6,1) {$u\in[u_4,u_5)$};
+\node[below left=4pt] at (P0) {$\mathbf P_{0}$};
+\node[above left=4pt] at (P1) {$\mathbf P_{1}$};
+\node[above right=4pt] at (P2) {$\mathbf P_{2}$};
+\node[below left=4pt] at (P3) {$\mathbf P_{3}$};
+\node[below right=4pt] at (P4) {$\mathbf P_{4}$};
+\node[above=4pt] at (P5) {$\mathbf P_{5}$};
+\end{tikzpicture}

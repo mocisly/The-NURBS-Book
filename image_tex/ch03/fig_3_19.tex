@@ -1,0 +1,33 @@
+% Printed Fig3.18, source19: representative symmetric six-control polygon.
+% Clamped cubic needs10 knots: U=(0,0,0,0,1/4,3/4,1,1,1,1).
+% All three derivative arrows at u=2/5, display scale2/5 from text.
+% Exact recursive derivative controls and native cubic segments, no tracing.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\coordinate (P0) at (2,0);
+\coordinate (P1) at (0,5);
+\coordinate (P2) at (3.5,7.5);
+\coordinate (P3) at (7.5,7.5);
+\coordinate (P4) at (11,5);
+\coordinate (P5) at (9,0);
+\draw[book grid] (P0)--(P1)--(P2)--(P3)--(P4)--(P5);
+\draw (2,0) .. controls (0,5) and (1.1666666667,5.8333333333) .. (2.2777777778,6.3888888889);
+\draw (2.2777777778,6.3888888889) .. controls (4.5,7.5) and (6.5,7.5) .. (8.7222222222,6.3888888889);
+\draw (8.7222222222,6.3888888889) .. controls (9.8333333333,5.8333333333) and (11,5) .. (9,0);
+\draw[book axis] (4.2297777778,7.0888888889)--(9.3391111111,8.1555555556);
+\node[above right=5pt] at (9.3391111111,8.1555555556) {$\mathbf C^{(1)}\!\left(\frac25\right)$};
+\draw[book axis] (4.2297777778,7.0888888889)--(3.3764444444,-3.5777777778);
+\node[right=5pt] at (3.3764444444,-3.5777777778) {$\mathbf C^{(2)}\!\left(\frac25\right)$};
+\draw[book axis] (4.2297777778,7.0888888889)--(12.7631111111,7.0888888889);
+\node[right=5pt] at (12.7631111111,7.0888888889) {$\mathbf C^{(3)}\!\left(\frac25\right)$};
+\foreach \i in {0,...,5} \node[book point] at (P\i) {};
+\fill (2.2777777778,6.3888888889) circle[radius=1.7pt];
+\fill (8.7222222222,6.3888888889) circle[radius=1.7pt];
+\node[book point] at (4.2297777778,7.0888888889) {};
+\node[below right=6pt] at (4.2297777778,7.0888888889) {$\mathbf C\!\left(\frac25\right)$};
+\node[below left=5pt] at (P0) {$\mathbf P_{0}$};
+\node[left=5pt] at (P1) {$\mathbf P_{1}$};
+\node[above=5pt] at (P2) {$\mathbf P_{2}$};
+\node[above=14pt] at (P3) {$\mathbf P_{3}$};
+\node[right=5pt] at (P4) {$\mathbf P_{4}$};
+\node[below right=5pt] at (P5) {$\mathbf P_{5}$};
+\end{tikzpicture}

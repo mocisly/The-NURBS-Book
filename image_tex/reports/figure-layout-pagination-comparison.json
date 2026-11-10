@@ -1,0 +1,920 @@
+{
+  "previous_pdf_sha256": "a733097fbd11278775eea90a5cfb0853341811f2d6161265f3608226e242cdcc",
+  "current_pdf_sha256": "8aa4fd209e0df80ac719093008b9d492576e3a58eca1d3d3acbcb6ee55039b5b",
+  "comparison": "Body words and positions rounded to 0.001 PDF point; running headers and footer page numbers excluded. Native source hashes and all 435 placed box dimensions independently verified.",
+  "identical_body_layout_pages": [
+    {
+      "page": 1,
+      "previous_pages": [
+        1
+      ]
+    },
+    {
+      "page": 2,
+      "previous_pages": [
+        2
+      ]
+    },
+    {
+      "page": 3,
+      "previous_pages": [
+        3
+      ]
+    },
+    {
+      "page": 4,
+      "previous_pages": [
+        4
+      ]
+    },
+    {
+      "page": 7,
+      "previous_pages": [
+        7
+      ]
+    },
+    {
+      "page": 8,
+      "previous_pages": [
+        8
+      ]
+    },
+    {
+      "page": 9,
+      "previous_pages": [
+        9
+      ]
+    },
+    {
+      "page": 10,
+      "previous_pages": [
+        10
+      ]
+    },
+    {
+      "page": 11,
+      "previous_pages": [
+        11
+      ]
+    },
+    {
+      "page": 12,
+      "previous_pages": [
+        12
+      ]
+    },
+    {
+      "page": 13,
+      "previous_pages": [
+        13
+      ]
+    },
+    {
+      "page": 14,
+      "previous_pages": [
+        14
+      ]
+    },
+    {
+      "page": 15,
+      "previous_pages": [
+        15
+      ]
+    },
+    {
+      "page": 16,
+      "previous_pages": [
+        16
+      ]
+    },
+    {
+      "page": 17,
+      "previous_pages": [
+        17
+      ]
+    },
+    {
+      "page": 18,
+      "previous_pages": [
+        18
+      ]
+    },
+    {
+      "page": 19,
+      "previous_pages": [
+        19
+      ]
+    },
+    {
+      "page": 20,
+      "previous_pages": [
+        20
+      ]
+    },
+    {
+      "page": 21,
+      "previous_pages": [
+        21
+      ]
+    },
+    {
+      "page": 22,
+      "previous_pages": [
+        22
+      ]
+    },
+    {
+      "page": 23,
+      "previous_pages": [
+        23
+      ]
+    },
+    {
+      "page": 24,
+      "previous_pages": [
+        24
+      ]
+    },
+    {
+      "page": 25,
+      "previous_pages": [
+        25
+      ]
+    },
+    {
+      "page": 26,
+      "previous_pages": [
+        26
+      ]
+    },
+    {
+      "page": 27,
+      "previous_pages": [
+        27
+      ]
+    },
+    {
+      "page": 28,
+      "previous_pages": [
+        28
+      ]
+    },
+    {
+      "page": 29,
+      "previous_pages": [
+        29
+      ]
+    },
+    {
+      "page": 30,
+      "previous_pages": [
+        30
+      ]
+    },
+    {
+      "page": 31,
+      "previous_pages": [
+        31
+      ]
+    },
+    {
+      "page": 32,
+      "previous_pages": [
+        32
+      ]
+    },
+    {
+      "page": 33,
+      "previous_pages": [
+        33
+      ]
+    },
+    {
+      "page": 34,
+      "previous_pages": [
+        34
+      ]
+    },
+    {
+      "page": 35,
+      "previous_pages": [
+        35
+      ]
+    },
+    {
+      "page": 36,
+      "previous_pages": [
+        36
+      ]
+    },
+    {
+      "page": 37,
+      "previous_pages": [
+        37
+      ]
+    },
+    {
+      "page": 38,
+      "previous_pages": [
+        38
+      ]
+    },
+    {
+      "page": 39,
+      "previous_pages": [
+        39
+      ]
+    },
+    {
+      "page": 40,
+      "previous_pages": [
+        40
+      ]
+    },
+    {
+      "page": 41,
+      "previous_pages": [
+        41
+      ]
+    },
+    {
+      "page": 42,
+      "previous_pages": [
+        42
+      ]
+    },
+    {
+      "page": 43,
+      "previous_pages": [
+        43
+      ]
+    },
+    {
+      "page": 44,
+      "previous_pages": [
+        44
+      ]
+    },
+    {
+      "page": 45,
+      "previous_pages": [
+        45
+      ]
+    },
+    {
+      "page": 46,
+      "previous_pages": [
+        46
+      ]
+    },
+    {
+      "page": 47,
+      "previous_pages": [
+        47
+      ]
+    },
+    {
+      "page": 48,
+      "previous_pages": [
+        48
+      ]
+    },
+    {
+      "page": 49,
+      "previous_pages": [
+        49
+      ]
+    },
+    {
+      "page": 50,
+      "previous_pages": [
+        50
+      ]
+    },
+    {
+      "page": 51,
+      "previous_pages": [
+        51
+      ]
+    },
+    {
+      "page": 52,
+      "previous_pages": [
+        52
+      ]
+    },
+    {
+      "page": 53,
+      "previous_pages": [
+        53
+      ]
+    },
+    {
+      "page": 54,
+      "previous_pages": [
+        54
+      ]
+    },
+    {
+      "page": 55,
+      "previous_pages": [
+        55
+      ]
+    },
+    {
+      "page": 56,
+      "previous_pages": [
+        56
+      ]
+    },
+    {
+      "page": 57,
+      "previous_pages": [
+        57
+      ]
+    },
+    {
+      "page": 58,
+      "previous_pages": [
+        58
+      ]
+    },
+    {
+      "page": 59,
+      "previous_pages": [
+        59
+      ]
+    },
+    {
+      "page": 60,
+      "previous_pages": [
+        60
+      ]
+    },
+    {
+      "page": 61,
+      "previous_pages": [
+        61
+      ]
+    },
+    {
+      "page": 62,
+      "previous_pages": [
+        62
+      ]
+    },
+    {
+      "page": 63,
+      "previous_pages": [
+        63
+      ]
+    },
+    {
+      "page": 64,
+      "previous_pages": [
+        64
+      ]
+    },
+    {
+      "page": 65,
+      "previous_pages": [
+        65
+      ]
+    },
+    {
+      "page": 66,
+      "previous_pages": [
+        66
+      ]
+    },
+    {
+      "page": 67,
+      "previous_pages": [
+        67
+      ]
+    },
+    {
+      "page": 68,
+      "previous_pages": [
+        68
+      ]
+    },
+    {
+      "page": 69,
+      "previous_pages": [
+        69
+      ]
+    },
+    {
+      "page": 70,
+      "previous_pages": [
+        70
+      ]
+    },
+    {
+      "page": 71,
+      "previous_pages": [
+        71
+      ]
+    },
+    {
+      "page": 72,
+      "previous_pages": [
+        72
+      ]
+    },
+    {
+      "page": 73,
+      "previous_pages": [
+        73
+      ]
+    },
+    {
+      "page": 74,
+      "previous_pages": [
+        74
+      ]
+    },
+    {
+      "page": 75,
+      "previous_pages": [
+        75
+      ]
+    },
+    {
+      "page": 76,
+      "previous_pages": [
+        76
+      ]
+    },
+    {
+      "page": 77,
+      "previous_pages": [
+        77
+      ]
+    },
+    {
+      "page": 78,
+      "previous_pages": [
+        78
+      ]
+    },
+    {
+      "page": 79,
+      "previous_pages": [
+        79
+      ]
+    },
+    {
+      "page": 80,
+      "previous_pages": [
+        80
+      ]
+    },
+    {
+      "page": 81,
+      "previous_pages": [
+        81
+      ]
+    },
+    {
+      "page": 82,
+      "previous_pages": [
+        82
+      ]
+    },
+    {
+      "page": 83,
+      "previous_pages": [
+        83
+      ]
+    },
+    {
+      "page": 84,
+      "previous_pages": [
+        84
+      ]
+    },
+    {
+      "page": 86,
+      "previous_pages": [
+        87
+      ]
+    },
+    {
+      "page": 87,
+      "previous_pages": [
+        88
+      ]
+    },
+    {
+      "page": 88,
+      "previous_pages": [
+        89
+      ]
+    },
+    {
+      "page": 89,
+      "previous_pages": [
+        90
+      ]
+    },
+    {
+      "page": 90,
+      "previous_pages": [
+        91
+      ]
+    },
+    {
+      "page": 91,
+      "previous_pages": [
+        92
+      ]
+    },
+    {
+      "page": 92,
+      "previous_pages": [
+        93
+      ]
+    },
+    {
+      "page": 93,
+      "previous_pages": [
+        94
+      ]
+    },
+    {
+      "page": 94,
+      "previous_pages": [
+        95
+      ]
+    },
+    {
+      "page": 95,
+      "previous_pages": [
+        96
+      ]
+    },
+    {
+      "page": 96,
+      "previous_pages": [
+        97
+      ]
+    },
+    {
+      "page": 97,
+      "previous_pages": [
+        98
+      ]
+    },
+    {
+      "page": 98,
+      "previous_pages": [
+        99
+      ]
+    },
+    {
+      "page": 99,
+      "previous_pages": [
+        100
+      ]
+    },
+    {
+      "page": 100,
+      "previous_pages": [
+        101
+      ]
+    },
+    {
+      "page": 101,
+      "previous_pages": [
+        102
+      ]
+    },
+    {
+      "page": 102,
+      "previous_pages": [
+        103
+      ]
+    },
+    {
+      "page": 103,
+      "previous_pages": [
+        104
+      ]
+    },
+    {
+      "page": 104,
+      "previous_pages": [
+        105
+      ]
+    },
+    {
+      "page": 105,
+      "previous_pages": [
+        106
+      ]
+    },
+    {
+      "page": 106,
+      "previous_pages": [
+        107
+      ]
+    },
+    {
+      "page": 107,
+      "previous_pages": [
+        108
+      ]
+    },
+    {
+      "page": 108,
+      "previous_pages": [
+        109
+      ]
+    },
+    {
+      "page": 109,
+      "previous_pages": [
+        110
+      ]
+    },
+    {
+      "page": 110,
+      "previous_pages": [
+        111
+      ]
+    },
+    {
+      "page": 111,
+      "previous_pages": [
+        112
+      ]
+    },
+    {
+      "page": 112,
+      "previous_pages": [
+        113
+      ]
+    },
+    {
+      "page": 115,
+      "previous_pages": [
+        117
+      ]
+    },
+    {
+      "page": 116,
+      "previous_pages": [
+        118
+      ]
+    },
+    {
+      "page": 117,
+      "previous_pages": [
+        119
+      ]
+    },
+    {
+      "page": 118,
+      "previous_pages": [
+        120
+      ]
+    },
+    {
+      "page": 119,
+      "previous_pages": [
+        121
+      ]
+    },
+    {
+      "page": 120,
+      "previous_pages": [
+        122
+      ]
+    },
+    {
+      "page": 121,
+      "previous_pages": [
+        123
+      ]
+    },
+    {
+      "page": 122,
+      "previous_pages": [
+        124
+      ]
+    },
+    {
+      "page": 123,
+      "previous_pages": [
+        125
+      ]
+    },
+    {
+      "page": 124,
+      "previous_pages": [
+        126
+      ]
+    },
+    {
+      "page": 125,
+      "previous_pages": [
+        127
+      ]
+    },
+    {
+      "page": 126,
+      "previous_pages": [
+        128
+      ]
+    },
+    {
+      "page": 127,
+      "previous_pages": [
+        129
+      ]
+    },
+    {
+      "page": 128,
+      "previous_pages": [
+        130
+      ]
+    },
+    {
+      "page": 129,
+      "previous_pages": [
+        131
+      ]
+    },
+    {
+      "page": 130,
+      "previous_pages": [
+        132
+      ]
+    },
+    {
+      "page": 131,
+      "previous_pages": [
+        133
+      ]
+    },
+    {
+      "page": 132,
+      "previous_pages": [
+        134
+      ]
+    },
+    {
+      "page": 133,
+      "previous_pages": [
+        135
+      ]
+    },
+    {
+      "page": 134,
+      "previous_pages": [
+        136
+      ]
+    },
+    {
+      "page": 135,
+      "previous_pages": [
+        137
+      ]
+    },
+    {
+      "page": 136,
+      "previous_pages": [
+        138
+      ]
+    },
+    {
+      "page": 137,
+      "previous_pages": [
+        139
+      ]
+    },
+    {
+      "page": 138,
+      "previous_pages": [
+        140
+      ]
+    },
+    {
+      "page": 139,
+      "previous_pages": [
+        141
+      ]
+    },
+    {
+      "page": 140,
+      "previous_pages": [
+        142
+      ]
+    },
+    {
+      "page": 141,
+      "previous_pages": [
+        143
+      ]
+    },
+    {
+      "page": 142,
+      "previous_pages": [
+        144
+      ]
+    },
+    {
+      "page": 143,
+      "previous_pages": [
+        145
+      ]
+    },
+    {
+      "page": 144,
+      "previous_pages": [
+        146
+      ]
+    },
+    {
+      "page": 145,
+      "previous_pages": [
+        147
+      ]
+    },
+    {
+      "page": 146,
+      "previous_pages": [
+        148
+      ]
+    },
+    {
+      "page": 147,
+      "previous_pages": [
+        149
+      ]
+    },
+    {
+      "page": 148,
+      "previous_pages": [
+        150
+      ]
+    },
+    {
+      "page": 149,
+      "previous_pages": [
+        151
+      ]
+    },
+    {
+      "page": 150,
+      "previous_pages": [
+        152
+      ]
+    },
+    {
+      "page": 151,
+      "previous_pages": [
+        153
+      ]
+    },
+    {
+      "page": 152,
+      "previous_pages": [
+        154
+      ]
+    },
+    {
+      "page": 153,
+      "previous_pages": [
+        155
+      ]
+    },
+    {
+      "page": 154,
+      "previous_pages": [
+        156
+      ]
+    },
+    {
+      "page": 155,
+      "previous_pages": [
+        157
+      ]
+    },
+    {
+      "page": 156,
+      "previous_pages": [
+        158
+      ]
+    }
+  ],
+  "pages_requiring_new_visual_review": [
+    5,
+    6,
+    85,
+    113,
+    114
+  ]
+}

@@ -1,0 +1,39 @@
+% Fig. 1.23: representative power-basis patch, not recovered numeric scan data.
+% S(u,v)=(3-2v,4u-.5,1.5+1.2v-1.2(u-.5)^2-.6(v-.5)^2).
+% Isoparametric curves meet exactly at (u0,v0)=(.38,.48).
+\begin{tikzpicture}[x={(-1.4cm,-.15cm)},y={(.9cm,-.35cm)},
+  z={(0cm,1.2cm)},book line,line cap=round,line join=round,scale=\BookGeometryScale]
+  \def\u{(\t/160)}
+  \pgfmathdeclarefunction{patchz}{2}{\pgfmathparse{1.5+1.2*#2-1.2*(#1-.5)^2-.6*(#2-.5)^2}}
+  \draw[book axis,line width=.45pt] (0,0,0)--(4,0,0) node[below left] {$x$};
+  \draw[book axis,line width=.45pt] (0,0,0)--(0,4.5,0) node[below right] {$y$};
+  \draw[book axis,line width=.45pt] (0,0,0)--(0,0,3.1) node[above] {$z$};
+  \foreach \v in {0,1}
+    \draw plot[variable=\t,domain=0:160,samples=161] ({3-2*\v},{4*\u-.5},{patchz(\u,\v)});
+  \foreach \uvalue in {0,1}
+    \draw plot[variable=\t,domain=0:160,samples=161] ({3-2*\u},{4*\uvalue-.5},{patchz(\uvalue,\u)});
+  \draw plot[variable=\t,domain=0:160,samples=161] ({3-2*\u},{4*.38-.5},{patchz(.38,\u)});
+  \draw plot[variable=\t,domain=0:160,samples=161] ({3-2*.48},{4*\u-.5},{patchz(\u,.48)});
+  \foreach \a/\b/\pos in {0/0/left,1/0/below,0/1/above left,1/1/right}
+    \fill ({3-2*\b},{4*\a-.5},{patchz(\a,\b)}) circle (1.4pt)
+      node[\pos] {$\mathbf S(\a,\b)$};
+  \coordinate (crossing) at ({3-2*.48},{4*.38-.5},{patchz(.38,.48)});
+  \fill (crossing) circle (1.5pt);
+  \node at (canvas cs:x=-4cm,y=.25cm) {$\mathbf S(u_0,v_0)$};
+  \draw[-{Stealth[length=4pt]},line width=.35pt]
+    (canvas cs:x=-3.3cm,y=.4cm)--([xshift=-3pt,yshift=-3pt]crossing);
+  \node at (canvas cs:x=-3.8cm,y=2.8cm) {$\mathbf C_{u_0}(v)$};
+  \draw[-{Stealth[length=4pt]},line width=.35pt]
+    (canvas cs:x=-3.15cm,y=2.65cm)--({3-2*.68},{4*.38-.5},{patchz(.38,.68)});
+  \node[above,yshift=4pt] at ({3-2*.48},{4*.75-.5},{patchz(.75,.48)}) {$\mathbf C_{v_0}(u)$};
+  \begin{scope}[x=1cm,y=1cm,xshift=-2.4cm,yshift=-3.6cm]
+    \draw[line width=.45pt] (0,0) rectangle (2.8,1.25);
+    \draw[line width=.45pt] (1.064,0)--(1.064,1.25);
+    \draw[line width=.45pt] (0,.6)--(2.8,.6);
+    \fill (1.064,.6) circle (1.4pt) node[above right] {$(u_0,v_0)$};
+    \draw[book axis,line width=.45pt] (0,-.35)--(2.8,-.35) node[right] {$u$};
+    \draw[book axis,line width=.45pt] (-.35,0)--(-.35,1.25) node[above] {$v$};
+    \draw[-{Stealth[length=5pt]},line width=.45pt] (1.4,1.5)--(.8,2.3)
+      node[midway,right] {$\mathbf S$};
+  \end{scope}
+\end{tikzpicture}

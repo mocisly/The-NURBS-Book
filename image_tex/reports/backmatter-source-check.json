@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "preserved_native_sources": 436,
+  "preserved_figure_calls": 435,
+  "preserved_minted_blocks": 109,
+  "bibliography_entries": 173,
+  "unique_cited_keys": 167,
+  "citation_groups_migrated": 162,
+  "index_entries": 359,
+  "index_source_locations": 251,
+  "original_numeric_index_lines_covered": 363,
+  "original_running_header_lines_removed": [
+    434,
+    806
+  ],
+  "body_text_and_formulas_unchanged_except_citations_and_invisible_marks": true
+}

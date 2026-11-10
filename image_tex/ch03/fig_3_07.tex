@@ -1,0 +1,37 @@
+% Fig3.7: cubic U=(0,0,0,0,1/4,1/2,3/4,1,1,1,1).
+% Representative coordinates; only P4 moves, from (5,-2) to (17/2,-1).
+% Modified minus original is exactly N4,3(u)*(P4prime-P4); no tracing.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (4,0);
+\coordinate (P2) at (4,4);
+\coordinate (P3) at (9,4);
+\coordinate (P4) at (5,-2);
+\coordinate (P5) at (10,-4);
+\coordinate (P6) at (2,-4);
+\coordinate (Q4) at (8.5,-1);
+\draw[book grid] (P0)--(P1)--(P2)--(P3)--(P4)--(P5)--(P6);
+\draw[book grid,dashed] (P3)--(Q4)--(P5);
+\draw (0,0) .. controls (4,0) and (4,2) .. (4.8333333333,3);
+\draw (4.8333333333,3) .. controls (5.6666666667,4) and (7.3333333333,4) .. (7.5,3);
+\draw (7.5,3) .. controls (7.6666666667,2) and (6.3333333333,0) .. (6.9166666667,-1.5);
+\draw (6.9166666667,-1.5) .. controls (7.5,-3) and (10,-4) .. (2,-4);
+\draw[dashed] (4.8333333333,3) .. controls (5.6666666667,4) and (7.3333333333,4) .. (8.0833333333,3.1666666667);
+\draw[dashed] (8.0833333333,3.1666666667) .. controls (8.8333333333,2.3333333333) and (8.6666666667,0.6666666667) .. (8.9583333333,-0.9166666667);
+\draw[dashed] (8.9583333333,-0.9166666667) .. controls (9.25,-2.5) and (10,-4) .. (2,-4);
+\fill (4.8333333333,3) circle[radius=1.7pt];
+\fill (7.5,3) circle[radius=1.7pt];
+\fill (6.9166666667,-1.5) circle[radius=1.7pt];
+\fill (8.0833333333,3.1666666667) circle[radius=1.7pt];
+\fill (8.9583333333,-0.9166666667) circle[radius=1.7pt];
+\foreach \i in {0,...,6} \node[book point] at (P\i) {};
+\node[book point] at (Q4) {};
+\node[left=5pt] at (Q4) {$\mathbf P'_4$};
+\node[below left=4pt] at (P0) {$\mathbf P_{0}$};
+\node[below left=4pt] at (P1) {$\mathbf P_{1}$};
+\node[above left=4pt] at (P2) {$\mathbf P_{2}$};
+\node[above right=4pt] at (P3) {$\mathbf P_{3}$};
+\node[below left=4pt] at (P4) {$\mathbf P_{4}$};
+\node[below right=4pt] at (P5) {$\mathbf P_{5}$};
+\node[below left=4pt] at (P6) {$\mathbf P_{6}$};
+\end{tikzpicture}

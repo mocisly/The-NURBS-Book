@@ -1,0 +1,41 @@
+% Fig. 1.15: exact Bernstein functions and derivatives; no scan tracing.
+% (a) B'25=5(B14-B24). (b) B'i3=3(B(i-1)2-Bi2), i=0,...,3.
+\begin{tikzpicture}[x=6cm,y=1.6cm,book line,line cap=round,scale=\BookGeometryScale]
+  \begin{scope}
+    \path[book figure bounds] (-.66cm,-3.6cm) rectangle (6.96cm,3.8cm);
+    \draw[book axis,line width=.45pt] (0,0)--(1.09,0) node[right] {$u$};
+    \draw[book axis,line width=.45pt] (0,-1.4)--(0,1.85);
+    \node[below left] at (0,0) {$0$};
+    \draw[line width=.45pt] (1,0)--++(0,-2pt) node[below] {$1$};
+    \foreach \y in {-1,1}
+      \draw[line width=.45pt] (0,\y)--++(-2pt,0) node[left] {$\y$};
+    \draw[line width=.5pt] plot[variable=\u,domain=0:1,samples=151] ({\u},{4*\u*(1-\u)^3});
+    \draw[line width=.5pt] plot[variable=\u,domain=0:1,samples=151] ({\u},{6*\u^2*(1-\u)^2});
+    \draw[line width=.5pt,dashed] plot[variable=\u,domain=0:1,samples=151] ({\u},{10*\u^2*(1-\u)^3});
+    \draw plot[variable=\u,domain=0:1,samples=151] ({\u},{20*\u*(1-\u)^3-30*\u^2*(1-\u)^2});
+    \node at (.18,1.65) {$B'_{2,5}$};
+    \node at (.17,.69) {$B_{1,4}$};
+    \node at (.83,.57) {$B_{2,4}$};
+    \draw[-{Stealth[length=4pt]},line width=.45pt] (.57,.95)
+      node[above] {$B_{2,5}$} -- (.57,.25831);
+    \node[book panel tag] at (3cm,-3.3cm) {(a)};
+  \end{scope}
+  \begin{scope}[xshift=8cm,y=.85cm]
+    \path[book figure bounds] (-.66cm,-3.6cm) rectangle (6.96cm,3.8cm);
+    \draw[book axis,line width=.45pt] (0,0)--(1.09,0) node[right] {$u$};
+    \draw[book axis,line width=.45pt] (0,-3.2)--(0,3.5);
+    \node[below left] at (0,0) {$0$};
+    \draw[line width=.45pt] (1,0)--++(0,-2pt) node[below] {$1$};
+    \foreach \y in {-3,3}
+      \draw[line width=.45pt] (0,\y)--++(-2pt,0) node[left] {$\y$};
+    \draw plot[variable=\u,domain=0:1,samples=121] ({\u},{-3*(1-\u)^2});
+    \draw plot[variable=\u,domain=0:1,samples=121] ({\u},{3*(1-\u)*(1-3*\u)});
+    \draw plot[variable=\u,domain=0:1,samples=121] ({\u},{3*\u*(2-3*\u)});
+    \draw plot[variable=\u,domain=0:1,samples=121] ({\u},{3*\u^2});
+    \node at (.16,2.8) {$B'_{1,3}$};
+    \node at (.8,2.8) {$B'_{3,3}$};
+    \node at (.18,-2.85) {$B'_{0,3}$};
+    \node at (.78,-2.85) {$B'_{2,3}$};
+    \node[book panel tag] at (3cm,-3.3cm) {(b)};
+  \end{scope}
+\end{tikzpicture}

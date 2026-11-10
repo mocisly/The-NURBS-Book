@@ -1,0 +1,65 @@
+% Fig5.5: K=(0,0,0,0,2,3,3,3,3), insert ubar=1 three times.
+% Representative5-point cubic; exact Eq5.15 interpolation triangle, invariant polynomial curve.
+% Every visible Q is computed, never positioned from a scanned contour.
+\begin{tikzpicture}[book line,x=1cm,y=1cm,scale=\BookGeometryScale]
+\path[book figure bounds] (-1.3,-4.85) rectangle (12,7.35);
+\begin{scope}[yshift=1.6cm]
+\draw[book grid] (0,0)--(0,2.6)--(3.6,5)--(9,3.5)--(9,0);
+\draw[book grid] (0,1.3)--(1.2,3.4)--(5.4,4.5);
+\draw[book grid] (0.6,2.35)--(2.6,3.7666666667);
+\draw[book grid,dashed] (0,0)--(0,1.3)--(0.6,2.35)--(1.6,3.0583333333)--(2.6,3.7666666667)--(5.4,4.5)--(9,3.5)--(9,0);
+\draw (0,0) .. controls (0,2.6) and (2.4,4.2) .. (5.6,4.0666666667);
+\draw (5.6,4.0666666667) .. controls (7.2,4) and (9,3.5) .. (9,0);
+\draw (0,0) circle[radius=1.8pt];
+\node[below left=5pt] at (0,0) {$\mathbf P_0$};
+\draw (0,2.6) circle[radius=1.8pt];
+\node[left=5pt] at (0,2.6) {$\mathbf P_1$};
+\draw (3.6,5) circle[radius=1.8pt];
+\node[above=5pt] at (3.6,5) {$\mathbf P_2$};
+\draw (9,3.5) circle[radius=1.8pt];
+\node[above right=5pt] at (9,3.5) {$\mathbf P_3$};
+\draw (9,0) circle[radius=1.8pt];
+\node[below right=5pt] at (9,0) {$\mathbf P_4$};
+\fill (0,1.3) circle[radius=1.7pt];
+\node[left=5pt] at (0,1.3) {$\mathbf Q_{1,1}$};
+\fill (1.2,3.4) circle[radius=1.7pt];
+\node[above left=5pt] at (1.2,3.4) {$\mathbf Q_{2,1}$};
+\fill (5.4,4.5) circle[radius=1.7pt];
+\node[above=5pt] at (5.4,4.5) {$\mathbf Q_{3,1}$};
+\fill (0.6,2.35) circle[radius=1.7pt];
+\node[below right=5pt] at (0.6,2.35) {$\mathbf Q_{2,2}$};
+\fill (2.6,3.7666666667) circle[radius=1.7pt];
+\node[above right=5pt] at (2.6,3.7666666667) {$\mathbf Q_{3,2}$};
+\fill (1.6,3.0583333333) circle[radius=1.7pt];
+\node[below right=5pt] at (1.6,3.0583333333) {$\mathbf Q_{3,3}$};
+\end{scope}
+\draw[book grid] (0,0)--(10,0);
+\draw[book grid] (-0.09,-0.1)--(-0.09,0.1);
+\draw[book grid] (-0.03,-0.1)--(-0.03,0.1);
+\draw[book grid] (0.03,-0.1)--(0.03,0.1);
+\draw[book grid] (0.09,-0.1)--(0.09,0.1);
+\node[above=5pt] at (0,0.1) {$0$};
+\draw[book grid] (6.4,-0.1)--(6.4,0.1);
+\node[above=5pt] at (6.4,0.1) {$2$};
+\draw[book grid] (9.51,-0.1)--(9.51,0.1);
+\draw[book grid] (9.57,-0.1)--(9.57,0.1);
+\draw[book grid] (9.63,-0.1)--(9.63,0.1);
+\draw[book grid] (9.69,-0.1)--(9.69,0.1);
+\node[above=5pt] at (9.6,0.1) {$3$};
+\draw[book axis] (3.2,.85)--(3.2,.1) node[pos=0,above=4pt] {$\bar u=1$};
+\draw[book grid] (0,-0.7)--(0,-0.8)--(6.4,-0.8)--(6.4,-0.7);
+\draw (3.2,-0.8) circle[radius=1.3pt];
+\draw[book grid] (0,-1.15)--(0,-1.25)--(9.6,-1.25)--(9.6,-1.15);
+\draw (3.2,-1.25) circle[radius=1.3pt];
+\draw[book grid] (0,-1.6)--(0,-1.7)--(9.6,-1.7)--(9.6,-1.6);
+\draw (3.2,-1.7) circle[radius=1.3pt];
+\draw[book grid] (0,-2.5)--(0,-2.6)--(6.4,-2.6)--(6.4,-2.5);
+\draw (3.2,-2.6) circle[radius=1.3pt];
+\draw[book grid] (0,-2.95)--(0,-3.05)--(9.6,-3.05)--(9.6,-2.95);
+\draw (3.2,-3.05) circle[radius=1.3pt];
+\draw[book grid] (0,-3.9)--(0,-4)--(6.4,-4)--(6.4,-3.9);
+\draw (3.2,-4) circle[radius=1.3pt];
+\node[right=5pt] at (10.5,-1.25) {$r=1$};
+\node[right=5pt] at (10.5,-2.825) {$r=2$};
+\node[right=5pt] at (10.5,-4) {$r=3$};
+\end{tikzpicture}

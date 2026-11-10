@@ -1,0 +1,17 @@
+% Fig. 1.13(b): exact degree-2 Bernstein basis.
+\begin{tikzpicture}[x=6cm,y=3.7cm,book line,line cap=round,scale=\BookGeometryScale]
+\path[book figure bounds] (-.11,-.35) rectangle (1.16,1.18);
+\draw[book axis,line width=.45pt] (0,0)--(1.09,0) node[right] {$u$};
+\draw[book axis,line width=.45pt] (0,0)--(0,1.12);
+\node[below left] at (0,0) {$0$};
+\foreach \x/\label in {.5/{\frac12},1/1}
+  \draw[line width=.45pt] (\x,0)--++(0,-2pt) node[below] {$\label$};
+\draw[line width=.45pt] (0,1)--++(-2pt,0) node[left] {$1$};
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{1*(1-\u)^2});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{2*\u*(1-\u)});
+\draw plot[variable=\u,domain=0:1,samples=121] ({\u},{1*\u^2});
+\node at (0.25,0.85) {$B_{0,2}$};
+\node at (0.5,0.62) {$B_{1,2}$};
+\node at (0.75,0.85) {$B_{2,2}$};
+\node[book panel tag] at (.5,-.27) {(b) $n=2$};
+\end{tikzpicture}

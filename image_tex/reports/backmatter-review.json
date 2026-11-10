@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "pdf_sha256": "49d9ca48023ac5f3bce51b9906705843861a1fa6898c18e6a83890dbcd7ce173",
+  "detail_pages_reviewed": [
+    7,
+    8,
+    77,
+    138,
+    149,
+    150,
+    151
+  ],
+  "overview_sheets_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "retained_preview_pages": [
+    7,
+    149,
+    150,
+    151
+  ],
+  "render_comparison": {
+    "previous_reviewed_pdf_sha256": "1cba64b2b18a90129b89b89c9ae8e8b182c14b2b4754fdf2e9a1cd88aa11a459",
+    "unchanged_page_renders": 151,
+    "changed_page_renders": [
+      151
+    ],
+    "changed_files": [
+      "page-151.png",
+      "overview/page-151.png",
+      "overview/sheet-17.png"
+    ]
+  },
+  "review_notes": [
+    "Inspected all 152 pages in 17 overview sheets; reviewed chapter opening, citation-dense body pages, both bibliography pages, and the entire four-column index at larger scale.",
+    "Bibliography uses aligned labels and hanging entry text; local spacing fits A1 body typography with clear header/footer separation.",
+    "Index preserves three levels, pinyin/Latin letter groups, page ranges, and readable cross-references. Two repeated see-references found during review were corrected and the final index was inspected again.",
+    "After the alias correction, 151 page renders and all six other detail renders are byte-identical to the reviewed candidate. Only index page 151 changed; the updated page and overview sheet 17 were reviewed.",
+    "All 173 bibliography destinations, 276 citation links, 487 index page links, 359 terminal entries, 435 figure placements, 109 code blocks, and 61 numbered algorithms passed automated checks."
+  ]
+}

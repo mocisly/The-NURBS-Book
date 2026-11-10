@@ -1,19 +1,21 @@
 % !TeX program = xelatex
-\documentclass[zihao=false,linespread=1.5,heading=true,a4paper,oneside,fontset=windows]{ctexbook}
+\documentclass[zihao=false,linespread=1.5,heading=true,oneside,fontset=windows]{ctexbook}
 \usepackage[fontsize=11pt]{fontsize}
 \usepackage[utf8]{inputenc}
 \pagestyle{plain}
 % packages for page layout
 \usepackage{geometry}
 \geometry{
-    paperwidth=40cm,     % 加宽横向空间，适配错行布局
-    paperheight=80cm,    % 加高纵向空间
-    left=0.5cm,
-    right=0.5cm,
-    top=0.5cm,
-    bottom=0.5cm,
+    a1paper,            % ISO A1 portrait: 594 x 841 mm
+    left=22mm,
+    right=22mm,
+    top=20mm,
+    bottom=18mm,
+    includeheadfoot,    % Reserve space for running furniture inside the margins.
     marginparwidth=0cm,
-    headfoot=0cm
+    headheight=24pt,
+    headsep=12mm,
+    footskip=14mm
 }
 
 \usepackage{tocbibind} 
@@ -63,6 +65,24 @@
 % packages for graphics
 \usepackage{zhlipsum}
 \usepackage{graphicx}
+\providecommand{\HRule}{\par\noindent\rule{\linewidth}{0.4pt}\par}
+
+% Source listings: raw C text and mathematical algorithm sketches.
+\usepackage{minted}
+\setmonofont{Consolas}
+\setCJKmonofont{Microsoft YaHei}
+\definecolor{code-bg}{HTML}{272822}
+\setminted{
+    style=monokai,
+    bgcolor=code-bg,
+    fontsize=\small,
+    baselinestretch=1.1,
+    breaklines=true,
+    tabsize=4,
+    framesep=6pt,
+    xleftmargin=6pt,
+    xrightmargin=6pt
+}
 
 \graphicspath{ {./images/}{./images/} }
 \usepackage{wrapfig}
@@ -71,11 +91,25 @@
 \usepackage{cutwin}
 
 \usepackage{fancyhdr}
+\definecolor{book-muted}{HTML}{A6ADB4}
+\definecolor{book-rule}{HTML}{454B50}
+\newcommand{\BookRunningFont}{\sffamily\fontsize{9}{11}\selectfont\color{book-muted}}
+\newcommand{\BookFooter}{%
+    \fancyfoot{}%
+    \fancyfoot[L]{{\BookRunningFont\nouppercase{\rightmark}}}%
+    \fancyfoot[R]{{\sffamily\fontsize{12}{14}\selectfont\color{chatgpt-green}\thepage}}%
+    \renewcommand{\footrulewidth}{0.3pt}%
+}
 \pagestyle{fancy}
-\fancyhead{}
-\fancyhead[L]{\leftmark}
-\fancyfoot{}
-\fancyfoot[C]{\thepage}
+\fancyhf{}
+\fancyhead[L]{{\BookRunningFont\nouppercase{\leftmark}}}
+\fancyhead[R]{{\BookRunningFont THE NURBS BOOK}}
+\BookFooter
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{book-rule}\leaders\hrule height\headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{book-rule}\leaders\hrule height\footrulewidth\hfill}}
+% A chapter opening already carries its title; keep only the shared footer.
+\fancypagestyle{plain}{\fancyhead{}\BookFooter\renewcommand{\headrulewidth}{0pt}}
 
 % package for quotes
 \usepackage{csquotes}
@@ -128,6 +162,7 @@
 % package for hyperlinks
 \usepackage{multicol}
 \usepackage{tabularx}
+\usepackage{makeidx}
 \usepackage{hyperref}
 \hypersetup{citecolor=magenta,linkcolor=black,urlcolor=blue,hidelinks} % 设置引用链接颜色
 
@@ -136,6 +171,9 @@
 
 % package for subfiles
 \usepackage{subfiles}
+\input{\subfix{image_tex/common.tex}}
+\input{\subfix{image_tex/figure-layout.tex}}
+\input{\subfix{backmatter/setup.tex}}
 %=====================================================================================================================
 \begin{document}
 

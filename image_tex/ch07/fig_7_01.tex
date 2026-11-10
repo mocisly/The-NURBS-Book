@@ -1,0 +1,15 @@
+% Focus(2,0),directrix x=0,e=1: x=1+y^2/4 exactly.
+% The y-axis coincides with the directrix as required by Eq7.1; vertex is x=1.
+\begin{tikzpicture}[book line,x=1.3cm,y=1.3cm,scale=\BookGeometryScale]
+\path[book figure bounds] (-2,-4.2) rectangle (5.8,4.8);
+\draw[book axis] (-.6,0)--(5.2,0) node[right=4pt] {$x$};
+\draw[book axis] (0,-3.8)--(0,4.1) node[above right=4pt] {$y$};
+\node[above left=5pt] at (0,4.1) {$x=0$};
+\draw (3.56,-3.2) .. controls (0.04,-1) and (0.15,1.2) .. (3.89,3.4);
+\draw[book grid] (0,3)--(3.25,3)--(2,0);
+\draw[book grid] (0,2.84)--(.16,2.84)--(.16,3);
+\draw (0,3) circle[radius=1.8pt] node[left=6pt] {$\mathbf D(0,y)$};
+\draw (3.25,3) circle[radius=1.8pt] node[above left=8pt] {$\mathbf P(x,y)$};
+\draw (2,0) circle[radius=1.8pt] node[below right=6pt] {$\mathbf F(k,0)$};
+\node[below left=4pt] at (0,0) {$0$};
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+\begin{tikzpicture}[book line,font=\fontsize{10}{12}\selectfont,scale=\BookGeometryScale]
+\path[book figure bounds] (-4,-1.8) rectangle (14,5.8);
+\draw (3,5) rectangle (13,3.9);
+\node at (8,4.45) {\texttt{Err=5 in N\_capreb}};
+\draw (3,2.5) rectangle (13,1.4);
+\node at (8,1.95) {\texttt{Err=7 in N\_clqapr}};
+\draw (3,0) rectangle (13,-1.1);
+\node at (8,-0.55) {\texttt{Err=1 in M\_ludcmp}};
+\draw (-1.5,5) rectangle (-0.4,3.9);
+\node at (-0.95,4.45) {};
+\draw[book grid,book axis] (-.4,4.45)--(3,4.45);
+\node at (-.95,3.2) {\texttt{calling routine}};
+\draw[book grid,book axis] (8,0)--(8,1.4);
+\draw[book grid,book axis] (8,2.5)--(8,3.9);
+\end{tikzpicture}

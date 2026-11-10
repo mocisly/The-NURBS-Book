@@ -1,0 +1,172 @@
+{
+  "native_sources": {
+    "status": "all_native_sources_and_chapter_references_verified",
+    "active_original_references": 435,
+    "applied_native_drawings": 435,
+    "authored_manifest_sources": 436,
+    "remaining_original_images": 0,
+    "remaining_HTML_images": 0,
+    "chapter_files_checked": 15,
+    "content_chapters": 13,
+    "bibliography_and_index_also_checked": true,
+    "all_current_compile_and_review_signatures": true,
+    "all_individual_layout_evidence_present": true,
+    "no_contour_or_raster_wrappers": true,
+    "covered_unused_references": [
+      "image_tex/ch05/fig_5_10c_reference.tex"
+    ],
+    "inline_native_repairs": [
+      "13.1 POINT/CPOINT cells restored from adjacent typedefs"
+    ],
+    "adjacent_OCR_repairs": [
+      "SURFACE knv spelling",
+      "ENODE opening brace; removed spurious zero formula"
+    ],
+    "book_geometry": "40cm x80cm,11ptbody,1.5lines; originalgeometry retained; headfoot option replaced by valid dimensions"
+  },
+  "pdf": {
+    "status": "passed",
+    "pdf": "image_tex/build/book-check/main.pdf",
+    "sha256": "363115086c22a425f1dfc3b9bdaeeb0a71bf42f400f00a9f1231445cfd58a488",
+    "pages": 220,
+    "content_page_range": [
+      7,
+      212
+    ],
+    "all_page_geometry_cm": [
+      40,
+      80
+    ],
+    "body_raster_image_objects": 0,
+    "non_body_image_resources": {},
+    "fatal_compile_errors": 0,
+    "missing_glyph_warnings": 0,
+    "frozen_snapshot": "image_tex/build/book-snapshots/final-native-book-20261109-161544-972950",
+    "all_active_original_references": 435,
+    "remaining_original_references": 0
+  },
+  "publication": {
+    "date": "2026-11-09",
+    "policy": "semantic TikZ/PGFPlots only; no contour tracing",
+    "withdrawn_contour_sources": 425,
+    "authored_sources": 436,
+    "applied_drawings": 435,
+    "remaining_active_original_images": 0,
+    "unused_original_images": 1,
+    "new_figures": [
+      "1.3",
+      "1.4",
+      "1.5",
+      "1.6",
+      "1.7",
+      "1.8",
+      "1.9",
+      "1.10",
+      "1.11",
+      "1.12",
+      "1.13",
+      "1.14",
+      "1.15",
+      "1.16",
+      "1.17",
+      "1.18",
+      "1.19",
+      "1.20",
+      "1.21",
+      "1.22",
+      "13.1",
+      "13.2",
+      "13.3",
+      "13.4",
+      "13.5",
+      "13.6",
+      "13.7",
+      "13.8",
+      "13.9"
+    ],
+    "reviewed_text_regions": [
+      "图1.1:",
+      "图1.2:",
+      "表1.1.",
+      "表1.2.",
+      "typedef struct enode"
+    ],
+    "new_sources": 8,
+    "reviewed_sources": 40,
+    "figure_pages": {
+      "1.3": 7,
+      "1.4": 7,
+      "1.5": 8,
+      "1.6": 8,
+      "1.7": 8,
+      "1.8": 9,
+      "1.9": 9,
+      "1.10": 9,
+      "1.11": 9,
+      "1.12": 10,
+      "1.13": 10,
+      "1.14": 10,
+      "1.15": 10,
+      "1.16": 11,
+      "1.17": 11,
+      "1.18": 12,
+      "1.19": 13,
+      "1.20": 13,
+      "1.21": 13,
+      "1.22": 13,
+      "13.1": 203,
+      "13.2": 203,
+      "13.3": 203,
+      "13.4": 203,
+      "13.5": 204,
+      "13.6": 204,
+      "13.7": 205,
+      "13.8": 206,
+      "13.9": 212,
+      "图1.1:": 7,
+      "图1.2:": 7,
+      "表1.1.": 10,
+      "表1.2.": 11,
+      "typedef struct enode": 206
+    },
+    "next_figure": "complete",
+    "book_compile": {
+      "exit_code": 0,
+      "pages": 220,
+      "pdf": "main.pdf",
+      "sha256": "363115086c22a425f1dfc3b9bdaeeb0a71bf42f400f00a9f1231445cfd58a488"
+    },
+    "previous_validation": "image_tex/build/validation-before-final-native-book.json",
+    "previous_contour_report": "build/retired-contours/validation-before-rollback.json",
+    "geometry_note": "All435active originalreferences replaced by currentcompiled/reviewed semantic native sources,all13contentchapters plusbibliography/index checked,noactive raster/HTML references.436authoredmanifest sources include1coveredunusedreference. Finalbatch checks all8implementation figures, restoredinline13.1POINT/CPOINTtable andENODEbrace, andfreshens32legacychapter1layoutrecords withactualpage inspections,withoutchangingtheirgeometry. Everyactive source hascurrentlayoutsignature/evidence. Allpreviouschapterbatches compiled/published; finalfullsnapshot verifiesentireinputtree. Original40x80cmgeometry/11ptbody preserved;invalidheadfootoption fixed.",
+    "page_layout": "All listed figures independently previewed and checked in chapters and final book pages.",
+    "source_snapshot": "image_tex/build/book-snapshots/final-native-book-20261109-161544-972950",
+    "snapshot_inputs_verified": true,
+    "live_applied_drawings_at_publication": 435,
+    "geometry_check": {
+      "status": "all_native_sources_and_chapter_references_verified",
+      "active_original_references": 435,
+      "applied_native_drawings": 435,
+      "authored_manifest_sources": 436,
+      "remaining_original_images": 0,
+      "remaining_HTML_images": 0,
+      "chapter_files_checked": 15,
+      "content_chapters": 13,
+      "bibliography_and_index_also_checked": true,
+      "all_current_compile_and_review_signatures": true,
+      "all_individual_layout_evidence_present": true,
+      "no_contour_or_raster_wrappers": true,
+      "covered_unused_references": [
+        "image_tex/ch05/fig_5_10c_reference.tex"
+      ],
+      "inline_native_repairs": [
+        "13.1 POINT/CPOINT cells restored from adjacent typedefs"
+      ],
+      "adjacent_OCR_repairs": [
+        "SURFACE knv spelling",
+        "ENODE opening brace; removed spurious zero formula"
+      ],
+      "book_geometry": "40cm x80cm,11ptbody,1.5lines; originalgeometry retained; headfoot option replaced by valid dimensions"
+    }
+  }
+}

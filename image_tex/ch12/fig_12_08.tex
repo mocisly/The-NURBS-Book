@@ -1,0 +1,30 @@
+\begin{tikzpicture}[book line,x=4cm,y=4cm,font=\fontsize{10}{12}\selectfont,scale=\BookGeometryScale]
+\path[book figure bounds] (-1.6,-1.55) rectangle (6.15,1.55);
+\begin{scope}[shift={(0,0)}]
+\draw (0,0) circle[radius=1];
+\draw[book grid,dashed] (1,0)--(1,1)--(0,1)--(-1,1)--(-1,0)--(-1,-1)--(0,-1)--(1,-1)--(1,0);
+\draw[book grid] (1,0) circle[radius=1.6pt] node[right=8pt] {$P_0=P_8$};
+\draw[book grid] (1,1) circle[radius=1.6pt] node[above right=6pt] {$P_1$};
+\draw[book grid] (0,1) circle[radius=1.6pt] node[above=6pt] {$P_2$};
+\draw[book grid] (-1,1) circle[radius=1.6pt] node[above left=6pt] {$P_3$};
+\draw[book grid] (-1,0) circle[radius=1.6pt] node[left=6pt] {$P_4$};
+\draw[book grid] (-1,-1) circle[radius=1.6pt] node[below left=6pt] {$P_5$};
+\draw[book grid] (0,-1) circle[radius=1.6pt] node[below=6pt] {$P_6$};
+\draw[book grid] (1,-1) circle[radius=1.6pt] node[below right=6pt] {$P_7$};
+\node[book panel tag] at (0,-1.4) {(a)};
+\end{scope}
+\begin{scope}[shift={(4.4,0)}]
+\draw (0,0) circle[radius=1];
+\draw[book grid,dashed] (1,-0.5469181607)--(1,1)--(0,1)--(-1,1)--(-1,0)--(-1,-1)--(0,-1)--(1,-1)--(1,0.5469181607);
+\draw[book grid] (1,-0.5469181607) circle[radius=1.6pt] node[right=8pt] {$P_0$};
+\draw[book grid] (1,1) circle[radius=1.6pt] node[above right=6pt] {$P_1$};
+\draw[book grid] (0,1) circle[radius=1.6pt] node[above=6pt] {$P_2$};
+\draw[book grid] (-1,1) circle[radius=1.6pt] node[above left=6pt] {$P_3$};
+\draw[book grid] (-1,0) circle[radius=1.6pt] node[left=6pt] {$P_4$};
+\draw[book grid] (-1,-1) circle[radius=1.6pt] node[below left=6pt] {$P_5$};
+\draw[book grid] (0,-1) circle[radius=1.6pt] node[below=6pt] {$P_6$};
+\draw[book grid] (1,-1) circle[radius=1.6pt] node[below right=6pt] {$P_7$};
+\draw[book grid] (1,0.5469181607) circle[radius=1.6pt] node[right=8pt] {$P_8$};
+\node[book panel tag] at (0,-1.4) {(b)};
+\end{scope}
+\end{tikzpicture}
